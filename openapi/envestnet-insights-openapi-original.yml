@@ -4088,3 +4088,7 @@ components:
                 link:
                   entityName: view
                   url: /views/234213523
+tags:
+  - name: Associated Details
+  - name: Customer
+  - name: User

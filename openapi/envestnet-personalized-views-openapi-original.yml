@@ -5029,3 +5029,5 @@ components:
               link:
                 - methodType: GET
                   href: /views/60d995f8fc778d5873a05837/transactions?fromDate=2021-05-28&toDate=2021-06-28&categoryId=44
+tags:
+  - name: View
