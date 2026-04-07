@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: View API Suite
+  title: Envestnet View API Suite
   description: >-
     Views APIs enable your end users to create personalized views of their
     finances for any expenses, hobbies, or projects relevant to them. A view is a collection of
@@ -19,43 +19,43 @@ paths:
     post:
       tags:
         - View
-      summary: Create a view for a user.
+      summary: Envestnet Create a view for a user.
       description: >-
-                The create Views API allows users to create a view by specifying one or
-                more rules. This API supports bank, creditCard and investment container transactions.
-                <br><br>Important notes- <ul><li>Each View rule must contain either
-                "include" or "exclude" attributes, but not both together. If you want
-                both "include" or "exclude" attributes, then create 1 rule with
-                "include" and 1 rule with "exclude" attribute.</li><li>Do not use view
-                'id' and view rule 'id' fields in POST /views and PUT /views/{viewId}
-                APIs. 'id' fields are read-only field belonging to the View entity which
-                will be only available when you call the GET /views and GET
-                /views/{viewId} API</li></ul>
-                <strong>Budget for Views</strong>
-                <br><br>
-                The budgetData entity is optional.
-                <br><br>
-                You can track budget for a VIEW at various levels identified by the
-                attribute "type" - VIEW, CATEGORY, MERCHANT, and DETAIL_CATEGORY.
-                <br><br>
-                You can pass one or more types. If you pass VIEW and CATEGORY, it
-                will track budget seperately for each of the entities mentioned
-                seperately. It's recommended to have only one type per VIEW.
-                <br><br>
-                Each type also supports incomeBudget and expenseBudget. You can
-                set budget at one or both levels.
-                <ul><li>If setting budget for MERCHANT, typeName which corresponds to
-                merchant name is mandatory.</li>
-                <li>If setting budget for CATEGORY, typeId which corresponds to
-                categoryId is mandatory.</li>
-                <li>If setting budget for DETAIL_CATEGORY, typeId which corresponds to
-                detail category ID is mandatory.</li>
-                <li>If setting budget for VIEW, either incomeBudget or expenseBudget
-                is mandatory.</li>
-                </ul>
-                Either incomeBudget or expenseBudget is mandatory along with type
-                 and their respective mandatory attributes.
-                 
+        The create Views API allows users to create a view by specifying one or
+        more rules. This API supports bank, creditCard and investment container transactions.
+        <br><br>Important notes- <ul><li>Each View rule must contain either
+        "include" or "exclude" attributes, but not both together. If you want
+        both "include" or "exclude" attributes, then create 1 rule with
+        "include" and 1 rule with "exclude" attribute.</li><li>Do not use view
+        'id' and view rule 'id' fields in POST /views and PUT /views/{viewId}
+        APIs. 'id' fields are read-only field belonging to the View entity which
+        will be only available when you call the GET /views and GET
+        /views/{viewId} API</li></ul>
+        <strong>Budget for Views</strong>
+        <br><br>
+        The budgetData entity is optional.
+        <br><br>
+        You can track budget for a VIEW at various levels identified by the
+        attribute "type" - VIEW, CATEGORY, MERCHANT, and DETAIL_CATEGORY.
+        <br><br>
+        You can pass one or more types. If you pass VIEW and CATEGORY, it
+        will track budget seperately for each of the entities mentioned
+        seperately. It's recommended to have only one type per VIEW.
+        <br><br>
+        Each type also supports incomeBudget and expenseBudget. You can
+        set budget at one or both levels.
+        <ul><li>If setting budget for MERCHANT, typeName which corresponds to
+        merchant name is mandatory.</li>
+        <li>If setting budget for CATEGORY, typeId which corresponds to
+        categoryId is mandatory.</li>
+        <li>If setting budget for DETAIL_CATEGORY, typeId which corresponds to
+        detail category ID is mandatory.</li>
+        <li>If setting budget for VIEW, either incomeBudget or expenseBudget
+        is mandatory.</li>
+        </ul>
+        Either incomeBudget or expenseBudget is mandatory along with type
+         and their respective mandatory attributes.
+         
       operationId: createUserView
       requestBody:
         content:
@@ -80,8 +80,7 @@ paths:
             min 1 and max 500 characters including spaces are allowed.  <br>Y800
             : Invalid value for transactionId. <br>Y801 : Invalid value for view
             rule. In addition to fromDate and toDate, pass at least one other
-            attribute to create a rule. 
-            <br>Y800 : Invalid value for categoryId.
+            attribute to create a rule.  <br>Y800 : Invalid value for categoryId.
             <br>Y800 : Invalid value for accountId. <br>Y824 : The maximum number of
             transactionId permitted is 500 <br>Y824 : The maximum number of
             merchantName permitted is 250 <br>Y824 : The maximum number of
@@ -129,7 +128,7 @@ paths:
             Y020 : Invalid token in authorization header<br>Y023 : Token has
             expired<br>
             Y011 : Invalid cobrand or incorrectly configured cobrand
-            
+
           content:
             application/json:
               schema:
@@ -137,7 +136,7 @@ paths:
     get:
       tags:
         - View
-      summary: Fetch the details of all the views associated with a user.
+      summary: Envestnet Fetch the details of all the views associated with a user.
       description: >-
         The GET Views API retrieves details of all the Views that the user has
         created. To retrieve the rules associated with the Views, pass
@@ -164,8 +163,8 @@ paths:
         - name: sourceType
           in: query
           description: >-
-           This field indicates if the view is created by the system or by the user.</br>
-           Pass <i>sourceType=SYSTEM/USER</i> to retrieve the views with the  given source type
+            This field indicates if the view is created by the system or by the user.</br>
+            Pass <i>sourceType=SYSTEM/USER</i> to retrieve the views with the  given source type
           required: false
           style: form
           explode: true
@@ -174,13 +173,13 @@ paths:
             enum:
               - SYSTEM
               - USER
-          example: 
-              - USER
-              - SYSTEM
+          example:
+            - USER
+            - SYSTEM
         - name: orderBy
           in: query
           description: >-
-           Single value of orderBy need to be passed. Data returned will be ordered by the filter value.
+            Single value of orderBy need to be passed. Data returned will be ordered by the filter value.
           required: false
           style: form
           explode: true
@@ -190,14 +189,14 @@ paths:
               - created
               - lastUpdated
               - sourceType
-          example: 
-              - created
-              - lastUpdated
-              - sourceType
+          example:
+            - created
+            - lastUpdated
+            - sourceType
         - name: sortBy
           in: query
           description: >-
-           Single value of sortBy need to be passed. Data returned will be ordered in ascending or descending order.
+            Single value of sortBy need to be passed. Data returned will be ordered in ascending or descending order.
           required: false
           style: form
           explode: true
@@ -206,9 +205,9 @@ paths:
             enum:
               - asc
               - desc
-          example: 
-              - asc
-              - desc
+          example:
+            - asc
+            - desc
       responses:
         '200':
           description: View detail is fetched successfully
@@ -225,8 +224,7 @@ paths:
             Invalid value for include<br>
             Y800 : Invalid value of sourceType;  Allowed values are SYSTEM , USER<br>
             Y802 : Duplicate value of sourceType are not allowed;<br>
-            Y800 : Invalid value of orderBy;  Allowed values are sourceType ; created;<br> 
-            Y800 : Invalid value of sortBy;  Allowed values are asc ,desc
+            Y800 : Invalid value of orderBy;  Allowed values are sourceType ; created;<br>  Y800 : Invalid value of sortBy;  Allowed values are asc ,desc
           content:
             application/json:
               schema:
@@ -236,7 +234,7 @@ paths:
             Y020 : Invalid token in authorization header<br>Y023 : Token has
             expired<br>
             Y011 : Invalid cobrand or incorrectly configured cobrand
-            
+
           content:
             application/json:
               schema:
@@ -245,50 +243,49 @@ paths:
     post:
       tags:
         - View
-      summary: Create a default view for a user.
+      summary: Envestnet Create a default view for a user.
       description: >-
-         Allows user to create a default view if one does not already exist or has been deleted. 
-         All the INCOME, EXPENSE and TRANSFER rules are included for this view by default.
-         Request body if any supplied will get ignored.
+        Allows user to create a default view if one does not already exist or has been deleted.  All the INCOME, EXPENSE and TRANSFER rules are included for this view by default.
+        Request body if any supplied will get ignored.
       operationId: createSystemView
       responses:
-          '201':
-              description: System view data is updated successfully
-              content:
-                application/json:
-                  schema:
-                    $ref: '#/components/schemas/ViewResponse'
-          '400':
-              description: >-
-                  Bad request. ErrorCode and ErrorMessages below:<br>
-                  Y802 : Creating multiple system created views is not allowed.
-              content:
-                  application/json:
-                    schema:
-                        $ref: '#/components/schemas/Error'
-          '401':
-              description: >-
-                  Y020 : Invalid token in authorization header<br>
-                  Y023 : Token has expired<br>
-                  Y011 : Invalid cobrand or incorrectly configured cobrand
-              content:
-                  application/json:
-                    schema:
-                        $ref: '#/components/schemas/Error'
+        '201':
+          description: System view data is updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ViewResponse'
+        '400':
+          description: >-
+            Bad request. ErrorCode and ErrorMessages below:<br>
+            Y802 : Creating multiple system created views is not allowed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: >-
+            Y020 : Invalid token in authorization header<br>
+            Y023 : Token has expired<br>
+            Y011 : Invalid cobrand or incorrectly configured cobrand
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   '/views/{viewId}':
     get:
       tags:
         - View
-      summary: Fetch the details of a specific view.
-      description:  >-
-                Retrieves details of a specific view identified by the viewId.
-                <br><br>
-                To retrieve the rule associated with the view, pass include=rules in the
-                request. If the requested view has been deleted, you will get an empty
-                response.
-                <br><br>
-                budgetData will be returned if budget is set for the VIEW at any of the
-                levels.
+      summary: Envestnet Fetch the details of a specific view.
+      description: >-
+        Retrieves details of a specific view identified by the viewId.
+        <br><br>
+        To retrieve the rule associated with the view, pass include=rules in the
+        request. If the requested view has been deleted, you will get an empty
+        response.
+        <br><br>
+        budgetData will be returned if budget is set for the VIEW at any of the
+        levels.
       operationId: getUserView
       parameters:
         - name: viewId
@@ -334,33 +331,32 @@ paths:
             Y020 : Invalid token in authorization header<br>Y023 : Token has
             expired<br>
             Y011 : Invalid cobrand or incorrectly configured cobrand
-            
+
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-                
     put:
       tags:
         - View
-      summary: Update details of an existing view.
+      summary: Envestnet Update details of an existing view.
       description: >-
-                The update Views API allows updating details of a specific view. Details
-                can be updated both at the Views-level and the rule-level entity. The
-                HTTP response code is 204 (Success without content).<br><br>
-                  Important notes-
-                  <ul>
-                  <li>Each view object contains an array of rules. Each View rule must contain either ''include'' or ''exclude'' attributes, but not both together. If you want both ''include'' or ''exclude'' attributes, then create 1 rule with ''include'' and 1 rule with ''exclude'' attribute.&nbsp;</li>
-                  <ul>
-                  <li>if you provide an existing View Rule ''Id'' which you have fetched from the GET /views/{viewId} API, then that View Rule content will replace the existing View Rule's content in the database</li>
-                  <li>However, if you don't pass the rule ''Id'' attribute in the Request Body's rule object, then that particular rule will be considered as a new rule. It will be inserted fresh into the database. PUT&nbsp;<u>Views/{viewId}</u>&nbsp;acts like an UPSERT operation. Each view object in the API request JSON contains ''rule'' as an array of View Rules. Inside View ''rule'' array in the Request body</li>
-                  </ul>
-                  <li>Whatever rules are passed in the Request Body, will ultimately replace all the Views rules in the database against the provided View Id. This means if you skip providing an existing view rule with the correct ID, that rule will get deleted</li>
-                  <li>Do not use view 'id' and rule 'id' fields in POST /views and PUT /views/{viewId} APIs. 'id' fields are read-only field belonging to the View entity which will be only available when you call the GET /views and GET /views/{viewId} API</li>
-                  <li>budgetData cannot be updated using the PUT method. Please use the PATCH API for updating budgetData.</li>
-                  <li>The update Views API allows updating details of a specific view. In case of updating <b>SYSTEM VIEW</b>, only name & description should be allowed to be updated where description is optional field.</li>
-                  <li>In case of updating <b>SYSTEM VIEW</b>, if we pass any other parameter for update it should throw error - Updating attributes other than name and description for a system created view is not allowed.</li>
-                  </ul>
+        The update Views API allows updating details of a specific view. Details
+        can be updated both at the Views-level and the rule-level entity. The
+        HTTP response code is 204 (Success without content).<br><br>
+          Important notes-
+          <ul>
+          <li>Each view object contains an array of rules. Each View rule must contain either ''include'' or ''exclude'' attributes, but not both together. If you want both ''include'' or ''exclude'' attributes, then create 1 rule with ''include'' and 1 rule with ''exclude'' attribute.&nbsp;</li>
+          <ul>
+          <li>if you provide an existing View Rule ''Id'' which you have fetched from the GET /views/{viewId} API, then that View Rule content will replace the existing View Rule's content in the database</li>
+          <li>However, if you don't pass the rule ''Id'' attribute in the Request Body's rule object, then that particular rule will be considered as a new rule. It will be inserted fresh into the database. PUT&nbsp;<u>Views/{viewId}</u>&nbsp;acts like an UPSERT operation. Each view object in the API request JSON contains ''rule'' as an array of View Rules. Inside View ''rule'' array in the Request body</li>
+          </ul>
+          <li>Whatever rules are passed in the Request Body, will ultimately replace all the Views rules in the database against the provided View Id. This means if you skip providing an existing view rule with the correct ID, that rule will get deleted</li>
+          <li>Do not use view 'id' and rule 'id' fields in POST /views and PUT /views/{viewId} APIs. 'id' fields are read-only field belonging to the View entity which will be only available when you call the GET /views and GET /views/{viewId} API</li>
+          <li>budgetData cannot be updated using the PUT method. Please use the PATCH API for updating budgetData.</li>
+          <li>The update Views API allows updating details of a specific view. In case of updating <b>SYSTEM VIEW</b>, only name & description should be allowed to be updated where description is optional field.</li>
+          <li>In case of updating <b>SYSTEM VIEW</b>, if we pass any other parameter for update it should throw error - Updating attributes other than name and description for a system created view is not allowed.</li>
+          </ul>
       operationId: updateUserView
       parameters:
         - name: viewId
@@ -382,8 +378,8 @@ paths:
                 $ref: '#/components/examples/updateViewExample'
       responses:
         '204':
-          description: >-
-          
+          description: >
+
         '400':
           description: >-
             Bad request. ErrorCode and ErrorMessages below:<br> <br>Y801 :
@@ -429,8 +425,7 @@ paths:
             <br>Y800 : Invalid value for fromDate/toDate in a rule; 
                        either both fromDate and toDate needs to be provided, 
                        or both should not be provided.
-            <br>Y802 : Passing budget is not allowed 
-            <br>Y802 : Updating attributes other than name and description for a system created view is not allowed.
+            <br>Y802 : Passing budget is not allowed  <br>Y802 : Updating attributes other than name and description for a system created view is not allowed.
             <br>Y805 : Multiple currency values not supported in a view. The final view being created should have the same currency across rules and view currency(if provided) <br> Y800 : Invalid value for currency
             <br>
             Y802 : In an EXPENSE rule, categoryId of type - TRANSFER - is not allowed<br>
@@ -446,7 +441,7 @@ paths:
             Y020 : Invalid token in authorization header<br>Y023 : Token has
             expired<br>
             Y011 : Invalid cobrand or incorrectly configured cobrand
-            
+
           content:
             application/json:
               schema:
@@ -454,7 +449,7 @@ paths:
     delete:
       tags:
         - View
-      summary: Delete a specific view.
+      summary: Envestnet Delete a specific view.
       description: >-
         The delete view API allows to delete a single view by passing the
         viewId. For success, The HTTP response code is 204 (Success without
@@ -472,8 +467,8 @@ paths:
           example: 5f239b0bed04946a41675616
       responses:
         '204':
-          description: >-
-            
+          description: >
+
         '400':
           description: >-
             Bad request. ErrorCode and ErrorMessages below:<br> <br>Y800 :
@@ -487,7 +482,7 @@ paths:
             Y020 : Invalid token in authorization header<br>Y023 : Token has
             expired<br>
             Y011 : Invalid cobrand or incorrectly configured cobrand
-            
+
           content:
             application/json:
               schema:
@@ -496,7 +491,7 @@ paths:
     delete:
       tags:
         - View
-      summary: Delete the specified rules for a specific view.
+      summary: Envestnet Delete the specified rules for a specific view.
       description: >-
         The delete rules API allows you to delete one or more rules that are
         associated with a specific view by passing the viewId and ruleId. The
@@ -547,7 +542,7 @@ paths:
             Y020 : Invalid token in authorization header<br>Y023 : Token has
             expired<br>
             Y011 : Invalid cobrand or incorrectly configured cobrand
-            
+
           content:
             application/json:
               schema:
@@ -556,14 +551,14 @@ paths:
     patch:
       tags:
         - View
-      summary: Patch the specified budget data for a specific view.
-      description:  >-
-              Update any of the existing entities within budgetData or
-              add new budget for any of the
-              supported type to an existing VIEW.
-              <br><br>
-              <Strong>Note:</strong>
-              Do not pass rules for a VIEW when updating budgetData.
+      summary: Envestnet Patch the specified budget data for a specific view.
+      description: >-
+        Update any of the existing entities within budgetData or
+        add new budget for any of the
+        supported type to an existing VIEW.
+        <br><br>
+        <Strong>Note:</strong>
+        Do not pass rules for a VIEW when updating budgetData.
       operationId: patchUserViewbudget
       parameters:
         - name: viewId
@@ -599,7 +594,7 @@ paths:
             Y020 : Invalid token in authorization header<br>Y023 : Token has
             expired<br>
             Y011 : Invalid cobrand or incorrectly configured cobrand
-            
+
           content:
             application/json:
               schema:
@@ -607,7 +602,7 @@ paths:
     delete:
       tags:
         - View
-      summary: Delete the specified budget data for a specific view.
+      summary: Envestnet Delete the specified budget data for a specific view.
       description: >-
         The delete budget data API allows you to delete one or more budget data based on the requested params.
       operationId: deleteUserViewbudget
@@ -624,11 +619,11 @@ paths:
         - name: type
           in: query
           description: >-
-             type identifies the budget entity to be deleted.
-                    For successful deletion the type should belong to the
-                    same Budget data and View ID.
-                    <br><br>
-                    Multiple comma seperated values are accepted.
+            type identifies the budget entity to be deleted.
+                   For successful deletion the type should belong to the
+                   same Budget data and View ID.
+                   <br><br>
+                   Multiple comma seperated values are accepted.
           required: false
           style: form
           explode: true
@@ -651,9 +646,9 @@ paths:
         - name: typeId
           in: query
           description: >-
-                      The unique identifier of the Category or detailed category
-                      for which the budget is set.
-                      Multiple comma seperated values are allowed.
+            The unique identifier of the Category or detailed category
+            for which the budget is set.
+            Multiple comma seperated values are allowed.
           required: false
           style: form
           explode: true
@@ -688,7 +683,7 @@ paths:
             Y020 : Invalid token in authorization header<br>Y023 : Token has
             expired<br>
             Y011 : Invalid cobrand or incorrectly configured cobrand
-            
+
           content:
             application/json:
               schema:
@@ -697,7 +692,7 @@ paths:
     get:
       tags:
         - View
-      summary: Fetch all the transactions for a specific View.
+      summary: Envestnet Fetch all the transactions for a specific View.
       description: >-
         The GET Views transactions API allows you to fetch all the transactions
         for a specific view by passing the viewId.<br><br> A View is a logical
@@ -769,7 +764,7 @@ paths:
           explode: true
           schema:
             type: string
-          example: '1168,1280'          
+          example: '1168,1280'
         - name: merchantName
           in: query
           description: Comma-separated array of Merchant Names filter for the View Rules
@@ -817,7 +812,7 @@ paths:
         - name: accountStatus
           in: query
           description: >-
-           This field indicates if the account status is open closed or active.</br>
+            This field indicates if the account status is open closed or active.</br>
           required: false
           style: form
           explode: true
@@ -827,14 +822,14 @@ paths:
               - ACTIVE
               - CLOSED
               - TO_BE_CLOSED
-          example: 
-              - ACTIVE
-              - CLOSED
-              - TO_BE_CLOSED
+          example:
+            - ACTIVE
+            - CLOSED
+            - TO_BE_CLOSED
         - name: include
           in: query
           description: >-
-           This field indicates if we need to include closed accout.</br>
+            This field indicates if we need to include closed accout.</br>
           required: false
           style: form
           explode: true
@@ -915,7 +910,7 @@ paths:
               - bank
               - creditCard
           example: bank
-        
+
       responses:
         '200':
           description: >-
@@ -929,12 +924,7 @@ paths:
           description: >-
             Bad request. ErrorCode and ErrorMessages below:<br> <br>Y800 : Invalid value
             for categoryId <br>Y824 : The maximum number of categoryId permitted
-            is 100 <br>Y800 : Invalid value for detailCategoryId; either the 
-            detailCategoryId does not exist or is not supported for this view 
-            <br>Y824 : The maximum number of detailCategoryId permitted is 100 
-            <br>Y802 : Duplicate detailCategoryIds not allowed 
-            <br>Y800 : Invalid value for detailCategoryId 
-            <br>Y801 : Invalid length for merchantName; should be between
+            is 100 <br>Y800 : Invalid value for detailCategoryId; either the  detailCategoryId does not exist or is not supported for this view  <br>Y824 : The maximum number of detailCategoryId permitted is 100  <br>Y802 : Duplicate detailCategoryIds not allowed  <br>Y800 : Invalid value for detailCategoryId  <br>Y801 : Invalid length for merchantName; should be between
             1 and 100 <br>Y800 : Invalid value for viewId <br>Y800 : Invalid
             value for fromDate/toDate; supported format is YYYY-MM-DD or
             YYYY-MM-DDTHH:MM:SS <br>Y800 : Invalid value for toDate; fromDate
@@ -950,8 +940,7 @@ paths:
             toDate needs to have a timestamp or none of them should have a
             timestamp
             <br>Y800: Invalid value for ruleType; Only INCOME, EXPENSE,TRANSFER is supported
-            <br>Y802: Duplicate values for ruleType are not allowed 
-            <br>Y802: Duplicate values for container are not allowed
+            <br>Y802: Duplicate values for ruleType are not allowed  <br>Y802: Duplicate values for container are not allowed
             <br>Y800: Invalid value for container; Allowed values are bank,creditCard.
           content:
             application/json:
@@ -970,7 +959,7 @@ paths:
       tags:
         - View
       summary: >-
-        Fetch all the applicable peer benchmarking data.
+        Envestnet Fetch all the applicable peer benchmarking data.
       description: >-
         API allows you to view peer benchmarking data for a specific view.<br><br>
         Peer Benchmarking summary data is returned for each category and merchant mentioned in the view INCLUDE rules for the specified View. Median Spend Amount is returned for each of City/CBSA (If Available), State (If Available) and National (Always).<br><br>
@@ -1041,7 +1030,7 @@ paths:
     get:
       tags:
         - View
-      summary: Fetch summary data for a specific View.
+      summary: Envestnet Fetch summary data for a specific View.
       description: >-
         This API fetches summary details for a specific view by passing the viewId.<br /><br />This API summarizes the information and returns data credit total, debit total, and net total grouped by merchant, category, categoryType or detailCategoryId depending on the query parameter value provided.<br /><br />Use 'skip' and 'top' fields values to determine numbers of records under the details arrays . Supported containers - bank and creditCard .
       operationId: getUserViewTransactionSummary
@@ -1100,7 +1089,7 @@ paths:
           explode: true
           schema:
             type: string
-          example: '1168,1280'          
+          example: '1168,1280'
         - name: merchantName
           in: query
           description: >-
@@ -1233,7 +1222,7 @@ paths:
         - name: accountStatus
           in: query
           description: >-
-           This field indicates if the account status is open closed or active.</br>
+            This field indicates if the account status is open closed or active.</br>
           required: false
           style: form
           explode: true
@@ -1243,14 +1232,14 @@ paths:
               - ACTIVE
               - CLOSED
               - TO_BE_CLOSED
-          example: 
-              - ACTIVE
-              - CLOSED
-              - TO_BE_CLOSED
+          example:
+            - ACTIVE
+            - CLOSED
+            - TO_BE_CLOSED
         - name: include
           in: query
           description: >-
-           This field indicates if we need to include closed accout.</br>
+            This field indicates if we need to include closed accout.</br>
           required: false
           style: form
           explode: true
@@ -1313,7 +1302,7 @@ paths:
               - bank
               - creditCard
           example: bank
-          
+
       responses:
         '200':
           description: >-
@@ -1324,19 +1313,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/TransactionSummaryResponse'
               examples:
-               objectExample:
-                $ref: '#/components/examples/TransactionSummaryExample'
+                objectExample:
+                  $ref: '#/components/examples/TransactionSummaryExample'
         '400':
           description: >-
-            Bad request. ErrorCode and ErrorMessages below:<br> 
-            <br>Y800 : Invalid value for categoryId 
-            <br>Y824 : The maximum number of categoryId permitted is
-            100 <br>Y800 : Invalid value for detailCategoryId; either the 
-            detailCategoryId does not exist or is not supported for this view 
-            <br>Y824 : The maximum number of detailCategoryId permitted is 100 
-            <br>Y802 : Duplicate detailCategoryIds not allowed 
-            <br>Y800 : Invalid value for detailCategoryId 
-            <br>Y801 : Invalid length for merchantName; should be between 1
+            Bad request. ErrorCode and ErrorMessages below:<br>  <br>Y800 : Invalid value for categoryId  <br>Y824 : The maximum number of categoryId permitted is
+            100 <br>Y800 : Invalid value for detailCategoryId; either the  detailCategoryId does not exist or is not supported for this view  <br>Y824 : The maximum number of detailCategoryId permitted is 100  <br>Y802 : Duplicate detailCategoryIds not allowed  <br>Y800 : Invalid value for detailCategoryId  <br>Y801 : Invalid length for merchantName; should be between 1
             and 100  <br>Y800 : Invalid value for viewId <br>Y800:Invalid value
             for fromDate/toDate; If passing a date range, either both fromDate
             and toDate needs to have a timestamp or none of them should have a
@@ -1362,7 +1344,7 @@ paths:
             Y020 : Invalid token in authorization header<br>Y023 : Token has
             expired<br>
             Y011 : Invalid cobrand or incorrectly configured cobrand
-            
+
           content:
             application/json:
               schema:
@@ -1371,14 +1353,11 @@ paths:
     get:
       tags:
         - View
-      summary: Fetch trend data for a specific View.
+      summary: Envestnet Fetch trend data for a specific View.
       description: >-
         This API fetches trend details for a specific view by passing the viewId.
-        <br /><br />This API summarizes the information and returns credit total, 
-        debit total, and net total grouped by merchant, category, or 
-        categoryType depending on the query parameter value provided.
-        <br /><br />Use 'skip' and 'top' fields to enable pagination in 
-        response. Supported containers - bank and creditCard .
+        <br /><br />This API summarizes the information and returns credit total,  debit total, and net total grouped by merchant, category, or  categoryType depending on the query parameter value provided.
+        <br /><br />Use 'skip' and 'top' fields to enable pagination in  response. Supported containers - bank and creditCard .
       operationId: getUserViewTransactionTrends
       parameters:
         - name: viewId
@@ -1464,7 +1443,7 @@ paths:
         - name: accountId
           in: query
           description: >-
-           Comma-separated list of valid account Ids.
+            Comma-separated list of valid account Ids.
           required: false
           style: form
           explode: true
@@ -1487,7 +1466,7 @@ paths:
           example: BILLERS
         - name: city
           in: query
-          description: >- 
+          description: >-
             Comma-separated array of two-letter city abbreviation. Please note that the values are not validated.
           required: false
           style: form
@@ -1537,7 +1516,7 @@ paths:
         - name: accountStatus
           in: query
           description: >-
-           This field indicates if the account status is open closed or active.</br>
+            This field indicates if the account status is open closed or active.</br>
           required: false
           style: form
           explode: true
@@ -1547,14 +1526,14 @@ paths:
               - ACTIVE
               - CLOSED
               - TO_BE_CLOSED
-          example: 
-              - ACTIVE
-              - CLOSED
-              - TO_BE_CLOSED
+          example:
+            - ACTIVE
+            - CLOSED
+            - TO_BE_CLOSED
         - name: include
           in: query
           description: >-
-           This field indicates if we need to include closed accout.</br>
+            This field indicates if we need to include closed accout.</br>
           required: false
           style: form
           explode: true
@@ -1659,17 +1638,12 @@ paths:
               examples:
                 objectExample:
                   $ref: '#/components/examples/TransactionTrendExample'
-          
         '400':
           description: >-
             Bad request. ErrorCode and ErrorMessages below:<br> <br>Y813 : Both
             fromDate and toDate should be provided <br>Y800 : Invalid value for
             categoryId <br>Y824 : The maximum number of categoryId permitted is
-            100 <br>Y800 : Invalid value for detailCategoryId; either the 
-            detailCategoryId does not exist or is not supported for this view 
-            <br>Y824 : The maximum number of detailCategoryId permitted is 100 
-            <br>Y802 : Duplicate detailCategoryIds not allowed 
-            <br>Y800 : Invalid value for detailCategoryId
+            100 <br>Y800 : Invalid value for detailCategoryId; either the  detailCategoryId does not exist or is not supported for this view  <br>Y824 : The maximum number of detailCategoryId permitted is 100  <br>Y802 : Duplicate detailCategoryIds not allowed  <br>Y800 : Invalid value for detailCategoryId
             <br>Y801 : Invalid length for merchantName; should be between 1
             and 100  <br>Y800 : Invalid value for viewId <br>Y800:Invalid value
             for fromDate/toDate; If passing a date range, either both fromDate
@@ -1686,8 +1660,7 @@ paths:
             <br>Y800: Invalid value for groupBy; supported values are merchant, category, detailCategory, categoryType.
             <br>Y802: Passing multiple values for groupBy is not allowed
             <br>Y800: Invalid value for ruleType; Only
-            INCOME, EXPENSE,TRANSFER is supported 
-            <br>Y802: Duplicate values for ruleType are not allowed
+            INCOME, EXPENSE,TRANSFER is supported  <br>Y802: Duplicate values for ruleType are not allowed
             <br>Y802: Duplicate values for container are not allowed
             <br>Y800: Invalid value for container; Allowed values are bank,creditCard.
         '401':
@@ -1695,7 +1668,7 @@ paths:
             Y020 : Invalid token in authorization header<br>Y023 : Token has
             expired<br>
             Y011 : Invalid cobrand or incorrectly configured cobrand
-            
+
           content:
             application/json:
               schema:
@@ -1705,7 +1678,7 @@ paths:
       tags:
         - View
       summary: >-
-        Fetch recommended Views for a user.
+        Envestnet Fetch recommended Views for a user.
       description: >-
         This API fetches the recommended Views for a specific user. For each user, their transaction history for 90 days is considered based on which recommendations are generated. The recommendations contain meta-data as well as the exact View object that can be passed to the POST /views API endpoint to create a View.<br><br>
           Note- The recommendationId field is used to make sure that the same view is not recommended again for the user. If you modify the recommendationId or let users edit a View made through recommendation, the recommendation service might not behave as expected.
@@ -1738,11 +1711,11 @@ paths:
     get:
       tags:
         - View
-      summary: Fetch BudgetSummary for specific View.
+      summary: Envestnet Fetch BudgetSummary for specific View.
       description: >-
         This API fetches BudgetSummarys for a specific view by passing the viewId and type.
         <ul><li>recommendationId, budgetData, rule are not applicable for this api.</li></ul>
-       
+
       operationId: getUserBudgetSummary
       parameters:
         - name: viewId
@@ -1757,12 +1730,12 @@ paths:
         - name: type
           in: query
           description: >-
-                    type identifies the budget entity for which data needs to be fetched.
-                    The type should belong to the same budgetData and View ID.
-                    <br><br>
-                    Multiple comma seperated values are NOT accepted.
-                    <br><br>
-                    It is mandatory to pass a type.
+            type identifies the budget entity for which data needs to be fetched.
+            The type should belong to the same budgetData and View ID.
+            <br><br>
+            Multiple comma seperated values are NOT accepted.
+            <br><br>
+            It is mandatory to pass a type.
           required: true
           style: form
           explode: true
@@ -1774,7 +1747,7 @@ paths:
               - MERCHANT
               - DETAIL_CATEGORY
           example: MERCHANT
-       
+
       responses:
         '200':
           description: >-
@@ -1786,7 +1759,6 @@ paths:
               examples:
                 objectExample:
                   $ref: '#/components/examples/getBudgetSummaryExample'
-          
         '400':
           description: >-
             Bad request. ErrorCode and ErrorMessages below:<br>
@@ -1797,7 +1769,7 @@ paths:
             Y020 : Invalid token in authorization header<br>Y023 : Token has
             expired<br>
             Y011 : Invalid cobrand or incorrectly configured cobrand
-            
+
           content:
             application/json:
               schema:
@@ -1842,7 +1814,7 @@ components:
             preferredCurrency should be a valid three-letter ISO Code for currencies.
             <br><br><b>Endpoints</b> -<ul><li>GET /views</li><li>GET
             /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>
-          enum: 
+          enum:
             - SGD
             - IDR
             - AUD
@@ -1886,7 +1858,7 @@ components:
           type: string
           description: >-
             This field indicates if the view is created by the system or by the user.
-          example : USER  
+          example: USER
         rule:
           type: array
           description: >-
@@ -1962,8 +1934,7 @@ components:
         type:
           type: string
           description: >-
-            View.rule.type describes the ViewRule's type - INCOME or EXPENSE or TRANSFER. 
-            This is synonymous with the type field of the transaction category resource. Each
+            View.rule.type describes the ViewRule's type - INCOME or EXPENSE or TRANSFER.  This is synonymous with the type field of the transaction category resource. Each
             Transaction has a categoryId and each categoryId has a categoryType
             associated to it. The supported values for Transaction category and
             categoryType are provided by the GET transactions/categories
@@ -2219,7 +2190,7 @@ components:
           items:
             type: integer
             format: int64
-            
+
         accountId:
           maximum: 25
           minimum: 1
@@ -2349,7 +2320,7 @@ components:
           description: >-
             debit total for the budget.
           allOf:
-            - $ref: '#/components/schemas/Money'    
+            - $ref: '#/components/schemas/Money'
         incomeBudget:
           description: >-
             Set a budget for the overall income budget.
@@ -2378,11 +2349,11 @@ components:
           type: number
           description: >-
             TypeId identifies the category or detailcategory id.'
-        remainingIncomeBudgetPercent: 
+        remainingIncomeBudgetPercent:
           type: number
           description: >-
             'percentage of remaining Income budget'
-        remaininExpenseBudgetPercent: 
+        remaininExpenseBudgetPercent:
           type: number
           description: >-
             'percentage of remaining Expense budget'
@@ -2399,7 +2370,7 @@ components:
           description: >-
             An budgetInfo object containing budget details.
           items:
-            $ref: '#/components/schemas/BudgetInfo'  
+            $ref: '#/components/schemas/BudgetInfo'
     BudgetSummary:
       properties:
         type:
@@ -2410,14 +2381,14 @@ components:
             - VIEW,MERCHANT,CATEGORY,DETAIL_CATEGORY
         dateRange:
           allOf:
-            - $ref : '#/components/schemas/DateRange'
+            - $ref: '#/components/schemas/DateRange'
           readOnly: true
         budgetDetail:
           type: array
           description: >-
             An BudgetDetail object containing budget details.
           items:
-            $ref: '#/components/schemas/BudgetDetail'      
+            $ref: '#/components/schemas/BudgetDetail'
     DateRange:
       description: >-
         The date range identified by fromDate and toDate.
@@ -2438,8 +2409,7 @@ components:
           type: string
           description: >-
             For a View, toDate is used to fetch transactions that are aggregated
-            on or before the specified date, but after the fromDate. This is a 
-            mandatory attribute for all rules, except rules that contain transactionId.
+            on or before the specified date, but after the fromDate. This is a  mandatory attribute for all rules, except rules that contain transactionId.
             <br><br>Expected format -
             yyyy-MM-dd.Note- The date is in UTC timezone instead of
             Local timezone.<br><br>Endpoints:<ul><li>GET /views</li><li>GET
@@ -2497,9 +2467,7 @@ components:
             GET /views/{viewId}/transactions API then only those User
             transactions will be returned in response, whose Transaction
             Amount <= $100
-            <br><br>Example 2 - if toAmount=100.00 and fromAmount=10.00 in the 
-            View Rule and User calls GET /views/{viewId}/transactions API then 
-            only those User transactions will be returned in response, where
+            <br><br>Example 2 - if toAmount=100.00 and fromAmount=10.00 in the  View Rule and User calls GET /views/{viewId}/transactions API then  only those User transactions will be returned in response, where
             10 <= Transaction Amount <= 100
             <br><br>Note- Currently AmountRange fields are only
             supported for 'include' View Rules and not supported for 'exclude'
@@ -2551,16 +2519,13 @@ components:
         accountNumber:
           type: string
           description: >-
-            description: The account number as it appears on the site. 
-            (The POST accounts service response return this field as number)
+            description: The account number as it appears on the site.  (The POST accounts service response return this field as number)
             <br><b>Applicable containers</b> - All Containers.
             readOnly: true
         accountType:
           type: string
           description: >-
-            The type of account that is aggregated such as savings, checking, charge, etc., 
-            and manual accounts. The account type is derived based on the 
-            attributes of the account.
+            The type of account that is aggregated such as savings, checking, charge, etc.,  and manual accounts. The account type is derived based on the  attributes of the account.
           readOnly: true
           enum:
             - CURRENT
@@ -2588,7 +2553,7 @@ components:
             The type of service. E.g., Bank, Credit Card,
             Investment, Insurance, etc.
             <br><br><b>Applicable containers</b> - All containers<br>
-          
+
           readOnly: true
           enum:
             - bank
@@ -2617,7 +2582,7 @@ components:
         - accountStatus
     ErrorInfo:
       description: >-
-       Error encountered while refreshing a specific aggregated account.
+        Error encountered while refreshing a specific aggregated account.
       properties:
         errorStatus:
           type: string
@@ -2642,8 +2607,8 @@ components:
         - lastUpdateAttemp
     BasicAccount:
       description: >-
-       Account object that contains details about one or more aggregated
-       accounts.
+        Account object that contains details about one or more aggregated
+        accounts.
       allOf:
         - $ref: '#/components/schemas/AccountInfo'
       properties:
@@ -2657,11 +2622,11 @@ components:
             $ref: '#/components/schemas/BasicTrend'
         changeValue:
           allOf:
-           - $ref: '#/components/schemas/ChangeValue'
+            - $ref: '#/components/schemas/ChangeValue'
           readOnly: true
         cashFlowTrend:
           allOf:
-           - $ref: '#/components/schemas/CashFlowTrend'
+            - $ref: '#/components/schemas/CashFlowTrend'
           readOnly: true
         basicCategoryDetail:
           allOf:
@@ -2685,38 +2650,38 @@ components:
             $ref: '#/components/schemas/AccountDetail'
     BasicTrend:
       description: >-
-       Trend information, broken down by a specific frequency, for a specific date range.
+        Trend information, broken down by a specific frequency, for a specific date range.
       properties:
         debitTotal:
           description: >-
-           The sum of all debit transactions.
+            The sum of all debit transactions.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         creditTotal:
-           description: >-
+          description: >-
             The sum of all credit transactions.
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
         netCreditTotal:
-           description: >-
+          description: >-
             Net Total calculated as (creditTotal - debitTotal).
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
         netTotal:
-           description: >-
+          description: >-
             Net spending calculated as (debitTotal - creditTotal).
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
         averageNetTotal:
-           description: >-
+          description: >-
             Average spending calculated as (netTotal) / (number of months).
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
         transactionCount:
           type: integer
           description: >-
@@ -2736,7 +2701,7 @@ components:
             $ref: '#/components/schemas/Detail'
         dateRange:
           allOf:
-            - $ref : '#/components/schemas/DateRange'
+            - $ref: '#/components/schemas/DateRange'
           readOnly: true
         categoryTrend:
           type: array
@@ -2753,7 +2718,7 @@ components:
           items:
             $ref: '#/components/schemas/NetWorthTrend'
           readOnly: true
-        detailCategoryTrend :
+        detailCategoryTrend:
           type: array
           items:
             $ref: '#/components/schemas/DetailCategoryTrend'
@@ -2774,32 +2739,32 @@ components:
           description: >-
             Sum of all credit transactions for the given date range.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         netCreditTotal:
           description: >-
             Net Total calculated as (creditTotal - debitTotal).
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         debitTotal:
           description: >-
             Sum of all debit transactions for the given date range.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         netTotal:
           description: >-
             Net spending calculated as (debitTotal - creditTotal).
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         link:
           allOf:
             - $ref: '#/components/schemas/Link'
           readOnly: true
         transactionCount:
-          type : string
+          type: string
           description: >-
             Total count of transactions for the specified date range.
           readOnly: true
@@ -2807,25 +2772,25 @@ components:
           description: >-
             Net Worth total for the given date range.
           allOf:
-            - $ref : '#/components/schemas/NetworthDetail'
+            - $ref: '#/components/schemas/NetworthDetail'
           readOnly: true
         assetDetail:
           description: >-
             Asset total for the given date range.
           allOf:
-            - $ref : '#/components/schemas/AssetDetail'
+            - $ref: '#/components/schemas/AssetDetail'
           readOnly: true
         liabilityDetail:
           description: >-
             Liability total for the given date range.
           allOf:
-            - $ref : '#/components/schemas/LiabilityDetail'
+            - $ref: '#/components/schemas/LiabilityDetail'
           readOnly: true
         predictedBalance:
           description: >-
             predicted balance across a single account as of date.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
       required:
         - dateRange
@@ -2848,38 +2813,38 @@ components:
           description: >-
             cashInFlow for the given date range.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         cashOutFlow:
           description: >-
             cashOutFlow for the given date range.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         transferIn:
           description: >-
             transferIn for the given date range.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         transferOut:
           description: >-
             transferOut for the given date range.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         totalCashFlow:
           description: >-
             totalCashFlow for the given date range.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         netTransfer:
           description: >-
             netTransfer for the given date range.
           allOf:
-            - $ref : '#/components/schemas/Money'
-          readOnly: true    
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
     AccountDetail:
       properties:
         date:
@@ -2890,7 +2855,7 @@ components:
           description: >-
             predicted balance across a single account as of date.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
       required:
         - dateRange
@@ -2899,50 +2864,43 @@ components:
         - netTotal
     CategoryTrend:
       description: >-
-       Category trend information, broken down by a specific frequency, for a 
-       specific date range.
+        Category trend information, broken down by a specific frequency, for a  specific date range.
       properties:
-        categoryId: 
+        categoryId:
           type: string
           description: >-
-            The id of the category assigned to the transaction. This is the id 
-            field of the transaction category resource. The supported values 
-            are provided by the GET transactions/categories.
+            The id of the category assigned to the transaction. This is the id  field of the transaction category resource. The supported values  are provided by the GET transactions/categories.
           readOnly: true
         category:
-          type : string
+          type: string
           description: >-
-            The name of the category assigned to the transaction. This is the 
-            category field of the transaction category resource. The supported 
-            values are provided by the GET transactions/categories.
+            The name of the category assigned to the transaction. This is the  category field of the transaction category resource. The supported  values are provided by the GET transactions/categories.
           readOnly: true
         debitTotal:
           description: >-
             The sum of all debit transactions associated with the category
             for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         creditTotal:
           description: >-
             The sum of all credit transactions associated with the category
             for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         netTotal:
           description: >-
-            Net spending calculated as (debitTotal - creditTotal) associated with 
-            the category for the specific duration.
+            Net spending calculated as (debitTotal - creditTotal) associated with  the category for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         averageNetTotal:
           description: >-
-            Average spending calculated as (netTotal)/(Number of Months) 
-            associated with the category for the specific duration.
+            Average spending calculated as (netTotal)/(Number of Months)  associated with the category for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         link:
           allOf:
@@ -2959,27 +2917,26 @@ components:
         basicPeerDetail:
           type: array
           items:
-            $ref : '#/components/schemas/BasicPeerDetail'
+            $ref: '#/components/schemas/BasicPeerDetail'
           readOnly: true
         categoryDerived:
           type: array
           items:
-            $ref : '#/components/schemas/CategoryDerived'
+            $ref: '#/components/schemas/CategoryDerived'
       required:
         - categoryId
         - category
     DetailCategoryTrend:
       description: >-
-       Detail category trend information, broken down by a specific frequency, for a 
-       specific date range.
+        Detail category trend information, broken down by a specific frequency, for a  specific date range.
       properties:
-        detailCategoryId: 
+        detailCategoryId:
           type: string
           description: >-
             The id of the detail category assigned to the transaction.
           readOnly: true
         detailCategoryName:
-          type : string
+          type: string
           description: >-
             The name of the detail category assigned to the transaction.
           readOnly: true
@@ -2988,34 +2945,32 @@ components:
             The sum of all debit transactions associated with the detail category
             for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         creditTotal:
           description: >-
             The sum of all credit transactions associated with the detail category
             for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         netCreditTotal:
           description: >-
             Net credit spending.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         netTotal:
           description: >-
-            Net spending calculated as (debitTotal - creditTotal) associated with 
-            the detail category for the specific duration.
+            Net spending calculated as (debitTotal - creditTotal) associated with  the detail category for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         averageNetTotal:
           description: >-
-            Average spending calculated as (netTotal)/(Number of Months) 
-            associated with the detail category for the specific duration.
+            Average spending calculated as (netTotal)/(Number of Months)  associated with the detail category for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         link:
           allOf:
@@ -3029,7 +2984,7 @@ components:
         basicPeerDetail:
           type: array
           items:
-            $ref : '#/components/schemas/BasicPeerDetail'
+            $ref: '#/components/schemas/BasicPeerDetail'
           readOnly: true
         detail:
           type: array
@@ -3042,25 +2997,23 @@ components:
       required:
         - detailCategoryId
         - detailCategoryName
-        
+
     CategoryDerived:
-     description: >-
-       category information
-     properties:
+      description: >-
+        category information
+      properties:
         dateRange:
-          description: >-
+          description: >
           allOf:
             - $ref: '#/components/schemas/DateRange'
         averageNetTotal:
           description: >-
-            Average spending calculated as (netTotal)/(Number of Months) 
-            associated with the detail category for the specific duration.
+            Average spending calculated as (netTotal)/(Number of Months)  associated with the detail category for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
-      
+            - $ref: '#/components/schemas/Money'
     BasicPeerDetail:
       description: >-
-       Peer data information.
+        Peer data information.
       properties:
         dateRange:
           description: >-
@@ -3070,8 +3023,7 @@ components:
         benchmarkAsOf:
           type: string
           description: >-
-            benchmarkAsOf identifies the date on which the benchmark was computed. Currently the benchmark 
-            is recomputed on the 16th of each month.
+            benchmarkAsOf identifies the date on which the benchmark was computed. Currently the benchmark  is recomputed on the 16th of each month.
           readOnly: true
         benchmark:
           type: array
@@ -3087,7 +3039,7 @@ components:
           description: >-
             Describes the various levels in which the benchmark data is available. 
           allOf:
-           - $ref: '#/components/schemas/Geo'
+            - $ref: '#/components/schemas/Geo'
 
         benchmarkLevel:
           type: string
@@ -3098,10 +3050,10 @@ components:
           description: >-
             Median amount spent by the user in a specified category or merchant
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         numberOfPeers:
-          type : integer
+          type: integer
           description: >-
             The total number of peers in the segment to arrive the benchmark amount
           readOnly: true
@@ -3113,7 +3065,7 @@ components:
     Geo:
       properties:
         level:
-          type : string
+          type: string
           description: >-
             Identifies the level at which peer bechmarking data is returned - City, State, National, or CBSA.
           readOnly: true
@@ -3124,8 +3076,7 @@ components:
           readOnly: true
     MerchantTrend:
       description: >-
-       Merchant trend information, broken down by a specific frequency, for a 
-       specific date range.
+        Merchant trend information, broken down by a specific frequency, for a  specific date range.
       properties:
         basicMerchant:
           type: array
@@ -3136,39 +3087,37 @@ components:
           description: >-
             The sum of all debit transactions associated with the merchant.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         creditTotal:
           description: >-
             The sum of all credit transactions associated with the merchant.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         netTotal:
           description: >-
-            Net spending calculated as (debitTotal - creditTotal) associated with 
-            the merchant for the specific duration.
+            Net spending calculated as (debitTotal - creditTotal) associated with  the merchant for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         averageNetTotal:
           description: >-
-            Average spending calculated as (netTotal)/(Number of Months) 
-            associated with the merchant for the specific duration.
+            Average spending calculated as (netTotal)/(Number of Months)  associated with the merchant for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         basicPeerDetail:
           type: array
           items:
-            $ref : '#/components/schemas/BasicPeerDetail'
+            $ref: '#/components/schemas/BasicPeerDetail'
           readOnly: true
         link:
           allOf:
             - $ref: '#/components/schemas/Link'
           readOnly: true
         transactionCount:
-          type : string
+          type: string
           description: >-
             Total count of transactions for the specified date range.
           readOnly: true
@@ -3181,60 +3130,52 @@ components:
             $ref: '#/components/schemas/Detail'
           readOnly: true
       required:
-          - basicMerchant
+        - basicMerchant
     CashFlowTrend:
       description: >-
-       Cash flow trend information, broken down by a specific frequency, for a 
-       specific date range.
+        Cash flow trend information, broken down by a specific frequency, for a  specific date range.
       properties:
         cashInFlow:
           description: >-
-           Total Cash Inflow Amount in the selected duration, which is the sum 
-           of cash inflow in each of the selected months in the duration.
+            Total Cash Inflow Amount in the selected duration, which is the sum  of cash inflow in each of the selected months in the duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         cashOutFlow:
           description: >-
-           Total Cash Outflow Amount in the selected duration, which is the 
-           sum of cash outflow in each of the selected months in the duration.
+            Total Cash Outflow Amount in the selected duration, which is the  sum of cash outflow in each of the selected months in the duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         transferIn:
           description: >-
-           Total Transfer-In Amount in the selected duration, which is the sum 
-           of transfer-in amount in each of the selected months in the duration.
+            Total Transfer-In Amount in the selected duration, which is the sum  of transfer-in amount in each of the selected months in the duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         transferOut:
           description: >-
-           Total Transfer-out Amount in the selected duration, which is the sum 
-           of transfer-out amount in each of the selected months in the duration.
+            Total Transfer-out Amount in the selected duration, which is the sum  of transfer-out amount in each of the selected months in the duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         netTransfer:
           description: >-
-           Net Transfer Amount in the selected duration, which is the difference 
-           between transfer-In and tranfer-out amount
+            Net Transfer Amount in the selected duration, which is the difference  between transfer-In and tranfer-out amount
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         averageNetCashFlow:
           description: >-
-           Average net cash flow = Total Cash Flow Amount / Number of months 
-           in the duration.
+            Average net cash flow = Total Cash Flow Amount / Number of months  in the duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         totalCashFlow:
           description: >-
-           Total Cash Flow Amount = Cash Inflow Amount - Cash Outflow Amount + 
-           Net Transfer.
+            Total Cash Flow Amount = Cash Inflow Amount - Cash Outflow Amount +  Net Transfer.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         detail:
           type: array
@@ -3246,8 +3187,7 @@ components:
           readOnly: true
     NetWorthTrend:
       description: >-
-       Net Worth trend information, broken down by a specific frequency, for a 
-       specific date range.
+        Net Worth trend information, broken down by a specific frequency, for a  specific date range.
       properties:
         detail:
           type: array
@@ -3258,31 +3198,31 @@ components:
             $ref: '#/components/schemas/NetWorthTrendDetail'
           readOnly: true
         networthTotal:
-           description: >-
-             Total net worth value.
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true
+          description: >-
+            Total net worth value.
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
         assetTotal:
-           description: >-
-             Total asset worth value.
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true
+          description: >-
+            Total asset worth value.
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
         liabilityTotal:
-           description: >-
-             Total liability worth value.
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true
+          description: >-
+            Total liability worth value.
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
     NetWorthTrendDetail:
-      description : >-
+      description: >-
         Date Range identified as first of the month.
         E.g. January 2021 will be represented as 2021-01-01.
       properties:
         dateRange:
           allOf:
-            - $ref : '#/components/schemas/DateRange'
+            - $ref: '#/components/schemas/DateRange'
           readOnly: true
         networthDetail:
           type: array
@@ -3304,83 +3244,82 @@ components:
         - networthDetail
     AssetDetail:
       description: >-
-       Summary information across all the aggregated accounts categorized
-       as 'assets'.
+        Summary information across all the aggregated accounts categorized
+        as 'assets'.
       properties:
         assetTotal:
-           description: >-
-             Total asset value.
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true
+          description: >-
+            Total asset value.
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
       required:
         - assetTotal
     LiabilityDetail:
       description: >-
-       Summary information across all the aggregated accounts categorized
-       as 'liability'.
+        Summary information across all the aggregated accounts categorized
+        as 'liability'.
       properties:
         liabilityTotal:
-           description: >-
-             Total liability value.
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true
+          description: >-
+            Total liability value.
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
       required:
         - liabilityTotal
     NetworthDetail:
       description: >-
-       Summary information across all the aggregated accounts
-       calculated as (total of all assets) - (total of all liabilities).
+        Summary information across all the aggregated accounts
+        calculated as (total of all assets) - (total of all liabilities).
       properties:
         networthTotal:
-           description: >-
-             Total netw worth value.
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true
+          description: >-
+            Total netw worth value.
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
       required:
         - networthTotal
     AccountDerived:
       description: >-
-       Derived information across one or more aggregated accounts.
+        Derived information across one or more aggregated accounts.
       properties:
         totalAvailableBalance:
-           description : >-
+          description: >-
             The total available balance across eligible accounts.
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
         discretionaryBalance:
-           description : >-
-             Balance available to spend after taking into account projected income and expenses.
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true 
+          description: >-
+            Balance available to spend after taking into account projected income and expenses.
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
         averageSpending:
-           description : >-
+          description: >-
             The average monthly spending for the given duration.
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
         averageAvailableBalance:
-           description : >-
-             Average available balance across one or more accounts.
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true 
+          description: >-
+            Average available balance across one or more accounts.
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
         spendingRunway:
-           description : >-
-             Based on the average spending, the duration in days for which the total available balance 
-             will last
-           type : number
-           readOnly: true
+          description: >-
+            Based on the average spending, the duration in days for which the total available balance  will last
+          type: number
+          readOnly: true
     ChangeValue:
       description: >-
-       Change in value identified for a type between two different time periods.
+        Change in value identified for a type between two different time periods.
       properties:
-        changeType: 
-          type : string
+        changeType:
+          type: string
           example: BALANCE
           description: >-
             The value for which the change is computed.
@@ -3388,34 +3327,30 @@ components:
         previousDate:
           type: string
           description: >-
-            Previous Date (The earlier duration being considered for change 
-            calculation)
+            Previous Date (The earlier duration being considered for change  calculation)
           readOnly: true
         previousAmount:
           description: >-
-            The amount as of the earlier duration considered for change 
-            calculation.
+            The amount as of the earlier duration considered for change  calculation.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         currentDate:
           type: string
           description: >-
-            current Date (The latest duration being considered for change 
-            calculation)
+            current Date (The latest duration being considered for change  calculation)
           readOnly: true
         currentAmount:
           description: >-
-            The amount as of the latest duration considered for change 
-            calculation.
+            The amount as of the latest duration considered for change  calculation.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         changeAmount:
           description: >-
             Amount change calculated as currentAmount - previousAmount.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         changePercent:
           type: number
@@ -3432,35 +3367,29 @@ components:
         - changePercent
     BasicCategoryDetail:
       description: >-
-       Information about a specific "master" category.
+        Information about a specific "master" category.
       properties:
         categoryId:
           type: string
-          description : >-
-            The id of the category assigned to the transaction. This is the id 
-            field of the transaction category resource. The supported values 
-            are provided by the GET transactions/categories.
+          description: >-
+            The id of the category assigned to the transaction. This is the id  field of the transaction category resource. The supported values  are provided by the GET transactions/categories.
           readOnly: true
         category:
           type: string
-          description : >-
-            The name of the category assigned to the transaction. This is the 
-            category field of the transaction category resource. The supported 
-            values are provided by the GET transactions/categories.
+          description: >-
+            The name of the category assigned to the transaction. This is the  category field of the transaction category resource. The supported  values are provided by the GET transactions/categories.
           readOnly: true
         netTotal:
           description: >-
-            Net spending calculated as (debitTotal - creditTotal) associated with 
-            the category for the specific duration.
+            Net spending calculated as (debitTotal - creditTotal) associated with  the category for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         averageNetTotal:
           description: >-
-            Average spending calculated as (netTotal)/(Number of Months) 
-            associated with the category for the specific duration.
+            Average spending calculated as (netTotal)/(Number of Months)  associated with the category for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         link:
           allOf:
@@ -3470,13 +3399,13 @@ components:
           description: >-
             Basic Peer Detail.
           allOf:
-            - $ref : '#/components/schemas/BasicPeerDetail'
+            - $ref: '#/components/schemas/BasicPeerDetail'
           readOnly: true
         peerSpendingComparison:
           description: >-
             Comparing how the user has spent in a category compared to his peers
           allOf:
-            - $ref : '#/components/schemas/PeerSpendingComparison'
+            - $ref: '#/components/schemas/PeerSpendingComparison'
           readOnly: true
       required:
         - categoryId
@@ -3487,11 +3416,11 @@ components:
           description: >-
             Difference between the spending amount of user and peers for a specific category or merchant
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         peerSpendDifferencePercent:
           type: number
-          description : >-
+          description: >-
             Difference in percentage
           readOnly: true
         isOverSpending:
@@ -3506,36 +3435,27 @@ components:
           readOnly: true
     BasicTransaction:
       description: >-
-       Transaction object that contains details about one or more aggregated
-       transactions.
+        Transaction object that contains details about one or more aggregated
+        transactions.
       properties:
         id:
           type: integer
           description: >-
-           An unique identifier for the transaction. The combination of the 
-           id and account container are unique in the system.
+            An unique identifier for the transaction. The combination of the  id and account container are unique in the system.
         amount:
           $ref: '#/components/schemas/Money'
-        date: 
+        date:
           type: string
           description: >-
-           The value provided will be either postDate or transactionDate. 
-           postDate takes higher priority than transactionDate, except for the 
-           investment container as only transactionDate is available. The 
-           availability of postDate or transactionDate depends on the provider 
-           site.
+            The value provided will be either postDate or transactionDate.  postDate takes higher priority than transactionDate, except for the  investment container as only transactionDate is available. The  availability of postDate or transactionDate depends on the provider  site.
         categoryId:
           type: string
           description: >-
-           The id of the category assigned to the transaction. This is the id 
-           field of the transaction category resource. The supported values 
-           are provided by the GET transactions/categories.
+            The id of the category assigned to the transaction. This is the id  field of the transaction category resource. The supported values  are provided by the GET transactions/categories.
         category:
           type: string
           description: >-
-           The name of the category assigned to the transaction. This is the 
-           category field of the transaction category resource. The supported 
-           values are provided by the GET transactions/categories.
+            The name of the category assigned to the transaction. This is the  category field of the transaction category resource. The supported  values are provided by the GET transactions/categories.
         link:
           description: >-
             Reference path link to fetch more information about the specific
@@ -3546,36 +3466,28 @@ components:
         categoryType:
           type: string
           description: >-
-           The categoryType of the category assigned to the transaction. This 
-           is the type field of the transaction category resource. categoryType 
-           primarily identifies if the transaction is an income, expense, or 
-           some other type of transaction.
+            The categoryType of the category assigned to the transaction. This  is the type field of the transaction category resource. categoryType  primarily identifies if the transaction is an income, expense, or  some other type of transaction.
         baseType:
           type: string
           description: >-
-           Indicates if the transaction appears as a debit or a credit 
-           transaction in the account.
+            Indicates if the transaction appears as a debit or a credit  transaction in the account.
         description:
           allOf:
             - $ref: '#/components/schemas/descriptions'
         sourceType:
           type: string
           description: >-
-           The source through which the transaction is added to the Yodlee 
-           system.
+            The source through which the transaction is added to the Yodlee  system.
         merchantType:
           type: string
           description: >-
-           Provides further information about a transaction, i.e., if the 
-           transaction is carried out on a biller, subscription merchant, or 
-           other.
+            Provides further information about a transaction, i.e., if the  transaction is carried out on a biller, subscription merchant, or  other.
         basicMerchant:
           allOf:
             - $ref: '#/components/schemas/BasicMerchant'
         basicPredictedEvent:
           allOf:
             - $ref: '#/components/schemas/BasicPredictedEvent'
-          
       required:
         - id
         - amount
@@ -3587,18 +3499,17 @@ components:
         - description
     BasicMerchant:
       description: >-
-       Information about the associated merchant.
+        Information about the associated merchant.
       properties:
         name:
           type: string
           description: >-
             The name of the merchant associated with the transaction.
-            Note - The merchant name field is available only in the United 
-            States, Canada, United Kingdom, and India.
+            Note - The merchant name field is available only in the United  States, Canada, United Kingdom, and India.
         address:
-         readOnly: true
-         allOf:
-          - $ref: '#/components/schemas/Address'
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/Address'
         basicPredictedEvent:
           type: array
           items:
@@ -3607,82 +3518,77 @@ components:
         - name
     BasicPredictedEvent:
       description: >-
-       Predicted Event object that contains details about one or more predicted
-       events as identified by the system.
+        Predicted Event object that contains details about one or more predicted
+        events as identified by the system.
       properties:
         id:
           type: number
           description: >-
             The unique identifier of the predicted event.
-          readOnly : true
+          readOnly: true
         link:
           description: >-
             Reference path link to fetch more information about the specific
             predicted event.
           allOf:
             - $ref: '#/components/schemas/BasicPredictedEventLink'
-          readOnly : true
+          readOnly: true
         categoryId:
           type: string
           description: >-
-            Identifier of the category assigned to the predicted event. This is 
-            the id field of the transaction category resource. The supported 
-            values are provided by GET transactions/categories.
-          readOnly : true
+            Identifier of the category assigned to the predicted event. This is  the id field of the transaction category resource. The supported  values are provided by GET transactions/categories.
+          readOnly: true
         category:
           type: string
           description: >-
-            The name of the category assigned to the predicted event. This is the 
-            category field of the transaction category resource. The supported 
-            values are provided by GET transactions/categories.
-          readOnly : true
+            The name of the category assigned to the predicted event. This is the  category field of the transaction category resource. The supported  values are provided by GET transactions/categories.
+          readOnly: true
         lastTrasactionAmount:
           description: >-
-           The amount of the last aggregated transaction that was used to 
-           predict the event.
+            The amount of the last aggregated transaction that was used to  predict the event.
           allOf:
-           - $ref: '#/components/schemas/Money'
-          readOnly : true
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
         lastTransactionDate:
           type: string
           description: >-
             The date of the last aggregated transaction associated with the predicted event.
-          readOnly : true
+          readOnly: true
         basicMerchant:
           type: array
           items:
             $ref: '#/components/schemas/BasicMerchant'
-          readOnly : true
+          readOnly: true
         basicTransaction:
           type: array
           items:
             $ref: '#/components/schemas/BasicTransaction'
-          readOnly : true
+          readOnly: true
         frequency:
           type: string
           description: >-
             frequency.
-          readOnly : true
+          readOnly: true
         confidence:
           type: string
           description: >-
             confidence.
-          readOnly : true
+          readOnly: true
         confidenceLevel:
           type: string
           description: >-
             confidence Level.
-          readOnly : true
+          readOnly: true
         userApprovalStatus:
           type: string
           description: >-
             user Approval Status.
-          readOnly : true
+          readOnly: true
         basicAccount:
           type: array
           items:
             $ref: '#/components/schemas/BasicAccount'
-          readOnly : true
+          readOnly: true
       required:
         - id
         - link
@@ -3691,30 +3597,22 @@ components:
         original:
           type: string
           description: >-
-           Original transaction description as it appears at the FI site.
+            Original transaction description as it appears at the FI site.
         simple:
           type: string
           description: >-
-           The transaction description that appears at the FI site may not be 
-           self-explanatory, i.e., the source, purpose of the transaction may 
-           not be evident.
-           <br><br>Yodlee attempts to simplify and make the transaction 
-           meaningful to the consumer, and this simplified transaction 
-           description is provided in the simple description field. 
-           <br><br><b>Note</b> - The simple description field is available only 
-           in the United States, Canada, United Kingdom, and India.
+            The transaction description that appears at the FI site may not be  self-explanatory, i.e., the source, purpose of the transaction may  not be evident.
+            <br><br>Yodlee attempts to simplify and make the transaction  meaningful to the consumer, and this simplified transaction  description is provided in the simple description field.  <br><br><b>Note</b> - The simple description field is available only  in the United States, Canada, United Kingdom, and India.
         consumer:
           type: string
           description: >-
-           The description of the transaction as defined by the consumer. 
-           The consumer can define or provide more details of the transaction 
-           in this field.
+            The description of the transaction as defined by the consumer.  The consumer can define or provide more details of the transaction  in this field.
       required:
         - original
     Message:
       description: >-
-       Provides information about customized text-messages associated with
-       an insight.
+        Provides information about customized text-messages associated with
+        an insight.
       properties:
         messageText:
           type: string
@@ -3768,7 +3666,7 @@ components:
           type: string
           description: 'URL to access the endpoint.'
           example: /views/609d08858e420a3635dec2f6/transactions?fromDate=2021-04-12&toDate=2021-05-13&categoryId=7
-    
+
     BasicPredictedEventLink:
       description: >-
         Reference path link to fetch more information about the specific
@@ -3836,10 +3734,8 @@ components:
           description: >-
             An unique identifier for the transaction. The combination of the id
             and account container are unique in the system.
-            <br><br><b>Applicable containers</b> - 
-            bank,creditCard,investment,insurance,loan
-            <br><br><b>Endpoints</b> - 
-            <ul>
+            <br><br><b>Applicable containers</b> -  bank,creditCard,investment,insurance,loan
+            <br><br><b>Endpoints</b> -  <ul>
             <li>GET
             /views/{viewId}/transactions</li>
             </ul>
@@ -3883,9 +3779,7 @@ components:
           type: string
           description: >-
             The categoryType of the category assigned to the transaction. This
-            is the type field of the transaction category resource. 
-            <br><br><b>Applicable containers</b> - 
-            bank,creditCard,investment,insurance,loan<br><br><b>Endpoints</b> -<ul><li>GET
+            is the type field of the transaction category resource.  <br><br><b>Applicable containers</b> -  bank,creditCard,investment,insurance,loan<br><br><b>Endpoints</b> -<ul><li>GET
             /views/{viewId}/transactions</li></ul>
           readOnly: true
           example: INCOME
@@ -3996,8 +3890,7 @@ components:
           description: >-
             The status of the transaction: pending or posted.<br><b>Note</b>:
             Most FI sites only display posted transactions. If the FI site
-            displays transaction status, same will be aggregated. 
-            <br><br><b>Applicable containers</b> -
+            displays transaction status, same will be aggregated.  <br><br><b>Applicable containers</b> -
             bank,creditCard,investment,insurance,loan<br><br><b>Endpoints</b> -<ul><li>GET
             /views/{viewId}/transactions</li></ul>
           readOnly: true
@@ -4146,9 +4039,7 @@ components:
         merchantType:
           type: string
           description: >-
-            Provides further information about a transaction, i.e., if the 
-            transaction is carried out on a biller, subscription merchant or 
-            other.
+            Provides further information about a transaction, i.e., if the  transaction is carried out on a biller, subscription merchant or  other.
             <br><br><b>Applicable containers</b> -
             bank,creditCard,investment,insurance,loan
             <br><br><b>Endpoints</b> - <ul><li>GET
@@ -4215,7 +4106,7 @@ components:
           $ref: '#/components/schemas/Merchant'
     Merchant:
       description: >-
-       Details about the associated merchant.
+        Details about the associated merchant.
       properties:
         id:
           type: string
@@ -4284,8 +4175,8 @@ components:
           example: Payment to Comcast
     Address:
       description: >-
-       The address information associated with a merchant or an account.
-      properties:        
+        The address information associated with a merchant or an account.
+      properties:
         address1:
           type: string
           description: >-
@@ -4310,17 +4201,17 @@ components:
           type: string
           description: >-
             Complete address.
-          readOnly: true  
+          readOnly: true
         zip:
           type: string
-          description:  >-
+          description: >-
             ZIP Code.
           readOnly: true
         city:
           type: string
           description: >-
             City Name.
-          readOnly: true        
+          readOnly: true
         state:
           type: string
           description: >-
@@ -4343,7 +4234,7 @@ components:
           readOnly: true
     MerchantAddress:
       description: >-
-       Address details of the merchant as identified by the system.
+        Address details of the merchant as identified by the system.
       properties:
         city:
           type: string
@@ -4389,8 +4280,7 @@ components:
         convertedAmount:
           type: number
           description: >-
-            "convertedAmount" field is a child of Generic Yodlee model "Money". 
-            This field should be a Floating point number. It contains value
+            "convertedAmount" field is a child of Generic Yodlee model "Money".  This field should be a Floating point number. It contains value
             of "amount" i.e. Money child field multiplied by the conversion rate
             derived from the currency mentioned in field "covertedCurrency"
           format: double
@@ -4409,7 +4299,7 @@ components:
         recommendation:
           type: string
           allOf:
-          - $ref: '#/components/schemas/Recommendation'
+            - $ref: '#/components/schemas/Recommendation'
     Recommendation:
       properties:
         id:
@@ -4457,7 +4347,7 @@ components:
             - detailedCategory
             - state
             - city
-              
+
         average:
           $ref: '#/components/schemas/Money'
         creditTotal:
@@ -4509,16 +4399,15 @@ components:
           readOnly: true
           type: integer
         transactionLink:
-         readOnly: true
-         type: string
-         allOf:
-          - $ref: '#/components/schemas/TransactionLink'
-          
+          readOnly: true
+          type: string
+          allOf:
+            - $ref: '#/components/schemas/TransactionLink'
     TransactionTrendResponse:
       properties:
         transactionTrends:
-         allOf:
-          -  $ref: '#/components/schemas/TransactionTrend'
+          allOf:
+            - $ref: '#/components/schemas/TransactionTrend'
     TransactionTrend:
       type: object
       title: TransactionTrend
@@ -4535,7 +4424,7 @@ components:
             - detailedCategory
             - state
             - city
-              
+
         creditTotal:
           $ref: '#/components/schemas/Money'
         debitTotal:
@@ -4567,22 +4456,20 @@ components:
             unique identifier for the type. If type is category, id indicates category id.
           readOnly: true
           type: integer
-          example : 7
+          example: 7
         creditTotal:
           $ref: '#/components/schemas/Money'
         debitTotal:
           $ref: '#/components/schemas/Money'
         netTotal:
           $ref: '#/components/schemas/Money'
-        
         transactionCount:
           format: int64
           readOnly: true
           type: integer
         transactionLink:
-         allOf:
-          - $ref: '#/components/schemas/TransactionTrendSummaryLink'
-          
+          allOf:
+            - $ref: '#/components/schemas/TransactionTrendSummaryLink'
         details:
           readOnly: true
           type: array
@@ -4595,31 +4482,28 @@ components:
         date:
           description: >-
             date
-          readOnly : true
+          readOnly: true
           type: string
-          example : "2020-04-01"
+          example: "2020-04-01"
         creditTotal:
           $ref: '#/components/schemas/Money'
         debitTotal:
           $ref: '#/components/schemas/Money'
         netTotal:
           $ref: '#/components/schemas/Money'
-      
         transactionCount:
           format: int64
           readOnly: true
           type: integer
         transactionLink:
-         allOf:
-          - $ref: '#/components/schemas/TransactionTrendSummaryLink'
-          
-   
+          allOf:
+            - $ref: '#/components/schemas/TransactionTrendSummaryLink'
     PeerDataResponse:
       properties:
         peerData:
           type: string
           allOf:
-          - $ref: '#/components/schemas/PeerData'
+            - $ref: '#/components/schemas/PeerData'
     PeerData:
       properties:
         timePeriod:
@@ -4665,7 +4549,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/peerDetailCategorySummary'
-            
         peerMerchantSummary:
           type: array
           items:
@@ -4756,10 +4639,10 @@ components:
           format: int64
           example: 1654
         spendAmount:
-          description: >- 
+          description: >-
             The median amount spent by the peers in that segment for the specified category or merchant <br>
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
     PeerMerchantSummary:
       properties:
         name:
@@ -4785,8 +4668,8 @@ components:
           example: 5e7885993cd8e328288522f7
 
   examples:
-      createViewExample:
-       value:
+    createViewExample:
+      value:
         view:
           - name: My View
             description: My entertainment spending
@@ -4821,8 +4704,8 @@ components:
                     incomeBudget:
                       amount: 1000
                       currency: USD
-      getViewExample:
-       value:
+    getViewExample:
+      value:
         view:
           - id: 5f2392b6ed04946a41675611
             name: My Income Tracker
@@ -4853,8 +4736,8 @@ components:
                     incomeBudget:
                       amount: 1000
                       currency: USD
-      getViewWithoutBudgetExample:
-       value:
+    getViewWithoutBudgetExample:
+      value:
         view:
           - id: 5f2392b6ed04946a41675611
             name: My Income Tracker
@@ -4862,7 +4745,7 @@ components:
             recommendationId: 30
             created: "2021-02-23T06:16:21Z"
             lastUpdated: "2021-02-23T06:16:21Z"
-            sourceType : "USER"
+            sourceType: "USER"
             rule:
               - id: 70ab20c3-32e8-4a8d-bcd4-67d7d450e9f2
                 name: MyRule
@@ -4874,8 +4757,8 @@ components:
                 include:
                   accountId:
                     - 10129470
-      getBudgetSummaryExample:
-       value:
+    getBudgetSummaryExample:
+      value:
         view:
           - id: 5f2392b6ed04946a41675611
             name: My Income Tracker
@@ -4913,9 +4796,9 @@ components:
                     remainingIncomeBudget:
                       amount: 200
                       currency: USD
-                    remainingIncomeBudgetPercent: 100    
-      updateViewExample:
-       value:
+                    remainingIncomeBudgetPercent: 100
+    updateViewExample:
+      value:
         view:
           - name: My Updated View
             description: Tracking my online spending.
@@ -4941,8 +4824,8 @@ components:
                 exclude:
                   transactionId:
                     - 11239653
-      getRecommendationExample:
-       value:
+    getRecommendationExample:
+      value:
         recommendation:
           - id: 11
             metadata:
@@ -4954,195 +4837,195 @@ components:
                 amount: 100.01
                 currency: USD
             view:
-            - name: My View for Vacation
-              description: View with rules to fetch Amazon merchant transactions for 3 months.
-              recommendationId: 11
-              rule:
-              - id: 755dfc54-b50b-4471-88cd-57d040766cb6
-                name: All Transactions Above $100
-                type: INCOME
-                baseType:
-                - CREDIT
-                include:
-                  merchantName:
-                  - Century Link
-                  - Amazon
-                  categoryId:
-                  - 29
-                  - 30
-                  accountId:
-                  - 10001012
-                  - 10001013
-                  transactionId:
-                  - 1000354
-                  - 1000379
-                  merchantType: BILLERS
-                  city:
-                  - Milwaukee
-                  - Boston
-                  state:
-                  - AZ
-                  - WI
-                  amountRange:
-                    fromAmount: 100
-                    toAmount: 1000
-                    currency: USD
-                exclude:
-                  merchantName:
-                  - Flipkart
-                  categoryId:
-                  - 49
-                  accountId:
-                  - 10001019
-                  transactionId:
-                  - 1000359
-                  merchantType: BILLERS
-                  city:
-                  - NewYork
-                  state:
-                  - NY
-      patchBudgetData:
-       value:
+              - name: My View for Vacation
+                description: View with rules to fetch Amazon merchant transactions for 3 months.
+                recommendationId: 11
+                rule:
+                  - id: 755dfc54-b50b-4471-88cd-57d040766cb6
+                    name: All Transactions Above $100
+                    type: INCOME
+                    baseType:
+                      - CREDIT
+                    include:
+                      merchantName:
+                        - Century Link
+                        - Amazon
+                      categoryId:
+                        - 29
+                        - 30
+                      accountId:
+                        - 10001012
+                        - 10001013
+                      transactionId:
+                        - 1000354
+                        - 1000379
+                      merchantType: BILLERS
+                      city:
+                        - Milwaukee
+                        - Boston
+                      state:
+                        - AZ
+                        - WI
+                      amountRange:
+                        fromAmount: 100
+                        toAmount: 1000
+                        currency: USD
+                    exclude:
+                      merchantName:
+                        - Flipkart
+                      categoryId:
+                        - 49
+                      accountId:
+                        - 10001019
+                      transactionId:
+                        - 1000359
+                      merchantType: BILLERS
+                      city:
+                        - NewYork
+                      state:
+                        - NY
+    patchBudgetData:
+      value:
         view:
-        - budgetData:
-          - type: VIEW
-            budgetInfo:
-            - expenseBudget:
-                amount: 1000
-                currency: USD
-              incomeBudget:
-                amount: 1000
-                currency: USD
-          - type: MERCHANT
-            budgetInfo:
-            - typeName: Amazon
-              expenseBudget:
-                amount: 1000
-                currency: USD
-              incomeBudget:
-                amount: 1000
-                currency: USD
-          - type: CATEGORY
-            budgetInfo:
-            - typeId: 29
-              incomeBudget:
-                amount: 1000
-                currency: USD
-          - type: DETAIL_CATEGORY
-            budgetInfo:
-            - typeId: 101
-              expenseBudget:
-                amount: 1000
-                currency: USD
-      
-      
-      
-      TransactionTrendExample:
-       value:
+          - budgetData:
+              - type: VIEW
+                budgetInfo:
+                  - expenseBudget:
+                      amount: 1000
+                      currency: USD
+                    incomeBudget:
+                      amount: 1000
+                      currency: USD
+              - type: MERCHANT
+                budgetInfo:
+                  - typeName: Amazon
+                    expenseBudget:
+                      amount: 1000
+                      currency: USD
+                    incomeBudget:
+                      amount: 1000
+                      currency: USD
+              - type: CATEGORY
+                budgetInfo:
+                  - typeId: 29
+                    incomeBudget:
+                      amount: 1000
+                      currency: USD
+              - type: DETAIL_CATEGORY
+                budgetInfo:
+                  - typeId: 101
+                    expenseBudget:
+                      amount: 1000
+                      currency: USD
+
+
+
+    TransactionTrendExample:
+      value:
         transactionTrends:
-            type : "category"
-            debitTotal:
-              amount: 100
-              currency : USD
-            creditTotal:
-              amount: 100
-              currency : USD
-            netTotal:
-              amount: 100
-              currency : USD
-            transactionCount: 12
-            summary:
-              - name : "Entertainment"
-                id : 7
-                debitTotal:
-                  amount: 100
-                  currency : USD
-                creditTotal:
-                  amount: 100
-                  currency : USD
-                netTotal:
-                  amount: 100
-                  currency : USD
-                link:
-                  - methodType : GET
-                    href : /views/609d08858e420a3635dec2f6/transactions?fromDate=2021-04-12&toDate=2021-05-13&categoryId=7
-                transactionCount: 12
-                details:
-                  - date : "2020-04-01"
-                    debitTotal:
-                      amount: 100
-                      currency : USD
-                    creditTotal:
-                      amount: 100
-                      currency : USD
-                    netTotal:
-                      amount: 100
-                      currency : USD
-                    transactionCount : 3
-                    link:
-                      - methodType : GET
-                        href: "/views/609d08858e420a3635dec2f6/transactions?fromDate=2020-04-01&toDate=2020-04-30&categoryId=7"
-                  - date : "2020-03-01"
-                    debitTotal:
-                      amount: 100
-                      currency : USD
-                    creditTotal:
-                      amount: 100
-                      currency : USD
-                    netTotal:
-                      amount: 100
-                      currency : USD
-                    transactionCount : 3
-                    link:
-                      - methodType : GET
-                        href: "/views/609d08858e420a3635dec2f6/transactions?fromDate=2020-03-01&toDate=2020-03-31&categoryId=7"
-                  - date : "2020-02-01"
-                    debitTotal:
-                      amount: 100
-                      currency : USD
-                    creditTotal:
-                      amount: 100
-                      currency : USD
-                    netTotal:
-                      amount: 100
-                      currency : USD
-                    transactionCount : 3
-                    link:
-                      - methodType : GET
-                        href: "/views/609d08858e420a3635dec2f6/transactions?fromDate=2020-02-01&toDate=2020-02-29&categoryId=7"
-      TransactionSummaryExample:
-            value:
-                summary:
-                    type: 'category'
-                    netTotal:
-                        amount: 100.75
-                        currency: USD
-                    creditTotal:
-                        amount: 600.93
-                        currency: USD
-                    debitTotal:
-                        amount: 500.18
-                        currency: USD
-                    average:
-                        amount: 50.38
-                        currency: USD
-                    transactionCount: 3
-                    details:
-                        - name: 'General Merchandise'
-                          id: 44
-                          netTotal:
-                              amount: 100.75
-                              currency: USD
-                          creditTotal:
-                              amount: 600.93
-                              currency: USD
-                          debitTotal:
-                              amount: 500.18
-                              currency: USD
-                          average:
-                              amount: 50.38
-                              currency: USD
-                          transactionCount: 3
-                          link:
-                              - methodType: GET
-                                href: /views/60d995f8fc778d5873a05837/transactions?fromDate=2021-05-28&toDate=2021-06-28&categoryId=44
+          type: "category"
+          debitTotal:
+            amount: 100
+            currency: USD
+          creditTotal:
+            amount: 100
+            currency: USD
+          netTotal:
+            amount: 100
+            currency: USD
+          transactionCount: 12
+          summary:
+            - name: "Entertainment"
+              id: 7
+              debitTotal:
+                amount: 100
+                currency: USD
+              creditTotal:
+                amount: 100
+                currency: USD
+              netTotal:
+                amount: 100
+                currency: USD
+              link:
+                - methodType: GET
+                  href: /views/609d08858e420a3635dec2f6/transactions?fromDate=2021-04-12&toDate=2021-05-13&categoryId=7
+              transactionCount: 12
+              details:
+                - date: "2020-04-01"
+                  debitTotal:
+                    amount: 100
+                    currency: USD
+                  creditTotal:
+                    amount: 100
+                    currency: USD
+                  netTotal:
+                    amount: 100
+                    currency: USD
+                  transactionCount: 3
+                  link:
+                    - methodType: GET
+                      href: "/views/609d08858e420a3635dec2f6/transactions?fromDate=2020-04-01&toDate=2020-04-30&categoryId=7"
+                - date: "2020-03-01"
+                  debitTotal:
+                    amount: 100
+                    currency: USD
+                  creditTotal:
+                    amount: 100
+                    currency: USD
+                  netTotal:
+                    amount: 100
+                    currency: USD
+                  transactionCount: 3
+                  link:
+                    - methodType: GET
+                      href: "/views/609d08858e420a3635dec2f6/transactions?fromDate=2020-03-01&toDate=2020-03-31&categoryId=7"
+                - date: "2020-02-01"
+                  debitTotal:
+                    amount: 100
+                    currency: USD
+                  creditTotal:
+                    amount: 100
+                    currency: USD
+                  netTotal:
+                    amount: 100
+                    currency: USD
+                  transactionCount: 3
+                  link:
+                    - methodType: GET
+                      href: "/views/609d08858e420a3635dec2f6/transactions?fromDate=2020-02-01&toDate=2020-02-29&categoryId=7"
+    TransactionSummaryExample:
+      value:
+        summary:
+          type: 'category'
+          netTotal:
+            amount: 100.75
+            currency: USD
+          creditTotal:
+            amount: 600.93
+            currency: USD
+          debitTotal:
+            amount: 500.18
+            currency: USD
+          average:
+            amount: 50.38
+            currency: USD
+          transactionCount: 3
+          details:
+            - name: 'General Merchandise'
+              id: 44
+              netTotal:
+                amount: 100.75
+                currency: USD
+              creditTotal:
+                amount: 600.93
+                currency: USD
+              debitTotal:
+                amount: 500.18
+                currency: USD
+              average:
+                amount: 50.38
+                currency: USD
+              transactionCount: 3
+              link:
+                - methodType: GET
+                  href: /views/60d995f8fc778d5873a05837/transactions?fromDate=2021-05-28&toDate=2021-06-28&categoryId=44

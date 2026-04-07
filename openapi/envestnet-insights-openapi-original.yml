@@ -1,10 +1,8 @@
 openapi: 3.0.0
 info:
-  title: Insights API Suite
+  title: Envestnet Insights API Suite
   description: >-
-    Financial Insights APIs provide intelligent, personalized, and 
-    actionable insights to your end-users. This document details the APIs 
-    offered as part of the insights product.
+    Financial Insights APIs provide intelligent, personalized, and  actionable insights to your end-users. This document details the APIs  offered as part of the insights product.
   contact:
     email: insights@yodlee.com
   version: 1.1.0-oas3
@@ -16,7 +14,7 @@ paths:
     get:
       tags:
         - Customer
-      summary: Provide details of all the insights available to the customer.
+      summary: Envestnet Provide details of all the insights available to the customer.
       description: >-
         This API returns only those Insights which the customer has subscribed to, among all the insights provided by Yodlee. If the customer has chosen to use the Insights configuration tool, the same functionality can be achieved through a graphical user interface.
       operationId: getCutomerSubscription
@@ -41,7 +39,7 @@ paths:
             Y020 : Invalid token in authorization header<br>Y023 : Token has
             expired<br>
             Y011 : Invalid cobrand or incorrectly configured cobrand
-            
+
           content:
             application/json:
               schema:
@@ -49,7 +47,7 @@ paths:
     patch:
       tags:
         - Customer
-      summary: Update details of one or more customer subscribed insights.
+      summary: Envestnet Update details of one or more customer subscribed insights.
       description: >-
         This API can be used to make an insight available to their users at any entity level (Account or View). By setting isSubscribed to true or false at an entity level within each insight, the customer can decide what functionality to make available to their end-users/consumers.<br /><br />Note-
           <ul>
@@ -131,7 +129,7 @@ paths:
             Y020 : Invalid token in authorization header<br>Y023 : Token has
             expired<br>
             Y011 : Invalid cobrand or incorrectly configured cobrand
-            
+
           content:
             application/json:
               schema:
@@ -140,7 +138,7 @@ paths:
     get:
       tags:
         - User
-      summary: Provides user-level preferences for each insight.
+      summary: Envestnet Provides user-level preferences for each insight.
       description: >-
         This API returns the details of all the Insights which are subscribed by the customer. If any of the insight has been turned off by setting isSubscribed = false at the customerSubscription level, those insights will not be shown in the userSubscription API.<br /><br />Each Insight details contain attributes such as Insight Frequency, Threshold, etc. By default, all the configurations set by the customer will be inherited by the user. Using a separate PATCH API, consumers can override customer preferences and set their own preferences - wherever applicable.<br /><br />In addition to setting prepoferences at an insight entity level, the consumer will also be able to set preferences at an entity ID level. E.g. LOW_BALANCE_WARNING insight can have a BALANCE threshold of $1,000 set by the customer. However, the user can set a different threshold for each of the accounts the user has aggregated.<br /><br />The customerConfiguration object for each insight mirrors the preferences set by the customer for each insight at the customerSubscription level.
       operationId: getUserSubscriptions
@@ -187,7 +185,7 @@ paths:
             Y020 : Invalid token in authorization header<br>Y023 : Token has
             expired<br>
             Y011 : Invalid cobrand or incorrectly configured cobrand
-            
+
           content:
             application/json:
               schema:
@@ -195,7 +193,7 @@ paths:
     patch:
       tags:
         - User
-      summary: Update user-level preferences for each insight.
+      summary: Envestnet Update user-level preferences for each insight.
       description: >-
         This API can be used to modify user-level preferences for each insight. <br /><br />Each Insight details contain attributes such as Insight Frequency, Threshold, etc. By default, all the configurations set by the customer will be inherited by the user. Using a separate PATCH API, users can override custom preferences and set their own preferences - wherever applicable.<br /><br />In addition to setting preferences at an insight entity level, the consumer will also be able to set preferences at an entity ID level. E.g. LOW_BALANCE_WARNING insight - the user can set a different threshold for each of the accounts the user has aggregated.<br /><br />Note -
           <ul>
@@ -271,7 +269,7 @@ paths:
             Y020 : Invalid token in authorization header<br>Y023 : Token has
             expired<br>
             Y011 : Invalid cobrand or incorrectly configured cobrand
-            
+
           content:
             application/json:
               schema:
@@ -279,7 +277,7 @@ paths:
     delete:
       tags:
         - User
-      summary: Delete an existing entity-level insight configuration
+      summary: Envestnet Delete an existing entity-level insight configuration
       description: >-
         The DELETE API lets users delete one or more of the existing entityId level configurations for an insight. This can be account level or view level. By deleting all entity ID level configuration, user's insight evaluation defaults to the values specified by the customer for an insight.
       operationId: deleteUserSubscriptions
@@ -337,7 +335,7 @@ paths:
             Y020 : Invalid token in authorization header<br>Y023 : Token has
             expired<br>
             Y011 : Invalid cobrand or incorrectly configured cobrand
-            
+
           content:
             application/json:
               schema:
@@ -346,7 +344,7 @@ paths:
     get:
       tags:
         - User
-      summary: 'Fetch all the insights generated for a user. '
+      summary: 'Envestnet Fetch all the insights generated for a user.'
       description: >-
         The API allows you to fetch all or a subset of
         the insights generated for a specific user. The insights are returned in
@@ -415,14 +413,7 @@ paths:
           example: 'ACCOUNT'
         - name: triggerType
           in: query
-          description: triggerType of an insight defines how an Insight was triggered
-            in the system.
-            <br><br>Currently following triggerType are supported -
-            <ul>
-            <li><b>SCHDEULE</b> - Insight evaluation and subsequent generation triggered based on a pre-defined schedule.</li>
-            <li><b>REFRESH</b> - Insight evaluation and subsequent generation triggered when a user's account gets successfully refreshed.</li>
-            <li><b>EVENT</b> - Insight evaluation and subsequent generation triggered based on a system-defined event happening.</li>
-            </ul>
+          description: triggerType of an insight defines how an Insight was triggered in the system. <br><br>Currently following triggerType are supported - <ul> <li><b>SCHDEULE</b> - Insight evaluation and subsequent generation triggered based on a pre-defined schedule.</li> <li><b>REFRESH</b> - Insight evaluation and subsequent generation triggered when a user's account gets successfully refreshed.</li> <li><b>EVENT</b> - Insight evaluation and subsequent generation triggered based on a system-defined event happening.</li> </ul>
           required: false
           style: form
           explode: true
@@ -431,9 +422,7 @@ paths:
           example: 'SCHEDULE'
         - name: insightType
           in: query
-          description: Identifies whether the insight is generated at an entity-level - per account
-            or per view (OTHER), or if it considers all entities for the user - e.g. 
-            all accounts (AGGREGATE).<br><br>
+          description: Identifies whether the insight is generated at an entity-level - per account or per view (OTHER), or if it considers all entities for the user - e.g. all accounts (AGGREGATE).<br><br>
           required: false
           style: form
           explode: true
@@ -479,7 +468,7 @@ paths:
             Y020 : Invalid token in authorization header<br>Y023 : Token has
             expired<br>
             Y011 : Invalid cobrand or incorrectly configured cobrand
-            
+
           content:
             application/json:
               schema:
@@ -488,7 +477,7 @@ paths:
     get:
       tags:
         - User
-      summary: 'Fetch all the insights generated for a user. '
+      summary: 'Envestnet Fetch all the insights generated for a user.'
       description: >-
         The API allows you to fetch all or a subset of
         the insights generated for a specific user. The insights are returned in
@@ -557,14 +546,7 @@ paths:
           example: 'ACCOUNT'
         - name: triggerType
           in: query
-          description: triggerType of an insight defines how an Insight was triggered
-            in the system.
-            <br><br>Currently following triggerType are supported -
-            <ul>
-            <li><b>SCHDEULE</b> - Insight evaluation and subsequent generation triggered based on a pre-defined schedule.</li>
-            <li><b>REFRESH</b> - Insight evaluation and subsequent generation triggered when a user's account gets successfully refreshed.</li>
-            <li><b>EVENT</b> - Insight evaluation and subsequent generation triggered based on a system-defined event happening.</li>
-            </ul>
+          description: triggerType of an insight defines how an Insight was triggered in the system. <br><br>Currently following triggerType are supported - <ul> <li><b>SCHDEULE</b> - Insight evaluation and subsequent generation triggered based on a pre-defined schedule.</li> <li><b>REFRESH</b> - Insight evaluation and subsequent generation triggered when a user's account gets successfully refreshed.</li> <li><b>EVENT</b> - Insight evaluation and subsequent generation triggered based on a system-defined event happening.</li> </ul>
           required: false
           style: form
           explode: true
@@ -573,9 +555,7 @@ paths:
           example: 'SCHEDULE'
         - name: insightType
           in: query
-          description: Identifies whether the insight is generated at an entity-level - per account
-            or per view (OTHER), or if it considers all entities for the user - e.g. 
-            all accounts (AGGREGATE).<br><br>
+          description: Identifies whether the insight is generated at an entity-level - per account or per view (OTHER), or if it considers all entities for the user - e.g. all accounts (AGGREGATE).<br><br>
           required: false
           style: form
           explode: true
@@ -631,16 +611,16 @@ paths:
             Y020 : Invalid token in authorization header<br>Y023 : Token has
             expired<br>
             Y011 : Invalid cobrand or incorrectly configured cobrand
-            
+
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'              
+                $ref: '#/components/schemas/Error'
   '/insights/feed/count':
     get:
       tags:
         - User
-      summary: 'Fetch the count of generated insight for a user. '
+      summary: 'Envestnet Fetch the count of generated insight for a user.'
       description: >-
         This API provides the count of the insights generated for the user. By default, the API provides the count of the insights generated in last 31 days.
       operationId: getUserFeedCount
@@ -688,14 +668,7 @@ paths:
           example: 'ACCOUNT'
         - name: triggerType
           in: query
-          description: triggerType of an insight defines how an Insight was triggered
-            in the system.
-            <br><br>Currently following triggerType are supported -
-            <ul>
-            <li><b>SCHDEULE</b> - Insight evaluation and subsequent generation triggered based on a pre-defined schedule.</li>
-            <li><b>REFRESH</b> - Insight evaluation and subsequent generation triggered when a user's account gets successfully refreshed.</li>
-            <li><b>EVENT</b> - Insight evaluation and subsequent generation triggered based on a system-defined event happening.</li>
-            </ul>
+          description: triggerType of an insight defines how an Insight was triggered in the system. <br><br>Currently following triggerType are supported - <ul> <li><b>SCHDEULE</b> - Insight evaluation and subsequent generation triggered based on a pre-defined schedule.</li> <li><b>REFRESH</b> - Insight evaluation and subsequent generation triggered when a user's account gets successfully refreshed.</li> <li><b>EVENT</b> - Insight evaluation and subsequent generation triggered based on a system-defined event happening.</li> </ul>
           required: false
           style: form
           explode: true
@@ -704,9 +677,7 @@ paths:
           example: 'SCHEDULE'
         - name: insightType
           in: query
-          description: Identifies whether the insight is generated at an entity-level - per account
-            or per view (OTHER), or if it considers all entities for the user - e.g. 
-            all accounts (AGGREGATE).<br><br>
+          description: Identifies whether the insight is generated at an entity-level - per account or per view (OTHER), or if it considers all entities for the user - e.g. all accounts (AGGREGATE).<br><br>
           required: false
           style: form
           explode: true
@@ -758,7 +729,7 @@ paths:
     post:
       tags:
         - User
-      summary: Evalute the insights on demand.
+      summary: Envestnet Evalute the insights on demand.
       description: >-
         Evaluate the insight on demand based on the override duplicate check.<br>
         insightName, overrideDuplicateCheck, entityConfig needs to be passed as request parameter.
@@ -771,11 +742,10 @@ paths:
             examples:
               objectExample:
                 $ref: '#/components/examples/createTriggerExample'
-      
       responses:
         '200':
           description: No content
-          
+
         '400':
           description: >-
             Bad request. ErrorCode and ErrorMessages below:<br> <br>
@@ -814,22 +784,22 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'  
+                $ref: '#/components/schemas/Error'
         '401':
           description: >-
             Y020 : Invalid token in authorization header<br>Y023 : Token has
             expired<br>
             Y011 : Invalid cobrand or incorrectly configured cobrand
-            
+
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'        
+                $ref: '#/components/schemas/Error'
   '/insights/entityDetail':
     get:
       tags:
         - Associated Details
-      summary: Fetch the details of a insights associated with an entity Id.
+      summary: Envestnet Fetch the details of a insights associated with an entity Id.
       description: >-
         Retrieves details of all insights applicable for a given entity Id (viewId or accountId).
       operationId: getInsightDetailsBasedOnEntityId
@@ -879,22 +849,22 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'   
+                $ref: '#/components/schemas/Error'
         '401':
           description: >-
             Y020 : Invalid token in authorization header<br>Y023 : Token has
             expired<br>
             Y011 : Invalid cobrand or incorrectly configured cobrand
-            
+
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'      
+                $ref: '#/components/schemas/Error'
   '/insights/insightDetail/{insightName}':
     get:
       tags:
         - Associated Details
-      summary: Fetch the details of entities associated with an insight name.
+      summary: Envestnet Fetch the details of entities associated with an insight name.
       description: >-
         Retrieves details of all entity ids applicable for a given insight.
       operationId: getEntityDetailsBasedOnInsightName
@@ -941,7 +911,7 @@ paths:
             Y020 : Invalid token in authorization header<br>Y023 : Token has
             expired<br>
             Y011 : Invalid cobrand or incorrectly configured cobrand
-            
+
           content:
             application/json:
               schema:
@@ -969,8 +939,7 @@ components:
           type: string
           description: >-
             For a View, toDate is used to fetch transactions that are aggregated
-            on or before the specified date, but after the fromDate. This is a 
-            mandatory attribute for all rules, except rules that contain transactionId.
+            on or before the specified date, but after the fromDate. This is a  mandatory attribute for all rules, except rules that contain transactionId.
             <br><br>Expected format -
             yyyy-MM-dd.Note- The date is in UTC timezone instead of
             Local timezone.<br><br>Endpoints:<ul><li>GET /views</li><li>GET
@@ -979,7 +948,7 @@ components:
           example: '2020-05-23'
     Subscription:
       description: >-
-       Details about the configurations applied for the specific insight.
+        Details about the configurations applied for the specific insight.
       properties:
         insightName:
           type: string
@@ -1004,8 +973,7 @@ components:
           type: string
           description: >-
             Identifies whether the insight is generated at an entity-level (per account
-            or per view), or if it considers all entities for the user - e.g. 
-            all accounts.
+            or per view), or if it considers all entities for the user - e.g.  all accounts.
             <br><br>Note - Do not pass the insightType attribute when doing a PATCH rquest.
             <br><br><b>Endpoints</b> -<ul><li>GET
             insights/configs/customerSubscriptions customer API</li><li>GET
@@ -1239,20 +1207,18 @@ components:
         isSubscribed:
           type: boolean
           description: >-
-             Insight Subscription APIs allow User to subscribe/unsubscribe at 
-             any particular entity level.<br><br>
-             If an insight is not subscribed (isSubscribed = false) 
-             at the customer level,
-             the insight will not be present in the userSubscription API.
-             <br><br> If an insight is subscribed by the customer (isSubscribed = true),
-             the insight will be subscribed automatically by the user and all the default
-             configurations will be inherited.
-             <br><br>The user can choose to turn off the insight by setting isSubscribed=false.
-              <br><br>><b>Endpoints</b> -<ul><li>GET
-              insights/configs/customerSubscriptions customer API</li><li>GET
-              insights/configs/userSubscriptions User API</li><li>PATCH
-              /insights/configs/customerSubscriptions cusomter API</li><li>PATCH
-              /insights/configs/userSubscriptions User API</li></ul>
+            Insight Subscription APIs allow User to subscribe/unsubscribe at  any particular entity level.<br><br>
+            If an insight is not subscribed (isSubscribed = false)  at the customer level,
+            the insight will not be present in the userSubscription API.
+            <br><br> If an insight is subscribed by the customer (isSubscribed = true),
+            the insight will be subscribed automatically by the user and all the default
+            configurations will be inherited.
+            <br><br>The user can choose to turn off the insight by setting isSubscribed=false.
+             <br><br>><b>Endpoints</b> -<ul><li>GET
+             insights/configs/customerSubscriptions customer API</li><li>GET
+             insights/configs/userSubscriptions User API</li><li>PATCH
+             /insights/configs/customerSubscriptions cusomter API</li><li>PATCH
+             /insights/configs/userSubscriptions User API</li></ul>
           example: true
         frequency:
           type: string
@@ -1303,16 +1269,16 @@ components:
         isBenchmarkEnabled:
           type: boolean
           description: >-
-             Identifies if peer benchmarking is enabled for a particular insight. The attribute will be returned only for insights that are eligible for peer benchmarking data points
-             <br><br>The default value of this attribute will be based on the global configuration key to enable/disable peer benchmarking. If the global configuration is true, this attribute will be true and if the global configuration is false, this value will be false.
-             <br><br>If the peer benchmarking is enabled by the customer (isBenchmarkEnabled = true), the benchmarks will be subscribed automatically by the user.
-             <br><br>The user can choose to turn off the benchmark configuration for the insight by setting isBenchmarkEnabled=false.
-             <br><br><b>Note</b> - There are few insights for which the isBenchmarkEnabled attribute cannot be updated since benchmark amount is essential for the insight evaluation.
-              <br><br><b>Endpoints</b> -<ul><li>GET
-              insights/configs/customerSubscriptions customer API</li><li>GET
-              insights/configs/userSubscriptions User API</li><li>PATCH
-              /insights/configs/customerSubscriptions cusomter API</li><li>PATCH
-              /insights/configs/userSubscriptions User API</li></ul>
+            Identifies if peer benchmarking is enabled for a particular insight. The attribute will be returned only for insights that are eligible for peer benchmarking data points
+            <br><br>The default value of this attribute will be based on the global configuration key to enable/disable peer benchmarking. If the global configuration is true, this attribute will be true and if the global configuration is false, this value will be false.
+            <br><br>If the peer benchmarking is enabled by the customer (isBenchmarkEnabled = true), the benchmarks will be subscribed automatically by the user.
+            <br><br>The user can choose to turn off the benchmark configuration for the insight by setting isBenchmarkEnabled=false.
+            <br><br><b>Note</b> - There are few insights for which the isBenchmarkEnabled attribute cannot be updated since benchmark amount is essential for the insight evaluation.
+             <br><br><b>Endpoints</b> -<ul><li>GET
+             insights/configs/customerSubscriptions customer API</li><li>GET
+             insights/configs/userSubscriptions User API</li><li>PATCH
+             /insights/configs/customerSubscriptions cusomter API</li><li>PATCH
+             /insights/configs/userSubscriptions User API</li></ul>
           example: true
     Threshold:
       properties:
@@ -1357,8 +1323,7 @@ components:
             </ul>
             For the above insight, you can read the configuration as
             "Generate the insight only if the change is >= 3%".
-            <br><br>However, consider changing the configuration to as follows by 
-            changing the type -
+            <br><br>However, consider changing the configuration to as follows by  changing the type -
             <ul>
             <li>name = CHANGE</li>
             <li>type = AMOUNT</li>
@@ -1422,17 +1387,17 @@ components:
       properties:
         feed:
           allOf:
-           - $ref: '#/components/schemas/total'
+            - $ref: '#/components/schemas/total'
     total:
       properties:
         total:
-           type: number
-           description: >-
-              Number of insights count.
-              <br><br><b>Endpoints</b> -<ul><li>GET
-              /insights/feed/count</li></ul>
-           readOnly: true
-           example: 8
+          type: number
+          description: >-
+            Number of insights count.
+            <br><br><b>Endpoints</b> -<ul><li>GET
+            /insights/feed/count</li></ul>
+          readOnly: true
+          example: 8
     feeds:
       properties:
         feed:
@@ -1471,8 +1436,7 @@ components:
           type: string
           description: >-
             Identifies whether the insight is generated at an entity-level - per account
-            or per view (OTHER), or if it considers all entities for the user - e.g. 
-            all accounts (AGGREGATE).<br><br><b>Endpoints</b> - <ul><li>GET
+            or per view (OTHER), or if it considers all entities for the user - e.g.  all accounts (AGGREGATE).<br><br><b>Endpoints</b> - <ul><li>GET
             config/insights/subscriptions Cobrand API</li><li>GET
             insights/subscriptions User API</li></ul>
           readOnly: true
@@ -1509,7 +1473,7 @@ components:
         subscription:
           type: array
           items:
-             $ref: '#/components/schemas/subscriptionModel'
+            $ref: '#/components/schemas/subscriptionModel'
         basicAccount:
           type: array
           items:
@@ -1550,12 +1514,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/BasicTrend'
-            
         netWorthTrend:
           type: array
           items:
             $ref: '#/components/schemas/NetWorthTrend'
-      
         accountDerived:
           allOf:
             - $ref: '#/components/schemas/AccountDerived'
@@ -1566,11 +1528,10 @@ components:
         transactionDerived:
           allOf:
             - $ref: '#/components/schemas/TransactionDerived'
-       
         changeValue:
           type: array
           items:
-            $ref: '#/components/schemas/ChangeValue' 
+            $ref: '#/components/schemas/ChangeValue'
         basicCategoryDetail:
           type: array
           items:
@@ -1582,7 +1543,7 @@ components:
         basicMerchantDetail:
           type: array
           items:
-            $ref: '#/components/schemas/BasicMerchantDetail' 
+            $ref: '#/components/schemas/BasicMerchantDetail'
         basicCreditCardUtilizations:
           type: array
           items:
@@ -1639,16 +1600,13 @@ components:
         accountNumber:
           type: string
           description: >-
-            description: The account number as it appears on the site. 
-            (The POST accounts service response return this field as number)
+            description: The account number as it appears on the site.  (The POST accounts service response return this field as number)
             <br><b>Applicable containers</b> - All Containers.
             readOnly: true
         accountType:
           type: string
           description: >-
-            The type of account that is aggregated such as savings, checking, charge, etc., 
-            and manual accounts. The account type is derived based on the 
-            attributes of the account.
+            The type of account that is aggregated such as savings, checking, charge, etc.,  and manual accounts. The account type is derived based on the  attributes of the account.
           readOnly: true
           enum:
             - CURRENT
@@ -1676,7 +1634,7 @@ components:
             The type of service. E.g., Bank, Credit Card,
             Investment, Insurance, etc.
             <br><br><b>Applicable containers</b> - All containers<br>
-          
+
           readOnly: true
           enum:
             - bank
@@ -1705,7 +1663,7 @@ components:
         - accountStatus
     ErrorInfo:
       description: >-
-       Error encountered while refreshing a specific aggregated account.
+        Error encountered while refreshing a specific aggregated account.
       properties:
         errorStatus:
           type: string
@@ -1787,13 +1745,10 @@ components:
         entityId:
           type: string
           description: >-
-            Unique ID which references a specific entityType for which the 
-            insight is generated.
+            Unique ID which references a specific entityType for which the  insight is generated.
             <ul>
-            <li>if entityType is "ACCOUNT" then this field represents 
-            'accountId'</li>
-            <li>if entityType is "VIEW" then this field represents 
-            'viewId'</li>
+            <li>if entityType is "ACCOUNT" then this field represents  'accountId'</li>
+            <li>if entityType is "VIEW" then this field represents  'viewId'</li>
             </ul>
             <b>Endpoints</b> - <ul><li>GET insights/configs/customerSubscriptions customer API</li>
                                   <li>GET insights/configs/userSubscriptions User API</li>
@@ -1854,8 +1809,7 @@ components:
           type: string
           description: >-
             Identifies whether the insight is generated at an entity-level - per account
-            or per view (OTHER), or if it considers all entities for the user - e.g. 
-            all accounts (AGGREGATE).<br><br><b>Endpoints</b> - <ul><li>GET
+            or per view (OTHER), or if it considers all entities for the user - e.g.  all accounts (AGGREGATE).<br><br><b>Endpoints</b> - <ul><li>GET
             config/insights/subscriptions Cobrand API</li><li>GET
             insights/subscriptions User API</li></ul>
           readOnly: true
@@ -1893,8 +1847,8 @@ components:
             $ref: '#/components/schemas/InsightDetail'
     BasicAccount:
       description: >-
-       Account object that contains details about one or more aggregated
-       accounts.
+        Account object that contains details about one or more aggregated
+        accounts.
       allOf:
         - $ref: '#/components/schemas/AccountInfo'
       properties:
@@ -1909,17 +1863,17 @@ components:
         changeValue:
           type: array
           items:
-             $ref: '#/components/schemas/ChangeValue'
+            $ref: '#/components/schemas/ChangeValue'
           readOnly: true
         cashFlowTrend:
           type: array
           items:
-             $ref: '#/components/schemas/CashFlowTrend'
+            $ref: '#/components/schemas/CashFlowTrend'
           readOnly: true
         basicCategoryDetail:
           type: array
           items:
-             $ref: '#/components/schemas/BasicCategoryDetail'
+            $ref: '#/components/schemas/BasicCategoryDetail'
           readOnly: true
         message:
           items:
@@ -1939,7 +1893,7 @@ components:
             $ref: '#/components/schemas/AccountDetail'
     BasicView:
       description: >-
-       Object that contains details about one or more user/system created VIEWs.
+        Object that contains details about one or more user/system created VIEWs.
       properties:
         basicAccount:
           type: array
@@ -1972,38 +1926,38 @@ components:
         - link
     BasicTrend:
       description: >-
-       Trend information, broken down by a specific frequency, for a specific date range.
+        Trend information, broken down by a specific frequency, for a specific date range.
       properties:
         debitTotal:
           description: >-
-           The sum of all debit transactions.
+            The sum of all debit transactions.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         creditTotal:
-           description: >-
+          description: >-
             The sum of all credit transactions.
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
         netCreditTotal:
-           description: >-
+          description: >-
             Net Total calculated as (creditTotal - debitTotal).
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
         netTotal:
-           description: >-
+          description: >-
             Net spending calculated as (debitTotal - creditTotal).
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
         averageNetTotal:
-           description: >-
+          description: >-
             Average spending calculated as (netTotal) / (number of months).
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
         transactionCount:
           type: integer
           description: >-
@@ -2023,7 +1977,7 @@ components:
             $ref: '#/components/schemas/Detail'
         dateRange:
           allOf:
-            - $ref : '#/components/schemas/DateRange'
+            - $ref: '#/components/schemas/DateRange'
           readOnly: true
         categoryTrend:
           type: array
@@ -2040,7 +1994,7 @@ components:
           items:
             $ref: '#/components/schemas/NetWorthTrend'
           readOnly: true
-        detailCategoryTrend :
+        detailCategoryTrend:
           type: array
           items:
             $ref: '#/components/schemas/DetailCategoryTrend'
@@ -2061,32 +2015,32 @@ components:
           description: >-
             Sum of all credit transactions for the given date range.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         netCreditTotal:
           description: >-
             Net Total calculated as (creditTotal - debitTotal).
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         debitTotal:
           description: >-
             Sum of all debit transactions for the given date range.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         netTotal:
           description: >-
             Net spending calculated as (debitTotal - creditTotal).
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         link:
           allOf:
             - $ref: '#/components/schemas/Link'
           readOnly: true
         transactionCount:
-          type : string
+          type: string
           description: >-
             Total count of transactions for the specified date range.
           readOnly: true
@@ -2094,32 +2048,32 @@ components:
           description: >-
             Net Worth total for the given date range.
           allOf:
-            - $ref : '#/components/schemas/NetworthDetail'
+            - $ref: '#/components/schemas/NetworthDetail'
           readOnly: true
         assetDetail:
           description: >-
             Asset total for the given date range.
           allOf:
-            - $ref : '#/components/schemas/AssetDetail'
+            - $ref: '#/components/schemas/AssetDetail'
           readOnly: true
         liabilityDetail:
           description: >-
             Liability total for the given date range.
           allOf:
-            - $ref : '#/components/schemas/LiabilityDetail'
+            - $ref: '#/components/schemas/LiabilityDetail'
           readOnly: true
         predictedBalance:
           description: >-
             predicted balance across a single account as of date.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
       required:
         - dateRange
         - debitTotal
         - creditTotal
         - netTotal
-        
+
     CashFlowDetail:
       properties:
         date:
@@ -2136,37 +2090,37 @@ components:
           description: >-
             cashInFlow for the given date range.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         cashOutFlow:
           description: >-
             cashOutFlow for the given date range.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         transferIn:
           description: >-
             transferIn for the given date range.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         transferOut:
           description: >-
             transferOut for the given date range.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         totalCashFlow:
           description: >-
             totalCashFlow for the given date range.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         netTransfer:
           description: >-
             netTransfer for the given date range.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
     AccountDetail:
       properties:
@@ -2178,7 +2132,7 @@ components:
           description: >-
             predicted balance across a single account as of date.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
       required:
         - dateRange
@@ -2187,50 +2141,43 @@ components:
         - netTotal
     CategoryTrend:
       description: >-
-       Category trend information, broken down by a specific frequency, for a 
-       specific date range.
+        Category trend information, broken down by a specific frequency, for a  specific date range.
       properties:
-        categoryId: 
+        categoryId:
           type: string
           description: >-
-            The id of the category assigned to the transaction. This is the id 
-            field of the transaction category resource. The supported values 
-            are provided by the GET transactions/categories.
+            The id of the category assigned to the transaction. This is the id  field of the transaction category resource. The supported values  are provided by the GET transactions/categories.
           readOnly: true
         category:
-          type : string
+          type: string
           description: >-
-            The name of the category assigned to the transaction. This is the 
-            category field of the transaction category resource. The supported 
-            values are provided by the GET transactions/categories.
+            The name of the category assigned to the transaction. This is the  category field of the transaction category resource. The supported  values are provided by the GET transactions/categories.
           readOnly: true
         debitTotal:
           description: >-
             The sum of all debit transactions associated with the category
             for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         creditTotal:
           description: >-
             The sum of all credit transactions associated with the category
             for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         netTotal:
           description: >-
-            Net spending calculated as (debitTotal - creditTotal) associated with 
-            the category for the specific duration.
+            Net spending calculated as (debitTotal - creditTotal) associated with  the category for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         averageNetTotal:
           description: >-
-            Average spending calculated as (netTotal)/(Number of Months) 
-            associated with the category for the specific duration.
+            Average spending calculated as (netTotal)/(Number of Months)  associated with the category for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         link:
           allOf:
@@ -2247,28 +2194,26 @@ components:
         basicPeerDetail:
           type: array
           items:
-            $ref : '#/components/schemas/BasicPeerDetail'
+            $ref: '#/components/schemas/BasicPeerDetail'
           readOnly: true
         categoryDerived:
           type: array
           items:
-            $ref : '#/components/schemas/CategoryDerived'
-        
+            $ref: '#/components/schemas/CategoryDerived'
       required:
         - categoryId
         - category
     DetailCategoryTrend:
       description: >-
-       Detail category trend information, broken down by a specific frequency, for a 
-       specific date range.
+        Detail category trend information, broken down by a specific frequency, for a  specific date range.
       properties:
-        detailCategoryId: 
+        detailCategoryId:
           type: string
           description: >-
             The id of the detail category assigned to the transaction.
           readOnly: true
         detailCategoryName:
-          type : string
+          type: string
           description: >-
             The name of the detail category assigned to the transaction.
           readOnly: true
@@ -2277,34 +2222,32 @@ components:
             The sum of all debit transactions associated with the detail category
             for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         creditTotal:
           description: >-
             The sum of all credit transactions associated with the detail category
             for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         netCreditTotal:
           description: >-
             Net credit spending.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         netTotal:
           description: >-
-            Net spending calculated as (debitTotal - creditTotal) associated with 
-            the detail category for the specific duration.
+            Net spending calculated as (debitTotal - creditTotal) associated with  the detail category for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         averageNetTotal:
           description: >-
-            Average spending calculated as (netTotal)/(Number of Months) 
-            associated with the detail category for the specific duration.
+            Average spending calculated as (netTotal)/(Number of Months)  associated with the detail category for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         link:
           allOf:
@@ -2318,7 +2261,7 @@ components:
         basicPeerDetail:
           type: array
           items:
-            $ref : '#/components/schemas/BasicPeerDetail'
+            $ref: '#/components/schemas/BasicPeerDetail'
           readOnly: true
         detail:
           type: array
@@ -2332,24 +2275,21 @@ components:
         - detailCategoryId
         - detailCategoryName
     CategoryDerived:
-     description: >-
-       category information
-     properties:
+      description: >-
+        category information
+      properties:
         dateRange:
-          description: >-
+          description: >
           allOf:
             - $ref: '#/components/schemas/DateRange'
         averageNetTotal:
           description: >-
-            Average spending calculated as (netTotal)/(Number of Months) 
-            associated with the detail category for the specific duration.
+            Average spending calculated as (netTotal)/(Number of Months)  associated with the detail category for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
-          
-      
+            - $ref: '#/components/schemas/Money'
     BasicPeerDetail:
       description: >-
-       Peer data information.
+        Peer data information.
       properties:
         dateRange:
           description: >-
@@ -2359,8 +2299,7 @@ components:
         benchmarkAsOf:
           type: string
           description: >-
-            benchmarkAsOf identifies the date on which the benchmark was computed. Currently the benchmark 
-            is recomputed on the 16th of each month.
+            benchmarkAsOf identifies the date on which the benchmark was computed. Currently the benchmark  is recomputed on the 16th of each month.
           readOnly: true
         benchmark:
           type: array
@@ -2370,27 +2309,27 @@ components:
         - dateRange
         - benchmarkAsOf
     UserDetail:
-        properties:
-          geo:
-            description: >-
-              Geo location details of the user. User can provide City, State, Nation and Zipcode details
-            allOf:
-              - $ref : '#/components/schemas/Geo'
-          income:
-            type: string
-            description: >-
-               Income details of the user
-            readOnly: true
-          homeOwnership:
-            type: boolean
-            description: >-
-              Home Ownership status of the user
-            readOnly: true
-          lifeStage:  
-            type: string
-            description: >-
-              lifeStage details of the user
-            readOnly: true
+      properties:
+        geo:
+          description: >-
+            Geo location details of the user. User can provide City, State, Nation and Zipcode details
+          allOf:
+            - $ref: '#/components/schemas/Geo'
+        income:
+          type: string
+          description: >-
+            Income details of the user
+          readOnly: true
+        homeOwnership:
+          type: boolean
+          description: >-
+            Home Ownership status of the user
+          readOnly: true
+        lifeStage:
+          type: string
+          description: >-
+            lifeStage details of the user
+          readOnly: true
     BasicBenchMark:
       properties:
         geo:
@@ -2398,7 +2337,7 @@ components:
           description: >-
             Describes the various levels in which the benchmark data is available. 
           allOf:
-           - $ref: '#/components/schemas/Geo'
+            - $ref: '#/components/schemas/Geo'
 
         benchmarkLevel:
           type: string
@@ -2409,10 +2348,10 @@ components:
           description: >-
             Median amount spent by the user in a specified category or merchant
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         numberOfPeers:
-          type : integer
+          type: integer
           description: >-
             The total number of peers in the segment to arrive the benchmark amount
           readOnly: true
@@ -2424,7 +2363,7 @@ components:
     Geo:
       properties:
         level:
-          type : string
+          type: string
           description: >-
             Identifies the level at which peer bechmarking data is returned - City, State, National, or CBSA.
           readOnly: true
@@ -2435,8 +2374,7 @@ components:
           readOnly: true
     MerchantTrend:
       description: >-
-       Merchant trend information, broken down by a specific frequency, for a 
-       specific date range.
+        Merchant trend information, broken down by a specific frequency, for a  specific date range.
       properties:
         basicMerchant:
           allOf:
@@ -2446,39 +2384,37 @@ components:
           description: >-
             The sum of all debit transactions associated with the merchant.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         creditTotal:
           description: >-
             The sum of all credit transactions associated with the merchant.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         netTotal:
           description: >-
-            Net spending calculated as (debitTotal - creditTotal) associated with 
-            the merchant for the specific duration.
+            Net spending calculated as (debitTotal - creditTotal) associated with  the merchant for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         averageNetTotal:
           description: >-
-            Average spending calculated as (netTotal)/(Number of Months) 
-            associated with the merchant for the specific duration.
+            Average spending calculated as (netTotal)/(Number of Months)  associated with the merchant for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         basicPeerDetail:
           type: array
           items:
-            $ref : '#/components/schemas/BasicPeerDetail'
+            $ref: '#/components/schemas/BasicPeerDetail'
           readOnly: true
         link:
           allOf:
             - $ref: '#/components/schemas/Link'
           readOnly: true
         transactionCount:
-          type : string
+          type: string
           description: >-
             Total count of transactions for the specified date range.
           readOnly: true
@@ -2491,60 +2427,52 @@ components:
             $ref: '#/components/schemas/Detail'
           readOnly: true
       required:
-          - basicMerchant
+        - basicMerchant
     CashFlowTrend:
       description: >-
-       Cash flow trend information, broken down by a specific frequency, for a 
-       specific date range.
+        Cash flow trend information, broken down by a specific frequency, for a  specific date range.
       properties:
         cashInFlow:
           description: >-
-           Total Cash Inflow Amount in the selected duration, which is the sum 
-           of cash inflow in each of the selected months in the duration.
+            Total Cash Inflow Amount in the selected duration, which is the sum  of cash inflow in each of the selected months in the duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         cashOutFlow:
           description: >-
-           Total Cash Outflow Amount in the selected duration, which is the 
-           sum of cash outflow in each of the selected months in the duration.
+            Total Cash Outflow Amount in the selected duration, which is the  sum of cash outflow in each of the selected months in the duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         transferIn:
           description: >-
-           Total Transfer-In Amount in the selected duration, which is the sum 
-           of transfer-in amount in each of the selected months in the duration.
+            Total Transfer-In Amount in the selected duration, which is the sum  of transfer-in amount in each of the selected months in the duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         transferOut:
           description: >-
-           Total Transfer-out Amount in the selected duration, which is the sum 
-           of transfer-out amount in each of the selected months in the duration.
+            Total Transfer-out Amount in the selected duration, which is the sum  of transfer-out amount in each of the selected months in the duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         netTransfer:
           description: >-
-           Net Transfer Amount in the selected duration, which is the difference 
-           between transfer-In and tranfer-out amount
+            Net Transfer Amount in the selected duration, which is the difference  between transfer-In and tranfer-out amount
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         averageNetCashFlow:
           description: >-
-           Average net cash flow = Total Cash Flow Amount / Number of months 
-           in the duration.
+            Average net cash flow = Total Cash Flow Amount / Number of months  in the duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         totalCashFlow:
           description: >-
-           Total Cash Flow Amount = Cash Inflow Amount - Cash Outflow Amount + 
-           Net Transfer.
+            Total Cash Flow Amount = Cash Inflow Amount - Cash Outflow Amount +  Net Transfer.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         detail:
           type: array
@@ -2556,8 +2484,7 @@ components:
           readOnly: true
     NetWorthTrend:
       description: >-
-       Net Worth trend information, broken down by a specific frequency, for a 
-       specific date range.
+        Net Worth trend information, broken down by a specific frequency, for a  specific date range.
       properties:
         detail:
           type: array
@@ -2568,31 +2495,31 @@ components:
             $ref: '#/components/schemas/NetWorthTrendDetail'
           readOnly: true
         networthTotal:
-           description: >-
-             Total net worth value.
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true
+          description: >-
+            Total net worth value.
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
         assetTotal:
-           description: >-
-             Total asset worth value.
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true
+          description: >-
+            Total asset worth value.
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
         liabilityTotal:
-           description: >-
-             Total liability worth value.
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true
+          description: >-
+            Total liability worth value.
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
     NetWorthTrendDetail:
-      description : >-
+      description: >-
         Date Range identified as first of the month.
         E.g. January 2021 will be represented as 2021-01-01.
       properties:
         dateRange:
           allOf:
-            - $ref : '#/components/schemas/DateRange'
+            - $ref: '#/components/schemas/DateRange'
           readOnly: true
         networthDetail:
           type: array
@@ -2614,77 +2541,76 @@ components:
         - networthDetail
     AssetDetail:
       description: >-
-       Summary information across all the aggregated accounts categorized
-       as 'assets'.
+        Summary information across all the aggregated accounts categorized
+        as 'assets'.
       properties:
         assetTotal:
-           description: >-
-             Total asset value.
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true
+          description: >-
+            Total asset value.
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
       required:
         - assetTotal
     LiabilityDetail:
       description: >-
-       Summary information across all the aggregated accounts categorized
-       as 'liability'.
+        Summary information across all the aggregated accounts categorized
+        as 'liability'.
       properties:
         liabilityTotal:
-           description: >-
-             Total liability value.
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true
+          description: >-
+            Total liability value.
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
       required:
         - liabilityTotal
     NetworthDetail:
       description: >-
-       Summary information across all the aggregated accounts
-       calculated as (total of all assets) - (total of all liabilities).
+        Summary information across all the aggregated accounts
+        calculated as (total of all assets) - (total of all liabilities).
       properties:
         networthTotal:
-           description: >-
-             Total netw worth value.
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true
+          description: >-
+            Total netw worth value.
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
       required:
         - networthTotal
     AccountDerived:
       description: >-
-       Derived information across one or more aggregated accounts.
+        Derived information across one or more aggregated accounts.
       properties:
         totalAvailableBalance:
-           description : >-
+          description: >-
             The total available balance across eligible accounts.
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
         discretionaryBalance:
-           description : >-
-             Balance available to spend after taking into account projected income and expenses.
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true 
+          description: >-
+            Balance available to spend after taking into account projected income and expenses.
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
         averageSpending:
-           description : >-
+          description: >-
             The average monthly spending for the given duration.
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
         averageAvailableBalance:
-           description : >-
-             Average available balance across one or more accounts.
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true 
+          description: >-
+            Average available balance across one or more accounts.
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
         spendingRunway:
-           description : >-
-             Based on the average spending, the duration in days for which the total available balance 
-             will last
-           type : number
-           readOnly: true
+          description: >-
+            Based on the average spending, the duration in days for which the total available balance  will last
+          type: number
+          readOnly: true
     StatementDerived:
       description: >-
         Statement derived
@@ -2693,64 +2619,60 @@ components:
           description: >-
             Total minimum due across one or more cards
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
     ViewDerived:
       description: >-
-       Derived information for a specific VIEW.
+        Derived information for a specific VIEW.
       properties:
         creditTotal:
-           description : >-
-            The total of all credit transactions that qualify to be part of the 
-            view based on the view rules.
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true
+          description: >-
+            The total of all credit transactions that qualify to be part of the  view based on the view rules.
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
         debitTotal:
-           description : >-
-            The total of all debit transactions that qualify to be part of the 
-            view based on the view rules.
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true
+          description: >-
+            The total of all debit transactions that qualify to be part of the  view based on the view rules.
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
         remainingBudget:
-           description : >-
+          description: >-
             The difference between the budget set for the view and the debitTotal.
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
     TransactionDerived:
       description: >-
-       Derived information across one or more aggregated transactions.
+        Derived information across one or more aggregated transactions.
       properties:
         creditTotal:
-           description: >-
+          description: >-
             The sum of all credit transactions.
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
         debitTotal:
-           description: >-
+          description: >-
             The sum of all debit transactions.
-           allOf:
-            - $ref : '#/components/schemas/Money'
-           readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
         totalUnpaidBills:
-           type: integer
-           description: >-
-            The total number of unpaid bills identified. If the threshold 
-            TOP is applied, this number may not match with the number of 
-            bills returned in the insight.
-           readOnly: true
+          type: integer
+          description: >-
+            The total number of unpaid bills identified. If the threshold  TOP is applied, this number may not match with the number of  bills returned in the insight.
+          readOnly: true
         spentPercent:
-         type: string
-         description: >-
-          Amount spent calculated as debitTotal/creditTotal*100
+          type: string
+          description: >-
+            Amount spent calculated as debitTotal/creditTotal*100
         totalSpending:
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
         averageSpending:
-           allOf:
-            - $ref : '#/components/schemas/Money'
+          allOf:
+            - $ref: '#/components/schemas/Money'
         link:
           allOf:
             - $ref: '#/components/schemas/Link'
@@ -2763,22 +2685,22 @@ components:
           description: >-
             Average monthly income for the duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
         monthlyRecurringPaymentTotal:
           description: >-
             Identified monthly recurring payments for the user derived from minimum due amount across
             all cards, loan payments, rent payments, mortgage payments, alimoney and child care support.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
         dateRange:
           description: >-
-              The date range considered to compute the values.
+            The date range considered to compute the values.
           items:
-            $ref : '#/components/schemas/DateRange'
-          readOnly: true  
+            $ref: '#/components/schemas/DateRange'
+          readOnly: true
     ChangeAPR:
       description: >-
-       Change in APR for an aggregated card account.
+        Change in APR for an aggregated card account.
       properties:
         previousAPR:
           type: string
@@ -2801,10 +2723,10 @@ components:
         - change
     ChangeValue:
       description: >-
-       Change in value identified for a type between two different time periods.
+        Change in value identified for a type between two different time periods.
       properties:
-        changeType: 
-          type : string
+        changeType:
+          type: string
           example: BALANCE
           description: >-
             The value for which the change is computed.
@@ -2812,34 +2734,30 @@ components:
         previousDate:
           type: string
           description: >-
-            Previous Date (The earlier duration being considered for change 
-            calculation)
+            Previous Date (The earlier duration being considered for change  calculation)
           readOnly: true
         previousAmount:
           description: >-
-            The amount as of the earlier duration considered for change 
-            calculation.
+            The amount as of the earlier duration considered for change  calculation.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         currentDate:
           type: string
           description: >-
-            current Date (The latest duration being considered for change 
-            calculation)
+            current Date (The latest duration being considered for change  calculation)
           readOnly: true
         currentAmount:
           description: >-
-            The amount as of the latest duration considered for change 
-            calculation.
+            The amount as of the latest duration considered for change  calculation.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         changeAmount:
           description: >-
             Amount change calculated as currentAmount - previousAmount.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         changePercent:
           type: number
@@ -2856,35 +2774,29 @@ components:
         - changePercent
     BasicCategoryDetail:
       description: >-
-       Information about a specific "master" category.
+        Information about a specific "master" category.
       properties:
         categoryId:
           type: string
-          description : >-
-            The id of the category assigned to the transaction. This is the id 
-            field of the transaction category resource. The supported values 
-            are provided by the GET transactions/categories.
+          description: >-
+            The id of the category assigned to the transaction. This is the id  field of the transaction category resource. The supported values  are provided by the GET transactions/categories.
           readOnly: true
         category:
           type: string
-          description : >-
-            The name of the category assigned to the transaction. This is the 
-            category field of the transaction category resource. The supported 
-            values are provided by the GET transactions/categories.
+          description: >-
+            The name of the category assigned to the transaction. This is the  category field of the transaction category resource. The supported  values are provided by the GET transactions/categories.
           readOnly: true
         netTotal:
           description: >-
-            Net spending calculated as (debitTotal - creditTotal) associated with 
-            the category for the specific duration.
+            Net spending calculated as (debitTotal - creditTotal) associated with  the category for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         averageNetTotal:
           description: >-
-            Average spending calculated as (netTotal)/(Number of Months) 
-            associated with the category for the specific duration.
+            Average spending calculated as (netTotal)/(Number of Months)  associated with the category for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         link:
           allOf:
@@ -2894,13 +2806,13 @@ components:
           description: >-
             Basic Peer Detail.
           allOf:
-            - $ref : '#/components/schemas/BasicPeerDetail'
+            - $ref: '#/components/schemas/BasicPeerDetail'
           readOnly: true
         peerSpendingComparison:
           description: >-
             Comparing how the user has spent in a category compared to his peers
           allOf:
-            - $ref : '#/components/schemas/PeerSpendingComparison'
+            - $ref: '#/components/schemas/PeerSpendingComparison'
           readOnly: true
       required:
         - categoryId
@@ -2911,11 +2823,11 @@ components:
           description: >-
             Difference between the spending amount of user and peers for a specific category or merchant
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         peerSpendDifferencePercent:
           type: number
-          description : >-
+          description: >-
             Difference in percentage
           readOnly: true
         isOverSpending:
@@ -2930,67 +2842,62 @@ components:
           readOnly: true
     BasicCategoryTypeDetail:
       description: >-
-       Derived information across one or more category types - INCOME, EXPENSE,
-       TRANSFER, DEFERRED_COMPENSATION, or UNCATEGORIZE.
+        Derived information across one or more category types - INCOME, EXPENSE,
+        TRANSFER, DEFERRED_COMPENSATION, or UNCATEGORIZE.
       properties:
-        categoryType: 
+        categoryType:
           type: string
           description: >-
-            The categoryType of the category assigned to the transaction. This 
-            is the type field of the transaction category resource. The 
-            supported values are provided by the GET transactions/categories.
+            The categoryType of the category assigned to the transaction. This  is the type field of the transaction category resource. The  supported values are provided by the GET transactions/categories.
           readOnly: true
         creditTotal:
           description: >-
               The sum of all credit transactions associated with the categoryType for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         debitTotal:
           description: >-
             The sum of all debit transactions associated with the categoryType for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         netTotal:
           description: >-
-            Net spending calculated as (debitTotal - creditTotal) associated with 
-            the category for the specific duration.
+            Net spending calculated as (debitTotal - creditTotal) associated with  the category for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         dateRange:
           items:
-            $ref : '#/components/schemas/DateRange'
+            $ref: '#/components/schemas/DateRange'
           readOnly: true
         basicCategoryDetail:
           type: array
           items:
-            $ref : '#/components/schemas/BasicCategoryDetail'
+            $ref: '#/components/schemas/BasicCategoryDetail'
           readOnly: true
     CategoryTypeDerived:
       description: >-
-       provides values derived at "categoryType" level.
+        provides values derived at "categoryType" level.
       properties:
-        categoryType: 
+        categoryType:
           type: string
           description: >-
-            The categoryType of the category assigned to the transaction. This 
-            is the type field of the transaction category resource. The 
-            supported values are provided by the GET transactions/categories.
+            The categoryType of the category assigned to the transaction. This  is the type field of the transaction category resource. The  supported values are provided by the GET transactions/categories.
           readOnly: true
         totalSpending:
           description: >-
-             The total amount spent by the user in the defined dateRange and categoryType.
+            The total amount spent by the user in the defined dateRange and categoryType.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         dateRange:
           description: >-
-              The date range considered to compute the values.
+            The date range considered to compute the values.
           items:
-            $ref : '#/components/schemas/DateRange'
-          readOnly: true  
+            $ref: '#/components/schemas/DateRange'
+          readOnly: true
         link:
           allOf:
             - $ref: '#/components/schemas/Link'
@@ -3003,13 +2910,13 @@ components:
           description: >-
             predicted balance
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         date:
-          description: >- 
+          description: >-
             date in yyyy-mm-dd format
-          type : string
-          readOnly : true
+          type: string
+          readOnly: true
         accountIds:
           description: >-
             list of account id that constributed in the predicted balance.
@@ -3019,11 +2926,11 @@ components:
           readOnly: true
     BasicMerchantDetail:
       description: >-
-       Derived merchant spending information.
+        Derived merchant spending information.
       properties:
         basicMerchant:
           allOf:
-            - $ref : '#/components/schemas/BasicMerchant'
+            - $ref: '#/components/schemas/BasicMerchant'
           readOnly: true
         merchantType:
           type: string
@@ -3032,17 +2939,15 @@ components:
           readOnly: true
         netTotal:
           description: >-
-            Net spending calculated as (debitTotal - creditTotal) associated with 
-            the merchant for the specific duration.
+            Net spending calculated as (debitTotal - creditTotal) associated with  the merchant for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         averageNetTotal:
           description: >-
-            Average spending calculated as (netTotal)/(Number of Months) 
-            associated with the merchant for the specific duration.
+            Average spending calculated as (netTotal)/(Number of Months)  associated with the merchant for the specific duration.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         link:
           allOf:
@@ -3052,13 +2957,13 @@ components:
           description: >-
             Data about the user's peer spending.
           allOf:
-            - $ref : '#/components/schemas/BasicPeerDetail'
+            - $ref: '#/components/schemas/BasicPeerDetail'
           readOnly: true
         peerSpendingComparison:
           description: >-
             Comparing how the user has spent with a merchant compared to their peers.
           allOf:
-            - $ref : '#/components/schemas/PeerSpendingComparison'
+            - $ref: '#/components/schemas/PeerSpendingComparison'
           readOnly: true
       required:
         - basicMerchant
@@ -3068,48 +2973,42 @@ components:
       properties:
         totalRunningBalance:
           description: >-
-           Total running balance across one or more card accounts.
+            Total running balance across one or more card accounts.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         totalCreditLine:
           description: >-
-           Total credit line across one or more card accounts.
+            Total credit line across one or more card accounts.
           allOf:
-            - $ref : '#/components/schemas/Money'
+            - $ref: '#/components/schemas/Money'
           readOnly: true
         creditUtilizationPercent:
           type: number
           description: >-
-            Single card credit utilization percent calculated as 
-            totalRunningBalance / totalCreditLine * 100
+            Single card credit utilization percent calculated as  totalRunningBalance / totalCreditLine * 100
           readOnly: true
         totalCreditUtilizationPercent:
           type: number
           description: >-
-            Total credit utilization percent calculated as 
-            totalRunningBalance / totalCreditLine * 100
+            Total credit utilization percent calculated as  totalRunningBalance / totalCreditLine * 100
           readOnly: true
     BankAccount:
       description: >-
-       Account object that contains details about one or more aggregated
-       bank accounts.
+        Account object that contains details about one or more aggregated
+        bank accounts.
       allOf:
         - $ref: '#/components/schemas/AccountInfo'
       properties:
         availableBalance:
           description: >-
-           The balance in the account that is available for spending. 
-           For checking accounts with overdraft, available balance may include 
-           overdraft amount, if end site adds overdraft balance to available 
-           balance.
+            The balance in the account that is available for spending.  For checking accounts with overdraft, available balance may include  overdraft amount, if end site adds overdraft balance to available  balance.
           allOf:
             - $ref: '#/components/schemas/Money'
           readOnly: true
         currentBalance:
           description: >-
-           The balance in the account that is available at the beginning of the 
-           business day; it is equal to the ledger balance of the account.
+            The balance in the account that is available at the beginning of the  business day; it is equal to the ledger balance of the account.
           allOf:
             - $ref: '#/components/schemas/Money'
           readOnly: true
@@ -3137,52 +3036,49 @@ components:
           readOnly: true
     CardAccount:
       description: >-
-       Account object that contains details about one or more aggregated
-       card accounts.
+        Account object that contains details about one or more aggregated
+        card accounts.
       allOf:
         - $ref: '#/components/schemas/AccountInfo'
       properties:
         address:
           type: string
           description: >-
-           address.
+            address.
           readOnly: true
         totalCreditLine:
           description: >-
-           Total credit line is the amount of money that can be charged to a 
-           credit card. If credit limit of $5,000 is issued on a credit card, 
-           the total charges on the card cannot exceed this amount.
+            Total credit line is the amount of money that can be charged to a  credit card. If credit limit of $5,000 is issued on a credit card,  the total charges on the card cannot exceed this amount.
           allOf:
             - $ref: '#/components/schemas/Money'
           readOnly: true
         balance:
           description: >-
-           The amount that is currently owed on the credit card account.
-           Equivalent to runningBalance.
+            The amount that is currently owed on the credit card account.
+            Equivalent to runningBalance.
           allOf:
             - $ref: '#/components/schemas/Money'
           readOnly: true
         runningBalance:
           description: >-
-           The amount that is currently owed on the credit card account.
+            The amount that is currently owed on the credit card account.
           allOf:
             - $ref: '#/components/schemas/Money'
           readOnly: true
         amountDue:
           description: >-
-           The total amount due for the purchase of goods or services that must 
-           be paid by the due date. 
+            The total amount due for the purchase of goods or services that must  be paid by the due date. 
           allOf:
             - $ref: '#/components/schemas/Money'
           readOnly: true
         lastUpdated:
           type: string
           description: >-
-           last Updated.
+            last Updated.
           readOnly: true
         basicCreditCardUtilization:
           allOf:
-          - $ref: '#/components/schemas/BasicCreditCardUtilization'
+            - $ref: '#/components/schemas/BasicCreditCardUtilization'
           readOnly: true
         basicStatement:
           type: array
@@ -3200,52 +3096,48 @@ components:
           readOnly: true
         changeAPR:
           allOf:
-          - $ref: '#/components/schemas/ChangeAPR'
+            - $ref: '#/components/schemas/ChangeAPR'
           readOnly: true
     RealEstateAccount:
       description: >-
-       Account object that contains details about one or more aggregated
-       real estate accounts.
+        Account object that contains details about one or more aggregated
+        real estate accounts.
       allOf:
         - $ref: '#/components/schemas/AccountInfo'
       properties:
         address:
-         readOnly: true
-         allOf:
-          - $ref: '#/components/schemas/Address'
-         
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/Address'
         changeValue:
           type: array
           items:
             $ref: '#/components/schemas/ChangeValue'
     LoanAccount:
       description: >-
-       Account object that contains details about one or more aggregated
-       loan accounts.
+        Account object that contains details about one or more aggregated
+        loan accounts.
       allOf:
         - $ref: '#/components/schemas/AccountInfo'
       properties:
         maturityDate:
           type: string
           description: >-
-            The date when a certificate of deposit (CD/FD) matures or the final 
-            payment date of a loan at which point the principal amount 
-            (including pending interest) is due to be paid.
+            The date when a certificate of deposit (CD/FD) matures or the final  payment date of a loan at which point the principal amount  (including pending interest) is due to be paid.
           readOnly: true
     InvestmentAccount:
       description: >-
-       Account object that contains details about one or more aggregated
-       investment accounts.
+        Account object that contains details about one or more aggregated
+        investment accounts.
       allOf:
         - $ref: '#/components/schemas/AccountInfo'
       properties:
         balance:
-           description: >-
-            The total balance of all the investment account, as it appears on 
-            the FI site.
-           allOf:
+          description: >-
+            The total balance of all the investment account, as it appears on  the FI site.
+          allOf:
             - $ref: '#/components/schemas/Money'
-           readOnly: true
+          readOnly: true
         basicHolding:
           type: array
           items:
@@ -3262,7 +3154,7 @@ components:
             - $ref: '#/components/schemas/DateRange'
           readOnly: true
         date:
-          type : string
+          type: string
         predictedBalance:
           description: >-
             The predicted balance for a given date range or a specific date.
@@ -3289,8 +3181,8 @@ components:
           readOnly: true
     Address:
       description: >-
-       The address information associated with a merchant or an account.
-      properties:        
+        The address information associated with a merchant or an account.
+      properties:
         address1:
           type: string
           description: >-
@@ -3315,17 +3207,17 @@ components:
           type: string
           description: >-
             Complete address.
-          readOnly: true  
+          readOnly: true
         zip:
           type: string
-          description:  >-
+          description: >-
             ZIP Code.
           readOnly: true
         city:
           type: string
           description: >-
             City Name.
-          readOnly: true        
+          readOnly: true
         state:
           type: string
           description: >-
@@ -3348,13 +3240,12 @@ components:
           readOnly: true
     BasicHolding:
       description: >-
-       Object that contains details about one or more securities.
+        Object that contains details about one or more securities.
       properties:
         id:
           type: number
           description: >-
-            Unique identifier for the security added in the system. This is the 
-            primary key of the holding resource.
+            Unique identifier for the security added in the system. This is the  primary key of the holding resource.
           readOnly: true
         accountId:
           type: number
@@ -3368,34 +3259,23 @@ components:
         holdingType:
           type: string
           description: >-
-           Indicates the type of security like stocks, mutual fund, etc. The 
-           list of supported holding types is provided in 
-           GET holdings/holdingTypeList.
+            Indicates the type of security like stocks, mutual fund, etc. The  list of supported holding types is provided in  GET holdings/holdingTypeList.
           readOnly: true
         maturityDate:
           type: string
           description: >-
-           The stated maturity date of a bond or CD.
+            The stated maturity date of a bond or CD.
           readOnly: true
         qty:
           type: string
           description: >-
-           The quantity held for the holding.
-           <br><br><b>Note</b> - For bonds, the quantity field indicates the 
-           normalized quantity and not the quantity aggregated from the site. 
-           <br><br>The quantity field applies to all holding types except 
-           restricted stock units/awards, performance units, currency, and 
-           commodity.
-           <br><br>For the insurance container, the field applies only to 
-           insurance annuity and variable life insurance types.
+            The quantity held for the holding.
+            <br><br><b>Note</b> - For bonds, the quantity field indicates the  normalized quantity and not the quantity aggregated from the site.  <br><br>The quantity field applies to all holding types except  restricted stock units/awards, performance units, currency, and  commodity.
+            <br><br>For the insurance container, the field applies only to  insurance annuity and variable life insurance types.
           readOnly: true
         price:
           description: >-
-            The current price of the security. 
-            <br><br><b>Note</b> - For bonds, the price field indicates the 
-            normalized price and not the price aggregated from the site. For 
-            the insurance container, the field applies only to the insurance 
-            annuity and variable life insurance types.
+            The current price of the security.  <br><br><b>Note</b> - For bonds, the price field indicates the  normalized price and not the price aggregated from the site. For  the insurance container, the field applies only to the insurance  annuity and variable life insurance types.
           allOf:
             - $ref: '#/components/schemas/Money'
           readOnly: true
@@ -3415,8 +3295,8 @@ components:
         - link
     BasicStatement:
       description: >-
-       Object that contains details about one or more aggregated
-       statements.
+        Object that contains details about one or more aggregated
+        statements.
       properties:
         id:
           type: number
@@ -3439,8 +3319,7 @@ components:
           type: string
           description: >-
             The date by when the minimum payment is due to be paid.
-            <br><br><b>Note</b>- The due date that appears in the statement may 
-            differ from the due date at the account-level.
+            <br><br><b>Note</b>- The due date that appears in the statement may  differ from the due date at the account-level.
           readOnly: true
         billingPeriodStart:
           type: string
@@ -3454,21 +3333,19 @@ components:
           readOnly: true
         amountDue:
           description: >-
-           The total amount owed at the end of the billing period.
+            The total amount owed at the end of the billing period.
           allOf:
             - $ref: '#/components/schemas/Money'
           readOnly: true
         minPaymentDue:
           description: >-
-           The minimum amount that the user has to pay every month on the 
-           credit card account.
+            The minimum amount that the user has to pay every month on the  credit card account.
           allOf:
             - $ref: '#/components/schemas/Money'
           readOnly: true
         lastPaymentAmount:
           description: >-
-           The last payment made for the previous billing cycle in the current 
-           statement period.
+            The last payment made for the previous billing cycle in the current  statement period.
           allOf:
             - $ref: '#/components/schemas/Money'
           readOnly: true
@@ -3480,8 +3357,7 @@ components:
         isLatest:
           type: boolean
           description: >-
-            The field is set to true if the statement is the latest generated 
-            statement.
+            The field is set to true if the statement is the latest generated  statement.
           readOnly: true
         lastUpdated:
           type: string
@@ -3494,36 +3370,27 @@ components:
         - accountId
     BasicTransaction:
       description: >-
-       Transaction object that contains details about one or more aggregated
-       transactions.
+        Transaction object that contains details about one or more aggregated
+        transactions.
       properties:
         id:
           type: integer
           description: >-
-           An unique identifier for the transaction. The combination of the 
-           id and account container are unique in the system.
+            An unique identifier for the transaction. The combination of the  id and account container are unique in the system.
         amount:
           $ref: '#/components/schemas/Money'
-        date: 
+        date:
           type: string
           description: >-
-           The value provided will be either postDate or transactionDate. 
-           postDate takes higher priority than transactionDate, except for the 
-           investment container as only transactionDate is available. The 
-           availability of postDate or transactionDate depends on the provider 
-           site.
+            The value provided will be either postDate or transactionDate.  postDate takes higher priority than transactionDate, except for the  investment container as only transactionDate is available. The  availability of postDate or transactionDate depends on the provider  site.
         categoryId:
           type: string
           description: >-
-           The id of the category assigned to the transaction. This is the id 
-           field of the transaction category resource. The supported values 
-           are provided by the GET transactions/categories.
+            The id of the category assigned to the transaction. This is the id  field of the transaction category resource. The supported values  are provided by the GET transactions/categories.
         category:
           type: string
           description: >-
-           The name of the category assigned to the transaction. This is the 
-           category field of the transaction category resource. The supported 
-           values are provided by the GET transactions/categories.
+            The name of the category assigned to the transaction. This is the  category field of the transaction category resource. The supported  values are provided by the GET transactions/categories.
         link:
           description: >-
             Reference path link to fetch more information about the specific
@@ -3534,36 +3401,28 @@ components:
         categoryType:
           type: string
           description: >-
-           The categoryType of the category assigned to the transaction. This 
-           is the type field of the transaction category resource. categoryType 
-           primarily identifies if the transaction is an income, expense, or 
-           some other type of transaction.
-        baseType: 
+            The categoryType of the category assigned to the transaction. This  is the type field of the transaction category resource. categoryType  primarily identifies if the transaction is an income, expense, or  some other type of transaction.
+        baseType:
           type: string
           description: >-
-           Indicates if the transaction appears as a debit or a credit 
-           transaction in the account.
+            Indicates if the transaction appears as a debit or a credit  transaction in the account.
         description:
           allOf:
             - $ref: '#/components/schemas/descriptions'
         sourceType:
           type: string
           description: >-
-           The source through which the transaction is added to the Yodlee 
-           system.
+            The source through which the transaction is added to the Yodlee  system.
         merchantType:
           type: string
           description: >-
-           Provides further information about a transaction, i.e., if the 
-           transaction is carried out on a biller, subscription merchant, or 
-           other.
+            Provides further information about a transaction, i.e., if the  transaction is carried out on a biller, subscription merchant, or  other.
         basicMerchant:
           allOf:
-           -  $ref: '#/components/schemas/BasicMerchant'
+            - $ref: '#/components/schemas/BasicMerchant'
         basicPredictedEvent:
           allOf:
             - $ref: '#/components/schemas/BasicPredictedEvent'
-          
       required:
         - id
         - amount
@@ -3575,18 +3434,17 @@ components:
         - description
     BasicMerchant:
       description: >-
-       Information about the associated merchant.
+        Information about the associated merchant.
       properties:
         name:
           type: string
           description: >-
             The name of the merchant associated with the transaction.
-            Note - The merchant name field is available only in the United 
-            States, Canada, United Kingdom, and India.
+            Note - The merchant name field is available only in the United  States, Canada, United Kingdom, and India.
         address:
-         readOnly: true
-         allOf:
-          - $ref: '#/components/schemas/Address'            
+          readOnly: true
+          allOf:
+            - $ref: '#/components/schemas/Address'
         basicPredictedEvents:
           type: array
           items:
@@ -3595,81 +3453,76 @@ components:
         - name
     BasicPredictedEvent:
       description: >-
-       Predicted Event object that contains details about one or more predicted
-       events as identified by the system.
+        Predicted Event object that contains details about one or more predicted
+        events as identified by the system.
       properties:
         id:
           type: number
           description: >-
             The unique identifier of the predicted event.
-          readOnly : true
+          readOnly: true
         link:
           description: >-
             Reference path link to fetch more information about the specific
             predicted event.
           allOf:
             - $ref: '#/components/schemas/BasicPredictedEventLink'
-          readOnly : true
+          readOnly: true
         categoryId:
           type: string
           description: >-
-            Identifier of the category assigned to the predicted event. This is 
-            the id field of the transaction category resource. The supported 
-            values are provided by GET transactions/categories.
-          readOnly : true
+            Identifier of the category assigned to the predicted event. This is  the id field of the transaction category resource. The supported  values are provided by GET transactions/categories.
+          readOnly: true
         category:
           type: string
           description: >-
-            The name of the category assigned to the predicted event. This is the 
-            category field of the transaction category resource. The supported 
-            values are provided by GET transactions/categories.
-          readOnly : true
+            The name of the category assigned to the predicted event. This is the  category field of the transaction category resource. The supported  values are provided by GET transactions/categories.
+          readOnly: true
         lastTrasactionAmount:
           description: >-
-           The amount of the last aggregated transaction that was used to 
-           predict the event.
+            The amount of the last aggregated transaction that was used to  predict the event.
           allOf:
-           - $ref: '#/components/schemas/Money'
-          readOnly : true
+            - $ref: '#/components/schemas/Money'
+          readOnly: true
         lastTransactionDate:
           type: string
           description: >-
             The date of the last aggregated transaction associated with the predicted event.
-          readOnly : true
+          readOnly: true
         basicMerchant:
           allOf:
             - $ref: '#/components/schemas/BasicMerchant'
-          readOnly : true
+          readOnly: true
         basicTransaction:
           type: array
           items:
             $ref: '#/components/schemas/BasicTransaction'
-          readOnly : true
+          readOnly: true
         frequency:
           type: string
           description: >-
             frequency.
-          readOnly : true
+          readOnly: true
         confidence:
           type: string
           description: >-
             confidence.
-          readOnly : true
+          readOnly: true
         confidenceLevel:
           type: string
           description: >-
             confidence Level.
-          readOnly : true
+          readOnly: true
         userApprovalStatus:
           type: string
           description: >-
             user Approval Status.
-          readOnly : true
+          readOnly: true
         basicAccount:
           type: array
           items:
             $ref: '#/components/schemas/BasicAccount'
-          readOnly : true
+          readOnly: true
       required:
         - id
         - link
@@ -3678,30 +3531,22 @@ components:
         original:
           type: string
           description: >-
-           Original transaction description as it appears at the FI site.
+            Original transaction description as it appears at the FI site.
         simple:
           type: string
           description: >-
-           The transaction description that appears at the FI site may not be 
-           self-explanatory, i.e., the source, purpose of the transaction may 
-           not be evident.
-           <br><br>Yodlee attempts to simplify and make the transaction 
-           meaningful to the consumer, and this simplified transaction 
-           description is provided in the simple description field. 
-           <br><br><b>Note</b> - The simple description field is available only 
-           in the United States, Canada, United Kingdom, and India.
+            The transaction description that appears at the FI site may not be  self-explanatory, i.e., the source, purpose of the transaction may  not be evident.
+            <br><br>Yodlee attempts to simplify and make the transaction  meaningful to the consumer, and this simplified transaction  description is provided in the simple description field.  <br><br><b>Note</b> - The simple description field is available only  in the United States, Canada, United Kingdom, and India.
         consumer:
           type: string
           description: >-
-           The description of the transaction as defined by the consumer. 
-           The consumer can define or provide more details of the transaction 
-           in this field.
+            The description of the transaction as defined by the consumer.  The consumer can define or provide more details of the transaction  in this field.
       required:
         - original
     Message:
       description: >-
-       Provides information about customized text-messages associated with
-       an insight.
+        Provides information about customized text-messages associated with
+        an insight.
       properties:
         messageText:
           type: string
@@ -3831,18 +3676,15 @@ components:
         - url
     subscriptionModel:
       description: >-
-       Details about the configurations applied for the specific insight.
+        Details about the configurations applied for the specific insight.
       properties:
         entityId:
           type: string
           description: >-
-            Unique ID which references a specific entityType for which the 
-            insight is generated.
+            Unique ID which references a specific entityType for which the  insight is generated.
             <ul>
-            <li>if entityType is "ACCOUNT" then this field represents 
-            'accountId'</li>
-            <li>if entityType is "VIEW" then this field represents 
-            'viewId'</li>
+            <li>if entityType is "ACCOUNT" then this field represents  'accountId'</li>
+            <li>if entityType is "VIEW" then this field represents  'viewId'</li>
             </ul>
             <b>Endpoints</b> - <ul><li>GET
              /insights/subscriptions</li></ul>
@@ -3865,7 +3707,7 @@ components:
             - WEEKLY
             - MONTHLY
             - MID_MONTHLY
-            
+
         duration:
           type: string
           description: >-
@@ -3898,8 +3740,7 @@ components:
         threshold:
           type: array
           items:
-           $ref: '#/components/schemas/Threshold'
-          
+            $ref: '#/components/schemas/Threshold'
       required:
         - entityId
         - entityType
@@ -3935,8 +3776,7 @@ components:
         convertedAmount:
           type: number
           description: >-
-            "convertedAmount" field is a child of Generic Yodlee model "Money". 
-            This field should be a Floating point number. It contains value
+            "convertedAmount" field is a child of Generic Yodlee model "Money".  This field should be a Floating point number. It contains value
             of "amount" i.e. Money child field multiplied by the conversion rate
             derived from the currency mentioned in field "covertedCurrency"
           format: double
@@ -3990,8 +3830,8 @@ components:
           example: ["123454", "123456", "123455"]
 
   examples:
-      getCustomerSubscriptionExample:
-       value:
+    getCustomerSubscriptionExample:
+      value:
         customerSubscription:
           - insightName: UPCOMING_BILLS
             insightTitle: Upcoming Bills
@@ -4007,26 +3847,26 @@ components:
               - ACCOUNT
               - VIEW
             customerConfiguration:
-               -  entityType : ACCOUNT
-                  isSubscribed: false
-                  frequency: MONTHLY
-                  threshold:
-                    - name: FUTURE
-                      value: '7'
-                      type: DAYS
-               -  entityType: VIEW
-                  isSubscribed: false
-                  frequency: MONTHLY
-                  threshold:
-                    - name: FUTURE
-                      value: '7'
-                      type: DAYS
-      getUserSubscriptionExample:
-       value:
+              - entityType: ACCOUNT
+                isSubscribed: false
+                frequency: MONTHLY
+                threshold:
+                  - name: FUTURE
+                    value: '7'
+                    type: DAYS
+              - entityType: VIEW
+                isSubscribed: false
+                frequency: MONTHLY
+                threshold:
+                  - name: FUTURE
+                    value: '7'
+                    type: DAYS
+    getUserSubscriptionExample:
+      value:
         userSubscription:
           - insightName: UPCOMING_BILLS
             insightTitle: Upcoming Bills
-            insightType : OTHER
+            insightType: OTHER
             triggerType: SCHEDULE
             containers:
               - BANK
@@ -4038,77 +3878,77 @@ components:
               - ACCOUNT
               - VIEW
             userConfiguration:
-                - entityId : '12345'
-                  entityType : ACCOUNT
-                  isSubscribed: true
-                  frequency: MONTHLY
-                  threshold:
-                    - name: FUTURE
-                      value: '10'
-                      type: DAYS
-                - entityId: 'absc1234'
-                  entityType: VIEW
-                  isSubscribed: true
-                  frequency: DAILY
-                  threshold:
-                    - name: FUTURE
-                      value: '12'
-                      type: DAYS
+              - entityId: '12345'
+                entityType: ACCOUNT
+                isSubscribed: true
+                frequency: MONTHLY
+                threshold:
+                  - name: FUTURE
+                    value: '10'
+                    type: DAYS
+              - entityId: 'absc1234'
+                entityType: VIEW
+                isSubscribed: true
+                frequency: DAILY
+                threshold:
+                  - name: FUTURE
+                    value: '12'
+                    type: DAYS
             customerConfiguration:
-                - entityType : ACCOUNT
-                  isSubscribed: true
-                  frequency: MONTHLY
-                  threshold:
-                    - name: FUTURE
-                      value: '7'
-                      type: DAYS
-                - entityType : VIEW
-                  isSubscribed: true
-                  frequency: MONTHLY
-                  threshold:
-                    - name: FUTURE
-                      value: '7'
-                      type: DAYS
-      updateUserSubscriptionExample:
-       value:
+              - entityType: ACCOUNT
+                isSubscribed: true
+                frequency: MONTHLY
+                threshold:
+                  - name: FUTURE
+                    value: '7'
+                    type: DAYS
+              - entityType: VIEW
+                isSubscribed: true
+                frequency: MONTHLY
+                threshold:
+                  - name: FUTURE
+                    value: '7'
+                    type: DAYS
+    updateUserSubscriptionExample:
+      value:
         userSubscription:
           - insightName: UPCOMING_BILLS
             userConfiguration:
-                - entityId: '10001'
-                  entityType: ACCOUNT
-                  isSubscribed: true
-                  threshold:
-                    - name: FUTURE
-                      value: '7'
-                      type: DAYS
-     
-      updateCustomerSubscriptionExample:
-       value:
+              - entityId: '10001'
+                entityType: ACCOUNT
+                isSubscribed: true
+                threshold:
+                  - name: FUTURE
+                    value: '7'
+                    type: DAYS
+
+    updateCustomerSubscriptionExample:
+      value:
         customerSubscription:
           - insightName: UPCOMING_BILLS
             insightTitle: New Title
             customerConfiguration:
-                - entityType: ACCOUNT
-                  isSubscribed : true
-                  threshold:
-                    - name: FUTURE
-                      value: '7'
-                      type: DAYS
-                - entityType: VIEW
-                  isSubscribed : true
-                  threshold:
-                    - name: FUTURE
-                      value: '7'
-                      type: DAYS
-      
-      
-      
-      getFeedCountExample:
-       value:
+              - entityType: ACCOUNT
+                isSubscribed: true
+                threshold:
+                  - name: FUTURE
+                    value: '7'
+                    type: DAYS
+              - entityType: VIEW
+                isSubscribed: true
+                threshold:
+                  - name: FUTURE
+                    value: '7'
+                    type: DAYS
+
+
+
+    getFeedCountExample:
+      value:
         feed:
           total: 8
-      getFeedExample:
-       value:
+    getFeedExample:
+      value:
         feed:
           - id: 5ec7795e05584138f0d1b972
             insightName: UPCOMING_BILLS
@@ -4121,7 +3961,7 @@ components:
                 entityType: ACCOUNT
                 frequency: MONTHLY
                 threshold:
-                  - name : FUTURE
+                  - name: FUTURE
                     value: "7"
                     type: DAYS
             basicAccount:
@@ -4129,19 +3969,19 @@ components:
                 providerName: Dag Site
                 accountName: bank Account
                 accountNumber: xxxx7778
-                accountStatus : ACTIVE
+                accountStatus: ACTIVE
                 accountType: OTHER
                 isAsset: true
                 container: Bank
                 link:
-                    entityName: account
-                    method: GET
-                    url: "/account?id=1234567&status=ACTIVE"
+                  entityName: account
+                  method: GET
+                  url: "/account?id=1234567&status=ACTIVE"
                 basicTransaction:
                   - id: "3456789"
-                    amount: 
-                        amount: 100.00
-                        currency: USD
+                    amount:
+                      amount: 100.00
+                      currency: USD
                     date: "2019-08-19"
                     categoryId: 39
                     category: Utilities
@@ -4152,18 +3992,18 @@ components:
                     categoryType: EXPENSE
                     baseType: DEBIT
                     description:
-                        original: Utilities
-                        simple: Payment to Utilities
-                        consumer: null
+                      original: Utilities
+                      simple: Payment to Utilities
+                      consumer:
                     sourceType: AGGREGATED
                     merchantType: BILLER
                     basicMerchant:
                       name: Utilities
-      createTriggerExample:
-       value:
+    createTriggerExample:
+      value:
         trigger:
-          - insightName : CHANGE_IN_NETWORTH
-            overrideduplicateCheck : true
+          - insightName: CHANGE_IN_NETWORTH
+            overrideduplicateCheck: true
             entityConfig:
               - entityType: ACCOUNT
           - insightName: BILL_NOT_PAID
@@ -4173,11 +4013,11 @@ components:
                 entityIds:
                   - "12345"
                   - "12346"
-              - entityType : VIEW
+              - entityType: VIEW
                 entityIds:
                   - "abscdf123455fg"
-      getEntityDetailResponseExample:
-       value:
+    getEntityDetailResponseExample:
+      value:
         entityDetail:
           - entityType: ACCOUNT
             entityId: 234213523
@@ -4209,8 +4049,8 @@ components:
                       - name: TOP
                         value: 10
                         type: NUMBER
-      getInsightDetailResponseExample:
-       value:
+    getInsightDetailResponseExample:
+      value:
         insightDetail:
           - insightName: SUGGESTED_SAVING_OPPORTUNITY
             insightType: OTHER
