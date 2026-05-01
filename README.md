@@ -1,173 +1,149 @@
 # Envestnet (envestnet)
-Envestnet is an ever-evolving network of data-driven services, products,
-tools, and technologies designed to enable the Intelligent Financial Life_.
-Our robust financial wellness ecosystem offers solutions for every role in the
-financial advice industry. Supercharge practice growth and enable financial
-wellness.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/apis-json/artisanal/main/apis/envestnet.yml)
+Envestnet is an ever-evolving network of data-driven services, products,
+tools, and technologies designed to enable the Intelligent Financial Life.
+Our robust financial wellness ecosystem offers solutions for every role in
+the financial advice industry, including the Yodlee account aggregation,
+verification, credit, insights, and personalized view APIs.
+
+**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/envestnet/refs/heads/main/apis.yml)
 
 ## Scope
 
-- **Type:** Contract 
-- **Position:** Consuming 
-- **Access:** 3rd-Party 
+- **Type:** Index
+- **Position:** Consumer
+- **Access:** 3rd-Party
 
-## Tags:
+## Tags
 
- - Financial
+- Financial
+- Wealth Management
+- Open Banking
+- Account Aggregation
 
 ## Timestamps
 
-- **Created:** 2023-11-20 
-- **Modified:** 2024-12-30 
+- **Created:** 2023-11-20
+- **Modified:** 2026-04-28
 
 ## APIs
 
 ### Envestnet Account Aggregation API
 
-Our Aggregation APIs give you the power to access accounts at most
-institutions in the industry combined with the industry's best data
-enrichment augmented by powerful AI-driven data analysis, all from a
-single open-banking-ready platform.
+Aggregation APIs give you the power to access accounts at most institutions
+in the industry, combined with the industry's best data enrichment augmented
+by powerful AI-driven data analysis, all from a single open-banking-ready
+platform.
 
 **Human URL:** [https://developer.envestnet.com/products/yodlee/account-aggregation](https://developer.envestnet.com/products/yodlee/account-aggregation)
 
-**Base URL:** [https://api.example.com](https://api.example.com)
+#### Tags
 
-
-#### Tags:
-
- - No Tags
+- Account Aggregation
+- Open Banking
 
 #### Properties
 
-- [Documentation](
-https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference)
+- [Documentation](https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference)
 - [OpenAPI](openapi/envestnet-account-aggregation-openapi-original.yml)
+
 ### Envestnet Account Token APIs
 
-Financial institutions (FIs) or FinTech customers using the account
-verification product to provide digital payment services can eliminate the
-risk of storing users' sensitive financial account information using
-Account Token endpoints. The endpoints allow customers to create an
-account-specific token that the payment processors can use to retrieve
-account information.
+Financial institutions or FinTech customers using the account verification
+product to provide digital payment services can eliminate the risk of storing
+users' sensitive financial account information by using Account Token
+endpoints.
 
-**Human URL:** [
-https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference](
-https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference)
+**Human URL:** [https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference](https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference)
 
-**Base URL:** [https://api.example.com](https://api.example.com)
+#### Tags
 
-
-#### Tags:
-
- - No Tags
+- Account Token
+- Payments
 
 #### Properties
 
-- [Documentation](
-https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference)
+- [Documentation](https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference)
 - [OpenAPI](openapi/envestnet-account-token-openapi-original.yml)
+
 ### Envestnet Account Verification APIs
 
-This guide will show the basics of verifying accounts using Yodlee.
-Account verification can help enable payments, avoid overdrafts, reduce
-fraud, and more.  Verifying an account simply means your user has
-authenticated against the account, and then you get detailed information
-for the problem you're trying to solve. For instance, for payments, you
-might want to prove a user has access to an account, get the account
-routing number, and check the amount of money in it.
+Verifying an account using Yodlee enables payments, helps avoid overdrafts,
+reduces fraud, and more. Verification means your user has authenticated
+against the account and yields detailed information such as routing number
+lookup and balance verification.
 
 **Human URL:** [https://developer.envestnet.com/products/yodlee/account-verification/docs](https://developer.envestnet.com/products/yodlee/account-verification/docs)
 
-**Base URL:** [https://api.example.com](https://api.example.com)
+#### Tags
 
-
-#### Tags:
-
- - No Tags
+- Verification
+- Payments
 
 #### Properties
 
-- [Documentation](
-https://developer.envestnet.com/products/yodlee/account-verification/docs)
+- [Documentation](https://developer.envestnet.com/products/yodlee/account-verification/docs)
 - [OpenAPI](openapi/envestnet-verification-openapi-original.yml)
+
 ### Envestnet Credit Accelerator API
 
-The Envestnet D&A Credit LLC Credit Accelerator solution allows consumers
-to link their accounts across financial institution(s) and generate a
-Credit Accelerator File for use in loan underwriting or another credit
-review and approval process.
+The Envestnet D&A Credit LLC Credit Accelerator solution allows consumers to
+link their accounts across financial institutions and generate a Credit
+Accelerator File for use in loan underwriting or another credit review and
+approval process.
 
-**Human URL:** [
-https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference](
-https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference)
+**Human URL:** [https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference](https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference)
 
-**Base URL:** [https://api.example.com](https://api.example.com)
+#### Tags
 
-
-#### Tags:
-
- - No Tags
+- Credit
+- Underwriting
 
 #### Properties
 
-- [Documentation](
-https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference)
+- [Documentation](https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference)
 - [OpenAPI](openapi/envestnet-credit-accelerator-openapi-original.yml)
+
 ### Envestnet Insights API
 
 Financial Insights APIs provide intelligent, personalized, and actionable
-insights to your end-users. This document details the APIs offered as part
-of the insights product.
+insights to your end-users.
 
-**Human URL:** [
-https://developer.envestnet.com/products/yodlee/insights/docs/api-reference](
-https://developer.envestnet.com/products/yodlee/insights/docs/api-reference)
+**Human URL:** [https://developer.envestnet.com/products/yodlee/insights/docs/api-reference](https://developer.envestnet.com/products/yodlee/insights/docs/api-reference)
 
-**Base URL:** [https://api.example.com](https://api.example.com)
+#### Tags
 
-
-#### Tags:
-
- - No Tags
+- Insights
+- Personalization
 
 #### Properties
 
-- [Documentation](
-https://developer.envestnet.com/products/yodlee/insights/docs/api-reference)
+- [Documentation](https://developer.envestnet.com/products/yodlee/insights/docs/api-reference)
 - [OpenAPI](openapi/envestnet-insights-openapi-original.yml)
+
 ### Envestnet Personalized View API
 
-Views APIs enable your end users to create personalized views of their
-finances for any expenses, hobbies, or projects relevant to them. A view
-is a collection of transactions based on rules - any combination of
-accounts, categories, merchants, locations, transaction types, and more,
-that are of interest to your users. Build preconfigured views and let your
-users further define them with a flexible user experience. This document
-details the APIs offered as part of the views product.
+Views APIs enable end users to create personalized views of their finances
+for any expenses, hobbies, or projects relevant to them. A view is a
+collection of transactions based on rules across any combination of
+accounts, categories, merchants, locations, transaction types, and more.
 
-**Human URL:** [
-https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference](
-https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference)
+**Human URL:** [https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference](https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference)
 
-**Base URL:** [https://api.example.com](https://api.example.com)
+#### Tags
 
-
-#### Tags:
-
- - No Tags
+- Personalized Views
+- Transactions
 
 #### Properties
 
-- [Documentation](
-https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference)
+- [Documentation](https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference)
 - [OpenAPI](openapi/envestnet-personalized-views-openapi-original.yml)
 
 ## Common Properties
 
+- [Website](https://www.envestnet.com/)
+- [Developer Portal](https://developer.envestnet.com/)
 - [Use Cases](https://developer.envestnet.com/use-cases)
 - [Releases](https://developer.envestnet.com/resources?type=release)
 - [Blog](https://developer.envestnet.com/resources?type=blog)
@@ -175,12 +151,11 @@ https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-refe
 - [Contact](https://developer.envestnet.com/contact-us)
 - [Press](https://www.envestnet.com/press)
 - [Privacy Policy](https://www.envestnet.com/privacy)
-- [Terms of Service](https://example.comhttps://www.envestnet.com/legal)
+- [Terms of Service](https://www.envestnet.com/legal)
 - [LinkedIn](https://www.linkedin.com/company/envestnet/)
 
 ## Maintainers
 
-**FN:** API Evangelist
+**FN:** Kin Lane
 
-**Email:** info@apievangelist.com
-
+**Email:** kin@apievangelist.com
