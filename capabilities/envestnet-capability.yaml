@@ -1,0 +1,3163 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Envestnet Aggregation APIs
+  description: 'This file describes the Yodlee Aggregation product APIs using the swagger notation that you can use to build
+    your financial application. You can generate the client SDK in Python, JavaScript, PHP, or any other languages according
+    to your development needs. For more details about the APIs, refer to <a href="https://developer.envestnet.com/resources/yodlee/yodlee-api-overview/docs">Yodlee
+    API v1.1 - Overview</a>.<br><br>You will have to set the header before making the API call. The following headers apply
+    to all the APIs:<ul><li>Authorization: This header holds the access token</li> <li> Api-Ve'
+  tags:
+  - Envestnet
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: envestnet
+    baseUri: ''
+    description: Envestnet Aggregation APIs HTTP API.
+    resources:
+    - name: consents-preferences
+      path: /consents/preferences
+      operations:
+      - name: getconsentpreferences
+        method: GET
+        description: Envestnet Get Consents Preferences
+        inputParameters:
+        - name: consentId
+          in: query
+          type: string
+          required: true
+          description: consentId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: transactions
+      path: /transactions
+      operations:
+      - name: gettransactions
+        method: GET
+        description: Envestnet Get Transactions
+        inputParameters:
+        - name: accountId
+          in: query
+          type: string
+          description: Comma separated accountIds
+        - name: baseType
+          in: query
+          type: string
+          description: DEBIT/CREDIT
+        - name: categoryId
+          in: query
+          type: string
+          description: Comma separated categoryIds
+        - name: categoryType
+          in: query
+          type: string
+          description: Transaction Category Type(LOAN, UNCATEGORIZE, INCOME, TRANSFER, EXPENSE or DEFERRED_COMPENSATION)
+        - name: container
+          in: query
+          type: string
+          description: bank/creditCard/investment/insurance/loan
+        - name: convertToCurrency
+          in: query
+          type: string
+          description: On-demand currency conversion parameter
+        - name: detailCategoryId
+          in: query
+          type: string
+          description: Comma separated detailCategoryIds
+        - name: fromDate
+          in: query
+          type: string
+          description: Transaction from date(YYYY-MM-DD)
+        - name: highLevelCategoryId
+          in: query
+          type: string
+          description: Comma separated highLevelCategoryIds
+        - name: keyword
+          in: query
+          type: string
+          description: Transaction search text
+        - name: skip
+          in: query
+          type: integer
+          description: skip (Min 0)
+        - name: toDate
+          in: query
+          type: string
+          description: Transaction end date (YYYY-MM-DD)
+        - name: top
+          in: query
+          type: integer
+          description: top (Max 500)
+        - name: type
+          in: query
+          type: string
+          description: Transaction Type(SELL,SWEEP, etc.) for bank/creditCard/investment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: auth-apikey-key
+      path: /auth/apiKey/{key}
+      operations:
+      - name: deleteapikey
+        method: DELETE
+        description: Envestnet Delete API Key
+        inputParameters:
+        - name: key
+          in: path
+          type: string
+          required: true
+          description: key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: provideraccounts
+      path: /providerAccounts
+      operations:
+      - name: getallprovideraccounts
+        method: GET
+        description: Envestnet Get Provider Accounts
+        inputParameters:
+        - name: include
+          in: query
+          type: string
+          description: include
+        - name: providerIds
+          in: query
+          type: string
+          description: Comma separated providerIds.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: editcredentialsorrefreshprovideraccount
+        method: PUT
+        description: Envestnet Update Account
+        inputParameters:
+        - name: providerAccountIds
+          in: query
+          type: string
+          required: true
+          description: comma separated providerAccountIds
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: transactions-count
+      path: /transactions/count
+      operations:
+      - name: gettransactionscount
+        method: GET
+        description: Envestnet Get Transactions Count
+        inputParameters:
+        - name: accountId
+          in: query
+          type: string
+          description: Comma separated accountIds
+        - name: baseType
+          in: query
+          type: string
+          description: DEBIT/CREDIT
+        - name: categoryId
+          in: query
+          type: string
+          description: Comma separated categoryIds
+        - name: categoryType
+          in: query
+          type: string
+          description: Transaction Category Type(LOAN, UNCATEGORIZE, INCOME, TRANSFER, EXPENSE or DEFERRED_COMPENSATION)
+        - name: container
+          in: query
+          type: string
+          description: bank/creditCard/investment/insurance/loan
+        - name: detailCategoryId
+          in: query
+          type: string
+          description: Comma separated detailCategoryIds
+        - name: fromDate
+          in: query
+          type: string
+          description: Transaction from date(YYYY-MM-DD)
+        - name: highLevelCategoryId
+          in: query
+          type: string
+          description: Comma separated highLevelCategoryIds
+        - name: keyword
+          in: query
+          type: string
+          description: Transaction search text
+        - name: toDate
+          in: query
+          type: string
+          description: Transaction end date (YYYY-MM-DD)
+        - name: type
+          in: query
+          type: string
+          description: Transaction Type(SELL,SWEEP, etc.)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: derived-transactionsummary
+      path: /derived/transactionSummary
+      operations:
+      - name: gettransactionsummary
+        method: GET
+        description: Envestnet Get Transaction Summary
+        inputParameters:
+        - name: accountId
+          in: query
+          type: string
+          description: comma separated account Ids
+        - name: categoryId
+          in: query
+          type: string
+          description: comma separated categoryIds
+        - name: categoryType
+          in: query
+          type: string
+          description: LOAN, INCOME, EXPENSE, TRANSFER, UNCATEGORIZE or DEFERRED_COMPENSATION
+        - name: fromDate
+          in: query
+          type: string
+          description: YYYY-MM-DD format
+        - name: groupBy
+          in: query
+          type: string
+          required: true
+          description: CATEGORY_TYPE, HIGH_LEVEL_CATEGORY or CATEGORY
+        - name: include
+          in: query
+          type: string
+          description: details
+        - name: includeUserCategory
+          in: query
+          type: boolean
+          description: TRUE/FALSE
+        - name: interval
+          in: query
+          type: string
+          description: D-daily, W-weekly, M-mothly or Y-yearly
+        - name: toDate
+          in: query
+          type: string
+          description: YYYY-MM-DD format
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: consents-consentid-renewal
+      path: /consents/{consentId}/renewal
+      operations:
+      - name: renewconsent
+        method: PUT
+        description: Envestnet Renew Consent
+        inputParameters:
+        - name: consentId
+          in: path
+          type: integer
+          required: true
+          description: Consent Id to be renewed.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dataextracts-userdata
+      path: /dataExtracts/userData
+      operations:
+      - name: getdataextractsuserdata
+        method: GET
+        description: Envestnet Get userData
+        inputParameters:
+        - name: fromDate
+          in: query
+          type: string
+          required: true
+          description: From DateTime (YYYY-MM-DDThh:mm:ssZ)
+        - name: loginName
+          in: query
+          type: string
+          required: true
+          description: Login Name
+        - name: toDate
+          in: query
+          type: string
+          required: true
+          description: To DateTime (YYYY-MM-DDThh:mm:ssZ)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: providers
+      path: /providers
+      operations:
+      - name: getallproviders
+        method: GET
+        description: Envestnet Get Providers
+        inputParameters:
+        - name: capability
+          in: query
+          type: string
+          description: CHALLENGE_DEPOSIT_VERIFICATION - capability search is deprecated
+        - name: dataset$filter
+          in: query
+          type: string
+          description: 'Expression to filter the providers by dataset(s) or dataset attribute(s). The default value will be
+            the dataset or dataset attributes configured as default for '
+        - name: fullAccountNumberFields
+          in: query
+          type: string
+          description: Specify to filter the providers with values paymentAccountNumber,unmaskedAccountNumber.
+        - name: institutionId
+          in: query
+          type: integer
+          description: Institution Id for Single site selection
+        - name: name
+          in: query
+          type: string
+          description: Name in minimum 1 character or routing number.
+        - name: priority
+          in: query
+          type: string
+          description: Search priority
+        - name: providerId
+          in: query
+          type: string
+          description: Max 5 Comma seperated Provider Ids
+        - name: skip
+          in: query
+          type: integer
+          description: skip (Min 0) - This is not applicable along with 'name' parameter.
+        - name: top
+          in: query
+          type: integer
+          description: top (Max 500) - This is not applicable along with 'name' parameter.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: provideraccounts-refresh
+      path: /providerAccounts/refresh
+      operations:
+      - name: refreshprovideraccount
+        method: PUT
+        description: Envestnet Refresh Provider Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: providers-providerid
+      path: /providers/{providerId}
+      operations:
+      - name: getprovider
+        method: GET
+        description: Envestnet Get Provider Details
+        inputParameters:
+        - name: providerId
+          in: path
+          type: integer
+          required: true
+          description: providerId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: transactions-categories-txnrules
+      path: /transactions/categories/txnRules
+      operations:
+      - name: gettransactioncategorizationrules
+        method: GET
+        description: Envestnet Get Transaction Categorization Rules
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: transactions-categories-categoryid
+      path: /transactions/categories/{categoryId}
+      operations:
+      - name: deletetransactioncategory
+        method: DELETE
+        description: Envestnet Delete Category
+        inputParameters:
+        - name: categoryId
+          in: path
+          type: integer
+          required: true
+          description: categoryId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: documents
+      path: /documents
+      operations:
+      - name: getdocuments
+        method: GET
+        description: Envestnet Get Documents
+        inputParameters:
+        - name: Keyword
+          in: query
+          type: string
+          description: The string used to search a document by its name.
+        - name: accountId
+          in: query
+          type: string
+          description: The unique identifier of an account. Retrieve documents for a given accountId.
+        - name: docType
+          in: query
+          type: string
+          description: 'Accepts only one of the following valid document types: STMT, TAX, and EBILL.'
+        - name: fromDate
+          in: query
+          type: string
+          description: The date from which documents have to be retrieved.
+        - name: toDate
+          in: query
+          type: string
+          description: The date to which documents have to be retrieved.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: accounts-evaluateaddress
+      path: /accounts/evaluateAddress
+      operations:
+      - name: evaluateaddress
+        method: POST
+        description: Envestnet Evaluate Address
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: accounts-accountid
+      path: /accounts/{accountId}
+      operations:
+      - name: getaccount
+        method: GET
+        description: Envestnet Get Account Details
+        inputParameters:
+        - name: accountId
+          in: path
+          type: integer
+          required: true
+          description: accountId
+        - name: convertToCurrency
+          in: query
+          type: string
+          description: On-demand currency conversion parameter
+        - name: include
+          in: query
+          type: string
+          description: profile, holder, fullAccountNumber, fullAccountNumberList, paymentProfile, autoRefresh<br><b>Note:</b>fullAccountNumber
+            is deprecated and is replaced with fullA
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateaccount
+        method: PUT
+        description: Envestnet Update Account
+        inputParameters:
+        - name: accountId
+          in: path
+          type: integer
+          required: true
+          description: accountId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteaccount
+        method: DELETE
+        description: Envestnet Delete Account
+        inputParameters:
+        - name: accountId
+          in: path
+          type: integer
+          required: true
+          description: accountId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: configs-notifications-events
+      path: /configs/notifications/events
+      operations:
+      - name: getsubscribednotificationevents
+        method: GET
+        description: Envestnet Get Subscribed Notification Events
+        inputParameters:
+        - name: eventName
+          in: query
+          type: string
+          description: Name of the webhook subscription event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: consents-history-count
+      path: /consents/history/count
+      operations:
+      - name: getconsenthistorycount
+        method: GET
+        description: Envestnet Get Consent History Count
+        inputParameters:
+        - name: consentId
+          in: query
+          type: string
+          required: true
+          description: Consent Id generated through POST Consent.
+        - name: fromDate
+          in: query
+          type: string
+          description: Consent History from date(YYYY-MM-DD)
+        - name: toDate
+          in: query
+          type: string
+          description: Consent History end date (YYYY-MM-DD)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: providers-count
+      path: /providers/count
+      operations:
+      - name: getproviderscount
+        method: GET
+        description: Envestnet Get Providers Count
+        inputParameters:
+        - name: capability
+          in: query
+          type: string
+          description: CHALLENGE_DEPOSIT_VERIFICATION - capability search is deprecated
+        - name: dataset$filter
+          in: query
+          type: string
+          description: 'Expression to filter the providers by dataset(s) or dataset attribute(s). The default value will be
+            the dataset or dataset attributes configured as default for '
+        - name: fullAccountNumberFields
+          in: query
+          type: string
+          description: Specify to filter the providers with values paymentAccountNumber,unmaskedAccountNumber.
+        - name: name
+          in: query
+          type: string
+          description: Name in minimum 1 character or routing number.
+        - name: priority
+          in: query
+          type: string
+          description: Search priority
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: accounts-historicalbalances
+      path: /accounts/historicalBalances
+      operations:
+      - name: gethistoricalbalances
+        method: GET
+        description: Envestnet Get Historical Balances
+        inputParameters:
+        - name: accountId
+          in: query
+          type: string
+          description: accountId
+        - name: fromDate
+          in: query
+          type: string
+          description: from date for balance retrieval (YYYY-MM-DD)
+        - name: includeCF
+          in: query
+          type: boolean
+          description: Consider carry forward logic for missing balances
+        - name: interval
+          in: query
+          type: string
+          description: D-daily, W-weekly or M-monthly
+        - name: skip
+          in: query
+          type: integer
+          description: skip (Min 0)
+        - name: toDate
+          in: query
+          type: string
+          description: toDate for balance retrieval (YYYY-MM-DD)
+        - name: top
+          in: query
+          type: integer
+          description: top (Max 500)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: consents-history
+      path: /consents/history
+      operations:
+      - name: getconsenthistory
+        method: GET
+        description: Envestnet Get Consent History
+        inputParameters:
+        - name: consentId
+          in: query
+          type: string
+          required: true
+          description: Consent Id generated through POST Consent.
+        - name: fromDate
+          in: query
+          type: string
+          description: Consent History from date(YYYY-MM-DD)
+        - name: skip
+          in: query
+          type: integer
+          description: skip (Min 0)
+        - name: toDate
+          in: query
+          type: string
+          description: Consent History end date (YYYY-MM-DD)
+        - name: top
+          in: query
+          type: integer
+          description: top (Max 500)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: derived-networth
+      path: /derived/networth
+      operations:
+      - name: getnetworth
+        method: GET
+        description: Envestnet Get Networth Summary
+        inputParameters:
+        - name: accountIds
+          in: query
+          type: string
+          description: comma separated accountIds
+        - name: container
+          in: query
+          type: string
+          description: bank/creditCard/investment/insurance/loan/realEstate/otherAssets/otherLiabilities
+        - name: fromDate
+          in: query
+          type: string
+          description: from date for balance retrieval (YYYY-MM-DD)
+        - name: include
+          in: query
+          type: string
+          description: details
+        - name: interval
+          in: query
+          type: string
+          description: D-daily, W-weekly or M-monthly
+        - name: skip
+          in: query
+          type: integer
+          description: skip (Min 0)
+        - name: toDate
+          in: query
+          type: string
+          description: toDate for balance retrieval (YYYY-MM-DD)
+        - name: top
+          in: query
+          type: integer
+          description: top (Max 500)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: user-samllogin
+      path: /user/samlLogin
+      operations:
+      - name: samllogin
+        method: POST
+        description: Envestnet Saml Login
+        inputParameters:
+        - name: issuer
+          in: query
+          type: string
+          required: true
+          description: issuer
+        - name: samlResponse
+          in: query
+          type: string
+          required: true
+          description: samlResponse
+        - name: source
+          in: query
+          type: string
+          description: source
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: user-register
+      path: /user/register
+      operations:
+      - name: registeruser
+        method: POST
+        description: Envestnet Register User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: holdings-securities
+      path: /holdings/securities
+      operations:
+      - name: getsecurities
+        method: GET
+        description: Envestnet Get Security Details
+        inputParameters:
+        - name: holdingId
+          in: query
+          type: string
+          description: Comma separated holdingId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: configs-notifications-events-eventname
+      path: /configs/notifications/events/{eventName}
+      operations:
+      - name: updatesubscribednotificationevent
+        method: PUT
+        description: Envestnet Update Notification Subscription
+        inputParameters:
+        - name: eventName
+          in: path
+          type: string
+          required: true
+          description: Name of the webhook subscription event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createsubscriptionnotificationevent
+        method: POST
+        description: Envestnet Subscribe For Notification Event
+        inputParameters:
+        - name: eventName
+          in: path
+          type: string
+          required: true
+          description: Name of the webhook subscription event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletesubscribednotificationevent
+        method: DELETE
+        description: Envestnet Delete Notification Subscription
+        inputParameters:
+        - name: eventName
+          in: path
+          type: string
+          required: true
+          description: Name of the webhook subscription event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: holdings
+      path: /holdings
+      operations:
+      - name: getholdings
+        method: GET
+        description: Envestnet Get Holdings
+        inputParameters:
+        - name: accountId
+          in: query
+          type: string
+          description: Comma separated accountId
+        - name: assetClassification.classificationType
+          in: query
+          type: string
+          description: e.g. Country, Sector, etc.
+        - name: classificationValue
+          in: query
+          type: string
+          description: e.g. US
+        - name: include
+          in: query
+          type: string
+          description: assetClassification
+        - name: providerAccountId
+          in: query
+          type: string
+          description: providerAccountId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: addholding
+        method: POST
+        description: Envestnet Add Holding
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: auth-apikey
+      path: /auth/apiKey
+      operations:
+      - name: getapikeys
+        method: GET
+        description: Envestnet Get API Keys
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: generateapikey
+        method: POST
+        description: Envestnet Generate API Key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: transactions-categories-rules-ruleid
+      path: /transactions/categories/rules/{ruleId}
+      operations:
+      - name: updatetransactioncategorizationrule
+        method: PUT
+        description: Envestnet Update Transaction Categorization Rule
+        inputParameters:
+        - name: ruleId
+          in: path
+          type: integer
+          required: true
+          description: ruleId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: runtransactioncategorizationrule
+        method: POST
+        description: Envestnet Run Transaction Categorization Rule
+        inputParameters:
+        - name: action
+          in: query
+          type: string
+          required: true
+        - name: ruleId
+          in: path
+          type: integer
+          required: true
+          description: Unique id of the categorization rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletetransactioncategorizationrule
+        method: DELETE
+        description: Envestnet Delete Transaction Categorization Rule
+        inputParameters:
+        - name: ruleId
+          in: path
+          type: integer
+          required: true
+          description: ruleId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: documents-documentid
+      path: /documents/{documentId}
+      operations:
+      - name: downloaddocument
+        method: GET
+        description: Envestnet Download a Document
+        inputParameters:
+        - name: documentId
+          in: path
+          type: string
+          required: true
+          description: documentId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletedocument
+        method: DELETE
+        description: Envestnet Delete Document
+        inputParameters:
+        - name: documentId
+          in: path
+          type: string
+          required: true
+          description: documentId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: user-accesstokens
+      path: /user/accessTokens
+      operations:
+      - name: getaccesstokens
+        method: GET
+        description: Envestnet Get Access Tokens
+        inputParameters:
+        - name: appIds
+          in: query
+          type: string
+          required: true
+          description: appIds
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: consents-consentid
+      path: /consents/{consentId}
+      operations:
+      - name: getconsentdetails
+        method: GET
+        description: Envestnet Get Authorization Details
+        inputParameters:
+        - name: consentId
+          in: path
+          type: integer
+          required: true
+          description: Consent Id generated through POST Consent.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateconsent
+        method: PUT
+        description: Envestnet Put Consent
+        inputParameters:
+        - name: consentId
+          in: path
+          type: integer
+          required: true
+          description: Consent Id generated through POST Consent.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: provideraccounts-provideraccountid-preferences
+      path: /providerAccounts/{providerAccountId}/preferences
+      operations:
+      - name: updatepreferences
+        method: PUT
+        description: Envestnet Update Preferences
+        inputParameters:
+        - name: providerAccountId
+          in: path
+          type: integer
+          required: true
+          description: providerAccountId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: auth-token
+      path: /auth/token
+      operations:
+      - name: generateaccesstoken
+        method: POST
+        description: Envestnet Generate Access Token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletetoken
+        method: DELETE
+        description: Envestnet Delete Token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: user
+      path: /user
+      operations:
+      - name: getuser
+        method: GET
+        description: Envestnet Get User Details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateuser
+        method: PUT
+        description: Envestnet Update User Details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: provideraccounts-provideraccountid
+      path: /providerAccounts/{providerAccountId}
+      operations:
+      - name: getprovideraccount
+        method: GET
+        description: Envestnet Get Provider Account Details
+        inputParameters:
+        - name: include
+          in: query
+          type: string
+          description: include credentials,questions
+        - name: providerAccountId
+          in: path
+          type: integer
+          required: true
+          description: providerAccountId
+        - name: requestId
+          in: query
+          type: string
+          description: The unique identifier for the request that returns contextual data
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteprovideraccount
+        method: DELETE
+        description: Envestnet Delete Provider Account
+        inputParameters:
+        - name: providerAccountId
+          in: path
+          type: integer
+          required: true
+          description: providerAccountId
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: transactions-categories
+      path: /transactions/categories
+      operations:
+      - name: gettransactioncategories
+        method: GET
+        description: Envestnet Get Transaction Category List
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatetransactioncategory
+        method: PUT
+        description: Envestnet Update Category
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createtransactioncategory
+        method: POST
+        description: Envestnet Create Category
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: transactions-categories-rules
+      path: /transactions/categories/rules
+      operations:
+      - name: gettransactioncategorizationrulesdeprecated
+        method: GET
+        description: Envestnet Get Transaction Categorization Rules
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createorruntransactioncategorizationrules
+        method: POST
+        description: Envestnet Create or Run Transaction Categorization Rule
+        inputParameters:
+        - name: action
+          in: query
+          type: string
+          description: To run rules, pass action=run. Only value run is supported
+        - name: ruleParam
+          in: query
+          type: string
+          description: rules(JSON format) to categorize the transactions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: consents
+      path: /consents
+      operations:
+      - name: getconsents
+        method: GET
+        description: Envestnet Get Consents
+        inputParameters:
+        - name: consentIds
+          in: query
+          type: string
+          description: Consent Id generated through POST Consent.
+        - name: include
+          in: query
+          type: string
+          description: The flag responsible to include renew details like sharing duration and reauthorization required
+        - name: providerAccountIds
+          in: query
+          type: string
+          description: Unique identifier for the provider account resource. This is created during account addition.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createconsent
+        method: POST
+        description: Envestnet Post Consent
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: statements
+      path: /statements
+      operations:
+      - name: getstatements
+        method: GET
+        description: Envestnet Get Statements
+        inputParameters:
+        - name: accountId
+          in: query
+          type: string
+          description: accountId
+        - name: container
+          in: query
+          type: string
+          description: creditCard/loan/insurance
+        - name: fromDate
+          in: query
+          type: string
+          description: from date for statement retrieval (YYYY-MM-DD)
+        - name: isLatest
+          in: query
+          type: string
+          description: isLatest (true/false)
+        - name: status
+          in: query
+          type: string
+          description: ACTIVE,TO_BE_CLOSED,CLOSED
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: accounts
+      path: /accounts
+      operations:
+      - name: getallaccounts
+        method: GET
+        description: Envestnet Get Accounts
+        inputParameters:
+        - name: accountId
+          in: query
+          type: string
+          description: Comma separated accountIds.
+        - name: container
+          in: query
+          type: string
+          description: bank/creditCard/investment/insurance/loan/reward/realEstate/otherAssets/otherLiabilities
+        - name: convertToCurrency
+          in: query
+          type: string
+          description: On-demand currency conversion parameter
+        - name: include
+          in: query
+          type: string
+          description: profile, holder, fullAccountNumber, fullAccountNumberList, paymentProfile, autoRefresh<br><b>Note:</b><br><li>fullAccountNumber
+            is deprecated and is replaced wi
+        - name: providerAccountId
+          in: query
+          type: string
+          description: Comma separated providerAccountIds.
+        - name: requestId
+          in: query
+          type: string
+          description: The unique identifier that returns contextual data
+        - name: status
+          in: query
+          type: string
+          description: ACTIVE,INACTIVE,TO_BE_CLOSED,CLOSED
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createmanualaccount
+        method: POST
+        description: Envestnet Add Manual Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: envestnet-rest
+    description: REST adapter for Envestnet Aggregation APIs.
+    resources:
+    - path: /consents/preferences
+      name: getconsentpreferences
+      operations:
+      - method: GET
+        name: getconsentpreferences
+        description: Envestnet Get Consents Preferences
+        call: envestnet.getconsentpreferences
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /transactions
+      name: gettransactions
+      operations:
+      - method: GET
+        name: gettransactions
+        description: Envestnet Get Transactions
+        call: envestnet.gettransactions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /auth/apiKey/{key}
+      name: deleteapikey
+      operations:
+      - method: DELETE
+        name: deleteapikey
+        description: Envestnet Delete API Key
+        call: envestnet.deleteapikey
+        with:
+          key: rest.key
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /providerAccounts
+      name: getallprovideraccounts
+      operations:
+      - method: GET
+        name: getallprovideraccounts
+        description: Envestnet Get Provider Accounts
+        call: envestnet.getallprovideraccounts
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /providerAccounts
+      name: editcredentialsorrefreshprovideraccount
+      operations:
+      - method: PUT
+        name: editcredentialsorrefreshprovideraccount
+        description: Envestnet Update Account
+        call: envestnet.editcredentialsorrefreshprovideraccount
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /transactions/count
+      name: gettransactionscount
+      operations:
+      - method: GET
+        name: gettransactionscount
+        description: Envestnet Get Transactions Count
+        call: envestnet.gettransactionscount
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /derived/transactionSummary
+      name: gettransactionsummary
+      operations:
+      - method: GET
+        name: gettransactionsummary
+        description: Envestnet Get Transaction Summary
+        call: envestnet.gettransactionsummary
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /consents/{consentId}/renewal
+      name: renewconsent
+      operations:
+      - method: PUT
+        name: renewconsent
+        description: Envestnet Renew Consent
+        call: envestnet.renewconsent
+        with:
+          consentId: rest.consentId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /dataExtracts/userData
+      name: getdataextractsuserdata
+      operations:
+      - method: GET
+        name: getdataextractsuserdata
+        description: Envestnet Get userData
+        call: envestnet.getdataextractsuserdata
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /providers
+      name: getallproviders
+      operations:
+      - method: GET
+        name: getallproviders
+        description: Envestnet Get Providers
+        call: envestnet.getallproviders
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /providerAccounts/refresh
+      name: refreshprovideraccount
+      operations:
+      - method: PUT
+        name: refreshprovideraccount
+        description: Envestnet Refresh Provider Account
+        call: envestnet.refreshprovideraccount
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /providers/{providerId}
+      name: getprovider
+      operations:
+      - method: GET
+        name: getprovider
+        description: Envestnet Get Provider Details
+        call: envestnet.getprovider
+        with:
+          providerId: rest.providerId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /transactions/categories/txnRules
+      name: gettransactioncategorizationrules
+      operations:
+      - method: GET
+        name: gettransactioncategorizationrules
+        description: Envestnet Get Transaction Categorization Rules
+        call: envestnet.gettransactioncategorizationrules
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /transactions/categories/{categoryId}
+      name: deletetransactioncategory
+      operations:
+      - method: DELETE
+        name: deletetransactioncategory
+        description: Envestnet Delete Category
+        call: envestnet.deletetransactioncategory
+        with:
+          categoryId: rest.categoryId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /documents
+      name: getdocuments
+      operations:
+      - method: GET
+        name: getdocuments
+        description: Envestnet Get Documents
+        call: envestnet.getdocuments
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /accounts/evaluateAddress
+      name: evaluateaddress
+      operations:
+      - method: POST
+        name: evaluateaddress
+        description: Envestnet Evaluate Address
+        call: envestnet.evaluateaddress
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /accounts/{accountId}
+      name: getaccount
+      operations:
+      - method: GET
+        name: getaccount
+        description: Envestnet Get Account Details
+        call: envestnet.getaccount
+        with:
+          accountId: rest.accountId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /accounts/{accountId}
+      name: updateaccount
+      operations:
+      - method: PUT
+        name: updateaccount
+        description: Envestnet Update Account
+        call: envestnet.updateaccount
+        with:
+          accountId: rest.accountId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /accounts/{accountId}
+      name: deleteaccount
+      operations:
+      - method: DELETE
+        name: deleteaccount
+        description: Envestnet Delete Account
+        call: envestnet.deleteaccount
+        with:
+          accountId: rest.accountId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /configs/notifications/events
+      name: getsubscribednotificationevents
+      operations:
+      - method: GET
+        name: getsubscribednotificationevents
+        description: Envestnet Get Subscribed Notification Events
+        call: envestnet.getsubscribednotificationevents
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /consents/history/count
+      name: getconsenthistorycount
+      operations:
+      - method: GET
+        name: getconsenthistorycount
+        description: Envestnet Get Consent History Count
+        call: envestnet.getconsenthistorycount
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /providers/count
+      name: getproviderscount
+      operations:
+      - method: GET
+        name: getproviderscount
+        description: Envestnet Get Providers Count
+        call: envestnet.getproviderscount
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /accounts/historicalBalances
+      name: gethistoricalbalances
+      operations:
+      - method: GET
+        name: gethistoricalbalances
+        description: Envestnet Get Historical Balances
+        call: envestnet.gethistoricalbalances
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /consents/history
+      name: getconsenthistory
+      operations:
+      - method: GET
+        name: getconsenthistory
+        description: Envestnet Get Consent History
+        call: envestnet.getconsenthistory
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /derived/networth
+      name: getnetworth
+      operations:
+      - method: GET
+        name: getnetworth
+        description: Envestnet Get Networth Summary
+        call: envestnet.getnetworth
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /user/samlLogin
+      name: samllogin
+      operations:
+      - method: POST
+        name: samllogin
+        description: Envestnet Saml Login
+        call: envestnet.samllogin
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /user/register
+      name: registeruser
+      operations:
+      - method: POST
+        name: registeruser
+        description: Envestnet Register User
+        call: envestnet.registeruser
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /holdings/securities
+      name: getsecurities
+      operations:
+      - method: GET
+        name: getsecurities
+        description: Envestnet Get Security Details
+        call: envestnet.getsecurities
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /configs/notifications/events/{eventName}
+      name: updatesubscribednotificationevent
+      operations:
+      - method: PUT
+        name: updatesubscribednotificationevent
+        description: Envestnet Update Notification Subscription
+        call: envestnet.updatesubscribednotificationevent
+        with:
+          eventName: rest.eventName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /configs/notifications/events/{eventName}
+      name: createsubscriptionnotificationevent
+      operations:
+      - method: POST
+        name: createsubscriptionnotificationevent
+        description: Envestnet Subscribe For Notification Event
+        call: envestnet.createsubscriptionnotificationevent
+        with:
+          eventName: rest.eventName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /configs/notifications/events/{eventName}
+      name: deletesubscribednotificationevent
+      operations:
+      - method: DELETE
+        name: deletesubscribednotificationevent
+        description: Envestnet Delete Notification Subscription
+        call: envestnet.deletesubscribednotificationevent
+        with:
+          eventName: rest.eventName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /holdings
+      name: getholdings
+      operations:
+      - method: GET
+        name: getholdings
+        description: Envestnet Get Holdings
+        call: envestnet.getholdings
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /holdings
+      name: addholding
+      operations:
+      - method: POST
+        name: addholding
+        description: Envestnet Add Holding
+        call: envestnet.addholding
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /auth/apiKey
+      name: getapikeys
+      operations:
+      - method: GET
+        name: getapikeys
+        description: Envestnet Get API Keys
+        call: envestnet.getapikeys
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /auth/apiKey
+      name: generateapikey
+      operations:
+      - method: POST
+        name: generateapikey
+        description: Envestnet Generate API Key
+        call: envestnet.generateapikey
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /transactions/categories/rules/{ruleId}
+      name: updatetransactioncategorizationrule
+      operations:
+      - method: PUT
+        name: updatetransactioncategorizationrule
+        description: Envestnet Update Transaction Categorization Rule
+        call: envestnet.updatetransactioncategorizationrule
+        with:
+          ruleId: rest.ruleId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /transactions/categories/rules/{ruleId}
+      name: runtransactioncategorizationrule
+      operations:
+      - method: POST
+        name: runtransactioncategorizationrule
+        description: Envestnet Run Transaction Categorization Rule
+        call: envestnet.runtransactioncategorizationrule
+        with:
+          ruleId: rest.ruleId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /transactions/categories/rules/{ruleId}
+      name: deletetransactioncategorizationrule
+      operations:
+      - method: DELETE
+        name: deletetransactioncategorizationrule
+        description: Envestnet Delete Transaction Categorization Rule
+        call: envestnet.deletetransactioncategorizationrule
+        with:
+          ruleId: rest.ruleId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /documents/{documentId}
+      name: downloaddocument
+      operations:
+      - method: GET
+        name: downloaddocument
+        description: Envestnet Download a Document
+        call: envestnet.downloaddocument
+        with:
+          documentId: rest.documentId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /documents/{documentId}
+      name: deletedocument
+      operations:
+      - method: DELETE
+        name: deletedocument
+        description: Envestnet Delete Document
+        call: envestnet.deletedocument
+        with:
+          documentId: rest.documentId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /user/accessTokens
+      name: getaccesstokens
+      operations:
+      - method: GET
+        name: getaccesstokens
+        description: Envestnet Get Access Tokens
+        call: envestnet.getaccesstokens
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /consents/{consentId}
+      name: getconsentdetails
+      operations:
+      - method: GET
+        name: getconsentdetails
+        description: Envestnet Get Authorization Details
+        call: envestnet.getconsentdetails
+        with:
+          consentId: rest.consentId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /consents/{consentId}
+      name: updateconsent
+      operations:
+      - method: PUT
+        name: updateconsent
+        description: Envestnet Put Consent
+        call: envestnet.updateconsent
+        with:
+          consentId: rest.consentId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /providerAccounts/{providerAccountId}/preferences
+      name: updatepreferences
+      operations:
+      - method: PUT
+        name: updatepreferences
+        description: Envestnet Update Preferences
+        call: envestnet.updatepreferences
+        with:
+          providerAccountId: rest.providerAccountId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /auth/token
+      name: generateaccesstoken
+      operations:
+      - method: POST
+        name: generateaccesstoken
+        description: Envestnet Generate Access Token
+        call: envestnet.generateaccesstoken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /auth/token
+      name: deletetoken
+      operations:
+      - method: DELETE
+        name: deletetoken
+        description: Envestnet Delete Token
+        call: envestnet.deletetoken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /user
+      name: getuser
+      operations:
+      - method: GET
+        name: getuser
+        description: Envestnet Get User Details
+        call: envestnet.getuser
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /user
+      name: updateuser
+      operations:
+      - method: PUT
+        name: updateuser
+        description: Envestnet Update User Details
+        call: envestnet.updateuser
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /providerAccounts/{providerAccountId}
+      name: getprovideraccount
+      operations:
+      - method: GET
+        name: getprovideraccount
+        description: Envestnet Get Provider Account Details
+        call: envestnet.getprovideraccount
+        with:
+          providerAccountId: rest.providerAccountId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /providerAccounts/{providerAccountId}
+      name: deleteprovideraccount
+      operations:
+      - method: DELETE
+        name: deleteprovideraccount
+        description: Envestnet Delete Provider Account
+        call: envestnet.deleteprovideraccount
+        with:
+          providerAccountId: rest.providerAccountId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /transactions/categories
+      name: gettransactioncategories
+      operations:
+      - method: GET
+        name: gettransactioncategories
+        description: Envestnet Get Transaction Category List
+        call: envestnet.gettransactioncategories
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /transactions/categories
+      name: updatetransactioncategory
+      operations:
+      - method: PUT
+        name: updatetransactioncategory
+        description: Envestnet Update Category
+        call: envestnet.updatetransactioncategory
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /transactions/categories
+      name: createtransactioncategory
+      operations:
+      - method: POST
+        name: createtransactioncategory
+        description: Envestnet Create Category
+        call: envestnet.createtransactioncategory
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /transactions/categories/rules
+      name: gettransactioncategorizationrulesdeprecated
+      operations:
+      - method: GET
+        name: gettransactioncategorizationrulesdeprecated
+        description: Envestnet Get Transaction Categorization Rules
+        call: envestnet.gettransactioncategorizationrulesdeprecated
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /transactions/categories/rules
+      name: createorruntransactioncategorizationrules
+      operations:
+      - method: POST
+        name: createorruntransactioncategorizationrules
+        description: Envestnet Create or Run Transaction Categorization Rule
+        call: envestnet.createorruntransactioncategorizationrules
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /consents
+      name: getconsents
+      operations:
+      - method: GET
+        name: getconsents
+        description: Envestnet Get Consents
+        call: envestnet.getconsents
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /consents
+      name: createconsent
+      operations:
+      - method: POST
+        name: createconsent
+        description: Envestnet Post Consent
+        call: envestnet.createconsent
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /statements
+      name: getstatements
+      operations:
+      - method: GET
+        name: getstatements
+        description: Envestnet Get Statements
+        call: envestnet.getstatements
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /accounts
+      name: getallaccounts
+      operations:
+      - method: GET
+        name: getallaccounts
+        description: Envestnet Get Accounts
+        call: envestnet.getallaccounts
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /accounts
+      name: createmanualaccount
+      operations:
+      - method: POST
+        name: createmanualaccount
+        description: Envestnet Add Manual Account
+        call: envestnet.createmanualaccount
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: envestnet-mcp
+    transport: http
+    description: MCP adapter for Envestnet Aggregation APIs for AI agent use.
+    tools:
+    - name: getconsentpreferences
+      description: Envestnet Get Consents Preferences
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.getconsentpreferences
+      with:
+        consentId: tools.consentId
+      inputParameters:
+      - name: consentId
+        type: string
+        description: consentId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gettransactions
+      description: Envestnet Get Transactions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.gettransactions
+      with:
+        accountId: tools.accountId
+        baseType: tools.baseType
+        categoryId: tools.categoryId
+        categoryType: tools.categoryType
+        container: tools.container
+        convertToCurrency: tools.convertToCurrency
+        detailCategoryId: tools.detailCategoryId
+        fromDate: tools.fromDate
+        highLevelCategoryId: tools.highLevelCategoryId
+        keyword: tools.keyword
+        skip: tools.skip
+        toDate: tools.toDate
+        top: tools.top
+        type: tools.type
+      inputParameters:
+      - name: accountId
+        type: string
+        description: Comma separated accountIds
+      - name: baseType
+        type: string
+        description: DEBIT/CREDIT
+      - name: categoryId
+        type: string
+        description: Comma separated categoryIds
+      - name: categoryType
+        type: string
+        description: Transaction Category Type(LOAN, UNCATEGORIZE, INCOME, TRANSFER, EXPENSE or DEFERRED_COMPENSATION)
+      - name: container
+        type: string
+        description: bank/creditCard/investment/insurance/loan
+      - name: convertToCurrency
+        type: string
+        description: On-demand currency conversion parameter
+      - name: detailCategoryId
+        type: string
+        description: Comma separated detailCategoryIds
+      - name: fromDate
+        type: string
+        description: Transaction from date(YYYY-MM-DD)
+      - name: highLevelCategoryId
+        type: string
+        description: Comma separated highLevelCategoryIds
+      - name: keyword
+        type: string
+        description: Transaction search text
+      - name: skip
+        type: integer
+        description: skip (Min 0)
+      - name: toDate
+        type: string
+        description: Transaction end date (YYYY-MM-DD)
+      - name: top
+        type: integer
+        description: top (Max 500)
+      - name: type
+        type: string
+        description: Transaction Type(SELL,SWEEP, etc.) for bank/creditCard/investment
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteapikey
+      description: Envestnet Delete API Key
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: envestnet.deleteapikey
+      with:
+        key: tools.key
+      inputParameters:
+      - name: key
+        type: string
+        description: key
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getallprovideraccounts
+      description: Envestnet Get Provider Accounts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.getallprovideraccounts
+      with:
+        include: tools.include
+        providerIds: tools.providerIds
+      inputParameters:
+      - name: include
+        type: string
+        description: include
+      - name: providerIds
+        type: string
+        description: Comma separated providerIds.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: editcredentialsorrefreshprovideraccount
+      description: Envestnet Update Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: envestnet.editcredentialsorrefreshprovideraccount
+      with:
+        providerAccountIds: tools.providerAccountIds
+      inputParameters:
+      - name: providerAccountIds
+        type: string
+        description: comma separated providerAccountIds
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gettransactionscount
+      description: Envestnet Get Transactions Count
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.gettransactionscount
+      with:
+        accountId: tools.accountId
+        baseType: tools.baseType
+        categoryId: tools.categoryId
+        categoryType: tools.categoryType
+        container: tools.container
+        detailCategoryId: tools.detailCategoryId
+        fromDate: tools.fromDate
+        highLevelCategoryId: tools.highLevelCategoryId
+        keyword: tools.keyword
+        toDate: tools.toDate
+        type: tools.type
+      inputParameters:
+      - name: accountId
+        type: string
+        description: Comma separated accountIds
+      - name: baseType
+        type: string
+        description: DEBIT/CREDIT
+      - name: categoryId
+        type: string
+        description: Comma separated categoryIds
+      - name: categoryType
+        type: string
+        description: Transaction Category Type(LOAN, UNCATEGORIZE, INCOME, TRANSFER, EXPENSE or DEFERRED_COMPENSATION)
+      - name: container
+        type: string
+        description: bank/creditCard/investment/insurance/loan
+      - name: detailCategoryId
+        type: string
+        description: Comma separated detailCategoryIds
+      - name: fromDate
+        type: string
+        description: Transaction from date(YYYY-MM-DD)
+      - name: highLevelCategoryId
+        type: string
+        description: Comma separated highLevelCategoryIds
+      - name: keyword
+        type: string
+        description: Transaction search text
+      - name: toDate
+        type: string
+        description: Transaction end date (YYYY-MM-DD)
+      - name: type
+        type: string
+        description: Transaction Type(SELL,SWEEP, etc.)
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gettransactionsummary
+      description: Envestnet Get Transaction Summary
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.gettransactionsummary
+      with:
+        accountId: tools.accountId
+        categoryId: tools.categoryId
+        categoryType: tools.categoryType
+        fromDate: tools.fromDate
+        groupBy: tools.groupBy
+        include: tools.include
+        includeUserCategory: tools.includeUserCategory
+        interval: tools.interval
+        toDate: tools.toDate
+      inputParameters:
+      - name: accountId
+        type: string
+        description: comma separated account Ids
+      - name: categoryId
+        type: string
+        description: comma separated categoryIds
+      - name: categoryType
+        type: string
+        description: LOAN, INCOME, EXPENSE, TRANSFER, UNCATEGORIZE or DEFERRED_COMPENSATION
+      - name: fromDate
+        type: string
+        description: YYYY-MM-DD format
+      - name: groupBy
+        type: string
+        description: CATEGORY_TYPE, HIGH_LEVEL_CATEGORY or CATEGORY
+        required: true
+      - name: include
+        type: string
+        description: details
+      - name: includeUserCategory
+        type: boolean
+        description: TRUE/FALSE
+      - name: interval
+        type: string
+        description: D-daily, W-weekly, M-mothly or Y-yearly
+      - name: toDate
+        type: string
+        description: YYYY-MM-DD format
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: renewconsent
+      description: Envestnet Renew Consent
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: envestnet.renewconsent
+      with:
+        consentId: tools.consentId
+      inputParameters:
+      - name: consentId
+        type: integer
+        description: Consent Id to be renewed.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getdataextractsuserdata
+      description: Envestnet Get userData
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.getdataextractsuserdata
+      with:
+        fromDate: tools.fromDate
+        loginName: tools.loginName
+        toDate: tools.toDate
+      inputParameters:
+      - name: fromDate
+        type: string
+        description: From DateTime (YYYY-MM-DDThh:mm:ssZ)
+        required: true
+      - name: loginName
+        type: string
+        description: Login Name
+        required: true
+      - name: toDate
+        type: string
+        description: To DateTime (YYYY-MM-DDThh:mm:ssZ)
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getallproviders
+      description: Envestnet Get Providers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.getallproviders
+      with:
+        capability: tools.capability
+        dataset$filter: tools.dataset$filter
+        fullAccountNumberFields: tools.fullAccountNumberFields
+        institutionId: tools.institutionId
+        name: tools.name
+        priority: tools.priority
+        providerId: tools.providerId
+        skip: tools.skip
+        top: tools.top
+      inputParameters:
+      - name: capability
+        type: string
+        description: CHALLENGE_DEPOSIT_VERIFICATION - capability search is deprecated
+      - name: dataset$filter
+        type: string
+        description: 'Expression to filter the providers by dataset(s) or dataset attribute(s). The default value will be
+          the dataset or dataset attributes configured as default for '
+      - name: fullAccountNumberFields
+        type: string
+        description: Specify to filter the providers with values paymentAccountNumber,unmaskedAccountNumber.
+      - name: institutionId
+        type: integer
+        description: Institution Id for Single site selection
+      - name: name
+        type: string
+        description: Name in minimum 1 character or routing number.
+      - name: priority
+        type: string
+        description: Search priority
+      - name: providerId
+        type: string
+        description: Max 5 Comma seperated Provider Ids
+      - name: skip
+        type: integer
+        description: skip (Min 0) - This is not applicable along with 'name' parameter.
+      - name: top
+        type: integer
+        description: top (Max 500) - This is not applicable along with 'name' parameter.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: refreshprovideraccount
+      description: Envestnet Refresh Provider Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: envestnet.refreshprovideraccount
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getprovider
+      description: Envestnet Get Provider Details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.getprovider
+      with:
+        providerId: tools.providerId
+      inputParameters:
+      - name: providerId
+        type: integer
+        description: providerId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gettransactioncategorizationrules
+      description: Envestnet Get Transaction Categorization Rules
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.gettransactioncategorizationrules
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletetransactioncategory
+      description: Envestnet Delete Category
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: envestnet.deletetransactioncategory
+      with:
+        categoryId: tools.categoryId
+      inputParameters:
+      - name: categoryId
+        type: integer
+        description: categoryId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getdocuments
+      description: Envestnet Get Documents
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.getdocuments
+      with:
+        Keyword: tools.Keyword
+        accountId: tools.accountId
+        docType: tools.docType
+        fromDate: tools.fromDate
+        toDate: tools.toDate
+      inputParameters:
+      - name: Keyword
+        type: string
+        description: The string used to search a document by its name.
+      - name: accountId
+        type: string
+        description: The unique identifier of an account. Retrieve documents for a given accountId.
+      - name: docType
+        type: string
+        description: 'Accepts only one of the following valid document types: STMT, TAX, and EBILL.'
+      - name: fromDate
+        type: string
+        description: The date from which documents have to be retrieved.
+      - name: toDate
+        type: string
+        description: The date to which documents have to be retrieved.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: evaluateaddress
+      description: Envestnet Evaluate Address
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: envestnet.evaluateaddress
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getaccount
+      description: Envestnet Get Account Details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.getaccount
+      with:
+        accountId: tools.accountId
+        convertToCurrency: tools.convertToCurrency
+        include: tools.include
+      inputParameters:
+      - name: accountId
+        type: integer
+        description: accountId
+        required: true
+      - name: convertToCurrency
+        type: string
+        description: On-demand currency conversion parameter
+      - name: include
+        type: string
+        description: profile, holder, fullAccountNumber, fullAccountNumberList, paymentProfile, autoRefresh<br><b>Note:</b>fullAccountNumber
+          is deprecated and is replaced with fullA
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateaccount
+      description: Envestnet Update Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: envestnet.updateaccount
+      with:
+        accountId: tools.accountId
+      inputParameters:
+      - name: accountId
+        type: integer
+        description: accountId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteaccount
+      description: Envestnet Delete Account
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: envestnet.deleteaccount
+      with:
+        accountId: tools.accountId
+      inputParameters:
+      - name: accountId
+        type: integer
+        description: accountId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getsubscribednotificationevents
+      description: Envestnet Get Subscribed Notification Events
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.getsubscribednotificationevents
+      with:
+        eventName: tools.eventName
+      inputParameters:
+      - name: eventName
+        type: string
+        description: Name of the webhook subscription event
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getconsenthistorycount
+      description: Envestnet Get Consent History Count
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.getconsenthistorycount
+      with:
+        consentId: tools.consentId
+        fromDate: tools.fromDate
+        toDate: tools.toDate
+      inputParameters:
+      - name: consentId
+        type: string
+        description: Consent Id generated through POST Consent.
+        required: true
+      - name: fromDate
+        type: string
+        description: Consent History from date(YYYY-MM-DD)
+      - name: toDate
+        type: string
+        description: Consent History end date (YYYY-MM-DD)
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getproviderscount
+      description: Envestnet Get Providers Count
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.getproviderscount
+      with:
+        capability: tools.capability
+        dataset$filter: tools.dataset$filter
+        fullAccountNumberFields: tools.fullAccountNumberFields
+        name: tools.name
+        priority: tools.priority
+      inputParameters:
+      - name: capability
+        type: string
+        description: CHALLENGE_DEPOSIT_VERIFICATION - capability search is deprecated
+      - name: dataset$filter
+        type: string
+        description: 'Expression to filter the providers by dataset(s) or dataset attribute(s). The default value will be
+          the dataset or dataset attributes configured as default for '
+      - name: fullAccountNumberFields
+        type: string
+        description: Specify to filter the providers with values paymentAccountNumber,unmaskedAccountNumber.
+      - name: name
+        type: string
+        description: Name in minimum 1 character or routing number.
+      - name: priority
+        type: string
+        description: Search priority
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gethistoricalbalances
+      description: Envestnet Get Historical Balances
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.gethistoricalbalances
+      with:
+        accountId: tools.accountId
+        fromDate: tools.fromDate
+        includeCF: tools.includeCF
+        interval: tools.interval
+        skip: tools.skip
+        toDate: tools.toDate
+        top: tools.top
+      inputParameters:
+      - name: accountId
+        type: string
+        description: accountId
+      - name: fromDate
+        type: string
+        description: from date for balance retrieval (YYYY-MM-DD)
+      - name: includeCF
+        type: boolean
+        description: Consider carry forward logic for missing balances
+      - name: interval
+        type: string
+        description: D-daily, W-weekly or M-monthly
+      - name: skip
+        type: integer
+        description: skip (Min 0)
+      - name: toDate
+        type: string
+        description: toDate for balance retrieval (YYYY-MM-DD)
+      - name: top
+        type: integer
+        description: top (Max 500)
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getconsenthistory
+      description: Envestnet Get Consent History
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.getconsenthistory
+      with:
+        consentId: tools.consentId
+        fromDate: tools.fromDate
+        skip: tools.skip
+        toDate: tools.toDate
+        top: tools.top
+      inputParameters:
+      - name: consentId
+        type: string
+        description: Consent Id generated through POST Consent.
+        required: true
+      - name: fromDate
+        type: string
+        description: Consent History from date(YYYY-MM-DD)
+      - name: skip
+        type: integer
+        description: skip (Min 0)
+      - name: toDate
+        type: string
+        description: Consent History end date (YYYY-MM-DD)
+      - name: top
+        type: integer
+        description: top (Max 500)
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getnetworth
+      description: Envestnet Get Networth Summary
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.getnetworth
+      with:
+        accountIds: tools.accountIds
+        container: tools.container
+        fromDate: tools.fromDate
+        include: tools.include
+        interval: tools.interval
+        skip: tools.skip
+        toDate: tools.toDate
+        top: tools.top
+      inputParameters:
+      - name: accountIds
+        type: string
+        description: comma separated accountIds
+      - name: container
+        type: string
+        description: bank/creditCard/investment/insurance/loan/realEstate/otherAssets/otherLiabilities
+      - name: fromDate
+        type: string
+        description: from date for balance retrieval (YYYY-MM-DD)
+      - name: include
+        type: string
+        description: details
+      - name: interval
+        type: string
+        description: D-daily, W-weekly or M-monthly
+      - name: skip
+        type: integer
+        description: skip (Min 0)
+      - name: toDate
+        type: string
+        description: toDate for balance retrieval (YYYY-MM-DD)
+      - name: top
+        type: integer
+        description: top (Max 500)
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: samllogin
+      description: Envestnet Saml Login
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: envestnet.samllogin
+      with:
+        issuer: tools.issuer
+        samlResponse: tools.samlResponse
+        source: tools.source
+      inputParameters:
+      - name: issuer
+        type: string
+        description: issuer
+        required: true
+      - name: samlResponse
+        type: string
+        description: samlResponse
+        required: true
+      - name: source
+        type: string
+        description: source
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: registeruser
+      description: Envestnet Register User
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: envestnet.registeruser
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getsecurities
+      description: Envestnet Get Security Details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.getsecurities
+      with:
+        holdingId: tools.holdingId
+      inputParameters:
+      - name: holdingId
+        type: string
+        description: Comma separated holdingId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatesubscribednotificationevent
+      description: Envestnet Update Notification Subscription
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: envestnet.updatesubscribednotificationevent
+      with:
+        eventName: tools.eventName
+      inputParameters:
+      - name: eventName
+        type: string
+        description: Name of the webhook subscription event
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createsubscriptionnotificationevent
+      description: Envestnet Subscribe For Notification Event
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: envestnet.createsubscriptionnotificationevent
+      with:
+        eventName: tools.eventName
+      inputParameters:
+      - name: eventName
+        type: string
+        description: Name of the webhook subscription event
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletesubscribednotificationevent
+      description: Envestnet Delete Notification Subscription
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: envestnet.deletesubscribednotificationevent
+      with:
+        eventName: tools.eventName
+      inputParameters:
+      - name: eventName
+        type: string
+        description: Name of the webhook subscription event
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getholdings
+      description: Envestnet Get Holdings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.getholdings
+      with:
+        accountId: tools.accountId
+        assetClassification.classificationType: tools.assetClassification.classificationType
+        classificationValue: tools.classificationValue
+        include: tools.include
+        providerAccountId: tools.providerAccountId
+      inputParameters:
+      - name: accountId
+        type: string
+        description: Comma separated accountId
+      - name: assetClassification.classificationType
+        type: string
+        description: e.g. Country, Sector, etc.
+      - name: classificationValue
+        type: string
+        description: e.g. US
+      - name: include
+        type: string
+        description: assetClassification
+      - name: providerAccountId
+        type: string
+        description: providerAccountId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: addholding
+      description: Envestnet Add Holding
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: envestnet.addholding
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getapikeys
+      description: Envestnet Get API Keys
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.getapikeys
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: generateapikey
+      description: Envestnet Generate API Key
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: envestnet.generateapikey
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatetransactioncategorizationrule
+      description: Envestnet Update Transaction Categorization Rule
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: envestnet.updatetransactioncategorizationrule
+      with:
+        ruleId: tools.ruleId
+      inputParameters:
+      - name: ruleId
+        type: integer
+        description: ruleId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: runtransactioncategorizationrule
+      description: Envestnet Run Transaction Categorization Rule
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: envestnet.runtransactioncategorizationrule
+      with:
+        ruleId: tools.ruleId
+        action: tools.action
+      inputParameters:
+      - name: ruleId
+        type: integer
+        description: Unique id of the categorization rule
+        required: true
+      - name: action
+        type: string
+        description: action
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletetransactioncategorizationrule
+      description: Envestnet Delete Transaction Categorization Rule
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: envestnet.deletetransactioncategorizationrule
+      with:
+        ruleId: tools.ruleId
+      inputParameters:
+      - name: ruleId
+        type: integer
+        description: ruleId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: downloaddocument
+      description: Envestnet Download a Document
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.downloaddocument
+      with:
+        documentId: tools.documentId
+      inputParameters:
+      - name: documentId
+        type: string
+        description: documentId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletedocument
+      description: Envestnet Delete Document
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: envestnet.deletedocument
+      with:
+        documentId: tools.documentId
+      inputParameters:
+      - name: documentId
+        type: string
+        description: documentId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getaccesstokens
+      description: Envestnet Get Access Tokens
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.getaccesstokens
+      with:
+        appIds: tools.appIds
+      inputParameters:
+      - name: appIds
+        type: string
+        description: appIds
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getconsentdetails
+      description: Envestnet Get Authorization Details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.getconsentdetails
+      with:
+        consentId: tools.consentId
+      inputParameters:
+      - name: consentId
+        type: integer
+        description: Consent Id generated through POST Consent.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateconsent
+      description: Envestnet Put Consent
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: envestnet.updateconsent
+      with:
+        consentId: tools.consentId
+      inputParameters:
+      - name: consentId
+        type: integer
+        description: Consent Id generated through POST Consent.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatepreferences
+      description: Envestnet Update Preferences
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: envestnet.updatepreferences
+      with:
+        providerAccountId: tools.providerAccountId
+      inputParameters:
+      - name: providerAccountId
+        type: integer
+        description: providerAccountId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: generateaccesstoken
+      description: Envestnet Generate Access Token
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: envestnet.generateaccesstoken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletetoken
+      description: Envestnet Delete Token
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: envestnet.deletetoken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getuser
+      description: Envestnet Get User Details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.getuser
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateuser
+      description: Envestnet Update User Details
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: envestnet.updateuser
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getprovideraccount
+      description: Envestnet Get Provider Account Details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.getprovideraccount
+      with:
+        providerAccountId: tools.providerAccountId
+        include: tools.include
+        requestId: tools.requestId
+      inputParameters:
+      - name: providerAccountId
+        type: integer
+        description: providerAccountId
+        required: true
+      - name: include
+        type: string
+        description: include credentials,questions
+      - name: requestId
+        type: string
+        description: The unique identifier for the request that returns contextual data
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteprovideraccount
+      description: Envestnet Delete Provider Account
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: envestnet.deleteprovideraccount
+      with:
+        providerAccountId: tools.providerAccountId
+      inputParameters:
+      - name: providerAccountId
+        type: integer
+        description: providerAccountId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gettransactioncategories
+      description: Envestnet Get Transaction Category List
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.gettransactioncategories
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatetransactioncategory
+      description: Envestnet Update Category
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: envestnet.updatetransactioncategory
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createtransactioncategory
+      description: Envestnet Create Category
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: envestnet.createtransactioncategory
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gettransactioncategorizationrulesdeprecated
+      description: Envestnet Get Transaction Categorization Rules
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.gettransactioncategorizationrulesdeprecated
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createorruntransactioncategorizationrules
+      description: Envestnet Create or Run Transaction Categorization Rule
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: envestnet.createorruntransactioncategorizationrules
+      with:
+        action: tools.action
+        ruleParam: tools.ruleParam
+      inputParameters:
+      - name: action
+        type: string
+        description: To run rules, pass action=run. Only value run is supported
+      - name: ruleParam
+        type: string
+        description: rules(JSON format) to categorize the transactions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getconsents
+      description: Envestnet Get Consents
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.getconsents
+      with:
+        consentIds: tools.consentIds
+        include: tools.include
+        providerAccountIds: tools.providerAccountIds
+      inputParameters:
+      - name: consentIds
+        type: string
+        description: Consent Id generated through POST Consent.
+      - name: include
+        type: string
+        description: The flag responsible to include renew details like sharing duration and reauthorization required
+      - name: providerAccountIds
+        type: string
+        description: Unique identifier for the provider account resource. This is created during account addition.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createconsent
+      description: Envestnet Post Consent
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: envestnet.createconsent
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getstatements
+      description: Envestnet Get Statements
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.getstatements
+      with:
+        accountId: tools.accountId
+        container: tools.container
+        fromDate: tools.fromDate
+        isLatest: tools.isLatest
+        status: tools.status
+      inputParameters:
+      - name: accountId
+        type: string
+        description: accountId
+      - name: container
+        type: string
+        description: creditCard/loan/insurance
+      - name: fromDate
+        type: string
+        description: from date for statement retrieval (YYYY-MM-DD)
+      - name: isLatest
+        type: string
+        description: isLatest (true/false)
+      - name: status
+        type: string
+        description: ACTIVE,TO_BE_CLOSED,CLOSED
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getallaccounts
+      description: Envestnet Get Accounts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: envestnet.getallaccounts
+      with:
+        accountId: tools.accountId
+        container: tools.container
+        convertToCurrency: tools.convertToCurrency
+        include: tools.include
+        providerAccountId: tools.providerAccountId
+        requestId: tools.requestId
+        status: tools.status
+      inputParameters:
+      - name: accountId
+        type: string
+        description: Comma separated accountIds.
+      - name: container
+        type: string
+        description: bank/creditCard/investment/insurance/loan/reward/realEstate/otherAssets/otherLiabilities
+      - name: convertToCurrency
+        type: string
+        description: On-demand currency conversion parameter
+      - name: include
+        type: string
+        description: profile, holder, fullAccountNumber, fullAccountNumberList, paymentProfile, autoRefresh<br><b>Note:</b><br><li>fullAccountNumber
+          is deprecated and is replaced wi
+      - name: providerAccountId
+        type: string
+        description: Comma separated providerAccountIds.
+      - name: requestId
+        type: string
+        description: The unique identifier that returns contextual data
+      - name: status
+        type: string
+        description: ACTIVE,INACTIVE,TO_BE_CLOSED,CLOSED
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createmanualaccount
+      description: Envestnet Add Manual Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: envestnet.createmanualaccount
+      outputParameters:
+      - type: object
+        mapping: $.
