@@ -143,6 +143,37 @@ common:
     url: https://www.envestnet.com/legal
   - type: LinkedIn
     url: https://www.linkedin.com/company/envestnet/
+  - type: Integrations
+    url: https://www.envestnet.com/integrations
+integrations:
+  - name: Integration Hero
+  - name: Nitrogen
+  - name: Docusign
+  - name: SS&C Salentica
+  - name: Fiduciary Exchange (Insurance Exchange)
+  - name: eMoney
+  - name: FIDX Desk
+  - name: iCapital
+  - name: Fynancial
+  - name: OneVest
+  - name: GiftingNetwork
+  - name: Morningstar Direct Advisory Suite
+  - name: SmartOffice
+  - name: Canoe
+  - name: CAIS
+  - name: Arch
+  - name: Wealthbox
+  - name: Redtail
+  - name: Skience
+  - name: Practifi
+  - name: Salesforce
+  - name: Docupace
+  - name: Advisor Center
+  - name: AdvisorEngine
+  - name: iRetire
+  - name: Tamarac Unified Managed Accounts
+  - name: Arrow
+  - name: Integration_Text
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
