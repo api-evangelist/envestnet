@@ -1,0 +1,138 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Envestnet Insights API Suite — Associated Details
+  description: 'Envestnet Insights API Suite — Associated Details. 2 operations. Lead operation: Envestnet Fetch the details
+    of a insights associated with an entity Id.. Self-contained Naftiko capability covering one Envestnet business surface.'
+  tags:
+  - Envestnet
+  - Associated Details
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ENVESTNET_API_KEY: ENVESTNET_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: insights-associated-details
+    baseUri: ''
+    description: Envestnet Insights API Suite — Associated Details business capability. Self-contained, no shared references.
+    resources:
+    - name: insights-entityDetail
+      path: /insights/entityDetail
+      operations:
+      - name: getinsightdetailsbasedonentityid
+        method: GET
+        description: Envestnet Fetch the details of a insights associated with an entity Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: entityId
+          in: query
+          type: string
+          description: The unique identifier of the account or view.
+          required: true
+        - name: entityType
+          in: query
+          type: string
+          description: The unique identifier of the entity type.
+          required: true
+        - name: insightName
+          in: query
+          type: string
+          description: The unique identifier of insight Name. Comma separated multiple values can be passed.
+    - name: insights-insightDetail-insightName
+      path: /insights/insightDetail/{insightName}
+      operations:
+      - name: getentitydetailsbasedoninsightname
+        method: GET
+        description: Envestnet Fetch the details of entities associated with an insight name.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: insightName
+          in: path
+          type: string
+          description: The name identifier of the specific insight.
+          required: true
+        - name: entityType
+          in: query
+          type: string
+          description: The unique identifier of entity Type. Comma separated multiple values can be passed.
+  exposes:
+  - type: rest
+    namespace: insights-associated-details-rest
+    port: 8080
+    description: REST adapter for Envestnet Insights API Suite — Associated Details. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/insights/entitydetail
+      name: insights-entitydetail
+      description: REST surface for insights-entityDetail.
+      operations:
+      - method: GET
+        name: getinsightdetailsbasedonentityid
+        description: Envestnet Fetch the details of a insights associated with an entity Id.
+        call: insights-associated-details.getinsightdetailsbasedonentityid
+        with:
+          entityId: rest.entityId
+          entityType: rest.entityType
+          insightName: rest.insightName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/insights/insightdetail/{insightname}
+      name: insights-insightdetail-insightname
+      description: REST surface for insights-insightDetail-insightName.
+      operations:
+      - method: GET
+        name: getentitydetailsbasedoninsightname
+        description: Envestnet Fetch the details of entities associated with an insight name.
+        call: insights-associated-details.getentitydetailsbasedoninsightname
+        with:
+          insightName: rest.insightName
+          entityType: rest.entityType
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: insights-associated-details-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Envestnet Insights API Suite — Associated Details. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: envestnet-fetch-details-insights-associated
+      description: Envestnet Fetch the details of a insights associated with an entity Id.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: insights-associated-details.getinsightdetailsbasedonentityid
+      with:
+        entityId: tools.entityId
+        entityType: tools.entityType
+        insightName: tools.insightName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-fetch-details-entities-associated
+      description: Envestnet Fetch the details of entities associated with an insight name.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: insights-associated-details.getentitydetailsbasedoninsightname
+      with:
+        insightName: tools.insightName
+        entityType: tools.entityType
+      outputParameters:
+      - type: object
+        mapping: $.

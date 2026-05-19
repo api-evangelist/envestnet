@@ -1,0 +1,261 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Envestnet Aggregation APIs — Derived
+  description: 'Envestnet Aggregation APIs — Derived. 3 operations. Lead operation: Envestnet Get Holding Summary. Self-contained
+    Naftiko capability covering one Envestnet business surface.'
+  tags:
+  - Envestnet
+  - Derived
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ENVESTNET_API_KEY: ENVESTNET_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: account-aggregation-derived
+    baseUri: ''
+    description: Envestnet Aggregation APIs — Derived business capability. Self-contained, no shared references.
+    resources:
+    - name: derived-holdingSummary
+      path: /derived/holdingSummary
+      operations:
+      - name: getholdingsummary
+        method: GET
+        description: Envestnet Get Holding Summary
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountIds
+          in: query
+          type: string
+          description: Comma separated accountIds
+        - name: classificationType
+          in: query
+          type: string
+          description: e.g. Country, Sector, etc.
+        - name: include
+          in: query
+          type: string
+          description: details
+    - name: derived-networth
+      path: /derived/networth
+      operations:
+      - name: getnetworth
+        method: GET
+        description: Envestnet Get Networth Summary
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountIds
+          in: query
+          type: string
+          description: comma separated accountIds
+        - name: container
+          in: query
+          type: string
+          description: bank/creditCard/investment/insurance/loan/realEstate/otherAssets/otherLiabilities
+        - name: fromDate
+          in: query
+          type: string
+          description: from date for balance retrieval (YYYY-MM-DD)
+        - name: include
+          in: query
+          type: string
+          description: details
+        - name: interval
+          in: query
+          type: string
+          description: D-daily, W-weekly or M-monthly
+        - name: skip
+          in: query
+          type: integer
+          description: skip (Min 0)
+        - name: toDate
+          in: query
+          type: string
+          description: toDate for balance retrieval (YYYY-MM-DD)
+        - name: top
+          in: query
+          type: integer
+          description: top (Max 500)
+    - name: derived-transactionSummary
+      path: /derived/transactionSummary
+      operations:
+      - name: gettransactionsummary
+        method: GET
+        description: Envestnet Get Transaction Summary
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: query
+          type: string
+          description: comma separated account Ids
+        - name: categoryId
+          in: query
+          type: string
+          description: comma separated categoryIds
+        - name: categoryType
+          in: query
+          type: string
+          description: LOAN, INCOME, EXPENSE, TRANSFER, UNCATEGORIZE or DEFERRED_COMPENSATION
+        - name: fromDate
+          in: query
+          type: string
+          description: YYYY-MM-DD format
+        - name: groupBy
+          in: query
+          type: string
+          description: CATEGORY_TYPE, HIGH_LEVEL_CATEGORY or CATEGORY
+          required: true
+        - name: include
+          in: query
+          type: string
+          description: details
+        - name: includeUserCategory
+          in: query
+          type: boolean
+          description: TRUE/FALSE
+        - name: interval
+          in: query
+          type: string
+          description: D-daily, W-weekly, M-mothly or Y-yearly
+        - name: toDate
+          in: query
+          type: string
+          description: YYYY-MM-DD format
+  exposes:
+  - type: rest
+    namespace: account-aggregation-derived-rest
+    port: 8080
+    description: REST adapter for Envestnet Aggregation APIs — Derived. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/derived/holdingsummary
+      name: derived-holdingsummary
+      description: REST surface for derived-holdingSummary.
+      operations:
+      - method: GET
+        name: getholdingsummary
+        description: Envestnet Get Holding Summary
+        call: account-aggregation-derived.getholdingsummary
+        with:
+          accountIds: rest.accountIds
+          classificationType: rest.classificationType
+          include: rest.include
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/derived/networth
+      name: derived-networth
+      description: REST surface for derived-networth.
+      operations:
+      - method: GET
+        name: getnetworth
+        description: Envestnet Get Networth Summary
+        call: account-aggregation-derived.getnetworth
+        with:
+          accountIds: rest.accountIds
+          container: rest.container
+          fromDate: rest.fromDate
+          include: rest.include
+          interval: rest.interval
+          skip: rest.skip
+          toDate: rest.toDate
+          top: rest.top
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/derived/transactionsummary
+      name: derived-transactionsummary
+      description: REST surface for derived-transactionSummary.
+      operations:
+      - method: GET
+        name: gettransactionsummary
+        description: Envestnet Get Transaction Summary
+        call: account-aggregation-derived.gettransactionsummary
+        with:
+          accountId: rest.accountId
+          categoryId: rest.categoryId
+          categoryType: rest.categoryType
+          fromDate: rest.fromDate
+          groupBy: rest.groupBy
+          include: rest.include
+          includeUserCategory: rest.includeUserCategory
+          interval: rest.interval
+          toDate: rest.toDate
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: account-aggregation-derived-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Envestnet Aggregation APIs — Derived. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: envestnet-get-holding-summary
+      description: Envestnet Get Holding Summary
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: account-aggregation-derived.getholdingsummary
+      with:
+        accountIds: tools.accountIds
+        classificationType: tools.classificationType
+        include: tools.include
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-get-networth-summary
+      description: Envestnet Get Networth Summary
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: account-aggregation-derived.getnetworth
+      with:
+        accountIds: tools.accountIds
+        container: tools.container
+        fromDate: tools.fromDate
+        include: tools.include
+        interval: tools.interval
+        skip: tools.skip
+        toDate: tools.toDate
+        top: tools.top
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-get-transaction-summary
+      description: Envestnet Get Transaction Summary
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: account-aggregation-derived.gettransactionsummary
+      with:
+        accountId: tools.accountId
+        categoryId: tools.categoryId
+        categoryType: tools.categoryType
+        fromDate: tools.fromDate
+        groupBy: tools.groupBy
+        include: tools.include
+        includeUserCategory: tools.includeUserCategory
+        interval: tools.interval
+        toDate: tools.toDate
+      outputParameters:
+      - type: object
+        mapping: $.

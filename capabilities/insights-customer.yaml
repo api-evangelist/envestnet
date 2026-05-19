@@ -1,0 +1,102 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Envestnet Insights API Suite — Customer
+  description: 'Envestnet Insights API Suite — Customer. 2 operations. Lead operation: Envestnet Provide details of all the
+    insights available to the customer.. Self-contained Naftiko capability covering one Envestnet business surface.'
+  tags:
+  - Envestnet
+  - Customer
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ENVESTNET_API_KEY: ENVESTNET_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: insights-customer
+    baseUri: ''
+    description: Envestnet Insights API Suite — Customer business capability. Self-contained, no shared references.
+    resources:
+    - name: insights-configs-customerSubscriptions
+      path: /insights/configs/customerSubscriptions
+      operations:
+      - name: getcutomersubscription
+        method: GET
+        description: Envestnet Provide details of all the insights available to the customer.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatecustomersubscription
+        method: PATCH
+        description: Envestnet Update details of one or more customer subscribed insights.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+  exposes:
+  - type: rest
+    namespace: insights-customer-rest
+    port: 8080
+    description: REST adapter for Envestnet Insights API Suite — Customer. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/insights/configs/customersubscriptions
+      name: insights-configs-customersubscriptions
+      description: REST surface for insights-configs-customerSubscriptions.
+      operations:
+      - method: GET
+        name: getcutomersubscription
+        description: Envestnet Provide details of all the insights available to the customer.
+        call: insights-customer.getcutomersubscription
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatecustomersubscription
+        description: Envestnet Update details of one or more customer subscribed insights.
+        call: insights-customer.updatecustomersubscription
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: insights-customer-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Envestnet Insights API Suite — Customer. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: envestnet-provide-details-all-insights
+      description: Envestnet Provide details of all the insights available to the customer.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: insights-customer.getcutomersubscription
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-update-details-one-more
+      description: Envestnet Update details of one or more customer subscribed insights.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: insights-customer.updatecustomersubscription
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

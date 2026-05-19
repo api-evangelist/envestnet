@@ -1,0 +1,677 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Envestnet Aggregation APIs — Transactions
+  description: 'Envestnet Aggregation APIs — Transactions. 13 operations. Lead operation: Envestnet Get Transactions. Self-contained
+    Naftiko capability covering one Envestnet business surface.'
+  tags:
+  - Envestnet
+  - Transactions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ENVESTNET_API_KEY: ENVESTNET_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: account-aggregation-transactions
+    baseUri: ''
+    description: Envestnet Aggregation APIs — Transactions business capability. Self-contained, no shared references.
+    resources:
+    - name: transactions
+      path: /transactions
+      operations:
+      - name: gettransactions
+        method: GET
+        description: Envestnet Get Transactions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: query
+          type: string
+          description: Comma separated accountIds
+        - name: baseType
+          in: query
+          type: string
+          description: DEBIT/CREDIT
+        - name: categoryId
+          in: query
+          type: string
+          description: Comma separated categoryIds
+        - name: categoryType
+          in: query
+          type: string
+          description: Transaction Category Type(LOAN, UNCATEGORIZE, INCOME, TRANSFER, EXPENSE or DEFERRED_COMPENSATION)
+        - name: container
+          in: query
+          type: string
+          description: bank/creditCard/investment/insurance/loan
+        - name: convertToCurrency
+          in: query
+          type: string
+          description: On-demand currency conversion parameter
+        - name: detailCategoryId
+          in: query
+          type: string
+          description: Comma separated detailCategoryIds
+        - name: fromDate
+          in: query
+          type: string
+          description: Transaction from date(YYYY-MM-DD)
+        - name: highLevelCategoryId
+          in: query
+          type: string
+          description: Comma separated highLevelCategoryIds
+        - name: keyword
+          in: query
+          type: string
+          description: Transaction search text
+        - name: skip
+          in: query
+          type: integer
+          description: skip (Min 0)
+        - name: toDate
+          in: query
+          type: string
+          description: Transaction end date (YYYY-MM-DD)
+        - name: top
+          in: query
+          type: integer
+          description: top (Max 500)
+        - name: type
+          in: query
+          type: string
+          description: Transaction Type(SELL,SWEEP, etc.) for bank/creditCard/investment
+    - name: transactions-categories
+      path: /transactions/categories
+      operations:
+      - name: gettransactioncategories
+        method: GET
+        description: Envestnet Get Transaction Category List
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatetransactioncategory
+        method: PUT
+        description: Envestnet Update Category
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: createtransactioncategory
+        method: POST
+        description: Envestnet Create Category
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: transactions-categories-rules
+      path: /transactions/categories/rules
+      operations:
+      - name: gettransactioncategorizationrulesdeprecated
+        method: GET
+        description: Envestnet Get Transaction Categorization Rules
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createorruntransactioncategorizationrules
+        method: POST
+        description: Envestnet Create or Run Transaction Categorization Rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: action
+          in: query
+          type: string
+          description: To run rules, pass action=run. Only value run is supported
+        - name: ruleParam
+          in: query
+          type: string
+          description: rules(JSON format) to categorize the transactions
+    - name: transactions-categories-rules-ruleId
+      path: /transactions/categories/rules/{ruleId}
+      operations:
+      - name: updatetransactioncategorizationrule
+        method: PUT
+        description: Envestnet Update Transaction Categorization Rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ruleId
+          in: path
+          type: integer
+          description: ruleId
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: runtransactioncategorizationrule
+        method: POST
+        description: Envestnet Run Transaction Categorization Rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: action
+          in: query
+          type: string
+          required: true
+        - name: ruleId
+          in: path
+          type: integer
+          description: Unique id of the categorization rule
+          required: true
+      - name: deletetransactioncategorizationrule
+        method: DELETE
+        description: Envestnet Delete Transaction Categorization Rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ruleId
+          in: path
+          type: integer
+          description: ruleId
+          required: true
+    - name: transactions-categories-txnRules
+      path: /transactions/categories/txnRules
+      operations:
+      - name: gettransactioncategorizationrules
+        method: GET
+        description: Envestnet Get Transaction Categorization Rules
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: transactions-categories-categoryId
+      path: /transactions/categories/{categoryId}
+      operations:
+      - name: deletetransactioncategory
+        method: DELETE
+        description: Envestnet Delete Category
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: categoryId
+          in: path
+          type: integer
+          description: categoryId
+          required: true
+    - name: transactions-count
+      path: /transactions/count
+      operations:
+      - name: gettransactionscount
+        method: GET
+        description: Envestnet Get Transactions Count
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: query
+          type: string
+          description: Comma separated accountIds
+        - name: baseType
+          in: query
+          type: string
+          description: DEBIT/CREDIT
+        - name: categoryId
+          in: query
+          type: string
+          description: Comma separated categoryIds
+        - name: categoryType
+          in: query
+          type: string
+          description: Transaction Category Type(LOAN, UNCATEGORIZE, INCOME, TRANSFER, EXPENSE or DEFERRED_COMPENSATION)
+        - name: container
+          in: query
+          type: string
+          description: bank/creditCard/investment/insurance/loan
+        - name: detailCategoryId
+          in: query
+          type: string
+          description: Comma separated detailCategoryIds
+        - name: fromDate
+          in: query
+          type: string
+          description: Transaction from date(YYYY-MM-DD)
+        - name: highLevelCategoryId
+          in: query
+          type: string
+          description: Comma separated highLevelCategoryIds
+        - name: keyword
+          in: query
+          type: string
+          description: Transaction search text
+        - name: toDate
+          in: query
+          type: string
+          description: Transaction end date (YYYY-MM-DD)
+        - name: type
+          in: query
+          type: string
+          description: Transaction Type(SELL,SWEEP, etc.)
+    - name: transactions-transactionId
+      path: /transactions/{transactionId}
+      operations:
+      - name: updatetransaction
+        method: PUT
+        description: Envestnet Update Transaction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: transactionId
+          in: path
+          type: integer
+          description: transactionId
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: account-aggregation-transactions-rest
+    port: 8080
+    description: REST adapter for Envestnet Aggregation APIs — Transactions. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/transactions
+      name: transactions
+      description: REST surface for transactions.
+      operations:
+      - method: GET
+        name: gettransactions
+        description: Envestnet Get Transactions
+        call: account-aggregation-transactions.gettransactions
+        with:
+          accountId: rest.accountId
+          baseType: rest.baseType
+          categoryId: rest.categoryId
+          categoryType: rest.categoryType
+          container: rest.container
+          convertToCurrency: rest.convertToCurrency
+          detailCategoryId: rest.detailCategoryId
+          fromDate: rest.fromDate
+          highLevelCategoryId: rest.highLevelCategoryId
+          keyword: rest.keyword
+          skip: rest.skip
+          toDate: rest.toDate
+          top: rest.top
+          type: rest.type
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/transactions/categories
+      name: transactions-categories
+      description: REST surface for transactions-categories.
+      operations:
+      - method: GET
+        name: gettransactioncategories
+        description: Envestnet Get Transaction Category List
+        call: account-aggregation-transactions.gettransactioncategories
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatetransactioncategory
+        description: Envestnet Update Category
+        call: account-aggregation-transactions.updatetransactioncategory
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createtransactioncategory
+        description: Envestnet Create Category
+        call: account-aggregation-transactions.createtransactioncategory
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/transactions/categories/rules
+      name: transactions-categories-rules
+      description: REST surface for transactions-categories-rules.
+      operations:
+      - method: GET
+        name: gettransactioncategorizationrulesdeprecated
+        description: Envestnet Get Transaction Categorization Rules
+        call: account-aggregation-transactions.gettransactioncategorizationrulesdeprecated
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createorruntransactioncategorizationrules
+        description: Envestnet Create or Run Transaction Categorization Rule
+        call: account-aggregation-transactions.createorruntransactioncategorizationrules
+        with:
+          action: rest.action
+          ruleParam: rest.ruleParam
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/transactions/categories/rules/{ruleid}
+      name: transactions-categories-rules-ruleid
+      description: REST surface for transactions-categories-rules-ruleId.
+      operations:
+      - method: PUT
+        name: updatetransactioncategorizationrule
+        description: Envestnet Update Transaction Categorization Rule
+        call: account-aggregation-transactions.updatetransactioncategorizationrule
+        with:
+          ruleId: rest.ruleId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: runtransactioncategorizationrule
+        description: Envestnet Run Transaction Categorization Rule
+        call: account-aggregation-transactions.runtransactioncategorizationrule
+        with:
+          action: rest.action
+          ruleId: rest.ruleId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletetransactioncategorizationrule
+        description: Envestnet Delete Transaction Categorization Rule
+        call: account-aggregation-transactions.deletetransactioncategorizationrule
+        with:
+          ruleId: rest.ruleId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/transactions/categories/txnrules
+      name: transactions-categories-txnrules
+      description: REST surface for transactions-categories-txnRules.
+      operations:
+      - method: GET
+        name: gettransactioncategorizationrules
+        description: Envestnet Get Transaction Categorization Rules
+        call: account-aggregation-transactions.gettransactioncategorizationrules
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/transactions/categories/{categoryid}
+      name: transactions-categories-categoryid
+      description: REST surface for transactions-categories-categoryId.
+      operations:
+      - method: DELETE
+        name: deletetransactioncategory
+        description: Envestnet Delete Category
+        call: account-aggregation-transactions.deletetransactioncategory
+        with:
+          categoryId: rest.categoryId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/transactions/count
+      name: transactions-count
+      description: REST surface for transactions-count.
+      operations:
+      - method: GET
+        name: gettransactionscount
+        description: Envestnet Get Transactions Count
+        call: account-aggregation-transactions.gettransactionscount
+        with:
+          accountId: rest.accountId
+          baseType: rest.baseType
+          categoryId: rest.categoryId
+          categoryType: rest.categoryType
+          container: rest.container
+          detailCategoryId: rest.detailCategoryId
+          fromDate: rest.fromDate
+          highLevelCategoryId: rest.highLevelCategoryId
+          keyword: rest.keyword
+          toDate: rest.toDate
+          type: rest.type
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/transactions/{transactionid}
+      name: transactions-transactionid
+      description: REST surface for transactions-transactionId.
+      operations:
+      - method: PUT
+        name: updatetransaction
+        description: Envestnet Update Transaction
+        call: account-aggregation-transactions.updatetransaction
+        with:
+          transactionId: rest.transactionId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: account-aggregation-transactions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Envestnet Aggregation APIs — Transactions. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: envestnet-get-transactions
+      description: Envestnet Get Transactions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: account-aggregation-transactions.gettransactions
+      with:
+        accountId: tools.accountId
+        baseType: tools.baseType
+        categoryId: tools.categoryId
+        categoryType: tools.categoryType
+        container: tools.container
+        convertToCurrency: tools.convertToCurrency
+        detailCategoryId: tools.detailCategoryId
+        fromDate: tools.fromDate
+        highLevelCategoryId: tools.highLevelCategoryId
+        keyword: tools.keyword
+        skip: tools.skip
+        toDate: tools.toDate
+        top: tools.top
+        type: tools.type
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-get-transaction-category-list
+      description: Envestnet Get Transaction Category List
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: account-aggregation-transactions.gettransactioncategories
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-update-category
+      description: Envestnet Update Category
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: account-aggregation-transactions.updatetransactioncategory
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-create-category
+      description: Envestnet Create Category
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: account-aggregation-transactions.createtransactioncategory
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-get-transaction-categorization-rules
+      description: Envestnet Get Transaction Categorization Rules
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: account-aggregation-transactions.gettransactioncategorizationrulesdeprecated
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-create-run-transaction-categorization
+      description: Envestnet Create or Run Transaction Categorization Rule
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: account-aggregation-transactions.createorruntransactioncategorizationrules
+      with:
+        action: tools.action
+        ruleParam: tools.ruleParam
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-update-transaction-categorization-rule
+      description: Envestnet Update Transaction Categorization Rule
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: account-aggregation-transactions.updatetransactioncategorizationrule
+      with:
+        ruleId: tools.ruleId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-run-transaction-categorization-rule
+      description: Envestnet Run Transaction Categorization Rule
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: account-aggregation-transactions.runtransactioncategorizationrule
+      with:
+        action: tools.action
+        ruleId: tools.ruleId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-delete-transaction-categorization-rule
+      description: Envestnet Delete Transaction Categorization Rule
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: account-aggregation-transactions.deletetransactioncategorizationrule
+      with:
+        ruleId: tools.ruleId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-get-transaction-categorization-rules-2
+      description: Envestnet Get Transaction Categorization Rules
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: account-aggregation-transactions.gettransactioncategorizationrules
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-delete-category
+      description: Envestnet Delete Category
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: account-aggregation-transactions.deletetransactioncategory
+      with:
+        categoryId: tools.categoryId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-get-transactions-count
+      description: Envestnet Get Transactions Count
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: account-aggregation-transactions.gettransactionscount
+      with:
+        accountId: tools.accountId
+        baseType: tools.baseType
+        categoryId: tools.categoryId
+        categoryType: tools.categoryType
+        container: tools.container
+        detailCategoryId: tools.detailCategoryId
+        fromDate: tools.fromDate
+        highLevelCategoryId: tools.highLevelCategoryId
+        keyword: tools.keyword
+        toDate: tools.toDate
+        type: tools.type
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-update-transaction
+      description: Envestnet Update Transaction
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: account-aggregation-transactions.updatetransaction
+      with:
+        transactionId: tools.transactionId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

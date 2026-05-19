@@ -1,0 +1,287 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Envestnet Verification APIs — Transactions
+  description: 'Envestnet Verification APIs — Transactions. 3 operations. Lead operation: Envestnet Get Transactions. Self-contained
+    Naftiko capability covering one Envestnet business surface.'
+  tags:
+  - Envestnet
+  - Transactions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ENVESTNET_API_KEY: ENVESTNET_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: verification-transactions
+    baseUri: ''
+    description: Envestnet Verification APIs — Transactions business capability. Self-contained, no shared references.
+    resources:
+    - name: transactions
+      path: /transactions
+      operations:
+      - name: gettransactions
+        method: GET
+        description: Envestnet Get Transactions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: query
+          type: string
+          description: Comma separated accountIds
+        - name: baseType
+          in: query
+          type: string
+          description: DEBIT/CREDIT
+        - name: categoryId
+          in: query
+          type: string
+          description: Comma separated categoryIds
+        - name: categoryType
+          in: query
+          type: string
+          description: Transaction Category Type(LOAN, UNCATEGORIZE, INCOME, TRANSFER, EXPENSE or DEFERRED_COMPENSATION)
+        - name: container
+          in: query
+          type: string
+          description: bank/creditCard/investment/insurance/loan
+        - name: convertToCurrency
+          in: query
+          type: string
+          description: On-demand currency conversion parameter
+        - name: detailCategoryId
+          in: query
+          type: string
+          description: Comma separated detailCategoryIds
+        - name: fromDate
+          in: query
+          type: string
+          description: Transaction from date(YYYY-MM-DD)
+        - name: highLevelCategoryId
+          in: query
+          type: string
+          description: Comma separated highLevelCategoryIds
+        - name: keyword
+          in: query
+          type: string
+          description: Transaction search text
+        - name: skip
+          in: query
+          type: integer
+          description: skip (Min 0)
+        - name: toDate
+          in: query
+          type: string
+          description: Transaction end date (YYYY-MM-DD)
+        - name: top
+          in: query
+          type: integer
+          description: top (Max 500)
+        - name: type
+          in: query
+          type: string
+          description: Transaction Type(SELL,SWEEP, etc.) for bank/creditCard/investment
+    - name: transactions-categories
+      path: /transactions/categories
+      operations:
+      - name: gettransactioncategories
+        method: GET
+        description: Envestnet Get Transaction Category List
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: transactions-count
+      path: /transactions/count
+      operations:
+      - name: gettransactionscount
+        method: GET
+        description: Envestnet Get Transactions Count
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: query
+          type: string
+          description: Comma separated accountIds
+        - name: baseType
+          in: query
+          type: string
+          description: DEBIT/CREDIT
+        - name: categoryId
+          in: query
+          type: string
+          description: Comma separated categoryIds
+        - name: categoryType
+          in: query
+          type: string
+          description: Transaction Category Type(LOAN, UNCATEGORIZE, INCOME, TRANSFER, EXPENSE or DEFERRED_COMPENSATION)
+        - name: container
+          in: query
+          type: string
+          description: bank/creditCard/investment/insurance/loan
+        - name: detailCategoryId
+          in: query
+          type: string
+          description: Comma separated detailCategoryIds
+        - name: fromDate
+          in: query
+          type: string
+          description: Transaction from date(YYYY-MM-DD)
+        - name: highLevelCategoryId
+          in: query
+          type: string
+          description: Comma separated highLevelCategoryIds
+        - name: keyword
+          in: query
+          type: string
+          description: Transaction search text
+        - name: toDate
+          in: query
+          type: string
+          description: Transaction end date (YYYY-MM-DD)
+        - name: type
+          in: query
+          type: string
+          description: Transaction Type(SELL,SWEEP, etc.)
+  exposes:
+  - type: rest
+    namespace: verification-transactions-rest
+    port: 8080
+    description: REST adapter for Envestnet Verification APIs — Transactions. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/transactions
+      name: transactions
+      description: REST surface for transactions.
+      operations:
+      - method: GET
+        name: gettransactions
+        description: Envestnet Get Transactions
+        call: verification-transactions.gettransactions
+        with:
+          accountId: rest.accountId
+          baseType: rest.baseType
+          categoryId: rest.categoryId
+          categoryType: rest.categoryType
+          container: rest.container
+          convertToCurrency: rest.convertToCurrency
+          detailCategoryId: rest.detailCategoryId
+          fromDate: rest.fromDate
+          highLevelCategoryId: rest.highLevelCategoryId
+          keyword: rest.keyword
+          skip: rest.skip
+          toDate: rest.toDate
+          top: rest.top
+          type: rest.type
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/transactions/categories
+      name: transactions-categories
+      description: REST surface for transactions-categories.
+      operations:
+      - method: GET
+        name: gettransactioncategories
+        description: Envestnet Get Transaction Category List
+        call: verification-transactions.gettransactioncategories
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/transactions/count
+      name: transactions-count
+      description: REST surface for transactions-count.
+      operations:
+      - method: GET
+        name: gettransactionscount
+        description: Envestnet Get Transactions Count
+        call: verification-transactions.gettransactionscount
+        with:
+          accountId: rest.accountId
+          baseType: rest.baseType
+          categoryId: rest.categoryId
+          categoryType: rest.categoryType
+          container: rest.container
+          detailCategoryId: rest.detailCategoryId
+          fromDate: rest.fromDate
+          highLevelCategoryId: rest.highLevelCategoryId
+          keyword: rest.keyword
+          toDate: rest.toDate
+          type: rest.type
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: verification-transactions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Envestnet Verification APIs — Transactions. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: envestnet-get-transactions
+      description: Envestnet Get Transactions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: verification-transactions.gettransactions
+      with:
+        accountId: tools.accountId
+        baseType: tools.baseType
+        categoryId: tools.categoryId
+        categoryType: tools.categoryType
+        container: tools.container
+        convertToCurrency: tools.convertToCurrency
+        detailCategoryId: tools.detailCategoryId
+        fromDate: tools.fromDate
+        highLevelCategoryId: tools.highLevelCategoryId
+        keyword: tools.keyword
+        skip: tools.skip
+        toDate: tools.toDate
+        top: tools.top
+        type: tools.type
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-get-transaction-category-list
+      description: Envestnet Get Transaction Category List
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: verification-transactions.gettransactioncategories
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-get-transactions-count
+      description: Envestnet Get Transactions Count
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: verification-transactions.gettransactionscount
+      with:
+        accountId: tools.accountId
+        baseType: tools.baseType
+        categoryId: tools.categoryId
+        categoryType: tools.categoryType
+        container: tools.container
+        detailCategoryId: tools.detailCategoryId
+        fromDate: tools.fromDate
+        highLevelCategoryId: tools.highLevelCategoryId
+        keyword: tools.keyword
+        toDate: tools.toDate
+        type: tools.type
+      outputParameters:
+      - type: object
+        mapping: $.

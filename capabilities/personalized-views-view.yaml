@@ -1,0 +1,1049 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Envestnet View API Suite — View
+  description: 'Envestnet View API Suite — View. 15 operations. Lead operation: Envestnet Create a view for a user.. Self-contained
+    Naftiko capability covering one Envestnet business surface.'
+  tags:
+  - Envestnet
+  - View
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ENVESTNET_API_KEY: ENVESTNET_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: personalized-views-view
+    baseUri: ''
+    description: Envestnet View API Suite — View business capability. Self-contained, no shared references.
+    resources:
+    - name: views
+      path: /views
+      operations:
+      - name: createuserview
+        method: POST
+        description: Envestnet Create a view for a user.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: getuserviews
+        method: GET
+        description: Envestnet Fetch the details of all the views associated with a user.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: include
+          in: query
+          type: string
+          description: Pass <i>include=rules</i> to retrieve the active rules that are associated with the view ID.
+        - name: sourceType
+          in: query
+          type: string
+          description: This field indicates if the view is created by the system or by the user.</br> Pass <i>sourceType=SYSTEM/USER</i>
+            to retrieve the views with the  given source t
+        - name: orderBy
+          in: query
+          type: string
+          description: Single value of orderBy need to be passed. Data returned will be ordered by the filter value.
+        - name: sortBy
+          in: query
+          type: string
+          description: Single value of sortBy need to be passed. Data returned will be ordered in ascending or descending
+            order.
+    - name: views-recommendations
+      path: /views/recommendations
+      operations:
+      - name: getuserviewrecommendations
+        method: GET
+        description: Envestnet Fetch recommended Views for a user.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: views-system
+      path: /views/system
+      operations:
+      - name: createsystemview
+        method: POST
+        description: Envestnet Create a default view for a user.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: views-viewId
+      path: /views/{viewId}
+      operations:
+      - name: getuserview
+        method: GET
+        description: Envestnet Fetch the details of a specific view.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: viewId
+          in: path
+          type: string
+          description: The unique identifier of the view.
+          required: true
+        - name: include
+          in: query
+          type: string
+          description: Pass <i>include=rules</i> to retrieve the rules that are associated with the view ID.
+      - name: updateuserview
+        method: PUT
+        description: Envestnet Update details of an existing view.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: viewId
+          in: path
+          type: string
+          description: The unique identifier of the view that has to be updated.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deleteuserview
+        method: DELETE
+        description: Envestnet Delete a specific view.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: viewId
+          in: path
+          type: string
+          description: The unique identifier of the View.
+          required: true
+    - name: views-viewId-budgetSummary
+      path: /views/{viewId}/budgetSummary
+      operations:
+      - name: getuserbudgetsummary
+        method: GET
+        description: Envestnet Fetch BudgetSummary for specific View.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: viewId
+          in: path
+          type: string
+          description: The unique identifier of the view.
+          required: true
+        - name: type
+          in: query
+          type: string
+          description: type identifies the budget entity for which data needs to be fetched. The type should belong to the
+            same budgetData and View ID. <br><br> Multiple comma seperat
+          required: true
+    - name: views-viewId-budgets
+      path: /views/{viewId}/budgets
+      operations:
+      - name: patchuserviewbudget
+        method: PATCH
+        description: Envestnet Patch the specified budget data for a specific view.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: viewId
+          in: path
+          type: string
+          description: The unique identifier of the View.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deleteuserviewbudget
+        method: DELETE
+        description: Envestnet Delete the specified budget data for a specific view.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: viewId
+          in: path
+          type: string
+          description: The unique identifier of the View.
+          required: true
+        - name: type
+          in: query
+          type: string
+          description: type identifies the budget entity to be deleted.
+        - name: typeName
+          in: query
+          type: string
+          description: typeName identifies the merchant name for which the budget
+        - name: typeId
+          in: query
+          type: number
+          description: The unique identifier of the Category or detailed category for which the budget is set. Multiple comma
+            seperated values are allowed.
+        - name: budgetInfo
+          in: query
+          type: string
+          description: The unique identifier of the budgetInfo. Comma separated multiple values can be passed. budgetInfo
+            should be accompanied by one of the following - type, typeId,
+    - name: views-viewId-peerData
+      path: /views/{viewId}/peerData
+      operations:
+      - name: getuserviewpeerdata
+        method: GET
+        description: Envestnet Fetch all the applicable peer benchmarking data.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: viewId
+          in: path
+          type: string
+          description: The unique identifier of the view.
+          required: true
+        - name: timePeriod
+          in: query
+          type: string
+          description: timePeriod filter for the duration of peer benchmarking data that should be considered for the list
+            of transaction categories and merchants present in the inclu
+    - name: views-viewId-rules
+      path: /views/{viewId}/rules
+      operations:
+      - name: deleteuserviewrule
+        method: DELETE
+        description: Envestnet Delete the specified rules for a specific view.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: viewId
+          in: path
+          type: string
+          description: The unique identifier of the View.
+          required: true
+        - name: ruleId
+          in: query
+          type: string
+          description: The unique identifier of the rule. Comma separated multiple values can be passed. Rule ID should belong
+            to the same View ID
+          required: true
+    - name: views-viewId-transactionSummary
+      path: /views/{viewId}/transactionSummary
+      operations:
+      - name: getuserviewtransactionsummary
+        method: GET
+        description: Envestnet Fetch summary data for a specific View.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: viewId
+          in: path
+          type: string
+          description: The unique identifier of the view.
+          required: true
+        - name: fromDate
+          in: query
+          type: string
+          description: fromDate filter for the View Rules with format - yyyy-MM-dd'T'HH:mm:ss or yyyy-MM-dd
+        - name: toDate
+          in: query
+          type: string
+          description: toDate filter for the View Rules with format - yyyy-MM-ddTHH:mm:ss or yyyy-MM-dd
+        - name: categoryId
+          in: query
+          type: string
+          description: Comma-separated array of Transaction Category Ids filter for the View Rules
+        - name: detailCategoryId
+          in: query
+          type: string
+          description: Comma-separated array of Transaction Detail Category Ids filter for the View Rules
+        - name: merchantName
+          in: query
+          type: string
+          description: Comma-separated array of Merchant Names filter for the View Rules. No validation require for merchantName.
+        - name: ruleType
+          in: query
+          type: string
+          description: Comma-separated array of ruleType. Only INCOME, EXPENSE and TRANSFER ruleType is possible.
+        - name: accountId
+          in: query
+          type: string
+          description: Comma-separated list of account Ids. Only integer values are supported.
+        - name: merchantType
+          in: query
+          type: string
+          description: Comma-separated array of Merchant Types. Supported value are BILLERS and SUBSCRIPTION.
+        - name: city
+          in: query
+          type: string
+          description: Comma-separated array of two-letter city abbreviation. Names are not validated.
+        - name: state
+          in: query
+          type: string
+          description: Comma-separated array of State names. Names are not validated.
+        - name: fromAmount
+          in: query
+          type: string
+          description: 'fromAmount identifies the starting range of amount. Please ensure that fromAmount '
+        - name: toAmount
+          in: query
+          type: string
+          description: 'toAmount identifies the ending range of amount. Please ensure that toAmount '
+        - name: groupBy
+          in: query
+          type: string
+          description: The data returned will be grouped by the filter value.
+        - name: orderBy
+          in: query
+          type: string
+          description: Single value of orderBy need to be passed. Data returned will be ordered by the filter value.
+        - name: accountStatus
+          in: query
+          type: string
+          description: This field indicates if the account status is open closed or active.</br>
+        - name: include
+          in: query
+          type: string
+          description: This field indicates if we need to include closed accout.</br>
+        - name: sortBy
+          in: query
+          type: string
+          description: Single value of sortBy need to be passed. Data returned will be ordered in ascending or descending
+            order.
+        - name: skip
+          in: query
+          type: string
+          description: skip is the number of pages to be skipped. This parameter allows pagination support. 0 page will only
+            display max 1000 transactions. If response contains more t
+        - name: top
+          in: query
+          type: string
+          description: top returns the number of transactions requested. Max 500 transactions can be returned by default.
+            This parameter 'top' along with 'skip' allows pagination supp
+        - name: container
+          in: query
+          type: string
+          description: Comma-separated array of container. Olnly bank and creditCard container is allowed.
+    - name: views-viewId-transactionTrends
+      path: /views/{viewId}/transactionTrends
+      operations:
+      - name: getuserviewtransactiontrends
+        method: GET
+        description: Envestnet Fetch trend data for a specific View.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: viewId
+          in: path
+          type: string
+          description: The unique identifier of the view.
+          required: true
+        - name: fromDate
+          in: query
+          type: string
+          description: The starting date filter for the view in the format - yyyy-MM-dd'T'HH:mm:ss or yyyy-MM-dd
+        - name: toDate
+          in: query
+          type: string
+          description: The ending date filter for the view in the format - yyyy-MM-ddTHH:mm:ss or yyyy-MM-dd
+        - name: categoryId
+          in: query
+          type: string
+          description: Comma-separated array of category IDs.
+        - name: detailCategoryId
+          in: query
+          type: string
+          description: Comma-separated array of Transaction Detail Category Ids filter for the View Rules
+        - name: merchantName
+          in: query
+          type: string
+          description: Comma-separated array of Merchant Names.
+        - name: ruleType
+          in: query
+          type: string
+          description: Comma-separated array of ruleType.
+        - name: accountId
+          in: query
+          type: string
+          description: Comma-separated list of valid account Ids.
+        - name: merchantType
+          in: query
+          type: string
+          description: Comma-separated array of Merchant Types. Supported value are BILLERS and SUBSCRIPTION.
+        - name: city
+          in: query
+          type: string
+          description: Comma-separated array of two-letter city abbreviation. Please note that the values are not validated.
+        - name: state
+          in: query
+          type: string
+          description: Comma-separated array of State names. Please note that the values are not validated.
+        - name: fromAmount
+          in: query
+          type: string
+          description: 'fromAmount identifies the starting range of amount. Please ensure that fromAmount '
+        - name: toAmount
+          in: query
+          type: string
+          description: 'toAmount identifies the ending range of amount. Please ensure that toAmount '
+        - name: accountStatus
+          in: query
+          type: string
+          description: This field indicates if the account status is open closed or active.</br>
+        - name: include
+          in: query
+          type: string
+          description: This field indicates if we need to include closed accout.</br>
+        - name: groupBy
+          in: query
+          type: string
+          description: The data returned will be grouped by the filter value.
+        - name: orderBy
+          in: query
+          type: string
+          description: Single value of orderBy need to be passed. Data returned will be ordered by the filter value.
+        - name: sortBy
+          in: query
+          type: string
+          description: Single value of sortBy need to be passed. Data returned will be ordered in ascending or descending
+            order.
+        - name: skip
+          in: query
+          type: string
+          description: skip is the number of pages to be skipped. This parameter allows pagination support. 0 page will only
+            display max 1000 transactions. If response contains more t
+        - name: top
+          in: query
+          type: string
+          description: top returns the number of transactions requested. Max 500 transactions can be returned by default.
+            This parameter 'top' along with 'skip' allows pagination supp
+        - name: container
+          in: query
+          type: string
+          description: Comma-separated array of container. Olnly bank and creditCard container is allowed.
+    - name: views-viewId-transactions
+      path: /views/{viewId}/transactions
+      operations:
+      - name: getuserviewtransactions
+        method: GET
+        description: Envestnet Fetch all the transactions for a specific View.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: viewId
+          in: path
+          type: string
+          description: The unique identifier of the view.
+          required: true
+        - name: fromDate
+          in: query
+          type: string
+          description: fromDate filter for the View Rules with format - yyyy-MM-dd'T'HH:mm:ss
+        - name: toDate
+          in: query
+          type: string
+          description: toDate filter for the View Rules with format - yyyy-MM-dd'T'HH:mm:ss
+        - name: categoryId
+          in: query
+          type: string
+          description: Comma-separated array of Transaction Category Ids filter for the View Rules
+        - name: detailCategoryId
+          in: query
+          type: string
+          description: Comma-separated array of Transaction Detail Category Ids filter for the View Rules
+        - name: accountGroupId
+          in: query
+          type: string
+          description: Comma-separated array of Account Group Ids filter for the View Rules
+        - name: merchantName
+          in: query
+          type: string
+          description: Comma-separated array of Merchant Names filter for the View Rules
+        - name: skip
+          in: query
+          type: string
+          description: skip is the number of pages to be skipped. This parameter allows pagination support. 1 page will only
+            display max 500 transactions. If response contains more th
+        - name: top
+          in: query
+          type: string
+          description: top returns the number of transactions requested. Max 500 transactions can be returned by default.
+            This parameter 'top' along with 'skip' allows pagination supp
+        - name: accountId
+          in: query
+          type: string
+          description: Comma separated list of account Ids. It should be an integer value.
+        - name: accountStatus
+          in: query
+          type: string
+          description: This field indicates if the account status is open closed or active.</br>
+        - name: include
+          in: query
+          type: string
+          description: This field indicates if we need to include closed accout.</br>
+        - name: fromAmount
+          in: query
+          type: string
+          description: fromAmount should be a Floating point number. It signifies a range
+        - name: toAmount
+          in: query
+          type: string
+          description: toAmount should be a Floating point number. It signifies a range
+        - name: orderBy
+          in: query
+          type: string
+          description: Single value of orderBy need to be passed. Data returned will be ordered by the filter value.
+        - name: ruleType
+          in: query
+          type: string
+          description: Comma-separated array of ruleType. Only INCOME, EXPENSE and TRANSFER ruleType is possible.
+        - name: container
+          in: query
+          type: string
+          description: Comma-separated array of container. Olnly bank and creditCard container is allowed.
+  exposes:
+  - type: rest
+    namespace: personalized-views-view-rest
+    port: 8080
+    description: REST adapter for Envestnet View API Suite — View. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/views
+      name: views
+      description: REST surface for views.
+      operations:
+      - method: POST
+        name: createuserview
+        description: Envestnet Create a view for a user.
+        call: personalized-views-view.createuserview
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getuserviews
+        description: Envestnet Fetch the details of all the views associated with a user.
+        call: personalized-views-view.getuserviews
+        with:
+          include: rest.include
+          sourceType: rest.sourceType
+          orderBy: rest.orderBy
+          sortBy: rest.sortBy
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/views/recommendations
+      name: views-recommendations
+      description: REST surface for views-recommendations.
+      operations:
+      - method: GET
+        name: getuserviewrecommendations
+        description: Envestnet Fetch recommended Views for a user.
+        call: personalized-views-view.getuserviewrecommendations
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/views/system
+      name: views-system
+      description: REST surface for views-system.
+      operations:
+      - method: POST
+        name: createsystemview
+        description: Envestnet Create a default view for a user.
+        call: personalized-views-view.createsystemview
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/views/{viewid}
+      name: views-viewid
+      description: REST surface for views-viewId.
+      operations:
+      - method: GET
+        name: getuserview
+        description: Envestnet Fetch the details of a specific view.
+        call: personalized-views-view.getuserview
+        with:
+          viewId: rest.viewId
+          include: rest.include
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateuserview
+        description: Envestnet Update details of an existing view.
+        call: personalized-views-view.updateuserview
+        with:
+          viewId: rest.viewId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteuserview
+        description: Envestnet Delete a specific view.
+        call: personalized-views-view.deleteuserview
+        with:
+          viewId: rest.viewId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/views/{viewid}/budgetsummary
+      name: views-viewid-budgetsummary
+      description: REST surface for views-viewId-budgetSummary.
+      operations:
+      - method: GET
+        name: getuserbudgetsummary
+        description: Envestnet Fetch BudgetSummary for specific View.
+        call: personalized-views-view.getuserbudgetsummary
+        with:
+          viewId: rest.viewId
+          type: rest.type
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/views/{viewid}/budgets
+      name: views-viewid-budgets
+      description: REST surface for views-viewId-budgets.
+      operations:
+      - method: PATCH
+        name: patchuserviewbudget
+        description: Envestnet Patch the specified budget data for a specific view.
+        call: personalized-views-view.patchuserviewbudget
+        with:
+          viewId: rest.viewId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteuserviewbudget
+        description: Envestnet Delete the specified budget data for a specific view.
+        call: personalized-views-view.deleteuserviewbudget
+        with:
+          viewId: rest.viewId
+          type: rest.type
+          typeName: rest.typeName
+          typeId: rest.typeId
+          budgetInfo: rest.budgetInfo
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/views/{viewid}/peerdata
+      name: views-viewid-peerdata
+      description: REST surface for views-viewId-peerData.
+      operations:
+      - method: GET
+        name: getuserviewpeerdata
+        description: Envestnet Fetch all the applicable peer benchmarking data.
+        call: personalized-views-view.getuserviewpeerdata
+        with:
+          viewId: rest.viewId
+          timePeriod: rest.timePeriod
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/views/{viewid}/rules
+      name: views-viewid-rules
+      description: REST surface for views-viewId-rules.
+      operations:
+      - method: DELETE
+        name: deleteuserviewrule
+        description: Envestnet Delete the specified rules for a specific view.
+        call: personalized-views-view.deleteuserviewrule
+        with:
+          viewId: rest.viewId
+          ruleId: rest.ruleId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/views/{viewid}/transactionsummary
+      name: views-viewid-transactionsummary
+      description: REST surface for views-viewId-transactionSummary.
+      operations:
+      - method: GET
+        name: getuserviewtransactionsummary
+        description: Envestnet Fetch summary data for a specific View.
+        call: personalized-views-view.getuserviewtransactionsummary
+        with:
+          viewId: rest.viewId
+          fromDate: rest.fromDate
+          toDate: rest.toDate
+          categoryId: rest.categoryId
+          detailCategoryId: rest.detailCategoryId
+          merchantName: rest.merchantName
+          ruleType: rest.ruleType
+          accountId: rest.accountId
+          merchantType: rest.merchantType
+          city: rest.city
+          state: rest.state
+          fromAmount: rest.fromAmount
+          toAmount: rest.toAmount
+          groupBy: rest.groupBy
+          orderBy: rest.orderBy
+          accountStatus: rest.accountStatus
+          include: rest.include
+          sortBy: rest.sortBy
+          skip: rest.skip
+          top: rest.top
+          container: rest.container
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/views/{viewid}/transactiontrends
+      name: views-viewid-transactiontrends
+      description: REST surface for views-viewId-transactionTrends.
+      operations:
+      - method: GET
+        name: getuserviewtransactiontrends
+        description: Envestnet Fetch trend data for a specific View.
+        call: personalized-views-view.getuserviewtransactiontrends
+        with:
+          viewId: rest.viewId
+          fromDate: rest.fromDate
+          toDate: rest.toDate
+          categoryId: rest.categoryId
+          detailCategoryId: rest.detailCategoryId
+          merchantName: rest.merchantName
+          ruleType: rest.ruleType
+          accountId: rest.accountId
+          merchantType: rest.merchantType
+          city: rest.city
+          state: rest.state
+          fromAmount: rest.fromAmount
+          toAmount: rest.toAmount
+          accountStatus: rest.accountStatus
+          include: rest.include
+          groupBy: rest.groupBy
+          orderBy: rest.orderBy
+          sortBy: rest.sortBy
+          skip: rest.skip
+          top: rest.top
+          container: rest.container
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/views/{viewid}/transactions
+      name: views-viewid-transactions
+      description: REST surface for views-viewId-transactions.
+      operations:
+      - method: GET
+        name: getuserviewtransactions
+        description: Envestnet Fetch all the transactions for a specific View.
+        call: personalized-views-view.getuserviewtransactions
+        with:
+          viewId: rest.viewId
+          fromDate: rest.fromDate
+          toDate: rest.toDate
+          categoryId: rest.categoryId
+          detailCategoryId: rest.detailCategoryId
+          accountGroupId: rest.accountGroupId
+          merchantName: rest.merchantName
+          skip: rest.skip
+          top: rest.top
+          accountId: rest.accountId
+          accountStatus: rest.accountStatus
+          include: rest.include
+          fromAmount: rest.fromAmount
+          toAmount: rest.toAmount
+          orderBy: rest.orderBy
+          ruleType: rest.ruleType
+          container: rest.container
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: personalized-views-view-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Envestnet View API Suite — View. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: envestnet-create-view-user
+      description: Envestnet Create a view for a user.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: personalized-views-view.createuserview
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-fetch-details-all-views
+      description: Envestnet Fetch the details of all the views associated with a user.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: personalized-views-view.getuserviews
+      with:
+        include: tools.include
+        sourceType: tools.sourceType
+        orderBy: tools.orderBy
+        sortBy: tools.sortBy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-fetch-recommended-views-user
+      description: Envestnet Fetch recommended Views for a user.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: personalized-views-view.getuserviewrecommendations
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-create-default-view-user
+      description: Envestnet Create a default view for a user.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: personalized-views-view.createsystemview
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-fetch-details-specific-view
+      description: Envestnet Fetch the details of a specific view.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: personalized-views-view.getuserview
+      with:
+        viewId: tools.viewId
+        include: tools.include
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-update-details-existing-view
+      description: Envestnet Update details of an existing view.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: personalized-views-view.updateuserview
+      with:
+        viewId: tools.viewId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-delete-specific-view
+      description: Envestnet Delete a specific view.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: personalized-views-view.deleteuserview
+      with:
+        viewId: tools.viewId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-fetch-budgetsummary-specific-view
+      description: Envestnet Fetch BudgetSummary for specific View.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: personalized-views-view.getuserbudgetsummary
+      with:
+        viewId: tools.viewId
+        type: tools.type
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-patch-specified-budget-data
+      description: Envestnet Patch the specified budget data for a specific view.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: personalized-views-view.patchuserviewbudget
+      with:
+        viewId: tools.viewId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-delete-specified-budget-data
+      description: Envestnet Delete the specified budget data for a specific view.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: personalized-views-view.deleteuserviewbudget
+      with:
+        viewId: tools.viewId
+        type: tools.type
+        typeName: tools.typeName
+        typeId: tools.typeId
+        budgetInfo: tools.budgetInfo
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-fetch-all-applicable-peer
+      description: Envestnet Fetch all the applicable peer benchmarking data.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: personalized-views-view.getuserviewpeerdata
+      with:
+        viewId: tools.viewId
+        timePeriod: tools.timePeriod
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-delete-specified-rules-specific
+      description: Envestnet Delete the specified rules for a specific view.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: personalized-views-view.deleteuserviewrule
+      with:
+        viewId: tools.viewId
+        ruleId: tools.ruleId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-fetch-summary-data-specific
+      description: Envestnet Fetch summary data for a specific View.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: personalized-views-view.getuserviewtransactionsummary
+      with:
+        viewId: tools.viewId
+        fromDate: tools.fromDate
+        toDate: tools.toDate
+        categoryId: tools.categoryId
+        detailCategoryId: tools.detailCategoryId
+        merchantName: tools.merchantName
+        ruleType: tools.ruleType
+        accountId: tools.accountId
+        merchantType: tools.merchantType
+        city: tools.city
+        state: tools.state
+        fromAmount: tools.fromAmount
+        toAmount: tools.toAmount
+        groupBy: tools.groupBy
+        orderBy: tools.orderBy
+        accountStatus: tools.accountStatus
+        include: tools.include
+        sortBy: tools.sortBy
+        skip: tools.skip
+        top: tools.top
+        container: tools.container
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-fetch-trend-data-specific
+      description: Envestnet Fetch trend data for a specific View.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: personalized-views-view.getuserviewtransactiontrends
+      with:
+        viewId: tools.viewId
+        fromDate: tools.fromDate
+        toDate: tools.toDate
+        categoryId: tools.categoryId
+        detailCategoryId: tools.detailCategoryId
+        merchantName: tools.merchantName
+        ruleType: tools.ruleType
+        accountId: tools.accountId
+        merchantType: tools.merchantType
+        city: tools.city
+        state: tools.state
+        fromAmount: tools.fromAmount
+        toAmount: tools.toAmount
+        accountStatus: tools.accountStatus
+        include: tools.include
+        groupBy: tools.groupBy
+        orderBy: tools.orderBy
+        sortBy: tools.sortBy
+        skip: tools.skip
+        top: tools.top
+        container: tools.container
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: envestnet-fetch-all-transactions-specific
+      description: Envestnet Fetch all the transactions for a specific View.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: personalized-views-view.getuserviewtransactions
+      with:
+        viewId: tools.viewId
+        fromDate: tools.fromDate
+        toDate: tools.toDate
+        categoryId: tools.categoryId
+        detailCategoryId: tools.detailCategoryId
+        accountGroupId: tools.accountGroupId
+        merchantName: tools.merchantName
+        skip: tools.skip
+        top: tools.top
+        accountId: tools.accountId
+        accountStatus: tools.accountStatus
+        include: tools.include
+        fromAmount: tools.fromAmount
+        toAmount: tools.toAmount
+        orderBy: tools.orderBy
+        ruleType: tools.ruleType
+        container: tools.container
+      outputParameters:
+      - type: object
+        mapping: $.
