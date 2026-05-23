@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/NetworthDetail",
+  "title": "NetworthDetail",
+  "description": "Summary information across all the aggregated accounts calculated as (total of all assets) - (total of all liabilities).",
+  "properties": {
+    "networthTotal": {
+      "description": "Total netw worth value.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    }
+  },
+  "required": [
+    "networthTotal"
+  ]
+}

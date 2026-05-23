@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorClassification",
+  "title": "CreditAcceleratorClassification",
+  "type": "object",
+  "properties": {
+    "classificationTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorClassificationType"
+      }
+    },
+    "currency": {
+      "type": "string"
+    }
+  }
+}

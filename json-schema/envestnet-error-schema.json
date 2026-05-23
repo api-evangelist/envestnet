@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Error",
+  "title": "Error",
+  "required": [
+    "errorCode",
+    "referenceCode",
+    "errorMessage"
+  ],
+  "properties": {
+    "errorCode": {
+      "type": "string"
+    },
+    "referenceCode": {
+      "type": "string"
+    },
+    "errorMessage": {
+      "type": "string"
+    }
+  }
+}

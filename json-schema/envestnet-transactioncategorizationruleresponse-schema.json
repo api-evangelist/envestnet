@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TransactionCategorizationRuleResponse",
+  "title": "TransactionCategorizationRuleResponse",
+  "type": "object",
+  "properties": {
+    "txnRules": {
+      "type": "array",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/TransactionCategorizationRule"
+      }
+    }
+  }
+}

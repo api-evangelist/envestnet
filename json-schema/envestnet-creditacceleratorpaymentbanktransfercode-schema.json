@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorPaymentBankTransferCode",
+  "title": "CreditAcceleratorPaymentBankTransferCode",
+  "type": "object",
+  "properties": {
+    "sourceType": {
+      "type": "string",
+      "description": "Source type",
+      "readOnly": true
+    },
+    "id": {
+      "type": "string",
+      "description": "The FI's branch identification number.Additional Details: The routing number of the bank account in the United States. For non-United States accounts, it is the IFSC code (India), BSB number (Australia), and sort code (United Kingdom).\nAccount Type: Aggregated\nApplicable containers: bank, investment",
+      "readOnly": true
+    },
+    "type": {
+      "type": "string",
+      "description": "The bank transfer code type varies depending on the region of the account origination. <br><b>Account Type</b>: Aggregated<br><b>Applicable containers</b>: bank, investment<br><b>Endpoints</b>:<br><ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul><b>Applicable Values</b><br> * BSB: BSB is a Bank-State-Branch number used to identify the branch in Australia and is required for performing transfers.<br> * IFSC: IFSC is Indian Financial System Code. It is an alphanumeric code that is used to identify the particular branch in India and is required for electronic funds settlement.<br> * ROUTING_NUMBER: Bank routing number or routing transit number (RTN) is a nine digit number used in US to identify financial institution in a transaction. Most common transaction types where routing numbers are used are ACH and wire transfers.<br> * SORT_CODE: The sort code is a six-digit number used in UK to identify both the bank and the branch where the account is held.<br>",
+      "readOnly": true,
+      "enum": [
+        "ROUTING_NUMBER",
+        "BSB",
+        "IFSC",
+        "SORT_CODE"
+      ]
+    }
+  }
+}

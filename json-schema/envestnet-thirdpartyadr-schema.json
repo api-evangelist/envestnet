@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ThirdPartyADR",
+  "title": "ThirdPartyADR",
+  "required": [
+    "name",
+    "url"
+  ],
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "name of ADR"
+    },
+    "url": {
+      "type": "string",
+      "description": "Unique Id of ADR"
+    }
+  }
+}

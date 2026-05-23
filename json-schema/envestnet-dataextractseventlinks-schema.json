@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DataExtractsEventLinks",
+  "title": "DataExtractsEventLinks",
+  "type": "object",
+  "properties": {
+    "methodType": {
+      "type": "string",
+      "readOnly": true
+    },
+    "rel": {
+      "type": "string",
+      "readOnly": true
+    },
+    "href": {
+      "type": "string",
+      "readOnly": true
+    }
+  }
+}

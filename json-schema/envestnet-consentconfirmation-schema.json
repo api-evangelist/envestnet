@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ConsentConfirmation",
+  "title": "ConsentConfirmation",
+  "required": [
+    "description",
+    "header"
+  ],
+  "type": "object",
+  "properties": {
+    "description": {
+      "type": "string",
+      "description": "Consent confirmation Description"
+    },
+    "header": {
+      "type": "string",
+      "description": "Consent confirmation Header"
+    }
+  }
+}

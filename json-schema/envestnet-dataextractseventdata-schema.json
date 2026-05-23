@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DataExtractsEventData",
+  "title": "DataExtractsEventData",
+  "type": "object",
+  "properties": {
+    "fromDate": {
+      "type": "string",
+      "readOnly": true
+    },
+    "userData": {
+      "type": "array",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/DataExtractsEventUserData"
+      }
+    },
+    "userCount": {
+      "type": "integer",
+      "format": "int32",
+      "readOnly": true
+    },
+    "toDate": {
+      "type": "string",
+      "readOnly": true
+    }
+  }
+}

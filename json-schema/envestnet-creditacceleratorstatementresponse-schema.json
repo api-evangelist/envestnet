@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorStatementResponse",
+  "title": "CreditAcceleratorStatementResponse",
+  "type": "object",
+  "properties": {
+    "configName": {
+      "type": "string",
+      "description": "The config name using which the credit accelerator file generation was requested",
+      "readOnly": true
+    },
+    "reportId": {
+      "type": "integer",
+      "description": "Unique identifier for the credit accelerator file",
+      "format": "int64",
+      "readOnly": true
+    },
+    "statements": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorStatement"
+      }
+    },
+    "submissionDate": {
+      "type": "string",
+      "description": "Date on which the request to generate credit accelerator file was submitted",
+      "readOnly": true
+    },
+    "status": {
+      "type": "string",
+      "description": "Generation status of the requested credit accelerator file requested",
+      "readOnly": true,
+      "enum": [
+        "SUBMITTED",
+        "IN_PROGRESS",
+        "COMPLETED",
+        "FAILED"
+      ]
+    }
+  }
+}

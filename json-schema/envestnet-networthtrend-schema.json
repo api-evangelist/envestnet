@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/NetWorthTrend",
+  "title": "NetWorthTrend",
+  "description": "Net Worth trend information, broken down by a specific frequency, for a  specific date range.",
+  "properties": {
+    "detail": {
+      "type": "array",
+      "description": "Breakdown of income/spending based on a predefined frequency - typically, monthly.",
+      "items": {
+        "$ref": "#/components/schemas/NetWorthTrendDetail"
+      },
+      "readOnly": true
+    },
+    "networthTotal": {
+      "description": "Total net worth value.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "assetTotal": {
+      "description": "Total asset worth value.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "liabilityTotal": {
+      "description": "Total liability worth value.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    }
+  }
+}

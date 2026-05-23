@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BasicView",
+  "title": "BasicView",
+  "description": "Object that contains details about one or more user/system created VIEWs.",
+  "properties": {
+    "basicAccount": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BasicAccount"
+      }
+    },
+    "cardAccount": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CardAccount"
+      }
+    },
+    "basicTrend": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BasicTrend"
+      }
+    },
+    "id": {
+      "type": "string",
+      "description": "Unique identifier created by the system for a VIEW.",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string",
+      "description": "The description provided for the VIEW while creating/updating a VIEW.",
+      "readOnly": true
+    },
+    "link": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ViewLink"
+        }
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "link"
+  ]
+}

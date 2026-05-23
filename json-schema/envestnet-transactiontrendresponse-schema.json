@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TransactionTrendResponse",
+  "title": "TransactionTrendResponse",
+  "properties": {
+    "transactionTrends": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TransactionTrend"
+        }
+      ]
+    }
+  }
+}

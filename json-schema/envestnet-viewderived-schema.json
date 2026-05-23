@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ViewDerived",
+  "title": "ViewDerived",
+  "description": "Derived information for a specific VIEW.",
+  "properties": {
+    "creditTotal": {
+      "description": "The total of all credit transactions that qualify to be part of the  view based on the view rules.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "debitTotal": {
+      "description": "The total of all debit transactions that qualify to be part of the  view based on the view rules.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "remainingBudget": {
+      "description": "The difference between the budget set for the view and the debitTotal.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    }
+  }
+}

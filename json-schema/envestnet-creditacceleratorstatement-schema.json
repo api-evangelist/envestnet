@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorStatement",
+  "title": "CreditAcceleratorStatement",
+  "type": "object",
+  "properties": {
+    "accountId": {
+      "type": "integer",
+      "description": "The primary key of the account resource and the unique identifier for the account.<br><br><b>Aggregated / Manual</b>: Both <br><b>Applicable containers</b>: All containers<br><b>Endpoints</b>:<ul><li>GET accounts </li><li>GET accounts/{accountId}</li><li>GET investmentOptions</li><li>GET accounts/historicalBalances</li><li>POST accounts</ul>",
+      "format": "int64",
+      "readOnly": true
+    },
+    "additionalStatus": {
+      "type": "string"
+    },
+    "documents": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorDocument"
+      }
+    },
+    "status": {
+      "type": "string",
+      "description": "Status of the doc download for given configName or reportId",
+      "readOnly": true
+    }
+  }
+}

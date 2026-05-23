@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LiabilityDetail",
+  "title": "LiabilityDetail",
+  "description": "Summary information across all the aggregated accounts categorized as 'liability'.",
+  "properties": {
+    "liabilityTotal": {
+      "description": "Total liability value.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    }
+  },
+  "required": [
+    "liabilityTotal"
+  ]
+}

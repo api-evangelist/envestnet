@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ViewResponse",
+  "title": "ViewResponse",
+  "properties": {
+    "view": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ViewCreationResponse"
+      }
+    }
+  }
+}

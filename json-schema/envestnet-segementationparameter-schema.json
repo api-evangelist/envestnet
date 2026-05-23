@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SegementationParameter",
+  "title": "SegementationParameter",
+  "properties": {
+    "incomeRange": {
+      "type": "string",
+      "description": "Income range of the user in format - min_income - max_income for which the response is returned<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/peerData</li></ul>",
+      "example": "$150K+"
+    },
+    "geo": {
+      "$ref": "#/components/schemas/Geography"
+    }
+  }
+}

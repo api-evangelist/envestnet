@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Statement",
+  "title": "Statement",
+  "type": "object",
+  "properties": {
+    "apr": {
+      "type": "number",
+      "description": "The APR applied to the balance on the credit card account, as available in the statement.<br><b>Note:</b> In case of variable APR, the APR available on the statement might differ from the APR available at the account-level.<br><br><b>Applicable containers</b>: creditCard, loan, insurance<br>",
+      "format": "double",
+      "readOnly": true
+    },
+    "cashApr": {
+      "type": "number",
+      "description": "The APR applicable to cash withdrawals on the credit card account.<br><br><b>Applicable containers</b>: creditCard, loan, insurance<br>",
+      "format": "double",
+      "readOnly": true
+    },
+    "billingPeriodStart": {
+      "type": "string",
+      "description": "The start date of the statement period.<br><br><b>Applicable containers</b>: creditCard, loan, insurance<br>",
+      "readOnly": true
+    },
+    "dueDate": {
+      "type": "string",
+      "description": "The date by when the minimum payment is due to be paid.<br><b>Note:</b> The due date that appears in the statement may differ from the due date at the account-level.<br><br><b>Applicable containers</b>: creditCard, loan, insurance<br>",
+      "readOnly": true
+    },
+    "interestAmount": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "statementDate": {
+      "type": "string",
+      "description": "The date on which the statement is generated.<br><br><b>Applicable containers</b>: creditCard, loan, insurance<br>",
+      "readOnly": true
+    },
+    "cashAdvance": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "billingPeriodEnd": {
+      "type": "string",
+      "description": "The end date of the statement period.<br><br><b>Applicable containers</b>: creditCard, loan, insurance<br>",
+      "readOnly": true
+    },
+    "principalAmount": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "loanBalance": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "amountDue": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "accountId": {
+      "type": "integer",
+      "description": "Account to which the statement belongs to.<br><br><b>Applicable containers</b>: creditCard, loan, insurance<br>",
+      "format": "int64",
+      "readOnly": true
+    },
+    "lastUpdated": {
+      "type": "string",
+      "description": "The date when the account was last updated by Yodlee.<br><br><b>Applicable containers</b>: creditCard, loan, insurance<br>",
+      "readOnly": true
+    },
+    "isLatest": {
+      "type": "boolean",
+      "description": "The field is set to true if the statement is the latest generated statement.<br><br><b>Applicable containers</b>: creditCard, loan, insurance<br>",
+      "readOnly": true
+    },
+    "minimumPayment": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "lastPaymentDate": {
+      "type": "string",
+      "description": "The date on which the last payment was done during the billing cycle.<br><br><b>Applicable containers</b>: creditCard, loan, insurance<br>",
+      "readOnly": true
+    },
+    "lastPaymentAmount": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier for the statement.<br><br><b>Applicable containers</b>: creditCard, loan, insurance<br>",
+      "format": "int64",
+      "readOnly": true
+    },
+    "newCharges": {
+      "$ref": "#/components/schemas/Money"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorAccountProfile",
+  "title": "CreditAcceleratorAccountProfile",
+  "type": "object",
+  "properties": {
+    "identifier": {
+      "type": "array",
+      "description": "Identifiers available in the profile page of the account.<br><br><b>Account Type</b>: Aggregated<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul>",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/Identifier"
+      }
+    },
+    "address": {
+      "type": "array",
+      "description": "Address available in the profile page of the account.<br><br><b>Account Type</b>: Aggregated<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul>",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAccountAddress"
+      }
+    },
+    "phoneNumber": {
+      "type": "array",
+      "description": "Phone number available in the profile page of the account.<br><br><b>Account Type</b>: Aggregated<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul>",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/PhoneNumber"
+      }
+    },
+    "email": {
+      "type": "array",
+      "description": "Email Id available in the profile page of the account.<br><br><b>Account Type</b>: Aggregated<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul>",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/Email"
+      }
+    }
+  }
+}

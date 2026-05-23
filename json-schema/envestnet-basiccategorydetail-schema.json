@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BasicCategoryDetail",
+  "title": "BasicCategoryDetail",
+  "description": "Information about a specific \"master\" category.",
+  "properties": {
+    "categoryId": {
+      "type": "string",
+      "description": "The id of the category assigned to the transaction. This is the id  field of the transaction category resource. The supported values  are provided by the GET transactions/categories.",
+      "readOnly": true
+    },
+    "category": {
+      "type": "string",
+      "description": "The name of the category assigned to the transaction. This is the  category field of the transaction category resource. The supported  values are provided by the GET transactions/categories.",
+      "readOnly": true
+    },
+    "netTotal": {
+      "description": "Net spending calculated as (debitTotal - creditTotal) associated with  the category for the specific duration.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "averageNetTotal": {
+      "description": "Average spending calculated as (netTotal)/(Number of Months)  associated with the category for the specific duration.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "link": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Link"
+        }
+      ],
+      "readOnly": true
+    },
+    "basicPeerDetail": {
+      "description": "Basic Peer Detail.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BasicPeerDetail"
+        }
+      ],
+      "readOnly": true
+    },
+    "peerSpendingComparison": {
+      "description": "Comparing how the user has spent in a category compared to his peers",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PeerSpendingComparison"
+        }
+      ],
+      "readOnly": true
+    }
+  },
+  "required": [
+    "categoryId",
+    "category"
+  ]
+}

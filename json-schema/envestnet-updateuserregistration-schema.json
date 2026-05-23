@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UpdateUserRegistration",
+  "title": "UpdateUserRegistration",
+  "type": "object",
+  "properties": {
+    "preferences": {
+      "$ref": "#/components/schemas/UserRequestPreferences"
+    },
+    "address": {
+      "$ref": "#/components/schemas/UserAddress"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "loginName": {
+      "type": "string"
+    },
+    "name": {
+      "$ref": "#/components/schemas/Name"
+    },
+    "email": {
+      "type": "string"
+    },
+    "segmentName": {
+      "type": "string"
+    }
+  }
+}

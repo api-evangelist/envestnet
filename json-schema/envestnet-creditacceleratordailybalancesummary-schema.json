@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorDailyBalanceSummary",
+  "title": "CreditAcceleratorDailyBalanceSummary",
+  "type": "object",
+  "properties": {
+    "values": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorDailySummary"
+      }
+    },
+    "currency": {
+      "type": "string"
+    }
+  }
+}

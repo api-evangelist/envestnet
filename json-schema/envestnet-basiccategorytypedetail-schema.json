@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BasicCategoryTypeDetail",
+  "title": "BasicCategoryTypeDetail",
+  "description": "Derived information across one or more category types - INCOME, EXPENSE, TRANSFER, DEFERRED_COMPENSATION, or UNCATEGORIZE.",
+  "properties": {
+    "categoryType": {
+      "type": "string",
+      "description": "The categoryType of the category assigned to the transaction. This  is the type field of the transaction category resource. The  supported values are provided by the GET transactions/categories.",
+      "readOnly": true
+    },
+    "creditTotal": {
+      "description": "\uf0a7  The sum of all credit transactions associated with the categoryType for the specific duration.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "debitTotal": {
+      "description": "The sum of all debit transactions associated with the categoryType for the specific duration.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "netTotal": {
+      "description": "Net spending calculated as (debitTotal - creditTotal) associated with  the category for the specific duration.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "dateRange": {
+      "items": {
+        "$ref": "#/components/schemas/DateRange"
+      },
+      "readOnly": true
+    },
+    "basicCategoryDetail": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BasicCategoryDetail"
+      },
+      "readOnly": true
+    }
+  }
+}

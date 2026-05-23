@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserDataTreatment",
+  "title": "UserDataTreatment",
+  "required": [
+    "cdrPolicy",
+    "dataHandling",
+    "description"
+  ],
+  "type": "object",
+  "properties": {
+    "dataHandling": {
+      "$ref": "#/components/schemas/DataHandling"
+    },
+    "cdrPolicy": {
+      "$ref": "#/components/schemas/CdrPolicy"
+    },
+    "description": {
+      "type": "string",
+      "description": "After we have finished using your data or you have withdraw your consent to use the data, it will be de-identified as per our"
+    }
+  }
+}

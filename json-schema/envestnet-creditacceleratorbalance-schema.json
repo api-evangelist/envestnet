@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorBalance",
+  "title": "CreditAcceleratorBalance",
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string",
+      "description": "Date of balance.",
+      "readOnly": true
+    },
+    "amount": {
+      "type": "number",
+      "description": "Balance amount value.",
+      "format": "double",
+      "readOnly": true
+    },
+    "currency": {
+      "$ref": "#/components/schemas/CreditAcceleratorData"
+    }
+  }
+}

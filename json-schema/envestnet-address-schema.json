@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Address",
+  "title": "Address",
+  "description": "The address information associated with a merchant or an account.",
+  "properties": {
+    "address1": {
+      "type": "string",
+      "description": "Address - Line 1.",
+      "readOnly": true
+    },
+    "address2": {
+      "type": "string",
+      "description": "Address - Line 2.",
+      "readOnly": true
+    },
+    "address3": {
+      "type": "string",
+      "description": "Address - Line 3.",
+      "readOnly": true
+    },
+    "street": {
+      "type": "string",
+      "description": "street.",
+      "readOnly": true
+    },
+    "fullAddress": {
+      "type": "string",
+      "description": "Complete address.",
+      "readOnly": true
+    },
+    "zip": {
+      "type": "string",
+      "description": "ZIP Code.",
+      "readOnly": true
+    },
+    "city": {
+      "type": "string",
+      "description": "City Name.",
+      "readOnly": true
+    },
+    "state": {
+      "type": "string",
+      "description": "State Name.",
+      "readOnly": true
+    },
+    "type": {
+      "type": "string",
+      "description": "type.",
+      "readOnly": true
+    },
+    "sourceType": {
+      "type": "string",
+      "description": "sourceType.",
+      "readOnly": true
+    },
+    "country": {
+      "type": "string",
+      "description": "Country.",
+      "readOnly": true
+    }
+  }
+}

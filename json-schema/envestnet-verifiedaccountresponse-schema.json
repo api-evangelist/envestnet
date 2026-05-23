@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/VerifiedAccountResponse",
+  "title": "VerifiedAccountResponse",
+  "type": "object",
+  "properties": {
+    "requestId": {
+      "type": "string",
+      "description": "The unique identifier for the verification request that returns contextual data",
+      "readOnly": true
+    },
+    "requestDate": {
+      "type": "string",
+      "description": "The date of the verification request",
+      "readOnly": true
+    },
+    "state": {
+      "type": "string",
+      "description": "The overall status of the verification request",
+      "readOnly": true,
+      "enum": [
+        "COMPLETED",
+        "FAILED"
+      ]
+    },
+    "verifiedAccount": {
+      "type": "array",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/VerifiedAccounts"
+      }
+    },
+    "failedReason": {
+      "type": "string",
+      "description": "The reason for the failure of the verification request",
+      "readOnly": true,
+      "enum": [
+        "ACCOUNT_LOCKED",
+        "ADDL_AUTHENTICATION_REQUIRED",
+        "CREDENTIALS_UPDATE_NEEDED",
+        "INCORRECT_CREDENTIALS",
+        "INVALID_ADDL_INFO_PROVIDED",
+        "REQUEST_TIME_OUT",
+        "SITE_BLOCKING_ERROR",
+        "UNEXPECTED_SITE_ERROR",
+        "SITE_NOT_SUPPORTED",
+        "SITE_UNAVAILABLE",
+        "TECH_ERROR",
+        "USER_ACTION_NEEDED_AT_SITE",
+        "SITE_SESSION_INVALIDATED",
+        "NEW_AUTHENTICATION_REQUIRED",
+        "CONSENT_REQUIRED",
+        "CONSENT_EXPIRED",
+        "CONSENT_REVOKED",
+        "INCORRECT_OAUTH_TOKEN",
+        "REQUIRED_DATA_NOT_AVAILABLE",
+        "MATCHING_FAILED",
+        "NO_ELIGIBLE_ACCOUNTS",
+        "USER_INPUT_REQUIRED"
+      ]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ConfigsNotificationEvent",
+  "title": "ConfigsNotificationEvent",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the event for which the customers must subscribe to receive notifications.<br><b>Valid Value:</b> Notification Events Name<br><br><b>Endpoints</b>:<ul><li>GET configs/notifications/events</li></ul><b>Applicable Values</b><br>",
+      "enum": [
+        "REFRESH",
+        "DATA_UPDATES",
+        "AUTO_REFRESH_UPDATES",
+        "LATEST_BALANCE_UPDATES",
+        "CREDIT_ACCELERATOR_REPORT_UPDATES"
+      ]
+    },
+    "callbackUrl": {
+      "maxLength": 2147483647,
+      "minLength": 1,
+      "type": "string",
+      "description": "URL to which the notification should be posted.<br><br><b>Endpoints</b>:<ul><li>GET configs/notifications/events</li></ul>"
+    }
+  }
+}

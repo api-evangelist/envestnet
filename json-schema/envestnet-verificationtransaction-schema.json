@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/VerificationTransaction",
+  "title": "VerificationTransaction",
+  "required": [
+    "amount",
+    "baseType"
+  ],
+  "type": "object",
+  "properties": {
+    "amount": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "baseType": {
+      "type": "string",
+      "enum": [
+        "CREDIT",
+        "DEBIT"
+      ]
+    }
+  }
+}

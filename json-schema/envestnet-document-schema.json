@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Document",
+  "title": "Document",
+  "type": "object",
+  "properties": {
+    "accountID": {
+      "type": "integer",
+      "description": "The unique identifier for the account. The account ID to which the document is linked.<br><br><b>Applicable containers</b>: bank, investment, creditCard, loan, insurance<br>",
+      "format": "int64",
+      "readOnly": true
+    },
+    "lastUpdated": {
+      "type": "string",
+      "description": "Indicates the date and time the document was last updated.<br><br><b>Applicable containers</b>: bank, investment, creditCard, loan, insurance<br>",
+      "readOnly": true
+    },
+    "formType": {
+      "type": "string",
+      "description": "Indicates the type of the tax form.<br><br><b>Applicable containers</b>: bank, investment, creditCard, loan, insurance<br>",
+      "readOnly": true
+    },
+    "docType": {
+      "type": "string",
+      "description": "Indicates the type of the document.<br><br><b>Applicable containers</b>: bank, investment, creditCard, loan, insurance<br>",
+      "readOnly": true,
+      "enum": [
+        "STMT",
+        "TAX",
+        "EBILL"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "description": "Indicates the name of the document.<br><br><b>Applicable containers</b>: bank, investment, creditCard, loan, insurance<br>",
+      "readOnly": true
+    },
+    "id": {
+      "type": "string",
+      "description": "The document's primary key and unique identifier.<br><br><b>Applicable containers</b>: bank, investment, creditCard, loan, insurance<br>",
+      "readOnly": true
+    },
+    "source": {
+      "type": "string",
+      "description": "Indicates the source of the document download.<br><br><b>Applicable containers</b>: bank, investment, creditCard, loan, insurance<br>",
+      "readOnly": true
+    },
+    "status": {
+      "type": "string",
+      "description": "Indicates the status of the document download.<br><br><b>Applicable containers</b>: bank, investment, creditCard, loan, insurance<br>",
+      "readOnly": true
+    }
+  }
+}

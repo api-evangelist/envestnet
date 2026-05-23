@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorTxnSummary",
+  "title": "CreditAcceleratorTxnSummary",
+  "type": "object",
+  "properties": {
+    "timePeriod": {
+      "type": "string",
+      "description": "Time intervals to consider up to the number of days the application was requested.",
+      "readOnly": true
+    },
+    "sum": {
+      "type": "number",
+      "description": "Total amount for the time period.",
+      "format": "double",
+      "readOnly": true
+    }
+  }
+}

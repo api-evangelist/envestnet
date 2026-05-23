@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UpdateConfigsNotificationEventRequest",
+  "title": "UpdateConfigsNotificationEventRequest",
+  "required": [
+    "event"
+  ],
+  "type": "object",
+  "properties": {
+    "event": {
+      "$ref": "#/components/schemas/UpdateConfigsNotificationEvent"
+    }
+  }
+}

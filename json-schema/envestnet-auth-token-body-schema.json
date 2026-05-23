@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/auth_token_body",
+  "title": "auth_token_body",
+  "type": "object",
+  "properties": {
+    "clientId": {
+      "type": "string",
+      "description": "clientId issued by Yodlee is used to generate the OAuth token for authentication."
+    },
+    "secret": {
+      "type": "string",
+      "description": "secret issued by Yodlee is used to generate the OAuth token for authentication."
+    }
+  }
+}

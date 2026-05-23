@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Threshold",
+  "title": "Threshold",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Identifies the threshold applicable for an insight. Threshold values impact insight generation.Consider the following example - <ul> <li>name = CHANGE</li> <li>type = PERCENT</li> <li>value = 3</li> </ul> For the above insight, you can read the configuration as \"Generate the insight only if the change is >= 3%\" <br><br><b>Note</b>- Threshold is fixed for each insight. Only value is editable. <br><br><b>Endpoints</b> -<ul><li>GET /insights/configs/customerSubscriptions Cobrand API</li><li>PATCH /insights/configs/customerSubscriptions Cobrand API</li><li>GET /insights/configs/userSubscriptions User API</li><li>PATCH /insights/configs/userSubscriptions User API</li></ul>",
+      "example": "CHANGE",
+      "enum": [
+        "CHANGE",
+        "UPPER_LIMIT",
+        "DAYS_BEFORE",
+        "MINIMUM",
+        "FUTURE",
+        "DELAY",
+        "TOP",
+        "BASETYPE"
+      ]
+    },
+    "type": {
+      "type": "string",
+      "description": "Identifies the type of threshold. Threshold values impact insight generation.Consider the following example - <ul> <li>name = CHANGE</li> <li>type = PERCENT</li> <li>value = 3</li> </ul> For the above insight, you can read the configuration as \"Generate the insight only if the change is >= 3%\". <br><br>However, consider changing the configuration to as follows by  changing the type - <ul> <li>name = CHANGE</li> <li>type = AMOUNT</li> <li>value = 300</li> </ul> For the above insight, you can read the configuration as \"Generate the insight only if the change is >= $300\". <br><br><b>Note</b>- For a single insight, you can have multiple thresholds. If multiple thresholds have values set to a non-zero number, the relationship between the thresholds will be logical AND. <br><br>Some insights will have type as AMOUNT and PERCENT. In the above scenario, if you want to generate insight only based on one value, you can set the other to 0. <br><br>E.g. if type = AMOUNT is set to 0 and type = PERCENT is set to 3, the insight will be evaluated as \"Generate the insight only if the change is >= 3%\" <br><br>However, if AMOUNT = $300 and PERCENT = 3, the insight will be evaluated as \"Generate the insight only if the change % is >= 3% AND change amount >= $300\" <br><br><b>Endpoints</b> -<ul><li>GET config/insights/subscriptions Cobrand API</li><li>PATCH /config/insights/subscriptions Cobrand API</li><li>GET /insights/subscriptions User API</li><li>PATCH /insights/subscriptions User API</li></ul>",
+      "example": "PERCENT",
+      "enum": [
+        "PERCENT",
+        "NUMBER",
+        "DAYS",
+        "AMOUNT",
+        "STRING"
+      ]
+    },
+    "value": {
+      "type": "string",
+      "description": "The value set for the threshold. 0 is allowed only if there are multiple threshold for the same insight. <br><br><b>Endpoints</b> - <ul><li>GET /config/insights/subscriptions Cobrand API</li><li>PATCH /config/insights/subscriptions Cobrand API</li><li>GET insights/subscriptions User API</li><li>PATCH /insights/subscriptions User API</li></ul>",
+      "example": "10"
+    }
+  }
+}

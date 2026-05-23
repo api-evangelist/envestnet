@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/View",
+  "title": "View",
+  "properties": {
+    "name": {
+      "maximum": 100,
+      "minimum": 1,
+      "type": "string",
+      "description": "A user defined string representing the View name.<br><br>Endpoints:<ul><li>GET /views</li><li>GET /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>",
+      "example": "My View for Vacation"
+    },
+    "description": {
+      "maximum": 500,
+      "minimum": 1,
+      "type": "string",
+      "description": "A user defined string representing the description for the View<br><br>Endpoints:<ul><li>GET /views</li><li>GET /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>",
+      "example": "View with rules to fetch Amazon merchant transactions for 3 months."
+    },
+    "preferredCurrency": {
+      "type": "string",
+      "description": "preferredCurrency should be a valid three-letter ISO Code for currencies. <br><br><b>Endpoints</b> -<ul><li>GET /views</li><li>GET /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>",
+      "enum": [
+        "SGD",
+        "IDR",
+        "AUD",
+        "BRL",
+        "GBP",
+        "CAD",
+        "EUR",
+        "HKD",
+        "INR",
+        "JPY",
+        "NZD",
+        "USD",
+        "ZAR",
+        "CNY",
+        "VND",
+        "RUR",
+        "MXN",
+        "CHF",
+        "GHS"
+      ]
+    },
+    "recommendationId": {
+      "type": "integer",
+      "description": "Unique Identifier for a recommended View for a user. This attribute is optional and is present for a View which is created using views recommendation API response. This ID can also be added to any existing View for a user to ensure duplicate View suggestions are not recommended for the user. <br><b>Endpoints</b> -<ul><li>GET Recommendation</li><li>GET views/recommendations</li></ul>",
+      "readOnly": true,
+      "example": 11
+    },
+    "created": {
+      "type": "string",
+      "description": "row created"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "description": "row last updated"
+    },
+    "sourceType": {
+      "type": "string",
+      "description": "This field indicates if the view is created by the system or by the user.",
+      "example": "USER"
+    },
+    "rule": {
+      "type": "array",
+      "description": "Array of View rules. View is a collection of Rules which indicates Include/Exclude criterias. The rules determine what transactions should be considred as part of the View. This will have further impact on the insights generated for the View. Example of View Transaction API: GET /views/{viewId}/transactions.<br><br>Endpoints:<ul><li>GET /views</li><li>GET /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>",
+      "items": {
+        "$ref": "#/components/schemas/ViewRule"
+      }
+    },
+    "budgetData": {
+      "type": "array",
+      "description": "Array of budget infos.",
+      "items": {
+        "$ref": "#/components/schemas/BudgetInfos"
+      }
+    },
+    "budgetSummary": {
+      "type": "array",
+      "description": "Array of budget Summary.",
+      "items": {
+        "$ref": "#/components/schemas/BudgetSummary"
+      }
+    }
+  }
+}

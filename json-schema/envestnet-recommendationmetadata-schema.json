@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RecommendationMetadata",
+  "title": "RecommendationMetadata",
+  "properties": {
+    "duration": {
+      "$ref": "#/components/schemas/RecommendationDateRange"
+    },
+    "totalTransaction": {
+      "type": "number",
+      "description": "total number of transactions evaluated to generate a particular recommendation for user.",
+      "example": 211
+    },
+    "totalAmount": {
+      "$ref": "#/components/schemas/Money"
+    }
+  }
+}

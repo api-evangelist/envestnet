@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UpdateConsentRequest",
+  "title": "UpdateConsentRequest",
+  "required": [
+    "clientTrustedAdvisor"
+  ],
+  "type": "object",
+  "properties": {
+    "preferences": {
+      "$ref": "#/components/schemas/RenewConsentPreferences"
+    },
+    "scopeId": {
+      "type": "array",
+      "description": "Applicable Open Banking data cluster values.<br><br><b>Endpoints</b>:<ul><li>PUT Consent</li></ul>",
+      "items": {
+        "type": "string",
+        "enum": [
+          "ACCOUNT_DETAILS",
+          "TRANSACTION_DETAILS",
+          "STATEMENT_DETAILS",
+          "CONTACT_DETAILS"
+        ]
+      }
+    },
+    "clientTrustedAdvisor": {
+      "type": "array",
+      "description": "describes information of client trusted advisor",
+      "items": {
+        "$ref": "#/components/schemas/ClientTrustedAdvisor"
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/userConfiguration",
+  "title": "userConfiguration",
+  "properties": {
+    "entityId": {
+      "type": "string",
+      "description": "Unique ID which references a specific entityType. <br><br>Users can set preferences at s specific entityId level. <ul> <li>if entityType is \"ACCOUNT\" then this field represents 'accountId'</li> <li>if entityType is \"VIEW\" then this field represents 'viewId'</li> </ul> <b>Note</b> <ul> <li>This field is only applicable for Usersubscription and not for customerSubscription.</li> <li>If the user has 5 aggregated insights and only 2 entity IDs are patched with custom preferences, the rest of the accounts will be evaluated based on the defaults provided within the customerConfiguration object.</li> </ul> <b>Endpoints</b> -<ul><li>GET insights/configs/customerSubscriptions customer API</li><li>GET insights/configs/userSubscriptions User API</li><li>PATCH /insights/configs/customerSubscriptions cusomter API</li><li>PATCH /insights/configs/userSubscriptions User API</li></ul>",
+      "example": "10001453"
+    },
+    "entityType": {
+      "type": "string",
+      "description": "<br><br><b>Endpoints</b> -<ul><li>GET insights/configs/customerSubscriptions customer API</li><li>GET insights/configs/userSubscriptions User API</li><li>PATCH /insights/configs/customerSubscriptions cusomter API</li><li>PATCH /insights/configs/userSubscriptions User API</li></ul>",
+      "example": "ACCOUNT"
+    },
+    "isSubscribed": {
+      "type": "boolean",
+      "description": "Insight Subscription APIs allow User to subscribe/unsubscribe at  any particular entity level.<br><br> If an insight is not subscribed (isSubscribed = false)  at the customer level, the insight will not be present in the userSubscription API. <br><br> If an insight is subscribed by the customer (isSubscribed = true), the insight will be subscribed automatically by the user and all the default configurations will be inherited. <br><br>The user can choose to turn off the insight by setting isSubscribed=false.\n <br><br>><b>Endpoints</b> -<ul><li>GET\n insights/configs/customerSubscriptions customer API</li><li>GET\n insights/configs/userSubscriptions User API</li><li>PATCH\n /insights/configs/customerSubscriptions cusomter API</li><li>PATCH\n /insights/configs/userSubscriptions User API</li></ul>",
+      "example": true
+    },
+    "frequency": {
+      "type": "string",
+      "description": "Identifies how often the insight will be evaluated. <br><br>Note - Evaluation does not mean an insight will be generated. If the conditions for generating an insight are not met, the insight will not get generated even after it being evaluated. <br><br>Depending on the insight, it might be editable for customers and users. <br><br><b>Endpoints</b> -<ul><li>GET /insights/configs/customerSubscriptions Cobrand API</li><li>GET /insights/configs/userSubscriptions User API</li><li>PATCH /insights/configs/userSubscriptions User API</li></ul>",
+      "example": "DAILY",
+      "enum": [
+        "DAILY",
+        "WEEKLY",
+        "MONTHLY"
+      ]
+    },
+    "duration": {
+      "type": "string",
+      "description": "Identifies the duration for which the data will be considered to generate and insight. <br><br>Note <ul> <li>Even if the duration mentioned is ONE_YEAR, the insight can consider only data that exists. If there is data only for one month, the insight will be generated using the available one month data.</li> <li>Duration is insight specific. For some insights which are REFRESH based, duration might not be applicable. For certain insights, only a subset of the duration might be applicable.</li> </ul> <b>Endpoints</b> -<ul><li>GET /insights/configs/customerSubscriptions Cobrand API</li><li>GET /insights/configs/userSubscriptions User API</li><li>PATCH /insights/configs/userSubscriptions User API</li></ul>",
+      "example": "THIS_MONTH",
+      "enum": [
+        "THIS_MONTH",
+        "LAST_MONTH",
+        "THREE_MONTHS",
+        "SIX_MONTHS",
+        "ONE_YEAR"
+      ]
+    },
+    "threshold": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Threshold"
+      }
+    },
+    "isBenchmarkEnabled": {
+      "type": "boolean",
+      "description": "Identifies if peer benchmarking is enabled for a particular insight. The attribute will be returned only for insights that are eligible for peer benchmarking data points <br><br>The default value of this attribute will be based on the global configuration key to enable/disable peer benchmarking. If the global configuration is true, this attribute will be true and if the global configuration is false, this value will be false. <br><br>If the peer benchmarking is enabled by the customer (isBenchmarkEnabled = true), the benchmarks will be subscribed automatically by the user. <br><br>The user can choose to turn off the benchmark configuration for the insight by setting isBenchmarkEnabled=false. <br><br><b>Note</b> - There are few insights for which the isBenchmarkEnabled attribute cannot be updated since benchmark amount is essential for the insight evaluation.\n <br><br><b>Endpoints</b> -<ul><li>GET\n insights/configs/customerSubscriptions customer API</li><li>GET\n insights/configs/userSubscriptions User API</li><li>PATCH\n /insights/configs/customerSubscriptions cusomter API</li><li>PATCH\n /insights/configs/userSubscriptions User API</li></ul>",
+      "example": true
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorFile",
+  "title": "CreditAcceleratorFile",
+  "type": "object",
+  "properties": {
+    "configName": {
+      "type": "string",
+      "description": "The config name using which the credit accelerator file generation was requested",
+      "readOnly": true
+    },
+    "docContent": {
+      "type": "string",
+      "description": "Contents of the document in Base64 format",
+      "readOnly": true
+    },
+    "data": {
+      "$ref": "#/components/schemas/CreditAcceleratorData"
+    },
+    "reportConfig": {
+      "$ref": "#/components/schemas/CreditAcceleratorReportConfig"
+    },
+    "selectedAccounts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorSelectedAccount"
+      }
+    },
+    "submissionDate": {
+      "type": "string",
+      "description": "Date on which the request to generate credit accelerator file was submitted",
+      "readOnly": true
+    },
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier for credit accelerator report.",
+      "format": "int64",
+      "readOnly": true
+    },
+    "user": {
+      "$ref": "#/components/schemas/CreditAcceleratorUser"
+    },
+    "originalReportId": {
+      "type": "integer",
+      "description": "Report id of original report on which refresh is performed. This is not available when report is generated for the first time.",
+      "format": "int64",
+      "readOnly": true
+    },
+    "status": {
+      "type": "string",
+      "description": "Generation status of the requested credit accelerator file requested",
+      "readOnly": true,
+      "enum": [
+        "SUBMITTED",
+        "IN_PROGRESS",
+        "COMPLETED",
+        "FAILED"
+      ]
+    }
+  }
+}

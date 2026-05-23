@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProviderDetail",
+  "title": "ProviderDetail",
+  "type": "object",
+  "properties": {
+    "languageISOCode": {
+      "type": "string",
+      "description": "The language in which the provider details are provided. For example, a site supports two languages English and French. English being the primary language, the provider response will be provided in French depending on the user's locale. The language follows the two letter ISO code.<br><br><b>Endpoints</b>:<ul><li>GET providers/{providerId}</li><li>GET providers</li></ul>",
+      "readOnly": true
+    },
+    "favicon": {
+      "type": "string",
+      "description": "Favicon link of the provider.<br><br><b>Endpoints</b>:<ul><li>GET providers/{providerId}</li><li>GET providers</li></ul>",
+      "readOnly": true
+    },
+    "accountType": {
+      "type": "array",
+      "description": "AccountType supported by the provider, eg: Brokerage Cash, Current<br><br><b>Endpoints</b>:<ul><li>GET providers/{providerId}</li><li>GET providers</li></ul>",
+      "readOnly": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "CURRENT",
+          "BROKERAGE_CASH"
+        ]
+      }
+    },
+    "countryISOCode": {
+      "type": "string",
+      "description": "Country to which the provider belongs.<br><br><b>Endpoints</b>:<ul><li>GET providers/{providerId}</li><li>GET providers</li></ul>",
+      "readOnly": true
+    },
+    "isAddedByUser": {
+      "type": "string",
+      "description": "Indicates that the site has been added by the user at least once.<br><br><b>Endpoints</b>:<ul><li>GET providers/{providerId}</li><li>GET providers</li></ul>",
+      "readOnly": true
+    },
+    "PRIORITY": {
+      "type": "string",
+      "description": "Indicates the priority for which the service is invoked.<br><br><b>Endpoints</b>:<ul><li>GET providers/{providerId}</li><li>GET providers</li></ul><b>Applicable Values</b><br>",
+      "readOnly": true,
+      "enum": [
+        "POPULAR",
+        "SUGGESTED",
+        "COBRAND",
+        "SEARCH",
+        "ALL"
+      ]
+    },
+    "associatedProviderIds": {
+      "type": "array",
+      "description": "The screen-scraping providers that are associated to the Open Banking provider ID.<br><br><b>Applicable containers</b>: All Containers<br><b>Endpoints</b>:<ul><li>GET providers</li><li>GET providers/{providerId}</li></ul>",
+      "readOnly": true,
+      "items": {
+        "type": "integer",
+        "format": "int64"
+      }
+    },
+    "primaryLanguageISOCode": {
+      "type": "string",
+      "description": "The primary language of the site.<br><br><b>Endpoints</b>:<ul><li>GET providers/{providerId}</li><li>GET providers</li></ul>",
+      "readOnly": true
+    },
+    "help": {
+      "type": "string",
+      "description": "Text to guide user through linking an account that belongs to the site<br><br><b>Endpoints</b>:<ul><li>GET providers/{providerId}</li><li>GET providers</li></ul>",
+      "readOnly": true
+    },
+    "baseUrl": {
+      "type": "string",
+      "description": "The base URL of the provider's site.<br><br><b>Endpoints</b>:<ul><li>GET providers/{providerId}</li><li>GET providers</li></ul>",
+      "readOnly": true
+    },
+    "capability": {
+      "type": "array",
+      "description": "Capability of the site<br><br><b>Endpoints</b>:<ul><li>GET providers/{providerId}</li><li>GET providers</li></ul><br><b>Note : </b> capability has been deprecated",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/Capability"
+      }
+    },
+    "loginForm": {
+      "type": "array",
+      "description": "This entity represents the structure of the login or MFA form that is displayed to the user at the provider site. For performance reasons, this field is returned only when a single provider is requested in the request.<br><br><b>Endpoints</b>:<ul><li>GET providers/{providerId}</li></ul>",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/LoginForm"
+      }
+    },
+    "isConsentRequired": {
+      "type": "boolean",
+      "description": "Indicates if a provider site requires consent.<br><br><b>Endpoints</b>:<ul><li>GET providers/{providerId}</li><li>GET providers</li></ul>",
+      "readOnly": true
+    },
+    "loginUrl": {
+      "type": "string",
+      "description": "The login URL of the provider's site.<br><br><b>Endpoints</b>:<ul><li>GET providers/{providerId}</li><li>GET providers</li></ul>",
+      "readOnly": true
+    },
+    "isAutoRefreshEnabled": {
+      "type": "boolean",
+      "description": "Indicates if a provider site is auto-refreshed.<br><br><b>Endpoints</b>:<ul><li>GET providers/{providerId}</li><li>GET providers</li></ul>",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of a provider site.<br><br><b>Endpoints</b>:<ul><li>GET providers/{providerId}</li><li>GET providers</li></ul>",
+      "readOnly": true
+    },
+    "logo": {
+      "type": "string",
+      "description": "The logo link of the provider institution. The link will return the logo in the PNG format.<br><br><b>Endpoints</b>:<ul><li>GET providers/{providerId}</li><li>GET providers</li></ul>",
+      "readOnly": true
+    },
+    "betaContainers": {
+      "type": "array",
+      "description": "This attribute will show the list of containers which are presently under development for the provider site and their link attempt may be unsuccessful<br><br><b>Endpoints</b>:<ul><li>GET providers/{providerId}</li><li>GET providers</li></ul>",
+      "readOnly": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier for the provider site(e.g., financial institution sites, biller sites, lender sites, etc.).<br><br><b>Endpoints</b>:<ul><li>GET providers/{providerId}</li><li>GET providers</li></ul>",
+      "format": "int64",
+      "readOnly": true
+    },
+    "lastModified": {
+      "type": "string",
+      "description": "Determines when the provider information was updated by Yodlee. If the customer caches the data, the cache is recommended to be refreshed based on this field.<br><br><b>Endpoints</b>:<ul><li>GET providers/{providerId}</li><li>GET providers</li></ul>",
+      "readOnly": true
+    },
+    "authParameter": {
+      "type": "array",
+      "description": "AuthParameter appears in the response only in case of token-based aggregation sites.<br><br><b>Endpoints</b>:<ul><li>GET providers/{providerId}</li><li>GET providers</li></ul>",
+      "readOnly": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "authorizationCode",
+          "idToken",
+          "authResponse",
+          "state"
+        ]
+      }
+    },
+    "authType": {
+      "type": "string",
+      "description": "The authentication type enabled at the provider site. <br><br><b>Endpoints</b>:<ul><li>GET providers/{providerId}</li><li>GET providers</li></ul><b>Applicable Values</b><br>",
+      "readOnly": true,
+      "enum": [
+        "OAUTH",
+        "CREDENTIALS",
+        "MFA_CREDENTIALS"
+      ]
+    },
+    "dataset": {
+      "type": "array",
+      "description": "Logical grouping of dataset attributes into datasets such as Basic Aggregation Data, Account Profile and Documents<br><br><b>Endpoints</b>:<ul><li>GET providers/{providerId}</li><li>GET providers</li></ul>",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/ProvidersDataset"
+      }
+    },
+    "status": {
+      "type": "string",
+      "description": "Determines if the provider is supported for the cobrand (customer), is in the beta stage, etc. <br><br><b>Endpoints</b>:<ul><li>GET providers/{providerId}</li><li>GET providers</li></ul>",
+      "readOnly": true,
+      "enum": [
+        "Supported",
+        "Beta",
+        "Unsupported"
+      ]
+    }
+  }
+}

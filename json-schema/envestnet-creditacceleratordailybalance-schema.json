@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorDailyBalance",
+  "title": "CreditAcceleratorDailyBalance",
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string",
+      "description": "Daily balance date",
+      "readOnly": true
+    },
+    "amount": {
+      "type": "number",
+      "description": "Daily balance amount",
+      "format": "double",
+      "readOnly": true
+    },
+    "currency": {
+      "type": "string",
+      "description": "Currency which the amount is in.",
+      "readOnly": true
+    }
+  }
+}

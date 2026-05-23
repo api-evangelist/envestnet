@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EntityDetail",
+  "title": "EntityDetail",
+  "properties": {
+    "entityType": {
+      "type": "string",
+      "description": "The entityType identifies which applicableEntity of the insight the configuration will impact."
+    },
+    "entityId": {
+      "type": "string",
+      "description": "Unique ID which references a specific entityType for which the  insight is generated. <ul> <li>if entityType is \"ACCOUNT\" then this field represents  'accountId'</li> <li>if entityType is \"VIEW\" then this field represents  'viewId'</li> </ul> <b>Endpoints</b> - <ul><li>GET insights/configs/customerSubscriptions customer API</li>\n                      <li>GET insights/configs/userSubscriptions User API</li>\n                      <li>PATCH /insights/configs/customerSubscriptions cusomter API</li>\n                      <li>PATCH /insights/configs/userSubscriptions User API</li>\n                      <li>GET /insights/entityDetail/{entityId}</li>\n                      <li>GET /insights/insightDetail/{insightName}</li></ul>"
+    },
+    "container": {
+      "type": "string",
+      "description": "The account's container.<br><br><b>Applicable containers</b> - bank,creditCard,investment,insurance,loan<br><br> <b>Endpoints</b> -<ul><li>GET insights/configs/customerSubscriptions customer API</li>\n                      <li>GET insights/configs/userSubscriptions User API</li>\n                      <li>PATCH /insights/configs/customerSubscriptions cusomter API</li>\n                      <li>PATCH /insights/configs/userSubscriptions User API</li>\n                      <li>GET /insights/entityDetail/{entityId}</li>\n                      <li>GET /insights/insightDetail/{insightName}</li>\n                      <li>GET /views/{viewId}/transactions</li></ul>",
+      "readOnly": true,
+      "example": "creditCard",
+      "enum": [
+        "bank",
+        "creditCard",
+        "investment",
+        "insurance",
+        "loan",
+        "reward",
+        "bill",
+        "realEstate",
+        "otherAssets",
+        "otherLiabilities"
+      ]
+    },
+    "link": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Link"
+        }
+      ],
+      "readOnly": true
+    },
+    "eligibleInsight": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/EligibleInsight"
+      }
+    }
+  }
+}

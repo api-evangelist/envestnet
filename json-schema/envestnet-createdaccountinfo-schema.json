@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreatedAccountInfo",
+  "title": "CreatedAccountInfo",
+  "type": "object",
+  "properties": {
+    "accountName": {
+      "type": "string",
+      "readOnly": true
+    },
+    "id": {
+      "type": "integer",
+      "format": "int64",
+      "readOnly": true
+    },
+    "accountNumber": {
+      "type": "string",
+      "readOnly": true
+    }
+  }
+}

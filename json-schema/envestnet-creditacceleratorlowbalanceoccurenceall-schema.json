@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorLowBalanceOccurenceALL",
+  "title": "CreditAcceleratorLowBalanceOccurenceALL",
+  "type": "object",
+  "properties": {
+    "segment2": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceOccurrence"
+      }
+    },
+    "segment1": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceOccurrence"
+      }
+    },
+    "segment4": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceOccurrence"
+      }
+    },
+    "segment3": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceOccurrence"
+      }
+    }
+  }
+}

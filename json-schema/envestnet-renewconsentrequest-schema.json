@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RenewConsentRequest",
+  "title": "RenewConsentRequest",
+  "required": [
+    "clientTrustedAdvisor"
+  ],
+  "type": "object",
+  "properties": {
+    "preferences": {
+      "$ref": "#/components/schemas/RenewConsentPreferences"
+    },
+    "renewal": {
+      "$ref": "#/components/schemas/RenewalConsent"
+    },
+    "clientTrustedAdvisor": {
+      "type": "array",
+      "description": "describes information of client trusted advisor.",
+      "items": {
+        "$ref": "#/components/schemas/ClientTrustedAdvisor"
+      }
+    }
+  }
+}

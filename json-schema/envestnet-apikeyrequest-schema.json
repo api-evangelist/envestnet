@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ApiKeyRequest",
+  "title": "ApiKeyRequest",
+  "type": "object",
+  "properties": {
+    "publicKey": {
+      "maxLength": 2147483647,
+      "minLength": 1,
+      "type": "string",
+      "description": "Public key uploaded by the customer while generating ApiKey.<br><br><b>Endpoints</b>:<ul><li>GET /auth/apiKey</li><li>POST /auth/apiKey</li></ul>"
+    }
+  }
+}

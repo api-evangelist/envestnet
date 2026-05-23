@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/StatementDerived",
+  "title": "StatementDerived",
+  "description": "Statement derived",
+  "properties": {
+    "cardMinimumDueTotal": {
+      "description": "Total minimum due across one or more cards",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ]
+    }
+  }
+}

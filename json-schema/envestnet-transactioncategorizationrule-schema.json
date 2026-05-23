@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TransactionCategorizationRule",
+  "title": "TransactionCategorizationRule",
+  "type": "object",
+  "properties": {
+    "ruleClauses": {
+      "type": "array",
+      "description": "Details of rules. <br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br>",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/RuleClause"
+      }
+    },
+    "userDefinedRuleId": {
+      "type": "integer",
+      "description": "Unique identifier generated for every rule the user creates.<br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br>",
+      "format": "int64",
+      "readOnly": true
+    },
+    "categoryLevelId": {
+      "type": "integer",
+      "description": "The level of the category for which the rule is created.<br><br><b>Applicable containers</b>: creditCard, insurance, loan<br>",
+      "format": "int32",
+      "readOnly": true
+    },
+    "transactionCategorisationId": {
+      "type": "integer",
+      "description": "Category id that is assigned to the transaction when the transaction matches the rule clause. This is the id field of the transaction category resource.<br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br>",
+      "format": "int64",
+      "readOnly": true
+    },
+    "memId": {
+      "type": "integer",
+      "description": "Unique identifier of the user.<br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br>",
+      "format": "int64",
+      "readOnly": true
+    },
+    "rulePriority": {
+      "type": "integer",
+      "description": "The order in which the rules get executed on transactions.<br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br>",
+      "format": "int32",
+      "readOnly": true
+    }
+  }
+}

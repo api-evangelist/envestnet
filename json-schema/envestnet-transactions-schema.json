@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Transactions",
+  "title": "Transactions",
+  "properties": {
+    "transaction": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Transaction"
+      }
+    }
+  }
+}

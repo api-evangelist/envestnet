@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ViewRule",
+  "title": "ViewRule",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique system generated identifier for each rule. This ID can be used when calling the PUT method to update a view rule. If the ID is passed, and the rule is found, the existing rule gets updated. Else, a new rule is created with a system created ID.",
+      "example": "755dfc54-b50b-4471-88cd-57d040766cb6"
+    },
+    "name": {
+      "maximum": 100,
+      "minimum": 1,
+      "type": "string",
+      "description": "View rule name is an optional string type field representing the name of the View Rule. When displaying the rules to a user, the names will be easier for the user to understand as opposed to IDs.",
+      "example": "All Transactions Above $100"
+    },
+    "fromDate": {
+      "type": "string",
+      "description": "Essentially every View rule must have a lifespan range specified by fromDate and toDate fields.  Expected format - yyyy-MM-dd'T'HH:mm:ss. Note: Please provide the date in UTC timezone instead of Local timezone<ul><li>If a View rule has Include attribute, then the rule must have a fromDate and toDate.</li><li>If a View rule has 'exclude' attribute, then view rule must not have fromDate and toDate.</li><li>If a View rule include/exclude contains 'TransactionId' attribute, then view rule must not have fromDate and toDate.</li></ul> <br><Endpoints:<ul><li>GET /views</li><li>GET /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>",
+      "example": "2020-05-23T10:40:59.000Z"
+    },
+    "toDate": {
+      "type": "string",
+      "description": "Essentially every View rule must have a lifespan range specified by fromDate and toDate fields.  Expected format - yyyy-MM-dd'T'HH:mm:ss.Note: Please provide the date in UTC timezone instead of Local timezone<ul><li>If a View rule has Include attribute, then the rule must have a fromDate and toDate.</li><li>If a View rule has 'exclude' attribute, then view rule must not have fromDate and toDate.</li><li>If a View rule include/exclude contains 'TransactionId' attribute, then view rule must not have fromDate and toDate.</li></ul> <br>Endpoints:<ul><li>GET /views</li><li>GET /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>",
+      "example": "2020-05-23T10:40:59.000Z"
+    },
+    "type": {
+      "type": "string",
+      "description": "View.rule.type describes the ViewRule's type - INCOME or EXPENSE or TRANSFER.  This is synonymous with the type field of the transaction category resource. Each Transaction has a categoryId and each categoryId has a categoryType associated to it. The supported values for Transaction category and categoryType are provided by the GET transactions/categories API.<br><br>Note: There is a validation check in POST /views and PUT /views API where if you are passing categoryId in the view.rule.include or view.rule.exclude Request body. The validation expects that the categoryId's categoryType should match with view.rule.type<br><br>Endpoints:<ul><li>GET /views</li><li>GET /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>",
+      "enum": [
+        "INCOME",
+        "EXPENSE",
+        "TRANSFER"
+      ]
+    },
+    "baseType": {
+      "type": "array",
+      "description": "baseType for a Transaction identifies whether it was deposited to your account (CREDIT) or taken out (DEBIT). Specifying baseType for a rule will filter out transactions based on either CREDIT or DEBIT or both.<br>\n  <br>Note: baseType is not mandatory to be passed. It's useful for specific situations like tracking refunds. Combine \"type\" = EXPENSE and \"baseType\" = CREDIT to fetch only refunds.<br><br>Endpoints:<ul><li>GET /views</li><li>GET\n    /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>\nexample: CREDIT",
+      "items": {
+        "type": "string",
+        "enum": [
+          "CREDIT",
+          "DEBIT"
+        ]
+      }
+    },
+    "include": {
+      "$ref": "#/components/schemas/ViewRuleInclude"
+    },
+    "exclude": {
+      "$ref": "#/components/schemas/ViewRuleExclude"
+    }
+  }
+}

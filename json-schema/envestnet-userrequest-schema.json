@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserRequest",
+  "title": "UserRequest",
+  "required": [
+    "user"
+  ],
+  "type": "object",
+  "properties": {
+    "user": {
+      "$ref": "#/components/schemas/UserRegistration"
+    }
+  }
+}

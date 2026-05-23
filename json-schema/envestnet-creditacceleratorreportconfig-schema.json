@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorReportConfig",
+  "title": "CreditAcceleratorReportConfig",
+  "type": "object",
+  "properties": {
+    "largeCreditAmt": {
+      "type": "number",
+      "description": "Lower limit used to count the number of times the consumer's credit transactions exceeded this amount in Large Deposit Occurrence and Large Transfer Occurrence",
+      "format": "double",
+      "readOnly": true
+    },
+    "lowBalAmt3": {
+      "type": "number",
+      "description": "Third upper limit which is used to count the number of times the consumer''s Daily Balance amount fell below this amount in Low Balance Occurrence: Segment 3",
+      "format": "double",
+      "readOnly": true
+    },
+    "lowBalAmt4": {
+      "type": "number",
+      "description": "Fourth upper limit which is used to count the number of times the consumer''s Daily Balance amount fell below this amount in Low Balance Occurrence: Segment 4",
+      "format": "double",
+      "readOnly": true
+    },
+    "lowBalAmt1": {
+      "type": "number",
+      "description": "First upper limit which is used to count the number of times the consumer''s Daily Balance amount fell below this amount in Low Balance Occurrence: Segment 1",
+      "format": "double",
+      "readOnly": true
+    },
+    "requestingFirm": {
+      "$ref": "#/components/schemas/CreditAcceleratorRequestingFirm"
+    },
+    "lowBalAmt2": {
+      "type": "number",
+      "description": "Second upper limit which is used to count the number of times the consumer''s Daily Balance amount fell below this amount in Low Balance Occurrence: Segment 2",
+      "format": "double",
+      "readOnly": true
+    },
+    "days": {
+      "type": "integer",
+      "description": "No of days for which the credit accelerator file is requested",
+      "format": "int32",
+      "readOnly": true
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TotalCount",
+  "title": "TotalCount",
+  "type": "object",
+  "properties": {
+    "count": {
+      "type": "integer",
+      "format": "int64",
+      "readOnly": true
+    }
+  }
+}

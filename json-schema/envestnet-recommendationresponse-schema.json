@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RecommendationResponse",
+  "title": "RecommendationResponse",
+  "properties": {
+    "recommendation": {
+      "type": "string",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Recommendation"
+        }
+      ]
+    }
+  }
+}

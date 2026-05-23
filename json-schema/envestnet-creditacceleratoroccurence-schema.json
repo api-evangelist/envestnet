@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorOccurence",
+  "title": "CreditAcceleratorOccurence",
+  "type": "object",
+  "properties": {
+    "count": {
+      "type": "number",
+      "description": "Number of times the event has occurred within the given time period.",
+      "format": "double",
+      "readOnly": true
+    },
+    "timePeriod": {
+      "type": "string",
+      "description": "Time intervals to consider up to the number of days the application was requested.",
+      "readOnly": true
+    }
+  }
+}

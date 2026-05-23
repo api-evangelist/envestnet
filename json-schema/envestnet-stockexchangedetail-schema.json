@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/StockExchangeDetail",
+  "title": "StockExchangeDetail",
+  "type": "object",
+  "properties": {
+    "symbol": {
+      "type": "string",
+      "description": "Ticker symbol representing particular securities listed on an exchange.<br><br><b>Applicable containers</b>: investment, insurance<br>",
+      "readOnly": true
+    },
+    "countryCode": {
+      "type": "string",
+      "description": "Country codes are geocodes developed to represent countries and dependent areas.<br><br><b>Applicable containers</b>: investment, insurance<br>",
+      "readOnly": true
+    },
+    "currencyCode": {
+      "type": "string",
+      "description": "ISO codes of currency.<br><br><b>Applicable containers</b>: investment, insurance<br>",
+      "readOnly": true
+    },
+    "exchangeCode": {
+      "type": "string",
+      "description": "An Exchange code is a four-character code used to identify stock markets and other trading exchanges within global trading.<br><br><b>Applicable containers</b>: investment, insurance<br>",
+      "readOnly": true
+    }
+  }
+}

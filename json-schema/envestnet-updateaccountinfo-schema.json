@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UpdateAccountInfo",
+  "title": "UpdateAccountInfo",
+  "type": "object",
+  "properties": {
+    "container": {
+      "type": "string",
+      "enum": [
+        "bank",
+        "creditCard",
+        "investment",
+        "insurance",
+        "loan",
+        "reward",
+        "bill",
+        "realEstate",
+        "otherAssets",
+        "otherLiabilities"
+      ]
+    },
+    "includeInNetWorth": {
+      "type": "string"
+    },
+    "address": {
+      "$ref": "#/components/schemas/AccountAddress"
+    },
+    "accountName": {
+      "maxLength": 100,
+      "minLength": 1,
+      "type": "string"
+    },
+    "dueDate": {
+      "type": "string"
+    },
+    "memo": {
+      "maxLength": 250,
+      "minLength": 0,
+      "type": "string"
+    },
+    "homeValue": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "accountNumber": {
+      "maxLength": 100,
+      "minLength": 0,
+      "pattern": "^[a-zA-Z0-9]+$",
+      "type": "string"
+    },
+    "frequency": {
+      "type": "string",
+      "enum": [
+        "DAILY",
+        "ONE_TIME",
+        "WEEKLY",
+        "EVERY_2_WEEKS",
+        "SEMI_MONTHLY",
+        "MONTHLY",
+        "QUARTERLY",
+        "SEMI_ANNUALLY",
+        "ANNUALLY",
+        "EVERY_2_MONTHS",
+        "EBILL",
+        "FIRST_DAY_MONTHLY",
+        "LAST_DAY_MONTHLY",
+        "EVERY_4_WEEKS",
+        "UNKNOWN",
+        "OTHER"
+      ]
+    },
+    "accountStatus": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE",
+        "TO_BE_CLOSED",
+        "CLOSED",
+        "DELETED"
+      ]
+    },
+    "amountDue": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "linkedAccountIds": {
+      "type": "array",
+      "description": "List of loan accounts to which a real-estate account is linked.",
+      "items": {
+        "type": "integer",
+        "format": "int64"
+      }
+    },
+    "balance": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "isEbillEnrolled": {
+      "type": "string"
+    },
+    "nickname": {
+      "maxLength": 50,
+      "minLength": 0,
+      "type": "string"
+    }
+  }
+}

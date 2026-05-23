@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TransactionCategorizationRuleInfo",
+  "title": "TransactionCategorizationRuleInfo",
+  "required": [
+    "categoryId",
+    "ruleClause"
+  ],
+  "type": "object",
+  "properties": {
+    "ruleClause": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/FieldOperation"
+      }
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "SYSTEM",
+        "USER"
+      ]
+    },
+    "priority": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "categoryId": {
+      "type": "integer",
+      "format": "int32"
+    }
+  }
+}

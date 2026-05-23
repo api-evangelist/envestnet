@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SecurityHolding",
+  "title": "SecurityHolding",
+  "type": "object",
+  "properties": {
+    "security": {
+      "$ref": "#/components/schemas/Security"
+    },
+    "id": {
+      "type": "string",
+      "readOnly": true
+    }
+  }
+}

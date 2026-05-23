@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/entityconfig",
+  "title": "entityconfig",
+  "properties": {
+    "entityType": {
+      "type": "string",
+      "description": "entity type it could be VIEW or ACCOUNT",
+      "enum": [
+        "ACCOUNT",
+        "VIEW"
+      ],
+      "example": "ACCOUNT"
+    },
+    "entityIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "description": "list of entity id it could be account id or view id",
+      "example": [
+        "123454",
+        "123456",
+        "123455"
+      ]
+    }
+  }
+}

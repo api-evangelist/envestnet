@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MerchantAddress",
+  "title": "MerchantAddress",
+  "description": "Address details of the merchant as identified by the system.",
+  "properties": {
+    "city": {
+      "type": "string",
+      "description": "City name as applicable to represent the Merchant address for a given User Transaction <br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/transactions</li></ul>",
+      "readOnly": true,
+      "example": "Milwaukee"
+    },
+    "state": {
+      "type": "string",
+      "description": "State code as applicable to represent the Merchant address for a given User Transaction. <br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/transactions</li></ul>",
+      "readOnly": true,
+      "example": "WI"
+    },
+    "country": {
+      "type": "string",
+      "description": "Country code as applicable to represent the Merchant address for a given User Transaction. <br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/transactions</li></ul>",
+      "readOnly": true,
+      "example": "US"
+    }
+  }
+}

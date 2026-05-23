@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorAccountExpense",
+  "title": "CreditAcceleratorAccountExpense",
+  "type": "object",
+  "properties": {
+    "cashTxnSummary": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalanceSummary"
+    },
+    "entertainmentTxnSummary": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalanceSummary"
+    },
+    "taxesTxnSummary": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalanceSummary"
+    },
+    "telecomTxnSummary": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalanceSummary"
+    },
+    "cashflow": {
+      "$ref": "#/components/schemas/CreditAcceleratorCashFlow"
+    },
+    "insuranceTxnSummary": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalanceSummary"
+    },
+    "charityTxnSummary": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalanceSummary"
+    },
+    "ccardTxnSummary": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalanceSummary"
+    },
+    "rentTxnSummary": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalanceSummary"
+    },
+    "utilitiesTxnSummary": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalanceSummary"
+    },
+    "educationTxnSummary": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalanceSummary"
+    },
+    "loanTxnSummary": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalanceSummary"
+    }
+  }
+}

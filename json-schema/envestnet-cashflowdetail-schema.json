@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CashFlowDetail",
+  "title": "CashFlowDetail",
+  "properties": {
+    "date": {
+      "description": "date in the  format yyyy-mm-dd",
+      "type": "string"
+    },
+    "dateRange": {
+      "description": "The date range considered to compute the values",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DateRange"
+        }
+      ],
+      "readOnly": true
+    },
+    "cashInFlow": {
+      "description": "cashInFlow for the given date range.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "cashOutFlow": {
+      "description": "cashOutFlow for the given date range.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "transferIn": {
+      "description": "transferIn for the given date range.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "transferOut": {
+      "description": "transferOut for the given date range.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "totalCashFlow": {
+      "description": "totalCashFlow for the given date range.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "netTransfer": {
+      "description": "netTransfer for the given date range.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    }
+  }
+}

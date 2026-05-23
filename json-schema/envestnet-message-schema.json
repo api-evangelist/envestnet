@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Message",
+  "title": "Message",
+  "description": "Provides information about customized text-messages associated with an insight.",
+  "properties": {
+    "messageText": {
+      "type": "string",
+      "description": "The pre-defined text-block associated with the insight."
+    }
+  },
+  "required": [
+    "messageText"
+  ]
+}

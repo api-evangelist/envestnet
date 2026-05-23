@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AccountHolderData",
+  "title": "AccountHolderData",
+  "type": "object",
+  "properties": {
+    "identifier": {
+      "type": "array",
+      "description": "Identifiers of the account holder.<br><b>Endpoints</b>:<li>GET /partner/paymentProcessor/account/holder</li></ul>",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/Identifier"
+      }
+    },
+    "gender": {
+      "type": "string",
+      "description": "Identifiers of the account holder.<br><b>Endpoints</b>:<li>GET /partner/paymentProcessor/account/holder</li></ul>",
+      "readOnly": true
+    },
+    "ownership": {
+      "type": "string",
+      "description": "Indicates the ownership of the account.<br><b>Endpoints</b>:<li>GET /partner/paymentProcessor/account/holder</li></ul>",
+      "readOnly": true,
+      "enum": [
+        "PRIMARY",
+        "SECONDARY",
+        "CUSTODIAN",
+        "OTHERS",
+        "POWER_OF_ATTORNEY",
+        "TRUSTEE",
+        "JOINT_OWNER",
+        "BENEFICIARY",
+        "AAS",
+        "BUSINESS",
+        "DBA",
+        "TRUST"
+      ]
+    },
+    "name": {
+      "$ref": "#/components/schemas/Name"
+    }
+  }
+}

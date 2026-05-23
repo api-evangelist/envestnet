@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TransactionSummaryDetails",
+  "title": "TransactionSummaryDetails",
+  "type": "object",
+  "properties": {
+    "creditTotal": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "debitTotal": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "netTotal": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "average": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "percentage": {
+      "format": "int64",
+      "readOnly": true,
+      "type": "integer",
+      "description": "percentage calculated as (groupCreditTotal - groupDebitToal) / (creditTotal - debitTotal) * 100"
+    },
+    "name": {
+      "readOnly": true,
+      "type": "string",
+      "description": "Identifies the name of the type selected. If type is merchant, then the name indicates merchant name. If type is category, name indicates category name."
+    },
+    "id": {
+      "format": "int64",
+      "description": "unique identifier for the type. If type is category, id indicates category id.",
+      "readOnly": true,
+      "type": "integer"
+    },
+    "transactionCount": {
+      "format": "int64",
+      "readOnly": true,
+      "type": "integer"
+    },
+    "transactionLink": {
+      "readOnly": true,
+      "type": "string",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TransactionLink"
+        }
+      ]
+    }
+  }
+}

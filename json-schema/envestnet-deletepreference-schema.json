@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DeletePreference",
+  "title": "DeletePreference",
+  "type": "object",
+  "properties": {
+    "description": {
+      "type": "string",
+      "description": "Delete Preference Descritption"
+    },
+    "alternateDescription": {
+      "type": "string",
+      "description": "Delete Preference Alternate Descritption"
+    },
+    "labelDescription": {
+      "type": "string",
+      "description": "Delete Preference LabelDescritption"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BasicCreditCardUtilization",
+  "title": "BasicCreditCardUtilization",
+  "description": "Derived information across one or more aggregated card accounts.",
+  "properties": {
+    "totalRunningBalance": {
+      "description": "Total running balance across one or more card accounts.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "totalCreditLine": {
+      "description": "Total credit line across one or more card accounts.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "creditUtilizationPercent": {
+      "type": "number",
+      "description": "Single card credit utilization percent calculated as  totalRunningBalance / totalCreditLine * 100",
+      "readOnly": true
+    },
+    "totalCreditUtilizationPercent": {
+      "type": "number",
+      "description": "Total credit utilization percent calculated as  totalRunningBalance / totalCreditLine * 100",
+      "readOnly": true
+    }
+  }
+}

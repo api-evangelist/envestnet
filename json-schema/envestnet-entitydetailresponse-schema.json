@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EntityDetailResponse",
+  "title": "EntityDetailResponse",
+  "properties": {
+    "entityDetail": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/EntityDetail"
+      }
+    }
+  }
+}

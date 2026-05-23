@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorAccountAsset",
+  "title": "CreditAcceleratorAccountAsset",
+  "type": "object",
+  "properties": {
+    "dailyBalanceAnalysis": {
+      "$ref": "#/components/schemas/CreditAcceleratorDailyBalanceAnalysis"
+    },
+    "adjustmentTxnSummary": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalanceSummary"
+    },
+    "creditTxnWithoutTransferSummary": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalanceSummary"
+    },
+    "largeTransferOccurrences": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalanceOccurrenceWithTxn"
+    },
+    "dailyBalanceSummary": {
+      "$ref": "#/components/schemas/CreditAcceleratorDailyBalanceSummary"
+    },
+    "depositTxnSummary": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalanceSummary"
+    },
+    "dailyBalances": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorDailyBalance"
+      }
+    },
+    "largeDepositOccurrences": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalanceOccurrenceWithTxn"
+    },
+    "lowBalanceOccurrence": {
+      "$ref": "#/components/schemas/CreditAcceleratorLowBalanceOccurrence"
+    },
+    "negativeBalanceOccurrences": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalanceOccurrence"
+    },
+    "transferTxnSummary": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalanceSummary"
+    },
+    "creditTxnWithTransferSummary": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalanceSummary"
+    },
+    "investmentHoldingSummary": {
+      "$ref": "#/components/schemas/CreditAcceleratorInvestmentHoldingSummary"
+    },
+    "nsfOccurrences": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalanceOccurrenceWithTxn"
+    }
+  }
+}

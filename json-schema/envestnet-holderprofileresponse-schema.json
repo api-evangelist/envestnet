@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/HolderProfileResponse",
+  "title": "HolderProfileResponse",
+  "type": "object",
+  "properties": {
+    "holderProfile": {
+      "type": "array",
+      "description": "The holder profile entity encapsulates all the user's details, such as the corresponding accounts and the user's profile data under it",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/VerificationHolderProfile"
+      }
+    }
+  }
+}

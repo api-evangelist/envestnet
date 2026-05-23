@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/VerificationStatusResponse",
+  "title": "VerificationStatusResponse",
+  "type": "object",
+  "properties": {
+    "verification": {
+      "type": "array",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/VerificationStatus"
+      }
+    }
+  }
+}

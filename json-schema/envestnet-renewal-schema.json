@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Renewal",
+  "title": "Renewal",
+  "required": [
+    "defaultRenewalDuration",
+    "isReauthorizationRequired"
+  ],
+  "type": "object",
+  "properties": {
+    "defaultRenewalDuration": {
+      "type": "integer",
+      "description": "Shows the duration in days of consent renewal",
+      "format": "int64"
+    },
+    "isReauthorizationRequired": {
+      "type": "boolean",
+      "description": "Shows if the consent renewal need reauthorization"
+    }
+  }
+}

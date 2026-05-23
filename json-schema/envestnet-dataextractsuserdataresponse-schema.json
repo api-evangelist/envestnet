@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DataExtractsUserDataResponse",
+  "title": "DataExtractsUserDataResponse",
+  "type": "object",
+  "properties": {
+    "userData": {
+      "type": "array",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/DataExtractsUserData"
+      }
+    }
+  }
+}

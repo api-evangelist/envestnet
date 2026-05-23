@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SummaryDetails",
+  "title": "SummaryDetails",
+  "type": "object",
+  "properties": {
+    "name": {
+      "readOnly": true,
+      "type": "string",
+      "description": "Identifies the name of the type selected. If type is merchant, then the name indicates merchant name. If type is category, name indicates category name.",
+      "example": "Entertainment"
+    },
+    "id": {
+      "format": "int64",
+      "description": "unique identifier for the type. If type is category, id indicates category id.",
+      "readOnly": true,
+      "type": "integer",
+      "example": 7
+    },
+    "creditTotal": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "debitTotal": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "netTotal": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "transactionCount": {
+      "format": "int64",
+      "readOnly": true,
+      "type": "integer"
+    },
+    "transactionLink": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TransactionTrendSummaryLink"
+        }
+      ]
+    },
+    "details": {
+      "readOnly": true,
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TransactionTrendDetails"
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CustomDisplayData",
+  "title": "CustomDisplayData",
+  "required": [
+    "clientTrustedAdvisorTxt",
+    "consentConfirmation",
+    "deletePreference",
+    "thirdParty",
+    "userDataTreatment"
+  ],
+  "type": "object",
+  "properties": {
+    "consentConfirmation": {
+      "$ref": "#/components/schemas/ConsentConfirmation"
+    },
+    "deletePreference": {
+      "$ref": "#/components/schemas/DeletePreference"
+    },
+    "thirdParty": {
+      "$ref": "#/components/schemas/ThirdParty"
+    },
+    "clientTrustedAdvisorTxt": {
+      "$ref": "#/components/schemas/ClientTrustedAdvisorTxt"
+    },
+    "userDataTreatment": {
+      "$ref": "#/components/schemas/UserDataTreatment"
+    }
+  }
+}

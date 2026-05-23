@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProviderAccountRequest",
+  "title": "ProviderAccountRequest",
+  "required": [
+    "field"
+  ],
+  "type": "object",
+  "properties": {
+    "consentId": {
+      "type": "integer",
+      "description": "Consent Id generated for the request through POST Consent.<br><br><b>Endpoints</b>:<ul><li>POST Provider Account</li><li>PUT Provider Account</li></ul>",
+      "format": "int64"
+    },
+    "preferences": {
+      "$ref": "#/components/schemas/ProviderAccountPreferences"
+    },
+    "aggregationSource": {
+      "type": "string",
+      "enum": [
+        "SYSTEM",
+        "USER"
+      ]
+    },
+    "field": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Field"
+      }
+    },
+    "datasetName": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "BASIC_AGG_DATA",
+          "ADVANCE_AGG_DATA",
+          "ACCT_PROFILE",
+          "DOCUMENT"
+        ]
+      }
+    },
+    "dataset": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ProvidersDataset"
+      }
+    }
+  }
+}

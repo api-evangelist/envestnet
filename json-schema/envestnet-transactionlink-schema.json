@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TransactionLink",
+  "title": "TransactionLink",
+  "description": "Reference path link to fetch more information about the specific transaction.",
+  "properties": {
+    "method": {
+      "type": "string",
+      "description": "The method to use while calling the URL",
+      "example": "GET"
+    },
+    "url": {
+      "type": "string",
+      "description": "URL to access the endpoint.",
+      "example": "/transaction?merchantName=Amazon&skip=5&orderBy=amount&fromDate=2021-01-01&toDate=2021-01-31"
+    }
+  }
+}

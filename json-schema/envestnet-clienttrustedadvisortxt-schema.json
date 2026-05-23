@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ClientTrustedAdvisorTxt",
+  "title": "ClientTrustedAdvisorTxt",
+  "required": [
+    "description"
+  ],
+  "type": "object",
+  "properties": {
+    "description": {
+      "type": "string",
+      "description": "ClientTrustedAdvisorTxt Description"
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BasicAccount",
+  "title": "BasicAccount",
+  "description": "Account object that contains details about one or more aggregated accounts.",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/AccountInfo"
+    }
+  ],
+  "properties": {
+    "basicTransaction": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BasicTransaction"
+      }
+    },
+    "basicTrend": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BasicTrend"
+      }
+    },
+    "changeValue": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ChangeValue"
+      },
+      "readOnly": true
+    },
+    "cashFlowTrend": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CashFlowTrend"
+      },
+      "readOnly": true
+    },
+    "basicCategoryDetail": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BasicCategoryDetail"
+      },
+      "readOnly": true
+    },
+    "message": {
+      "items": {
+        "$ref": "#/components/schemas/Message"
+      },
+      "readOnly": true
+    },
+    "accountDerived": {
+      "items": {
+        "$ref": "#/components/schemas/AccountDerived"
+      },
+      "readOnly": true
+    },
+    "errorInfo": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ErrorInfo"
+        }
+      ],
+      "readOnly": true
+    },
+    "detail": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AccountDetail"
+      }
+    }
+  }
+}

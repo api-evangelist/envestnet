@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/HoldingRequestInfo",
+  "title": "HoldingRequestInfo",
+  "required": [
+    "accountId",
+    "description",
+    "value"
+  ],
+  "type": "object",
+  "properties": {
+    "symbol": {
+      "type": "string"
+    },
+    "exercisedQuantity": {
+      "type": "number",
+      "format": "double"
+    },
+    "cusipNumber": {
+      "type": "string"
+    },
+    "vestedQuantity": {
+      "type": "number",
+      "format": "double"
+    },
+    "description": {
+      "maxLength": 2147483647,
+      "minLength": 1,
+      "type": "string"
+    },
+    "unvestedValue": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "vestedValue": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "optionType": {
+      "type": "string",
+      "enum": [
+        "put",
+        "call",
+        "unknown",
+        "other"
+      ]
+    },
+    "holdingType": {
+      "type": "string",
+      "enum": [
+        "stock",
+        "mutualFund",
+        "bond",
+        "CD",
+        "option",
+        "moneyMarketFund",
+        "other",
+        "remic",
+        "future",
+        "commodity",
+        "currency",
+        "unitInvestmentTrust",
+        "employeeStockOption",
+        "insuranceAnnuity",
+        "unknown",
+        "preferredStock",
+        "ETF",
+        "warrants",
+        "digitalAsset"
+      ]
+    },
+    "maturityDate": {
+      "type": "string"
+    },
+    "price": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "term": {
+      "type": "string"
+    },
+    "contractQuantity": {
+      "type": "number",
+      "format": "double"
+    },
+    "isShort": {
+      "type": "boolean"
+    },
+    "value": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "expirationDate": {
+      "type": "string"
+    },
+    "interestRate": {
+      "type": "number",
+      "format": "double"
+    },
+    "quantity": {
+      "type": "number",
+      "format": "double"
+    },
+    "grantDate": {
+      "type": "string"
+    },
+    "sedol": {
+      "type": "string"
+    },
+    "vestedSharesExercisable": {
+      "type": "number",
+      "format": "double"
+    },
+    "spread": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "accountId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "couponRate": {
+      "type": "number",
+      "format": "double"
+    },
+    "unvestedQuantity": {
+      "type": "number",
+      "format": "double"
+    },
+    "costBasis": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "vestingDate": {
+      "type": "string"
+    },
+    "isin": {
+      "type": "string"
+    },
+    "strikePrice": {
+      "$ref": "#/components/schemas/Money"
+    }
+  }
+}

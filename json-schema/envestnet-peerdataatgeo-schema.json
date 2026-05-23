@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PeerDataAtGeo",
+  "title": "PeerDataAtGeo",
+  "properties": {
+    "numberOfPeers": {
+      "type": "integer",
+      "description": "Median number of the peers in the same income range for which the response is returned<br><br><b>Endpoints</b> -<ul><li>GET /Views/{ViewId}/peerData</li></ul>",
+      "format": "int64",
+      "example": 1654
+    },
+    "spendAmount": {
+      "description": "The median amount spent by the peers in that segment for the specified category or merchant <br>",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ]
+    }
+  }
+}

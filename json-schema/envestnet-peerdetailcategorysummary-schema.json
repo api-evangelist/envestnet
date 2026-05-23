@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/peerDetailCategorySummary",
+  "title": "peerDetailCategorySummary",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Category Id of the category belonging to peer for which the response is returned<br><br><b>Endpoints</b> -<ul><li>GET /Views/{ViewId}/peerData</li></ul>",
+      "example": "35"
+    },
+    "name": {
+      "type": "string",
+      "description": "Category Name for which the response is returned<br><br><b>Endpoints</b> -<ul><li>GET /Views/{ViewId}/peerData</li></ul>",
+      "example": "Utilities"
+    },
+    "benchmark": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/GeographyWithDataArray"
+      }
+    }
+  }
+}

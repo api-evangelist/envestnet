@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ConsentPreferencesResponse",
+  "title": "ConsentPreferencesResponse",
+  "required": [
+    "consentId",
+    "customDisplayData",
+    "preferences"
+  ],
+  "type": "object",
+  "properties": {
+    "consentId": {
+      "type": "integer",
+      "description": "Consent Id generated through POST Consent.",
+      "format": "int64"
+    },
+    "preferences": {
+      "$ref": "#/components/schemas/Preferences"
+    },
+    "customDisplayData": {
+      "$ref": "#/components/schemas/CustomDisplayData"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ConsentHistory",
+  "title": "ConsentHistory",
+  "required": [
+    "consentStatus",
+    "eventDateTime",
+    "startDateTime"
+  ],
+  "type": "object",
+  "properties": {
+    "eventDateTime": {
+      "type": "string",
+      "description": "History logged datetime."
+    },
+    "expirationDateTime": {
+      "type": "string",
+      "description": "Consent expiry datetime where supported by the provider."
+    },
+    "userDataPurge": {
+      "type": "integer",
+      "description": "Applicable data deletion preference for consent as per AU OB onboarding model and user's &quot;delete my data instead&quot; option. This data point is applicable for AU Open Banking region only.",
+      "format": "int64"
+    },
+    "deidentificationPreference": {
+      "type": "boolean",
+      "description": "whether user has given consent to use deidentified data or not. This data point is applicable for AU Open Banking region only. Oauthpref id = 4"
+    },
+    "startDateTime": {
+      "type": "string",
+      "description": "Consent start datetime."
+    },
+    "consentStatus": {
+      "type": "string",
+      "description": "Status of the consent in each history event. Statuses will be shown as applicable for Open Banking regions.",
+      "enum": [
+        "ACTIVE",
+        "EXPIRED",
+        "REVOKED",
+        "CONSENT_REPEALED"
+      ]
+    },
+    "revokedDateTime": {
+      "type": "string",
+      "description": "Revoked datetime for the consent if consent is revoked."
+    },
+    "consentCollectionPeriod": {
+      "type": "integer",
+      "description": "Consent duration period selected by user for recurring consents during the new account addition or consent renewal. This data point is applicable for AU Open Banking region only. Oauthpref id = 6",
+      "format": "int32"
+    }
+  }
+}

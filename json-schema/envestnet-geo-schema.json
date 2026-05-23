@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Geo",
+  "title": "Geo",
+  "properties": {
+    "level": {
+      "type": "string",
+      "description": "Identifies the level at which peer bechmarking data is returned - City, State, National, or CBSA.",
+      "readOnly": true
+    },
+    "value": {
+      "type": "string",
+      "description": "Provides the value associated with the level. e.g. US for the level \"national\".",
+      "readOnly": true
+    }
+  }
+}

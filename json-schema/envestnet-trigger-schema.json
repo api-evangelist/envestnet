@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/trigger",
+  "title": "trigger",
+  "properties": {
+    "insightName": {
+      "type": "string",
+      "description": "insight name",
+      "example": "CHANGE_IN_NETWORTH"
+    },
+    "overrideduplicateCheck": {
+      "type": "boolean",
+      "description": "override duplicate ",
+      "example": true
+    },
+    "entityConfig": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/entityconfig"
+      }
+    }
+  }
+}

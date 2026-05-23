@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserDetail",
+  "title": "UserDetail",
+  "type": "object",
+  "properties": {
+    "preferences": {
+      "$ref": "#/components/schemas/UserResponsePreferences"
+    },
+    "address": {
+      "$ref": "#/components/schemas/UserAddress"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "loginName": {
+      "type": "string",
+      "description": "The login name of the user used for authentication.<br><br><b>Endpoints</b>:<ul><li>POST user/register</li><li>GET user</li></ul>",
+      "readOnly": true
+    },
+    "name": {
+      "$ref": "#/components/schemas/Name"
+    },
+    "id": {
+      "type": "integer",
+      "description": "The unique identifier of a consumer/user in Yodlee system for whom the API services would be accessed for.<br><br><b>Endpoints</b>:<ul><li>POST user/samlLogin</li><li>POST user/register</li><li>GET user</li></ul>",
+      "format": "int64",
+      "readOnly": true
+    },
+    "roleType": {
+      "type": "string",
+      "enum": [
+        "INDIVIDUAL"
+      ]
+    },
+    "email": {
+      "type": "string",
+      "description": "The email address of the user.<br><br><b>Endpoints</b>:<ul><li>GET user</li></ul>",
+      "readOnly": true
+    },
+    "segmentName": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorAllAccountExpense",
+  "title": "CreditAcceleratorAllAccountExpense",
+  "type": "object",
+  "properties": {
+    "cashTxnSummary": {
+      "type": "array",
+      "description": "Sum, count and average of cash withdrawal transactions, grouped by currency.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceSummary"
+      }
+    },
+    "entertainmentTxnSummary": {
+      "type": "array",
+      "description": "Sum, count and average of restaurant/travel/entertainment transactions, grouped by currency.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceSummary"
+      }
+    },
+    "taxesTxnSummary": {
+      "type": "array",
+      "description": "Sum, count, average and list of taxes expense transactions.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceSummary"
+      }
+    },
+    "telecomTxnSummary": {
+      "type": "array",
+      "description": "Sum, count, average and list of telecom expense transactions.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceSummary"
+      }
+    },
+    "cashflow": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountCashFlow"
+      }
+    },
+    "insuranceTxnSummary": {
+      "type": "array",
+      "description": "Sum, count, average and list of insurance expense transactions.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceSummary"
+      }
+    },
+    "charityTxnSummary": {
+      "type": "array",
+      "description": "Sum, count and average of charitable giving transactions, grouped by currency.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceSummary"
+      }
+    },
+    "ccardTxnSummary": {
+      "type": "array",
+      "description": "Sum, count and average of credit card payment transactions, grouped by currency.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceSummary"
+      }
+    },
+    "rentTxnSummary": {
+      "type": "array",
+      "description": "Sum, count, average and list of rent expense transactions.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceSummary"
+      }
+    },
+    "utilitiesTxnSummary": {
+      "type": "array",
+      "description": "Sum, count, average and list of utilities expense transactions.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceSummary"
+      }
+    },
+    "educationTxnSummary": {
+      "type": "array",
+      "description": "Sum, count, average and list of education expense transactions.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceSummary"
+      }
+    },
+    "loanTxnSummary": {
+      "type": "array",
+      "description": "Sum, count and average of loan repayment transactions, grouped by currency.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceSummary"
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TransactionCategoryRequest",
+  "title": "TransactionCategoryRequest",
+  "required": [
+    "parentCategoryId"
+  ],
+  "type": "object",
+  "properties": {
+    "parentCategoryId": {
+      "minimum": 1,
+      "exclusiveMinimum": false,
+      "type": "integer",
+      "format": "int32"
+    },
+    "source": {
+      "type": "string",
+      "readOnly": true
+    },
+    "categoryName": {
+      "maxLength": 50,
+      "minLength": 1,
+      "type": "string"
+    }
+  }
+}

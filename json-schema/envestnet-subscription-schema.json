@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Subscription",
+  "title": "Subscription",
+  "description": "Details about the configurations applied for the specific insight.",
+  "properties": {
+    "insightName": {
+      "type": "string",
+      "description": "Unique name of each Insight in the system. 2 Insight can not have same Insight 'name'. If User wants to update his/her Subscription details, then While calling the PATCH Subscription API this 'name' field is mandatory.<br><br><b>Endpoints</b> -<ul><li>GET insights/configs/customerSubscriptions customer API</li><li>GET insights/configs/userSubscriptions User API</li><li>PATCH /insights/configs/customerSubscriptions cusomter API</li><li>PATCH /insights/configs/userSubscriptions User API</li></ul>"
+    },
+    "insightTitle": {
+      "type": "string",
+      "description": "Title of the Insight. This is an editable field by calling PATCH Subscription APIs.<br><br><b>Endpoints</b> -<ul><li>GET insights/configs/customerSubscriptions customer API</li><li>GET insights/configs/userSubscriptions User API</li><li>PATCH /insights/configs/customerSubscriptions cusomter API</li></ul>"
+    },
+    "insightType": {
+      "type": "string",
+      "description": "Identifies whether the insight is generated at an entity-level (per account or per view), or if it considers all entities for the user - e.g.  all accounts. <br><br>Note - Do not pass the insightType attribute when doing a PATCH rquest. <br><br><b>Endpoints</b> -<ul><li>GET insights/configs/customerSubscriptions customer API</li><li>GET insights/configs/userSubscriptions User API</li></ul>",
+      "readOnly": true,
+      "enum": [
+        "OTHER",
+        "AGGREGATE"
+      ]
+    },
+    "triggerType": {
+      "type": "string",
+      "description": "triggerType of an insight defines how an Insight will be triggered in the system. <br><br>Currently following triggerType are supported - <ul> <li><b>SCHDEULE</b> - Insight evaluation and subsequent generation will be triggered based on a pre-defined schedule. This schedule may be editable by the customer depending on the insight.</li> <li><b>REFRESH</b> - Insight evaluation and subsequent generation will be triggered when a user's account gets successfully refreshed.</li> <li><b>EVENT</b> - Insight evaluation and subsequent generation will be triggered based on a system-defined event happening.</li> </ul> <b>Note</b> <br><br>If triggerType=SCHEDULE, then the UserSubscription/CobrandSubscription API attribute 'frequency' and 'duration' may be applicable depending on the insight. <br><br><b>Endpoints</b> <ul> <li>GET /insights/config/customerSubscriptions</li> </ul>",
+      "readOnly": true,
+      "example": "SCHEDULE",
+      "enum": [
+        "SCHEDULE",
+        "REFRESH",
+        "EVENT"
+      ]
+    },
+    "containers": {
+      "type": "array",
+      "description": "Identifies the containers considered for generating an insight. <br><br><b>Endpoints</b> <ul><li>GET /insights/config/customerSubscriptions</li> </ul>",
+      "readOnly": true,
+      "items": {
+        "type": "string"
+      },
+      "enum": [
+        "BANK",
+        "CARD",
+        "LOAN",
+        "INVESTMENT",
+        "REALESTATE"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "description": "A simple english description of the Insight. <br><br><b>Endpoints</b> -<ul><li>GET /insights/config/customerSubscriptions</li></ul>",
+      "readOnly": true
+    },
+    "applicableEntity": {
+      "type": "array",
+      "description": "Identifies which entity (Account or View) the insight is applicable for. <br><br>When applicableEntity is provided in the userSubscription or customerSubscription, it identifies all the entities for which the insight is capable of being generated. <br><br>When the attribute is present in the feed API, it identifies the entitiy for which the insight was generated. </li></ul><b>Endpoints</b> -<ul><li>GET /insights/config/customerSubscriptions</li></ul>",
+      "readOnly": true,
+      "example": [
+        "ACCOUNT",
+        "VIEW"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "enum": [
+        "ACCOUNT",
+        "VIEW"
+      ]
+    }
+  }
+}

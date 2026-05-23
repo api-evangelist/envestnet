@@ -1,0 +1,159 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Consent",
+  "title": "Consent",
+  "required": [
+    "applicationDisplayName",
+    "clientADR",
+    "clientTrustedAdvisor",
+    "consentId",
+    "consentStatus",
+    "expirationDate",
+    "expirationDateTime",
+    "links",
+    "preferences",
+    "providerId",
+    "revokeDate",
+    "revokeDateTime",
+    "scope",
+    "startDate",
+    "startDateTime",
+    "title",
+    "titleBody"
+  ],
+  "type": "object",
+  "properties": {
+    "dataAccessFrequency": {
+      "type": "string",
+      "description": "Data Access Frequency explains the number of times that this consent can be used.<br> Otherwise called as consent frequency type.",
+      "enum": [
+        "ONE_TIME",
+        "RECURRING"
+      ]
+    },
+    "expirationDateTime": {
+      "type": "string",
+      "description": "Consent expiry datetime."
+    },
+    "otspADR": {
+      "type": "string",
+      "description": "Unique/Accredition Id of the ADR"
+    },
+    "clientTrustedAdvisor": {
+      "type": "array",
+      "description": "describes information of client trusted advisor",
+      "items": {
+        "$ref": "#/components/schemas/ClientTrustedAdvisor"
+      }
+    },
+    "providerConsentId": {
+      "type": "string",
+      "description": "Provider consent id"
+    },
+    "revokeDate": {
+      "type": "string",
+      "description": "Consent revoke date."
+    },
+    "title": {
+      "type": "string",
+      "description": "Title for the consent form."
+    },
+    "applicationDisplayName": {
+      "type": "string",
+      "description": "Application display name."
+    },
+    "consentId": {
+      "type": "integer",
+      "description": "Consent Id generated through POST Consent.",
+      "format": "int64"
+    },
+    "providerId": {
+      "type": "integer",
+      "description": "Provider Id for which the consent needs to be generated.",
+      "format": "int64"
+    },
+    "consentStatus": {
+      "type": "string",
+      "description": "Status of the consent.",
+      "enum": [
+        "ACTIVE",
+        "CONSENT_GENERATED",
+        "CONSENT_ACCEPTED",
+        "CONSENT_AUTHORIZED",
+        "CONSENT_MISMATCH",
+        "PENDING",
+        "EXPIRED",
+        "REVOKED",
+        "CONSENT_REPEALED"
+      ]
+    },
+    "scope": {
+      "type": "array",
+      "description": "Scope describes about the consent permissions and their purpose.",
+      "items": {
+        "$ref": "#/components/schemas/Scope"
+      }
+    },
+    "userDataTreatment": {
+      "$ref": "#/components/schemas/UserDataTreatment"
+    },
+    "links": {
+      "type": "array",
+      "description": "GET consent preferences API details",
+      "items": {
+        "$ref": "#/components/schemas/Links"
+      }
+    },
+    "expirationDate": {
+      "type": "string",
+      "description": "Consent expiry date."
+    },
+    "otspADRName": {
+      "type": "string",
+      "description": "Name of the Accredited Data Recipient/Organization"
+    },
+    "preferences": {
+      "type": "array",
+      "description": "Preferences describes options about the additional usage of data or purge data",
+      "items": {
+        "$ref": "#/components/schemas/Preferences"
+      }
+    },
+    "clientADR": {
+      "type": "string",
+      "description": "Client Name of the ADR"
+    },
+    "renewal": {
+      "$ref": "#/components/schemas/Renewal"
+    },
+    "revokeDateTime": {
+      "type": "string",
+      "description": "Consent revoke datetime."
+    },
+    "titleBody": {
+      "type": "string",
+      "description": "Description for the title."
+    },
+    "startDateTime": {
+      "type": "string",
+      "description": "Consent start datetime."
+    },
+    "thirdPartyADR": {
+      "type": "array",
+      "description": "ThirdPartyADR describes details of additional parties which are accredited data recipients under organization",
+      "items": {
+        "$ref": "#/components/schemas/ThirdPartyADR"
+      }
+    },
+    "providerAccountId": {
+      "type": "integer",
+      "description": "Unique identifier for the provider account resource. <br>This is created during account addition.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts</li></ul>",
+      "format": "int64",
+      "readOnly": true
+    },
+    "startDate": {
+      "type": "string",
+      "description": "Consent start date."
+    }
+  }
+}

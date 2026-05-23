@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Geography",
+  "title": "Geography",
+  "properties": {
+    "state": {
+      "type": "string",
+      "description": "State name of the peer for which the response is returned<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/peerData</li></ul>",
+      "example": "AK"
+    },
+    "city": {
+      "type": "string",
+      "description": "city name of the peer for which the response is returned. returned<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/peerData</li></ul>",
+      "example": "Eielson Afb"
+    }
+  }
+}

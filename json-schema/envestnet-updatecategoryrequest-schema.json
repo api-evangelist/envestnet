@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UpdateCategoryRequest",
+  "title": "UpdateCategoryRequest",
+  "required": [
+    "id",
+    "source"
+  ],
+  "type": "object",
+  "properties": {
+    "highLevelCategoryName": {
+      "type": "string"
+    },
+    "id": {
+      "minimum": 1,
+      "exclusiveMinimum": false,
+      "type": "integer",
+      "format": "int64"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "SYSTEM",
+        "USER"
+      ]
+    },
+    "categoryName": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/feed",
+  "title": "feed",
+  "description": "Feed is an array of insights generated for a specific user.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique BSON identifier associated with a single Insight notification. <br><br><b>Endpoints</b> -<ul><li>GET /insights/feed</li></ul>",
+      "readOnly": true,
+      "example": "5h7885993cd8e328288522d6"
+    },
+    "insightName": {
+      "type": "string",
+      "description": "Name of the Insight for which this notification is generated. <br><br><b>Endpoints</b> -<ul><li>GET /insights/feed</li></ul>",
+      "readOnly": true,
+      "example": "BILL_NOT_PAID"
+    },
+    "insightTitle": {
+      "type": "string",
+      "description": "Title of the Insight for which this notification is generated. <br><br><b>Endpoints</b> -<ul><li>GET /insights/feed</li></ul>",
+      "readOnly": true,
+      "example": "Bill Not Paid"
+    },
+    "insightType": {
+      "type": "string",
+      "description": "Identifies whether the insight is generated at an entity-level - per account or per view (OTHER), or if it considers all entities for the user - e.g.  all accounts (AGGREGATE).<br><br><b>Endpoints</b> - <ul><li>GET config/insights/subscriptions Cobrand API</li><li>GET insights/subscriptions User API</li></ul>",
+      "readOnly": true,
+      "enum": [
+        "OTHER",
+        "AGGREGATE"
+      ]
+    },
+    "triggerType": {
+      "type": "string",
+      "description": "triggerType of an insight defines how an Insight was triggered in the system. <br><br>Currently following triggerType are supported - <ul> <li><b>SCHDEULE</b> - Insight evaluation and subsequent generation triggered based on a pre-defined schedule.</li> <li><b>REFRESH</b> - Insight evaluation and subsequent generation triggered when a user's account gets successfully refreshed.</li> <li><b>EVENT</b> - Insight evaluation and subsequent generation triggered based on a system-defined event happening.</li> </ul> <b>Endpoints</b> -<ul><li>GET /insights/feed</li></ul>",
+      "readOnly": true,
+      "example": "SCHEDULE",
+      "enum": [
+        "SCHEDULE",
+        "REFRESH",
+        "EVENT"
+      ]
+    },
+    "createdDate": {
+      "type": "string",
+      "description": "Date and time at which this Insight was triggered<br><br><b>Endpoints</b> -<ul><li>GET /insights/feed</li></ul>",
+      "readOnly": true,
+      "example": "2020-05-22T07:03:55.000Z"
+    },
+    "subscription": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/subscriptionModel"
+      }
+    },
+    "basicAccount": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BasicAccount"
+      }
+    },
+    "basicView": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BasicView"
+      }
+    },
+    "bankAccount": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BankAccount"
+      }
+    },
+    "cardAccount": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CardAccount"
+      }
+    },
+    "loanAccount": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LoanAccount"
+      }
+    },
+    "investmentAccount": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/InvestmentAccount"
+      }
+    },
+    "realEstateAccount": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/RealEstateAccount"
+      }
+    },
+    "basicMerchants": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BasicMerchant"
+      }
+    },
+    "basicPredictedEvents": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BasicPredictedEvent"
+      }
+    },
+    "basicTrend": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BasicTrend"
+      }
+    },
+    "netWorthTrend": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/NetWorthTrend"
+      }
+    },
+    "accountDerived": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AccountDerived"
+        }
+      ]
+    },
+    "viewDerived": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ViewDerived"
+      }
+    },
+    "transactionDerived": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TransactionDerived"
+        }
+      ]
+    },
+    "changeValue": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ChangeValue"
+      }
+    },
+    "basicCategoryDetail": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BasicCategoryDetail"
+      }
+    },
+    "basicCategoryTypeDetail": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BasicCategoryTypeDetail"
+      }
+    },
+    "basicMerchantDetail": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BasicMerchantDetail"
+      }
+    },
+    "basicCreditCardUtilizations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BasicCreditCardUtilization"
+      }
+    },
+    "statementDerived": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/StatementDerived"
+      }
+    },
+    "userDetail": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/UserDetail"
+      }
+    },
+    "categoryTypeDerived": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CategoryTypeDerived"
+      }
+    },
+    "predictedInfoDerived": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PredictedInfoDerived"
+      }
+    }
+  },
+  "required": [
+    "id",
+    "insightName",
+    "insightTitle",
+    "insightType",
+    "triggerType",
+    "createdDate",
+    "subscription"
+  ]
+}

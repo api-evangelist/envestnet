@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Capability",
+  "title": "Capability",
+  "type": "object",
+  "properties": {
+    "container": {
+      "type": "array",
+      "readOnly": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "bank",
+          "creditCard",
+          "investment",
+          "insurance",
+          "loan",
+          "reward",
+          "bill",
+          "realEstate",
+          "otherAssets",
+          "otherLiabilities"
+        ]
+      }
+    },
+    "name": {
+      "type": "string",
+      "readOnly": true
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorLowBalanceOccurrence",
+  "title": "CreditAcceleratorLowBalanceOccurrence",
+  "type": "object",
+  "properties": {
+    "segment2": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalanceOccurrence"
+    },
+    "segment1": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalanceOccurrence"
+    },
+    "segment4": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalanceOccurrence"
+    },
+    "segment3": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalanceOccurrence"
+    }
+  }
+}

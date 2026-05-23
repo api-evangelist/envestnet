@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/NetWorthTrendDetail",
+  "title": "NetWorthTrendDetail",
+  "description": "Date Range identified as first of the month. E.g. January 2021 will be represented as 2021-01-01.",
+  "properties": {
+    "dateRange": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DateRange"
+        }
+      ],
+      "readOnly": true
+    },
+    "networthDetail": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/NetworthDetail"
+      },
+      "readOnly": true
+    },
+    "assetDetail": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AssetDetail"
+      },
+      "readOnly": true
+    },
+    "liabilityDetail": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LiabilityDetail"
+      },
+      "readOnly": true
+    }
+  },
+  "required": [
+    "date",
+    "networthDetail"
+  ]
+}

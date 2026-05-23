@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TransactionTrendDetails",
+  "title": "TransactionSummaryDetails",
+  "type": "object",
+  "properties": {
+    "date": {
+      "description": "date",
+      "readOnly": true,
+      "type": "string",
+      "example": "2020-04-01"
+    },
+    "creditTotal": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "debitTotal": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "netTotal": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "transactionCount": {
+      "format": "int64",
+      "readOnly": true,
+      "type": "integer"
+    },
+    "transactionLink": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TransactionTrendSummaryLink"
+        }
+      ]
+    }
+  }
+}

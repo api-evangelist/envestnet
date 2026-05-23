@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorAccountHolder",
+  "title": "CreditAcceleratorAccountHolder",
+  "type": "object",
+  "properties": {
+    "identifier": {
+      "type": "array",
+      "description": "Identifiers of the account holder.<br><br><b>Aggregated / Manual</b>: Aggregated <br><b>Applicable containers</b>: bank<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul>",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/Identifier"
+      }
+    },
+    "gender": {
+      "type": "string",
+      "description": "Identifiers of the account holder.<br><br><b>Aggregated / Manual</b>: Aggregated <br><b>Applicable containers</b>: bank<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul>",
+      "readOnly": true
+    },
+    "ownership": {
+      "type": "string",
+      "description": "Indicates the ownership of the account.<br><br><b>Aggregated / Manual</b>: Aggregated <br><b>Applicable containers</b>: bank<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul><b>Applicable Values</b><br>",
+      "readOnly": true,
+      "enum": [
+        "PRIMARY",
+        "SECONDARY",
+        "CUSTODIAN",
+        "OTHERS",
+        "POWER_OF_ATTORNEY",
+        "TRUSTEE",
+        "JOINT_OWNER",
+        "BENEFICIARY",
+        "AAS",
+        "BUSINESS",
+        "DBA",
+        "TRUST"
+      ]
+    },
+    "name": {
+      "$ref": "#/components/schemas/Name"
+    },
+    "dateOfBirth": {
+      "type": "string",
+      "description": "Holder's date of birth",
+      "readOnly": true
+    }
+  }
+}

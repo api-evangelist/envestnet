@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TransactionTrendSummaryLink",
+  "title": "TransactionTrendSummaryLink",
+  "description": "Reference path link to fetch more information about the specific transaction.",
+  "properties": {
+    "method": {
+      "type": "string",
+      "description": "The method to use while calling the URL",
+      "example": "GET"
+    },
+    "url": {
+      "type": "string",
+      "description": "URL to access the endpoint.",
+      "example": "/views/609d08858e420a3635dec2f6/transactions?fromDate=2021-04-12&toDate=2021-05-13&categoryId=7"
+    }
+  }
+}

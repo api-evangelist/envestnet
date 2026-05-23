@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/VerificationAccount",
+  "title": "VerificationAccount",
+  "required": [
+    "accountNumber",
+    "accountType",
+    "bankTransferCode"
+  ],
+  "type": "object",
+  "properties": {
+    "accountName": {
+      "type": "string"
+    },
+    "accountType": {
+      "type": "string",
+      "enum": [
+        "SAVINGS",
+        "CHECKING"
+      ]
+    },
+    "accountNumber": {
+      "maxLength": 17,
+      "minLength": 3,
+      "type": "string"
+    },
+    "userClassification": {
+      "type": "string",
+      "enum": [
+        "BUSINESS",
+        "PERSONAL"
+      ]
+    },
+    "bankTransferCode": {
+      "$ref": "#/components/schemas/VerificationBankTransferCode"
+    }
+  }
+}

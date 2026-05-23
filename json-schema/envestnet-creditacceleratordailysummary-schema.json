@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorDailySummary",
+  "title": "CreditAcceleratorDailySummary",
+  "type": "object",
+  "properties": {
+    "avg": {
+      "type": "number",
+      "description": "Average amount for the time period (sum divided by count).",
+      "format": "double",
+      "readOnly": true
+    },
+    "min": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalance"
+    },
+    "max": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalance"
+    },
+    "count": {
+      "type": "number",
+      "description": "Number of data points available in the time period.",
+      "format": "double",
+      "readOnly": true
+    },
+    "timePeriod": {
+      "type": "string",
+      "description": "Time intervals to consider up to the number of days the application was requested.",
+      "readOnly": true
+    },
+    "sum": {
+      "type": "number",
+      "description": "Total amount for the time period.",
+      "format": "double",
+      "readOnly": true
+    }
+  }
+}

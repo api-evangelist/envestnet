@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DataExtractsEventResponse",
+  "title": "DataExtractsEventResponse",
+  "type": "object",
+  "properties": {
+    "event": {
+      "$ref": "#/components/schemas/DataExtractsEvent"
+    }
+  }
+}

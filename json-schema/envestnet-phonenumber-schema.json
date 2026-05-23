@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PhoneNumber",
+  "title": "PhoneNumber",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "type of phone number",
+      "readOnly": true,
+      "enum": [
+        "HOME",
+        "WORK",
+        "LANDLINE",
+        "MOBILE"
+      ]
+    },
+    "value": {
+      "type": "string",
+      "description": "Phone Number",
+      "readOnly": true
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GeoData",
+  "title": "GeoData",
+  "properties": {
+    "level": {
+      "type": "string",
+      "description": "Geography level i.e. one of City/State/National of the peer for which the response is returned<br><br><b>Endpoints</b> -<ul><li>GET /Views/{ViewId}/peerData</li></ul>",
+      "example": "NATIONAL"
+    },
+    "value": {
+      "type": "string",
+      "description": "Value corresponding to the Geography level i.e. one of City/State/National of the peer for which the response is returned<br><br><b>Endpoints</b> -<ul><li>GET /Views/{ViewId}/peerData</li></ul>",
+      "example": "US"
+    }
+  }
+}

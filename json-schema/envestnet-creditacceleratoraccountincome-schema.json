@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorAccountIncome",
+  "title": "CreditAcceleratorAccountIncome",
+  "type": "object",
+  "properties": {
+    "regularIncomeTxnSummary": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalanceSummary"
+    },
+    "otherIncomeTxnSummary": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalanceSummary"
+    },
+    "servicesIncomeTxnSummary": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalanceSummary"
+    },
+    "depositTxnSummary": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalanceSummary"
+    },
+    "retirementTxnSummary": {
+      "$ref": "#/components/schemas/CreditAcceleratorBalanceSummary"
+    }
+  }
+}

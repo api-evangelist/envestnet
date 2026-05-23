@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DerivedTransactionsSummary",
+  "title": "DerivedTransactionsSummary",
+  "type": "object",
+  "properties": {
+    "categoryType": {
+      "type": "string",
+      "description": "Type of categories provided by transactions/categories service.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br><b>Applicable Values</b><br>",
+      "readOnly": true,
+      "enum": [
+        "TRANSFER",
+        "DEFERRED_COMPENSATION",
+        "UNCATEGORIZE",
+        "INCOME",
+        "EXPENSE",
+        "LOAN",
+        "DUMMY"
+      ]
+    },
+    "categorySummary": {
+      "type": "array",
+      "description": "Summary of transaction amouts at category level.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br>",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/DerivedCategorySummary"
+      }
+    },
+    "creditTotal": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "links": {
+      "$ref": "#/components/schemas/DerivedTransactionsLinks"
+    },
+    "debitTotal": {
+      "$ref": "#/components/schemas/Money"
+    }
+  }
+}

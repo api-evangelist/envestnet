@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TransactionCategorizationRuleRequest",
+  "title": "TransactionCategorizationRuleRequest",
+  "required": [
+    "rule"
+  ],
+  "type": "object",
+  "properties": {
+    "rule": {
+      "$ref": "#/components/schemas/TransactionCategorizationRuleInfo"
+    }
+  }
+}

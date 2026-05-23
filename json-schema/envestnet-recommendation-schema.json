@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Recommendation",
+  "title": "Recommendation",
+  "properties": {
+    "id": {
+      "type": "number",
+      "description": "The unique identifier for a user recommendation created by the system. <br><br><b>Endpoints</b> -<ul><li>GET /views/recommendations</li></ul>",
+      "example": 11
+    },
+    "metadata": {
+      "$ref": "#/components/schemas/RecommendationMetadata"
+    },
+    "view": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/View"
+      }
+    }
+  }
+}

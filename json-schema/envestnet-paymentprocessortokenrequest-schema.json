@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PaymentProcessorTokenRequest",
+  "title": "PaymentProcessorTokenRequest",
+  "required": [
+    "accountId",
+    "processor"
+  ],
+  "type": "object",
+  "properties": {
+    "accountId": {
+      "type": "array",
+      "description": "The unique identifier for the user's account.",
+      "items": {
+        "type": "integer",
+        "format": "int64"
+      }
+    },
+    "processor": {
+      "type": "string",
+      "description": "The payment processor with whom the customer is integrating."
+    }
+  }
+}

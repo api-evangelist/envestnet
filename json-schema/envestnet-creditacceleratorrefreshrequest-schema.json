@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorRefreshRequest",
+  "title": "CreditAcceleratorRefreshRequest",
+  "required": [
+    "configName"
+  ],
+  "type": "object",
+  "properties": {
+    "configName": {
+      "type": "string",
+      "description": "The config name using which the credit accelerator file generation was requested"
+    }
+  }
+}

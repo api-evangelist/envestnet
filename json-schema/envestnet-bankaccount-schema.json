@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BankAccount",
+  "title": "BankAccount",
+  "description": "Account object that contains details about one or more aggregated bank accounts.",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/AccountInfo"
+    }
+  ],
+  "properties": {
+    "availableBalance": {
+      "description": "The balance in the account that is available for spending.  For checking accounts with overdraft, available balance may include  overdraft amount, if end site adds overdraft balance to available  balance.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "currentBalance": {
+      "description": "The balance in the account that is available at the beginning of the  business day; it is equal to the ledger balance of the account.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "balance": {
+      "description": "The available balance or current balance.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "basicPredictedEvent": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BasicPredictedEvent"
+      }
+    },
+    "basicTransaction": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BasicTransaction"
+      }
+    },
+    "predictedInfo": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PredictedInfo"
+        }
+      ]
+    },
+    "lastUpdated": {
+      "type": "string",
+      "description": "last Updated.",
+      "readOnly": true
+    }
+  }
+}

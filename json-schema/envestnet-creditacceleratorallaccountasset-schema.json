@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorAllAccountAsset",
+  "title": "CreditAcceleratorAllAccountAsset",
+  "type": "object",
+  "properties": {
+    "totalBalances": {
+      "type": "array",
+      "description": "Total sum of currentBalance (Bank) and totalBalance (Investment) values across all Bank and Investment accounts, grouped by Currency.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorBalance"
+      }
+    },
+    "totalInvestmentBalances": {
+      "type": "array",
+      "description": "Total sum of Investment Balance values across all Investment accounts, grouped by Currency.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorBalance"
+      }
+    },
+    "totalBankBalances": {
+      "type": "array",
+      "description": "Total sum of currentBalance values across all Bank accounts, grouped by Currency.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorBalance"
+      }
+    },
+    "adjustmentTxnSummary": {
+      "type": "array",
+      "description": "Sum, count and average of Refund/Adjustment/Reimbursement Income transactions, grouped by currency.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceSummary"
+      }
+    },
+    "creditTxnWithoutTransferSummary": {
+      "type": "array",
+      "description": "Sum, count, and average of all credit transactions (excluding transfers), grouped by Currency.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceSummary"
+      }
+    },
+    "largeTransferOccurrences": {
+      "type": "array",
+      "description": "For each time period, the number of times where transactions exceeded the large transaction amount, grouped by Currency.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceOccurrence"
+      }
+    },
+    "savingsTxnSummary": {
+      "type": "array",
+      "description": "Sum of savings transactions, grouped by currency.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceTxnSummary"
+      }
+    },
+    "depositTxnSummary": {
+      "type": "array",
+      "description": "Sum, count, and average of all deposit transactions, grouped by Currency..",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceSummary"
+      }
+    },
+    "largeDepositOccurrences": {
+      "type": "array",
+      "description": "For each time period, the number of times where transactions exceeded the large transaction amount, grouped by Currency.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceOccurrence"
+      }
+    },
+    "lowBalanceOccurrence": {
+      "$ref": "#/components/schemas/CreditAcceleratorLowBalanceOccurenceALL"
+    },
+    "negativeBalanceOccurrences": {
+      "type": "array",
+      "description": "For each time period, the number of times where Daily Balance is less than zero, grouped by Currency.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceOccurrence"
+      }
+    },
+    "transferTxnSummary": {
+      "type": "array",
+      "description": "Sum, count, and average of all transfer transactions, grouped by Currency.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceSummary"
+      }
+    },
+    "creditTxnWithTransferSummary": {
+      "type": "array",
+      "description": "Sum, count, and average of all credit transactions (including transfers), grouped by Currency.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceSummary"
+      }
+    },
+    "investmentHoldingSummary": {
+      "$ref": "#/components/schemas/CreditAcceleratorAllAccountInvestmentHoldingSummary"
+    },
+    "nsfOccurrences": {
+      "type": "array",
+      "description": "For each time period, the number of times NSF has occurred, grouped by Currency.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceOccurrence"
+      }
+    }
+  }
+}

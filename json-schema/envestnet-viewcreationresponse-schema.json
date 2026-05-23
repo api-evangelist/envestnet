@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ViewCreationResponse",
+  "title": "ViewCreationResponse",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Identifier for the Unique BSON string for the newly created View object generated in the system.<br><br><b>Endpoints</b> -<ul><li>POST /views</li></ul>",
+      "readOnly": true,
+      "example": "5e7885993cd8e328288522f7"
+    }
+  }
+}

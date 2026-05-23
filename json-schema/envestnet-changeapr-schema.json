@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ChangeAPR",
+  "title": "ChangeAPR",
+  "description": "Change in APR for an aggregated card account.",
+  "properties": {
+    "previousAPR": {
+      "type": "string",
+      "description": "Previously recorded APR for a specific card account.",
+      "readOnly": true
+    },
+    "currentAPR": {
+      "type": "string",
+      "description": "The current APR for the same card card account.",
+      "readOnly": true
+    },
+    "change": {
+      "type": "string",
+      "description": "Absolute change in APR calculated as currentAPR - previousAPR.",
+      "readOnly": true
+    }
+  },
+  "required": [
+    "previousAPR",
+    "currentAPR",
+    "change"
+  ]
+}

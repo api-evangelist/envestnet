@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PaymentAccount",
+  "title": "PaymentAccount",
+  "type": "object",
+  "properties": {
+    "accountStatus": {
+      "type": "string",
+      "description": "The status of the account that is updated by the user through an application or an API.</li><ul><li><b>ACTIVE:</b> All the added aggregated accounts status will be made \"ACTIVE\" by default.</li><li><b>TO_BE_CLOSED:</b> If the aggregated accounts are not found or closed in the data provider site, Yodlee system marks the status as TO_BE_CLOSED.</li><li><b>INACTIVE:</b> Users can update the status as INACTIVE to stop updating and to stop considering the account in other services.</li><li><b>CLOSED:</b> Users can update the status as CLOSED, if the account is closed with the provider.</li></ul><b>Endpoints</b>:<ul><li>GET /partner/paymentProcessor/account</li><li>GET /partner/paymentProcessor/account/balance</li><li>GET /partner/paymentProcessor/account/holder</li></ul>",
+      "readOnly": true,
+      "enum": [
+        "ACTIVE",
+        "INACTIVE",
+        "TO_BE_CLOSED",
+        "CLOSED",
+        "DELETED"
+      ]
+    },
+    "lastUpdated": {
+      "type": "string",
+      "description": "The date time the account information was last retrieved from the provider site and updated in the Yodlee system.<br><b>Endpoints</b>:<ul><li>GET /partner/paymentProcessor/account</li><li>GET /partner/paymentProcessor/account/balance</li><li>GET /partner/paymentProcessor/account/holder</li></ul>",
+      "readOnly": true
+    },
+    "accountName": {
+      "type": "string",
+      "description": "The account name as it appears at the site.<br><b>Endpoints</b>:<ul><li>GET /partner/paymentProcessor/account</li><li>GET /partner/paymentProcessor/account/balance</li><li>GET /partner/paymentProcessor/account/holder</li></ul>",
+      "readOnly": true
+    },
+    "accountType": {
+      "type": "string",
+      "description": "The type of account that is aggregated, i.e., savings, checking, charge, etc. The account type is derived based on the attributes of the account. <br><b>Endpoints</b>:<ul><li>GET /partner/paymentProcessor/account</li><li>GET /partner/paymentProcessor/account/balance</li><li>GET /partner/paymentProcessor/account/holder</li></ul>",
+      "readOnly": true
+    },
+    "currentBalance": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "id": {
+      "type": "integer",
+      "description": "The primary key of the account resource and the unique identifier for the account.<br><br><b>Endpoints</b>:<ul><li>GET /partner/paymentProcessor/account</li><li>GET /partner/paymentProcessor/account/balance</li><li>GET /partner/paymentProcessor/account/holder</li></ul>",
+      "format": "int64",
+      "readOnly": true
+    },
+    "bankTransferCode": {
+      "type": "array",
+      "description": "Bank and branch identification information.<br><br><b>Endpoints</b>:<ul><li>GET /partner/paymentProcessor/account</li></ul>",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/PaymentBankTransferCodeData"
+      }
+    },
+    "availableBalance": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "fullAccountNumberList": {
+      "$ref": "#/components/schemas/FullAccountNumbers"
+    }
+  }
+}

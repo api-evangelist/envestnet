@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/HoldingSecuritiesResponse",
+  "title": "HoldingSecuritiesResponse",
+  "type": "object",
+  "properties": {
+    "holding": {
+      "type": "array",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/SecurityHolding"
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorUser",
+  "title": "CreditAcceleratorUser",
+  "type": "object",
+  "properties": {
+    "loginName": {
+      "type": "string",
+      "description": "The login name of the user used for authentication. This has to be provided as an input to the POST user/login service.",
+      "readOnly": true
+    },
+    "name": {
+      "$ref": "#/components/schemas/Name"
+    },
+    "userId": {
+      "type": "integer",
+      "description": "The unique identifier of a consumer/user in the Yodlee system for whom the API services would be accessed for.",
+      "format": "int64",
+      "readOnly": true
+    },
+    "email": {
+      "type": "string",
+      "description": "The email address of the user.",
+      "readOnly": true
+    }
+  }
+}

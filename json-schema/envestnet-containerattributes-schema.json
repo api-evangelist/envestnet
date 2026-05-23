@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ContainerAttributes",
+  "title": "ContainerAttributes",
+  "type": "object",
+  "properties": {
+    "BANK": {
+      "$ref": "#/components/schemas/TransactionDays"
+    },
+    "LOAN": {
+      "$ref": "#/components/schemas/TransactionDays"
+    },
+    "CREDITCARD": {
+      "$ref": "#/components/schemas/TransactionDays"
+    },
+    "INVESTMENT": {
+      "$ref": "#/components/schemas/TransactionDays"
+    },
+    "INSURANCE": {
+      "$ref": "#/components/schemas/TransactionDays"
+    }
+  }
+}

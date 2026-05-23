@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BudgetInfo",
+  "title": "BudgetInfo",
+  "properties": {
+    "incomeBudget": {
+      "description": "Set a budget for the overall income budget.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ]
+    },
+    "expenseBudget": {
+      "description": "Set a budget for the overall expense budget.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ]
+    },
+    "typeName": {
+      "type": "string",
+      "description": "TypeName identifies the merchant name."
+    },
+    "typeId": {
+      "type": "number",
+      "description": "TypeId identifies the category or detailcategory id."
+    }
+  }
+}

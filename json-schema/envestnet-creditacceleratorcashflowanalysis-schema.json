@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorCashFlowAnalysis",
+  "title": "CreditAcceleratorCashFlowAnalysis",
+  "type": "object",
+  "properties": {
+    "cashInflowIncome": {
+      "type": "number",
+      "description": "Sum of cash inflow transactions identified as income.",
+      "format": "double",
+      "readOnly": true
+    },
+    "cashOutflowTransfers": {
+      "type": "number",
+      "description": "Sum of cash outflow transactions identified as transfers.",
+      "format": "double",
+      "readOnly": true
+    },
+    "cashOutflowTotalWithdrawalCountRatio": {
+      "type": "number",
+      "description": "Ratio of Total Withdrawal count to total transactions count.",
+      "format": "double",
+      "readOnly": true
+    },
+    "cashOutflowWithdrawals": {
+      "type": "number",
+      "description": "Sum of cash outflow transactions identified as checks and withdrawals.",
+      "format": "double",
+      "readOnly": true
+    },
+    "cashOutflow": {
+      "type": "number",
+      "description": "Sum of all cash outflow transactions.",
+      "format": "double",
+      "readOnly": true
+    },
+    "cashflowRatio": {
+      "type": "number",
+      "description": "Cash inflow divided by cash outflow.",
+      "format": "double",
+      "readOnly": true
+    },
+    "cashOutflowExpenses": {
+      "type": "number",
+      "description": "Sum of cash outflow transactions identified as expenses.",
+      "format": "double",
+      "readOnly": true
+    },
+    "adjustedCashInflow": {
+      "type": "number",
+      "description": "Sum of all cash inflow transactions (excluding large amounts), grouped by Currency.",
+      "format": "double",
+      "readOnly": true
+    },
+    "cashLeftover": {
+      "type": "number",
+      "description": "Cash inflow subtracted by cash outflow.",
+      "format": "double",
+      "readOnly": true
+    },
+    "cashOutflowDebitServicing": {
+      "type": "number",
+      "description": "Sum of cash outflow transactions identified as repayments of debt.",
+      "format": "double",
+      "readOnly": true
+    },
+    "cashOutflowWithdrawalToExpenseCountRatio": {
+      "type": "number",
+      "description": "Ratio of Cash withdrawal count to Expense transaction count.",
+      "format": "double",
+      "readOnly": true
+    },
+    "adjustedCashflowRatio": {
+      "type": "number",
+      "description": "Cash inflow (excluding large amounts) divided by cash outflow (excluding large amounts).",
+      "format": "double",
+      "readOnly": true
+    },
+    "cashInflowTransfers": {
+      "type": "number",
+      "description": "Sum of cash inflow transactions identified as transfers.",
+      "format": "double",
+      "readOnly": true
+    },
+    "cashInflowDepositCountRatio": {
+      "type": "number",
+      "description": "Ratio of Total Deposit count to total transactions count.",
+      "format": "double",
+      "readOnly": true
+    },
+    "adjustedCashOutflow": {
+      "type": "number",
+      "description": "Sum of all cash outflow transactions (excluding large amounts), grouped by Currency.",
+      "format": "double",
+      "readOnly": true
+    },
+    "cashInflowDeposits": {
+      "type": "number",
+      "description": "Sum of cash inflow transactions identified as deposits (excluding income).",
+      "format": "double",
+      "readOnly": true
+    },
+    "adjustedCashInflowTransfers": {
+      "type": "number",
+      "description": "Sum of cash inflow transactions identified as transfers (excluding large amounts), grouped by Currency.",
+      "format": "double",
+      "readOnly": true
+    },
+    "adjustedCashOutflowDebitServicing": {
+      "type": "number",
+      "description": "Sum of cash outflow transactions identified as repayments of debt (excluding large amounts), grouped by Currency.",
+      "format": "double",
+      "readOnly": true
+    },
+    "adjustedCashLeftover": {
+      "type": "number",
+      "description": "Cash inflow (excluding large amounts) subtracted by cash outflow (excluding large amounts).",
+      "format": "double",
+      "readOnly": true
+    },
+    "adjustedCashOutflowTransfers": {
+      "type": "number",
+      "description": "Sum of cash outflow transactions identified as transfers (excluding large amounts), grouped by Currency.",
+      "format": "double",
+      "readOnly": true
+    },
+    "cashOutflowOtherDebits": {
+      "type": "number",
+      "description": "Sum of cash outflow transactions identified as other debits.",
+      "format": "double",
+      "readOnly": true
+    },
+    "adjustedCashOutflowOtherDebits": {
+      "type": "number",
+      "description": "Sum of cash outflow transactions identified as other debits (excluding large amounts), grouped by Currency.",
+      "format": "double",
+      "readOnly": true
+    },
+    "adjustedCashOutflowWithdrawals": {
+      "type": "number",
+      "description": "Sum of cash outflow transactions identified as checks and withdrawals (excluding large amounts), grouped by Currency.",
+      "format": "double",
+      "readOnly": true
+    },
+    "adjustedCashInflowOtherCredits": {
+      "type": "number",
+      "description": "Sum of cash inflow transactions identified as other credits (excluding large amounts), grouped by Currency.",
+      "format": "double",
+      "readOnly": true
+    },
+    "cashInflow": {
+      "type": "number",
+      "description": "Sum of all cash inflow transactions.",
+      "format": "double",
+      "readOnly": true
+    },
+    "cashInflowOtherCredits": {
+      "type": "number",
+      "description": "Sum of cash inflow transactions identified as other credits.",
+      "format": "double",
+      "readOnly": true
+    },
+    "timePeriod": {
+      "type": "string",
+      "description": "Time intervals to consider up to the number of days the application was requested.",
+      "readOnly": true
+    },
+    "adjustedCashInflowDeposits": {
+      "type": "number",
+      "description": "Sum of cash inflow transactions identified as deposits (excluding income and large amounts), grouped by Currency.",
+      "format": "double",
+      "readOnly": true
+    },
+    "adjustedCashOutflowExpenses": {
+      "type": "number",
+      "description": "Sum of cash outflow transactions identified as expenses (excluding large amounts), grouped by Currency.",
+      "format": "double",
+      "readOnly": true
+    },
+    "cashOutflowCashWithdrawalCountRatio": {
+      "type": "number",
+      "description": "Ratio of Cash withdrawal count  to total withdrawal count.",
+      "format": "double",
+      "readOnly": true
+    },
+    "adjustedCashInflowIncome": {
+      "type": "number",
+      "description": "Sum of cash inflow transactions identified as income (excluding large amounts), grouped by Currency.",
+      "format": "double",
+      "readOnly": true
+    }
+  }
+}

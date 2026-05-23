@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Detail",
+  "title": "Detail",
+  "properties": {
+    "date": {
+      "description": "date in the  format yyyy-mm-dd",
+      "type": "string"
+    },
+    "dateRange": {
+      "description": "The date range considered to compute the values",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DateRange"
+        }
+      ],
+      "readOnly": true
+    },
+    "creditTotal": {
+      "description": "Sum of all credit transactions for the given date range.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "netCreditTotal": {
+      "description": "Net Total calculated as (creditTotal - debitTotal).",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "debitTotal": {
+      "description": "Sum of all debit transactions for the given date range.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "netTotal": {
+      "description": "Net spending calculated as (debitTotal - creditTotal).",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "link": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Link"
+        }
+      ],
+      "readOnly": true
+    },
+    "transactionCount": {
+      "type": "string",
+      "description": "Total count of transactions for the specified date range.",
+      "readOnly": true
+    },
+    "networthDetail": {
+      "description": "Net Worth total for the given date range.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NetworthDetail"
+        }
+      ],
+      "readOnly": true
+    },
+    "assetDetail": {
+      "description": "Asset total for the given date range.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AssetDetail"
+        }
+      ],
+      "readOnly": true
+    },
+    "liabilityDetail": {
+      "description": "Liability total for the given date range.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/LiabilityDetail"
+        }
+      ],
+      "readOnly": true
+    },
+    "predictedBalance": {
+      "description": "predicted balance across a single account as of date.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    }
+  },
+  "required": [
+    "dateRange",
+    "debitTotal",
+    "creditTotal",
+    "netTotal"
+  ]
+}

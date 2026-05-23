@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorAccountAddress",
+  "title": "CreditAcceleratorAccountAddress",
+  "type": "object",
+  "properties": {
+    "zip": {
+      "type": "string",
+      "description": "Zip."
+    },
+    "country": {
+      "type": "string",
+      "description": "Country."
+    },
+    "address3": {
+      "type": "string",
+      "description": "Address Line 3."
+    },
+    "address2": {
+      "type": "string",
+      "description": "Address Line 2."
+    },
+    "city": {
+      "type": "string",
+      "description": "City."
+    },
+    "sourceType": {
+      "type": "string",
+      "description": "Address Source.",
+      "readOnly": true
+    },
+    "address1": {
+      "type": "string",
+      "description": "Address Line 1."
+    },
+    "street": {
+      "type": "string",
+      "description": "Street.",
+      "readOnly": true
+    },
+    "fullAddress": {
+      "type": "string",
+      "description": "Full Address.",
+      "readOnly": true
+    },
+    "state": {
+      "type": "string",
+      "description": "State."
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of address.",
+      "readOnly": true,
+      "enum": [
+        "HOME",
+        "BUSINESS",
+        "POBOX",
+        "RETAIL",
+        "OFFICE",
+        "SMALL_BUSINESS",
+        "COMMUNICATION",
+        "PERMANENT",
+        "STATEMENT_ADDRESS",
+        "PAYMENT",
+        "PAYOFF",
+        "UNKNOWN"
+      ]
+    }
+  }
+}

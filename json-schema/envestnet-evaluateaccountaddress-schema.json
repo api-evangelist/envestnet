@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EvaluateAccountAddress",
+  "title": "EvaluateAccountAddress",
+  "required": [
+    "street"
+  ],
+  "type": "object",
+  "properties": {
+    "zip": {
+      "type": "string",
+      "description": "Zip."
+    },
+    "country": {
+      "type": "string",
+      "description": "Country."
+    },
+    "address3": {
+      "type": "string",
+      "description": "Address Line 3."
+    },
+    "address2": {
+      "type": "string",
+      "description": "Address Line 2."
+    },
+    "city": {
+      "type": "string",
+      "description": "City."
+    },
+    "sourceType": {
+      "type": "string"
+    },
+    "address1": {
+      "type": "string",
+      "description": "Address Line 1."
+    },
+    "street": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string",
+      "description": "State."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "HOME",
+        "BUSINESS",
+        "POBOX",
+        "RETAIL",
+        "OFFICE",
+        "SMALL_BUSINESS",
+        "COMMUNICATION",
+        "PERMANENT",
+        "STATEMENT_ADDRESS",
+        "PAYMENT",
+        "PAYOFF",
+        "UNKNOWN"
+      ]
+    }
+  }
+}

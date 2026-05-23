@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AssetDetail",
+  "title": "AssetDetail",
+  "description": "Summary information across all the aggregated accounts categorized as 'assets'.",
+  "properties": {
+    "assetTotal": {
+      "description": "Total asset value.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    }
+  },
+  "required": [
+    "assetTotal"
+  ]
+}

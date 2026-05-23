@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Views",
+  "title": "Views",
+  "properties": {
+    "View": {
+      "type": "array",
+      "description": "An view object containing view details which will represent the User View entity, to be persisted into the Yodlee system. Each view object will contain one or more View rules having various attributes as detailed in below child fields.",
+      "items": {
+        "$ref": "#/components/schemas/View"
+      }
+    }
+  }
+}

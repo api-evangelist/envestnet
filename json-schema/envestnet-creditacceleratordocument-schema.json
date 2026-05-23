@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorDocument",
+  "title": "CreditAcceleratorDocument",
+  "type": "object",
+  "properties": {
+    "accountID": {
+      "type": "integer",
+      "description": "The primary key of the account resource and the unique identifier for the account.<br><br><b>Aggregated / Manual</b>: Both <br><b>Applicable containers</b>: All containers<br><b>Endpoints</b>:<ul><li>GET accounts </li><li>GET accounts/{accountId}</li><li>GET investmentOptions</li><li>GET accounts/historicalBalances</li><li>POST accounts</ul>",
+      "format": "int64",
+      "readOnly": true
+    },
+    "lastUpdated": {
+      "type": "string",
+      "description": "Indicates the date and time the document was last updated.<br><br><b>Applicable containers</b>: bank and investment<br>",
+      "readOnly": true
+    },
+    "formType": {
+      "type": "string",
+      "description": "Indicates the type of the tax form.",
+      "readOnly": true
+    },
+    "docType": {
+      "type": "string",
+      "description": "Indicates the type of the document.",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the document.<br><br><b>Applicable containers</b>: bank and investment<br>",
+      "readOnly": true
+    },
+    "statementDate": {
+      "type": "string",
+      "description": "Indicates the date and time of the document.<br><br><b>Applicable containers</b>: bank and investment<br>",
+      "readOnly": true
+    },
+    "id": {
+      "type": "string",
+      "description": "The document's primary key and unique identifier.<br><br><b>Applicable containers</b>: bank and investment<br>",
+      "readOnly": true
+    },
+    "source": {
+      "type": "string",
+      "description": "Indicates the source of the document download.<br><br><b>Applicable containers</b>: bank and investment<br>",
+      "readOnly": true
+    },
+    "uri": {
+      "type": "string",
+      "description": "Relative URI to fetch the actual document",
+      "readOnly": true
+    },
+    "status": {
+      "type": "string",
+      "description": "Indicates the status of the document download.<br><br><b>Applicable containers</b>: bank and investment<br>",
+      "readOnly": true
+    }
+  }
+}

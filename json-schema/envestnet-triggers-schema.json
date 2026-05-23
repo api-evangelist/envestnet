@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Triggers",
+  "title": "Triggers",
+  "properties": {
+    "trigger": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/trigger"
+      }
+    }
+  }
+}

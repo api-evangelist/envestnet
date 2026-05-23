@@ -1,0 +1,1879 @@
+{
+  "provider": "Envestnet",
+  "providerId": "envestnet",
+  "kind": "json-structure",
+  "description": "Structural overview of the Envestnet API surface; extracted from openapi/.",
+  "schemaCount": 186,
+  "operationCount": 67,
+  "schemas": [
+    {
+      "name": "Account",
+      "type": "object",
+      "propertyCount": 108,
+      "required": []
+    },
+    {
+      "name": "HoldingResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "HoldingIdListResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ApiKeyResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "CustomDisplayData",
+      "type": "object",
+      "propertyCount": 5,
+      "required": [
+        "clientTrustedAdvisorTxt",
+        "consentConfirmation",
+        "deletePreference",
+        "thirdParty",
+        "userDataTreatment"
+      ]
+    },
+    {
+      "name": "ProviderAccount",
+      "type": "object",
+      "propertyCount": 14,
+      "required": []
+    },
+    {
+      "name": "Document",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "Security",
+      "type": "object",
+      "propertyCount": 38,
+      "required": []
+    },
+    {
+      "name": "DataExtractsAccount",
+      "type": "object",
+      "propertyCount": 105,
+      "required": []
+    },
+    {
+      "name": "Renewal",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "defaultRenewalDuration",
+        "isReauthorizationRequired"
+      ]
+    },
+    {
+      "name": "YodleeError",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "DocumentDownload",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "HoldingAssetClassificationListResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ConsentHistoryCount",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "DetailCategory",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "DocumentResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ApiKeyOutput",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "AccessTokens",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Consent",
+      "type": "object",
+      "propertyCount": 25,
+      "required": [
+        "applicationDisplayName",
+        "clientADR",
+        "clientTrustedAdvisor",
+        "consentId",
+        "consentStatus",
+        "expirationDate",
+        "expirationDateTime",
+        "links",
+        "preferences",
+        "providerId",
+        "revokeDate",
+        "revokeDateTime",
+        "scope",
+        "startDate",
+        "startDateTime",
+        "title",
+        "titleBody"
+      ]
+    },
+    {
+      "name": "UserAccessTokensResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "LoanPayoffDetails",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "HoldingSecuritiesResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "RenewConsentPreferences",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "id",
+        "value"
+      ]
+    },
+    {
+      "name": "DeletePreference",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "TransactionCategorizationRuleInfo",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "categoryId",
+        "ruleClause"
+      ]
+    },
+    {
+      "name": "UpdatedConsentResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Capability",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Coordinates",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "TransactionCategorizationRuleResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "DataExtractsEventLinks",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "ProviderAccountDetailResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "HistoricalBalance",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "UserRequestPreferences",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "RewardBalance",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "UserDetailResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ProviderAccountDetail",
+      "type": "object",
+      "propertyCount": 14,
+      "required": [
+        "consentId"
+      ]
+    },
+    {
+      "name": "StatementResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "UpdatedProviderAccountResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "DerivedNetworthHistoricalBalance",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "DerivedTransactionsSummary",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "DerivedCategorySummary",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "BankTransferCode",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "EvaluateAccountAddress",
+      "type": "object",
+      "propertyCount": 10,
+      "required": [
+        "street"
+      ]
+    },
+    {
+      "name": "AutoRefresh",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "TransactionCategorizationRuleRequest",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "rule"
+      ]
+    },
+    {
+      "name": "CreatedConsentResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "DataExtractsUser",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "UpdateAccountRequest",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "account"
+      ]
+    },
+    {
+      "name": "ConsentHistoryResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "DerivedNetworthResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Description",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "ProviderDetailResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ClientCredentialTokenResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "UpdateTransaction",
+      "type": "object",
+      "propertyCount": 8,
+      "required": [
+        "categoryId",
+        "categorySource",
+        "container"
+      ]
+    },
+    {
+      "name": "Attribute",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "TransactionCategory",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "Providers",
+      "type": "object",
+      "propertyCount": 25,
+      "required": []
+    },
+    {
+      "name": "UpdateUserRegistration",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "EvaluateAddressResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "TransactionRequest",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "transaction"
+      ]
+    },
+    {
+      "name": "UserDetail",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "TransactionResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Merchant",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "ConsentResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "TransactionTotal",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "LoginForm",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "ProviderResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "CreateConsent",
+      "type": "object",
+      "propertyCount": 24,
+      "required": [
+        "applicationDisplayName",
+        "clientADR",
+        "clientTrustedAdvisor",
+        "consentId",
+        "consentStatus",
+        "expirationDate",
+        "expirationDateTime",
+        "links",
+        "preferences",
+        "providerId",
+        "revokeDate",
+        "revokeDateTime",
+        "scope",
+        "startDate",
+        "startDateTime",
+        "title",
+        "titleBody"
+      ]
+    },
+    {
+      "name": "UpdateConfigsNotificationEventRequest",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "event"
+      ]
+    },
+    {
+      "name": "RenewConsentRequest",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "clientTrustedAdvisor"
+      ]
+    },
+    {
+      "name": "Statement",
+      "type": "object",
+      "propertyCount": 19,
+      "required": []
+    },
+    {
+      "name": "DataExtractsEventResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "DerivedNetworth",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "UserRegistration",
+      "type": "object",
+      "propertyCount": 7,
+      "required": [
+        "loginName"
+      ]
+    },
+    {
+      "name": "SecurityHolding",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "TotalCount",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ProvidersDataset",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ConfigsNotificationEvent",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "HoldingRequest",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "holding"
+      ]
+    },
+    {
+      "name": "ThirdPartyADR",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "name",
+        "url"
+      ]
+    },
+    {
+      "name": "ConfigsNotificationResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "DataExtractsProviderAccount",
+      "type": "object",
+      "propertyCount": 14,
+      "required": []
+    },
+    {
+      "name": "PhoneNumber",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "UpdateConsentRequest",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "clientTrustedAdvisor"
+      ]
+    },
+    {
+      "name": "ProviderAccountRefreshRequest",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "configName",
+        "providerAccountIds"
+      ]
+    },
+    {
+      "name": "ProviderAccountRequest",
+      "type": "object",
+      "propertyCount": 6,
+      "required": [
+        "field"
+      ]
+    },
+    {
+      "name": "AccountProfile",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "TransactionCount",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Email",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "CreateConfigsNotificationEventRequest",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "event"
+      ]
+    },
+    {
+      "name": "UserAccessToken",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "EvaluateAddressRequest",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "address"
+      ]
+    },
+    {
+      "name": "DerivedHoldingSummaryResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "UserAddress",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "DataExtractsUserData",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "AccountAddress",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "StockExchangeDetail",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "ApiKeyRequest",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "CreatedAccountInfo",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Name",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "UserResponsePreferences",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "DocumentDownloadResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Identifier",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "CdrPolicy",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "description",
+        "url"
+      ]
+    },
+    {
+      "name": "DataExtractsTransaction",
+      "type": "object",
+      "propertyCount": 44,
+      "required": []
+    },
+    {
+      "name": "AccountHistory",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "TransactionCategoryResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "DerivedTransactionSummaryResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "UserSession",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ProviderAccountResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "DerivedHolding",
+      "type": "object",
+      "propertyCount": 40,
+      "required": []
+    },
+    {
+      "name": "UpdateConfigsNotificationEvent",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "FieldOperation",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "AccountHistoricalBalancesResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "UserRequest",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "user"
+      ]
+    },
+    {
+      "name": "PaymentProfile",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "DerivedHoldingsSummary",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "UpdateAccountInfo",
+      "type": "object",
+      "propertyCount": 15,
+      "required": []
+    },
+    {
+      "name": "ProvidersCountResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "DataExtractsEvent",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "DataExtractsEventUserData",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "HoldingRequestInfo",
+      "type": "object",
+      "propertyCount": 29,
+      "required": [
+        "accountId",
+        "description",
+        "value"
+      ]
+    },
+    {
+      "name": "CoverageAmount",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "FullAccountNumberList",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "PaymentIdentifier",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "UpdateCategoryRequest",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "id",
+        "source"
+      ]
+    },
+    {
+      "name": "DerivedTransactionsLinks",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ConsentHistoryCountResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "TransactionCountResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Transaction",
+      "type": "object",
+      "propertyCount": 43,
+      "required": []
+    },
+    {
+      "name": "Option",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "StatusLink",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Row",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "AccountResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ProviderAccountPreferencesRequest",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "UserDataTreatment",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "cdrPolicy",
+        "dataHandling",
+        "description"
+      ]
+    },
+    {
+      "name": "AccountDataset",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "HoldingId",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "UpdateUserRequest",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "user"
+      ]
+    },
+    {
+      "name": "RuleClause",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "ProviderAccountPreferences",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "DataExtractsEventData",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "CreateAccountInfo",
+      "type": "object",
+      "propertyCount": 13,
+      "required": [
+        "accountName",
+        "accountType"
+      ]
+    },
+    {
+      "name": "User",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "DataHandling",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "dataList",
+        "headerDescription"
+      ]
+    },
+    {
+      "name": "ConsentConfirmation",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "description",
+        "header"
+      ]
+    },
+    {
+      "name": "RefreshProviderAccountResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Money",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Field",
+      "type": "object",
+      "propertyCount": 13,
+      "required": []
+    },
+    {
+      "name": "RenewConsentResponse",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "CreatedAccountResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "CreateConfigsNotificationEvent",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "PaymentBankTransferCode",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ClientTrustedAdvisor",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "email",
+        "name",
+        "role"
+      ]
+    },
+    {
+      "name": "UpdateConsent",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "ContainerAttributes",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "Preferences",
+      "type": "object",
+      "propertyCount": 5,
+      "required": [
+        "id",
+        "title",
+        "type",
+        "value"
+      ]
+    },
+    {
+      "name": "ProviderDetail",
+      "type": "object",
+      "propertyCount": 24,
+      "required": []
+    },
+    {
+      "name": "ThirdParty",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "description",
+        "header"
+      ]
+    },
+    {
+      "name": "AccountHolder",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "ProvidersCount",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "TransactionCategorizationRule",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "HoldingTypeListResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "TransactionDays",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ClientTrustedAdvisorTxt",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "description"
+      ]
+    },
+    {
+      "name": "UpdatedProviderAccount",
+      "type": "object",
+      "propertyCount": 12,
+      "required": []
+    },
+    {
+      "name": "Holding",
+      "type": "object",
+      "propertyCount": 41,
+      "required": []
+    },
+    {
+      "name": "RenewalConsent",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "DataExtractsUserDataResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ClientCredentialToken",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Coverage",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "DerivedHoldingsLinks",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "AssetClassificationList",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Contact",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "UserResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "CreateAccountRequest",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "account"
+      ]
+    },
+    {
+      "name": "DerivedHoldingsAccount",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Scope",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "scopeId",
+        "title",
+        "titleBody"
+      ]
+    },
+    {
+      "name": "ConsentHistory",
+      "type": "object",
+      "propertyCount": 8,
+      "required": [
+        "consentStatus",
+        "eventDateTime",
+        "startDateTime"
+      ]
+    },
+    {
+      "name": "AssetClassification",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "TransactionCategoryRequest",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "parentCategoryId"
+      ]
+    },
+    {
+      "name": "DerivedCategorySummaryDetails",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "DataExtractsHolding",
+      "type": "object",
+      "propertyCount": 39,
+      "required": []
+    },
+    {
+      "name": "Links",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "href",
+        "methodType",
+        "rel"
+      ]
+    },
+    {
+      "name": "ConsentPreferencesResponse",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "consentId",
+        "customDisplayData",
+        "preferences"
+      ]
+    },
+    {
+      "name": "CreateConsentRequest",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/consents/preferences",
+      "operationId": "getConsentPreferences",
+      "summary": "Envestnet Get Consents Preferences",
+      "tags": [
+        "Consents"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/transactions",
+      "operationId": "getTransactions",
+      "summary": "Envestnet Get Transactions",
+      "tags": [
+        "Transactions"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/auth/apiKey/{key}",
+      "operationId": "deleteApiKey",
+      "summary": "Envestnet Delete API Key",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/providerAccounts",
+      "operationId": "getAllProviderAccounts",
+      "summary": "Envestnet Get Provider Accounts",
+      "tags": [
+        "ProviderAccounts"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/providerAccounts",
+      "operationId": "editCredentialsOrRefreshProviderAccount",
+      "summary": "Envestnet Update Account",
+      "tags": [
+        "ProviderAccounts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/transactions/count",
+      "operationId": "getTransactionsCount",
+      "summary": "Envestnet Get Transactions Count",
+      "tags": [
+        "Transactions"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/derived/transactionSummary",
+      "operationId": "getTransactionSummary",
+      "summary": "Envestnet Get Transaction Summary",
+      "tags": [
+        "Derived"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/consents/{consentId}/renewal",
+      "operationId": "renewConsent",
+      "summary": "Envestnet Renew Consent",
+      "tags": [
+        "Consents"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/dataExtracts/userData",
+      "operationId": "getDataExtractsUserData",
+      "summary": "Envestnet Get userData",
+      "tags": [
+        "DataExtracts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/providers",
+      "operationId": "getAllProviders",
+      "summary": "Envestnet Get Providers",
+      "tags": [
+        "Providers"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/providerAccounts/refresh",
+      "operationId": "refreshProviderAccount",
+      "summary": "Envestnet Refresh Provider Account",
+      "tags": [
+        "ProviderAccounts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/providers/{providerId}",
+      "operationId": "getProvider",
+      "summary": "Envestnet Get Provider Details",
+      "tags": [
+        "Providers"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/transactions/categories/txnRules",
+      "operationId": "getTransactionCategorizationRules",
+      "summary": "Envestnet Get Transaction Categorization Rules",
+      "tags": [
+        "Transactions"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/transactions/categories/{categoryId}",
+      "operationId": "deleteTransactionCategory",
+      "summary": "Envestnet Delete Category",
+      "tags": [
+        "Transactions"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/documents",
+      "operationId": "getDocuments",
+      "summary": "Envestnet Get Documents",
+      "tags": [
+        "Documents"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/accounts/evaluateAddress",
+      "operationId": "evaluateAddress",
+      "summary": "Envestnet Evaluate Address",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/accounts/{accountId}",
+      "operationId": "getAccount",
+      "summary": "Envestnet Get Account Details",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/accounts/{accountId}",
+      "operationId": "updateAccount",
+      "summary": "Envestnet Update Account",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/accounts/{accountId}",
+      "operationId": "deleteAccount",
+      "summary": "Envestnet Delete Account",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/configs/notifications/events",
+      "operationId": "getSubscribedNotificationEvents",
+      "summary": "Envestnet Get Subscribed Notification Events",
+      "tags": [
+        "Configs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/consents/history/count",
+      "operationId": "getConsentHistoryCount",
+      "summary": "Envestnet Get Consent History Count",
+      "tags": [
+        "Consents"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/providers/count",
+      "operationId": "getProvidersCount",
+      "summary": "Envestnet Get Providers Count",
+      "tags": [
+        "Providers"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/accounts/historicalBalances",
+      "operationId": "getHistoricalBalances",
+      "summary": "Envestnet Get Historical Balances",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/consents/history",
+      "operationId": "getConsentHistory",
+      "summary": "Envestnet Get Consent History",
+      "tags": [
+        "Consents"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/derived/networth",
+      "operationId": "getNetworth",
+      "summary": "Envestnet Get Networth Summary",
+      "tags": [
+        "Derived"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/user/samlLogin",
+      "operationId": "samlLogin",
+      "summary": "Envestnet Saml Login",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/user/register",
+      "operationId": "registerUser",
+      "summary": "Envestnet Register User",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/holdings/securities",
+      "operationId": "getSecurities",
+      "summary": "Envestnet Get Security Details",
+      "tags": [
+        "Holdings"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/configs/notifications/events/{eventName}",
+      "operationId": "createSubscriptionNotificationEvent",
+      "summary": "Envestnet Subscribe For Notification Event",
+      "tags": [
+        "Configs"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/configs/notifications/events/{eventName}",
+      "operationId": "updateSubscribedNotificationEvent",
+      "summary": "Envestnet Update Notification Subscription",
+      "tags": [
+        "Configs"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/configs/notifications/events/{eventName}",
+      "operationId": "deleteSubscribedNotificationEvent",
+      "summary": "Envestnet Delete Notification Subscription",
+      "tags": [
+        "Configs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/holdings",
+      "operationId": "getHoldings",
+      "summary": "Envestnet Get Holdings",
+      "tags": [
+        "Holdings"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/holdings",
+      "operationId": "addHolding",
+      "summary": "Envestnet Add Holding",
+      "tags": [
+        "Holdings"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/auth/apiKey",
+      "operationId": "getApiKeys",
+      "summary": "Envestnet Get API Keys",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/apiKey",
+      "operationId": "generateApiKey",
+      "summary": "Envestnet Generate API Key",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/transactions/categories/rules/{ruleId}",
+      "operationId": "runTransactionCategorizationRule",
+      "summary": "Envestnet Run Transaction Categorization Rule",
+      "tags": [
+        "Transactions"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/transactions/categories/rules/{ruleId}",
+      "operationId": "updateTransactionCategorizationRule",
+      "summary": "Envestnet Update Transaction Categorization Rule",
+      "tags": [
+        "Transactions"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/transactions/categories/rules/{ruleId}",
+      "operationId": "deleteTransactionCategorizationRule",
+      "summary": "Envestnet Delete Transaction Categorization Rule",
+      "tags": [
+        "Transactions"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/documents/{documentId}",
+      "operationId": "downloadDocument",
+      "summary": "Envestnet Download a Document",
+      "tags": [
+        "Documents"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/documents/{documentId}",
+      "operationId": "deleteDocument",
+      "summary": "Envestnet Delete Document",
+      "tags": [
+        "Documents"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/user/accessTokens",
+      "operationId": "getAccessTokens",
+      "summary": "Envestnet Get Access Tokens",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/consents/{consentId}",
+      "operationId": "getConsentDetails",
+      "summary": "Envestnet Get Authorization Details",
+      "tags": [
+        "Consents"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/consents/{consentId}",
+      "operationId": "updateConsent",
+      "summary": "Envestnet Put Consent",
+      "tags": [
+        "Consents"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/providerAccounts/{providerAccountId}/preferences",
+      "operationId": "updatePreferences",
+      "summary": "Envestnet Update Preferences",
+      "tags": [
+        "ProviderAccounts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/token",
+      "operationId": "generateAccessToken",
+      "summary": "Envestnet Generate Access Token",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/auth/token",
+      "operationId": "deleteToken",
+      "summary": "Envestnet Delete Token",
+      "tags": [
+        "Auth"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/user",
+      "operationId": "getUser",
+      "summary": "Envestnet Get User Details",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/user",
+      "operationId": "updateUser",
+      "summary": "Envestnet Update User Details",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/providerAccounts/{providerAccountId}",
+      "operationId": "getProviderAccount",
+      "summary": "Envestnet Get Provider Account Details",
+      "tags": [
+        "ProviderAccounts"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/providerAccounts/{providerAccountId}",
+      "operationId": "deleteProviderAccount",
+      "summary": "Envestnet Delete Provider Account",
+      "tags": [
+        "ProviderAccounts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/transactions/categories",
+      "operationId": "getTransactionCategories",
+      "summary": "Envestnet Get Transaction Category List",
+      "tags": [
+        "Transactions"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/transactions/categories",
+      "operationId": "createTransactionCategory",
+      "summary": "Envestnet Create Category",
+      "tags": [
+        "Transactions"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/transactions/categories",
+      "operationId": "updateTransactionCategory",
+      "summary": "Envestnet Update Category",
+      "tags": [
+        "Transactions"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/transactions/categories/rules",
+      "operationId": "getTransactionCategorizationRulesDeprecated",
+      "summary": "Envestnet Get Transaction Categorization Rules",
+      "tags": [
+        "Transactions"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/transactions/categories/rules",
+      "operationId": "createOrRunTransactionCategorizationRules",
+      "summary": "Envestnet Create or Run Transaction Categorization Rule",
+      "tags": [
+        "Transactions"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/consents",
+      "operationId": "getConsents",
+      "summary": "Envestnet Get Consents",
+      "tags": [
+        "Consents"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/consents",
+      "operationId": "createConsent",
+      "summary": "Envestnet Post Consent",
+      "tags": [
+        "Consents"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/statements",
+      "operationId": "getStatements",
+      "summary": "Envestnet Get Statements",
+      "tags": [
+        "Statements"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/accounts",
+      "operationId": "getAllAccounts",
+      "summary": "Envestnet Get Accounts",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/accounts",
+      "operationId": "createManualAccount",
+      "summary": "Envestnet Add Manual Account",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/holdings/holdingTypeList",
+      "operationId": "getHoldingTypeList",
+      "summary": "Envestnet Get Holding Type List",
+      "tags": [
+        "Holdings"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/user/logout",
+      "operationId": "userLogout",
+      "summary": "Envestnet User Logout",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/transactions/{transactionId}",
+      "operationId": "updateTransaction",
+      "summary": "Envestnet Update Transaction",
+      "tags": [
+        "Transactions"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/user/unregister",
+      "operationId": "unregister",
+      "summary": "Envestnet Delete User",
+      "tags": [
+        "User"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/holdings/assetClassificationList",
+      "operationId": "getAssetClassificationList",
+      "summary": "Envestnet Get Asset Classification List",
+      "tags": [
+        "Holdings"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/dataExtracts/events",
+      "operationId": "getDataExtractsEvents",
+      "summary": "Envestnet Get Events",
+      "tags": [
+        "DataExtracts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/derived/holdingSummary",
+      "operationId": "getHoldingSummary",
+      "summary": "Envestnet Get Holding Summary",
+      "tags": [
+        "Derived"
+      ]
+    }
+  ]
+}

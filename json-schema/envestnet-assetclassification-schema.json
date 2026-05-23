@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AssetClassification",
+  "title": "AssetClassification",
+  "type": "object",
+  "properties": {
+    "allocation": {
+      "type": "number",
+      "description": "The allocation percentage of the holding.<br><br><b>Required Feature Enablement</b>: Asset classification feature<br><br><b>Applicable containers</b>: investment<br>",
+      "format": "double",
+      "readOnly": true
+    },
+    "classificationType": {
+      "type": "string",
+      "description": "The type of classification to which the investment belongs (assetClass, country, sector, and style).<br><b>Required Feature Enablement</b>: Asset classification feature<br><br><b>Applicable containers</b>: investment<br>",
+      "readOnly": true
+    },
+    "classificationValue": {
+      "type": "string",
+      "description": "The value for each classificationType.<br><b>Required Feature Enablement</b>: Asset classification feature<br><br><b>Applicable containers</b>: investment<br>",
+      "readOnly": true
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RenewConsentPreferences",
+  "title": "RenewConsentPreferences",
+  "required": [
+    "id",
+    "value"
+  ],
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "preference id for AU Open Banking only.<br><br><b>Endpoints</b>:<ul><li>PUT consents/{consentId}/renewal</li></ul>",
+      "format": "int64"
+    },
+    "value": {
+      "type": "string",
+      "description": "preference value for AU Open Banking only.<br><br><b>Endpoints</b>:<ul><li>PUT consents/{consentId}/renewal</li></ul>"
+    }
+  }
+}

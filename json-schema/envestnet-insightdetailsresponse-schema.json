@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InsightDetailsResponse",
+  "title": "InsightDetailsResponse",
+  "properties": {
+    "insightDetail": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/InsightDetail"
+      }
+    }
+  }
+}

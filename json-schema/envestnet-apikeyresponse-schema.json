@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ApiKeyResponse",
+  "title": "ApiKeyResponse",
+  "type": "object",
+  "properties": {
+    "apiKey": {
+      "type": "array",
+      "description": "ApiKey customer details.<br><br><b>Endpoints</b>:<ul><li>GET /auth/apiKey</li><li>POST /auth/apiKey</li></ul>",
+      "items": {
+        "$ref": "#/components/schemas/ApiKeyOutput"
+      }
+    }
+  }
+}

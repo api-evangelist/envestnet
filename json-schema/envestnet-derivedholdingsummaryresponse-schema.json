@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DerivedHoldingSummaryResponse",
+  "title": "DerivedHoldingSummaryResponse",
+  "type": "object",
+  "properties": {
+    "holdingSummary": {
+      "type": "array",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/DerivedHoldingsSummary"
+      }
+    },
+    "link": {
+      "$ref": "#/components/schemas/DerivedHoldingsLinks"
+    }
+  }
+}

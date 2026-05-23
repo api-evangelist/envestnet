@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InvestmentAccount",
+  "title": "InvestmentAccount",
+  "description": "Account object that contains details about one or more aggregated investment accounts.",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/AccountInfo"
+    }
+  ],
+  "properties": {
+    "balance": {
+      "description": "The total balance of all the investment account, as it appears on  the FI site.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "basicHolding": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BasicHolding"
+      },
+      "readOnly": true
+    }
+  }
+}

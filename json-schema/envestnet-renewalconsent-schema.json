@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RenewalConsent",
+  "title": "RenewalConsent",
+  "type": "object",
+  "properties": {
+    "defaultRenewalDuration": {
+      "type": "string",
+      "description": "Consent default renewal duration.<br><br><b>Endpoints</b>:<ul><li>PUT consents/{consentId}/renewal</li></ul>"
+    },
+    "isReauthorizationRequired": {
+      "type": "boolean",
+      "description": "Consent eligibility for reauthorization.<br><br><b>Endpoints</b>:<ul><li>PUT consents/{consentId}/renewal</li></ul>"
+    }
+  }
+}

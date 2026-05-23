@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserSubscription",
+  "title": "UserSubscription",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/Subscription"
+    }
+  ],
+  "properties": {
+    "userConfiguration": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/userConfiguration"
+      }
+    },
+    "customerConfiguration": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CustomerConfiguration"
+      }
+    }
+  }
+}

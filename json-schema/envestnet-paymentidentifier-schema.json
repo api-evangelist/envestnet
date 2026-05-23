@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PaymentIdentifier",
+  "title": "PaymentIdentifier",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Type of Identifier",
+      "readOnly": true,
+      "enum": [
+        "REFERENCE_NUMBER",
+        "PLATFORM_CODE"
+      ]
+    },
+    "value": {
+      "type": "string",
+      "description": "Value of the identifier",
+      "readOnly": true
+    }
+  }
+}

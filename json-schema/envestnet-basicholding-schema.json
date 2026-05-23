@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BasicHolding",
+  "title": "BasicHolding",
+  "description": "Object that contains details about one or more securities.",
+  "properties": {
+    "id": {
+      "type": "number",
+      "description": "Unique identifier for the security added in the system. This is the  primary key of the holding resource.",
+      "readOnly": true
+    },
+    "accountId": {
+      "type": "number",
+      "description": "The associated unique ID of the account.",
+      "readOnly": true
+    },
+    "link": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BasicHoldingLink"
+        }
+      ],
+      "readOnly": true
+    },
+    "holdingType": {
+      "type": "string",
+      "description": "Indicates the type of security like stocks, mutual fund, etc. The  list of supported holding types is provided in  GET holdings/holdingTypeList.",
+      "readOnly": true
+    },
+    "maturityDate": {
+      "type": "string",
+      "description": "The stated maturity date of a bond or CD.",
+      "readOnly": true
+    },
+    "qty": {
+      "type": "string",
+      "description": "The quantity held for the holding. <br><br><b>Note</b> - For bonds, the quantity field indicates the  normalized quantity and not the quantity aggregated from the site.  <br><br>The quantity field applies to all holding types except  restricted stock units/awards, performance units, currency, and  commodity. <br><br>For the insurance container, the field applies only to  insurance annuity and variable life insurance types.",
+      "readOnly": true
+    },
+    "price": {
+      "description": "The current price of the security.  <br><br><b>Note</b> - For bonds, the price field indicates the  normalized price and not the price aggregated from the site. For  the insurance container, the field applies only to the insurance  annuity and variable life insurance types.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "asOf": {
+      "type": "string",
+      "description": "The date as of which the information is presented.",
+      "readOnly": true
+    },
+    "value": {
+      "description": "The total market value of the security.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    }
+  },
+  "required": [
+    "id",
+    "link"
+  ]
+}

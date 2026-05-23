@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PeerData",
+  "title": "PeerData",
+  "properties": {
+    "timePeriod": {
+      "type": "string",
+      "description": "Duration considered for generating the peer bechmarks across applicable categories and merchants for the view.<br> <br> The default value is LAST_MONTH for this parameter i.e. previous month's data is considered when this parameter is not passed.<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/peerData</li></ul>",
+      "example": "LAST_MONTH"
+    },
+    "monthYear": {
+      "type": "string",
+      "description": "month and year information on when the benchmark values are computed returned<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/peerData</li></ul>",
+      "example": "APRIL-2020"
+    },
+    "fromDate": {
+      "type": "string",
+      "description": "Start date in UTC format - yyyy-MM-dd'T'HH:mm:ss derived from the timePeriod query parameter for which the response is returned<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/peerData</li></ul>",
+      "example": "2020-04-0107:53:20"
+    },
+    "toDate": {
+      "type": "string",
+      "description": "To date in UTC format - yyyy-MM-dd'T'HH:mm:ss derived from the timePeriod query parameter for which the response is returned<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/peerData</li></ul>",
+      "example": "2020-04-3007:53:20"
+    },
+    "segement": {
+      "$ref": "#/components/schemas/SegementationParameter"
+    },
+    "peerCategorySummary": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/peerDetailCategorySummary"
+      }
+    },
+    "peerDetailCategorySummary": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/peerDetailCategorySummary"
+      }
+    },
+    "peerMerchantSummary": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PeerMerchantSummary"
+      }
+    }
+  }
+}

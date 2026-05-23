@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CategoryDerived",
+  "title": "CategoryDerived",
+  "description": "category information",
+  "properties": {
+    "dateRange": {
+      "description": "",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DateRange"
+        }
+      ]
+    },
+    "averageNetTotal": {
+      "description": "Average spending calculated as (netTotal)/(Number of Months)  associated with the detail category for the specific duration.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ]
+    }
+  }
+}

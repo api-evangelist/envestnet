@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DateRange",
+  "title": "DateRange",
+  "description": "The date range identified by fromDate and toDate.",
+  "properties": {
+    "fromDate": {
+      "type": "string",
+      "description": "For a View, fromDate is used to fetch transactions that are aggregated on or after the specified date. This is a mandatory attribute for all rules, except rules that contain transactionId. <br><br>Expected format - yyyy-MM-dd. Note- The date is in UTC timezone instead of Local timezone.<br><br>Endpoints:<ul><li>GET /views</li><li>GET /views/recommendation</li><li>POST /views</li><li>PUT /views</li></ul>",
+      "example": "2020-05-23"
+    },
+    "toDate": {
+      "type": "string",
+      "description": "For a View, toDate is used to fetch transactions that are aggregated on or before the specified date, but after the fromDate. This is a  mandatory attribute for all rules, except rules that contain transactionId. <br><br>Expected format - yyyy-MM-dd.Note- The date is in UTC timezone instead of Local timezone.<br><br>Endpoints:<ul><li>GET /views</li><li>GET /views/recommendation</li><li>POST /views</li><li>PUT /views</li></ul>",
+      "example": "2020-05-23"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DerivedHoldingsAccount",
+  "title": "DerivedHoldingsAccount",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "The primary key of the account resource and the unique identifier for the account.<br>Required Feature Enablement: Asset classification feature.<br><br><b>Applicable containers</b>: investment, insurance<br>",
+      "format": "int64",
+      "readOnly": true
+    },
+    "value": {
+      "$ref": "#/components/schemas/Money"
+    }
+  }
+}

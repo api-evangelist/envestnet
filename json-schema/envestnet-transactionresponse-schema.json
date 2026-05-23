@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TransactionResponse",
+  "title": "TransactionResponse",
+  "type": "object",
+  "properties": {
+    "transaction": {
+      "type": "array",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/Transaction"
+      }
+    }
+  }
+}

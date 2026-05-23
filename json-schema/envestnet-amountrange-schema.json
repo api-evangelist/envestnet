@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AmountRange",
+  "title": "AmountRange",
+  "properties": {
+    "fromAmount": {
+      "minimum": 0,
+      "type": "number",
+      "description": "For a View, fromAmount is used to fetch aggregated transactions where the posted transaction amount is equal to or greater than the fromAmount. <br><br>Example: if fromAmount=100.00 in the View Rule and User calls GET /views/{viewId}/transactions API then only those User transactions will be returned in response, whose Transaction Amount >= $100 <br><br>Note- Currently AmountRange fields are only supported for 'include' View Rules and not supported for 'exclude' View Rules<br><br> <b>Endpoints</b> -<ul><li>GET /views</li><li>GET /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>",
+      "format": "double",
+      "example": 100
+    },
+    "toAmount": {
+      "maximum": 1000000,
+      "type": "number",
+      "description": "For a View, toAmount is used to fetch aggregated transactions where the posted transaction amount is equal to or less than the fromAmount. <br><br>Example 1 - if toAmount=100.00 in the View Rule and User calls GET /views/{viewId}/transactions API then only those User transactions will be returned in response, whose Transaction Amount <= $100 <br><br>Example 2 - if toAmount=100.00 and fromAmount=10.00 in the  View Rule and User calls GET /views/{viewId}/transactions API then  only those User transactions will be returned in response, where 10 <= Transaction Amount <= 100 <br><br>Note- Currently AmountRange fields are only supported for 'include' View Rules and not supported for 'exclude' View Rules<br><br> <b>Endpoints</b> -<ul><li>GET /views</li><li>GET /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>",
+      "format": "double",
+      "example": 1000
+    },
+    "currency": {
+      "type": "string",
+      "description": "Currency is a String with a predefined value(s) such as USD. Currently, only USD is supported by Yodlee insights. <br><br><b>Endpoints</b> -<ul><li>GET /views</li><li>GET /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>",
+      "enum": [
+        "USD"
+      ]
+    }
+  }
+}

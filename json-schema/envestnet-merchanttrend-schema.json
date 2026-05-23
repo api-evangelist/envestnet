@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MerchantTrend",
+  "title": "MerchantTrend",
+  "description": "Merchant trend information, broken down by a specific frequency, for a  specific date range.",
+  "properties": {
+    "basicMerchant": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BasicMerchant"
+        }
+      ],
+      "readOnly": true
+    },
+    "debitTotal": {
+      "description": "The sum of all debit transactions associated with the merchant.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "creditTotal": {
+      "description": "The sum of all credit transactions associated with the merchant.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "netTotal": {
+      "description": "Net spending calculated as (debitTotal - creditTotal) associated with  the merchant for the specific duration.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "averageNetTotal": {
+      "description": "Average spending calculated as (netTotal)/(Number of Months)  associated with the merchant for the specific duration.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "basicPeerDetail": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BasicPeerDetail"
+      },
+      "readOnly": true
+    },
+    "link": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Link"
+        }
+      ],
+      "readOnly": true
+    },
+    "transactionCount": {
+      "type": "string",
+      "description": "Total count of transactions for the specified date range.",
+      "readOnly": true
+    },
+    "details": {
+      "type": "array",
+      "description": "Breakdown of income/spending based on a predefined frequency - typically, monthly.",
+      "items": {
+        "$ref": "#/components/schemas/Detail"
+      },
+      "readOnly": true
+    }
+  },
+  "required": [
+    "basicMerchant"
+  ]
+}

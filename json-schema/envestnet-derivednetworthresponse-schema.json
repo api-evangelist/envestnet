@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DerivedNetworthResponse",
+  "title": "DerivedNetworthResponse",
+  "type": "object",
+  "properties": {
+    "networth": {
+      "type": "array",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/DerivedNetworth"
+      }
+    }
+  }
+}

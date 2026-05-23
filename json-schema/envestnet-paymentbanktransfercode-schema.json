@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PaymentBankTransferCode",
+  "title": "PaymentBankTransferCode",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Value of the identifier",
+      "readOnly": true
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of BankTransferCode",
+      "readOnly": true,
+      "enum": [
+        "ROUTING_NUMBER",
+        "BSB",
+        "IFSC",
+        "SORT_CODE"
+      ]
+    }
+  }
+}

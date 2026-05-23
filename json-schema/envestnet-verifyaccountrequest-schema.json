@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/VerifyAccountRequest",
+  "title": "VerifyAccountRequest",
+  "required": [
+    "transactionCriteria"
+  ],
+  "type": "object",
+  "properties": {
+    "container": {
+      "type": "string",
+      "enum": [
+        "bank",
+        "creditCard",
+        "investment",
+        "insurance",
+        "loan",
+        "reward",
+        "bill",
+        "realEstate",
+        "otherAssets",
+        "otherLiabilities"
+      ]
+    },
+    "accountId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "transactionCriteria": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/VerifyTransactionCriteria"
+      }
+    }
+  }
+}

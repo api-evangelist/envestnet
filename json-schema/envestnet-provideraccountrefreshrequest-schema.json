@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProviderAccountRefreshRequest",
+  "title": "ProviderAccountRefreshRequest",
+  "required": [
+    "configName",
+    "providerAccountIds"
+  ],
+  "type": "object",
+  "properties": {
+    "configName": {
+      "type": "string",
+      "description": "The name of configuration created at the time onboarding or configuration creation."
+    },
+    "providerAccountIds": {
+      "type": "array",
+      "description": "Comma separated providerAccountIds.",
+      "items": {
+        "type": "integer",
+        "format": "int64"
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AccountToken",
+  "title": "AccountToken",
+  "type": "object",
+  "properties": {
+    "processorToken": {
+      "type": "string",
+      "description": "The unique token that the payment partner can use to make API request to the Envestnet | Yodlee system.",
+      "readOnly": true
+    },
+    "accountId": {
+      "type": "integer",
+      "description": "The unique identifier for the user's account.",
+      "format": "int64",
+      "readOnly": true
+    }
+  }
+}

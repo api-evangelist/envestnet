@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CdrPolicy",
+  "title": "CdrPolicy",
+  "required": [
+    "description",
+    "url"
+  ],
+  "type": "object",
+  "properties": {
+    "description": {
+      "type": "string",
+      "description": "Consumer Data Right Policy"
+    },
+    "url": {
+      "type": "string",
+      "description": "https://solutions.yodlee.com/au-cdr.html"
+    }
+  }
+}

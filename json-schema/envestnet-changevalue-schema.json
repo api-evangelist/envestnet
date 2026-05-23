@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ChangeValue",
+  "title": "ChangeValue",
+  "description": "Change in value identified for a type between two different time periods.",
+  "properties": {
+    "changeType": {
+      "type": "string",
+      "example": "BALANCE",
+      "description": "The value for which the change is computed.",
+      "readOnly": true
+    },
+    "previousDate": {
+      "type": "string",
+      "description": "Previous Date (The earlier duration being considered for change  calculation)",
+      "readOnly": true
+    },
+    "previousAmount": {
+      "description": "The amount as of the earlier duration considered for change  calculation.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "currentDate": {
+      "type": "string",
+      "description": "current Date (The latest duration being considered for change  calculation)",
+      "readOnly": true
+    },
+    "currentAmount": {
+      "description": "The amount as of the latest duration considered for change  calculation.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "changeAmount": {
+      "description": "Amount change calculated as currentAmount - previousAmount.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "changePercent": {
+      "type": "number",
+      "description": "Change percent calculated as changeAmount/previousAmount * 100.",
+      "readOnly": true
+    }
+  },
+  "required": [
+    "changeType",
+    "previousDate",
+    "previousAmount",
+    "currentDate",
+    "currentAmount",
+    "changeAmount",
+    "changePercent"
+  ]
+}

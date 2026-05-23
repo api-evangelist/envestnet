@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/YodleeError",
+  "title": "YodleeError",
+  "type": "object",
+  "properties": {
+    "errorMessage": {
+      "type": "string",
+      "description": "The descriptive message that explains the error scenario.",
+      "readOnly": true
+    },
+    "errorCode": {
+      "type": "string",
+      "description": "The error code follows the format YNNN. The error codes do not change. New error codes may be added as we introduce new features and enhance functionalities.",
+      "readOnly": true
+    },
+    "referenceCode": {
+      "type": "string",
+      "description": "Unique Yodlee identifier used to troubleshoot issues at Yodlee's end.",
+      "readOnly": true
+    }
+  }
+}

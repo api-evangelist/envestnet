@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Coverage",
+  "title": "Coverage",
+  "type": "object",
+  "properties": {
+    "amount": {
+      "type": "array",
+      "description": "The coverage amount-related details.<br><br><b>Aggregated / Manual</b>: Aggregated<br><b>Applicable containers</b>: insurance,investment<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul>",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CoverageAmount"
+      }
+    },
+    "planType": {
+      "type": "string",
+      "description": "The plan type for an insurance provided to an individual or an entity.<br><br><b>Aggregated / Manual</b>: Aggregated<br><b>Applicable containers</b>: insurance<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul><b>Applicable Values:</b><br>",
+      "readOnly": true,
+      "enum": [
+        "PPO",
+        "HMO",
+        "UNKNOWN"
+      ]
+    },
+    "endDate": {
+      "type": "string",
+      "description": "The date on which the coverage for the account ends or expires.<br><br><b>Aggregated / Manual</b>: Aggregated<br><b>Applicable containers</b>: insurance,investment<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul>",
+      "readOnly": true
+    },
+    "type": {
+      "type": "string",
+      "description": "The type of coverage provided to an individual or an entity.<br><br><b>Aggregated / Manual</b>: Aggregated<br><b>Applicable containers</b>: insurance,investment<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul><b>Applicable Values:</b><br>",
+      "readOnly": true,
+      "enum": [
+        "VISION",
+        "DENTAL",
+        "MEDICAL",
+        "HEALTH",
+        "DEATH_COVER",
+        "TOTAL_PERMANENT_DISABILITY",
+        "ACCIDENTAL_DEATH_COVER",
+        "INCOME_PROTECTION",
+        "DEATH_TOTAL_PERMANENT_DISABILITY",
+        "OTHER"
+      ]
+    },
+    "startDate": {
+      "type": "string",
+      "description": "The date on which the coverage for the account starts.<br><br><b>Aggregated / Manual</b>: Aggregated<br><b>Applicable containers</b>: insurance,investment<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul>",
+      "readOnly": true
+    }
+  }
+}

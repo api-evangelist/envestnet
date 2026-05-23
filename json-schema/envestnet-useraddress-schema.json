@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserAddress",
+  "title": "UserAddress",
+  "type": "object",
+  "properties": {
+    "zip": {
+      "type": "string",
+      "description": "Zip."
+    },
+    "country": {
+      "type": "string",
+      "description": "Country."
+    },
+    "address3": {
+      "type": "string",
+      "description": "Address Line 3."
+    },
+    "address2": {
+      "type": "string",
+      "description": "Address Line 2."
+    },
+    "city": {
+      "type": "string",
+      "description": "City."
+    },
+    "address1": {
+      "type": "string",
+      "description": "Address Line 1."
+    },
+    "state": {
+      "type": "string",
+      "description": "State."
+    }
+  }
+}

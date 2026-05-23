@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BasicBenchMark",
+  "title": "BasicBenchMark",
+  "properties": {
+    "geo": {
+      "readOnly": true,
+      "description": "Describes the various levels in which the benchmark data is available. ",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Geo"
+        }
+      ]
+    },
+    "benchmarkLevel": {
+      "type": "string",
+      "description": "Describes benchmark Level. ",
+      "readOnly": true
+    },
+    "netTotal": {
+      "description": "Median amount spent by the user in a specified category or merchant",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "numberOfPeers": {
+      "type": "integer",
+      "description": "The total number of peers in the segment to arrive the benchmark amount",
+      "readOnly": true
+    }
+  },
+  "required": [
+    "geo",
+    "isIncome",
+    "netTotal",
+    "numberOfPeers"
+  ]
+}

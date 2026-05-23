@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorSelectedAccount",
+  "title": "CreditAcceleratorSelectedAccount",
+  "type": "object",
+  "properties": {
+    "providerAccountId": {
+      "type": "integer",
+      "description": "Unique identifier for the provider account resource. This is created during account addition.",
+      "format": "int64",
+      "readOnly": true
+    },
+    "id": {
+      "type": "integer",
+      "description": "The primary key of the account resource and the unique identifier for the account.",
+      "format": "int64",
+      "readOnly": true
+    }
+  }
+}

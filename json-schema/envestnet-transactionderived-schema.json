@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TransactionDerived",
+  "title": "TransactionDerived",
+  "description": "Derived information across one or more aggregated transactions.",
+  "properties": {
+    "creditTotal": {
+      "description": "The sum of all credit transactions.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "debitTotal": {
+      "description": "The sum of all debit transactions.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "totalUnpaidBills": {
+      "type": "integer",
+      "description": "The total number of unpaid bills identified. If the threshold  TOP is applied, this number may not match with the number of  bills returned in the insight.",
+      "readOnly": true
+    },
+    "spentPercent": {
+      "type": "string",
+      "description": "Amount spent calculated as debitTotal/creditTotal*100"
+    },
+    "totalSpending": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ]
+    },
+    "averageSpending": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ]
+    },
+    "link": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Link"
+        }
+      ],
+      "readOnly": true
+    },
+    "debtToIncomeRatio": {
+      "type": "number",
+      "description": "Debt to income ratio calculated as (monthly recurring debt / average monthly income) * 100"
+    },
+    "averageMonthlyIncome": {
+      "description": "Average monthly income for the duration.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ]
+    },
+    "monthlyRecurringPaymentTotal": {
+      "description": "Identified monthly recurring payments for the user derived from minimum due amount across all cards, loan payments, rent payments, mortgage payments, alimoney and child care support.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ]
+    },
+    "dateRange": {
+      "description": "The date range considered to compute the values.",
+      "items": {
+        "$ref": "#/components/schemas/DateRange"
+      },
+      "readOnly": true
+    }
+  }
+}

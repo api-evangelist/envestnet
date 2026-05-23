@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TransactionDays",
+  "title": "TransactionDays",
+  "type": "object",
+  "properties": {
+    "fullAccountNumberFields": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "paymentAccountNumber",
+          "unmaskedAccountNumber"
+        ]
+      }
+    },
+    "numberOfTransactionDays": {
+      "type": "integer",
+      "format": "int32"
+    }
+  }
+}

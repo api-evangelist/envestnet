@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ErrorInfo",
+  "title": "ErrorInfo",
+  "description": "Error encountered while refreshing a specific aggregated account.",
+  "properties": {
+    "errorStatus": {
+      "type": "string",
+      "description": "Error status"
+    },
+    "errorDescription": {
+      "type": "string",
+      "description": "error description"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "description": "last updated"
+    },
+    "lastUpdateAttempt": {
+      "type": "string",
+      "description": "The date information indicating the last refresh attempt."
+    }
+  },
+  "required": [
+    "errorStatus",
+    "errorDescription",
+    "lastUpdate",
+    "lastUpdateAttemp"
+  ]
+}

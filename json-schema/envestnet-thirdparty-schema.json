@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ThirdParty",
+  "title": "ThirdParty",
+  "required": [
+    "description",
+    "header"
+  ],
+  "type": "object",
+  "properties": {
+    "description": {
+      "type": "string",
+      "description": "Third Party Description"
+    },
+    "header": {
+      "type": "string",
+      "description": "Third Party Header"
+    }
+  }
+}

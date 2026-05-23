@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/customerSubscriptions",
+  "title": "customerSubscriptions",
+  "properties": {
+    "customerSubscription": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CustomerSubscription"
+      }
+    }
+  }
+}

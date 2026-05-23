@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DerivedCategorySummaryDetails",
+  "title": "DerivedCategorySummaryDetails",
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string",
+      "description": "Date on which the credit and debit transactions had occured.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br>",
+      "readOnly": true
+    },
+    "creditTotal": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "debitTotal": {
+      "$ref": "#/components/schemas/Money"
+    }
+  }
+}

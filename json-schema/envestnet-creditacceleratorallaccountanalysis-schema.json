@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorAllAccountAnalysis",
+  "title": "CreditAcceleratorAllAccountAnalysis",
+  "type": "object",
+  "properties": {
+    "income": {
+      "$ref": "#/components/schemas/CreditAcceleratorAllAccountIncome"
+    },
+    "asset": {
+      "$ref": "#/components/schemas/CreditAcceleratorAllAccountAsset"
+    },
+    "expense": {
+      "$ref": "#/components/schemas/CreditAcceleratorAllAccountExpense"
+    }
+  }
+}

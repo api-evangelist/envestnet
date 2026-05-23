@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorAccountSummary",
+  "title": "CreditAcceleratorAccountSummary",
+  "type": "object",
+  "properties": {
+    "accountAnalysis": {
+      "$ref": "#/components/schemas/CreditAcceleratorAccountAnalysis"
+    },
+    "accountVerification": {
+      "$ref": "#/components/schemas/CreditAcceleratorAccountVerification"
+    },
+    "details": {
+      "$ref": "#/components/schemas/CreditAcceleratorAccount"
+    },
+    "holdings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Holding"
+      }
+    },
+    "transactions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorTransaction"
+      }
+    }
+  }
+}

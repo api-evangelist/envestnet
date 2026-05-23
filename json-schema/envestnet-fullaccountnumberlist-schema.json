@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FullAccountNumberList",
+  "title": "FullAccountNumberList",
+  "type": "object",
+  "properties": {
+    "paymentAccountNumber": {
+      "type": "string",
+      "description": "Payment Account Number of given account.<br><br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul>",
+      "readOnly": true
+    },
+    "unmaskedAccountNumber": {
+      "type": "string",
+      "description": "Unmasked account number of given account.<br><br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul>",
+      "readOnly": true
+    }
+  }
+}

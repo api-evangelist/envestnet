@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/HoldingTypeListResponse",
+  "title": "HoldingTypeListResponse",
+  "type": "object",
+  "properties": {
+    "holdingType": {
+      "type": "array",
+      "readOnly": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "stock",
+          "mutualFund",
+          "bond",
+          "CD",
+          "option",
+          "moneyMarketFund",
+          "other",
+          "remic",
+          "future",
+          "commodity",
+          "currency",
+          "unitInvestmentTrust",
+          "employeeStockOption",
+          "insuranceAnnuity",
+          "unknown",
+          "preferredStock",
+          "ETF",
+          "warrants",
+          "digitalAsset"
+        ]
+      }
+    }
+  }
+}

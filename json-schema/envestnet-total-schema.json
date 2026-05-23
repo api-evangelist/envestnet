@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/total",
+  "title": "total",
+  "properties": {
+    "total": {
+      "type": "number",
+      "description": "Number of insights count. <br><br><b>Endpoints</b> -<ul><li>GET /insights/feed/count</li></ul>",
+      "readOnly": true,
+      "example": 8
+    }
+  }
+}

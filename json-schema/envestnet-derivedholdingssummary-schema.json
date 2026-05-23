@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DerivedHoldingsSummary",
+  "title": "DerivedHoldingsSummary",
+  "type": "object",
+  "properties": {
+    "holding": {
+      "type": "array",
+      "description": "Securities that belong to the asset classification type and contributed to the summary value.<br><b>Required Feature Enablement</b>: Asset classification feature.<br><br><b>Applicable containers</b>: investment, insurance<br>",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/DerivedHolding"
+      }
+    },
+    "classificationType": {
+      "type": "string",
+      "description": "The classification type of the security. The supported asset classification type and the values are provided in the /holdings/assetClassificationList.<br><b>Required Feature Enablement</b>: Asset classification feature.<br><br><b>Applicable containers</b>: investment, insurance<br>",
+      "readOnly": true
+    },
+    "classificationValue": {
+      "type": "string",
+      "description": "The classification value that corresponds to the classification type of the holding. The supported asset classification type and the values are provided in the /holdings/assetClassificationList.<br><b>Required Feature Enablement</b>: Asset classification feature.<br><br><b>Applicable containers</b>: investment, insurance<br>",
+      "readOnly": true
+    },
+    "value": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "account": {
+      "type": "array",
+      "description": "Accounts that contribute to the classification. <br><b>Required Feature Enablement</b>: Asset classification feature.<br><br><b>Applicable containers</b>: investment, insurance<br>",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/DerivedHoldingsAccount"
+      }
+    }
+  }
+}

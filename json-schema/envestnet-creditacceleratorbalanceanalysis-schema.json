@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorBalanceAnalysis",
+  "title": "CreditAcceleratorBalanceAnalysis",
+  "type": "object",
+  "properties": {
+    "daysAboveAverage": {
+      "type": "number",
+      "description": "Number of Daily Balances that are above the average for the time period.",
+      "format": "double",
+      "readOnly": true
+    },
+    "balanceStandardDeviation": {
+      "type": "number",
+      "description": "Standard Deviation of Daily Balance for the time period.",
+      "format": "double",
+      "readOnly": true
+    },
+    "timePeriod": {
+      "type": "string",
+      "description": "Time intervals to consider up to the number of days the application was requested",
+      "readOnly": true
+    },
+    "daysBelowAverage": {
+      "type": "number",
+      "description": "Number of Daily Balances that are below the average for the time period.",
+      "format": "double",
+      "readOnly": true
+    }
+  }
+}

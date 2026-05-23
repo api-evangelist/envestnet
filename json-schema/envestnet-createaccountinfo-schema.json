@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateAccountInfo",
+  "title": "CreateAccountInfo",
+  "required": [
+    "accountName",
+    "accountType"
+  ],
+  "type": "object",
+  "properties": {
+    "includeInNetWorth": {
+      "type": "string"
+    },
+    "address": {
+      "$ref": "#/components/schemas/AccountAddress"
+    },
+    "accountName": {
+      "maxLength": 100,
+      "minLength": 1,
+      "type": "string"
+    },
+    "accountType": {
+      "maxLength": 2147483647,
+      "minLength": 1,
+      "type": "string"
+    },
+    "dueDate": {
+      "type": "string"
+    },
+    "memo": {
+      "maxLength": 250,
+      "minLength": 0,
+      "type": "string"
+    },
+    "homeValue": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "accountNumber": {
+      "maxLength": 100,
+      "minLength": 0,
+      "pattern": "^[a-zA-Z0-9]+$",
+      "type": "string"
+    },
+    "frequency": {
+      "type": "string",
+      "enum": [
+        "DAILY",
+        "ONE_TIME",
+        "WEEKLY",
+        "EVERY_2_WEEKS",
+        "SEMI_MONTHLY",
+        "MONTHLY",
+        "QUARTERLY",
+        "SEMI_ANNUALLY",
+        "ANNUALLY",
+        "EVERY_2_MONTHS",
+        "EBILL",
+        "FIRST_DAY_MONTHLY",
+        "LAST_DAY_MONTHLY",
+        "EVERY_4_WEEKS",
+        "UNKNOWN",
+        "OTHER"
+      ]
+    },
+    "amountDue": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "balance": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "nickname": {
+      "maxLength": 50,
+      "minLength": 0,
+      "type": "string"
+    },
+    "valuationType": {
+      "type": "string",
+      "enum": [
+        "SYSTEM",
+        "MANUAL"
+      ]
+    }
+  }
+}

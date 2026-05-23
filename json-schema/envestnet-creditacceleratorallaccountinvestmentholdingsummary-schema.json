@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorAllAccountInvestmentHoldingSummary",
+  "title": "CreditAcceleratorAllAccountInvestmentHoldingSummary",
+  "type": "object",
+  "properties": {
+    "classifications": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorClassification"
+      }
+    },
+    "totalValues": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Money"
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PaymentAccountBalanceResponse",
+  "title": "PaymentAccountBalanceResponse",
+  "type": "object",
+  "properties": {
+    "account": {
+      "type": "array",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/PaymentAccountBalance"
+      }
+    }
+  }
+}

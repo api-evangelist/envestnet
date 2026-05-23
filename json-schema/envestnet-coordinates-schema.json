@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Coordinates",
+  "title": "Coordinates",
+  "type": "object",
+  "properties": {
+    "latitude": {
+      "type": "number",
+      "description": "Latitude of the merchant<br><br><b>Applicable containers</b>: bank,creditCard,loan<br>",
+      "format": "double"
+    },
+    "longitude": {
+      "type": "number",
+      "description": "Longitude of the merchant<br><br><b>Applicable containers</b>: bank,creditCard,loan<br>",
+      "format": "double"
+    }
+  }
+}

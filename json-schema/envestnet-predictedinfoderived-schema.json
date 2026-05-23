@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PredictedInfoDerived",
+  "title": "PredictedInfoDerived",
+  "description": "provide the predicted balance aggregated across all account per date",
+  "properties": {
+    "predictedBalance": {
+      "description": "predicted balance",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "date": {
+      "description": "date in yyyy-mm-dd format",
+      "type": "string",
+      "readOnly": true
+    },
+    "accountIds": {
+      "description": "list of account id that constributed in the predicted balance.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "readOnly": true
+    }
+  }
+}

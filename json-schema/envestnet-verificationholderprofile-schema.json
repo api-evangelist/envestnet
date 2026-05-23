@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/VerificationHolderProfile",
+  "title": "VerificationHolderProfile",
+  "type": "object",
+  "properties": {
+    "accountId": {
+      "type": "integer",
+      "description": "The primary key of the account resource and the unique identifier for the account",
+      "format": "int64",
+      "readOnly": true
+    },
+    "address": {
+      "type": "array",
+      "description": "The account holder's address available at the profile and account levels",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/AbstractAddress"
+      }
+    },
+    "phoneNumber": {
+      "type": "array",
+      "description": "The account holder's phone number available at the profile and account levels",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/PhoneNumber"
+      }
+    },
+    "providerAccountId": {
+      "type": "integer",
+      "description": "The primary key of the provider account resource",
+      "format": "int64",
+      "readOnly": true
+    },
+    "holder": {
+      "type": "array",
+      "description": "The holder entity is account-specific and captures the ownership status and the name details of the user",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/VerificationHolder"
+      }
+    },
+    "email": {
+      "type": "array",
+      "description": "The account holder's email ID available at the profile and account levels",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/Email"
+      }
+    }
+  }
+}

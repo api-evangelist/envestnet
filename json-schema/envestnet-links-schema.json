@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Links",
+  "title": "Links",
+  "required": [
+    "href",
+    "methodType",
+    "rel"
+  ],
+  "type": "object",
+  "properties": {
+    "methodType": {
+      "type": "string",
+      "description": "Type of the HTTP method <br/> GET , PUT , POST , DELETE , ..."
+    },
+    "rel": {
+      "type": "string",
+      "description": "Get Consent preference"
+    },
+    "href": {
+      "type": "string",
+      "description": "Get Consent preference Endpoint"
+    }
+  }
+}

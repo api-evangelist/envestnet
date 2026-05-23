@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DerivedHoldingsLinks",
+  "title": "DerivedHoldingsLinks",
+  "type": "object",
+  "properties": {
+    "holdings": {
+      "type": "string",
+      "readOnly": true
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Merchant",
+  "title": "Merchant",
+  "type": "object",
+  "properties": {
+    "website": {
+      "type": "string",
+      "description": "The website of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>",
+      "readOnly": true
+    },
+    "address": {
+      "$ref": "#/components/schemas/AccountAddress"
+    },
+    "contact": {
+      "$ref": "#/components/schemas/Contact"
+    },
+    "categoryLabel": {
+      "type": "array",
+      "description": "The business categories of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard<br><b>Applicable Values</b><br>",
+      "readOnly": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "coordinates": {
+      "$ref": "#/components/schemas/Coordinates"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>",
+      "readOnly": true
+    },
+    "id": {
+      "type": "string",
+      "description": "Identifier of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>",
+      "readOnly": true
+    },
+    "source": {
+      "type": "string",
+      "description": "The source through which merchant information is retrieved.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br><b>Applicable Values</b><br>",
+      "readOnly": true,
+      "enum": [
+        "YODLEE",
+        "FACTUAL"
+      ]
+    },
+    "logoURL": {
+      "type": "string",
+      "description": "The logoURL of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>",
+      "readOnly": true
+    }
+  }
+}

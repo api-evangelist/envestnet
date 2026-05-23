@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LoanPayoffDetails",
+  "title": "LoanPayoffDetails",
+  "type": "object",
+  "properties": {
+    "payByDate": {
+      "type": "string",
+      "description": "The date by which the payoff amount should be paid.<br><br><b>Account Type</b>: Aggregated<br><b>Applicable containers</b>: loan<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul>",
+      "readOnly": true
+    },
+    "payoffAmount": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "outstandingBalance": {
+      "$ref": "#/components/schemas/Money"
+    }
+  }
+}

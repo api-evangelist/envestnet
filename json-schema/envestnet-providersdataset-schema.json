@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProvidersDataset",
+  "title": "ProvidersDataset",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the dataset requested from the provider site<br><br><b>Account Type</b>: Manual<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li><li>GET providers</li></ul><b>Applicable Values</b><br>",
+      "enum": [
+        "BASIC_AGG_DATA",
+        "ADVANCE_AGG_DATA",
+        "ACCT_PROFILE",
+        "DOCUMENT"
+      ]
+    },
+    "attribute": {
+      "type": "array",
+      "description": "The name of the dataset attribute suported by the provider.<br><br><b>Endpoints</b>:<ul><li>GET providers/{providerId}</li><li>GET providers</li></ul>",
+      "items": {
+        "$ref": "#/components/schemas/Attribute"
+      }
+    }
+  }
+}

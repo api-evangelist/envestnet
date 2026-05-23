@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UpdateTransaction",
+  "title": "UpdateTransaction",
+  "required": [
+    "categoryId",
+    "categorySource",
+    "container"
+  ],
+  "type": "object",
+  "properties": {
+    "categorySource": {
+      "type": "string",
+      "enum": [
+        "SYSTEM",
+        "USER"
+      ]
+    },
+    "container": {
+      "type": "string",
+      "enum": [
+        "bank",
+        "creditCard",
+        "investment",
+        "insurance",
+        "loan",
+        "reward",
+        "bill",
+        "realEstate",
+        "otherAssets",
+        "otherLiabilities"
+      ]
+    },
+    "isPhysical": {
+      "type": "boolean"
+    },
+    "detailCategoryId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "description": {
+      "$ref": "#/components/schemas/Description"
+    },
+    "memo": {
+      "type": "string"
+    },
+    "merchantType": {
+      "type": "string",
+      "enum": [
+        "BILLERS",
+        "SUBSCRIPTION",
+        "OTHERS"
+      ]
+    },
+    "categoryId": {
+      "type": "integer",
+      "format": "int64"
+    }
+  }
+}

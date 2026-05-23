@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/HoldingAssetClassificationListResponse",
+  "title": "HoldingAssetClassificationListResponse",
+  "type": "object",
+  "properties": {
+    "assetClassificationList": {
+      "type": "array",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/AssetClassificationList"
+      }
+    }
+  }
+}

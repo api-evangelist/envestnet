@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BasicTransaction",
+  "title": "BasicTransaction",
+  "description": "Transaction object that contains details about one or more aggregated transactions.",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "An unique identifier for the transaction. The combination of the  id and account container are unique in the system."
+    },
+    "amount": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "date": {
+      "type": "string",
+      "description": "The value provided will be either postDate or transactionDate.  postDate takes higher priority than transactionDate, except for the  investment container as only transactionDate is available. The  availability of postDate or transactionDate depends on the provider  site."
+    },
+    "categoryId": {
+      "type": "string",
+      "description": "The id of the category assigned to the transaction. This is the id  field of the transaction category resource. The supported values  are provided by the GET transactions/categories."
+    },
+    "category": {
+      "type": "string",
+      "description": "The name of the category assigned to the transaction. This is the  category field of the transaction category resource. The supported  values are provided by the GET transactions/categories."
+    },
+    "link": {
+      "description": "Reference path link to fetch more information about the specific transaction.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BasicTransactionLink"
+        }
+      ],
+      "readOnly": true
+    },
+    "categoryType": {
+      "type": "string",
+      "description": "The categoryType of the category assigned to the transaction. This  is the type field of the transaction category resource. categoryType  primarily identifies if the transaction is an income, expense, or  some other type of transaction."
+    },
+    "baseType": {
+      "type": "string",
+      "description": "Indicates if the transaction appears as a debit or a credit  transaction in the account."
+    },
+    "description": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/descriptions"
+        }
+      ]
+    },
+    "sourceType": {
+      "type": "string",
+      "description": "The source through which the transaction is added to the Yodlee  system."
+    },
+    "merchantType": {
+      "type": "string",
+      "description": "Provides further information about a transaction, i.e., if the  transaction is carried out on a biller, subscription merchant, or  other."
+    },
+    "basicMerchant": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BasicMerchant"
+        }
+      ]
+    },
+    "basicPredictedEvent": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BasicPredictedEvent"
+        }
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "amount",
+    "date",
+    "categoryId",
+    "category",
+    "link",
+    "categoryType",
+    "description"
+  ]
+}

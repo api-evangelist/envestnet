@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TransactionCategory",
+  "title": "TransactionCategory",
+  "type": "object",
+  "properties": {
+    "highLevelCategoryName": {
+      "type": "string",
+      "description": "The name of the high level category. A group of similar transaction categories are clubbed together to form a high-level category.<br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br>",
+      "readOnly": true
+    },
+    "defaultHighLevelCategoryName": {
+      "type": "string",
+      "description": "A attribute which will always hold the first value(initial name) of Yodlee defined highLevelCategoryName attribute.<br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br>",
+      "readOnly": true
+    },
+    "highLevelCategoryId": {
+      "type": "integer",
+      "description": "The unique identifier of the high level category.<br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br>",
+      "format": "int64",
+      "readOnly": true
+    },
+    "detailCategory": {
+      "type": "array",
+      "description": "Entity that provides detail category attributes<br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br>",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/DetailCategory"
+      }
+    },
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier of the category.<br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br>",
+      "format": "int64",
+      "readOnly": true
+    },
+    "source": {
+      "type": "string",
+      "description": "Source used to identify whether the transaction category is user defined category or system created category.<br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br><b>Applicable Values</b><br>",
+      "readOnly": true,
+      "enum": [
+        "SYSTEM",
+        "USER"
+      ]
+    },
+    "category": {
+      "type": "string",
+      "description": "The name of the category.<br><b>Note</b>: Transaction categorization is one of the core features offered by Yodlee and the categories are assigned to the transactions by the system. Transactions can be clubbed together by the category that is assigned to them.  <br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br>",
+      "readOnly": true
+    },
+    "classification": {
+      "type": "string",
+      "description": "Category Classification.<br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br><b>Applicable Values</b><br>",
+      "readOnly": true,
+      "enum": [
+        "PERSONAL",
+        "BUSINESS"
+      ]
+    },
+    "type": {
+      "type": "string",
+      "description": "Transaction categories and high-level categories are further mapped to five transaction category types. Customers, based on their needs can either use the transaction categories, the high-level categories, or the transaction category types. <br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br><b>Applicable Values</b><br>",
+      "readOnly": true,
+      "enum": [
+        "TRANSFER",
+        "DEFERRED_COMPENSATION",
+        "UNCATEGORIZE",
+        "INCOME",
+        "EXPENSE"
+      ]
+    },
+    "defaultCategoryName": {
+      "type": "string",
+      "description": "A attribute which will always hold the first value(initial name) of Yodlee defined category attribute.<br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br>",
+      "readOnly": true
+    }
+  }
+}

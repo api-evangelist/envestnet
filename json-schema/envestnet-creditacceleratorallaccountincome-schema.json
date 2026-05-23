@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorAllAccountIncome",
+  "title": "CreditAcceleratorAllAccountIncome",
+  "type": "object",
+  "properties": {
+    "regularIncomeTxnSummary": {
+      "type": "array",
+      "description": "Sum, count, average and list of salary/regular income transactions.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceSummary"
+      }
+    },
+    "otherIncomeTxnSummary": {
+      "type": "array",
+      "description": "Sum, count, average and list of other income transactions.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceSummary"
+      }
+    },
+    "servicesIncomeTxnSummary": {
+      "type": "array",
+      "description": "Sum, count, average and list of sales/services income transactions.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceSummary"
+      }
+    },
+    "totalIncomeTxnSummary": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceSummary"
+      }
+    },
+    "depositTxnSummary": {
+      "type": "array",
+      "description": "Sum, count, average and list of deposit income transactions.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceSummary"
+      }
+    },
+    "retirementTxnSummary": {
+      "type": "array",
+      "description": "Sum, count, average and list of investment/retirement income transactions.",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/CreditAcceleratorAllAccountBalanceSummary"
+      }
+    }
+  }
+}

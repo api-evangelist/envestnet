@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ClientTrustedAdvisor",
+  "title": "ClientTrustedAdvisor",
+  "required": [
+    "email",
+    "name",
+    "role"
+  ],
+  "type": "object",
+  "properties": {
+    "role": {
+      "type": "string",
+      "description": "<b>Role of the Client Trusted Advisor</b>: Example : Lawyer , Accountant , etc..."
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the client trusted advisor"
+    },
+    "email": {
+      "type": "string",
+      "description": "<b>Email Id of the Client Trusted Advisor</b>: PRIMARY , SECONDARY , PERSONAL , WORK and OTHERS"
+    }
+  }
+}

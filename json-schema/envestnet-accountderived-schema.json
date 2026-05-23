@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AccountDerived",
+  "title": "AccountDerived",
+  "description": "Derived information across one or more aggregated accounts.",
+  "properties": {
+    "totalAvailableBalance": {
+      "description": "The total available balance across eligible accounts.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "discretionaryBalance": {
+      "description": "Balance available to spend after taking into account projected income and expenses.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "averageSpending": {
+      "description": "The average monthly spending for the given duration.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "averageAvailableBalance": {
+      "description": "Average available balance across one or more accounts.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "spendingRunway": {
+      "description": "Based on the average spending, the duration in days for which the total available balance  will last",
+      "type": "number",
+      "readOnly": true
+    }
+  }
+}

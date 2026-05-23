@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DetailCategoryTrend",
+  "title": "DetailCategoryTrend",
+  "description": "Detail category trend information, broken down by a specific frequency, for a  specific date range.",
+  "properties": {
+    "detailCategoryId": {
+      "type": "string",
+      "description": "The id of the detail category assigned to the transaction.",
+      "readOnly": true
+    },
+    "detailCategoryName": {
+      "type": "string",
+      "description": "The name of the detail category assigned to the transaction.",
+      "readOnly": true
+    },
+    "debitTotal": {
+      "description": "The sum of all debit transactions associated with the detail category for the specific duration.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "creditTotal": {
+      "description": "The sum of all credit transactions associated with the detail category for the specific duration.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "netCreditTotal": {
+      "description": "Net credit spending.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "netTotal": {
+      "description": "Net spending calculated as (debitTotal - creditTotal) associated with  the detail category for the specific duration.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "averageNetTotal": {
+      "description": "Average spending calculated as (netTotal)/(Number of Months)  associated with the detail category for the specific duration.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "link": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Link"
+        }
+      ],
+      "readOnly": true
+    },
+    "transactionCount": {
+      "type": "integer",
+      "description": "Transaction count.",
+      "readOnly": true
+    },
+    "basicPeerDetail": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BasicPeerDetail"
+      },
+      "readOnly": true
+    },
+    "detail": {
+      "type": "array",
+      "description": "Breakdown of income/spending based on a predefined frequency - typically, monthly.",
+      "items": {
+        "$ref": "#/components/schemas/Detail"
+      },
+      "readOnly": true
+    }
+  },
+  "required": [
+    "detailCategoryId",
+    "detailCategoryName"
+  ]
+}

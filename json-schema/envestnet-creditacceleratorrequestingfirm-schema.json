@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorRequestingFirm",
+  "title": "CreditAcceleratorRequestingFirm",
+  "type": "object",
+  "properties": {
+    "requestingFirmId": {
+      "type": "string",
+      "description": "Unique identifier for the requesting firm",
+      "readOnly": true
+    },
+    "referenceNo": {
+      "type": "string",
+      "description": "Reference number of requesting firm",
+      "readOnly": true
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the requesting firm",
+      "readOnly": true
+    },
+    "broker": {
+      "type": "string",
+      "description": "Name of the broker",
+      "readOnly": true
+    }
+  }
+}

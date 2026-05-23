@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ViewRuleExclude",
+  "title": "ViewRuleExclude",
+  "properties": {
+    "merchantName": {
+      "type": "array",
+      "description": "User is expected to pass one or more valid merchant names. 'merchantName' is basically the name of the merchant associated with a User transaction<br><br>Currently, we do not validate merchant names. Please ensure the names are an exact match.<br><br> Endpoints:<ul><li>GET /views</li><li>GET /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>",
+      "example": [
+        "Century Link",
+        "Amazon"
+      ],
+      "items": {
+        "maximum": 250,
+        "minimum": 1,
+        "type": "string"
+      }
+    },
+    "categoryId": {
+      "maximum": 100,
+      "minimum": 1,
+      "type": "array",
+      "description": "'categoryId' is a View Rule criteria which is applicable for both Include/Exclude ViewRules. User is expected to pass the array of 'categoryId' here. 'categoryId' is basically the identifier of the Transaction Category supported in Yodlee system. The supported values are provided by the GET transactions/categories API<br><br>Note: Each categoryId has a categoryType associated to it. E.g. categoryId:10, categoryName:Groceries, categoryType:EXPENSE.<br><br>In above example, if you are calling POST /views or PUT /views API and inside the Request body you are passing View rule categoryId: [10] , then the view.rule.type must be matching 'EXPENSE'. Meaning if the View Rule Type: EXPENSE then the View Rule CategoryId must have CategoryType: EXPENSE, else API will return categoryType mismatch validation error<br><br><b>Endpoints</b> -<ul><li>GET /views</li><li>GET /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>",
+      "example": [
+        29,
+        30
+      ],
+      "items": {
+        "type": "integer",
+        "format": "int64"
+      }
+    },
+    "detailCategoryId": {
+      "maximum": 100,
+      "minimum": 1,
+      "type": "array",
+      "description": "'detailCategoryId' is a View Rule criteria which is applicable for both Include/Exclude ViewRules. User is expected to pass the array of 'detailCategoryId' here. 'detailCategoryId' is basically the identifier of the Transaction Category supported in Yodlee system. E.g. detailCategoryId:10",
+      "example": [
+        1262
+      ],
+      "items": {
+        "type": "integer",
+        "format": "int64"
+      }
+    },
+    "accountId": {
+      "maximum": 25,
+      "minimum": 1,
+      "type": "array",
+      "description": "'accountId' is a View Rule criteria which is applicable for both Include/Exclude ViewRules. User is expected to pass the array of 'accountId' here. 'accountId' is basically the identifier of the User Aggregated Account. <br><br>For example, consider that the user has aggreggated a Bank account with Yodlee and the AccountId in Yodlee system is 1000365. The user wants to fetch all Transactions associated with that Account in this View, then user will create a View by calling POST /views API and pass accountId: [1000365] in the View rule 'include' criteria in the API request body JSON. Once the View is created then User can call GET /views/{viewId}/transactions API and pass the same View Id and the response will only contain the Transactions where AccountId=1000365<br><br><b>Endpoints</b> -<ul><li>GET /views</li><li>GET /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>",
+      "example": [
+        10001012,
+        10001013
+      ],
+      "items": {
+        "type": "integer",
+        "format": "int64"
+      }
+    },
+    "transactionId": {
+      "maximum": 500,
+      "minimum": 1,
+      "type": "array",
+      "description": "'transactionId' is one of the View Rule criteria which is applicable for both Include/Exclude ViewRules. User is expected to pass the array of 'transactionId' here. 'transactionId' is basically the identifier of the aggregated transaction for a user.<br><br>NOTE- If a View rule has 'transactionId' attribute, then that rule cannot have any other attribute in it - including fromDate/toDate.<br><br><b>Endpoints</b> -<ul><li>GET /views</li><li>GET /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>",
+      "example": [
+        1000354,
+        1000379
+      ],
+      "items": {
+        "type": "integer",
+        "format": "int64"
+      }
+    },
+    "merchantType": {
+      "type": "array",
+      "description": "'merchantType' is one one of the View Rule criteria which is applicable for both Include/Exclude ViewRules. User is expected to pass the array of 'merchantType' here. merchantType is basically the type of the merchant associated with a Transaction.<br><br><b>Endpoints</b> -<ul><li>GET /views</li><li>GET /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>",
+      "example": "BILLERS",
+      "items": {
+        "type": "string",
+        "enum": [
+          "BILLERS",
+          "SUBSCRIPTION"
+        ]
+      }
+    },
+    "city": {
+      "maximum": 100,
+      "minimum": 1,
+      "type": "array",
+      "description": "'city' is one of the View Rule criteria which is applicable for both Include/Exclude ViewRules. User is expected to pass the array of standard city names here. example state:['Milwaukee','Boston']<br><br> Note - We do not do any validations for city names. <br><br><b>Endpoints</b> -<ul><li>GET /views</li><li>GET /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>",
+      "example": [
+        "Milwaukee",
+        "Boston"
+      ],
+      "items": {
+        "type": "string"
+      }
+    },
+    "state": {
+      "maximum": 50,
+      "minimum": 1,
+      "type": "array",
+      "description": "'state' is one of the View Rule criteria which is applicable for both Include/Exclude ViewRules. User is expected to pass the array of standard State codes here. example state:['WI', 'AZ'] will mean Wisconsin and Arizona. For the US region specify valid USPS code; ref: <a href='https://pe.usps.com/text/pub28/28apb.htm'>US state Codes</a><br><br> Note - We do not do any validations for state names. <br><br><b>Endpoints</b> -<ul><li>GET /views</li><li>GET /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>",
+      "example": [
+        "AZ",
+        "WI"
+      ],
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

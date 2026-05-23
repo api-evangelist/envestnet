@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LoanAccount",
+  "title": "LoanAccount",
+  "description": "Account object that contains details about one or more aggregated loan accounts.",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/AccountInfo"
+    }
+  ],
+  "properties": {
+    "maturityDate": {
+      "type": "string",
+      "description": "The date when a certificate of deposit (CD/FD) matures or the final  payment date of a loan at which point the principal amount  (including pending interest) is due to be paid.",
+      "readOnly": true
+    }
+  }
+}

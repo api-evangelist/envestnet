@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BasicStatement",
+  "title": "BasicStatement",
+  "description": "Object that contains details about one or more aggregated statements.",
+  "properties": {
+    "id": {
+      "type": "number",
+      "description": "Unique identifier for the statement.",
+      "readOnly": true
+    },
+    "link": {
+      "description": "Reference path link to fetch more information about the specific statement.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BasicStatementLink"
+        }
+      ],
+      "readOnly": true
+    },
+    "statementDate": {
+      "type": "string",
+      "description": "The date on which the statement is generated.",
+      "readOnly": true
+    },
+    "dueDate": {
+      "type": "string",
+      "description": "The date by when the minimum payment is due to be paid. <br><br><b>Note</b>- The due date that appears in the statement may  differ from the due date at the account-level.",
+      "readOnly": true
+    },
+    "billingPeriodStart": {
+      "type": "string",
+      "description": "Billing starting date for the statement.",
+      "readOnly": true
+    },
+    "billingPeriodEnd": {
+      "type": "string",
+      "description": "Billing end date for the statement.",
+      "readOnly": true
+    },
+    "amountDue": {
+      "description": "The total amount owed at the end of the billing period.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "minPaymentDue": {
+      "description": "The minimum amount that the user has to pay every month on the  credit card account.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "lastPaymentAmount": {
+      "description": "The last payment made for the previous billing cycle in the current  statement period.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "lastPaymentDate": {
+      "type": "string",
+      "description": "The date on which the last payment was made during the billing cycle.",
+      "readOnly": true
+    },
+    "isLatest": {
+      "type": "boolean",
+      "description": "The field is set to true if the statement is the latest generated  statement.",
+      "readOnly": true
+    },
+    "lastUpdated": {
+      "type": "string",
+      "description": "The date when the account was last updated by Envestnet Yodlee.",
+      "readOnly": true
+    }
+  },
+  "required": [
+    "id",
+    "link",
+    "accountId"
+  ]
+}

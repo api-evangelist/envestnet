@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BasicTrend",
+  "title": "BasicTrend",
+  "description": "Trend information, broken down by a specific frequency, for a specific date range.",
+  "properties": {
+    "debitTotal": {
+      "description": "The sum of all debit transactions.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "creditTotal": {
+      "description": "The sum of all credit transactions.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "netCreditTotal": {
+      "description": "Net Total calculated as (creditTotal - debitTotal).",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "netTotal": {
+      "description": "Net spending calculated as (debitTotal - creditTotal).",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "averageNetTotal": {
+      "description": "Average spending calculated as (netTotal) / (number of months).",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "transactionCount": {
+      "type": "integer",
+      "description": "Total number of transactions for the given date range.",
+      "readOnly": true
+    },
+    "link": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Link"
+        }
+      ],
+      "readOnly": true
+    },
+    "detail": {
+      "readOnly": true,
+      "type": "array",
+      "description": "Breakdown of income/spending based on a predefined frequency - typically, monthly.",
+      "items": {
+        "$ref": "#/components/schemas/Detail"
+      }
+    },
+    "dateRange": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DateRange"
+        }
+      ],
+      "readOnly": true
+    },
+    "categoryTrend": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CategoryTrend"
+      },
+      "readOnly": true
+    },
+    "merchantTrend": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/MerchantTrend"
+      },
+      "readOnly": true
+    },
+    "networthTrend": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/NetWorthTrend"
+      },
+      "readOnly": true
+    },
+    "detailCategoryTrend": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DetailCategoryTrend"
+      },
+      "readOnly": true
+    }
+  }
+}

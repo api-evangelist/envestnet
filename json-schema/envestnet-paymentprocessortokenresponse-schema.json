@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PaymentProcessorTokenResponse",
+  "title": "PaymentProcessorTokenResponse",
+  "type": "object",
+  "properties": {
+    "token": {
+      "type": "array",
+      "description": "token",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/AccountToken"
+      }
+    }
+  }
+}

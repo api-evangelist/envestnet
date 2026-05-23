@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RealEstateAccount",
+  "title": "RealEstateAccount",
+  "description": "Account object that contains details about one or more aggregated real estate accounts.",
+  "allOf": [
+    {
+      "$ref": "#/components/schemas/AccountInfo"
+    }
+  ],
+  "properties": {
+    "address": {
+      "readOnly": true,
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Address"
+        }
+      ]
+    },
+    "changeValue": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ChangeValue"
+      }
+    }
+  }
+}

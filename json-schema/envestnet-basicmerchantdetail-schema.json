@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BasicMerchantDetail",
+  "title": "BasicMerchantDetail",
+  "description": "Derived merchant spending information.",
+  "properties": {
+    "basicMerchant": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BasicMerchant"
+        }
+      ],
+      "readOnly": true
+    },
+    "merchantType": {
+      "type": "string",
+      "description": "The associated merchant type - BILLERS, SUBSCRIPTION, or OTHERS",
+      "readOnly": true
+    },
+    "netTotal": {
+      "description": "Net spending calculated as (debitTotal - creditTotal) associated with  the merchant for the specific duration.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "averageNetTotal": {
+      "description": "Average spending calculated as (netTotal)/(Number of Months)  associated with the merchant for the specific duration.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "link": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Link"
+        }
+      ],
+      "readOnly": true
+    },
+    "basicPeerDetail": {
+      "description": "Data about the user's peer spending.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BasicPeerDetail"
+        }
+      ],
+      "readOnly": true
+    },
+    "peerSpendingComparison": {
+      "description": "Comparing how the user has spent with a merchant compared to their peers.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PeerSpendingComparison"
+        }
+      ],
+      "readOnly": true
+    }
+  },
+  "required": [
+    "basicMerchant"
+  ]
+}

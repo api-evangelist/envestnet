@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PaymentBankTransferCodeData",
+  "title": "PaymentBankTransferCodeData",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The financial institution's branch identification number that is associated with the lender.<br><b>Endpoints</b>:<ul><li>GET /partner/paymentProcessor/account</li></ul>"
+    },
+    "type": {
+      "type": "string",
+      "description": "The payment bank transfer code type varies based on the region of the account originates from. <br>Valid Values: BSB, IFSC, ROUTING_NUMBER, SORT_CODE<br><b>Endpoints</b>:<ul><li>GET /partner/paymentProcessor/account</li></ul><b>Applicable Values</b><br>",
+      "enum": [
+        "BSB",
+        "IFSC",
+        "ROUTING_NUMBER",
+        "SORT_CODE"
+      ]
+    }
+  }
+}

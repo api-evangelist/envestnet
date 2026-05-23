@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AccountInfo",
+  "title": "AccountInfo",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "The primary key of the account resource and the unique identifier for the account. <br><br><b>Support for Aggregated / Manual Accounts</b> - Both Supported. <br><b>Applicable containers</b> - All containers.",
+      "readOnly": true
+    },
+    "providerName": {
+      "type": "string",
+      "description": "Service provider or institution name where the account originates. This belongs to the provider resource. <br><br>Applicable containers</b>: All containers",
+      "readOnly": true
+    },
+    "accountName": {
+      "type": "string",
+      "description": "description: The account name as it appears at the site. The POST accounts service response return this field as name. <br><b>Applicable containers</b> - All readOnly: true"
+    },
+    "accountNumber": {
+      "type": "string",
+      "description": "description: The account number as it appears on the site.  (The POST accounts service response return this field as number) <br><b>Applicable containers</b> - All Containers. readOnly: true"
+    },
+    "accountType": {
+      "type": "string",
+      "description": "The type of account that is aggregated such as savings, checking, charge, etc.,  and manual accounts. The account type is derived based on the  attributes of the account.",
+      "readOnly": true,
+      "enum": [
+        "CURRENT",
+        "SAVING",
+        "CHECKING"
+      ]
+    },
+    "accountStatus": {
+      "type": "string",
+      "description": "The status of account that is CLOSED, ACTIVE,TO_BE_CLOSED",
+      "readOnly": true,
+      "enum": [
+        "CLOSED",
+        "ACTIVE",
+        "TO_BE_CLOSED"
+      ]
+    },
+    "isAsset": {
+      "type": "boolean",
+      "description": "Indicates whether the balance is an asset or liability. <br><b>Applicable containers</b> - bank, creditCard, investment, insurance, realEstate, and loan<br>",
+      "readOnly": true
+    },
+    "container": {
+      "type": "string",
+      "description": "The type of service. E.g., Bank, Credit Card, Investment, Insurance, etc. <br><br><b>Applicable containers</b> - All containers<br>",
+      "readOnly": true,
+      "enum": [
+        "bank",
+        "creditCard",
+        "investment",
+        "insurance",
+        "loan",
+        "reward",
+        "bill",
+        "realEstate",
+        "otherAssets",
+        "otherLiabilities"
+      ]
+    },
+    "link": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Link"
+        }
+      ],
+      "readOnly": true
+    }
+  },
+  "required": [
+    "id",
+    "providerName",
+    "accountName",
+    "accountNumber",
+    "accountType",
+    "isAsset",
+    "container",
+    "link",
+    "accountStatus"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ViewLink",
+  "title": "ViewLink",
+  "description": "Reference path link to fetch more information about the specific VIEW.",
+  "properties": {
+    "entityName": {
+      "type": "string",
+      "description": "The name of the entity - ACCOUNT, VIEW, etc.",
+      "example": "ACCOUNT"
+    },
+    "method": {
+      "type": "string",
+      "description": "The method to use while calling the URL",
+      "example": "GET"
+    },
+    "url": {
+      "type": "string",
+      "description": "URL to access the endpoint.",
+      "example": "/user/view/602e86d2d07b6557e8398045"
+    }
+  },
+  "required": [
+    "entityName",
+    "url"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DerivedCategorySummary",
+  "title": "DerivedCategorySummary",
+  "type": "object",
+  "properties": {
+    "creditTotal": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "details": {
+      "type": "array",
+      "description": "Credit and debit summary per date.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br>",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/DerivedCategorySummaryDetails"
+      }
+    },
+    "links": {
+      "$ref": "#/components/schemas/DerivedTransactionsLinks"
+    },
+    "categoryName": {
+      "type": "string",
+      "description": "The name of the category.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br>",
+      "readOnly": true
+    },
+    "categoryId": {
+      "type": "integer",
+      "description": "Id of the category. This information is provided by transactions/categories service.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br>",
+      "format": "int64",
+      "readOnly": true
+    },
+    "debitTotal": {
+      "$ref": "#/components/schemas/Money"
+    }
+  }
+}

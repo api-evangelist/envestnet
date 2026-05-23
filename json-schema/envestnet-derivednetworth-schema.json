@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DerivedNetworth",
+  "title": "DerivedNetworth",
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string",
+      "description": "The date as of when the networth information is provided.<br><br><b>Applicable containers</b>: bank, creditcard, investment, insurance, realEstate, loan<br>",
+      "readOnly": true
+    },
+    "liability": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "historicalBalances": {
+      "type": "array",
+      "description": "Balances of the accounts over the period of time.<br><br><b>Applicable containers</b>: bank, creditcard, investment, insurance, realEstate, loan<br>",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/DerivedNetworthHistoricalBalance"
+      }
+    },
+    "networth": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "asset": {
+      "$ref": "#/components/schemas/Money"
+    }
+  }
+}

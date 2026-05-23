@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BasicPredictedEvent",
+  "title": "BasicPredictedEvent",
+  "description": "Predicted Event object that contains details about one or more predicted events as identified by the system.",
+  "properties": {
+    "id": {
+      "type": "number",
+      "description": "The unique identifier of the predicted event.",
+      "readOnly": true
+    },
+    "link": {
+      "description": "Reference path link to fetch more information about the specific predicted event.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BasicPredictedEventLink"
+        }
+      ],
+      "readOnly": true
+    },
+    "categoryId": {
+      "type": "string",
+      "description": "Identifier of the category assigned to the predicted event. This is  the id field of the transaction category resource. The supported  values are provided by GET transactions/categories.",
+      "readOnly": true
+    },
+    "category": {
+      "type": "string",
+      "description": "The name of the category assigned to the predicted event. This is the  category field of the transaction category resource. The supported  values are provided by GET transactions/categories.",
+      "readOnly": true
+    },
+    "lastTrasactionAmount": {
+      "description": "The amount of the last aggregated transaction that was used to  predict the event.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "lastTransactionDate": {
+      "type": "string",
+      "description": "The date of the last aggregated transaction associated with the predicted event.",
+      "readOnly": true
+    },
+    "basicMerchant": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BasicMerchant"
+        }
+      ],
+      "readOnly": true
+    },
+    "basicTransaction": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BasicTransaction"
+      },
+      "readOnly": true
+    },
+    "frequency": {
+      "type": "string",
+      "description": "frequency.",
+      "readOnly": true
+    },
+    "confidence": {
+      "type": "string",
+      "description": "confidence.",
+      "readOnly": true
+    },
+    "confidenceLevel": {
+      "type": "string",
+      "description": "confidence Level.",
+      "readOnly": true
+    },
+    "userApprovalStatus": {
+      "type": "string",
+      "description": "user Approval Status.",
+      "readOnly": true
+    },
+    "basicAccount": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BasicAccount"
+      },
+      "readOnly": true
+    }
+  },
+  "required": [
+    "id",
+    "link"
+  ]
+}

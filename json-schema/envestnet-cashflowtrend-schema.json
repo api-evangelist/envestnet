@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CashFlowTrend",
+  "title": "CashFlowTrend",
+  "description": "Cash flow trend information, broken down by a specific frequency, for a  specific date range.",
+  "properties": {
+    "cashInFlow": {
+      "description": "Total Cash Inflow Amount in the selected duration, which is the sum  of cash inflow in each of the selected months in the duration.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "cashOutFlow": {
+      "description": "Total Cash Outflow Amount in the selected duration, which is the  sum of cash outflow in each of the selected months in the duration.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "transferIn": {
+      "description": "Total Transfer-In Amount in the selected duration, which is the sum  of transfer-in amount in each of the selected months in the duration.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "transferOut": {
+      "description": "Total Transfer-out Amount in the selected duration, which is the sum  of transfer-out amount in each of the selected months in the duration.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "netTransfer": {
+      "description": "Net Transfer Amount in the selected duration, which is the difference  between transfer-In and tranfer-out amount",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "averageNetCashFlow": {
+      "description": "Average net cash flow = Total Cash Flow Amount / Number of months  in the duration.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "totalCashFlow": {
+      "description": "Total Cash Flow Amount = Cash Inflow Amount - Cash Outflow Amount +  Net Transfer.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "detail": {
+      "type": "array",
+      "description": "Breakdown of income/spending based on a predefined frequency - typically, monthly.",
+      "items": {
+        "$ref": "#/components/schemas/CashFlowDetail"
+      },
+      "readOnly": true
+    }
+  }
+}

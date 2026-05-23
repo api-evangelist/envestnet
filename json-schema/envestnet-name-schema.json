@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Name",
+  "title": "Name",
+  "type": "object",
+  "properties": {
+    "middle": {
+      "type": "string",
+      "description": "Middle name."
+    },
+    "last": {
+      "type": "string",
+      "description": "Last name."
+    },
+    "fullName": {
+      "type": "string",
+      "description": "Full name."
+    },
+    "first": {
+      "type": "string",
+      "description": "First name."
+    }
+  }
+}

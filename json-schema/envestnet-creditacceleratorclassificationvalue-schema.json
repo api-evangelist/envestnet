@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorClassificationValue",
+  "title": "CreditAcceleratorClassificationValue",
+  "type": "object",
+  "properties": {
+    "amount": {
+      "type": "number",
+      "format": "double"
+    },
+    "percentage": {
+      "type": "number",
+      "format": "double"
+    },
+    "classificationValue": {
+      "type": "string"
+    }
+  }
+}

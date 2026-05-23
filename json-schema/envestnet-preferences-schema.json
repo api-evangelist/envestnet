@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Preferences",
+  "title": "Preferences",
+  "required": [
+    "id",
+    "title",
+    "type",
+    "value"
+  ],
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Id of the preference",
+      "format": "int32"
+    },
+    "label": {
+      "type": "string",
+      "description": "Detailed description for each preference"
+    },
+    "title": {
+      "type": "string",
+      "description": "Type of the preferences <br/> additionalUseOfData<br/> userDataPurge"
+    },
+    "type": {
+      "type": "string",
+      "description": "Visual Type of the preference selection"
+    },
+    "value": {
+      "type": "string",
+      "description": "Value of the preference"
+    }
+  }
+}

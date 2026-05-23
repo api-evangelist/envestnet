@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TransactionTrend",
+  "title": "TransactionTrend",
+  "type": "object",
+  "properties": {
+    "type": {
+      "readOnly": true,
+      "type": "string",
+      "description": "type identifies the entity based on which the details are grouped by",
+      "enum": [
+        "category",
+        "merchant",
+        "categoryType",
+        "detailedCategory",
+        "state",
+        "city"
+      ]
+    },
+    "creditTotal": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "debitTotal": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "netTotal": {
+      "$ref": "#/components/schemas/Money"
+    },
+    "transactionCount": {
+      "format": "int64",
+      "readOnly": true,
+      "type": "integer"
+    },
+    "summary": {
+      "readOnly": true,
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/SummaryDetails"
+      }
+    }
+  }
+}

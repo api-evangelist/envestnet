@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TransactionCount",
+  "title": "TransactionCount",
+  "type": "object",
+  "properties": {
+    "TOTAL": {
+      "$ref": "#/components/schemas/TransactionTotal"
+    }
+  }
+}

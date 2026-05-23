@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DataHandling",
+  "title": "DataHandling",
+  "required": [
+    "dataList",
+    "headerDescription"
+  ],
+  "type": "object",
+  "properties": {
+    "dataList": {
+      "type": "array",
+      "description": "We will apply the CDR de-identificatiion process. <br/> De-identificatied data will be used without further consent.<br/> De-identification of CDR data means your data cannot be associated with your identity after de-identification process takes place.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "headerDescription": {
+      "type": "string",
+      "description": "De-identification of data"
+    }
+  }
+}

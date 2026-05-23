@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PeerSpendingComparison",
+  "title": "PeerSpendingComparison",
+  "properties": {
+    "peerSpendDifference": {
+      "description": "Difference between the spending amount of user and peers for a specific category or merchant",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    },
+    "peerSpendDifferencePercent": {
+      "type": "number",
+      "description": "Difference in percentage",
+      "readOnly": true
+    },
+    "isOverSpending": {
+      "type": "boolean",
+      "description": "Whether the user has spent more than the peer",
+      "readOnly": true
+    },
+    "isUnderSpending": {
+      "type": "boolean",
+      "description": "Whether the user has spent less than the peer",
+      "readOnly": true
+    }
+  }
+}

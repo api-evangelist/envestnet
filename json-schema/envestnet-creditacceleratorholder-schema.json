@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditAcceleratorHolder",
+  "title": "CreditAcceleratorHolder",
+  "type": "object",
+  "properties": {
+    "ownership": {
+      "type": "string",
+      "description": "Indicates the ownership of the account.",
+      "readOnly": true
+    },
+    "name": {
+      "$ref": "#/components/schemas/Name"
+    }
+  }
+}

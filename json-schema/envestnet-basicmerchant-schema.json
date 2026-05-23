@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BasicMerchant",
+  "title": "BasicMerchant",
+  "description": "Information about the associated merchant.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the merchant associated with the transaction. Note - The merchant name field is available only in the United  States, Canada, United Kingdom, and India."
+    },
+    "address": {
+      "readOnly": true,
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Address"
+        }
+      ]
+    },
+    "basicPredictedEvents": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BasicPredictedEvent"
+      }
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

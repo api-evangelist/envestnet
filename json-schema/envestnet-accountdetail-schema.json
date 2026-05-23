@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AccountDetail",
+  "title": "AccountDetail",
+  "properties": {
+    "date": {
+      "description": "date in the  format yyyy-mm-dd",
+      "type": "string"
+    },
+    "predictedBalance": {
+      "description": "predicted balance across a single account as of date.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ],
+      "readOnly": true
+    }
+  },
+  "required": [
+    "dateRange",
+    "debitTotal",
+    "creditTotal",
+    "netTotal"
+  ]
+}

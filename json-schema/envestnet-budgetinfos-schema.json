@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BudgetInfos",
+  "title": "BudgetInfos",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Set budget at an entity level. This entity can be a merchant, a master-level category, or a detail-level-category.",
+      "enum": [
+        "VIEW,MERCHANT,CATEGORY,DETAIL_CATEGORY"
+      ]
+    },
+    "budgetInfo": {
+      "type": "array",
+      "description": "An budgetInfo object containing budget details.",
+      "items": {
+        "$ref": "#/components/schemas/BudgetInfo"
+      }
+    }
+  }
+}

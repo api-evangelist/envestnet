@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProviderDetailResponse",
+  "title": "ProviderDetailResponse",
+  "type": "object",
+  "properties": {
+    "provider": {
+      "type": "array",
+      "readOnly": true,
+      "items": {
+        "$ref": "#/components/schemas/ProviderDetail"
+      }
+    }
+  }
+}

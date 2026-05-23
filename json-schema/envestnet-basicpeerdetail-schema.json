@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BasicPeerDetail",
+  "title": "BasicPeerDetail",
+  "description": "Peer data information.",
+  "properties": {
+    "dateRange": {
+      "description": "The date range considered to compute the benchmark values",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DateRange"
+        }
+      ]
+    },
+    "benchmarkAsOf": {
+      "type": "string",
+      "description": "benchmarkAsOf identifies the date on which the benchmark was computed. Currently the benchmark  is recomputed on the 16th of each month.",
+      "readOnly": true
+    },
+    "benchmark": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BasicBenchMark"
+      }
+    }
+  },
+  "required": [
+    "dateRange",
+    "benchmarkAsOf"
+  ]
+}

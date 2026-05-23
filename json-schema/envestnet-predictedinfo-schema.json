@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PredictedInfo",
+  "title": "PredictedInfo",
+  "description": "Predidcted information based on one or more eligible accounts.",
+  "properties": {
+    "dateRange": {
+      "description": "The date range considered to compute the values",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DateRange"
+        }
+      ],
+      "readOnly": true
+    },
+    "date": {
+      "type": "string"
+    },
+    "predictedBalance": {
+      "description": "The predicted balance for a given date range or a specific date.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ]
+    },
+    "predictedIncome": {
+      "description": "The predicted income for a given date range or a specific date.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ]
+    },
+    "predictedExpense": {
+      "description": "The predicted expense for a given date range or a specific date.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ]
+    },
+    "predictedDiscretionaryBalance": {
+      "description": "The predicted discretionary balance for a given date range or a specific date.",
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Money"
+        }
+      ]
+    },
+    "link": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Link"
+        }
+      ],
+      "readOnly": true
+    }
+  }
+}

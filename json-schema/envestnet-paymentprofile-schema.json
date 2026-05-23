@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PaymentProfile",
+  "title": "PaymentProfile",
+  "type": "object",
+  "properties": {
+    "identifier": {
+      "$ref": "#/components/schemas/PaymentIdentifier"
+    },
+    "address": {
+      "type": "array",
+      "description": "The address of the lender to which the monthly payments or the loan payoff amount should be paid. <br><b>Additional Details:</b>The address field applies only to the student loan account type.<br><b>Account Type</b>: Aggregated<br><b>Applicable containers</b>: loan<br><b>Endpoints</b>:<br><ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul>",
+      "items": {
+        "$ref": "#/components/schemas/AccountAddress"
+      }
+    },
+    "paymentBankTransferCode": {
+      "$ref": "#/components/schemas/PaymentBankTransferCode"
+    }
+  }
+}
