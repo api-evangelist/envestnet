@@ -2,13 +2,13 @@
   "repo": "envestnet",
   "feeds": [
     {
-      "source": "https://developer.envestnet.com/resources?type=blog",
-      "feed_url": "",
+      "source": "https://developer.envestnet.com/resources?type=release",
+      "feed_url": "https://developer.envestnet.com/resources?type=release",
       "title": "",
       "saved": 0,
-      "error": "no_feed"
+      "method": "none"
     }
   ],
-  "fetched": "2026-05-17T20:48:52Z",
+  "fetched": "2026-06-01T23:35:02Z",
   "post_count": 0
 }
