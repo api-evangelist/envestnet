@@ -3,19 +3,12 @@
   "feeds": [
     {
       "source": "https://developer.envestnet.com/resources?type=blog",
-      "feed_url": "https://developer.envestnet.com/resources?type=blog",
-      "title": "",
-      "saved": 0,
-      "method": "none"
-    },
-    {
-      "source": "https://developer.envestnet.com/resources?type=release",
-      "feed_url": "https://developer.envestnet.com/resources?type=release",
-      "title": "",
-      "saved": 0,
-      "method": "none"
+      "feed_url": "",
+      "saved": 1,
+      "method": "agent-scrape"
     }
   ],
-  "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 1,
+  "fetched": "2026-06-27T12:40:02Z",
+  "agent_pulled": "2026-06-27"
 }

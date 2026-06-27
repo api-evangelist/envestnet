@@ -31,31 +31,31 @@ apis:
       url: https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference
     - type: OpenAPI
       url: openapi/envestnet-account-aggregation-openapi-original.yml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/account-aggregation-accounts.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/account-aggregation-auth.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/account-aggregation-configs.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/account-aggregation-consents.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/account-aggregation-dataextracts.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/account-aggregation-derived.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/account-aggregation-documents.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/account-aggregation-holdings.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/account-aggregation-provideraccounts.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/account-aggregation-providers.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/account-aggregation-statements.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/account-aggregation-transactions.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/account-aggregation-user.yaml
   - aid: envestnet:envestnet-account-token-api
     name: Envestnet Account Token APIs
@@ -72,11 +72,11 @@ apis:
       url: https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference
     - type: OpenAPI
       url: openapi/envestnet-account-token-openapi-original.yml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/account-token-account-token.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/account-token-auth.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/account-token-payment-processor.yaml
   - aid: envestnet:envestnet-account-verification-api
     name: Envestnet Account Verification APIs
@@ -92,25 +92,25 @@ apis:
       url: https://developer.envestnet.com/products/yodlee/account-verification/docs
     - type: OpenAPI
       url: openapi/envestnet-verification-openapi-original.yml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/verification-account-token.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/verification-accounts.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/verification-auth.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/verification-configs.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/verification-provideraccounts.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/verification-providers.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/verification-transactions.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/verification-user.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/verification-verification.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/verification-verify-account.yaml
   - aid: envestnet:envestnet-credit-accelerator-api
     name: Envestnet Credit Accelerator API
@@ -126,11 +126,11 @@ apis:
       url: https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference
     - type: OpenAPI
       url: openapi/envestnet-credit-accelerator-openapi-original.yml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/credit-accelerator-auth.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/credit-accelerator-configs.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/credit-accelerator-creditacceleratorfile.yaml
   - aid: envestnet:envestnet-insights-api
     name: Envestnet Insights API
@@ -145,11 +145,11 @@ apis:
       url: https://developer.envestnet.com/products/yodlee/insights/docs/api-reference
     - type: OpenAPI
       url: openapi/envestnet-insights-openapi-original.yml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/insights-associated-details.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/insights-customer.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/insights-user.yaml
   - aid: envestnet:envestnet-personalized-view-api
     name: Envestnet Personalized View API
@@ -165,18 +165,18 @@ apis:
       url: https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference
     - type: OpenAPI
       url: openapi/envestnet-personalized-views-openapi-original.yml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/personalized-views-view.yaml
 common:
   - type: GitHubOrganization
     url: https://github.com/yodlee
   - type: Website
     url: https://www.envestnet.com/
-  - type: Developer Portal
+  - type: DeveloperPortal
     url: https://developer.envestnet.com/
-  - type: Use Cases
+  - type: UseCases
     url: https://developer.envestnet.com/use-cases
-  - type: Releases
+  - type: ReleaseNotes
     url: https://developer.envestnet.com/resources?type=release
   - type: Blog
     url: https://developer.envestnet.com/resources?type=blog
