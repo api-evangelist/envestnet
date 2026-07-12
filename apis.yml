@@ -168,6 +168,10 @@ apis:
     - type: X-NaftikoCapability
       url: capabilities/personalized-views-view.yaml
 common:
+  - type: VulnerabilityDisclosure
+    url: security/envestnet-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/envestnet-domain-security.yml
   - type: GitHubOrganization
     url: https://github.com/yodlee
   - type: Website
