@@ -168,6 +168,8 @@ apis:
     - type: X-NaftikoCapability
       url: capabilities/personalized-views-view.yaml
 common:
+  - type: AgenticAccess
+    url: agentic-access/envestnet-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/envestnet-vulnerability-disclosure.yml
   - type: DomainSecurity
