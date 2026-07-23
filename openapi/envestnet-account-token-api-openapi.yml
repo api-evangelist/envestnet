@@ -1,0 +1,133 @@
+openapi: 3.0.1
+info:
+  title: Envestnet Aggregation APIs Account Token API
+  description: 'This file describes the Yodlee Aggregation product APIs using the swagger notation that you can use to build your financial application.  You can generate the client SDK in Python, JavaScript, PHP, or any other languages according to your development needs. For more details about the APIs, refer to <a href="https://developer.envestnet.com/resources/yodlee/yodlee-api-overview/docs">Yodlee API v1.1 - Overview</a>.<br><br>You will have to set the header before making the API call. The following headers apply to all the APIs:<ul><li>Authorization: This header holds the access token</li> <li> Api-Version: 1.1</li></ul><b>Note</b>: If there are any API-specific headers, they are mentioned explicitly in the respective API''s description.'
+  termsOfService: https://developer.yodlee.com/terms/condition
+  contact:
+    email: developer@yodlee.com
+  license:
+    name: Yodlee Developer License
+    url: https://developer.yodlee.com/terms/condition#_Services_1
+  version: 1.1.0
+servers:
+- url: /
+tags:
+- name: Account Token
+  description: 'Account verification customers looking to integrate with one of our payment partners can use the Account Token endpoints. These APIs allow creating a secure processor token for your user''s verified financial accounts. You can then share the processor token with our payment partners to enable them to securely request the user''s account details from Envestnet | Yodlee.<br><br>You will have to set the header before making the API call. The following headers apply to all the APIs:</p><ul><li>Authorization: This header holds the access token</li> <li> Api-Version: 1.1</li></ul><b>Note</b>: If there are any API-specific headers, they are mentioned explicitly in the respective API''s description.<p></p>'
+paths:
+  /paymentProcessor/token:
+    post:
+      tags:
+      - Account Token
+      summary: Envestnet Create Account Token
+      description: The create account token service allows you to create a secure <code>processorToken</code> for a user's verified financial account. This <code>processorToken</code> can then be shared with one of our payment processor partners.
+      operationId: generatePaymentProcessorToken
+      requestBody:
+        description: account information
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentProcessorTokenRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/PaymentProcessorTokenResponse'
+        '400':
+          description: 'Y007 : Authorization header missing<br>Y008 : Invalid token in authorization header<br>Y833 : Invalid values(s) for accountId<br>Y800 : Invalid value for processor<br>Y813 : accountId should be provided<br>Y813 : processor should be provided'
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/YodleeError'
+        '401':
+          description: Unauthorized
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+      x-codegen-request-body-name: tokenRequest
+    delete:
+      tags:
+      - Account Token
+      summary: Envestnet Delete Account Token
+      description: The delete account token service allows you to revoke a previously generated <code>processorToken</code>. It is recommended to use this service when you want to disallow further access to the user's financial account, for instance when a user removes their account from your application.
+      operationId: revokePaymentProcessorToken
+      parameters:
+      - name: processorToken
+        in: header
+        description: The token that you want to delete.
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+        '400':
+          description: 'Y007 : Authorization header missing<br>Y008 : Invalid token in authorization header<br>Y016 : processorToken header missing'
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/YodleeError'
+        '401':
+          description: Unauthorized
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+components:
+  schemas:
+    PaymentProcessorTokenRequest:
+      title: PaymentProcessorTokenRequest
+      required:
+      - accountId
+      - processor
+      type: object
+      properties:
+        accountId:
+          type: array
+          description: The unique identifier for the user's account.
+          items:
+            type: integer
+            format: int64
+        processor:
+          type: string
+          description: The payment processor with whom the customer is integrating.
+    PaymentProcessorTokenResponse:
+      title: PaymentProcessorTokenResponse
+      type: object
+      properties:
+        token:
+          type: array
+          description: token
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/AccountToken'
+    AccountToken:
+      title: AccountToken
+      type: object
+      properties:
+        processorToken:
+          type: string
+          description: The unique token that the payment partner can use to make API request to the Envestnet | Yodlee system.
+          readOnly: true
+        accountId:
+          type: integer
+          description: The unique identifier for the user's account.
+          format: int64
+          readOnly: true
+    YodleeError:
+      title: YodleeError
+      type: object
+      properties:
+        errorMessage:
+          type: string
+        errorCode:
+          type: string
+        referenceCode:
+          type: string

@@ -1,0 +1,253 @@
+openapi: 3.0.1
+info:
+  title: Envestnet Aggregation APIs Account Token Configs API
+  description: 'This file describes the Yodlee Aggregation product APIs using the swagger notation that you can use to build your financial application.  You can generate the client SDK in Python, JavaScript, PHP, or any other languages according to your development needs. For more details about the APIs, refer to <a href="https://developer.envestnet.com/resources/yodlee/yodlee-api-overview/docs">Yodlee API v1.1 - Overview</a>.<br><br>You will have to set the header before making the API call. The following headers apply to all the APIs:<ul><li>Authorization: This header holds the access token</li> <li> Api-Version: 1.1</li></ul><b>Note</b>: If there are any API-specific headers, they are mentioned explicitly in the respective API''s description.'
+  termsOfService: https://developer.yodlee.com/terms/condition
+  contact:
+    email: developer@yodlee.com
+  license:
+    name: Yodlee Developer License
+    url: https://developer.yodlee.com/terms/condition#_Services_1
+  version: 1.1.0
+servers:
+- url: /
+tags:
+- name: Configs
+  description: Configs API
+paths:
+  /configs/notifications/events:
+    get:
+      tags:
+      - Configs
+      summary: Envestnet Get Subscribed Notification Events
+      description: The get events service provides the list of events for which consumers subscribed to receive notifications. <br>
+      operationId: getSubscribedNotificationEvents
+      parameters:
+      - name: eventName
+        in: query
+        description: Name of the webhook subscription event
+        allowEmptyValue: false
+        schema:
+          type: string
+          enum:
+          - REFRESH
+          - DATA_UPDATES
+          - AUTO_REFRESH_UPDATES
+          - LATEST_BALANCE_UPDATES
+          - CREDIT_ACCELERATOR_REPORT_UPDATES
+      responses:
+        200:
+          description: OK
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ConfigsNotificationResponse'
+        401:
+          description: Unauthorized
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      deprecated: false
+  /configs/notifications/events/{eventName}:
+    put:
+      tags:
+      - Configs
+      summary: Envestnet Update Notification Subscription
+      description: The update events service is used to update the callback URL.<br>If the callback URL is invalid or inaccessible, the subscription will be unsuccessful, and an error will be thrown.<br><br><b>Note:</b> <li>The content type has to be passed as application/json for the body parameter. <br>
+      operationId: updateSubscribedNotificationEvent
+      parameters:
+      - name: eventName
+        in: path
+        description: Name of the webhook subscription event
+        required: true
+        schema:
+          type: string
+          enum:
+          - REFRESH
+          - DATA_UPDATES
+          - AUTO_REFRESH_UPDATES
+          - LATEST_BALANCE_UPDATES
+          - CREDIT_ACCELERATOR_REPORT_UPDATES
+      requestBody:
+        description: eventRequest
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateConfigsNotificationEventRequest'
+        required: true
+      responses:
+        204:
+          description: OK
+          content: {}
+        400:
+          description: 'Y803 : eventName required<br>Y803 : callbackUrl required<br>Y800 : Invalid value for callbackUrl'
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/YodleeError'
+        401:
+          description: Unauthorized
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      deprecated: false
+    post:
+      tags:
+      - Configs
+      summary: Envestnet Subscribe For Notification Event
+      description: The subscribe events service is used to subscribe to an event for receiving notifications.<br>The callback URL, where the notification will be posted should be provided to this service.<br>If the callback URL is invalid or inaccessible, the subscription will be unsuccessful, and an error will be thrown.<br>Customers can subscribe to REFRESH,DATA_UPDATES,AUTO_REFRESH_UPDATES,LATEST_BALANCE_UPDATES and CREDIT_ACCELERATOR_REPORT_UPDATES event.<br><br><b>Notes:</b><li>This service is not available in developer sandbox/test environment and will be made available for testing in your dedicated environment, once the contract is signed.<li>The content type has to be passed as application/json for the body parameter.</li>
+      operationId: createSubscriptionNotificationEvent
+      parameters:
+      - name: eventName
+        in: path
+        description: Name of the webhook subscription event
+        required: true
+        schema:
+          type: string
+          enum:
+          - REFRESH
+          - DATA_UPDATES
+          - AUTO_REFRESH_UPDATES
+          - LATEST_BALANCE_UPDATES
+          - CREDIT_ACCELERATOR_REPORT_UPDATES
+      requestBody:
+        description: eventRequest
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateConfigsNotificationEventRequest'
+        required: true
+      responses:
+        201:
+          description: OK
+          content: {}
+        400:
+          description: 'Y803 : eventName required<br>Y803 : callbackUrl required<br>Y800 : Invalid value for callbackUrl<br>Y901 : Service not supported<br>'
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/YodleeError'
+        401:
+          description: Unauthorized
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      deprecated: false
+    delete:
+      tags:
+      - Configs
+      summary: Envestnet Delete Notification Subscription
+      description: The delete events service is used to unsubscribe from an events service.<br>
+      operationId: deleteSubscribedNotificationEvent
+      parameters:
+      - name: eventName
+        in: path
+        description: Name of the webhook subscription event
+        required: true
+        schema:
+          type: string
+          enum:
+          - REFRESH
+          - DATA_UPDATES
+          - AUTO_REFRESH_UPDATES
+          - LATEST_BALANCE_UPDATES
+          - CREDIT_ACCELERATOR_REPORT_UPDATES
+      responses:
+        204:
+          description: OK
+          content: {}
+        400:
+          description: 'Y803 : eventName required'
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/YodleeError'
+        401:
+          description: Unauthorized
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      deprecated: false
+components:
+  schemas:
+    ConfigsNotificationEvent:
+      title: ConfigsNotificationEvent
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the event for which the customers must subscribe to receive notifications.<br><b>Valid Value:</b> Notification Events Name<br><br><b>Endpoints</b>:<ul><li>GET configs/notifications/events</li></ul><b>Applicable Values</b><br>
+          enum:
+          - REFRESH
+          - DATA_UPDATES
+          - AUTO_REFRESH_UPDATES
+          - LATEST_BALANCE_UPDATES
+          - CREDIT_ACCELERATOR_REPORT_UPDATES
+        callbackUrl:
+          maxLength: 2147483647
+          minLength: 1
+          type: string
+          description: URL to which the notification should be posted.<br><br><b>Endpoints</b>:<ul><li>GET configs/notifications/events</li></ul>
+    UpdateConfigsNotificationEvent:
+      title: UpdateConfigsNotificationEvent
+      type: object
+      properties:
+        callbackUrl:
+          maxLength: 2147483647
+          minLength: 1
+          type: string
+          description: URL to which the notification should be posted.<br><br><b>Endpoints</b>:<ul><li>GET configs/notifications/events</li></ul>
+    YodleeError:
+      title: YodleeError
+      type: object
+      properties:
+        errorMessage:
+          type: string
+          description: The descriptive message that explains the error scenario.
+          readOnly: true
+        errorCode:
+          type: string
+          description: The error code follows the format YNNN. The error codes do not change. New error codes may be added as we introduce new features and enhance functionalities.
+          readOnly: true
+        referenceCode:
+          type: string
+          description: Unique Yodlee identifier used to troubleshoot issues at Yodlee's end.
+          readOnly: true
+    ConfigsNotificationResponse:
+      title: ConfigsNotificationResponse
+      type: object
+      properties:
+        event:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/ConfigsNotificationEvent'
+    CreateConfigsNotificationEventRequest:
+      title: CreateConfigsNotificationEventRequest
+      required:
+      - event
+      type: object
+      properties:
+        event:
+          $ref: '#/components/schemas/CreateConfigsNotificationEvent'
+    UpdateConfigsNotificationEventRequest:
+      title: UpdateConfigsNotificationEventRequest
+      required:
+      - event
+      type: object
+      properties:
+        event:
+          $ref: '#/components/schemas/UpdateConfigsNotificationEvent'
+    CreateConfigsNotificationEvent:
+      title: CreateConfigsNotificationEvent
+      type: object
+      properties:
+        callbackUrl:
+          maxLength: 2147483647
+          minLength: 1
+          type: string
+          description: URL to which the notification should be posted.<br><br><b>Endpoints</b>:<ul><li>GET configs/notifications/events</li></ul>

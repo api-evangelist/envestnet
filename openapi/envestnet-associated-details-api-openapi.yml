@@ -1,0 +1,401 @@
+openapi: 3.0.1
+info:
+  title: Envestnet Aggregation APIs Account Token Associated Details API
+  description: 'This file describes the Yodlee Aggregation product APIs using the swagger notation that you can use to build your financial application.  You can generate the client SDK in Python, JavaScript, PHP, or any other languages according to your development needs. For more details about the APIs, refer to <a href="https://developer.envestnet.com/resources/yodlee/yodlee-api-overview/docs">Yodlee API v1.1 - Overview</a>.<br><br>You will have to set the header before making the API call. The following headers apply to all the APIs:<ul><li>Authorization: This header holds the access token</li> <li> Api-Version: 1.1</li></ul><b>Note</b>: If there are any API-specific headers, they are mentioned explicitly in the respective API''s description.'
+  termsOfService: https://developer.yodlee.com/terms/condition
+  contact:
+    email: developer@yodlee.com
+  license:
+    name: Yodlee Developer License
+    url: https://developer.yodlee.com/terms/condition#_Services_1
+  version: 1.1.0
+servers:
+- url: /
+tags:
+- name: Associated Details
+paths:
+  /insights/entityDetail:
+    get:
+      tags:
+      - Associated Details
+      summary: Envestnet Fetch the details of a insights associated with an entity Id.
+      description: Retrieves details of all insights applicable for a given entity Id (viewId or accountId).
+      operationId: getInsightDetailsBasedOnEntityId
+      parameters:
+      - name: entityId
+        in: query
+        description: The unique identifier of the account or view.
+        required: true
+        style: form
+        explode: false
+        schema:
+          type: string
+        example: 603df517392f983d50925df7 or 10231581
+      - name: entityType
+        in: query
+        description: The unique identifier of the entity type.
+        required: true
+        style: form
+        explode: false
+        schema:
+          type: string
+        example: ACCOUNT or VIEW
+      - name: insightName
+        in: query
+        description: The unique identifier of insight Name. Comma separated multiple values can be passed.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+        example: BILL_PAID,NEW_BILL
+      responses:
+        '200':
+          description: Applicable Insights are fetched successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityDetailResponse'
+              examples:
+                sampleResponse:
+                  $ref: '#/components/examples/getEntityDetailResponseExample'
+        '400':
+          description: 'Bad request. ErrorCode and ErrorMessages below: <br><br> Y800: Invalid value for entityId <br> Y800: Invalid value for insightName <br> Y800: Invalid value for insightName; one or more insightName requested is not eligible for the entityId passed. <br>  Y800: Invalid value for insightName; It is either invalid, duplicated, or not supported. <br> Y800: Invalid value for insightName; one or more insightName requested is not enabled for the entityId passed <br> Y800: Invalid value for entityType <br> Y800: Invalid value for entityType/entityId combination. <br> Y803: entityId and entityType is required to process this request.<br> Y800: Invalid value for entityId/entityType; multiple values are not supported.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: 'Y020 : Invalid token in authorization header<br>Y023 : Token has expired<br> Y011 : Invalid cobrand or incorrectly configured cobrand'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /insights/insightDetail/{insightName}:
+    get:
+      tags:
+      - Associated Details
+      summary: Envestnet Fetch the details of entities associated with an insight name.
+      description: Retrieves details of all entity ids applicable for a given insight.
+      operationId: getEntityDetailsBasedOnInsightName
+      parameters:
+      - name: insightName
+        in: path
+        description: The name identifier of the specific insight.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+        example: SUGGESTED_SAVING_OPPORTUNITY
+      - name: entityType
+        in: query
+        description: The unique identifier of entity Type. Comma separated multiple values can be passed.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+        example: ACCOUNT,VIEW
+      responses:
+        '200':
+          description: Applicable entities are fetched successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InsightDetailsResponse'
+              examples:
+                sampleResponse:
+                  $ref: '#/components/examples/getInsightDetailResponseExample'
+        '400':
+          description: 'Bad request. ErrorCode and ErrorMessages below: <br><br> Y800: Invalid value for entityId <br> Y800: Invalid value for entityType; only ACCOUNT and VIEW is allowed. <br> Y800: Invalid value for entityType; one or more entityType requested is not eligible for the insightName passed. <br>  Y800: Invalid value for entityType; It is either invalid, duplicated, or not supported. <br> Y822: Details cannot be requested for insights that are not enabled for the user.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: 'Y020 : Invalid token in authorization header<br>Y023 : Token has expired<br> Y011 : Invalid cobrand or incorrectly configured cobrand'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    EligibleInsight:
+      properties:
+        insightName:
+          type: string
+          description: "Name of the Insight for which this notification is generated. <br><br><b>Endpoints</b> - <ul><li>GET insights/configs/customerSubscriptions customer API</li>\n                      <li>GET insights/configs/userSubscriptions User API</li>\n                      <li>PATCH /insights/configs/customerSubscriptions cusomter API</li>\n                      <li>PATCH /insights/configs/userSubscriptions User API</li>\n                      <li>GET /insights/entityDetail/{entityId}</li>\n                      <li>GET /insights/insightDetail/{insightName}</li></ul>"
+          readOnly: true
+          example: BILL_NOT_PAID
+        applicableConfiguration:
+          type: array
+          items:
+            $ref: '#/components/schemas/EligibleDetail'
+    userConfiguration:
+      properties:
+        entityId:
+          type: string
+          description: Unique ID which references a specific entityType. <br><br>Users can set preferences at s specific entityId level. <ul> <li>if entityType is "ACCOUNT" then this field represents 'accountId'</li> <li>if entityType is "VIEW" then this field represents 'viewId'</li> </ul> <b>Note</b> <ul> <li>This field is only applicable for Usersubscription and not for customerSubscription.</li> <li>If the user has 5 aggregated insights and only 2 entity IDs are patched with custom preferences, the rest of the accounts will be evaluated based on the defaults provided within the customerConfiguration object.</li> </ul> <b>Endpoints</b> -<ul><li>GET insights/configs/customerSubscriptions customer API</li><li>GET insights/configs/userSubscriptions User API</li><li>PATCH /insights/configs/customerSubscriptions cusomter API</li><li>PATCH /insights/configs/userSubscriptions User API</li></ul>
+          example: '10001453'
+        entityType:
+          type: string
+          description: <br><br><b>Endpoints</b> -<ul><li>GET insights/configs/customerSubscriptions customer API</li><li>GET insights/configs/userSubscriptions User API</li><li>PATCH /insights/configs/customerSubscriptions cusomter API</li><li>PATCH /insights/configs/userSubscriptions User API</li></ul>
+          example: ACCOUNT
+        isSubscribed:
+          type: boolean
+          description: "Insight Subscription APIs allow User to subscribe/unsubscribe at  any particular entity level.<br><br> If an insight is not subscribed (isSubscribed = false)  at the customer level, the insight will not be present in the userSubscription API. <br><br> If an insight is subscribed by the customer (isSubscribed = true), the insight will be subscribed automatically by the user and all the default configurations will be inherited. <br><br>The user can choose to turn off the insight by setting isSubscribed=false.\n <br><br>><b>Endpoints</b> -<ul><li>GET\n insights/configs/customerSubscriptions customer API</li><li>GET\n insights/configs/userSubscriptions User API</li><li>PATCH\n /insights/configs/customerSubscriptions cusomter API</li><li>PATCH\n /insights/configs/userSubscriptions User API</li></ul>"
+          example: true
+        frequency:
+          type: string
+          description: Identifies how often the insight will be evaluated. <br><br>Note - Evaluation does not mean an insight will be generated. If the conditions for generating an insight are not met, the insight will not get generated even after it being evaluated. <br><br>Depending on the insight, it might be editable for customers and users. <br><br><b>Endpoints</b> -<ul><li>GET /insights/configs/customerSubscriptions Cobrand API</li><li>GET /insights/configs/userSubscriptions User API</li><li>PATCH /insights/configs/userSubscriptions User API</li></ul>
+          example: DAILY
+          enum:
+          - DAILY
+          - WEEKLY
+          - MONTHLY
+        duration:
+          type: string
+          description: Identifies the duration for which the data will be considered to generate and insight. <br><br>Note <ul> <li>Even if the duration mentioned is ONE_YEAR, the insight can consider only data that exists. If there is data only for one month, the insight will be generated using the available one month data.</li> <li>Duration is insight specific. For some insights which are REFRESH based, duration might not be applicable. For certain insights, only a subset of the duration might be applicable.</li> </ul> <b>Endpoints</b> -<ul><li>GET /insights/configs/customerSubscriptions Cobrand API</li><li>GET /insights/configs/userSubscriptions User API</li><li>PATCH /insights/configs/userSubscriptions User API</li></ul>
+          example: THIS_MONTH
+          enum:
+          - THIS_MONTH
+          - LAST_MONTH
+          - THREE_MONTHS
+          - SIX_MONTHS
+          - ONE_YEAR
+        threshold:
+          type: array
+          items:
+            $ref: '#/components/schemas/Threshold'
+        isBenchmarkEnabled:
+          type: boolean
+          description: "Identifies if peer benchmarking is enabled for a particular insight. The attribute will be returned only for insights that are eligible for peer benchmarking data points <br><br>The default value of this attribute will be based on the global configuration key to enable/disable peer benchmarking. If the global configuration is true, this attribute will be true and if the global configuration is false, this value will be false. <br><br>If the peer benchmarking is enabled by the customer (isBenchmarkEnabled = true), the benchmarks will be subscribed automatically by the user. <br><br>The user can choose to turn off the benchmark configuration for the insight by setting isBenchmarkEnabled=false. <br><br><b>Note</b> - There are few insights for which the isBenchmarkEnabled attribute cannot be updated since benchmark amount is essential for the insight evaluation.\n <br><br><b>Endpoints</b> -<ul><li>GET\n insights/configs/customerSubscriptions customer API</li><li>GET\n insights/configs/userSubscriptions User API</li><li>PATCH\n /insights/configs/customerSubscriptions cusomter API</li><li>PATCH\n /insights/configs/userSubscriptions User API</li></ul>"
+          example: true
+    EntityDetail:
+      properties:
+        entityType:
+          type: string
+          description: The entityType identifies which applicableEntity of the insight the configuration will impact.
+        entityId:
+          type: string
+          description: "Unique ID which references a specific entityType for which the  insight is generated. <ul> <li>if entityType is \"ACCOUNT\" then this field represents  'accountId'</li> <li>if entityType is \"VIEW\" then this field represents  'viewId'</li> </ul> <b>Endpoints</b> - <ul><li>GET insights/configs/customerSubscriptions customer API</li>\n                      <li>GET insights/configs/userSubscriptions User API</li>\n                      <li>PATCH /insights/configs/customerSubscriptions cusomter API</li>\n                      <li>PATCH /insights/configs/userSubscriptions User API</li>\n                      <li>GET /insights/entityDetail/{entityId}</li>\n                      <li>GET /insights/insightDetail/{insightName}</li></ul>"
+        container:
+          type: string
+          description: "The account's container.<br><br><b>Applicable containers</b> - bank,creditCard,investment,insurance,loan<br><br> <b>Endpoints</b> -<ul><li>GET insights/configs/customerSubscriptions customer API</li>\n                      <li>GET insights/configs/userSubscriptions User API</li>\n                      <li>PATCH /insights/configs/customerSubscriptions cusomter API</li>\n                      <li>PATCH /insights/configs/userSubscriptions User API</li>\n                      <li>GET /insights/entityDetail/{entityId}</li>\n                      <li>GET /insights/insightDetail/{insightName}</li>\n                      <li>GET /views/{viewId}/transactions</li></ul>"
+          readOnly: true
+          example: creditCard
+          enum:
+          - bank
+          - creditCard
+          - investment
+          - insurance
+          - loan
+          - reward
+          - bill
+          - realEstate
+          - otherAssets
+          - otherLiabilities
+        link:
+          allOf:
+          - $ref: '#/components/schemas/Link'
+          readOnly: true
+        eligibleInsight:
+          type: array
+          items:
+            $ref: '#/components/schemas/EligibleInsight'
+    InsightDetailsResponse:
+      properties:
+        insightDetail:
+          type: array
+          items:
+            $ref: '#/components/schemas/InsightDetail'
+    EligibleDetail:
+      allOf:
+      - $ref: '#/components/schemas/userConfiguration'
+      properties:
+        container:
+          type: string
+          description: "The account's container.<br><br><b>Applicable containers</b> - bank,creditCard,investment,insurance,loan<br><br><b>Endpoints</b> - <ul><li>GET insights/configs/customerSubscriptions customer API</li>\n                      <li>GET insights/configs/userSubscriptions User API</li>\n                      <li>PATCH /insights/configs/customerSubscriptions cusomter API</li>\n                      <li>PATCH /insights/configs/userSubscriptions User API</li>\n                      <li>GET /insights/entityDetail/{entityId}</li>\n                      <li>GET /insights/insightDetail/{insightName}</li></ul>"
+          readOnly: true
+          example: creditCard
+          enum:
+          - bank
+          - creditCard
+          - investment
+          - insurance
+          - loan
+          - reward
+          - bill
+          - realEstate
+          - otherAssets
+          - otherLiabilities
+        link:
+          allOf:
+          - $ref: '#/components/schemas/Link'
+          readOnly: true
+    Threshold:
+      properties:
+        name:
+          type: string
+          description: Identifies the threshold applicable for an insight. Threshold values impact insight generation.Consider the following example - <ul> <li>name = CHANGE</li> <li>type = PERCENT</li> <li>value = 3</li> </ul> For the above insight, you can read the configuration as "Generate the insight only if the change is >= 3%" <br><br><b>Note</b>- Threshold is fixed for each insight. Only value is editable. <br><br><b>Endpoints</b> -<ul><li>GET /insights/configs/customerSubscriptions Cobrand API</li><li>PATCH /insights/configs/customerSubscriptions Cobrand API</li><li>GET /insights/configs/userSubscriptions User API</li><li>PATCH /insights/configs/userSubscriptions User API</li></ul>
+          example: CHANGE
+          enum:
+          - CHANGE
+          - UPPER_LIMIT
+          - DAYS_BEFORE
+          - MINIMUM
+          - FUTURE
+          - DELAY
+          - TOP
+          - BASETYPE
+        type:
+          type: string
+          description: Identifies the type of threshold. Threshold values impact insight generation.Consider the following example - <ul> <li>name = CHANGE</li> <li>type = PERCENT</li> <li>value = 3</li> </ul> For the above insight, you can read the configuration as "Generate the insight only if the change is >= 3%". <br><br>However, consider changing the configuration to as follows by  changing the type - <ul> <li>name = CHANGE</li> <li>type = AMOUNT</li> <li>value = 300</li> </ul> For the above insight, you can read the configuration as "Generate the insight only if the change is >= $300". <br><br><b>Note</b>- For a single insight, you can have multiple thresholds. If multiple thresholds have values set to a non-zero number, the relationship between the thresholds will be logical AND. <br><br>Some insights will have type as AMOUNT and PERCENT. In the above scenario, if you want to generate insight only based on one value, you can set the other to 0. <br><br>E.g. if type = AMOUNT is set to 0 and type = PERCENT is set to 3, the insight will be evaluated as "Generate the insight only if the change is >= 3%" <br><br>However, if AMOUNT = $300 and PERCENT = 3, the insight will be evaluated as "Generate the insight only if the change % is >= 3% AND change amount >= $300" <br><br><b>Endpoints</b> -<ul><li>GET config/insights/subscriptions Cobrand API</li><li>PATCH /config/insights/subscriptions Cobrand API</li><li>GET /insights/subscriptions User API</li><li>PATCH /insights/subscriptions User API</li></ul>
+          example: PERCENT
+          enum:
+          - PERCENT
+          - NUMBER
+          - DAYS
+          - AMOUNT
+          - STRING
+        value:
+          type: string
+          description: The value set for the threshold. 0 is allowed only if there are multiple threshold for the same insight. <br><br><b>Endpoints</b> - <ul><li>GET /config/insights/subscriptions Cobrand API</li><li>PATCH /config/insights/subscriptions Cobrand API</li><li>GET insights/subscriptions User API</li><li>PATCH /insights/subscriptions User API</li></ul>
+          example: '10'
+    InsightDetail:
+      properties:
+        insightName:
+          type: string
+          description: Name of the Insight for which this notification is generated. <br><br><b>Endpoints</b> -<ul><li>GET /insights/feed</li></ul>
+          readOnly: true
+          example: BILL_NOT_PAID
+        insightType:
+          type: string
+          description: Identifies whether the insight is generated at an entity-level - per account or per view (OTHER), or if it considers all entities for the user - e.g.  all accounts (AGGREGATE).<br><br><b>Endpoints</b> - <ul><li>GET config/insights/subscriptions Cobrand API</li><li>GET insights/subscriptions User API</li></ul>
+          readOnly: true
+          enum:
+          - OTHER
+          - AGGREGATE
+        triggerType:
+          type: string
+          description: triggerType of an insight defines how an Insight was triggered in the system. <br><br>Currently following triggerType are supported - <ul> <li><b>SCHDEULE</b> - Insight evaluation and subsequent generation triggered based on a pre-defined schedule.</li> <li><b>REFRESH</b> - Insight evaluation and subsequent generation triggered when a user's account gets successfully refreshed.</li> <li><b>EVENT</b> - Insight evaluation and subsequent generation triggered based on a system-defined event happening.</li> </ul> <b>Endpoints</b> -<ul><li>GET /insights/feed</li></ul>
+          readOnly: true
+          example: SCHEDULE
+          enum:
+          - SCHEDULE
+          - REFRESH
+          - EVENT
+        eligibleEntity:
+          type: array
+          items:
+            $ref: '#/components/schemas/EligibleDetail'
+    Link:
+      description: Reference path link to fetch more information about the specific entity.
+      properties:
+        entityName:
+          type: string
+          description: The name of the entity - ACCOUNT, VIEW, etc.
+          example: ACCOUNT
+        methodType:
+          type: string
+          description: The method to use while calling the URL
+          example: GET
+        url:
+          type: string
+          description: URL to access the endpoint.
+          example: /accounts?accountId=10231749
+      required:
+      - entityName
+      - url
+    Error:
+      required:
+      - errorCode
+      - referenceCode
+      - errorMessage
+      properties:
+        errorCode:
+          type: string
+        referenceCode:
+          type: string
+        errorMessage:
+          type: string
+    EntityDetailResponse:
+      properties:
+        entityDetail:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntityDetail'
+  examples:
+    getEntityDetailResponseExample:
+      value:
+        entityDetail:
+        - entityType: ACCOUNT
+          entityId: 234213523
+          container: BANK
+          link:
+            entityName: ACCOUNT
+            url: /accounts?accountId=234213523
+          eligibleInsight:
+          - insightName: SUGGESTED_SAVING_OPPORTUNITY
+            applicableConfiguration:
+            - entityType: ACCOUNT
+              isSubscribed: true
+              frequency: MID_MONTHLY
+              duration: LAST_THREE_MONTHS
+              threshold:
+              - name: CHANGE
+                value: '100.00'
+                type: AMOUNT
+              - name: CHANGE
+                value: '10.00'
+                type: PERCENT
+          - insightName: SPENDING_BY_MERCHANT_ALL_ACCOUNTS
+            applicableConfiguration:
+            - entityType: ACCOUNT
+              isSubscribed: true
+              frequency: MONTHLY
+              duration: THREE_MONTHS
+              threshold:
+              - name: TOP
+                value: 10
+                type: NUMBER
+    getInsightDetailResponseExample:
+      value:
+        insightDetail:
+        - insightName: SUGGESTED_SAVING_OPPORTUNITY
+          insightType: OTHER
+          triggerType: SCHEDULE
+          eligibleEntity:
+          - entityType: ACCOUNT
+            entityId: 12312312
+            container: BANK
+            isSubscribed: true
+            frequency: MID_MONTHLY
+            duration: LAST_THREE_MONTHS
+            threshold:
+            - name: CHANGE
+              value: '100.00'
+              type: AMOUNT
+            - name: CHANGE
+              value: '10.00'
+              type: PERCENT
+            link:
+              entityName: account
+              url: /accounts?accountId=234213523
+          - entityType: VIEW
+            entityId: 12312312
+            container: BANK
+            isSubscribed: true
+            frequency: MID_MONTHLY
+            duration: LAST_THREE_MONTHS
+            threshold:
+            - name: CHANGE
+              value: '100.00'
+              type: AMOUNT
+            - name: CHANGE
+              value: '10.00'
+              type: PERCENT
+            link:
+              entityName: view
+              url: /views/234213523

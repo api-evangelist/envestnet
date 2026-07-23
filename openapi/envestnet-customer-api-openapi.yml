@@ -1,0 +1,281 @@
+openapi: 3.0.1
+info:
+  title: Envestnet Aggregation APIs Account Token Customer API
+  description: 'This file describes the Yodlee Aggregation product APIs using the swagger notation that you can use to build your financial application.  You can generate the client SDK in Python, JavaScript, PHP, or any other languages according to your development needs. For more details about the APIs, refer to <a href="https://developer.envestnet.com/resources/yodlee/yodlee-api-overview/docs">Yodlee API v1.1 - Overview</a>.<br><br>You will have to set the header before making the API call. The following headers apply to all the APIs:<ul><li>Authorization: This header holds the access token</li> <li> Api-Version: 1.1</li></ul><b>Note</b>: If there are any API-specific headers, they are mentioned explicitly in the respective API''s description.'
+  termsOfService: https://developer.yodlee.com/terms/condition
+  contact:
+    email: developer@yodlee.com
+  license:
+    name: Yodlee Developer License
+    url: https://developer.yodlee.com/terms/condition#_Services_1
+  version: 1.1.0
+servers:
+- url: /
+tags:
+- name: Customer
+paths:
+  /insights/configs/customerSubscriptions:
+    get:
+      tags:
+      - Customer
+      summary: Envestnet Provide details of all the insights available to the customer.
+      description: This API returns only those Insights which the customer has subscribed to, among all the insights provided by Yodlee. If the customer has chosen to use the Insights configuration tool, the same functionality can be achieved through a graphical user interface.
+      operationId: getCutomerSubscription
+      responses:
+        '200':
+          description: List of insights subscribed by the customer.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customerSubscriptions'
+              examples:
+                objectExample:
+                  $ref: '#/components/examples/getCustomerSubscriptionExample'
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: 'Y020 : Invalid token in authorization header<br>Y023 : Token has expired<br> Y011 : Invalid cobrand or incorrectly configured cobrand'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      tags:
+      - Customer
+      summary: Envestnet Update details of one or more customer subscribed insights.
+      description: "This API can be used to make an insight available to their users at any entity level (Account or View). By setting isSubscribed to true or false at an entity level within each insight, the customer can decide what functionality to make available to their end-users/consumers.<br /><br />Note-\n  <ul>\n  <li>This is a PATCH API. Only pass the Attributes in the API request body, which you want to update</li>\n  <li>This API supports updating multiple Insight's details in a single API call</li>\n  <li>'insightName' is a mandatory field in the Request body to identify which Insight's details are getting updated</li>\n  <li>If you pass an attribute that is not editable, you will see an error.</li>\n  </ul>"
+      operationId: updateCustomerSubscription
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customerSubscriptions'
+            examples:
+              objectExample:
+                $ref: '#/components/examples/updateCustomerSubscriptionExample'
+      responses:
+        '204':
+          description: Insight for Cobrand Updated.
+        '400':
+          description: '<br> Y806 : Invalid Input <br> Y800 : Invalid value for insightName <br> Y800 : Invalid value for insightTitle; special characters ><\\"''%{}|^~[] are not supported <br> Y801: Invalid length for insightTitle; min 3 and max 100 characters including spaces are allowed. <br> Y800 : Invalid value for frequency; Supported values are {Frequencies} <br> Y800 : Invalid value for duration; Supported values are {Durations} <br> Y800 : Invalid value for type BASETYPE; Only CREDIT, DEBIT are supported <br> Y800 : Invalid value for {thresholdName} in {insightName} insight Min = {min} and Max = {max} <br> Y800 : {InsightName} cannot be subscribed without benchmark enabled for the customer <br> Y800 : Invalid value for isSubscribed. {InsightName} cannot be subscribed without benchmark enabled for the customer <br> Y802 : Modifying isBenchmarkEnabled is not allowed <br> Y802 : For insight {InsightName}, passing isBenchmarkEnabled is not allowed <br> Y800 : Invalid value for isBenchmarkEnabled Supported values are true, false" <br> Y800 : Invalid value for duration. Supported values of duration for MID_MONTHLY frequency are {Frequencies} <br> Y802 : For insight {InsightName}, modifying applicableEntity is not allowed <br> Y802 : For insight {InsightName}, modifying triggerType is not allowed <br> Y802 : For insight {InsightName}, modifying containers is not allowed <br> Y802 : For insight {InsightName}, modifying description is not allowed <br> Y802 : For insight {InsightName}, modifying frequency is not allowed <br> Y802 : For insight {InsightName}, modifying isSubscribed is not allowed <br> Y802 : For insight {InsightName}, modifying duration is not allowed <br> Y800 : Invalid value for isSubscribed; Supported values are true, false <br> Y825 : Update not allowed without a valid request body <br> Y803 : Invalid request; Either a valid insightTitle or customerConfiguration is required. <br> Y802 : Specifying frequency attribute for {InsightName} insight is not allowed <br> Y802 : Specifying duration attribute for {InsightName} insight is not allowed <br> Y802 : For {InsightName} insight passing threshold is not allowed <br> Y812 : Required field/value - insightName missing in the request <br> Y802 : Modifying InsightType attribute is not allowed <br> Y813 :entityType should be provided <br> Y813 : Invalid request. The entire object within threshold should be provided <br> Y803 :At least one additional attribute is required in addition to entityType. <br> Y800: Invalid value for customerConfiguration; customerConfiguration is either missing, duplicated, or has insufficient/ incorrect attributes. <br> Y800: Invalid value for entityType. Supported entityType for {InsightName} insight are - {Entities} <br> Y802 : For {InsightName} insight, <String> inside the threshold is not allowed <br> Y802 : For {InsightName} insight, {Invalid String} inside the threshold is either repeated or not allowed'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: 'Y020 : Invalid token in authorization header<br>Y023 : Token has expired<br> Y011 : Invalid cobrand or incorrectly configured cobrand'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  examples:
+    updateCustomerSubscriptionExample:
+      value:
+        customerSubscription:
+        - insightName: UPCOMING_BILLS
+          insightTitle: New Title
+          customerConfiguration:
+          - entityType: ACCOUNT
+            isSubscribed: true
+            threshold:
+            - name: FUTURE
+              value: '7'
+              type: DAYS
+          - entityType: VIEW
+            isSubscribed: true
+            threshold:
+            - name: FUTURE
+              value: '7'
+              type: DAYS
+    getCustomerSubscriptionExample:
+      value:
+        customerSubscription:
+        - insightName: UPCOMING_BILLS
+          insightTitle: Upcoming Bills
+          insightType: OTHER
+          triggerType: SCHEDULE
+          containers:
+          - BANK
+          - CARD
+          description: Generates an insight that lists upcoming recurring bills within a configured time period..
+          applicableEntity:
+          - ACCOUNT
+          - VIEW
+          customerConfiguration:
+          - entityType: ACCOUNT
+            isSubscribed: false
+            frequency: MONTHLY
+            threshold:
+            - name: FUTURE
+              value: '7'
+              type: DAYS
+          - entityType: VIEW
+            isSubscribed: false
+            frequency: MONTHLY
+            threshold:
+            - name: FUTURE
+              value: '7'
+              type: DAYS
+  schemas:
+    Subscription:
+      description: Details about the configurations applied for the specific insight.
+      properties:
+        insightName:
+          type: string
+          description: Unique name of each Insight in the system. 2 Insight can not have same Insight 'name'. If User wants to update his/her Subscription details, then While calling the PATCH Subscription API this 'name' field is mandatory.<br><br><b>Endpoints</b> -<ul><li>GET insights/configs/customerSubscriptions customer API</li><li>GET insights/configs/userSubscriptions User API</li><li>PATCH /insights/configs/customerSubscriptions cusomter API</li><li>PATCH /insights/configs/userSubscriptions User API</li></ul>
+        insightTitle:
+          type: string
+          description: Title of the Insight. This is an editable field by calling PATCH Subscription APIs.<br><br><b>Endpoints</b> -<ul><li>GET insights/configs/customerSubscriptions customer API</li><li>GET insights/configs/userSubscriptions User API</li><li>PATCH /insights/configs/customerSubscriptions cusomter API</li></ul>
+        insightType:
+          type: string
+          description: Identifies whether the insight is generated at an entity-level (per account or per view), or if it considers all entities for the user - e.g.  all accounts. <br><br>Note - Do not pass the insightType attribute when doing a PATCH rquest. <br><br><b>Endpoints</b> -<ul><li>GET insights/configs/customerSubscriptions customer API</li><li>GET insights/configs/userSubscriptions User API</li></ul>
+          readOnly: true
+          enum:
+          - OTHER
+          - AGGREGATE
+        triggerType:
+          type: string
+          description: triggerType of an insight defines how an Insight will be triggered in the system. <br><br>Currently following triggerType are supported - <ul> <li><b>SCHDEULE</b> - Insight evaluation and subsequent generation will be triggered based on a pre-defined schedule. This schedule may be editable by the customer depending on the insight.</li> <li><b>REFRESH</b> - Insight evaluation and subsequent generation will be triggered when a user's account gets successfully refreshed.</li> <li><b>EVENT</b> - Insight evaluation and subsequent generation will be triggered based on a system-defined event happening.</li> </ul> <b>Note</b> <br><br>If triggerType=SCHEDULE, then the UserSubscription/CobrandSubscription API attribute 'frequency' and 'duration' may be applicable depending on the insight. <br><br><b>Endpoints</b> <ul> <li>GET /insights/config/customerSubscriptions</li> </ul>
+          readOnly: true
+          example: SCHEDULE
+          enum:
+          - SCHEDULE
+          - REFRESH
+          - EVENT
+        containers:
+          type: array
+          description: Identifies the containers considered for generating an insight. <br><br><b>Endpoints</b> <ul><li>GET /insights/config/customerSubscriptions</li> </ul>
+          readOnly: true
+          items:
+            type: string
+          enum:
+          - BANK
+          - CARD
+          - LOAN
+          - INVESTMENT
+          - REALESTATE
+        description:
+          type: string
+          description: A simple english description of the Insight. <br><br><b>Endpoints</b> -<ul><li>GET /insights/config/customerSubscriptions</li></ul>
+          readOnly: true
+        applicableEntity:
+          type: array
+          description: Identifies which entity (Account or View) the insight is applicable for. <br><br>When applicableEntity is provided in the userSubscription or customerSubscription, it identifies all the entities for which the insight is capable of being generated. <br><br>When the attribute is present in the feed API, it identifies the entitiy for which the insight was generated. </li></ul><b>Endpoints</b> -<ul><li>GET /insights/config/customerSubscriptions</li></ul>
+          readOnly: true
+          example:
+          - ACCOUNT
+          - VIEW
+          items:
+            type: string
+          enum:
+          - ACCOUNT
+          - VIEW
+    CustomerSubscription:
+      allOf:
+      - $ref: '#/components/schemas/Subscription'
+      properties:
+        customerConfiguration:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerConfiguration'
+    Threshold:
+      properties:
+        name:
+          type: string
+          description: Identifies the threshold applicable for an insight. Threshold values impact insight generation.Consider the following example - <ul> <li>name = CHANGE</li> <li>type = PERCENT</li> <li>value = 3</li> </ul> For the above insight, you can read the configuration as "Generate the insight only if the change is >= 3%" <br><br><b>Note</b>- Threshold is fixed for each insight. Only value is editable. <br><br><b>Endpoints</b> -<ul><li>GET /insights/configs/customerSubscriptions Cobrand API</li><li>PATCH /insights/configs/customerSubscriptions Cobrand API</li><li>GET /insights/configs/userSubscriptions User API</li><li>PATCH /insights/configs/userSubscriptions User API</li></ul>
+          example: CHANGE
+          enum:
+          - CHANGE
+          - UPPER_LIMIT
+          - DAYS_BEFORE
+          - MINIMUM
+          - FUTURE
+          - DELAY
+          - TOP
+          - BASETYPE
+        type:
+          type: string
+          description: Identifies the type of threshold. Threshold values impact insight generation.Consider the following example - <ul> <li>name = CHANGE</li> <li>type = PERCENT</li> <li>value = 3</li> </ul> For the above insight, you can read the configuration as "Generate the insight only if the change is >= 3%". <br><br>However, consider changing the configuration to as follows by  changing the type - <ul> <li>name = CHANGE</li> <li>type = AMOUNT</li> <li>value = 300</li> </ul> For the above insight, you can read the configuration as "Generate the insight only if the change is >= $300". <br><br><b>Note</b>- For a single insight, you can have multiple thresholds. If multiple thresholds have values set to a non-zero number, the relationship between the thresholds will be logical AND. <br><br>Some insights will have type as AMOUNT and PERCENT. In the above scenario, if you want to generate insight only based on one value, you can set the other to 0. <br><br>E.g. if type = AMOUNT is set to 0 and type = PERCENT is set to 3, the insight will be evaluated as "Generate the insight only if the change is >= 3%" <br><br>However, if AMOUNT = $300 and PERCENT = 3, the insight will be evaluated as "Generate the insight only if the change % is >= 3% AND change amount >= $300" <br><br><b>Endpoints</b> -<ul><li>GET config/insights/subscriptions Cobrand API</li><li>PATCH /config/insights/subscriptions Cobrand API</li><li>GET /insights/subscriptions User API</li><li>PATCH /insights/subscriptions User API</li></ul>
+          example: PERCENT
+          enum:
+          - PERCENT
+          - NUMBER
+          - DAYS
+          - AMOUNT
+          - STRING
+        value:
+          type: string
+          description: The value set for the threshold. 0 is allowed only if there are multiple threshold for the same insight. <br><br><b>Endpoints</b> - <ul><li>GET /config/insights/subscriptions Cobrand API</li><li>PATCH /config/insights/subscriptions Cobrand API</li><li>GET insights/subscriptions User API</li><li>PATCH /insights/subscriptions User API</li></ul>
+          example: '10'
+    CustomerConfiguration:
+      properties:
+        entityType:
+          type: string
+          description: The entityType identifies which applicableEntity of the insight the configuration will impact. <br><br>E.g. if the entityType is ACCOUNT, it means that the configurations will impact the ACCOUNT entity during evaluation. <br><br>customerConfiguration, when presented in the userSubscription API, represents the customer preferences. It may or may not match the user preferences. If user preferences differe from customer preferrences in the customerConfiguration, the user preferences will be applied for the insight. <br><br><b>Endpoints</b> -<ul><li>GET insights/configs/customerSubscriptions customer API</li><li>GET insights/configs/userSubscriptions User API</li><li>PATCH /insights/configs/customerSubscriptions cusomter API</li><li>PATCH /insights/configs/userSubscriptions User API</li></ul>
+          example: ACCOUNT
+          enum:
+          - ACCOUNT
+          - VIEW
+        isSubscribed:
+          type: boolean
+          description: Insight Subscription APIs allow User to subscribe/unsubscribe at any particular entity level. <br><br>If an insight is not subscribed (isSubscribed = false) at the customer level, the insight will not be present in the userSubscription API. <br><br> If an insight is subscribed by the customer (isSubscribed = true), the insight will be subscribed automatically by the user and all the default configurations will be inherited. <br><br>The user can choose to turn off the insight by setting isSubscribed=false. <br><br><b>Endpoints</b> - <ul><li>GET /insights/config/customerSubscriptions</li><li>PATCH /insights/config/customerSubscriptions</li></ul>
+          example: true
+          enum:
+          - true
+          - false
+        frequency:
+          type: string
+          description: Identifies how often the insight will be evaluated. <br><br>Note - Evaluation does not mean an insight will be generated. If the conditions for generating an insight are not met, the insight will not get generated even after it being evaluated. <br><br>Depending on the insight, it might be editable for customers and users. <br><br><b>Endpoints</b> -<ul><li>GET /insights/config/customerSubscriptions</li><li>PATCH /insights/config/customerSubscriptions</li></ul>
+          example: DAILY
+          enum:
+          - DAILY
+          - WEEKLY
+          - MONTHLY
+          - MID_MONTHLY
+        duration:
+          type: string
+          description: Identifies the duration for which the data will be considered to generate and insight. <br><br>Note <ul> <li>Even if the duration mentioned is ONE_YEAR, the insight can consider only data that exists. If there is data only for one month, the insight will be generated using the available one month data.</li> <li>Duration is insight specific. For some insights which are REFRESH based, duration might not be applicable. For certain insights, only a subset of the duration might be applicable.</li> </ul> <b>Endpoints</b> -<ul><li>GET /insights/config/customerSubscriptions</li><li>PATCH /insights/config/customerSubscriptions</li></ul>
+          example: THIS_MONTH
+          enum:
+          - THIS_MONTH
+          - LAST_MONTH
+          - THREE_MONTHS
+          - SIX_MONTHS
+          - ONE_YEAR
+          - LAST_THREE_MONTHS
+          - LAST_SIX_MONTHS
+          - LAST_TWELVE_MONTHS
+        threshold:
+          type: array
+          items:
+            $ref: '#/components/schemas/Threshold'
+        isBenchmarkEnabled:
+          type: boolean
+          description: "Identifies if peer benchmarking is enabled for a particular insight. The attribute will be returned only for insights that are eligible for peer benchmarking data points\n <br><br>The default value of this attribute will be based on the global configuration key to enable/disable peer benchmarking. If the global configuration is true, this attribute will be true and if the global configuration is false, this value will be false.\n <br><br>If the peer benchmarking is enabled by the customer (isBenchmarkEnabled = true), the benchmarks will be subscribed automatically by the user.\n <br><br>The user can choose to turn off the benchmark configuration for the insight by setting isBenchmarkEnabled=false.\n <br><br><b>Note</b> - There are few insights for which the isBenchmarkEnabled attribute cannot be updated since benchmark amount is essential for the insight evaluation.\n <br><br><b>Endpoints</b> - <ul><li>GET\n/insights/config/customerSubscriptions</li><li>PATCH /insights/config/customerSubscriptions</li></ul>"
+          example: true
+          enum:
+          - true
+          - false
+    customerSubscriptions:
+      properties:
+        customerSubscription:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerSubscription'
+    Error:
+      required:
+      - errorCode
+      - referenceCode
+      - errorMessage
+      properties:
+        errorCode:
+          type: string
+        referenceCode:
+          type: string
+        errorMessage:
+          type: string

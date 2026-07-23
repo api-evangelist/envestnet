@@ -1,0 +1,228 @@
+openapi: 3.0.1
+info:
+  title: Envestnet Aggregation APIs Account Token Documents API
+  description: 'This file describes the Yodlee Aggregation product APIs using the swagger notation that you can use to build your financial application.  You can generate the client SDK in Python, JavaScript, PHP, or any other languages according to your development needs. For more details about the APIs, refer to <a href="https://developer.envestnet.com/resources/yodlee/yodlee-api-overview/docs">Yodlee API v1.1 - Overview</a>.<br><br>You will have to set the header before making the API call. The following headers apply to all the APIs:<ul><li>Authorization: This header holds the access token</li> <li> Api-Version: 1.1</li></ul><b>Note</b>: If there are any API-specific headers, they are mentioned explicitly in the respective API''s description.'
+  termsOfService: https://developer.yodlee.com/terms/condition
+  contact:
+    email: developer@yodlee.com
+  license:
+    name: Yodlee Developer License
+    url: https://developer.yodlee.com/terms/condition#_Services_1
+  version: 1.1.0
+servers:
+- url: /
+tags:
+- name: Documents
+  description: Documents API
+paths:
+  /documents:
+    get:
+      tags:
+      - Documents
+      summary: Envestnet Get Documents
+      description: The get documents service allows customers to search or retrieve metadata related to documents. <br>The API returns the document as per the input parameters passed. If no date range is provided then all downloaded documents will be retrieved. Details of deleted documents or documents associated to closed providerAccount will not be returned. <br>This API is a premium service which requires subscription in advance to use.  Please contact Yodlee Client Services for more information. <br>
+      operationId: getDocuments
+      parameters:
+      - name: Keyword
+        in: query
+        description: The string used to search a document by its name.
+        allowEmptyValue: false
+        schema:
+          type: string
+      - name: accountId
+        in: query
+        description: The unique identifier of an account. Retrieve documents for a given accountId.
+        allowEmptyValue: false
+        schema:
+          type: string
+      - name: docType
+        in: query
+        description: 'Accepts only one of the following valid document types: STMT, TAX, and EBILL.'
+        allowEmptyValue: false
+        schema:
+          type: string
+      - name: fromDate
+        in: query
+        description: The date from which documents have to be retrieved.
+        allowEmptyValue: false
+        schema:
+          type: string
+      - name: toDate
+        in: query
+        description: The date to which documents have to be retrieved.
+        allowEmptyValue: false
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/DocumentResponse'
+        400:
+          description: 'Y800 : Invalid value for accountId<br>Y800 : Invalid value for fromDate<br>Y800 : Invalid value for toDate<br>Y800 : Invalid value for docType'
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/YodleeError'
+        401:
+          description: Unauthorized
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      deprecated: false
+  /documents/{documentId}:
+    get:
+      tags:
+      - Documents
+      summary: Envestnet Download a Document
+      description: The get document details service allows consumers to download a document. The document is provided in base64.<br>This API is a premium service which requires subscription in advance to use.  Please contact Yodlee Client Services for more information. <br>
+      operationId: downloadDocument
+      parameters:
+      - name: documentId
+        in: path
+        description: documentId
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/DocumentDownloadResponse'
+        400:
+          description: 'Y800 : Invalid value for documentId'
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/YodleeError'
+        401:
+          description: Unauthorized
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      deprecated: false
+    delete:
+      tags:
+      - Documents
+      summary: Envestnet Delete Document
+      description: The delete document service allows the consumer to delete a document. The deleted document will not be returned in the get documents API. The HTTP response code is 204 (success without content).<br>Documents can be deleted only if the document related dataset attributes are subscribed.<br>
+      operationId: deleteDocument
+      parameters:
+      - name: documentId
+        in: path
+        description: documentId
+        required: true
+        schema:
+          type: string
+      responses:
+        204:
+          description: OK
+          content: {}
+        400:
+          description: 'Y800 : Invalid value for documentId<br>Y868 : No action is allowed, as the data is being migrated to the Open Banking provider<br>'
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/YodleeError'
+        401:
+          description: Unauthorized
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      deprecated: false
+components:
+  schemas:
+    DocumentDownloadResponse:
+      title: DocumentDownloadResponse
+      type: object
+      properties:
+        document:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/DocumentDownload'
+    Document:
+      title: Document
+      type: object
+      properties:
+        accountID:
+          type: integer
+          description: 'The unique identifier for the account. The account ID to which the document is linked.<br><br><b>Applicable containers</b>: bank, investment, creditCard, loan, insurance<br>'
+          format: int64
+          readOnly: true
+        lastUpdated:
+          type: string
+          description: 'Indicates the date and time the document was last updated.<br><br><b>Applicable containers</b>: bank, investment, creditCard, loan, insurance<br>'
+          readOnly: true
+        formType:
+          type: string
+          description: 'Indicates the type of the tax form.<br><br><b>Applicable containers</b>: bank, investment, creditCard, loan, insurance<br>'
+          readOnly: true
+        docType:
+          type: string
+          description: 'Indicates the type of the document.<br><br><b>Applicable containers</b>: bank, investment, creditCard, loan, insurance<br>'
+          readOnly: true
+          enum:
+          - STMT
+          - TAX
+          - EBILL
+        name:
+          type: string
+          description: 'Indicates the name of the document.<br><br><b>Applicable containers</b>: bank, investment, creditCard, loan, insurance<br>'
+          readOnly: true
+        id:
+          type: string
+          description: 'The document''s primary key and unique identifier.<br><br><b>Applicable containers</b>: bank, investment, creditCard, loan, insurance<br>'
+          readOnly: true
+        source:
+          type: string
+          description: 'Indicates the source of the document download.<br><br><b>Applicable containers</b>: bank, investment, creditCard, loan, insurance<br>'
+          readOnly: true
+        status:
+          type: string
+          description: 'Indicates the status of the document download.<br><br><b>Applicable containers</b>: bank, investment, creditCard, loan, insurance<br>'
+          readOnly: true
+    DocumentDownload:
+      title: DocumentDownload
+      type: object
+      properties:
+        docContent:
+          type: string
+          description: 'Contents of the document in Base64 format.<br><br><b>Applicable containers</b>: bank, investment, creditCard, loan, insurance<br>'
+          readOnly: true
+        id:
+          type: string
+          description: 'The document''s primary key and unique identifier.<br><br><b>Applicable containers</b>: bank, investment, creditCard, loan, insurance<br>'
+          readOnly: true
+    YodleeError:
+      title: YodleeError
+      type: object
+      properties:
+        errorMessage:
+          type: string
+          description: The descriptive message that explains the error scenario.
+          readOnly: true
+        errorCode:
+          type: string
+          description: The error code follows the format YNNN. The error codes do not change. New error codes may be added as we introduce new features and enhance functionalities.
+          readOnly: true
+        referenceCode:
+          type: string
+          description: Unique Yodlee identifier used to troubleshoot issues at Yodlee's end.
+          readOnly: true
+    DocumentResponse:
+      title: DocumentResponse
+      type: object
+      properties:
+        document:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Document'

@@ -1,0 +1,1271 @@
+openapi: 3.0.1
+info:
+  title: Envestnet Aggregation APIs Account Token Holdings API
+  description: 'This file describes the Yodlee Aggregation product APIs using the swagger notation that you can use to build your financial application.  You can generate the client SDK in Python, JavaScript, PHP, or any other languages according to your development needs. For more details about the APIs, refer to <a href="https://developer.envestnet.com/resources/yodlee/yodlee-api-overview/docs">Yodlee API v1.1 - Overview</a>.<br><br>You will have to set the header before making the API call. The following headers apply to all the APIs:<ul><li>Authorization: This header holds the access token</li> <li> Api-Version: 1.1</li></ul><b>Note</b>: If there are any API-specific headers, they are mentioned explicitly in the respective API''s description.'
+  termsOfService: https://developer.yodlee.com/terms/condition
+  contact:
+    email: developer@yodlee.com
+  license:
+    name: Yodlee Developer License
+    url: https://developer.yodlee.com/terms/condition#_Services_1
+  version: 1.1.0
+servers:
+- url: /
+tags:
+- name: Holdings
+  description: Holdings API
+paths:
+  /holdings/securities:
+    get:
+      tags:
+      - Holdings
+      summary: Envestnet Get Security Details
+      description: The get security details service is used to get all the security information for the holdings<br>
+      operationId: getSecurities
+      parameters:
+      - name: holdingId
+        in: query
+        description: Comma separated holdingId
+        allowEmptyValue: false
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/HoldingSecuritiesResponse'
+        400:
+          description: 'Y800 : Invalid value for holdingId<br>Y824 : The maximum number of holdingIds permitted is 100'
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/YodleeError'
+        401:
+          description: Unauthorized
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      deprecated: false
+  /holdings:
+    get:
+      tags:
+      - Holdings
+      summary: Envestnet Get Holdings
+      description: The get holdings service is used to get the list of holdings of a user.<br>Supported holding types can be employeeStockOption, moneyMarketFund, bond, etc. and is obtained using get holding type list service. <br>Asset classifications for the holdings need to be requested through the "include" parameter.<br>Asset classification information for holdings are not available by default, as it is a premium feature.<br>
+      operationId: getHoldings
+      parameters:
+      - name: accountId
+        in: query
+        description: Comma separated accountId
+        allowEmptyValue: false
+        schema:
+          type: string
+      - name: assetClassification.classificationType
+        in: query
+        description: e.g. Country, Sector, etc.
+        allowEmptyValue: false
+        schema:
+          type: string
+      - name: classificationValue
+        in: query
+        description: e.g. US
+        allowEmptyValue: false
+        schema:
+          type: string
+      - name: include
+        in: query
+        description: assetClassification
+        allowEmptyValue: false
+        schema:
+          type: string
+      - name: providerAccountId
+        in: query
+        description: providerAccountId
+        allowEmptyValue: false
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/HoldingResponse'
+        400:
+          description: 'Y800 : Invalid value for accountId<br>Y800 : Invalid value for providerAccountId<br>Y800 : Invalid value for include<br>Y800 : Invalid value for classificationType<br>Y800 : Invalid value for classificationValue<br>Y800 : Invalid value for include<br>Y400 : classificationType mismatch<br>Y400 : classificationValue mismatch<br>Y824 : The maximum number of accountIds permitted is 100'
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/YodleeError'
+        401:
+          description: Unauthorized
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      deprecated: false
+    post:
+      tags:
+      - Holdings
+      summary: Envestnet Add Holding
+      description: The add manual holding service is used to add manual holdings. The response of add manual holding service includes the Yodlee generated holding id.<br><br>Add manual holding can only be added to a manual account of investment type container only.
+      operationId: addHolding
+      requestBody:
+        description: addHoldingRequest
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HoldingRequest'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/HoldingIdListResponse'
+        201:
+          description: Created Successfully
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/HoldingIdListResponse'
+        400:
+          description: 'Y800 : Invalid value for accountId<br>Y800 : Invalid value for symbol<br>Y800 : Invalid value for exercisedQuantity<br>Y800 : Invalid value for cusipNumber<br>Y800 : Invalid value for vestedQuantity<br>Y800 : Invalid value for unvestedValue<br>Y800 : Invalid value for vestedValue<br>Y800 : Invalid value for option<br>Y800 : Invalid value for holdingType<br>Y800 : Invalid value for maturityDate<br>Y800 : Invalid value for price<br>Y800 : Invalid value for term<br>Y800 : Invalid value for contractQuantity<br>Y800 : Invalid value for isShort<br>Y800 : Invalid value for value<br>Y800 : Invalid value for expirationDate<br>Y800 : Invalid value for interestRate<br>Y800 : Invalid value for quantity<br>Y800 : Invalid value for grantDate<br>Y800 : Invalid value for sedol<br>Y800 : Invalid value for vestedSharesExercisable<br>Y800 : Invalid value for spread<br>Y800 : Invalid value for couponRate<br>Y800 : Invalid value for unvestedQuantity<br>Y800 : Invalid value for costBasis<br>Y800 : Invalid value for vestingDate<br>Y800 : Invalid value for isin<br>Y800 : Invalid value for strikePrice<br>Y801 : Invalid length for symbol<br>Y801 : Invalid length for term<br>Y801 : Invalid length for description<br>Y801 : Required field/value - description missing in the request<br>Y812 : Required field/value - accountId missing in the request<br>'
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/YodleeError'
+        401:
+          description: Unauthorized
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      deprecated: false
+  /holdings/holdingTypeList:
+    get:
+      tags:
+      - Holdings
+      summary: Envestnet Get Holding Type List
+      description: The get holding types list service is used to get the supported holding types.<br>The response includes different holding types such as future, moneyMarketFund, stock, etc. and it returns the supported holding types <br>
+      operationId: getHoldingTypeList
+      responses:
+        200:
+          description: OK
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/HoldingTypeListResponse'
+        401:
+          description: Unauthorized
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      deprecated: false
+  /holdings/assetClassificationList:
+    get:
+      tags:
+      - Holdings
+      summary: Envestnet Get Asset Classification List
+      description: The get asset classifications list service is used to get the supported asset classifications. <br>The response includes different classification types like assetClass, country, sector, style, etc. and the values corresponding to each type.<br>
+      operationId: getAssetClassificationList
+      responses:
+        200:
+          description: OK
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/HoldingAssetClassificationListResponse'
+        401:
+          description: Unauthorized
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      deprecated: false
+components:
+  schemas:
+    HoldingTypeListResponse:
+      title: HoldingTypeListResponse
+      type: object
+      properties:
+        holdingType:
+          type: array
+          readOnly: true
+          items:
+            type: string
+            enum:
+            - stock
+            - mutualFund
+            - bond
+            - CD
+            - option
+            - moneyMarketFund
+            - other
+            - remic
+            - future
+            - commodity
+            - currency
+            - unitInvestmentTrust
+            - employeeStockOption
+            - insuranceAnnuity
+            - unknown
+            - preferredStock
+            - ETF
+            - warrants
+            - digitalAsset
+    HoldingAssetClassificationListResponse:
+      title: HoldingAssetClassificationListResponse
+      type: object
+      properties:
+        assetClassificationList:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/AssetClassificationList'
+    HoldingResponse:
+      title: HoldingResponse
+      type: object
+      properties:
+        holding:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Holding'
+    Holding:
+      title: Holding
+      type: object
+      properties:
+        symbol:
+          type: string
+          description: 'The symbol of the security.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        exercisedQuantity:
+          type: number
+          description: 'The quantity of the employee stock options that are already exercised or bought by the employee.<br><b>Note</b>: Once the employee stock options is exercised, they are either converted to cash value or equity positions depending on the FI. The exercised quantity field is only applicable to employee stock options.<br><br><b>Applicable containers</b>: investment<br>'
+          format: double
+          readOnly: true
+        cusipNumber:
+          type: string
+          description: 'The CUSIP (Committee on Uniform Securities Identification Procedures) identifies most the financial instruments in the United States and Canada.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        assetClassification:
+          type: array
+          description: 'Asset classification applied to the holding. <br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/AssetClassification'
+        vestedQuantity:
+          type: number
+          description: 'The quantity of units or shares that are already vested on a vest date.<br><b>Note</b>: The vested quantity field is only applicable to employee stock options, restricted stock units/awards, performance units, etc.<br><br><b>Applicable containers</b>: investment<br>'
+          format: double
+          readOnly: true
+        description:
+          type: string
+          description: 'The description (name) for the holding (E.g., Cisco Systems)<br>For insurance container, the field is only applicable for insurance annuity and variable life insurance types. <br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        unvestedValue:
+          $ref: '#/components/schemas/Money'
+        securityStyle:
+          type: string
+          description: 'Indicates the security style of holding identified through the security service.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        vestedValue:
+          $ref: '#/components/schemas/Money'
+        optionType:
+          type: string
+          description: 'The type of the option position (i.e., put or call).<br><b>Note</b>: The option type field is only applicable to options.<br><br><b>Applicable containers</b>: investment<br><b>Applicable Values</b><br>'
+          readOnly: true
+          enum:
+          - put
+          - call
+          - unknown
+          - other
+        lastUpdated:
+          type: string
+          description: 'The date when the information was last updated in the system.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        matchStatus:
+          type: string
+          description: 'Indicates the security match status id of the investment option identified during security normalization.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        holdingType:
+          type: string
+          description: 'Type of holding<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+          enum:
+          - stock
+          - mutualFund
+          - bond
+          - CD
+          - option
+          - moneyMarketFund
+          - other
+          - remic
+          - future
+          - commodity
+          - currency
+          - unitInvestmentTrust
+          - employeeStockOption
+          - insuranceAnnuity
+          - unknown
+          - preferredStock
+          - ETF
+          - warrants
+          - digitalAsset
+        maturityDate:
+          type: string
+          description: 'The stated maturity date of a bond or CD.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        price:
+          $ref: '#/components/schemas/Money'
+        term:
+          type: string
+          description: 'The fixed duration for which the bond or CD is issued.<br><b>Note</b>: The term field is only applicable to CD.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        contractQuantity:
+          type: number
+          description: 'The quantity of tradeable units in a contract.<br><b>Note</b>: The contract quantity field is only applicable to commodity and currency.<br><br><b>Applicable containers</b>: investment<br>'
+          format: double
+          readOnly: true
+        id:
+          type: integer
+          description: 'Unique identifier for the security added in the system. This is the primary key of the holding resource.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          format: int64
+          readOnly: true
+        isShort:
+          type: boolean
+          description: 'Indicates that the holding is a short trading.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        value:
+          $ref: '#/components/schemas/Money'
+        expirationDate:
+          type: string
+          description: 'The date on which an option, right or warrant expires.<br><b>Note</b>: The expiration date field is only applicable to options and employee stock options.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        interestRate:
+          type: number
+          description: 'The interest rate on a CD.<br><b>Note</b>: The interest rate field is only applicable to CD.<br><br><b>Applicable containers</b>: investment<br>'
+          format: double
+          readOnly: true
+        quantity:
+          type: number
+          description: 'The quantity held for the holding.<br><b>Note</b>: Only for bonds the quantity field indicates the normalized quantity and not the quantity aggregated from the site. The quantity field is only applicable to restricted stock units/awards, performance units, currency, and commodity.<br>For insurance container, the field is only applicable for insurance annuity and variable life insurance types.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          format: double
+          readOnly: true
+        isManual:
+          type: boolean
+          description: Indicates if a holding is aggregated from a site or it is a manual holding i.e. holding information manually provided by the user.
+          readOnly: true
+        accruedInterest:
+          $ref: '#/components/schemas/Money'
+        grantDate:
+          type: string
+          description: 'The date on which equity awards like ESOP, RSU, etc., are issued or granted.<br><b>Note</b>: The grant date field is only applicable to employee stock options, restricted stock units/awards, performance units, etc.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        sedol:
+          type: string
+          description: 'The SEDOL (Stock Exchange Daily Official List) is a set of security identifiers used in the United Kingdom and Ireland for clearing purposes.<br><b>Note</b>: The SEDOL field is only applicable to the trade related transactions<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        vestedSharesExercisable:
+          type: number
+          description: 'The number of vested shares that can be exercised by the employee. It is usually equal to the vested quantity.<br><b>Note</b>: The vested shares exercisable field is only applicable to employee stock options, restricted stock units/awards, performance units, etc.<br><br><b>Applicable containers</b>: investment<br>'
+          format: double
+          readOnly: true
+        spread:
+          $ref: '#/components/schemas/Money'
+        accountId:
+          type: integer
+          description: 'Unique identifier of the account to which the security is linked.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          format: int64
+          readOnly: true
+        enrichedDescription:
+          type: string
+          description: 'The enrichedDescription is the security description of the normalized holding<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        couponRate:
+          type: number
+          description: 'The stated interest rate for a bond.<br><br><b>Applicable containers</b>: investment<br>'
+          format: double
+          readOnly: true
+        createdDate:
+          type: string
+          description: 'The date on which the holding is created in the Yodlee system.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        accruedIncome:
+          $ref: '#/components/schemas/Money'
+        securityType:
+          type: string
+          description: 'Indicates the security type of holding identified through the security service.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        providerAccountId:
+          type: integer
+          description: 'Unique identifier for the user''s association with the provider.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          format: int64
+          readOnly: true
+        unvestedQuantity:
+          type: number
+          description: 'Indicates the number of unvested quantity or units.<br><b>Note</b>: The unvested quantity field is only applicable to employee stock options, restricted stock units/awards, performance units, etc.<br><br><b>Applicable containers</b>: investment<br>'
+          format: double
+          readOnly: true
+        costBasis:
+          $ref: '#/components/schemas/Money'
+        vestingDate:
+          type: string
+          description: 'The date on which a RSU, RSA, or an employee stock options become vested.<br><b>Note</b>: The vesting date field is only applicable to employee stock options, restricted stock units/awards, performance units, etc.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        isin:
+          type: string
+          description: 'The ISIN (International Securities Identification Number) is used worldwide to identify specific securities. It is equivalent to CUSIP for international markets.<br><br><b>Note</b>: The ISIN field is only applicable to the trade related transactions<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        strikePrice:
+          $ref: '#/components/schemas/Money'
+    StockExchangeDetail:
+      title: StockExchangeDetail
+      type: object
+      properties:
+        symbol:
+          type: string
+          description: 'Ticker symbol representing particular securities listed on an exchange.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        countryCode:
+          type: string
+          description: 'Country codes are geocodes developed to represent countries and dependent areas.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        currencyCode:
+          type: string
+          description: 'ISO codes of currency.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        exchangeCode:
+          type: string
+          description: 'An Exchange code is a four-character code used to identify stock markets and other trading exchanges within global trading.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+    HoldingId:
+      title: HoldingId
+      type: object
+      properties:
+        id:
+          type: integer
+          description: 'Unique identifier for the security added in the system. This is the primary key of the holding resource.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          format: int64
+          readOnly: true
+    HoldingRequest:
+      title: HoldingRequest
+      required:
+      - holding
+      type: object
+      properties:
+        holding:
+          type: array
+          items:
+            $ref: '#/components/schemas/HoldingRequestInfo'
+    AssetClassificationList:
+      title: AssetClassificationList
+      type: object
+      properties:
+        classificationType:
+          type: string
+          description: 'The type of classification to which the investment belongs (assetClass, country, sector, and style).<br><b>Required Feature Enablement</b>: Asset classification feature<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        classificationValue:
+          type: array
+          description: 'The value for each classificationType.<br><b>Required Feature Enablement</b>: Asset classification feature<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+          items:
+            type: string
+    Security:
+      title: Security
+      type: object
+      properties:
+        stockExchangeDetails:
+          type: array
+          description: 'Securities exchange provide the securities information at the corresponding exchanges. <br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/StockExchangeDetail'
+        issueTypeMultiplier:
+          type: number
+          description: 'Price units corresponding to the security style. This is used to derive actual price of the security from market value.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          format: double
+          readOnly: true
+        stateTaxable:
+          type: boolean
+          description: 'The state in which the security is taxed.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        callDate:
+          type: string
+          description: 'Next call date of the security.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        cdscFundFlag:
+          type: boolean
+          description: 'cdsc fund flag of the security.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        cusip:
+          type: string
+          description: 'A CUSIP is a nine-character alphanumeric code that identifies a North American financial security for the purposes of facilitating clearing and settlement of trades.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        federalTaxable:
+          type: boolean
+          description: 'Flag indicating federal taxable.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        sAndPRating:
+          type: string
+          description: 'Unique identifier for S&P rating on Envestnet platform.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        shareClass:
+          type: string
+          description: 'Share class of the security.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        isEnvestnetDummySecurity:
+          type: boolean
+          description: 'Flag indicating a dummy security.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        description:
+          type: string
+          description: 'The description (name) of the security. For example, Cisco Systems.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        minimumPurchase:
+          type: integer
+          description: 'Minimum purchase of security.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          format: int32
+          readOnly: true
+        type:
+          type: string
+          description: 'Indicates the type of security like stocks, mutual fund, etc. <br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        firstCouponDate:
+          type: string
+          description: 'First coupon date of security.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        frequency:
+          type: integer
+          description: 'Coupon Frequency.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          format: int32
+          readOnly: true
+        accrualMethod:
+          type: string
+          description: 'The method in which interest is accrued or earned.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        incomeCurrency:
+          type: string
+          description: 'ISO 4217 currency code indicating income currency of the security.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        maturityDate:
+          type: string
+          description: 'Maturity date of the security.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        callPrice:
+          type: number
+          description: 'Next call price of the security.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          format: double
+          readOnly: true
+        id:
+          type: integer
+          description: 'The unique identifier of the security.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          format: int64
+          readOnly: true
+        issueDate:
+          type: string
+          description: 'Issue date of the security.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        sector:
+          type: string
+          description: 'Identifier of the sector to which the security belongs to.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        agencyFactor:
+          type: number
+          description: 'Agency factor of the security.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          format: double
+          readOnly: true
+        interestRate:
+          type: number
+          description: 'The rate of interest paid annually, expressed as a percentage of the bond''s par or face value.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          format: double
+          readOnly: true
+        lastModifiedDate:
+          type: string
+          description: 'The last updated date of the security.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        gicsSector:
+          type: string
+          description: 'GICS Sector is a categorization the S&P assigns to all publically traded companies. <br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        closedFlag:
+          type: boolean
+          description: '<b>true</b>:Closed for all investors , <b>false</b>: Open to all investors.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        sedol:
+          type: string
+          description: 'The Stock Exchange Daily Official List (SEDOL) is a set of security identifiers used in the United Kingdom and Ireland for clearing purposes.<br><b>Note</b>: The SEDOL field is only applicable to the trade related transactions.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        subSector:
+          type: string
+          description: 'GICS sector ID to which the security belongs to.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        lastCouponDate:
+          type: string
+          description: 'Last coupon date of security.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        isSyntheticSecurity:
+          type: boolean
+          description: 'Indicates whether the security is a simulated security.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        tradeCurrencyCode:
+          type: string
+          description: 'ISO 4217 currency code indicating trading currency of the security.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        isDummySecurity:
+          type: boolean
+          description: 'Indicates whether the security is a dummy security.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        moodyRating:
+          type: string
+          description: 'Unique identifier for Moody rating on Envestnet platform.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        style:
+          type: string
+          description: 'Classification of the style for the security.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        firmEligible:
+          type: string
+          description: '<b>1</b>- indicates Eligible,<b>0</b>- indicates firm is not eligible.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        fundFamily:
+          type: string
+          description: 'Mutual Fund Family Name.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        isin:
+          type: string
+          description: 'The International Securities Identification Number (ISIN) is used worldwide to identify specific securities. It is equivalent to CUSIP for international markets.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+    SecurityHolding:
+      title: SecurityHolding
+      type: object
+      properties:
+        security:
+          $ref: '#/components/schemas/Security'
+        id:
+          type: string
+          readOnly: true
+    HoldingSecuritiesResponse:
+      title: HoldingSecuritiesResponse
+      type: object
+      properties:
+        holding:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/SecurityHolding'
+    AssetClassification:
+      title: AssetClassification
+      type: object
+      properties:
+        allocation:
+          type: number
+          description: 'The allocation percentage of the holding.<br><br><b>Required Feature Enablement</b>: Asset classification feature<br><br><b>Applicable containers</b>: investment<br>'
+          format: double
+          readOnly: true
+        classificationType:
+          type: string
+          description: 'The type of classification to which the investment belongs (assetClass, country, sector, and style).<br><b>Required Feature Enablement</b>: Asset classification feature<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        classificationValue:
+          type: string
+          description: 'The value for each classificationType.<br><b>Required Feature Enablement</b>: Asset classification feature<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+    YodleeError:
+      title: YodleeError
+      type: object
+      properties:
+        errorMessage:
+          type: string
+          description: The descriptive message that explains the error scenario.
+          readOnly: true
+        errorCode:
+          type: string
+          description: The error code follows the format YNNN. The error codes do not change. New error codes may be added as we introduce new features and enhance functionalities.
+          readOnly: true
+        referenceCode:
+          type: string
+          description: Unique Yodlee identifier used to troubleshoot issues at Yodlee's end.
+          readOnly: true
+    HoldingIdListResponse:
+      title: HoldingIdListResponse
+      type: object
+      properties:
+        holding:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/HoldingId'
+    Money:
+      title: Money
+      type: object
+      properties:
+        amount:
+          type: number
+          description: Value of amount.
+          format: double
+        convertedAmount:
+          type: number
+          description: Value of the converted amount.
+          format: double
+        currency:
+          type: string
+          description: Currency should be a valid three-letter ISO Code.
+          enum:
+          - USD
+          - AUD
+          - BRL
+          - CAD
+          - EUR
+          - GBP
+          - HKD
+          - IDR
+          - INR
+          - JPY
+          - NZD
+          - SGD
+          - ZAR
+          - CNY
+          - VND
+          - MYR
+          - CHF
+          - AED
+          - AFA
+          - ALL
+          - AMD
+          - ANG
+          - AOA
+          - ARS
+          - AWG
+          - AZM
+          - BAM
+          - BBD
+          - BDT
+          - BGL
+          - BHD
+          - BIF
+          - BMD
+          - BND
+          - BOB
+          - BSD
+          - BTN
+          - BWP
+          - BYR
+          - BZD
+          - CDF
+          - CLP
+          - COP
+          - CRC
+          - CUP
+          - CVE
+          - CYP
+          - CZK
+          - DJF
+          - DKK
+          - DOP
+          - DZD
+          - EEK
+          - EGP
+          - ERN
+          - ETB
+          - FJD
+          - FKP
+          - GEL
+          - GGP
+          - GHC
+          - GIP
+          - GMD
+          - GNF
+          - GTQ
+          - GYD
+          - HNL
+          - HRK
+          - HTG
+          - HUF
+          - ILS
+          - IMP
+          - IQD
+          - IRR
+          - ISK
+          - JEP
+          - JMD
+          - JOD
+          - KES
+          - KGS
+          - KHR
+          - KMF
+          - KPW
+          - KRW
+          - KWD
+          - KYD
+          - KZT
+          - LAK
+          - LBP
+          - LKR
+          - LRD
+          - LSL
+          - LTL
+          - LVL
+          - LYD
+          - MAD
+          - MDL
+          - MGF
+          - MKD
+          - MMK
+          - MNT
+          - MOP
+          - MRO
+          - MTL
+          - MUR
+          - MVR
+          - MWK
+          - MXN
+          - MZM
+          - NAD
+          - NGN
+          - NIO
+          - NOK
+          - NPR
+          - OMR
+          - PAB
+          - PEN
+          - PGK
+          - PHP
+          - PKR
+          - PLN
+          - PYG
+          - QAR
+          - ROL
+          - RUR
+          - RWF
+          - SAR
+          - SBD
+          - SCR
+          - SDD
+          - SEK
+          - SHP
+          - SIT
+          - SKK
+          - SLL
+          - SOS
+          - SPL
+          - SRG
+          - STD
+          - SVC
+          - SYP
+          - SZL
+          - THB
+          - TJR
+          - TMM
+          - TND
+          - TOP
+          - TRL
+          - TTD
+          - TVD
+          - TWD
+          - TZS
+          - UAH
+          - UGX
+          - UYU
+          - UZS
+          - VEB
+          - VUV
+          - WST
+          - XAF
+          - XAG
+          - XAU
+          - XCD
+          - XDR
+          - XOF
+          - XPD
+          - XPF
+          - XPT
+          - YER
+          - YUM
+          - ZMK
+          - ZWD
+          - ADP
+          - ATS
+          - BEF
+          - BUK
+          - CSD
+          - CSK
+          - DDM
+          - DEM
+          - ECS
+          - ESP
+          - FIM
+          - GRD
+          - GWP
+          - IEP
+          - ITL
+          - LUF
+          - MLF
+          - NLG
+          - PTE
+          - SUR
+          - TPE
+          - UAK
+          - XBA
+          - XBB
+          - XBC
+          - XBD
+          - XEU
+          - XFO
+          - XFU
+          - XGF
+          - XMK
+          - XRM
+          - XTS
+          - YDD
+          - YUD
+          - ZRN
+          - TJS
+          - RON
+          - BGN
+          - BTC
+          - XBT
+          - CNH
+          - RUB
+          - TRY
+          - GHS
+          - TMT
+          - ZMW
+          - VEF
+          - SSP
+          - ALK
+        convertedCurrency:
+          type: string
+          description: Currency should be a valid three-letter ISO Code.
+          enum:
+          - USD
+          - AUD
+          - BRL
+          - CAD
+          - EUR
+          - GBP
+          - HKD
+          - IDR
+          - INR
+          - JPY
+          - NZD
+          - SGD
+          - ZAR
+          - CNY
+          - VND
+          - MYR
+          - CHF
+          - AED
+          - AFA
+          - ALL
+          - AMD
+          - ANG
+          - AOA
+          - ARS
+          - AWG
+          - AZM
+          - BAM
+          - BBD
+          - BDT
+          - BGL
+          - BHD
+          - BIF
+          - BMD
+          - BND
+          - BOB
+          - BSD
+          - BTN
+          - BWP
+          - BYR
+          - BZD
+          - CDF
+          - CLP
+          - COP
+          - CRC
+          - CUP
+          - CVE
+          - CYP
+          - CZK
+          - DJF
+          - DKK
+          - DOP
+          - DZD
+          - EEK
+          - EGP
+          - ERN
+          - ETB
+          - FJD
+          - FKP
+          - GEL
+          - GGP
+          - GHC
+          - GIP
+          - GMD
+          - GNF
+          - GTQ
+          - GYD
+          - HNL
+          - HRK
+          - HTG
+          - HUF
+          - ILS
+          - IMP
+          - IQD
+          - IRR
+          - ISK
+          - JEP
+          - JMD
+          - JOD
+          - KES
+          - KGS
+          - KHR
+          - KMF
+          - KPW
+          - KRW
+          - KWD
+          - KYD
+          - KZT
+          - LAK
+          - LBP
+          - LKR
+          - LRD
+          - LSL
+          - LTL
+          - LVL
+          - LYD
+          - MAD
+          - MDL
+          - MGF
+          - MKD
+          - MMK
+          - MNT
+          - MOP
+          - MRO
+          - MTL
+          - MUR
+          - MVR
+          - MWK
+          - MXN
+          - MZM
+          - NAD
+          - NGN
+          - NIO
+          - NOK
+          - NPR
+          - OMR
+          - PAB
+          - PEN
+          - PGK
+          - PHP
+          - PKR
+          - PLN
+          - PYG
+          - QAR
+          - ROL
+          - RUR
+          - RWF
+          - SAR
+          - SBD
+          - SCR
+          - SDD
+          - SEK
+          - SHP
+          - SIT
+          - SKK
+          - SLL
+          - SOS
+          - SPL
+          - SRG
+          - STD
+          - SVC
+          - SYP
+          - SZL
+          - THB
+          - TJR
+          - TMM
+          - TND
+          - TOP
+          - TRL
+          - TTD
+          - TVD
+          - TWD
+          - TZS
+          - UAH
+          - UGX
+          - UYU
+          - UZS
+          - VEB
+          - VUV
+          - WST
+          - XAF
+          - XAG
+          - XAU
+          - XCD
+          - XDR
+          - XOF
+          - XPD
+          - XPF
+          - XPT
+          - YER
+          - YUM
+          - ZMK
+          - ZWD
+          - ADP
+          - ATS
+          - BEF
+          - BUK
+          - CSD
+          - CSK
+          - DDM
+          - DEM
+          - ECS
+          - ESP
+          - FIM
+          - GRD
+          - GWP
+          - IEP
+          - ITL
+          - LUF
+          - MLF
+          - NLG
+          - PTE
+          - SUR
+          - TPE
+          - UAK
+          - XBA
+          - XBB
+          - XBC
+          - XBD
+          - XEU
+          - XFO
+          - XFU
+          - XGF
+          - XMK
+          - XRM
+          - XTS
+          - YDD
+          - YUD
+          - ZRN
+          - TJS
+          - RON
+          - BGN
+          - BTC
+          - XBT
+          - CNH
+          - RUB
+          - TRY
+          - GHS
+          - TMT
+          - ZMW
+          - VEF
+          - SSP
+          - ALK
+    HoldingRequestInfo:
+      title: HoldingRequestInfo
+      required:
+      - accountId
+      - description
+      - value
+      type: object
+      properties:
+        symbol:
+          type: string
+        exercisedQuantity:
+          type: number
+          format: double
+        cusipNumber:
+          type: string
+        vestedQuantity:
+          type: number
+          format: double
+        description:
+          maxLength: 2147483647
+          minLength: 1
+          type: string
+        unvestedValue:
+          $ref: '#/components/schemas/Money'
+        vestedValue:
+          $ref: '#/components/schemas/Money'
+        optionType:
+          type: string
+          enum:
+          - put
+          - call
+          - unknown
+          - other
+        holdingType:
+          type: string
+          enum:
+          - stock
+          - mutualFund
+          - bond
+          - CD
+          - option
+          - moneyMarketFund
+          - other
+          - remic
+          - future
+          - commodity
+          - currency
+          - unitInvestmentTrust
+          - employeeStockOption
+          - insuranceAnnuity
+          - unknown
+          - preferredStock
+          - ETF
+          - warrants
+          - digitalAsset
+        maturityDate:
+          type: string
+        price:
+          $ref: '#/components/schemas/Money'
+        term:
+          type: string
+        contractQuantity:
+          type: number
+          format: double
+        isShort:
+          type: boolean
+        value:
+          $ref: '#/components/schemas/Money'
+        expirationDate:
+          type: string
+        interestRate:
+          type: number
+          format: double
+        quantity:
+          type: number
+          format: double
+        grantDate:
+          type: string
+        sedol:
+          type: string
+        vestedSharesExercisable:
+          type: number
+          format: double
+        spread:
+          $ref: '#/components/schemas/Money'
+        accountId:
+          type: integer
+          format: int64
+        couponRate:
+          type: number
+          format: double
+        unvestedQuantity:
+          type: number
+          format: double
+        costBasis:
+          $ref: '#/components/schemas/Money'
+        vestingDate:
+          type: string
+        isin:
+          type: string
+        strikePrice:
+          $ref: '#/components/schemas/Money'

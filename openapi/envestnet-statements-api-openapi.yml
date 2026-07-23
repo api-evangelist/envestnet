@@ -1,0 +1,634 @@
+openapi: 3.0.1
+info:
+  title: Envestnet Aggregation APIs Account Token Statements API
+  description: 'This file describes the Yodlee Aggregation product APIs using the swagger notation that you can use to build your financial application.  You can generate the client SDK in Python, JavaScript, PHP, or any other languages according to your development needs. For more details about the APIs, refer to <a href="https://developer.envestnet.com/resources/yodlee/yodlee-api-overview/docs">Yodlee API v1.1 - Overview</a>.<br><br>You will have to set the header before making the API call. The following headers apply to all the APIs:<ul><li>Authorization: This header holds the access token</li> <li> Api-Version: 1.1</li></ul><b>Note</b>: If there are any API-specific headers, they are mentioned explicitly in the respective API''s description.'
+  termsOfService: https://developer.yodlee.com/terms/condition
+  contact:
+    email: developer@yodlee.com
+  license:
+    name: Yodlee Developer License
+    url: https://developer.yodlee.com/terms/condition#_Services_1
+  version: 1.1.0
+servers:
+- url: /
+tags:
+- name: Statements
+  description: Statements API
+paths:
+  /statements:
+    get:
+      tags:
+      - Statements
+      summary: Envestnet Get Statements
+      description: The statements service is used to get the list of statement related information. <br>By default, all the latest statements of active and to be closed accounts are retrieved for the user. <br>Certain sites do not have both a statement date and a due date. When a fromDate is passed as an input, all the statements that have the due date on or after the passed date are retrieved. <br>For sites that do not have the due date, statements that have the statement date on or after the passed date are retrieved. <br>The default value of "isLatest" is true. To retrieve historical statements isLatest needs to be set to false.<br>
+      operationId: getStatements
+      parameters:
+      - name: accountId
+        in: query
+        description: accountId
+        allowEmptyValue: false
+        schema:
+          type: string
+      - name: container
+        in: query
+        description: creditCard/loan/insurance
+        allowEmptyValue: false
+        schema:
+          type: string
+      - name: fromDate
+        in: query
+        description: from date for statement retrieval (YYYY-MM-DD)
+        allowEmptyValue: false
+        schema:
+          type: string
+      - name: isLatest
+        in: query
+        description: isLatest (true/false)
+        allowEmptyValue: false
+        schema:
+          type: string
+      - name: status
+        in: query
+        description: ACTIVE,TO_BE_CLOSED,CLOSED
+        allowEmptyValue: false
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/StatementResponse'
+        400:
+          description: 'Y800 : Invalid value for accountId<br>Y800 : Invalid value for status<br>Y805 : Multiple containers not supported<br>Y800 : Invalid value for container<br>Y800 : Invalid value for isLatest<br>Y800 : Invalid value for fromDate<br>'
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/YodleeError'
+        401:
+          description: Unauthorized
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      deprecated: false
+components:
+  schemas:
+    Statement:
+      title: Statement
+      type: object
+      properties:
+        apr:
+          type: number
+          description: 'The APR applied to the balance on the credit card account, as available in the statement.<br><b>Note:</b> In case of variable APR, the APR available on the statement might differ from the APR available at the account-level.<br><br><b>Applicable containers</b>: creditCard, loan, insurance<br>'
+          format: double
+          readOnly: true
+        cashApr:
+          type: number
+          description: 'The APR applicable to cash withdrawals on the credit card account.<br><br><b>Applicable containers</b>: creditCard, loan, insurance<br>'
+          format: double
+          readOnly: true
+        billingPeriodStart:
+          type: string
+          description: 'The start date of the statement period.<br><br><b>Applicable containers</b>: creditCard, loan, insurance<br>'
+          readOnly: true
+        dueDate:
+          type: string
+          description: 'The date by when the minimum payment is due to be paid.<br><b>Note:</b> The due date that appears in the statement may differ from the due date at the account-level.<br><br><b>Applicable containers</b>: creditCard, loan, insurance<br>'
+          readOnly: true
+        interestAmount:
+          $ref: '#/components/schemas/Money'
+        statementDate:
+          type: string
+          description: 'The date on which the statement is generated.<br><br><b>Applicable containers</b>: creditCard, loan, insurance<br>'
+          readOnly: true
+        cashAdvance:
+          $ref: '#/components/schemas/Money'
+        billingPeriodEnd:
+          type: string
+          description: 'The end date of the statement period.<br><br><b>Applicable containers</b>: creditCard, loan, insurance<br>'
+          readOnly: true
+        principalAmount:
+          $ref: '#/components/schemas/Money'
+        loanBalance:
+          $ref: '#/components/schemas/Money'
+        amountDue:
+          $ref: '#/components/schemas/Money'
+        accountId:
+          type: integer
+          description: 'Account to which the statement belongs to.<br><br><b>Applicable containers</b>: creditCard, loan, insurance<br>'
+          format: int64
+          readOnly: true
+        lastUpdated:
+          type: string
+          description: 'The date when the account was last updated by Yodlee.<br><br><b>Applicable containers</b>: creditCard, loan, insurance<br>'
+          readOnly: true
+        isLatest:
+          type: boolean
+          description: 'The field is set to true if the statement is the latest generated statement.<br><br><b>Applicable containers</b>: creditCard, loan, insurance<br>'
+          readOnly: true
+        minimumPayment:
+          $ref: '#/components/schemas/Money'
+        lastPaymentDate:
+          type: string
+          description: 'The date on which the last payment was done during the billing cycle.<br><br><b>Applicable containers</b>: creditCard, loan, insurance<br>'
+          readOnly: true
+        lastPaymentAmount:
+          $ref: '#/components/schemas/Money'
+        id:
+          type: integer
+          description: 'Unique identifier for the statement.<br><br><b>Applicable containers</b>: creditCard, loan, insurance<br>'
+          format: int64
+          readOnly: true
+        newCharges:
+          $ref: '#/components/schemas/Money'
+    Money:
+      title: Money
+      type: object
+      properties:
+        amount:
+          type: number
+          description: Value of amount.
+          format: double
+        convertedAmount:
+          type: number
+          description: Value of the converted amount.
+          format: double
+        currency:
+          type: string
+          description: Currency should be a valid three-letter ISO Code.
+          enum:
+          - USD
+          - AUD
+          - BRL
+          - CAD
+          - EUR
+          - GBP
+          - HKD
+          - IDR
+          - INR
+          - JPY
+          - NZD
+          - SGD
+          - ZAR
+          - CNY
+          - VND
+          - MYR
+          - CHF
+          - AED
+          - AFA
+          - ALL
+          - AMD
+          - ANG
+          - AOA
+          - ARS
+          - AWG
+          - AZM
+          - BAM
+          - BBD
+          - BDT
+          - BGL
+          - BHD
+          - BIF
+          - BMD
+          - BND
+          - BOB
+          - BSD
+          - BTN
+          - BWP
+          - BYR
+          - BZD
+          - CDF
+          - CLP
+          - COP
+          - CRC
+          - CUP
+          - CVE
+          - CYP
+          - CZK
+          - DJF
+          - DKK
+          - DOP
+          - DZD
+          - EEK
+          - EGP
+          - ERN
+          - ETB
+          - FJD
+          - FKP
+          - GEL
+          - GGP
+          - GHC
+          - GIP
+          - GMD
+          - GNF
+          - GTQ
+          - GYD
+          - HNL
+          - HRK
+          - HTG
+          - HUF
+          - ILS
+          - IMP
+          - IQD
+          - IRR
+          - ISK
+          - JEP
+          - JMD
+          - JOD
+          - KES
+          - KGS
+          - KHR
+          - KMF
+          - KPW
+          - KRW
+          - KWD
+          - KYD
+          - KZT
+          - LAK
+          - LBP
+          - LKR
+          - LRD
+          - LSL
+          - LTL
+          - LVL
+          - LYD
+          - MAD
+          - MDL
+          - MGF
+          - MKD
+          - MMK
+          - MNT
+          - MOP
+          - MRO
+          - MTL
+          - MUR
+          - MVR
+          - MWK
+          - MXN
+          - MZM
+          - NAD
+          - NGN
+          - NIO
+          - NOK
+          - NPR
+          - OMR
+          - PAB
+          - PEN
+          - PGK
+          - PHP
+          - PKR
+          - PLN
+          - PYG
+          - QAR
+          - ROL
+          - RUR
+          - RWF
+          - SAR
+          - SBD
+          - SCR
+          - SDD
+          - SEK
+          - SHP
+          - SIT
+          - SKK
+          - SLL
+          - SOS
+          - SPL
+          - SRG
+          - STD
+          - SVC
+          - SYP
+          - SZL
+          - THB
+          - TJR
+          - TMM
+          - TND
+          - TOP
+          - TRL
+          - TTD
+          - TVD
+          - TWD
+          - TZS
+          - UAH
+          - UGX
+          - UYU
+          - UZS
+          - VEB
+          - VUV
+          - WST
+          - XAF
+          - XAG
+          - XAU
+          - XCD
+          - XDR
+          - XOF
+          - XPD
+          - XPF
+          - XPT
+          - YER
+          - YUM
+          - ZMK
+          - ZWD
+          - ADP
+          - ATS
+          - BEF
+          - BUK
+          - CSD
+          - CSK
+          - DDM
+          - DEM
+          - ECS
+          - ESP
+          - FIM
+          - GRD
+          - GWP
+          - IEP
+          - ITL
+          - LUF
+          - MLF
+          - NLG
+          - PTE
+          - SUR
+          - TPE
+          - UAK
+          - XBA
+          - XBB
+          - XBC
+          - XBD
+          - XEU
+          - XFO
+          - XFU
+          - XGF
+          - XMK
+          - XRM
+          - XTS
+          - YDD
+          - YUD
+          - ZRN
+          - TJS
+          - RON
+          - BGN
+          - BTC
+          - XBT
+          - CNH
+          - RUB
+          - TRY
+          - GHS
+          - TMT
+          - ZMW
+          - VEF
+          - SSP
+          - ALK
+        convertedCurrency:
+          type: string
+          description: Currency should be a valid three-letter ISO Code.
+          enum:
+          - USD
+          - AUD
+          - BRL
+          - CAD
+          - EUR
+          - GBP
+          - HKD
+          - IDR
+          - INR
+          - JPY
+          - NZD
+          - SGD
+          - ZAR
+          - CNY
+          - VND
+          - MYR
+          - CHF
+          - AED
+          - AFA
+          - ALL
+          - AMD
+          - ANG
+          - AOA
+          - ARS
+          - AWG
+          - AZM
+          - BAM
+          - BBD
+          - BDT
+          - BGL
+          - BHD
+          - BIF
+          - BMD
+          - BND
+          - BOB
+          - BSD
+          - BTN
+          - BWP
+          - BYR
+          - BZD
+          - CDF
+          - CLP
+          - COP
+          - CRC
+          - CUP
+          - CVE
+          - CYP
+          - CZK
+          - DJF
+          - DKK
+          - DOP
+          - DZD
+          - EEK
+          - EGP
+          - ERN
+          - ETB
+          - FJD
+          - FKP
+          - GEL
+          - GGP
+          - GHC
+          - GIP
+          - GMD
+          - GNF
+          - GTQ
+          - GYD
+          - HNL
+          - HRK
+          - HTG
+          - HUF
+          - ILS
+          - IMP
+          - IQD
+          - IRR
+          - ISK
+          - JEP
+          - JMD
+          - JOD
+          - KES
+          - KGS
+          - KHR
+          - KMF
+          - KPW
+          - KRW
+          - KWD
+          - KYD
+          - KZT
+          - LAK
+          - LBP
+          - LKR
+          - LRD
+          - LSL
+          - LTL
+          - LVL
+          - LYD
+          - MAD
+          - MDL
+          - MGF
+          - MKD
+          - MMK
+          - MNT
+          - MOP
+          - MRO
+          - MTL
+          - MUR
+          - MVR
+          - MWK
+          - MXN
+          - MZM
+          - NAD
+          - NGN
+          - NIO
+          - NOK
+          - NPR
+          - OMR
+          - PAB
+          - PEN
+          - PGK
+          - PHP
+          - PKR
+          - PLN
+          - PYG
+          - QAR
+          - ROL
+          - RUR
+          - RWF
+          - SAR
+          - SBD
+          - SCR
+          - SDD
+          - SEK
+          - SHP
+          - SIT
+          - SKK
+          - SLL
+          - SOS
+          - SPL
+          - SRG
+          - STD
+          - SVC
+          - SYP
+          - SZL
+          - THB
+          - TJR
+          - TMM
+          - TND
+          - TOP
+          - TRL
+          - TTD
+          - TVD
+          - TWD
+          - TZS
+          - UAH
+          - UGX
+          - UYU
+          - UZS
+          - VEB
+          - VUV
+          - WST
+          - XAF
+          - XAG
+          - XAU
+          - XCD
+          - XDR
+          - XOF
+          - XPD
+          - XPF
+          - XPT
+          - YER
+          - YUM
+          - ZMK
+          - ZWD
+          - ADP
+          - ATS
+          - BEF
+          - BUK
+          - CSD
+          - CSK
+          - DDM
+          - DEM
+          - ECS
+          - ESP
+          - FIM
+          - GRD
+          - GWP
+          - IEP
+          - ITL
+          - LUF
+          - MLF
+          - NLG
+          - PTE
+          - SUR
+          - TPE
+          - UAK
+          - XBA
+          - XBB
+          - XBC
+          - XBD
+          - XEU
+          - XFO
+          - XFU
+          - XGF
+          - XMK
+          - XRM
+          - XTS
+          - YDD
+          - YUD
+          - ZRN
+          - TJS
+          - RON
+          - BGN
+          - BTC
+          - XBT
+          - CNH
+          - RUB
+          - TRY
+          - GHS
+          - TMT
+          - ZMW
+          - VEF
+          - SSP
+          - ALK
+    StatementResponse:
+      title: StatementResponse
+      type: object
+      properties:
+        statement:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Statement'
+    YodleeError:
+      title: YodleeError
+      type: object
+      properties:
+        errorMessage:
+          type: string
+          description: The descriptive message that explains the error scenario.
+          readOnly: true
+        errorCode:
+          type: string
+          description: The error code follows the format YNNN. The error codes do not change. New error codes may be added as we introduce new features and enhance functionalities.
+          readOnly: true
+        referenceCode:
+          type: string
+          description: Unique Yodlee identifier used to troubleshoot issues at Yodlee's end.
+          readOnly: true

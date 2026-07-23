@@ -1,0 +1,927 @@
+openapi: 3.0.1
+info:
+  title: Envestnet Aggregation APIs Account Token Payment Processor API
+  description: 'This file describes the Yodlee Aggregation product APIs using the swagger notation that you can use to build your financial application.  You can generate the client SDK in Python, JavaScript, PHP, or any other languages according to your development needs. For more details about the APIs, refer to <a href="https://developer.envestnet.com/resources/yodlee/yodlee-api-overview/docs">Yodlee API v1.1 - Overview</a>.<br><br>You will have to set the header before making the API call. The following headers apply to all the APIs:<ul><li>Authorization: This header holds the access token</li> <li> Api-Version: 1.1</li></ul><b>Note</b>: If there are any API-specific headers, they are mentioned explicitly in the respective API''s description.'
+  termsOfService: https://developer.yodlee.com/terms/condition
+  contact:
+    email: developer@yodlee.com
+  license:
+    name: Yodlee Developer License
+    url: https://developer.yodlee.com/terms/condition#_Services_1
+  version: 1.1.0
+servers:
+- url: /
+tags:
+- name: Payment Processor
+  description: 'Envestnet | Yodlee''s payment processor partners can use the Payment Processor endpoints to access verified account details using the <code>processorToken</code> created and shared by mutual customers. These APIs are only for payment processor partners and not for developers using the Envestnet | Yodlee services to integrate with payment partners. Refer <a href="/products/yodlee/account-token/docs#customers"> here </a> for a guide on working with payment processor partners.<br>As a processor payment partner, you can retrieve the following account information using the <code>processorToken</code>:<ul><li>Account details include account status, account name, full account number, bank transfer code, balance, etc.</li><li>Account holder details include name, email, phone number, address, etc.</li><li>Account balance details.</li></ul><br>You will have to set the header before making the API call. The following headers apply to all the APIs:</p><ul><li>Authorization: This header holds the access token</li> </ul><b>Note</b>: If there are any API-specific headers, they are mentioned explicitly in the respective API''s description.<p></p>'
+paths:
+  /partner/paymentProcessor/account/holder:
+    get:
+      tags:
+      - Payment Processor
+      summary: Envestnet Get Account Holder Details
+      description: 'The get account holder details service retrieves the account holder information such as name, email, phone number, address, etc. of the verified financial account associated with the <code>processorToken</code>. The <code>lastUpdated</code> field indicates when the account information was last updated. We recommend using this service when looking for information related to the account holder(s), for instance, to confirm the account holder''s name. <br><br><b>Note: </b>Remember to include the <code>Authorization</code> header.'
+      operationId: getVerifiedAccountHolder
+      parameters:
+      - name: processorToken
+        in: header
+        description: Token shared by customer to access financial account information.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/PaymentAccountHolderResponse'
+        '400':
+          description: 'Y007 : Authorization header missing<br>Y008 : Invalid token in authorization header<br>Y800 : Invalid value for processorToken<br>Y016 : processorToken header missing'
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/YodleeError'
+        '401':
+          description: Unauthorized
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+  /partner/paymentProcessor/account:
+    get:
+      tags:
+      - Payment Processor
+      summary: Envestnet Get Account Details
+      description: 'The get account details service retrieves account information such as account name, type, status, balance, account number and transfer code (for example, routing number of the bank account in the US) of the verified account associated with the <code>processorToken</code>. The <code>lastUpdated</code> field indicates when the account information was last updated. We recommend using this service when looking for details related to the financial account, for instance, the full account number and bank transfer code for initiating a payment.<br><br><b>Note: </b>Remember to include the <code>Authorization</code> header.'
+      operationId: getVerifiedAccount
+      parameters:
+      - name: processorToken
+        in: header
+        description: Token shared by customer to access financial account information.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/PaymentAccountResponse'
+        '400':
+          description: 'Y007 : Authorization header missing<br>Y008 : Invalid token in authorization header<br>Y800 : Invalid value for processorToken<br>Y016 : processorToken header missing'
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/YodleeError'
+        '401':
+          description: Unauthorized
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+  /partner/paymentProcessor/account/balance:
+    get:
+      tags:
+      - Payment Processor
+      summary: Envestnet Get Account Balance
+      description: 'The get account balance service retrieves the account balance information of the verified account associated with the <code>processorToken</code>. The response returns additional account information including account names, type and status, along with the account balance information. <br>This service forces an update of the account balances. While other services also return the account balances, this service attempts to refresh the account balances in real-time rather than return a cached value. Refer to the <code>lastUpdated</code> field to determine when the account balances were refreshed. We recommend using this service when looking for the latest balance for the account.<br>While posting a debit against an account, it is generally advisable to check the available balance field to verify the availability of sufficient funds. This service returns both available and current balances: <ul><li><b>Available Balance</b> is the amount in the account that is available for spending. The value is aggregated from the FI. For checking accounts with overdrafts, the available balance amount may include the overdraft amount if the FI adds the overdraft balance to the available balance.</li><li><b>Current Balance</b> is the total amount of money in the account, aggregated from the FI.</li></ul><br><b>Note: </b>Remember to include the <code>Authorization</code> header.'
+      operationId: getVerifiedAccountBalance
+      parameters:
+      - name: processorToken
+        in: header
+        description: Token shared by customer to access financial account information.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/PaymentAccountBalanceResponse'
+        '400':
+          description: 'Y007 : Authorization header missing<br>Y008 : Invalid token in authorization header<br>Y800 : Invalid value for processorToken<br>Y016 : processorToken header missing'
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/YodleeError'
+        '401':
+          description: Unauthorized
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      deprecated: false
+components:
+  schemas:
+    Name:
+      title: Name
+      type: object
+      properties:
+        middle:
+          type: string
+        last:
+          type: string
+        fullName:
+          type: string
+        first:
+          type: string
+    FullAccountNumbers:
+      title: FullAccountNumbers
+      type: object
+      properties:
+        paymentAccountNumber:
+          type: string
+          description: The payment account number is used for payments in all regions, this may be looked as an ACH account number in the US.<br><b>Endpoints</b>:<ul><li>GET /partner/paymentProcessor/account</li></ul>
+          readOnly: true
+        unmaskedAccountNumber:
+          type: string
+          description: The unmasked account number is same as account number that is used to refer to an account and is not partial or masked.<br><b>Endpoints</b>:<ul><li>GET /partner/paymentProcessor/account</li></ul>
+          readOnly: true
+    PaymentAccountBalanceResponse:
+      title: PaymentAccountBalanceResponse
+      type: object
+      properties:
+        account:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/PaymentAccountBalance'
+    PaymentBankTransferCodeData:
+      title: PaymentBankTransferCodeData
+      type: object
+      properties:
+        id:
+          type: string
+          description: The financial institution's branch identification number that is associated with the lender.<br><b>Endpoints</b>:<ul><li>GET /partner/paymentProcessor/account</li></ul>
+        type:
+          type: string
+          description: 'The payment bank transfer code type varies based on the region of the account originates from. <br>Valid Values: BSB, IFSC, ROUTING_NUMBER, SORT_CODE<br><b>Endpoints</b>:<ul><li>GET /partner/paymentProcessor/account</li></ul><b>Applicable Values</b><br>'
+          enum:
+          - BSB
+          - IFSC
+          - ROUTING_NUMBER
+          - SORT_CODE
+    PaymentAccountBalance:
+      title: PaymentAccountBalance
+      type: object
+      properties:
+        accountStatus:
+          type: string
+          description: The status of the account that is updated by the user through an application or an API.</li><ul><li><b>ACTIVE:</b> All the added aggregated accounts status will be made "ACTIVE" by default.</li><li><b>TO_BE_CLOSED:</b> If the aggregated accounts are not found or closed in the data provider site, Yodlee system marks the status as TO_BE_CLOSED.</li><li><b>INACTIVE:</b> Users can update the status as INACTIVE to stop updating and to stop considering the account in other services.</li><li><b>CLOSED:</b> Users can update the status as CLOSED, if the account is closed with the provider.</li></ul><b>Endpoints</b>:<ul><li>GET /partner/paymentProcessor/account</li><li>GET /partner/paymentProcessor/account/balance</li><li>GET /partner/paymentProcessor/account/holder</li></ul>
+          readOnly: true
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - TO_BE_CLOSED
+          - CLOSED
+          - DELETED
+        lastUpdated:
+          type: string
+          description: The date time the account information was last retrieved from the provider site and updated in the Yodlee system.<br><b>Endpoints</b>:<ul><li>GET /partner/paymentProcessor/account</li><li>GET /partner/paymentProcessor/account/balance</li><li>GET /partner/paymentProcessor/account/holder</li></ul>
+          readOnly: true
+        accountName:
+          type: string
+          description: The account name as it appears at the site.<br><b>Endpoints</b>:<ul><li>GET /partner/paymentProcessor/account</li><li>GET /partner/paymentProcessor/account/balance</li><li>GET /partner/paymentProcessor/account/holder</li></ul>
+          readOnly: true
+        accountType:
+          type: string
+          description: The type of account that is aggregated, i.e., savings, checking, charge, etc. The account type is derived based on the attributes of the account. <br><b>Endpoints</b>:<ul><li>GET /partner/paymentProcessor/account</li><li>GET /partner/paymentProcessor/account/balance</li><li>GET /partner/paymentProcessor/account/holder</li></ul>
+          readOnly: true
+        currentBalance:
+          $ref: '#/components/schemas/Money'
+        id:
+          type: integer
+          description: The primary key of the account resource and the unique identifier for the account.<br><br><b>Endpoints</b>:<ul><li>GET /partner/paymentProcessor/account</li><li>GET /partner/paymentProcessor/account/balance</li><li>GET /partner/paymentProcessor/account/holder</li></ul>
+          format: int64
+          readOnly: true
+        availableBalance:
+          $ref: '#/components/schemas/Money'
+    Identifier:
+      title: Identifier
+      type: object
+      properties:
+        type:
+          type: string
+          description: Type of Identifier
+          readOnly: true
+          enum:
+          - NIE
+          - DNI
+          - EIN
+          - BN
+          - AADHAR
+          - NIN
+          - NRIC
+        value:
+          type: string
+          description: Value of the identifier
+          readOnly: true
+    PaymentAccountResponse:
+      title: PaymentAccountResponse
+      type: object
+      properties:
+        account:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/PaymentAccount'
+    Email:
+      title: Email
+      type: object
+      properties:
+        type:
+          type: string
+          readOnly: true
+          enum:
+          - PRIMARY
+          - SECONDARY
+          - PERSONAL
+          - WORK
+          - OTHERS
+        value:
+          type: string
+          readOnly: true
+    PhoneNumber:
+      title: PhoneNumber
+      type: object
+      properties:
+        type:
+          type: string
+          description: type of phone number
+          readOnly: true
+          enum:
+          - HOME
+          - WORK
+          - LANDLINE
+          - MOBILE
+        value:
+          type: string
+          description: Phone Number
+          readOnly: true
+    AccountHolderData:
+      title: AccountHolderData
+      type: object
+      properties:
+        identifier:
+          type: array
+          description: Identifiers of the account holder.<br><b>Endpoints</b>:<li>GET /partner/paymentProcessor/account/holder</li></ul>
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Identifier'
+        gender:
+          type: string
+          description: Identifiers of the account holder.<br><b>Endpoints</b>:<li>GET /partner/paymentProcessor/account/holder</li></ul>
+          readOnly: true
+        ownership:
+          type: string
+          description: Indicates the ownership of the account.<br><b>Endpoints</b>:<li>GET /partner/paymentProcessor/account/holder</li></ul>
+          readOnly: true
+          enum:
+          - PRIMARY
+          - SECONDARY
+          - CUSTODIAN
+          - OTHERS
+          - POWER_OF_ATTORNEY
+          - TRUSTEE
+          - JOINT_OWNER
+          - BENEFICIARY
+          - AAS
+          - BUSINESS
+          - DBA
+          - TRUST
+        name:
+          $ref: '#/components/schemas/Name'
+    AccountAddress:
+      title: AccountAddress
+      type: object
+      properties:
+        zip:
+          type: string
+        country:
+          type: string
+        address3:
+          type: string
+        address2:
+          type: string
+        city:
+          type: string
+        sourceType:
+          type: string
+        address1:
+          type: string
+        street:
+          type: string
+        state:
+          type: string
+        type:
+          type: string
+          enum:
+          - HOME
+          - BUSINESS
+          - POBOX
+          - RETAIL
+          - OFFICE
+          - SMALL_BUSINESS
+          - COMMUNICATION
+          - PERMANENT
+          - STATEMENT_ADDRESS
+          - PAYMENT
+          - PAYOFF
+          - UNKNOWN
+    PaymentAccountHolderResponse:
+      title: PaymentAccountHolderResponse
+      type: object
+      properties:
+        account:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/PaymentAccountHolder'
+    AccountProfileDetail:
+      title: AccountProfileDetail
+      type: object
+      properties:
+        identifier:
+          type: array
+          description: Identifiers available in the profile page of the account.<br><b>Endpoints</b>:<li>GET /partner/paymentProcessor/account/holder</li></ul>
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Identifier'
+        address:
+          type: array
+          description: Address available in the profile page of the account.<br><b>Endpoints</b>:<li>GET /partner/paymentProcessor/account/holder</li></ul>
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/AccountAddress'
+        phoneNumber:
+          type: array
+          description: Phone number available in the profile page of the account.<br><b>Endpoints</b>:<li>GET /partner/paymentProcessor/account/holder</li></ul>
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/PhoneNumber'
+        email:
+          type: array
+          description: Email Id available in the profile page of the account.<br><b>Endpoints</b>:<li>GET /partner/paymentProcessor/account/holder</li></ul>
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Email'
+    YodleeError:
+      title: YodleeError
+      type: object
+      properties:
+        errorMessage:
+          type: string
+        errorCode:
+          type: string
+        referenceCode:
+          type: string
+    PaymentAccountHolder:
+      title: PaymentAccountHolder
+      type: object
+      properties:
+        accountStatus:
+          type: string
+          description: The status of the account that is updated by the user through an application or an API.</li><ul><li><b>ACTIVE:</b> All the added aggregated accounts status will be made "ACTIVE" by default.</li><li><b>TO_BE_CLOSED:</b> If the aggregated accounts are not found or closed in the data provider site, Yodlee system marks the status as TO_BE_CLOSED.</li><li><b>INACTIVE:</b> Users can update the status as INACTIVE to stop updating and to stop considering the account in other services.</li><li><b>CLOSED:</b> Users can update the status as CLOSED, if the account is closed with the provider.</li></ul><b>Endpoints</b>:<ul><li>GET /partner/paymentProcessor/account</li><li>GET /partner/paymentProcessor/account/balance</li><li>GET /partner/paymentProcessor/account/holder</li></ul>
+          readOnly: true
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - TO_BE_CLOSED
+          - CLOSED
+          - DELETED
+        lastUpdated:
+          type: string
+          description: The date time the account information was last retrieved from the provider site and updated in the Yodlee system.<br><b>Endpoints</b>:<ul><li>GET /partner/paymentProcessor/account</li><li>GET /partner/paymentProcessor/account/balance</li><li>GET /partner/paymentProcessor/account/holder</li></ul>
+          readOnly: true
+        accountName:
+          type: string
+          description: The account name as it appears at the site.<br><b>Endpoints</b>:<ul><li>GET /partner/paymentProcessor/account</li><li>GET /partner/paymentProcessor/account/balance</li><li>GET /partner/paymentProcessor/account/holder</li></ul>
+          readOnly: true
+        accountType:
+          type: string
+          description: The type of account that is aggregated, i.e., savings, checking, charge, etc. The account type is derived based on the attributes of the account. <br><b>Endpoints</b>:<ul><li>GET /partner/paymentProcessor/account</li><li>GET /partner/paymentProcessor/account/balance</li><li>GET /partner/paymentProcessor/account/holder</li></ul>
+          readOnly: true
+        profile:
+          $ref: '#/components/schemas/AccountProfileDetail'
+        holder:
+          type: array
+          description: Holder details of the account.<br><b>Endpoints</b>:<li>GET /partner/paymentProcessor/account/holder</li></ul>
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/AccountHolderData'
+        id:
+          type: integer
+          description: The primary key of the account resource and the unique identifier for the account.<br><br><b>Endpoints</b>:<ul><li>GET /partner/paymentProcessor/account</li><li>GET /partner/paymentProcessor/account/balance</li><li>GET /partner/paymentProcessor/account/holder</li></ul>
+          format: int64
+          readOnly: true
+    Money:
+      title: Money
+      required:
+      - amount
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        convertedAmount:
+          type: number
+          format: double
+        currency:
+          type: string
+          enum:
+          - USD
+          - AUD
+          - BRL
+          - CAD
+          - EUR
+          - GBP
+          - HKD
+          - IDR
+          - INR
+          - JPY
+          - NZD
+          - SGD
+          - ZAR
+          - CNY
+          - VND
+          - MYR
+          - CHF
+          - AED
+          - AFA
+          - ALL
+          - AMD
+          - ANG
+          - AOA
+          - ARS
+          - AWG
+          - AZM
+          - BAM
+          - BBD
+          - BDT
+          - BGL
+          - BHD
+          - BIF
+          - BMD
+          - BND
+          - BOB
+          - BSD
+          - BTN
+          - BWP
+          - BYR
+          - BZD
+          - CDF
+          - CLP
+          - COP
+          - CRC
+          - CUP
+          - CVE
+          - CYP
+          - CZK
+          - DJF
+          - DKK
+          - DOP
+          - DZD
+          - EEK
+          - EGP
+          - ERN
+          - ETB
+          - FJD
+          - FKP
+          - GEL
+          - GGP
+          - GHC
+          - GIP
+          - GMD
+          - GNF
+          - GTQ
+          - GYD
+          - HNL
+          - HRK
+          - HTG
+          - HUF
+          - ILS
+          - IMP
+          - IQD
+          - IRR
+          - ISK
+          - JEP
+          - JMD
+          - JOD
+          - KES
+          - KGS
+          - KHR
+          - KMF
+          - KPW
+          - KRW
+          - KWD
+          - KYD
+          - KZT
+          - LAK
+          - LBP
+          - LKR
+          - LRD
+          - LSL
+          - LTL
+          - LVL
+          - LYD
+          - MAD
+          - MDL
+          - MGF
+          - MKD
+          - MMK
+          - MNT
+          - MOP
+          - MRO
+          - MTL
+          - MUR
+          - MVR
+          - MWK
+          - MXN
+          - MZM
+          - NAD
+          - NGN
+          - NIO
+          - NOK
+          - NPR
+          - OMR
+          - PAB
+          - PEN
+          - PGK
+          - PHP
+          - PKR
+          - PLN
+          - PYG
+          - QAR
+          - ROL
+          - RUR
+          - RWF
+          - SAR
+          - SBD
+          - SCR
+          - SDD
+          - SEK
+          - SHP
+          - SIT
+          - SKK
+          - SLL
+          - SOS
+          - SPL
+          - SRG
+          - STD
+          - SVC
+          - SYP
+          - SZL
+          - THB
+          - TJR
+          - TMM
+          - TND
+          - TOP
+          - TRL
+          - TTD
+          - TVD
+          - TWD
+          - TZS
+          - UAH
+          - UGX
+          - UYU
+          - UZS
+          - VEB
+          - VUV
+          - WST
+          - XAF
+          - XAG
+          - XAU
+          - XCD
+          - XDR
+          - XOF
+          - XPD
+          - XPF
+          - XPT
+          - YER
+          - YUM
+          - ZMK
+          - ZWD
+          - ADP
+          - ATS
+          - BEF
+          - BUK
+          - CSD
+          - CSK
+          - DDM
+          - DEM
+          - ECS
+          - ESP
+          - FIM
+          - GRD
+          - GWP
+          - IEP
+          - ITL
+          - LUF
+          - MLF
+          - NLG
+          - PTE
+          - SUR
+          - TPE
+          - UAK
+          - XBA
+          - XBB
+          - XBC
+          - XBD
+          - XEU
+          - XFO
+          - XFU
+          - XGF
+          - XMK
+          - XRM
+          - XTS
+          - YDD
+          - YUD
+          - ZRN
+          - TJS
+          - RON
+          - BGN
+          - BTC
+          - XBT
+          - CNH
+          - RUB
+          - TRY
+          - GHS
+          - TMT
+          - ZMW
+          - VEF
+          - SSP
+          - ALK
+        convertedCurrency:
+          type: string
+          enum:
+          - USD
+          - AUD
+          - BRL
+          - CAD
+          - EUR
+          - GBP
+          - HKD
+          - IDR
+          - INR
+          - JPY
+          - NZD
+          - SGD
+          - ZAR
+          - CNY
+          - VND
+          - MYR
+          - CHF
+          - AED
+          - AFA
+          - ALL
+          - AMD
+          - ANG
+          - AOA
+          - ARS
+          - AWG
+          - AZM
+          - BAM
+          - BBD
+          - BDT
+          - BGL
+          - BHD
+          - BIF
+          - BMD
+          - BND
+          - BOB
+          - BSD
+          - BTN
+          - BWP
+          - BYR
+          - BZD
+          - CDF
+          - CLP
+          - COP
+          - CRC
+          - CUP
+          - CVE
+          - CYP
+          - CZK
+          - DJF
+          - DKK
+          - DOP
+          - DZD
+          - EEK
+          - EGP
+          - ERN
+          - ETB
+          - FJD
+          - FKP
+          - GEL
+          - GGP
+          - GHC
+          - GIP
+          - GMD
+          - GNF
+          - GTQ
+          - GYD
+          - HNL
+          - HRK
+          - HTG
+          - HUF
+          - ILS
+          - IMP
+          - IQD
+          - IRR
+          - ISK
+          - JEP
+          - JMD
+          - JOD
+          - KES
+          - KGS
+          - KHR
+          - KMF
+          - KPW
+          - KRW
+          - KWD
+          - KYD
+          - KZT
+          - LAK
+          - LBP
+          - LKR
+          - LRD
+          - LSL
+          - LTL
+          - LVL
+          - LYD
+          - MAD
+          - MDL
+          - MGF
+          - MKD
+          - MMK
+          - MNT
+          - MOP
+          - MRO
+          - MTL
+          - MUR
+          - MVR
+          - MWK
+          - MXN
+          - MZM
+          - NAD
+          - NGN
+          - NIO
+          - NOK
+          - NPR
+          - OMR
+          - PAB
+          - PEN
+          - PGK
+          - PHP
+          - PKR
+          - PLN
+          - PYG
+          - QAR
+          - ROL
+          - RUR
+          - RWF
+          - SAR
+          - SBD
+          - SCR
+          - SDD
+          - SEK
+          - SHP
+          - SIT
+          - SKK
+          - SLL
+          - SOS
+          - SPL
+          - SRG
+          - STD
+          - SVC
+          - SYP
+          - SZL
+          - THB
+          - TJR
+          - TMM
+          - TND
+          - TOP
+          - TRL
+          - TTD
+          - TVD
+          - TWD
+          - TZS
+          - UAH
+          - UGX
+          - UYU
+          - UZS
+          - VEB
+          - VUV
+          - WST
+          - XAF
+          - XAG
+          - XAU
+          - XCD
+          - XDR
+          - XOF
+          - XPD
+          - XPF
+          - XPT
+          - YER
+          - YUM
+          - ZMK
+          - ZWD
+          - ADP
+          - ATS
+          - BEF
+          - BUK
+          - CSD
+          - CSK
+          - DDM
+          - DEM
+          - ECS
+          - ESP
+          - FIM
+          - GRD
+          - GWP
+          - IEP
+          - ITL
+          - LUF
+          - MLF
+          - NLG
+          - PTE
+          - SUR
+          - TPE
+          - UAK
+          - XBA
+          - XBB
+          - XBC
+          - XBD
+          - XEU
+          - XFO
+          - XFU
+          - XGF
+          - XMK
+          - XRM
+          - XTS
+          - YDD
+          - YUD
+          - ZRN
+          - TJS
+          - RON
+          - BGN
+          - BTC
+          - XBT
+          - CNH
+          - RUB
+          - TRY
+          - GHS
+          - TMT
+          - ZMW
+          - VEF
+          - SSP
+          - ALK
+    PaymentAccount:
+      title: PaymentAccount
+      type: object
+      properties:
+        accountStatus:
+          type: string
+          description: The status of the account that is updated by the user through an application or an API.</li><ul><li><b>ACTIVE:</b> All the added aggregated accounts status will be made "ACTIVE" by default.</li><li><b>TO_BE_CLOSED:</b> If the aggregated accounts are not found or closed in the data provider site, Yodlee system marks the status as TO_BE_CLOSED.</li><li><b>INACTIVE:</b> Users can update the status as INACTIVE to stop updating and to stop considering the account in other services.</li><li><b>CLOSED:</b> Users can update the status as CLOSED, if the account is closed with the provider.</li></ul><b>Endpoints</b>:<ul><li>GET /partner/paymentProcessor/account</li><li>GET /partner/paymentProcessor/account/balance</li><li>GET /partner/paymentProcessor/account/holder</li></ul>
+          readOnly: true
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - TO_BE_CLOSED
+          - CLOSED
+          - DELETED
+        lastUpdated:
+          type: string
+          description: The date time the account information was last retrieved from the provider site and updated in the Yodlee system.<br><b>Endpoints</b>:<ul><li>GET /partner/paymentProcessor/account</li><li>GET /partner/paymentProcessor/account/balance</li><li>GET /partner/paymentProcessor/account/holder</li></ul>
+          readOnly: true
+        accountName:
+          type: string
+          description: The account name as it appears at the site.<br><b>Endpoints</b>:<ul><li>GET /partner/paymentProcessor/account</li><li>GET /partner/paymentProcessor/account/balance</li><li>GET /partner/paymentProcessor/account/holder</li></ul>
+          readOnly: true
+        accountType:
+          type: string
+          description: The type of account that is aggregated, i.e., savings, checking, charge, etc. The account type is derived based on the attributes of the account. <br><b>Endpoints</b>:<ul><li>GET /partner/paymentProcessor/account</li><li>GET /partner/paymentProcessor/account/balance</li><li>GET /partner/paymentProcessor/account/holder</li></ul>
+          readOnly: true
+        currentBalance:
+          $ref: '#/components/schemas/Money'
+        id:
+          type: integer
+          description: The primary key of the account resource and the unique identifier for the account.<br><br><b>Endpoints</b>:<ul><li>GET /partner/paymentProcessor/account</li><li>GET /partner/paymentProcessor/account/balance</li><li>GET /partner/paymentProcessor/account/holder</li></ul>
+          format: int64
+          readOnly: true
+        bankTransferCode:
+          type: array
+          description: Bank and branch identification information.<br><br><b>Endpoints</b>:<ul><li>GET /partner/paymentProcessor/account</li></ul>
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/PaymentBankTransferCodeData'
+        availableBalance:
+          $ref: '#/components/schemas/Money'
+        fullAccountNumberList:
+          $ref: '#/components/schemas/FullAccountNumbers'
