@@ -4,7 +4,19 @@ description: Envestnet is an ever-evolving network of data-driven services, prod
   enable the Intelligent Financial Life. Our robust financial wellness ecosystem offers solutions for every role in the financial
   advice industry, including the Yodlee account aggregation, verification, credit, insights, and personalized view APIs.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/envestnet.png
 tags:
   - Financial
   - Wealth Management
@@ -17,156 +29,1851 @@ specificationVersion: '0.19'
 position: Consumer
 access: 3rd-Party
 apis:
-  - aid: envestnet:envestnet-account-aggregation-api
-    name: Envestnet Account Aggregation API
-    description: Aggregation APIs give you the power to access accounts at most institutions in the industry, combined with
-      the industry's best data enrichment augmented by powerful AI-driven data analysis, all from a single open-banking-ready
-      platform.
-    humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
-    tags:
-    - Account Aggregation
-    - Open Banking
-    properties:
-    - type: Documentation
-      url: https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference
-    - type: OpenAPI
-      url: openapi/envestnet-account-aggregation-openapi-original.yml
-    - type: X-NaftikoCapability
-      url: capabilities/account-aggregation-accounts.yaml
-    - type: X-NaftikoCapability
-      url: capabilities/account-aggregation-auth.yaml
-    - type: X-NaftikoCapability
-      url: capabilities/account-aggregation-configs.yaml
-    - type: X-NaftikoCapability
-      url: capabilities/account-aggregation-consents.yaml
-    - type: X-NaftikoCapability
-      url: capabilities/account-aggregation-dataextracts.yaml
-    - type: X-NaftikoCapability
-      url: capabilities/account-aggregation-derived.yaml
-    - type: X-NaftikoCapability
-      url: capabilities/account-aggregation-documents.yaml
-    - type: X-NaftikoCapability
-      url: capabilities/account-aggregation-holdings.yaml
-    - type: X-NaftikoCapability
-      url: capabilities/account-aggregation-provideraccounts.yaml
-    - type: X-NaftikoCapability
-      url: capabilities/account-aggregation-providers.yaml
-    - type: X-NaftikoCapability
-      url: capabilities/account-aggregation-statements.yaml
-    - type: X-NaftikoCapability
-      url: capabilities/account-aggregation-transactions.yaml
-    - type: X-NaftikoCapability
-      url: capabilities/account-aggregation-user.yaml
-  - aid: envestnet:envestnet-account-token-api
-    name: Envestnet Account Token APIs
-    description: Financial institutions or FinTech customers using the account verification product to provide digital payment
-      services can eliminate the risk of storing users' sensitive financial account information by using Account Token endpoints.
-      The endpoints allow customers to create an account-specific token that payment processors can use to retrieve account
-      information.
-    humanURL: https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference
-    tags:
-    - Account Token
-    - Payments
-    properties:
-    - type: Documentation
-      url: https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference
-    - type: OpenAPI
-      url: openapi/envestnet-account-token-openapi-original.yml
-    - type: X-NaftikoCapability
-      url: capabilities/account-token-account-token.yaml
-    - type: X-NaftikoCapability
-      url: capabilities/account-token-auth.yaml
-    - type: X-NaftikoCapability
-      url: capabilities/account-token-payment-processor.yaml
-  - aid: envestnet:envestnet-account-verification-api
-    name: Envestnet Account Verification APIs
-    description: Verifying an account using Yodlee enables payments, helps avoid overdrafts, reduces fraud, and more. Verification
-      means your user has authenticated against the account and yields detailed information for the problem you're trying to
-      solve, such as routing number lookup and balance verification.
-    humanURL: https://developer.envestnet.com/products/yodlee/account-verification/docs
-    tags:
-    - Verification
-    - Payments
-    properties:
-    - type: Documentation
-      url: https://developer.envestnet.com/products/yodlee/account-verification/docs
-    - type: OpenAPI
-      url: openapi/envestnet-verification-openapi-original.yml
-    - type: X-NaftikoCapability
-      url: capabilities/verification-account-token.yaml
-    - type: X-NaftikoCapability
-      url: capabilities/verification-accounts.yaml
-    - type: X-NaftikoCapability
-      url: capabilities/verification-auth.yaml
-    - type: X-NaftikoCapability
-      url: capabilities/verification-configs.yaml
-    - type: X-NaftikoCapability
-      url: capabilities/verification-provideraccounts.yaml
-    - type: X-NaftikoCapability
-      url: capabilities/verification-providers.yaml
-    - type: X-NaftikoCapability
-      url: capabilities/verification-transactions.yaml
-    - type: X-NaftikoCapability
-      url: capabilities/verification-user.yaml
-    - type: X-NaftikoCapability
-      url: capabilities/verification-verification.yaml
-    - type: X-NaftikoCapability
-      url: capabilities/verification-verify-account.yaml
-  - aid: envestnet:envestnet-credit-accelerator-api
-    name: Envestnet Credit Accelerator API
-    description: The Envestnet D&A Credit LLC Credit Accelerator solution allows consumers to link their accounts across financial
-      institutions and generate a Credit Accelerator File for use in loan underwriting or another credit review and approval
-      process.
-    humanURL: https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference
-    tags:
-    - Credit
-    - Underwriting
-    properties:
-    - type: Documentation
-      url: https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference
-    - type: OpenAPI
-      url: openapi/envestnet-credit-accelerator-openapi-original.yml
-    - type: X-NaftikoCapability
-      url: capabilities/credit-accelerator-auth.yaml
-    - type: X-NaftikoCapability
-      url: capabilities/credit-accelerator-configs.yaml
-    - type: X-NaftikoCapability
-      url: capabilities/credit-accelerator-creditacceleratorfile.yaml
-  - aid: envestnet:envestnet-insights-api
-    name: Envestnet Insights API
-    description: Financial Insights APIs provide intelligent, personalized, and actionable insights to your end-users. This
-      product details the APIs offered as part of the insights product.
-    humanURL: https://developer.envestnet.com/products/yodlee/insights/docs/api-reference
-    tags:
-    - Insights
-    - Personalization
-    properties:
-    - type: Documentation
-      url: https://developer.envestnet.com/products/yodlee/insights/docs/api-reference
-    - type: OpenAPI
-      url: openapi/envestnet-insights-openapi-original.yml
-    - type: X-NaftikoCapability
-      url: capabilities/insights-associated-details.yaml
-    - type: X-NaftikoCapability
-      url: capabilities/insights-customer.yaml
-    - type: X-NaftikoCapability
-      url: capabilities/insights-user.yaml
-  - aid: envestnet:envestnet-personalized-view-api
-    name: Envestnet Personalized View API
-    description: Views APIs enable end users to create personalized views of their finances for any expenses, hobbies, or projects
-      relevant to them. A view is a collection of transactions based on rules across any combination of accounts, categories,
-      merchants, locations, transaction types, and more, that are of interest to your users.
-    humanURL: https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference
-    tags:
-    - Personalized Views
-    - Transactions
-    properties:
-    - type: Documentation
-      url: https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference
-    - type: OpenAPI
-      url: openapi/envestnet-personalized-views-openapi-original.yml
-    - type: X-NaftikoCapability
-      url: capabilities/personalized-views-view.yaml
+- aid: envestnet:envestnet-account-token-api
+  name: Envestnet Account Token API
+  description: >-
+    Account verification customers looking to integrate with one of our payment partners can use the Account
+    Token endpoints. These APIs allow creating a secure processor token for your user's verified financial
+    accounts. You can then share the processor token with our payment partners to enable them to securely
+    request the user's account details from Envestnet | Yodlee.<br><br>You will have to set the header
+    before making the API call. The following headers apply to all the APIs:</p><ul><li>Authorization:
+    This header holds the access token</li> <li> Api-Version: 1.1</li></ul><b>Note</b>: If there are any
+    API-specific headers, they are mentioned explicitly in the respective API's description.<p></p>
+  humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
+  tags:
+  - Account Token
+  properties:
+  - type: OpenAPI
+    url: openapi/envestnet-account-token-api-openapi.yml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-consents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-dataextracts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-derived.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-holdings.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-statements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-payment-processor.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-verification/docs
+  - type: X-NaftikoCapability
+    url: capabilities/verification-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verify-account.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-creditacceleratorfile.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/insights/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/insights-associated-details.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-customer.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/personalized-views-view.yaml
+- aid: envestnet:envestnet-accounts-api
+  name: Envestnet Accounts API
+  description: Accounts API
+  humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
+  tags:
+  - Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/envestnet-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-consents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-dataextracts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-derived.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-holdings.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-statements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-payment-processor.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-verification/docs
+  - type: X-NaftikoCapability
+    url: capabilities/verification-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verify-account.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-creditacceleratorfile.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/insights/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/insights-associated-details.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-customer.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/personalized-views-view.yaml
+- aid: envestnet:envestnet-associated-details-api
+  name: Envestnet Associated Details API
+  description: The Associated Details API from Envestnet — 2 operation(s) for associated details.
+  humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
+  tags:
+  - Associated Details
+  properties:
+  - type: OpenAPI
+    url: openapi/envestnet-associated-details-api-openapi.yml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-consents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-dataextracts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-derived.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-holdings.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-statements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-payment-processor.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-verification/docs
+  - type: X-NaftikoCapability
+    url: capabilities/verification-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verify-account.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-creditacceleratorfile.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/insights/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/insights-associated-details.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-customer.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/personalized-views-view.yaml
+- aid: envestnet:envestnet-auth-api
+  name: Envestnet Auth API
+  description: Auth API
+  humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
+  tags:
+  - Auth
+  properties:
+  - type: OpenAPI
+    url: openapi/envestnet-auth-api-openapi.yml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-consents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-dataextracts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-derived.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-holdings.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-statements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-payment-processor.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-verification/docs
+  - type: X-NaftikoCapability
+    url: capabilities/verification-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verify-account.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-creditacceleratorfile.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/insights/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/insights-associated-details.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-customer.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/personalized-views-view.yaml
+- aid: envestnet:envestnet-configs-api
+  name: Envestnet Configs API
+  description: Configs API
+  humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
+  tags:
+  - Configs
+  properties:
+  - type: OpenAPI
+    url: openapi/envestnet-configs-api-openapi.yml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-consents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-dataextracts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-derived.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-holdings.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-statements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-payment-processor.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-verification/docs
+  - type: X-NaftikoCapability
+    url: capabilities/verification-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verify-account.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-creditacceleratorfile.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/insights/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/insights-associated-details.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-customer.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/personalized-views-view.yaml
+- aid: envestnet:envestnet-consents-api
+  name: Envestnet Consents API
+  description: Consents API
+  humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
+  tags:
+  - Consents
+  properties:
+  - type: OpenAPI
+    url: openapi/envestnet-consents-api-openapi.yml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-consents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-dataextracts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-derived.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-holdings.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-statements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-payment-processor.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-verification/docs
+  - type: X-NaftikoCapability
+    url: capabilities/verification-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verify-account.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-creditacceleratorfile.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/insights/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/insights-associated-details.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-customer.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/personalized-views-view.yaml
+- aid: envestnet:envestnet-creditacceleratorfile-api
+  name: Envestnet CreditAcceleratorFile API
+  description: CreditAcceleratorFile API
+  humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
+  tags:
+  - CreditAcceleratorFile
+  properties:
+  - type: OpenAPI
+    url: openapi/envestnet-creditacceleratorfile-api-openapi.yml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-consents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-dataextracts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-derived.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-holdings.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-statements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-payment-processor.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-verification/docs
+  - type: X-NaftikoCapability
+    url: capabilities/verification-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verify-account.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-creditacceleratorfile.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/insights/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/insights-associated-details.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-customer.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/personalized-views-view.yaml
+- aid: envestnet:envestnet-customer-api
+  name: Envestnet Customer API
+  description: The Customer API from Envestnet — 1 operation(s) for customer.
+  humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
+  tags:
+  - Customer
+  properties:
+  - type: OpenAPI
+    url: openapi/envestnet-customer-api-openapi.yml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-consents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-dataextracts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-derived.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-holdings.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-statements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-payment-processor.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-verification/docs
+  - type: X-NaftikoCapability
+    url: capabilities/verification-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verify-account.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-creditacceleratorfile.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/insights/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/insights-associated-details.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-customer.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/personalized-views-view.yaml
+- aid: envestnet:envestnet-dataextracts-api
+  name: Envestnet DataExtracts API
+  description: DataExtracts API
+  humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
+  tags:
+  - DataExtracts
+  properties:
+  - type: OpenAPI
+    url: openapi/envestnet-dataextracts-api-openapi.yml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-consents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-dataextracts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-derived.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-holdings.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-statements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-payment-processor.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-verification/docs
+  - type: X-NaftikoCapability
+    url: capabilities/verification-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verify-account.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-creditacceleratorfile.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/insights/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/insights-associated-details.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-customer.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/personalized-views-view.yaml
+- aid: envestnet:envestnet-derived-api
+  name: Envestnet Derived API
+  description: Derived API
+  humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
+  tags:
+  - Derived
+  properties:
+  - type: OpenAPI
+    url: openapi/envestnet-derived-api-openapi.yml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-consents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-dataextracts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-derived.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-holdings.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-statements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-payment-processor.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-verification/docs
+  - type: X-NaftikoCapability
+    url: capabilities/verification-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verify-account.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-creditacceleratorfile.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/insights/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/insights-associated-details.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-customer.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/personalized-views-view.yaml
+- aid: envestnet:envestnet-documents-api
+  name: Envestnet Documents API
+  description: Documents API
+  humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
+  tags:
+  - Documents
+  properties:
+  - type: OpenAPI
+    url: openapi/envestnet-documents-api-openapi.yml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-consents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-dataextracts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-derived.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-holdings.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-statements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-payment-processor.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-verification/docs
+  - type: X-NaftikoCapability
+    url: capabilities/verification-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verify-account.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-creditacceleratorfile.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/insights/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/insights-associated-details.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-customer.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/personalized-views-view.yaml
+- aid: envestnet:envestnet-holdings-api
+  name: Envestnet Holdings API
+  description: Holdings API
+  humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
+  tags:
+  - Holdings
+  properties:
+  - type: OpenAPI
+    url: openapi/envestnet-holdings-api-openapi.yml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-consents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-dataextracts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-derived.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-holdings.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-statements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-payment-processor.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-verification/docs
+  - type: X-NaftikoCapability
+    url: capabilities/verification-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verify-account.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-creditacceleratorfile.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/insights/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/insights-associated-details.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-customer.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/personalized-views-view.yaml
+- aid: envestnet:envestnet-payment-processor-api
+  name: Envestnet Payment Processor API
+  description: >-
+    Envestnet | Yodlee's payment processor partners can use the Payment Processor endpoints to access
+    verified account details using the <code>processorToken</code> created and shared by mutual customers.
+    These APIs are only for payment processor partners and not for developers using the Envestnet | Yodlee
+    services to integrate with payment partners. Refer <a href="/products/yodlee/account-token/docs#customers">
+    here </a> for a guide on working with payment processor partners.<br>As a processor payment partner,
+    you can retrieve the following account information using the <code>processorToken</code>:<ul><li>Account
+    details include account status, account name, full account number, bank transfer code, balance, etc.</li><li>Account
+    holder details include name, email, phone number, address, etc.</li><li>Account balance details.</li></ul><br>You
+    will have to set the header before making the API call. The following headers apply to all the APIs:</p><ul><li>Authorization:
+    This header holds the access token</li> </ul><b>Note</b>: If there are any API-specific headers, they
+    are mentioned explicitly in the respective API's description.<p></p>
+  humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
+  tags:
+  - Payment Processor
+  properties:
+  - type: OpenAPI
+    url: openapi/envestnet-payment-processor-api-openapi.yml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-consents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-dataextracts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-derived.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-holdings.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-statements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-payment-processor.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-verification/docs
+  - type: X-NaftikoCapability
+    url: capabilities/verification-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verify-account.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-creditacceleratorfile.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/insights/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/insights-associated-details.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-customer.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/personalized-views-view.yaml
+- aid: envestnet:envestnet-provideraccounts-api
+  name: Envestnet ProviderAccounts API
+  description: Provider Accounts API
+  humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
+  tags:
+  - ProviderAccounts
+  properties:
+  - type: OpenAPI
+    url: openapi/envestnet-provideraccounts-api-openapi.yml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-consents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-dataextracts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-derived.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-holdings.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-statements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-payment-processor.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-verification/docs
+  - type: X-NaftikoCapability
+    url: capabilities/verification-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verify-account.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-creditacceleratorfile.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/insights/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/insights-associated-details.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-customer.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/personalized-views-view.yaml
+- aid: envestnet:envestnet-providers-api
+  name: Envestnet Providers API
+  description: Providers API
+  humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
+  tags:
+  - Providers
+  properties:
+  - type: OpenAPI
+    url: openapi/envestnet-providers-api-openapi.yml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-consents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-dataextracts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-derived.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-holdings.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-statements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-payment-processor.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-verification/docs
+  - type: X-NaftikoCapability
+    url: capabilities/verification-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verify-account.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-creditacceleratorfile.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/insights/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/insights-associated-details.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-customer.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/personalized-views-view.yaml
+- aid: envestnet:envestnet-statements-api
+  name: Envestnet Statements API
+  description: Statements API
+  humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
+  tags:
+  - Statements
+  properties:
+  - type: OpenAPI
+    url: openapi/envestnet-statements-api-openapi.yml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-consents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-dataextracts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-derived.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-holdings.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-statements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-payment-processor.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-verification/docs
+  - type: X-NaftikoCapability
+    url: capabilities/verification-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verify-account.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-creditacceleratorfile.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/insights/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/insights-associated-details.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-customer.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/personalized-views-view.yaml
+- aid: envestnet:envestnet-transactions-api
+  name: Envestnet Transactions API
+  description: Transactions API
+  humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
+  tags:
+  - Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/envestnet-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-consents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-dataextracts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-derived.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-holdings.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-statements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-payment-processor.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-verification/docs
+  - type: X-NaftikoCapability
+    url: capabilities/verification-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verify-account.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-creditacceleratorfile.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/insights/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/insights-associated-details.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-customer.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/personalized-views-view.yaml
+- aid: envestnet:envestnet-user-api
+  name: Envestnet User API
+  description: Users API
+  humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
+  tags:
+  - User
+  properties:
+  - type: OpenAPI
+    url: openapi/envestnet-user-api-openapi.yml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-consents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-dataextracts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-derived.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-holdings.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-statements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-payment-processor.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-verification/docs
+  - type: X-NaftikoCapability
+    url: capabilities/verification-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verify-account.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-creditacceleratorfile.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/insights/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/insights-associated-details.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-customer.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/personalized-views-view.yaml
+- aid: envestnet:envestnet-verification-api
+  name: Envestnet Verification API
+  description: Verification API
+  humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
+  tags:
+  - Verification
+  properties:
+  - type: OpenAPI
+    url: openapi/envestnet-verification-api-openapi.yml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-consents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-dataextracts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-derived.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-holdings.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-statements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-payment-processor.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-verification/docs
+  - type: X-NaftikoCapability
+    url: capabilities/verification-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verify-account.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-creditacceleratorfile.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/insights/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/insights-associated-details.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-customer.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/personalized-views-view.yaml
+- aid: envestnet:envestnet-verify-account-api
+  name: Envestnet Verify Account API
+  description: Verify Account API
+  humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
+  tags:
+  - Verify Account
+  properties:
+  - type: OpenAPI
+    url: openapi/envestnet-verify-account-api-openapi.yml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-consents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-dataextracts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-derived.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-holdings.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-statements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-payment-processor.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-verification/docs
+  - type: X-NaftikoCapability
+    url: capabilities/verification-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verify-account.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-creditacceleratorfile.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/insights/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/insights-associated-details.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-customer.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/personalized-views-view.yaml
+- aid: envestnet:envestnet-view-api
+  name: Envestnet View API
+  description: The View API from Envestnet — 11 operation(s) for view.
+  humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
+  tags:
+  - View
+  properties:
+  - type: OpenAPI
+    url: openapi/envestnet-view-api-openapi.yml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-consents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-dataextracts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-derived.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-documents.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-holdings.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-statements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-aggregation-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/account-token-payment-processor.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-verification/docs
+  - type: X-NaftikoCapability
+    url: capabilities/verification-account-token.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-accounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-provideraccounts.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-providers.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-transactions.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-user.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verification.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/verification-verify-account.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-auth.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-configs.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/credit-accelerator-creditacceleratorfile.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/insights/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/insights-associated-details.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-customer.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/insights-user.yaml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference
+  - type: X-NaftikoCapability
+    url: capabilities/personalized-views-view.yaml
 common:
   - type: AgenticAccess
     url: agentic-access/envestnet-agentic-access.yml
