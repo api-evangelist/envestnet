@@ -1,0 +1,102 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Envestnet Aggregation APIs Account Token Configs API",
+    "version": "1.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Configs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Envestnet Get Subscribed Notification Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/configs/notifications/events",
+            "params": [
+              {
+                "name": "eventName",
+                "value": "",
+                "type": "query",
+                "description": "Name of the webhook subscription event"
+              }
+            ]
+          },
+          "docs": "The get events service provides the list of events for which consumers subscribed to receive notifications. <br>"
+        },
+        {
+          "info": {
+            "name": "Envestnet Subscribe For Notification Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/configs/notifications/events/:eventName",
+            "params": [
+              {
+                "name": "eventName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the webhook subscription event"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The subscribe events service is used to subscribe to an event for receiving notifications.<br>The callback URL, where the notification will be posted should be provided to this service.<br>If the callback URL is invalid or inaccessible, the subscription will be unsuccessful, and an error will be thrown.<br>Customers can subscribe to REFRESH,DATA_UPDATES,AUTO_REFRESH_UPDATES,LATEST_BALANCE_UPDATES and CREDIT_ACCELERATOR_REPORT_UPDATES event.<br><br><b>Notes:</b><li>This service is not available i"
+        },
+        {
+          "info": {
+            "name": "Envestnet Update Notification Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/configs/notifications/events/:eventName",
+            "params": [
+              {
+                "name": "eventName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the webhook subscription event"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The update events service is used to update the callback URL.<br>If the callback URL is invalid or inaccessible, the subscription will be unsuccessful, and an error will be thrown.<br><br><b>Note:</b> <li>The content type has to be passed as application/json for the body parameter. <br>"
+        },
+        {
+          "info": {
+            "name": "Envestnet Delete Notification Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/configs/notifications/events/:eventName",
+            "params": [
+              {
+                "name": "eventName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the webhook subscription event"
+              }
+            ]
+          },
+          "docs": "The delete events service is used to unsubscribe from an events service.<br>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

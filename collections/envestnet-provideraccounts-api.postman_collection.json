@@ -1,0 +1,1359 @@
+{
+  "item": [
+    {
+      "id": "d2b11f07-a304-4699-abb7-f56dff1a0db2",
+      "name": "ProviderAccounts",
+      "description": {
+        "content": "Provider Accounts API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "247d2073-e02c-4b76-b80d-3f8bddccf8ce",
+          "name": "Envestnet Get Provider Accounts",
+          "request": {
+            "name": "Envestnet Get Provider Accounts",
+            "description": {
+              "content": "The get provider accounts service is used to return all the provider accounts added by the user. <br>This includes the failed and successfully added provider accounts.<br>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "providerAccounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "include"
+                },
+                {
+                  "disabled": false,
+                  "key": "providerIds",
+                  "value": "<string>",
+                  "description": "Comma separated providerIds."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1817d052-29c1-4555-bf10-4853495fb636",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providerAccounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerIds",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"providerAccount\": [\n    {\n      \"preferences\": {\n        \"isDataExtractsEnabled\": false,\n        \"linkedProviderAccountId\": 6528,\n        \"isAutoRefreshEnabled\": true\n      },\n      \"oauthMigrationStatus\": \"COMPLETED\",\n      \"isManual\": false,\n      \"isRealTimeMFA\": true,\n      \"lastUpdated\": \"string\",\n      \"consentId\": 805,\n      \"createdDate\": \"string\",\n      \"aggregationSource\": \"SYSTEM\",\n      \"providerId\": 246,\n      \"requestId\": \"string\",\n      \"id\": 5011,\n      \"authType\": \"OAUTH\",\n      \"dataset\": [\n        {\n          \"lastUpdated\": \"string\",\n          \"updateEligibility\": \"ALLOW_UPDATE_WITH_CREDENTIALS\",\n          \"additionalStatus\": \"DATA_NOT_AVAILABLE\",\n          \"nextUpdateScheduled\": \"string\",\n          \"name\": \"DOCUMENT\",\n          \"lastUpdateAttempt\": \"string\"\n        },\n        {\n          \"lastUpdated\": \"string\",\n          \"updateEligibility\": \"DISALLOW_UPDATE\",\n          \"additionalStatus\": \"CONSENT_REQUIRED\",\n          \"nextUpdateScheduled\": \"string\",\n          \"name\": \"DOCUMENT\",\n          \"lastUpdateAttempt\": \"string\"\n        }\n      ],\n      \"status\": \"IN_PROGRESS\"\n    },\n    {\n      \"preferences\": {\n        \"isDataExtractsEnabled\": false,\n        \"linkedProviderAccountId\": 1461,\n        \"isAutoRefreshEnabled\": true\n      },\n      \"oauthMigrationStatus\": \"IN_PROGRESS\",\n      \"isManual\": true,\n      \"isRealTimeMFA\": true,\n      \"lastUpdated\": \"string\",\n      \"consentId\": 4385,\n      \"createdDate\": \"string\",\n      \"aggregationSource\": \"SYSTEM\",\n      \"providerId\": 1252,\n      \"requestId\": \"string\",\n      \"id\": 8287,\n      \"authType\": \"MFA_CREDENTIALS\",\n      \"dataset\": [\n        {\n          \"lastUpdated\": \"string\",\n          \"updateEligibility\": \"ALLOW_UPDATE\",\n          \"additionalStatus\": \"DATASET_NOT_SUPPORTED\",\n          \"nextUpdateScheduled\": \"string\",\n          \"name\": \"DOCUMENT\",\n          \"lastUpdateAttempt\": \"string\"\n        },\n        {\n          \"lastUpdated\": \"string\",\n          \"updateEligibility\": \"ALLOW_UPDATE\",\n          \"additionalStatus\": \"NEW_AUTHENTICATION_REQUIRED\",\n          \"nextUpdateScheduled\": \"string\",\n          \"name\": \"ACCT_PROFILE\",\n          \"lastUpdateAttempt\": \"string\"\n        }\n      ],\n      \"status\": \"IN_PROGRESS\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03f9e87b-eb4c-4995-82e9-c02f544bcc39",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providerAccounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerIds",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e2f5bd15-48af-4948-bd2a-29f9397f2512",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providerAccounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerIds",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "64eff378-fe40-49e1-b309-20f29dfbfe96",
+          "name": "Envestnet Update Account",
+          "request": {
+            "name": "Envestnet Update Account",
+            "description": {
+              "content": "<i>This API Reference guide is intended for FastLink 4 Users.  For FastLink 3 Users, there are additional integration notes related to this endpoint <a href=\"https://developer.envestnet.com/resources/yodlee/fastlink-3/docs/api-integrations\">here</a>.</i><br><br>The update account API is used to:<br> <ul><li>Retrieve the latest information of all the eligible accounts that belong to the user.<li>Check the status of the providerAccount before invoking this API. Do not call this API to trigger any action on a providerAccount when an action is already in progress for the providerAccount.<li>If the customer has subscribed to the REFRESH event notification and invoked this API, relevant notifications will be sent to the customer.<li>Check all the dataset additional statuses returned in the response because the provider account status is drawn from the dataset additional statuses.<li>Updating preferences using this API will trigger refreshes.<li> The content type has to be passed as application/json for the body parameter.</ul><br>-----------------------------------------------------------------------------------------------------------------------------------------<br><br><b>Update All Eligible Accounts - Notes:</b><br><ul><li>This API will trigger a refresh for all the eligible provider accounts(both OB and credential-based accounts).<li>This API will not refresh closed, inactive, or UAR accounts, or accounts with refreshes in-progress or recently refreshed non-OB accounts.<li>No parameters should be passed to this API to trigger this action.<li>Do not call this API often. Our recommendation is to call this only at the time the user logs in to your app because it can hamper other API calls performance.<li>The response only contains information for accounts that were refreshed. If no accounts are eligible for refresh, no response is returned.</ul>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "providerAccounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "providerAccountIds",
+                  "value": "<string>",
+                  "description": "(Required) comma separated providerAccountIds"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"field\": [\n    {\n      \"image\": \"<string>\",\n      \"id\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"image\": \"<string>\",\n      \"id\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"consentId\": \"<long>\",\n  \"preferences\": {\n    \"isDataExtractsEnabled\": \"<boolean>\",\n    \"linkedProviderAccountId\": \"<long>\",\n    \"isAutoRefreshEnabled\": \"<boolean>\"\n  },\n  \"aggregationSource\": \"<string>\",\n  \"datasetName\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"dataset\": [\n    {\n      \"name\": \"<string>\",\n      \"attribute\": [\n        {\n          \"container\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"containerAttributes\": {\n            \"BANK\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"LOAN\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"CREDITCARD\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INVESTMENT\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INSURANCE\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"name\": \"<string>\"\n        },\n        {\n          \"container\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"containerAttributes\": {\n            \"BANK\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"LOAN\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"CREDITCARD\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INVESTMENT\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INSURANCE\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"attribute\": [\n        {\n          \"container\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"containerAttributes\": {\n            \"BANK\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"LOAN\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"CREDITCARD\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INVESTMENT\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INSURANCE\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"name\": \"<string>\"\n        },\n        {\n          \"container\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"containerAttributes\": {\n            \"BANK\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"LOAN\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"CREDITCARD\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INVESTMENT\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INSURANCE\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"name\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e8092fed-277d-491c-8d5d-e9cc386183e1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providerAccounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerAccountIds",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"field\": [\n    {\n      \"image\": \"<string>\",\n      \"id\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"image\": \"<string>\",\n      \"id\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"consentId\": \"<long>\",\n  \"preferences\": {\n    \"isDataExtractsEnabled\": \"<boolean>\",\n    \"linkedProviderAccountId\": \"<long>\",\n    \"isAutoRefreshEnabled\": \"<boolean>\"\n  },\n  \"aggregationSource\": \"<string>\",\n  \"datasetName\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"dataset\": [\n    {\n      \"name\": \"<string>\",\n      \"attribute\": [\n        {\n          \"container\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"containerAttributes\": {\n            \"BANK\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"LOAN\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"CREDITCARD\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INVESTMENT\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INSURANCE\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"name\": \"<string>\"\n        },\n        {\n          \"container\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"containerAttributes\": {\n            \"BANK\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"LOAN\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"CREDITCARD\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INVESTMENT\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INSURANCE\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"attribute\": [\n        {\n          \"container\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"containerAttributes\": {\n            \"BANK\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"LOAN\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"CREDITCARD\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INVESTMENT\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INSURANCE\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"name\": \"<string>\"\n        },\n        {\n          \"container\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"containerAttributes\": {\n            \"BANK\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"LOAN\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"CREDITCARD\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INVESTMENT\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INSURANCE\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"name\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"providerAccount\": [\n    {\n      \"lastUpdated\": \"string\",\n      \"loginForm\": [\n        {\n          \"mfaInfoTitle\": \"string\",\n          \"help\": \"string\",\n          \"forgetPasswordURL\": \"string\",\n          \"formType\": \"login\",\n          \"mfaInfoText\": \"string\",\n          \"loginHelp\": \"string\",\n          \"mfaTimeout\": 6761,\n          \"id\": 3106,\n          \"row\": [\n            {\n              \"fieldRowChoice\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"form\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"label\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"fieldRowChoice\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"form\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"label\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"mfaInfoTitle\": \"string\",\n          \"help\": \"string\",\n          \"forgetPasswordURL\": \"string\",\n          \"formType\": \"token\",\n          \"mfaInfoText\": \"string\",\n          \"loginHelp\": \"string\",\n          \"mfaTimeout\": 648,\n          \"id\": 7950,\n          \"row\": [\n            {\n              \"fieldRowChoice\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"form\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"label\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"fieldRowChoice\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"form\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"label\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"createdDate\": \"string\",\n      \"aggregationSource\": \"USER\",\n      \"oauthMigrationStatus\": \"COMPLETED\",\n      \"providerId\": 1201,\n      \"requestId\": \"string\",\n      \"isManual\": false,\n      \"id\": 42,\n      \"authType\": \"CREDENTIALS\",\n      \"dataset\": [\n        {\n          \"lastUpdated\": \"string\",\n          \"updateEligibility\": \"ALLOW_UPDATE_WITH_CREDENTIALS\",\n          \"additionalStatus\": \"DATASET_NOT_SUPPORTED\",\n          \"nextUpdateScheduled\": \"string\",\n          \"name\": \"DOCUMENT\",\n          \"lastUpdateAttempt\": \"string\"\n        },\n        {\n          \"lastUpdated\": \"string\",\n          \"updateEligibility\": \"ALLOW_UPDATE\",\n          \"additionalStatus\": \"NEW_AUTHENTICATION_REQUIRED\",\n          \"nextUpdateScheduled\": \"string\",\n          \"name\": \"BASIC_AGG_DATA\",\n          \"lastUpdateAttempt\": \"string\"\n        }\n      ],\n      \"status\": \"IN_PROGRESS\"\n    },\n    {\n      \"lastUpdated\": \"string\",\n      \"loginForm\": [\n        {\n          \"mfaInfoTitle\": \"string\",\n          \"help\": \"string\",\n          \"forgetPasswordURL\": \"string\",\n          \"formType\": \"image\",\n          \"mfaInfoText\": \"string\",\n          \"loginHelp\": \"string\",\n          \"mfaTimeout\": 1919,\n          \"id\": 4051,\n          \"row\": [\n            {\n              \"fieldRowChoice\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"form\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"label\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"fieldRowChoice\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"form\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"label\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"mfaInfoTitle\": \"string\",\n          \"help\": \"string\",\n          \"forgetPasswordURL\": \"string\",\n          \"formType\": \"image\",\n          \"mfaInfoText\": \"string\",\n          \"loginHelp\": \"string\",\n          \"mfaTimeout\": 9417,\n          \"id\": 6375,\n          \"row\": [\n            {\n              \"fieldRowChoice\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"form\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"label\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"fieldRowChoice\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"form\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"label\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"createdDate\": \"string\",\n      \"aggregationSource\": \"USER\",\n      \"oauthMigrationStatus\": \"IN_PROGRESS\",\n      \"providerId\": 4080,\n      \"requestId\": \"string\",\n      \"isManual\": false,\n      \"id\": 2607,\n      \"authType\": \"CREDENTIALS\",\n      \"dataset\": [\n        {\n          \"lastUpdated\": \"string\",\n          \"updateEligibility\": \"DISALLOW_UPDATE\",\n          \"additionalStatus\": \"CONSENT_REVOKED\",\n          \"nextUpdateScheduled\": \"string\",\n          \"name\": \"ADVANCE_AGG_DATA\",\n          \"lastUpdateAttempt\": \"string\"\n        },\n        {\n          \"lastUpdated\": \"string\",\n          \"updateEligibility\": \"DISALLOW_UPDATE\",\n          \"additionalStatus\": \"ADDL_AUTHENTICATION_REQUIRED\",\n          \"nextUpdateScheduled\": \"string\",\n          \"name\": \"BASIC_AGG_DATA\",\n          \"lastUpdateAttempt\": \"string\"\n        }\n      ],\n      \"status\": \"SUCCESS\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fb6e0f1e-e133-45c0-b491-578d619825a5",
+              "name": "Y805 : Multiple providerAccountId not supported for updating credentials<br>Y800 : Invalid value for credentialsParam<br>Y400 : id and value in credentialsParam are mandatory<br>Y806 : Invalid input<br>Y823 : Credentials are not applicable for real estate aggregated / manual accounts<br>Y868 : No action is allowed, as the data is being migrated to the Open Banking provider<br>",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providerAccounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerAccountIds",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"field\": [\n    {\n      \"image\": \"<string>\",\n      \"id\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"image\": \"<string>\",\n      \"id\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"consentId\": \"<long>\",\n  \"preferences\": {\n    \"isDataExtractsEnabled\": \"<boolean>\",\n    \"linkedProviderAccountId\": \"<long>\",\n    \"isAutoRefreshEnabled\": \"<boolean>\"\n  },\n  \"aggregationSource\": \"<string>\",\n  \"datasetName\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"dataset\": [\n    {\n      \"name\": \"<string>\",\n      \"attribute\": [\n        {\n          \"container\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"containerAttributes\": {\n            \"BANK\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"LOAN\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"CREDITCARD\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INVESTMENT\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INSURANCE\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"name\": \"<string>\"\n        },\n        {\n          \"container\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"containerAttributes\": {\n            \"BANK\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"LOAN\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"CREDITCARD\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INVESTMENT\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INSURANCE\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"attribute\": [\n        {\n          \"container\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"containerAttributes\": {\n            \"BANK\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"LOAN\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"CREDITCARD\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INVESTMENT\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INSURANCE\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"name\": \"<string>\"\n        },\n        {\n          \"container\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"containerAttributes\": {\n            \"BANK\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"LOAN\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"CREDITCARD\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INVESTMENT\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INSURANCE\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"name\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"errorMessage\": \"string\",\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cee27596-a611-480a-b6bb-c8ac846beb3d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providerAccounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerAccountIds",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"field\": [\n    {\n      \"image\": \"<string>\",\n      \"id\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"image\": \"<string>\",\n      \"id\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"consentId\": \"<long>\",\n  \"preferences\": {\n    \"isDataExtractsEnabled\": \"<boolean>\",\n    \"linkedProviderAccountId\": \"<long>\",\n    \"isAutoRefreshEnabled\": \"<boolean>\"\n  },\n  \"aggregationSource\": \"<string>\",\n  \"datasetName\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"dataset\": [\n    {\n      \"name\": \"<string>\",\n      \"attribute\": [\n        {\n          \"container\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"containerAttributes\": {\n            \"BANK\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"LOAN\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"CREDITCARD\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INVESTMENT\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INSURANCE\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"name\": \"<string>\"\n        },\n        {\n          \"container\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"containerAttributes\": {\n            \"BANK\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"LOAN\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"CREDITCARD\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INVESTMENT\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INSURANCE\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"attribute\": [\n        {\n          \"container\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"containerAttributes\": {\n            \"BANK\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"LOAN\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"CREDITCARD\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INVESTMENT\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INSURANCE\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"name\": \"<string>\"\n        },\n        {\n          \"container\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"containerAttributes\": {\n            \"BANK\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"LOAN\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"CREDITCARD\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INVESTMENT\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INSURANCE\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"name\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5a9f8d05-18ce-48ac-8f07-da79d707704d",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providerAccounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "providerAccountIds",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"field\": [\n    {\n      \"image\": \"<string>\",\n      \"id\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"image\": \"<string>\",\n      \"id\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"consentId\": \"<long>\",\n  \"preferences\": {\n    \"isDataExtractsEnabled\": \"<boolean>\",\n    \"linkedProviderAccountId\": \"<long>\",\n    \"isAutoRefreshEnabled\": \"<boolean>\"\n  },\n  \"aggregationSource\": \"<string>\",\n  \"datasetName\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"dataset\": [\n    {\n      \"name\": \"<string>\",\n      \"attribute\": [\n        {\n          \"container\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"containerAttributes\": {\n            \"BANK\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"LOAN\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"CREDITCARD\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INVESTMENT\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INSURANCE\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"name\": \"<string>\"\n        },\n        {\n          \"container\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"containerAttributes\": {\n            \"BANK\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"LOAN\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"CREDITCARD\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INVESTMENT\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INSURANCE\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"attribute\": [\n        {\n          \"container\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"containerAttributes\": {\n            \"BANK\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"LOAN\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"CREDITCARD\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INVESTMENT\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INSURANCE\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"name\": \"<string>\"\n        },\n        {\n          \"container\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"containerAttributes\": {\n            \"BANK\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"LOAN\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"CREDITCARD\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INVESTMENT\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"INSURANCE\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"name\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cbcf60eb-7405-4d0b-b90f-5d96cc41fb4d",
+          "name": "Envestnet Refresh Provider Account",
+          "request": {
+            "name": "Envestnet Refresh Provider Account",
+            "description": {
+              "content": "This api service will allow you to refresh the Non-MFA provider accounts against a configName, i.e refresh will respect the configurations of the configName while refreshing the account.<br>Note: this service will only work with FastLink 4 users.<br>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "providerAccounts",
+                "refresh"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"configName\": \"<string>\",\n  \"providerAccountIds\": [\n    \"<long>\",\n    \"<long>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0bfa7c8d-cc88-4545-a7af-8ced07132926",
+              "name": "CREATED",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providerAccounts",
+                    "refresh"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"configName\": \"<string>\",\n  \"providerAccountIds\": [\n    \"<long>\",\n    \"<long>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"statusLink\": [\n    {\n      \"methodType\": \"string\",\n      \"rel\": \"string\",\n      \"href\": \"string\"\n    },\n    {\n      \"methodType\": \"string\",\n      \"rel\": \"string\",\n      \"href\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "46a412c6-a917-4842-a042-417616fcf289",
+              "name": "Y800 : Invalid value for configName<br>Y803 : configName required<br>Y812 : Required field/value providerAccountId missing in the request<br>Y800 : Invalid value for providerAccountId<br>Y825 : Update not allowed. Reason: providerAccountId {id} REFRESHED_RECENTLY<br>",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providerAccounts",
+                    "refresh"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"configName\": \"<string>\",\n  \"providerAccountIds\": [\n    \"<long>\",\n    \"<long>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"errorMessage\": \"string\",\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dad1085f-e0a7-4e02-8b4e-fd688222eaed",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providerAccounts",
+                    "refresh"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"configName\": \"<string>\",\n  \"providerAccountIds\": [\n    \"<long>\",\n    \"<long>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d4d4813d-357a-4588-a148-6014b59dcf61",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providerAccounts",
+                    "refresh"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"configName\": \"<string>\",\n  \"providerAccountIds\": [\n    \"<long>\",\n    \"<long>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4372b905-20c4-4714-88aa-d6057b6c5965",
+          "name": "Envestnet Update Preferences",
+          "request": {
+            "name": "Envestnet Update Preferences",
+            "description": {
+              "content": "This endpoint is used to update preferences like data extracts and auto refreshes without triggering refresh for the providerAccount.<br>Setting isDataExtractsEnabled to false will not trigger data extracts notification and dataExtracts/events will not reflect any data change that is happening for the providerAccount.<br>Modified data will not be provided in the dataExtracts/userData endpoint.<br>Setting isAutoRefreshEnabled to false will not trigger auto refreshes for the provider account.<br>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "providerAccounts",
+                ":providerAccountId",
+                "preferences"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "providerAccountId",
+                  "description": "(Required) providerAccountId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"preferences\": {\n    \"isDataExtractsEnabled\": \"<boolean>\",\n    \"linkedProviderAccountId\": \"<long>\",\n    \"isAutoRefreshEnabled\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7999d32c-1071-40f4-a3b8-9672d952428e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providerAccounts",
+                    ":providerAccountId",
+                    "preferences"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "providerAccountId",
+                      "description": "(Required) providerAccountId"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"preferences\": {\n    \"isDataExtractsEnabled\": \"<boolean>\",\n    \"linkedProviderAccountId\": \"<long>\",\n    \"isAutoRefreshEnabled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2c7a51c3-8d81-44fa-a723-eff2fced15a5",
+              "name": "Y800 : Invalid value for preferences<br>Y800 : Invalid value for preferences.isDataExtractsEnabled<br>Y800 : Invalid value for preferences.isAutoRefreshEnabled<br>Y807 : Resource not found<br>Y830 : Data extracts feature has to be enabled to set preferences.isDataExtractsEnabled as true<br>Y830 : Auto refresh feature has to be enabled to set preferences.isAutoRefreshEnabled as true<br>Y868 : No action is allowed, as the data is being migrated to the Open Banking provider<br>",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providerAccounts",
+                    ":providerAccountId",
+                    "preferences"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "providerAccountId",
+                      "description": "(Required) providerAccountId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"preferences\": {\n    \"isDataExtractsEnabled\": \"<boolean>\",\n    \"linkedProviderAccountId\": \"<long>\",\n    \"isAutoRefreshEnabled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"errorMessage\": \"string\",\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "980bb81f-d0a6-492f-96c2-f7e751b7dc95",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providerAccounts",
+                    ":providerAccountId",
+                    "preferences"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "providerAccountId",
+                      "description": "(Required) providerAccountId"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"preferences\": {\n    \"isDataExtractsEnabled\": \"<boolean>\",\n    \"linkedProviderAccountId\": \"<long>\",\n    \"isAutoRefreshEnabled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "03487446-0d45-42b1-8ea1-49ca891bf096",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providerAccounts",
+                    ":providerAccountId",
+                    "preferences"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "providerAccountId",
+                      "description": "(Required) providerAccountId"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"preferences\": {\n    \"isDataExtractsEnabled\": \"<boolean>\",\n    \"linkedProviderAccountId\": \"<long>\",\n    \"isAutoRefreshEnabled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ac85a3b-9fed-4ab9-8bf3-50ff43b90446",
+          "name": "Envestnet Get Provider Account Details",
+          "request": {
+            "name": "Envestnet Get Provider Account Details",
+            "description": {
+              "content": "The get provider account details service is used to learn the status of adding accounts and updating accounts.<br>This service has to be called continuously to know the progress level of the triggered process. This service also provides the MFA information requested by the provider site.<br>When <i>include = credentials</i>, questions is passed as input, the service returns the credentials (non-password values) and questions stored in the Yodlee system for that provider account. <br><br><b>Note:</b> <li>The password and answer fields are not returned in the response.</li>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "providerAccounts",
+                ":providerAccountId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "include credentials,questions"
+                },
+                {
+                  "disabled": false,
+                  "key": "requestId",
+                  "value": "<string>",
+                  "description": "The unique identifier for the request that returns contextual data"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "providerAccountId",
+                  "description": "(Required) providerAccountId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5a36e734-f344-47c1-9fc1-2b301547029e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providerAccounts",
+                    ":providerAccountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "providerAccountId",
+                      "description": "(Required) providerAccountId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"providerAccount\": [\n    {\n      \"consentId\": 8464,\n      \"preferences\": {\n        \"isDataExtractsEnabled\": \"<boolean>\",\n        \"linkedProviderAccountId\": \"<long>\",\n        \"isAutoRefreshEnabled\": \"<boolean>\"\n      },\n      \"oauthMigrationStatus\": \"MIGRATED\",\n      \"isManual\": false,\n      \"lastUpdated\": \"string\",\n      \"loginForm\": [\n        {\n          \"mfaInfoTitle\": \"string\",\n          \"help\": \"string\",\n          \"forgetPasswordURL\": \"string\",\n          \"formType\": \"questionAndAnswer\",\n          \"mfaInfoText\": \"string\",\n          \"loginHelp\": \"string\",\n          \"mfaTimeout\": 9203,\n          \"id\": 6231,\n          \"row\": [\n            {\n              \"fieldRowChoice\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"form\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"label\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"fieldRowChoice\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"form\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"label\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"mfaInfoTitle\": \"string\",\n          \"help\": \"string\",\n          \"forgetPasswordURL\": \"string\",\n          \"formType\": \"login\",\n          \"mfaInfoText\": \"string\",\n          \"loginHelp\": \"string\",\n          \"mfaTimeout\": 1000,\n          \"id\": 7278,\n          \"row\": [\n            {\n              \"fieldRowChoice\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"form\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"label\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"fieldRowChoice\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"form\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"label\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"createdDate\": \"string\",\n      \"aggregationSource\": \"USER\",\n      \"providerId\": 7417,\n      \"requestId\": \"string\",\n      \"id\": 3571,\n      \"authType\": \"CREDENTIALS\",\n      \"dataset\": [\n        {\n          \"lastUpdated\": \"string\",\n          \"updateEligibility\": \"ALLOW_UPDATE_WITH_CREDENTIALS\",\n          \"additionalStatus\": \"INCORRECT_OAUTH_TOKEN\",\n          \"nextUpdateScheduled\": \"string\",\n          \"name\": \"ACCT_PROFILE\",\n          \"lastUpdateAttempt\": \"string\"\n        },\n        {\n          \"lastUpdated\": \"string\",\n          \"updateEligibility\": \"DISALLOW_UPDATE\",\n          \"additionalStatus\": \"DATA_NOT_AVAILABLE\",\n          \"nextUpdateScheduled\": \"string\",\n          \"name\": \"DOCUMENT\",\n          \"lastUpdateAttempt\": \"string\"\n        }\n      ],\n      \"status\": \"LOGIN_IN_PROGRESS\"\n    },\n    {\n      \"consentId\": 7610,\n      \"preferences\": {\n        \"isDataExtractsEnabled\": \"<boolean>\",\n        \"linkedProviderAccountId\": \"<long>\",\n        \"isAutoRefreshEnabled\": \"<boolean>\"\n      },\n      \"oauthMigrationStatus\": \"IN_PROGRESS\",\n      \"isManual\": true,\n      \"lastUpdated\": \"string\",\n      \"loginForm\": [\n        {\n          \"mfaInfoTitle\": \"string\",\n          \"help\": \"string\",\n          \"forgetPasswordURL\": \"string\",\n          \"formType\": \"image\",\n          \"mfaInfoText\": \"string\",\n          \"loginHelp\": \"string\",\n          \"mfaTimeout\": 2960,\n          \"id\": 1867,\n          \"row\": [\n            {\n              \"fieldRowChoice\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"form\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"label\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"fieldRowChoice\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"form\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"label\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"mfaInfoTitle\": \"string\",\n          \"help\": \"string\",\n          \"forgetPasswordURL\": \"string\",\n          \"formType\": \"token\",\n          \"mfaInfoText\": \"string\",\n          \"loginHelp\": \"string\",\n          \"mfaTimeout\": 7430,\n          \"id\": 1239,\n          \"row\": [\n            {\n              \"fieldRowChoice\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"form\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"label\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"fieldRowChoice\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"form\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"label\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"createdDate\": \"string\",\n      \"aggregationSource\": \"SYSTEM\",\n      \"providerId\": 3536,\n      \"requestId\": \"string\",\n      \"id\": 2150,\n      \"authType\": \"CREDENTIALS\",\n      \"dataset\": [\n        {\n          \"lastUpdated\": \"string\",\n          \"updateEligibility\": \"ALLOW_UPDATE\",\n          \"additionalStatus\": \"SITE_NOT_SUPPORTED\",\n          \"nextUpdateScheduled\": \"string\",\n          \"name\": \"DOCUMENT\",\n          \"lastUpdateAttempt\": \"string\"\n        },\n        {\n          \"lastUpdated\": \"string\",\n          \"updateEligibility\": \"ALLOW_UPDATE\",\n          \"additionalStatus\": \"INCORRECT_OAUTH_TOKEN\",\n          \"nextUpdateScheduled\": \"string\",\n          \"name\": \"ADVANCE_AGG_DATA\",\n          \"lastUpdateAttempt\": \"string\"\n        }\n      ],\n      \"status\": \"DATA_RETRIEVAL_FAILED\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b3ac581d-6d49-4fbf-8c22-c9fb741dfa7c",
+              "name": "Y800 : Invalid value for providerAccountId<br>Y816 : questions can only be requested for questionAndAnswer Supported Sites",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providerAccounts",
+                    ":providerAccountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "providerAccountId",
+                      "description": "(Required) providerAccountId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"errorMessage\": \"string\",\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "77365d7c-48ae-4079-a364-cef29fc96edc",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providerAccounts",
+                    ":providerAccountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "providerAccountId",
+                      "description": "(Required) providerAccountId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "59236de0-26ef-46b5-bd4c-06f980372583",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providerAccounts",
+                    ":providerAccountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "providerAccountId",
+                      "description": "(Required) providerAccountId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1783a6c5-7e7a-4adf-ae78-6c2b40b4884b",
+          "name": "Envestnet Delete Provider Account",
+          "request": {
+            "name": "Envestnet Delete Provider Account",
+            "description": {
+              "content": "The delete provider account service is used to delete a provider account from the Yodlee system. This service also deletes the accounts that are created in the Yodlee system for that provider account. <br>This service does not return a response. The HTTP response code is 204 (Success with no content).<br>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "providerAccounts",
+                ":providerAccountId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "providerAccountId",
+                  "description": "(Required) providerAccountId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "df7614e7-c614-4f72-a56a-76111b672003",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providerAccounts",
+                    ":providerAccountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "providerAccountId",
+                      "description": "(Required) providerAccountId"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "efb45c26-6674-478e-8828-c4fbd1e2867c",
+              "name": "Y800 : Invalid value for providerAccountId<br>Y868 : No action is allowed, as the data is being migrated to the Open Banking provider<br>",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providerAccounts",
+                    ":providerAccountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "providerAccountId",
+                      "description": "(Required) providerAccountId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"errorMessage\": \"string\",\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1efb917b-a705-4e45-9a48-5ca95ae7316f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providerAccounts",
+                    ":providerAccountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "providerAccountId",
+                      "description": "(Required) providerAccountId"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f3b252c0-bd92-4ee0-b343-4555c592d6f6",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "providerAccounts",
+                    ":providerAccountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "providerAccountId",
+                      "description": "(Required) providerAccountId"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ac727b30-b56d-48ff-a11c-9c3dc4989d0b",
+    "name": "Envestnet Aggregation APIs Account Token ProviderAccounts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This file describes the Yodlee Aggregation product APIs using the swagger notation that you can use to build your financial application.  You can generate the client SDK in Python, JavaScript, PHP, or any other languages according to your development needs. For more details about the APIs, refer to <a href=\"https://developer.envestnet.com/resources/yodlee/yodlee-api-overview/docs\">Yodlee API v1.1 - Overview</a>.<br><br>You will have to set the header before making the API call. The following headers apply to all the APIs:<ul><li>Authorization: This header holds the access token</li> <li> Api-Version: 1.1</li></ul><b>Note</b>: If there are any API-specific headers, they are mentioned explicitly in the respective API's description.\n\nContact Support:\n Email: developer@yodlee.com",
+      "type": "text/plain"
+    }
+  }
+}

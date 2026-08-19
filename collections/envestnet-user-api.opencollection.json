@@ -1,0 +1,412 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Envestnet Aggregation APIs Account Token User API",
+    "version": "1.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Envestnet Saml Login",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/user/samlLogin",
+            "params": [
+              {
+                "name": "issuer",
+                "value": "",
+                "type": "query",
+                "description": "issuer"
+              },
+              {
+                "name": "samlResponse",
+                "value": "",
+                "type": "query",
+                "description": "samlResponse"
+              },
+              {
+                "name": "source",
+                "value": "",
+                "type": "query",
+                "description": "source"
+              }
+            ]
+          },
+          "docs": "The SAML login service is used to authenticate system users with a SAML response.<br>A new user will be created with the input provided if that user isn't already in the system.<br>For existing users, the system will make updates based on changes or new information.<br>When authentication is successful, a user session token is returned.<br><br><b>Note:</b> <li>The content type has to be passed as application/x-www-form-urlencoded. <li>issuer, source and samlResponse should be passed as body para"
+        },
+        {
+          "info": {
+            "name": "Envestnet Register User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/user/register",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The register user service is used to register a user in Yodlee.<br>The loginName cannot include spaces and must be between 3 and 150 characters.<br>locale passed must be one of the supported locales for the customer. <br>Currency provided in the input will be respected in the derived services and the amount fields in the response will be provided in the preferred currency.<br>userParam is accepted as a body parameter. <br><br><b>Note:</b> <li>The content type has to be passed as application/json"
+        },
+        {
+          "info": {
+            "name": "Envestnet Get Access Tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/user/accessTokens",
+            "params": [
+              {
+                "name": "appIds",
+                "value": "",
+                "type": "query",
+                "description": "appIds"
+              }
+            ]
+          },
+          "docs": "The Get Access Tokens service is used to retrieve the access tokens for the application id(s) provided.<br>URL in the response can be used to launch the application for which token is requested.<br><br><b>Note:</b> <li>This endpoint is deprecated for customers using the API Key-based authentication and is applicable only to customers who use the SAML-based authentication.<br>"
+        },
+        {
+          "info": {
+            "name": "Envestnet Get User Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/user"
+          },
+          "docs": "The get user details service is used to get the user profile information and the application preferences set at the time of user registration.<br>"
+        },
+        {
+          "info": {
+            "name": "Envestnet Update User Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/user",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The update user details service is used to update user details like name, address, currency preference, etc.<br>Currency provided in the input will be respected in the <a href=\"https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference#yodlee-aggregation-derivedtransactionsummary-get\">Derived</a> services and the amount fields in the response will be provided in the preferred currency.<br>The HTTP response code is 204 (Success without content). <br><br> <b>Login Name "
+        },
+        {
+          "info": {
+            "name": "Envestnet User Logout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/user/logout"
+          },
+          "docs": "<b>Deprecated</b>: This endpoint is deprecated for API Key-based authentication. The user logout service allows the user to log out of the application.<br>The service does not return a response body. The HTTP response code is 204 (Success with no content).<br>"
+        },
+        {
+          "info": {
+            "name": "Envestnet Delete User",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/user/unregister"
+          },
+          "docs": "The delete user service is used to delete or unregister a user from Yodlee. <br>Once deleted, the information related to the users cannot be retrieved. <br>The HTTP response code is 204 (Success without content)<br>"
+        },
+        {
+          "info": {
+            "name": "Envestnet Provides user-level preferences for each insight.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/insights/configs/userSubscriptions",
+            "params": [
+              {
+                "name": "insightName",
+                "value": "LOW_BALANCE_WARNING",
+                "type": "query",
+                "description": "Insight name"
+              },
+              {
+                "name": "entityId",
+                "value": "1001,5e7885993cd8e328288522f7",
+                "type": "query",
+                "description": "Comma separated list of entity Ids it could be a account id or view id"
+              }
+            ]
+          },
+          "docs": "This API returns the details of all the Insights which are subscribed by the customer. If any of the insight has been turned off by setting isSubscribed = false at the customerSubscription level, those insights will not be shown in the userSubscription API.<br /><br />Each Insight details contain attributes such as Insight Frequency, Threshold, etc. By default, all the configurations set by the customer will be inherited by the user. Using a separate PATCH API, consumers can override customer pr"
+        },
+        {
+          "info": {
+            "name": "Envestnet Update user-level preferences for each insight.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/insights/configs/userSubscriptions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API can be used to modify user-level preferences for each insight. <br /><br />Each Insight details contain attributes such as Insight Frequency, Threshold, etc. By default, all the configurations set by the customer will be inherited by the user. Using a separate PATCH API, users can override custom preferences and set their own preferences - wherever applicable.<br /><br />In addition to setting preferences at an insight entity level, the consumer will also be able to set preferences at a"
+        },
+        {
+          "info": {
+            "name": "Envestnet Delete an existing entity-level insight configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/insights/configs/userSubscriptions",
+            "params": [
+              {
+                "name": "insightName",
+                "value": "LARGE_PURCHAGE",
+                "type": "query",
+                "description": "Comma separated list of Insight name"
+              },
+              {
+                "name": "entityId",
+                "value": "123absce",
+                "type": "query",
+                "description": "Comma separated list of entity ids"
+              },
+              {
+                "name": "entityType",
+                "value": "account,view",
+                "type": "query",
+                "description": "Comma separated list of entity"
+              }
+            ]
+          },
+          "docs": "The DELETE API lets users delete one or more of the existing entityId level configurations for an insight. This can be account level or view level. By deleting all entity ID level configuration, user's insight evaluation defaults to the values specified by the customer for an insight."
+        },
+        {
+          "info": {
+            "name": "Envestnet Fetch all the insights generated for a user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/insights/feed",
+            "params": [
+              {
+                "name": "insightName",
+                "value": "LOW_BALANCE_WARNING",
+                "type": "query",
+                "description": "Insight name"
+              },
+              {
+                "name": "fromDate",
+                "value": "",
+                "type": "query",
+                "description": "fromDate"
+              },
+              {
+                "name": "toDate",
+                "value": "",
+                "type": "query",
+                "description": "toDate"
+              },
+              {
+                "name": "entityId",
+                "value": "10001,5e7885993cd8e328288522f7",
+                "type": "query",
+                "description": "Comma separated list of entity Ids, it could be a view Id or account Id"
+              },
+              {
+                "name": "skip",
+                "value": "100",
+                "type": "query",
+                "description": "skip (Min 0)"
+              },
+              {
+                "name": "top",
+                "value": "10",
+                "type": "query",
+                "description": "top (Max 50)"
+              },
+              {
+                "name": "entityType",
+                "value": "ACCOUNT",
+                "type": "query",
+                "description": "Comma separated list of entity"
+              },
+              {
+                "name": "triggerType",
+                "value": "SCHEDULE",
+                "type": "query",
+                "description": "triggerType of an insight defines how an Insight was triggered in the system. <br><br>Currently following triggerType are supported - <ul> <li><b>SCHDEULE</b> - Insight evaluation and subsequent generation triggered based on a pre-defined schedule.</li> <li><b>REFRESH</b> - Insight evaluation and subsequent generation triggered when a user's account gets successfully refreshed.</li> <li><b>EVENT</b> - Insight evaluation and subsequent generation triggered based on a system-defined event happening.</li> </ul>"
+              },
+              {
+                "name": "insightType",
+                "value": "AGGREGATE",
+                "type": "query",
+                "description": "Identifies whether the insight is generated at an entity-level - per account or per view (OTHER), or if it considers all entities for the user - e.g. all accounts (AGGREGATE).<br><br>"
+              }
+            ]
+          },
+          "docs": "The API allows you to fetch all or a subset of the insights generated for a specific user. The insights are returned in the descending order of the insight generation time. By default, the API returns all the insights generated in the last 31 days."
+        },
+        {
+          "info": {
+            "name": "Envestnet Fetch all the insights generated for a user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/insights/feedExtracts",
+            "params": [
+              {
+                "name": "insightName",
+                "value": "LOW_BALANCE_WARNING",
+                "type": "query",
+                "description": "Insight name"
+              },
+              {
+                "name": "fromDate",
+                "value": "",
+                "type": "query",
+                "description": "fromDate"
+              },
+              {
+                "name": "toDate",
+                "value": "",
+                "type": "query",
+                "description": "toDate"
+              },
+              {
+                "name": "entityId",
+                "value": "10001,5e7885993cd8e328288522f7",
+                "type": "query",
+                "description": "Comma separated list of entity Ids, it could be a view Id or account Id"
+              },
+              {
+                "name": "skip",
+                "value": "100",
+                "type": "query",
+                "description": "skip (Min 0)"
+              },
+              {
+                "name": "top",
+                "value": "10",
+                "type": "query",
+                "description": "top (Max 50)"
+              },
+              {
+                "name": "entityType",
+                "value": "ACCOUNT",
+                "type": "query",
+                "description": "Comma separated list of entity"
+              },
+              {
+                "name": "triggerType",
+                "value": "SCHEDULE",
+                "type": "query",
+                "description": "triggerType of an insight defines how an Insight was triggered in the system. <br><br>Currently following triggerType are supported - <ul> <li><b>SCHDEULE</b> - Insight evaluation and subsequent generation triggered based on a pre-defined schedule.</li> <li><b>REFRESH</b> - Insight evaluation and subsequent generation triggered when a user's account gets successfully refreshed.</li> <li><b>EVENT</b> - Insight evaluation and subsequent generation triggered based on a system-defined event happening.</li> </ul>"
+              },
+              {
+                "name": "insightType",
+                "value": "AGGREGATE",
+                "type": "query",
+                "description": "Identifies whether the insight is generated at an entity-level - per account or per view (OTHER), or if it considers all entities for the user - e.g. all accounts (AGGREGATE).<br><br>"
+              },
+              {
+                "name": "loginName",
+                "value": "insightsUser",
+                "type": "query",
+                "description": "Name of the User."
+              }
+            ]
+          },
+          "docs": "The API allows you to fetch all or a subset of the insights generated for a specific user. The insights are returned in the descending order of the insight generation time. By default, the API returns all the insights generated in the last 31 days."
+        },
+        {
+          "info": {
+            "name": "Envestnet Fetch the count of generated insight for a user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/insights/feed/count",
+            "params": [
+              {
+                "name": "insightName",
+                "value": "LOW_BALANCE_WARNING",
+                "type": "query",
+                "description": "Insight name"
+              },
+              {
+                "name": "fromDate",
+                "value": "",
+                "type": "query",
+                "description": "fromDate"
+              },
+              {
+                "name": "toDate",
+                "value": "",
+                "type": "query",
+                "description": "toDate"
+              },
+              {
+                "name": "entityId",
+                "value": "10001,5e7885993cd8e328288522f7",
+                "type": "query",
+                "description": "Comma separated list of entity Ids, it could be a view Id or account Id"
+              },
+              {
+                "name": "entityType",
+                "value": "ACCOUNT",
+                "type": "query",
+                "description": "Comma separated list of entity"
+              },
+              {
+                "name": "triggerType",
+                "value": "SCHEDULE",
+                "type": "query",
+                "description": "triggerType of an insight defines how an Insight was triggered in the system. <br><br>Currently following triggerType are supported - <ul> <li><b>SCHDEULE</b> - Insight evaluation and subsequent generation triggered based on a pre-defined schedule.</li> <li><b>REFRESH</b> - Insight evaluation and subsequent generation triggered when a user's account gets successfully refreshed.</li> <li><b>EVENT</b> - Insight evaluation and subsequent generation triggered based on a system-defined event happening.</li> </ul>"
+              },
+              {
+                "name": "insightType",
+                "value": "AGGREGATE",
+                "type": "query",
+                "description": "Identifies whether the insight is generated at an entity-level - per account or per view (OTHER), or if it considers all entities for the user - e.g. all accounts (AGGREGATE).<br><br>"
+              }
+            ]
+          },
+          "docs": "This API provides the count of the insights generated for the user. By default, the API provides the count of the insights generated in last 31 days."
+        },
+        {
+          "info": {
+            "name": "Envestnet Evalute the insights on demand.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/insights/trigger",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Evaluate the insight on demand based on the override duplicate check.<br> insightName, overrideDuplicateCheck, entityConfig needs to be passed as request parameter."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

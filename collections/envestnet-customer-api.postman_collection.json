@@ -1,0 +1,359 @@
+{
+  "item": [
+    {
+      "id": "2bc0cd69-e3a5-4d0c-8874-1ff8d726f416",
+      "name": "Customer",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a8083504-b364-4ddb-a543-70cee8533ce8",
+          "name": "Envestnet Provide details of all the insights available to the customer.",
+          "request": {
+            "name": "Envestnet Provide details of all the insights available to the customer.",
+            "description": {
+              "content": "This API returns only those Insights which the customer has subscribed to, among all the insights provided by Yodlee. If the customer has chosen to use the Insights configuration tool, the same functionality can be achieved through a graphical user interface.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "insights",
+                "configs",
+                "customerSubscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b7a5e9cf-c749-45e6-a50c-aea7426e44ac",
+              "name": "List of insights subscribed by the customer.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "configs",
+                    "customerSubscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customerSubscription\": [\n    {\n      \"insightName\": \"UPCOMING_BILLS\",\n      \"insightTitle\": \"Upcoming Bills\",\n      \"insightType\": \"OTHER\",\n      \"triggerType\": \"SCHEDULE\",\n      \"containers\": [\n        \"BANK\",\n        \"CARD\"\n      ],\n      \"description\": \"Generates an insight that lists upcoming recurring bills within a configured time period..\",\n      \"applicableEntity\": [\n        \"ACCOUNT\",\n        \"VIEW\"\n      ],\n      \"customerConfiguration\": [\n        {\n          \"entityType\": \"ACCOUNT\",\n          \"isSubscribed\": false,\n          \"frequency\": \"MONTHLY\",\n          \"threshold\": [\n            {\n              \"name\": \"FUTURE\",\n              \"value\": \"7\",\n              \"type\": \"DAYS\"\n            }\n          ]\n        },\n        {\n          \"entityType\": \"VIEW\",\n          \"isSubscribed\": false,\n          \"frequency\": \"MONTHLY\",\n          \"threshold\": [\n            {\n              \"name\": \"FUTURE\",\n              \"value\": \"7\",\n              \"type\": \"DAYS\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "15c83ed6-3922-469f-8eec-b5e3dde8e576",
+              "name": "bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "configs",
+                    "customerSubscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7094872a-8e94-401d-bd1c-67968f051bf5",
+              "name": "Y020 : Invalid token in authorization header<br>Y023 : Token has expired<br> Y011 : Invalid cobrand or incorrectly configured cobrand",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "configs",
+                    "customerSubscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "38574421-03bc-4f59-a514-e54996a868c8",
+          "name": "Envestnet Update details of one or more customer subscribed insights.",
+          "request": {
+            "name": "Envestnet Update details of one or more customer subscribed insights.",
+            "description": {
+              "content": "This API can be used to make an insight available to their users at any entity level (Account or View). By setting isSubscribed to true or false at an entity level within each insight, the customer can decide what functionality to make available to their end-users/consumers.<br /><br />Note-\n  <ul>\n  <li>This is a PATCH API. Only pass the Attributes in the API request body, which you want to update</li>\n  <li>This API supports updating multiple Insight's details in a single API call</li>\n  <li>'insightName' is a mandatory field in the Request body to identify which Insight's details are getting updated</li>\n  <li>If you pass an attribute that is not editable, you will see an error.</li>\n  </ul>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "insights",
+                "configs",
+                "customerSubscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerSubscription\": [\n    {\n      \"customerConfiguration\": [\n        {\n          \"entityType\": \"<string>\",\n          \"isSubscribed\": \"<boolean>\",\n          \"frequency\": \"<string>\",\n          \"duration\": \"<string>\",\n          \"threshold\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"isBenchmarkEnabled\": \"<boolean>\"\n        },\n        {\n          \"entityType\": \"<string>\",\n          \"isSubscribed\": \"<boolean>\",\n          \"frequency\": \"<string>\",\n          \"duration\": \"<string>\",\n          \"threshold\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"isBenchmarkEnabled\": \"<boolean>\"\n        }\n      ],\n      \"insightName\": \"<string>\",\n      \"insightTitle\": \"<string>\"\n    },\n    {\n      \"customerConfiguration\": [\n        {\n          \"entityType\": \"<string>\",\n          \"isSubscribed\": \"<boolean>\",\n          \"frequency\": \"<string>\",\n          \"duration\": \"<string>\",\n          \"threshold\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"isBenchmarkEnabled\": \"<boolean>\"\n        },\n        {\n          \"entityType\": \"<string>\",\n          \"isSubscribed\": \"<boolean>\",\n          \"frequency\": \"<string>\",\n          \"duration\": \"<string>\",\n          \"threshold\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"isBenchmarkEnabled\": \"<boolean>\"\n        }\n      ],\n      \"insightName\": \"<string>\",\n      \"insightTitle\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "14038d9f-1633-4136-ab14-58b83c50307e",
+              "name": "Insight for Cobrand Updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "configs",
+                    "customerSubscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerSubscription\": [\n    {\n      \"insightName\": \"UPCOMING_BILLS\",\n      \"insightTitle\": \"New Title\",\n      \"customerConfiguration\": [\n        {\n          \"entityType\": \"ACCOUNT\",\n          \"isSubscribed\": true,\n          \"threshold\": [\n            {\n              \"name\": \"FUTURE\",\n              \"value\": \"7\",\n              \"type\": \"DAYS\"\n            }\n          ]\n        },\n        {\n          \"entityType\": \"VIEW\",\n          \"isSubscribed\": true,\n          \"threshold\": [\n            {\n              \"name\": \"FUTURE\",\n              \"value\": \"7\",\n              \"type\": \"DAYS\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "52eecc12-22b1-4950-bac6-5b8eb5970185",
+              "name": "<br> Y806 : Invalid Input <br> Y800 : Invalid value for insightName <br> Y800 : Invalid value for insightTitle; special characters ><\\\\\"'%{}|^~[] are not supported <br> Y801: Invalid length for insightTitle; min 3 and max 100 characters including spaces are allowed. <br> Y800 : Invalid value for frequency; Supported values are {Frequencies} <br> Y800 : Invalid value for duration; Supported values are {Durations} <br> Y800 : Invalid value for type BASETYPE; Only CREDIT, DEBIT are supported <br> Y800 : Invalid value for {thresholdName} in {insightName} insight Min = {min} and Max = {max} <br> Y800 : {InsightName} cannot be subscribed without benchmark enabled for the customer <br> Y800 : Invalid value for isSubscribed. {InsightName} cannot be subscribed without benchmark enabled for the customer <br> Y802 : Modifying isBenchmarkEnabled is not allowed <br> Y802 : For insight {InsightName}, passing isBenchmarkEnabled is not allowed <br> Y800 : Invalid value for isBenchmarkEnabled Supported values are true, false\" <br> Y800 : Invalid value for duration. Supported values of duration for MID_MONTHLY frequency are {Frequencies} <br> Y802 : For insight {InsightName}, modifying applicableEntity is not allowed <br> Y802 : For insight {InsightName}, modifying triggerType is not allowed <br> Y802 : For insight {InsightName}, modifying containers is not allowed <br> Y802 : For insight {InsightName}, modifying description is not allowed <br> Y802 : For insight {InsightName}, modifying frequency is not allowed <br> Y802 : For insight {InsightName}, modifying isSubscribed is not allowed <br> Y802 : For insight {InsightName}, modifying duration is not allowed <br> Y800 : Invalid value for isSubscribed; Supported values are true, false <br> Y825 : Update not allowed without a valid request body <br> Y803 : Invalid request; Either a valid insightTitle or customerConfiguration is required. <br> Y802 : Specifying frequency attribute for {InsightName} insight is not allowed <br> Y802 : Specifying duration attribute for {InsightName} insight is not allowed <br> Y802 : For {InsightName} insight passing threshold is not allowed <br> Y812 : Required field/value - insightName missing in the request <br> Y802 : Modifying InsightType attribute is not allowed <br> Y813 :entityType should be provided <br> Y813 : Invalid request. The entire object within threshold should be provided <br> Y803 :At least one additional attribute is required in addition to entityType. <br> Y800: Invalid value for customerConfiguration; customerConfiguration is either missing, duplicated, or has insufficient/ incorrect attributes. <br> Y800: Invalid value for entityType. Supported entityType for {InsightName} insight are - {Entities} <br> Y802 : For {InsightName} insight, <String> inside the threshold is not allowed <br> Y802 : For {InsightName} insight, {Invalid String} inside the threshold is either repeated or not allowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "configs",
+                    "customerSubscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerSubscription\": [\n    {\n      \"insightName\": \"UPCOMING_BILLS\",\n      \"insightTitle\": \"New Title\",\n      \"customerConfiguration\": [\n        {\n          \"entityType\": \"ACCOUNT\",\n          \"isSubscribed\": true,\n          \"threshold\": [\n            {\n              \"name\": \"FUTURE\",\n              \"value\": \"7\",\n              \"type\": \"DAYS\"\n            }\n          ]\n        },\n        {\n          \"entityType\": \"VIEW\",\n          \"isSubscribed\": true,\n          \"threshold\": [\n            {\n              \"name\": \"FUTURE\",\n              \"value\": \"7\",\n              \"type\": \"DAYS\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d6d01062-0569-4177-8385-9b019c8ef76f",
+              "name": "Y020 : Invalid token in authorization header<br>Y023 : Token has expired<br> Y011 : Invalid cobrand or incorrectly configured cobrand",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "configs",
+                    "customerSubscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerSubscription\": [\n    {\n      \"insightName\": \"UPCOMING_BILLS\",\n      \"insightTitle\": \"New Title\",\n      \"customerConfiguration\": [\n        {\n          \"entityType\": \"ACCOUNT\",\n          \"isSubscribed\": true,\n          \"threshold\": [\n            {\n              \"name\": \"FUTURE\",\n              \"value\": \"7\",\n              \"type\": \"DAYS\"\n            }\n          ]\n        },\n        {\n          \"entityType\": \"VIEW\",\n          \"isSubscribed\": true,\n          \"threshold\": [\n            {\n              \"name\": \"FUTURE\",\n              \"value\": \"7\",\n              \"type\": \"DAYS\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b12e5025-0fe5-4816-871d-8d771394476d",
+    "name": "Envestnet Aggregation APIs Account Token Customer API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This file describes the Yodlee Aggregation product APIs using the swagger notation that you can use to build your financial application.  You can generate the client SDK in Python, JavaScript, PHP, or any other languages according to your development needs. For more details about the APIs, refer to <a href=\"https://developer.envestnet.com/resources/yodlee/yodlee-api-overview/docs\">Yodlee API v1.1 - Overview</a>.<br><br>You will have to set the header before making the API call. The following headers apply to all the APIs:<ul><li>Authorization: This header holds the access token</li> <li> Api-Version: 1.1</li></ul><b>Note</b>: If there are any API-specific headers, they are mentioned explicitly in the respective API's description.\n\nContact Support:\n Email: developer@yodlee.com",
+      "type": "text/plain"
+    }
+  }
+}

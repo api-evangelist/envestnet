@@ -1,0 +1,663 @@
+{
+  "item": [
+    {
+      "id": "8b3444a0-77fe-4aaf-bdb2-2d09dc2922f7",
+      "name": "Payment Processor",
+      "description": {
+        "content": "Envestnet | Yodlee's payment processor partners can use the Payment Processor endpoints to access verified account details using the <code>processorToken</code> created and shared by mutual customers. These APIs are only for payment processor partners and not for developers using the Envestnet | Yodlee services to integrate with payment partners. Refer <a href=\"/products/yodlee/account-token/docs#customers\"> here </a> for a guide on working with payment processor partners.<br>As a processor payment partner, you can retrieve the following account information using the <code>processorToken</code>:<ul><li>Account details include account status, account name, full account number, bank transfer code, balance, etc.</li><li>Account holder details include name, email, phone number, address, etc.</li><li>Account balance details.</li></ul><br>You will have to set the header before making the API call. The following headers apply to all the APIs:</p><ul><li>Authorization: This header holds the access token</li> </ul><b>Note</b>: If there are any API-specific headers, they are mentioned explicitly in the respective API's description.<p></p>",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "708c01dd-bf98-4400-9207-7399c9f270cf",
+          "name": "Envestnet Get Account Holder Details",
+          "request": {
+            "name": "Envestnet Get Account Holder Details",
+            "description": {
+              "content": "The get account holder details service retrieves the account holder information such as name, email, phone number, address, etc. of the verified financial account associated with the <code>processorToken</code>. The <code>lastUpdated</code> field indicates when the account information was last updated. We recommend using this service when looking for information related to the account holder(s), for instance, to confirm the account holder's name. <br><br><b>Note: </b>Remember to include the <code>Authorization</code> header.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "partner",
+                "paymentProcessor",
+                "account",
+                "holder"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Token shared by customer to access financial account information.",
+                "key": "processorToken",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b62b99fb-2b0c-4ad6-b41d-85e9cfe56f03",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partner",
+                    "paymentProcessor",
+                    "account",
+                    "holder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Token shared by customer to access financial account information.",
+                    "key": "processorToken",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"account\": [\n    {\n      \"accountStatus\": \"INACTIVE\",\n      \"lastUpdated\": \"string\",\n      \"accountName\": \"string\",\n      \"accountType\": \"string\",\n      \"profile\": {\n        \"identifier\": [\n          {\n            \"type\": \"NIE\",\n            \"value\": \"string\"\n          },\n          {\n            \"type\": \"NIE\",\n            \"value\": \"string\"\n          }\n        ],\n        \"address\": [\n          {\n            \"zip\": \"string\",\n            \"country\": \"string\",\n            \"address3\": \"string\",\n            \"address2\": \"string\",\n            \"city\": \"string\",\n            \"sourceType\": \"string\",\n            \"address1\": \"string\",\n            \"street\": \"string\",\n            \"state\": \"string\",\n            \"type\": \"RETAIL\"\n          },\n          {\n            \"zip\": \"string\",\n            \"country\": \"string\",\n            \"address3\": \"string\",\n            \"address2\": \"string\",\n            \"city\": \"string\",\n            \"sourceType\": \"string\",\n            \"address1\": \"string\",\n            \"street\": \"string\",\n            \"state\": \"string\",\n            \"type\": \"UNKNOWN\"\n          }\n        ],\n        \"phoneNumber\": [\n          {\n            \"type\": \"MOBILE\",\n            \"value\": \"string\"\n          },\n          {\n            \"type\": \"WORK\",\n            \"value\": \"string\"\n          }\n        ],\n        \"email\": [\n          {\n            \"type\": \"WORK\",\n            \"value\": \"string\"\n          },\n          {\n            \"type\": \"SECONDARY\",\n            \"value\": \"string\"\n          }\n        ]\n      },\n      \"holder\": [\n        {\n          \"identifier\": [\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"gender\": \"string\",\n          \"ownership\": \"SECONDARY\",\n          \"name\": {\n            \"middle\": \"string\",\n            \"last\": \"string\",\n            \"fullName\": \"string\",\n            \"first\": \"string\"\n          }\n        },\n        {\n          \"identifier\": [\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"gender\": \"string\",\n          \"ownership\": \"OTHERS\",\n          \"name\": {\n            \"middle\": \"string\",\n            \"last\": \"string\",\n            \"fullName\": \"string\",\n            \"first\": \"string\"\n          }\n        }\n      ],\n      \"id\": 6944\n    },\n    {\n      \"accountStatus\": \"ACTIVE\",\n      \"lastUpdated\": \"string\",\n      \"accountName\": \"string\",\n      \"accountType\": \"string\",\n      \"profile\": {\n        \"identifier\": [\n          {\n            \"type\": \"NIN\",\n            \"value\": \"string\"\n          },\n          {\n            \"type\": \"NRIC\",\n            \"value\": \"string\"\n          }\n        ],\n        \"address\": [\n          {\n            \"zip\": \"string\",\n            \"country\": \"string\",\n            \"address3\": \"string\",\n            \"address2\": \"string\",\n            \"city\": \"string\",\n            \"sourceType\": \"string\",\n            \"address1\": \"string\",\n            \"street\": \"string\",\n            \"state\": \"string\",\n            \"type\": \"PAYMENT\"\n          },\n          {\n            \"zip\": \"string\",\n            \"country\": \"string\",\n            \"address3\": \"string\",\n            \"address2\": \"string\",\n            \"city\": \"string\",\n            \"sourceType\": \"string\",\n            \"address1\": \"string\",\n            \"street\": \"string\",\n            \"state\": \"string\",\n            \"type\": \"BUSINESS\"\n          }\n        ],\n        \"phoneNumber\": [\n          {\n            \"type\": \"WORK\",\n            \"value\": \"string\"\n          },\n          {\n            \"type\": \"HOME\",\n            \"value\": \"string\"\n          }\n        ],\n        \"email\": [\n          {\n            \"type\": \"PRIMARY\",\n            \"value\": \"string\"\n          },\n          {\n            \"type\": \"SECONDARY\",\n            \"value\": \"string\"\n          }\n        ]\n      },\n      \"holder\": [\n        {\n          \"identifier\": [\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"gender\": \"string\",\n          \"ownership\": \"TRUST\",\n          \"name\": {\n            \"middle\": \"string\",\n            \"last\": \"string\",\n            \"fullName\": \"string\",\n            \"first\": \"string\"\n          }\n        },\n        {\n          \"identifier\": [\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"gender\": \"string\",\n          \"ownership\": \"SECONDARY\",\n          \"name\": {\n            \"middle\": \"string\",\n            \"last\": \"string\",\n            \"fullName\": \"string\",\n            \"first\": \"string\"\n          }\n        }\n      ],\n      \"id\": 3949\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4dc2370e-9053-4497-b358-0012c4317f36",
+              "name": "Y007 : Authorization header missing<br>Y008 : Invalid token in authorization header<br>Y800 : Invalid value for processorToken<br>Y016 : processorToken header missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partner",
+                    "paymentProcessor",
+                    "account",
+                    "holder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Token shared by customer to access financial account information.",
+                    "key": "processorToken",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"errorMessage\": \"string\",\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1b3b66a-a44b-4921-befc-f0eafdb98048",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partner",
+                    "paymentProcessor",
+                    "account",
+                    "holder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Token shared by customer to access financial account information.",
+                    "key": "processorToken",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e956cc1d-06d0-4239-97ff-7b79d4d356cc",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partner",
+                    "paymentProcessor",
+                    "account",
+                    "holder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Token shared by customer to access financial account information.",
+                    "key": "processorToken",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ebcad638-fc8f-4655-8ab9-be964bc02b86",
+          "name": "Envestnet Get Account Details",
+          "request": {
+            "name": "Envestnet Get Account Details",
+            "description": {
+              "content": "The get account details service retrieves account information such as account name, type, status, balance, account number and transfer code (for example, routing number of the bank account in the US) of the verified account associated with the <code>processorToken</code>. The <code>lastUpdated</code> field indicates when the account information was last updated. We recommend using this service when looking for details related to the financial account, for instance, the full account number and bank transfer code for initiating a payment.<br><br><b>Note: </b>Remember to include the <code>Authorization</code> header.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "partner",
+                "paymentProcessor",
+                "account"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Token shared by customer to access financial account information.",
+                "key": "processorToken",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "06e84f37-efbc-48c2-9b97-67e5cdf3ea7f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partner",
+                    "paymentProcessor",
+                    "account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Token shared by customer to access financial account information.",
+                    "key": "processorToken",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"account\": [\n    {\n      \"accountStatus\": \"ACTIVE\",\n      \"lastUpdated\": \"string\",\n      \"accountName\": \"string\",\n      \"accountType\": \"string\",\n      \"currentBalance\": {\n        \"amount\": 1091.1876881272253,\n        \"convertedAmount\": 9484.211798431597,\n        \"currency\": \"BUK\",\n        \"convertedCurrency\": \"QAR\"\n      },\n      \"id\": 98,\n      \"bankTransferCode\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"SORT_CODE\"\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"SORT_CODE\"\n        }\n      ],\n      \"availableBalance\": {\n        \"amount\": 1239.6348384169698,\n        \"convertedAmount\": 7706.775331068274,\n        \"currency\": \"PGK\",\n        \"convertedCurrency\": \"VEF\"\n      },\n      \"fullAccountNumberList\": {\n        \"paymentAccountNumber\": \"string\",\n        \"unmaskedAccountNumber\": \"string\"\n      }\n    },\n    {\n      \"accountStatus\": \"CLOSED\",\n      \"lastUpdated\": \"string\",\n      \"accountName\": \"string\",\n      \"accountType\": \"string\",\n      \"currentBalance\": {\n        \"amount\": 466.5426059921118,\n        \"convertedAmount\": 7113.229831497866,\n        \"currency\": \"SVC\",\n        \"convertedCurrency\": \"SDD\"\n      },\n      \"id\": 4653,\n      \"bankTransferCode\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"IFSC\"\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"ROUTING_NUMBER\"\n        }\n      ],\n      \"availableBalance\": {\n        \"amount\": 6379.821753199198,\n        \"convertedAmount\": 6520.549194973233,\n        \"currency\": \"XBD\",\n        \"convertedCurrency\": \"LSL\"\n      },\n      \"fullAccountNumberList\": {\n        \"paymentAccountNumber\": \"string\",\n        \"unmaskedAccountNumber\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c76ac88d-58a1-4a1c-8d89-8e0e9f5f1a1e",
+              "name": "Y007 : Authorization header missing<br>Y008 : Invalid token in authorization header<br>Y800 : Invalid value for processorToken<br>Y016 : processorToken header missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partner",
+                    "paymentProcessor",
+                    "account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Token shared by customer to access financial account information.",
+                    "key": "processorToken",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"errorMessage\": \"string\",\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b67247d-6627-4ea6-ad7e-0ad20b114073",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partner",
+                    "paymentProcessor",
+                    "account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Token shared by customer to access financial account information.",
+                    "key": "processorToken",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "175f2957-6bf5-4cf1-a531-4e582d922fff",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partner",
+                    "paymentProcessor",
+                    "account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Token shared by customer to access financial account information.",
+                    "key": "processorToken",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f00e09a5-496f-4122-a706-691f2d0c9720",
+          "name": "Envestnet Get Account Balance",
+          "request": {
+            "name": "Envestnet Get Account Balance",
+            "description": {
+              "content": "The get account balance service retrieves the account balance information of the verified account associated with the <code>processorToken</code>. The response returns additional account information including account names, type and status, along with the account balance information. <br>This service forces an update of the account balances. While other services also return the account balances, this service attempts to refresh the account balances in real-time rather than return a cached value. Refer to the <code>lastUpdated</code> field to determine when the account balances were refreshed. We recommend using this service when looking for the latest balance for the account.<br>While posting a debit against an account, it is generally advisable to check the available balance field to verify the availability of sufficient funds. This service returns both available and current balances: <ul><li><b>Available Balance</b> is the amount in the account that is available for spending. The value is aggregated from the FI. For checking accounts with overdrafts, the available balance amount may include the overdraft amount if the FI adds the overdraft balance to the available balance.</li><li><b>Current Balance</b> is the total amount of money in the account, aggregated from the FI.</li></ul><br><b>Note: </b>Remember to include the <code>Authorization</code> header.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "partner",
+                "paymentProcessor",
+                "account",
+                "balance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Token shared by customer to access financial account information.",
+                "key": "processorToken",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6f8f252e-f530-485e-932b-11c5ad964766",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partner",
+                    "paymentProcessor",
+                    "account",
+                    "balance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Token shared by customer to access financial account information.",
+                    "key": "processorToken",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"account\": [\n    {\n      \"accountStatus\": \"INACTIVE\",\n      \"lastUpdated\": \"string\",\n      \"accountName\": \"string\",\n      \"accountType\": \"string\",\n      \"currentBalance\": {\n        \"amount\": 6236.859980354978,\n        \"convertedAmount\": 9769.973294022715,\n        \"currency\": \"TMM\",\n        \"convertedCurrency\": \"MDL\"\n      },\n      \"id\": 9975,\n      \"availableBalance\": {\n        \"amount\": 3422.6870619695983,\n        \"convertedAmount\": 5086.6367697979895,\n        \"currency\": \"CRC\",\n        \"convertedCurrency\": \"MUR\"\n      }\n    },\n    {\n      \"accountStatus\": \"DELETED\",\n      \"lastUpdated\": \"string\",\n      \"accountName\": \"string\",\n      \"accountType\": \"string\",\n      \"currentBalance\": {\n        \"amount\": 9031.999424691967,\n        \"convertedAmount\": 1255.2982703744287,\n        \"currency\": \"VEF\",\n        \"convertedCurrency\": \"NAD\"\n      },\n      \"id\": 8727,\n      \"availableBalance\": {\n        \"amount\": 155.29881270374358,\n        \"convertedAmount\": 4735.818497261104,\n        \"currency\": \"PHP\",\n        \"convertedCurrency\": \"PAB\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "72938914-fe10-458b-bdce-f8b38ab441a8",
+              "name": "Y007 : Authorization header missing<br>Y008 : Invalid token in authorization header<br>Y800 : Invalid value for processorToken<br>Y016 : processorToken header missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partner",
+                    "paymentProcessor",
+                    "account",
+                    "balance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Token shared by customer to access financial account information.",
+                    "key": "processorToken",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"errorMessage\": \"string\",\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "72e26a1b-057d-44e2-bcae-80a5fc1b0d9a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partner",
+                    "paymentProcessor",
+                    "account",
+                    "balance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Token shared by customer to access financial account information.",
+                    "key": "processorToken",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6c107c87-b3cd-49c2-9b96-460a19992ac0",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partner",
+                    "paymentProcessor",
+                    "account",
+                    "balance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Token shared by customer to access financial account information.",
+                    "key": "processorToken",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c4414e6b-26e6-4492-974e-de19e62a6ca7",
+    "name": "Envestnet Aggregation APIs Account Token Payment Processor API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This file describes the Yodlee Aggregation product APIs using the swagger notation that you can use to build your financial application.  You can generate the client SDK in Python, JavaScript, PHP, or any other languages according to your development needs. For more details about the APIs, refer to <a href=\"https://developer.envestnet.com/resources/yodlee/yodlee-api-overview/docs\">Yodlee API v1.1 - Overview</a>.<br><br>You will have to set the header before making the API call. The following headers apply to all the APIs:<ul><li>Authorization: This header holds the access token</li> <li> Api-Version: 1.1</li></ul><b>Note</b>: If there are any API-specific headers, they are mentioned explicitly in the respective API's description.\n\nContact Support:\n Email: developer@yodlee.com",
+      "type": "text/plain"
+    }
+  }
+}

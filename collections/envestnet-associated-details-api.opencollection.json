@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Envestnet Aggregation APIs Account Token Associated Details API",
+    "version": "1.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Associated Details",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Envestnet Fetch the details of a insights associated with an entity Id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/insights/entityDetail",
+            "params": [
+              {
+                "name": "entityId",
+                "value": "603df517392f983d50925df7 or 10231581",
+                "type": "query",
+                "description": "The unique identifier of the account or view."
+              },
+              {
+                "name": "entityType",
+                "value": "ACCOUNT or VIEW",
+                "type": "query",
+                "description": "The unique identifier of the entity type."
+              },
+              {
+                "name": "insightName",
+                "value": "BILL_PAID,NEW_BILL",
+                "type": "query",
+                "description": "The unique identifier of insight Name. Comma separated multiple values can be passed."
+              }
+            ]
+          },
+          "docs": "Retrieves details of all insights applicable for a given entity Id (viewId or accountId)."
+        },
+        {
+          "info": {
+            "name": "Envestnet Fetch the details of entities associated with an insight name.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/insights/insightDetail/:insightName",
+            "params": [
+              {
+                "name": "insightName",
+                "value": "SUGGESTED_SAVING_OPPORTUNITY",
+                "type": "path",
+                "description": "The name identifier of the specific insight."
+              },
+              {
+                "name": "entityType",
+                "value": "ACCOUNT,VIEW",
+                "type": "query",
+                "description": "The unique identifier of entity Type. Comma separated multiple values can be passed."
+              }
+            ]
+          },
+          "docs": "Retrieves details of all entity ids applicable for a given insight."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

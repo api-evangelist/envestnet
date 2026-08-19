@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Envestnet Aggregation APIs Account Token Customer API",
+    "version": "1.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Envestnet Provide details of all the insights available to the customer.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/insights/configs/customerSubscriptions"
+          },
+          "docs": "This API returns only those Insights which the customer has subscribed to, among all the insights provided by Yodlee. If the customer has chosen to use the Insights configuration tool, the same functionality can be achieved through a graphical user interface."
+        },
+        {
+          "info": {
+            "name": "Envestnet Update details of one or more customer subscribed insights.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/insights/configs/customerSubscriptions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API can be used to make an insight available to their users at any entity level (Account or View). By setting isSubscribed to true or false at an entity level within each insight, the customer can decide what functionality to make available to their end-users/consumers.<br /><br />Note-\n  <ul>\n  <li>This is a PATCH API. Only pass the Attributes in the API request body, which you want to update</li>\n  <li>This API supports updating multiple Insight's details in a single API call</li>\n  <li>'"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

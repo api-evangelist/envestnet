@@ -1,0 +1,436 @@
+{
+  "item": [
+    {
+      "id": "65ecd8dd-c4e5-4086-bef2-8df80d490194",
+      "name": "Associated Details",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1155a390-de5a-400e-8e59-8a1a719e276f",
+          "name": "Envestnet Fetch the details of a insights associated with an entity Id.",
+          "request": {
+            "name": "Envestnet Fetch the details of a insights associated with an entity Id.",
+            "description": {
+              "content": "Retrieves details of all insights applicable for a given entity Id (viewId or accountId).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "insights",
+                "entityDetail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "entityId",
+                  "value": "<string>",
+                  "description": "(Required) The unique identifier of the account or view."
+                },
+                {
+                  "disabled": false,
+                  "key": "entityType",
+                  "value": "<string>",
+                  "description": "(Required) The unique identifier of the entity type."
+                },
+                {
+                  "disabled": false,
+                  "key": "insightName",
+                  "value": "<string>",
+                  "description": "The unique identifier of insight Name. Comma separated multiple values can be passed."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a8a2f317-3db5-49c5-b935-9e2246967781",
+              "name": "Applicable Insights are fetched successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "entityDetail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "entityId",
+                      "value": "603df517392f983d50925df7 or 10231581"
+                    },
+                    {
+                      "key": "entityType",
+                      "value": "ACCOUNT or VIEW"
+                    },
+                    {
+                      "key": "insightName",
+                      "value": "BILL_PAID,NEW_BILL"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entityDetail\": [\n    {\n      \"entityType\": \"ACCOUNT\",\n      \"entityId\": 234213523,\n      \"container\": \"BANK\",\n      \"link\": {\n        \"entityName\": \"ACCOUNT\",\n        \"url\": \"/accounts?accountId=234213523\"\n      },\n      \"eligibleInsight\": [\n        {\n          \"insightName\": \"SUGGESTED_SAVING_OPPORTUNITY\",\n          \"applicableConfiguration\": [\n            {\n              \"entityType\": \"ACCOUNT\",\n              \"isSubscribed\": true,\n              \"frequency\": \"MID_MONTHLY\",\n              \"duration\": \"LAST_THREE_MONTHS\",\n              \"threshold\": [\n                {\n                  \"name\": \"CHANGE\",\n                  \"value\": \"100.00\",\n                  \"type\": \"AMOUNT\"\n                },\n                {\n                  \"name\": \"CHANGE\",\n                  \"value\": \"10.00\",\n                  \"type\": \"PERCENT\"\n                }\n              ]\n            }\n          ]\n        },\n        {\n          \"insightName\": \"SPENDING_BY_MERCHANT_ALL_ACCOUNTS\",\n          \"applicableConfiguration\": [\n            {\n              \"entityType\": \"ACCOUNT\",\n              \"isSubscribed\": true,\n              \"frequency\": \"MONTHLY\",\n              \"duration\": \"THREE_MONTHS\",\n              \"threshold\": [\n                {\n                  \"name\": \"TOP\",\n                  \"value\": 10,\n                  \"type\": \"NUMBER\"\n                }\n              ]\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0be0555b-7987-4af6-8674-f48c9e8ee2b6",
+              "name": "Bad request. ErrorCode and ErrorMessages below: <br><br> Y800: Invalid value for entityId <br> Y800: Invalid value for insightName <br> Y800: Invalid value for insightName; one or more insightName requested is not eligible for the entityId passed. <br>  Y800: Invalid value for insightName; It is either invalid, duplicated, or not supported. <br> Y800: Invalid value for insightName; one or more insightName requested is not enabled for the entityId passed <br> Y800: Invalid value for entityType <br> Y800: Invalid value for entityType/entityId combination. <br> Y803: entityId and entityType is required to process this request.<br> Y800: Invalid value for entityId/entityType; multiple values are not supported.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "entityDetail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "entityId",
+                      "value": "603df517392f983d50925df7 or 10231581"
+                    },
+                    {
+                      "key": "entityType",
+                      "value": "ACCOUNT or VIEW"
+                    },
+                    {
+                      "key": "insightName",
+                      "value": "BILL_PAID,NEW_BILL"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "74a854e0-9384-41ad-b00d-65d755a538d3",
+              "name": "Y020 : Invalid token in authorization header<br>Y023 : Token has expired<br> Y011 : Invalid cobrand or incorrectly configured cobrand",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "entityDetail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "entityId",
+                      "value": "603df517392f983d50925df7 or 10231581"
+                    },
+                    {
+                      "key": "entityType",
+                      "value": "ACCOUNT or VIEW"
+                    },
+                    {
+                      "key": "insightName",
+                      "value": "BILL_PAID,NEW_BILL"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7cc65ad8-ed1a-42db-b0fa-4c65661dc411",
+          "name": "Envestnet Fetch the details of entities associated with an insight name.",
+          "request": {
+            "name": "Envestnet Fetch the details of entities associated with an insight name.",
+            "description": {
+              "content": "Retrieves details of all entity ids applicable for a given insight.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "insights",
+                "insightDetail",
+                ":insightName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "entityType",
+                  "value": "<string>",
+                  "description": "The unique identifier of entity Type. Comma separated multiple values can be passed."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "insightName",
+                  "description": "(Required) The name identifier of the specific insight."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c98df198-e76f-4eb1-8002-7378eccb71a2",
+              "name": "Applicable entities are fetched successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "insightDetail",
+                    ":insightName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "entityType",
+                      "value": "ACCOUNT,VIEW"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "insightName",
+                      "description": "(Required) The name identifier of the specific insight."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"insightDetail\": [\n    {\n      \"insightName\": \"SUGGESTED_SAVING_OPPORTUNITY\",\n      \"insightType\": \"OTHER\",\n      \"triggerType\": \"SCHEDULE\",\n      \"eligibleEntity\": [\n        {\n          \"entityType\": \"ACCOUNT\",\n          \"entityId\": 12312312,\n          \"container\": \"BANK\",\n          \"isSubscribed\": true,\n          \"frequency\": \"MID_MONTHLY\",\n          \"duration\": \"LAST_THREE_MONTHS\",\n          \"threshold\": [\n            {\n              \"name\": \"CHANGE\",\n              \"value\": \"100.00\",\n              \"type\": \"AMOUNT\"\n            },\n            {\n              \"name\": \"CHANGE\",\n              \"value\": \"10.00\",\n              \"type\": \"PERCENT\"\n            }\n          ],\n          \"link\": {\n            \"entityName\": \"account\",\n            \"url\": \"/accounts?accountId=234213523\"\n          }\n        },\n        {\n          \"entityType\": \"VIEW\",\n          \"entityId\": 12312312,\n          \"container\": \"BANK\",\n          \"isSubscribed\": true,\n          \"frequency\": \"MID_MONTHLY\",\n          \"duration\": \"LAST_THREE_MONTHS\",\n          \"threshold\": [\n            {\n              \"name\": \"CHANGE\",\n              \"value\": \"100.00\",\n              \"type\": \"AMOUNT\"\n            },\n            {\n              \"name\": \"CHANGE\",\n              \"value\": \"10.00\",\n              \"type\": \"PERCENT\"\n            }\n          ],\n          \"link\": {\n            \"entityName\": \"view\",\n            \"url\": \"/views/234213523\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac98a6a4-621e-4d9a-a323-86c7dbf700fb",
+              "name": "Bad request. ErrorCode and ErrorMessages below: <br><br> Y800: Invalid value for entityId <br> Y800: Invalid value for entityType; only ACCOUNT and VIEW is allowed. <br> Y800: Invalid value for entityType; one or more entityType requested is not eligible for the insightName passed. <br>  Y800: Invalid value for entityType; It is either invalid, duplicated, or not supported. <br> Y822: Details cannot be requested for insights that are not enabled for the user.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "insightDetail",
+                    ":insightName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "entityType",
+                      "value": "ACCOUNT,VIEW"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "insightName",
+                      "description": "(Required) The name identifier of the specific insight."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "99121fc2-e237-4660-b613-035cd0f3f1d1",
+              "name": "Y020 : Invalid token in authorization header<br>Y023 : Token has expired<br> Y011 : Invalid cobrand or incorrectly configured cobrand",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "insightDetail",
+                    ":insightName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "entityType",
+                      "value": "ACCOUNT,VIEW"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "insightName",
+                      "description": "(Required) The name identifier of the specific insight."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "32276b8e-39ff-4bb4-a675-9b6bbcc97ae0",
+    "name": "Envestnet Aggregation APIs Account Token Associated Details API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This file describes the Yodlee Aggregation product APIs using the swagger notation that you can use to build your financial application.  You can generate the client SDK in Python, JavaScript, PHP, or any other languages according to your development needs. For more details about the APIs, refer to <a href=\"https://developer.envestnet.com/resources/yodlee/yodlee-api-overview/docs\">Yodlee API v1.1 - Overview</a>.<br><br>You will have to set the header before making the API call. The following headers apply to all the APIs:<ul><li>Authorization: This header holds the access token</li> <li> Api-Version: 1.1</li></ul><b>Note</b>: If there are any API-specific headers, they are mentioned explicitly in the respective API's description.\n\nContact Support:\n Email: developer@yodlee.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,1382 @@
+{
+  "item": [
+    {
+      "id": "79766c7c-46ac-4d5f-b53f-e1c3007af62a",
+      "name": "CreditAcceleratorFile",
+      "description": {
+        "content": "CreditAcceleratorFile API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "99c4499f-5dd2-436f-9353-648889c5fd0e",
+          "name": "Envestnet Refresh Credit Accelerator File",
+          "request": {
+            "name": "Envestnet Refresh Credit Accelerator File",
+            "description": {
+              "content": "This service allows you to refresh the already generated credit accelerator file",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "creditAccelerator",
+                "report",
+                "refresh"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"configName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "019f690f-0035-44da-aed3-2d8dba40a28c",
+              "name": "Created Successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditAccelerator",
+                    "report",
+                    "refresh"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"configName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"configName\": \"string\",\n  \"reportId\": 8101,\n  \"submissionDate\": \"string\",\n  \"originalReportId\": 1597,\n  \"status\": \"FAILED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "106fb809-d2eb-40a3-b920-6ad35f763389",
+              "name": "Y800 : Invalid value for configName<br>Y800 : Invalid value for requestingFirm<br>Y802 : requestingFirm not allowed<br>Y802 : refresh not allowed<br>Y802 : The report is not available, and refresh is not allowed<br>Y806 : Invalid input<br>Y812 : Required field/value - configName missing in the request<br>Y847 : resource cannot be requested, as feature not enabled",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditAccelerator",
+                    "report",
+                    "refresh"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"configName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"errorMessage\": \"string\",\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03baac1f-a863-4d4c-a788-d466a45273fc",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditAccelerator",
+                    "report",
+                    "refresh"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"configName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "40dbdafb-3af5-46d9-9a69-fc38f90874a3",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditAccelerator",
+                    "report",
+                    "refresh"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"configName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1dc0c3ed-7862-438f-be84-e0ce6fae8084",
+              "name": "Y904 : Internal exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditAccelerator",
+                    "report",
+                    "refresh"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"configName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"errorMessage\": \"string\",\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1131fee9-dcbf-4c22-865f-7541e05da273",
+          "name": "Envestnet Get File Status",
+          "request": {
+            "name": "Envestnet Get File Status",
+            "description": {
+              "content": "You can use this service to check the status of the credit accelerator file using either reportId or configName as query parameters where configName will only give the status for latest requested credit accelerator file. We recommend polling at a 2 second interval.<br>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "creditAccelerator",
+                "report",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "configName",
+                  "value": "<string>",
+                  "description": "(Required) Unique identifier for the credit accelerator file"
+                },
+                {
+                  "disabled": false,
+                  "key": "reportId",
+                  "value": "<long>",
+                  "description": "Unique identifier for the credit accelerator file"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3ced0312-905f-4d44-a5b2-afb2fa5c5704",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditAccelerator",
+                    "report",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "configName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reportId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"configName\": \"string\",\n  \"reportId\": 3689,\n  \"selectedAccounts\": [\n    {\n      \"providerAccountId\": 2999,\n      \"id\": 4215\n    },\n    {\n      \"providerAccountId\": 3261,\n      \"id\": 4532\n    }\n  ],\n  \"submissionDate\": \"string\",\n  \"originalReportId\": 1338,\n  \"status\": \"IN_PROGRESS\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "80608def-8d27-4ba7-8b7a-c378e634c5c3",
+              "name": "Y812 : Required field/value - configName or reportId missing in the request<br>Y802 : configName and reportId together is not allowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditAccelerator",
+                    "report",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "configName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reportId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"errorMessage\": \"string\",\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e9046b64-b784-4386-b76c-f12e686bdc6a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditAccelerator",
+                    "report",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "configName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reportId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b17eff08-7329-4d74-9668-7f2b20c9671a",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditAccelerator",
+                    "report",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "configName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reportId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d7b76da5-bd15-46f6-9329-d964b053ee6a",
+              "name": "Y904 : Internal exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditAccelerator",
+                    "report",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "configName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reportId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"errorMessage\": \"string\",\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e24fa661-5b00-4bc2-8fe2-ce26473dd6d1",
+          "name": "Envestnet Get Statements",
+          "request": {
+            "name": "Envestnet Get Statements",
+            "description": {
+              "content": "Partner can poll the below API to see a list of financial statements which were downloading during the application process on behalf of the consumer. We recommend polling at a 2 second interval.<br>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "creditAccelerator",
+                "report",
+                "statements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "configName",
+                  "value": "<string>",
+                  "description": "(Required) The config name using which the credit accelerator file generation was requested"
+                },
+                {
+                  "disabled": false,
+                  "key": "reportId",
+                  "value": "<long>",
+                  "description": "Unique identifier for the credit accelerator file"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a78a1eda-89c4-4090-82fb-c6da982fb5ad",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditAccelerator",
+                    "report",
+                    "statements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "configName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reportId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"configName\": \"string\",\n  \"reportId\": 7755,\n  \"statements\": [\n    {\n      \"accountId\": 1970,\n      \"additionalStatus\": \"string\",\n      \"documents\": [\n        {\n          \"accountID\": 3532,\n          \"lastUpdated\": \"string\",\n          \"formType\": \"string\",\n          \"docType\": \"string\",\n          \"name\": \"string\",\n          \"statementDate\": \"string\",\n          \"id\": \"string\",\n          \"source\": \"string\",\n          \"uri\": \"string\",\n          \"status\": \"string\"\n        },\n        {\n          \"accountID\": 8138,\n          \"lastUpdated\": \"string\",\n          \"formType\": \"string\",\n          \"docType\": \"string\",\n          \"name\": \"string\",\n          \"statementDate\": \"string\",\n          \"id\": \"string\",\n          \"source\": \"string\",\n          \"uri\": \"string\",\n          \"status\": \"string\"\n        }\n      ],\n      \"status\": \"string\"\n    },\n    {\n      \"accountId\": 9601,\n      \"additionalStatus\": \"string\",\n      \"documents\": [\n        {\n          \"accountID\": 1208,\n          \"lastUpdated\": \"string\",\n          \"formType\": \"string\",\n          \"docType\": \"string\",\n          \"name\": \"string\",\n          \"statementDate\": \"string\",\n          \"id\": \"string\",\n          \"source\": \"string\",\n          \"uri\": \"string\",\n          \"status\": \"string\"\n        },\n        {\n          \"accountID\": 2417,\n          \"lastUpdated\": \"string\",\n          \"formType\": \"string\",\n          \"docType\": \"string\",\n          \"name\": \"string\",\n          \"statementDate\": \"string\",\n          \"id\": \"string\",\n          \"source\": \"string\",\n          \"uri\": \"string\",\n          \"status\": \"string\"\n        }\n      ],\n      \"status\": \"string\"\n    }\n  ],\n  \"submissionDate\": \"string\",\n  \"status\": \"SUBMITTED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dd95ed90-d6c5-428f-9006-bfd243f75702",
+              "name": "Y806 : Invalid input<br>Y812 : Required field/value - configName or reportId missing in the request<br>Y802 : configName and reportId together is not allowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditAccelerator",
+                    "report",
+                    "statements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "configName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reportId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"errorMessage\": \"string\",\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d7ec693e-d7b0-40ec-a816-36db8da4ecb3",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditAccelerator",
+                    "report",
+                    "statements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "configName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reportId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2b03b406-3e0d-4073-88cf-e82b6a6ce8fe",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditAccelerator",
+                    "report",
+                    "statements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "configName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reportId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8c2b3ae0-3ab3-49a7-912f-d0d924ceecb3",
+              "name": "Y904 : Internal exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditAccelerator",
+                    "report",
+                    "statements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "configName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reportId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"errorMessage\": \"string\",\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4d7609ed-6596-4727-aa04-387552293dd0",
+          "name": "Envestnet Get Credit Accelerator File",
+          "request": {
+            "name": "Envestnet Get Credit Accelerator File",
+            "description": {
+              "content": "Using this service you can retrieve the Credit Accelerator file in JSON or PDF format. Once the file generation has finished processing i.e. status is COMPLETED, you can retrieve call this api service by passign values \"json\" or pdf\" in \"format\" query parameter",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "creditAccelerator",
+                "report"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "configName",
+                  "value": "<string>",
+                  "description": "(Required) The config name using which the credit accelerator file generation was requested"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "Format in which credit accelerator report shall be provided. Valid values JSON and PDF"
+                },
+                {
+                  "disabled": false,
+                  "key": "reportId",
+                  "value": "<string>",
+                  "description": "Unique identifier for the credit accelerator file"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cf960b35-1275-4d2b-9787-296c2d195d56",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditAccelerator",
+                    "report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "configName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reportId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"configName\": \"string\",\n  \"docContent\": \"string\",\n  \"data\": {\n    \"allAccountAnalysis\": {\n      \"income\": {\n        \"regularIncomeTxnSummary\": [\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"otherIncomeTxnSummary\": [\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"servicesIncomeTxnSummary\": [\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"totalIncomeTxnSummary\": [\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"depositTxnSummary\": [\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"retirementTxnSummary\": [\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"asset\": {\n        \"totalBalances\": [\n          {\n            \"date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"totalInvestmentBalances\": [\n          {\n            \"date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"totalBankBalances\": [\n          {\n            \"date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"adjustmentTxnSummary\": [\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"creditTxnWithoutTransferSummary\": [\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"largeTransferOccurrences\": [\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"savingsTxnSummary\": [\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"depositTxnSummary\": [\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"largeDepositOccurrences\": [\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"lowBalanceOccurrence\": {\n          \"segment2\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"segment1\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"segment4\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"segment3\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"negativeBalanceOccurrences\": [\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"transferTxnSummary\": [\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"creditTxnWithTransferSummary\": [\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"investmentHoldingSummary\": {\n          \"classifications\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"totalValues\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"nsfOccurrences\": [\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"expense\": {\n        \"cashTxnSummary\": [\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"entertainmentTxnSummary\": [\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"taxesTxnSummary\": [\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"telecomTxnSummary\": [\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"cashflow\": [\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"insuranceTxnSummary\": [\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"charityTxnSummary\": [\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"ccardTxnSummary\": [\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"rentTxnSummary\": [\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"utilitiesTxnSummary\": [\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"educationTxnSummary\": [\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"loanTxnSummary\": [\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"values\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    },\n    \"accounts\": [\n      {\n        \"accountAnalysis\": {\n          \"income\": {\n            \"regularIncomeTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"otherIncomeTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"servicesIncomeTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"depositTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"retirementTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"asset\": {\n            \"dailyBalanceAnalysis\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"adjustmentTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"creditTxnWithoutTransferSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"largeTransferOccurrences\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dailyBalanceSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"depositTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dailyBalances\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"largeDepositOccurrences\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"lowBalanceOccurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"negativeBalanceOccurrences\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"transferTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"creditTxnWithTransferSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"investmentHoldingSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nsfOccurrences\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"expense\": {\n            \"cashTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"entertainmentTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"taxesTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"telecomTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"cashflow\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"insuranceTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"charityTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ccardTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rentTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"utilitiesTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"educationTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"loanTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"accountVerification\": {\n          \"reason\": \"string\",\n          \"fullAccountNumber\": \"string\",\n          \"balance\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"verificationStatus\": \"string\",\n          \"accountType\": \"string\",\n          \"holder\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"verificationType\": \"string\",\n          \"bankTransferCode\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"details\": {\n          \"availableCash\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"includeInNetWorth\": false,\n          \"moneyMarketBalance\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"enrollmentDate\": \"string\",\n          \"estimatedDate\": \"string\",\n          \"memo\": \"string\",\n          \"guarantor\": \"string\",\n          \"interestPaidLastYear\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"lastUpdated\": \"string\",\n          \"balance\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"homeInsuranceType\": \"UNKNOWN\",\n          \"id\": 8841,\n          \"cash\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"totalCreditLine\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"providerName\": \"string\",\n          \"valuationType\": \"SYSTEM\",\n          \"marginBalance\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"apr\": 6470.985174373154,\n          \"availableCredit\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"currentBalance\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"isManual\": false,\n          \"profile\": {\n            \"identifier\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"phoneNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"email\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"escrowBalance\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"nextLevel\": \"string\",\n          \"classification\": \"CORPORATE\",\n          \"loanPayoffAmount\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"interestRateType\": \"FIXED\",\n          \"loanPayByDate\": \"string\",\n          \"faceAmount\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"policyFromDate\": \"string\",\n          \"premiumPaymentTerm\": \"string\",\n          \"policyTerm\": \"string\",\n          \"repaymentPlanType\": \"INCOME_SENSITIVE\",\n          \"aggregatedAccountType\": \"string\",\n          \"availableBalance\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"reconciliable\": true,\n          \"accountStatus\": \"DELETED\",\n          \"lifeInsuranceType\": \"TERM_LIFE_INSURANCE\",\n          \"fullAccountNumber\": \"string\",\n          \"premium\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"aggregationSource\": \"USER\",\n          \"overDraftLimit\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"nickname\": \"string\",\n          \"term\": \"string\",\n          \"interestRate\": 7555.641157895947,\n          \"deathBenefit\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"address\": {\n            \"zip\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"address3\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"address2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"city\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sourceType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"address1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"street\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"fullAddress\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"state\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"cashValue\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"holder\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"401kLoan\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"homeValue\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"accountNumber\": \"string\",\n          \"createdDate\": \"string\",\n          \"interestPaidYTD\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"providerAccountId\": 3897,\n          \"collateral\": \"string\",\n          \"dataset\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"runningBalance\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"isReconciliable\": false,\n          \"sourceId\": \"string\",\n          \"dueDate\": \"string\",\n          \"frequency\": \"QUARTERLY\",\n          \"maturityAmount\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"associatedProviderAccountId\": [\n            1153,\n            813\n          ],\n          \"isAsset\": true,\n          \"principalBalance\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"totalCashLimit\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"maturityDate\": \"string\",\n          \"minimumAmountDue\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"annualPercentageYield\": 3648.7363793117256,\n          \"accountType\": \"string\",\n          \"originationDate\": \"string\",\n          \"totalVestedBalance\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"rewardBalance\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"sourceAccountStatus\": \"FORBEARANCE\",\n          \"linkedAccountIds\": [\n            2472,\n            9511\n          ],\n          \"derivedApr\": 2950.146927740361,\n          \"policyEffectiveDate\": \"string\",\n          \"totalUnvestedBalance\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"annuityBalance\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"accountName\": \"string\",\n          \"totalCreditLimit\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"policyStatus\": \"IN_ACTIVE\",\n          \"shortBalance\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"lender\": \"string\",\n          \"lastEmployeeContributionAmount\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"providerId\": \"string\",\n          \"lastPaymentDate\": \"string\",\n          \"primaryRewardUnit\": \"string\",\n          \"lastPaymentAmount\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"remainingBalance\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"userClassification\": \"PERSONAL\",\n          \"bankTransferCode\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"expirationDate\": \"string\",\n          \"coverage\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"cashApr\": 416.1686193167458,\n          \"autoRefresh\": {\n            \"additionalStatus\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"asOfDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"oauthMigrationStatus\": \"TO_BE_MIGRATED\",\n          \"displayedName\": \"string\",\n          \"fullAccountNumberList\": {\n            \"paymentAccountNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unmaskedAccountNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"amountDue\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"currentLevel\": \"string\",\n          \"originalLoanAmount\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"policyToDate\": \"string\",\n          \"loanPayoffDetails\": {\n            \"payByDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"payoffAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"outstandingBalance\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"paymentProfile\": {\n            \"identifier\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"paymentBankTransferCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"CONTAINER\": \"otherLiabilities\",\n          \"lastEmployeeContributionDate\": \"string\",\n          \"lastPayment\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"recurringPayment\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"holdings\": [\n          {\n            \"symbol\": \"string\",\n            \"exercisedQuantity\": 1643.1913749036542,\n            \"cusipNumber\": \"string\",\n            \"assetClassification\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"vestedQuantity\": 7093.771174009449,\n            \"description\": \"string\",\n            \"unvestedValue\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"securityStyle\": \"string\",\n            \"vestedValue\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"optionType\": \"unknown\",\n            \"lastUpdated\": \"string\",\n            \"matchStatus\": \"string\",\n            \"holdingType\": \"bond\",\n            \"maturityDate\": \"string\",\n            \"price\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"term\": \"string\",\n            \"contractQuantity\": 2634.5151926455956,\n            \"id\": 7143,\n            \"isShort\": false,\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"expirationDate\": \"string\",\n            \"interestRate\": 4582.763316660566,\n            \"quantity\": 5977.297929833209,\n            \"isManual\": true,\n            \"accruedInterest\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"grantDate\": \"string\",\n            \"sedol\": \"string\",\n            \"vestedSharesExercisable\": 5252.1121581364305,\n            \"spread\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"accountId\": 2107,\n            \"enrichedDescription\": \"string\",\n            \"couponRate\": 3473.877488649051,\n            \"createdDate\": \"string\",\n            \"accruedIncome\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"securityType\": \"string\",\n            \"providerAccountId\": 254,\n            \"unvestedQuantity\": 4791.269676804204,\n            \"costBasis\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"vestingDate\": \"string\",\n            \"isin\": \"string\",\n            \"strikePrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"symbol\": \"string\",\n            \"exercisedQuantity\": 2552.71906981137,\n            \"cusipNumber\": \"string\",\n            \"assetClassification\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"vestedQuantity\": 1093.5060457829181,\n            \"description\": \"string\",\n            \"unvestedValue\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"securityStyle\": \"string\",\n            \"vestedValue\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"optionType\": \"put\",\n            \"lastUpdated\": \"string\",\n            \"matchStatus\": \"string\",\n            \"holdingType\": \"option\",\n            \"maturityDate\": \"string\",\n            \"price\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"term\": \"string\",\n            \"contractQuantity\": 8375.44580976121,\n            \"id\": 9210,\n            \"isShort\": true,\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"expirationDate\": \"string\",\n            \"interestRate\": 3156.784542835198,\n            \"quantity\": 4649.34286890412,\n            \"isManual\": false,\n            \"accruedInterest\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"grantDate\": \"string\",\n            \"sedol\": \"string\",\n            \"vestedSharesExercisable\": 7867.669029371285,\n            \"spread\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"accountId\": 344,\n            \"enrichedDescription\": \"string\",\n            \"couponRate\": 8986.736593487542,\n            \"createdDate\": \"string\",\n            \"accruedIncome\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"securityType\": \"string\",\n            \"providerAccountId\": 6255,\n            \"unvestedQuantity\": 7565.900771778505,\n            \"costBasis\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"vestingDate\": \"string\",\n            \"isin\": \"string\",\n            \"strikePrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"transactions\": [\n          {\n            \"date\": \"string\",\n            \"sourceId\": \"string\",\n            \"symbol\": \"string\",\n            \"cusipNumber\": \"string\",\n            \"highLevelCategoryId\": 6754,\n            \"categoryLabel\": \"string\",\n            \"detailCategoryId\": 4902,\n            \"description\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"memo\": \"string\",\n            \"settleDate\": \"string\",\n            \"type\": \"string\",\n            \"intermediary\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"baseType\": \"CREDIT\",\n            \"categorySource\": \"USER\",\n            \"principal\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"lastUpdated\": \"string\",\n            \"interest\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"price\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"commission\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": 7905,\n            \"merchantLogoURL\": \"string\",\n            \"merchantType\": \"string\",\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"checkNumber\": \"string\",\n            \"isPhysical\": true,\n            \"quantity\": 9837.85549004713,\n            \"valoren\": \"string\",\n            \"isManual\": true,\n            \"merchant\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sedol\": \"string\",\n            \"transactionDate\": \"string\",\n            \"logoURL\": \"string\",\n            \"categoryType\": \"DEFERRED_COMPENSATION\",\n            \"accountId\": 810,\n            \"createdDate\": \"string\",\n            \"sourceType\": \"AGGREGATED\",\n            \"CONTAINER\": \"loan\",\n            \"postDate\": \"string\",\n            \"parentCategoryId\": 7320,\n            \"subType\": \"TAX_PAYMENT\",\n            \"category\": \"string\",\n            \"runningBalance\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"categoryId\": 6865,\n            \"holdingDescription\": \"string\",\n            \"isin\": \"string\",\n            \"status\": \"FAILED\"\n          },\n          {\n            \"date\": \"string\",\n            \"sourceId\": \"string\",\n            \"symbol\": \"string\",\n            \"cusipNumber\": \"string\",\n            \"highLevelCategoryId\": 6331,\n            \"categoryLabel\": \"string\",\n            \"detailCategoryId\": 6397,\n            \"description\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"memo\": \"string\",\n            \"settleDate\": \"string\",\n            \"type\": \"string\",\n            \"intermediary\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"baseType\": \"CREDIT\",\n            \"categorySource\": \"SYSTEM\",\n            \"principal\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"lastUpdated\": \"string\",\n            \"interest\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"price\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"commission\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": 4976,\n            \"merchantLogoURL\": \"string\",\n            \"merchantType\": \"string\",\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"checkNumber\": \"string\",\n            \"isPhysical\": false,\n            \"quantity\": 59.51090814280802,\n            \"valoren\": \"string\",\n            \"isManual\": false,\n            \"merchant\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sedol\": \"string\",\n            \"transactionDate\": \"string\",\n            \"logoURL\": \"string\",\n            \"categoryType\": \"TRANSFER\",\n            \"accountId\": 9609,\n            \"createdDate\": \"string\",\n            \"sourceType\": \"AGGREGATED\",\n            \"CONTAINER\": \"creditCard\",\n            \"postDate\": \"string\",\n            \"parentCategoryId\": 6150,\n            \"subType\": \"CREDIT_CARD_PAYMENT\",\n            \"category\": \"string\",\n            \"runningBalance\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"categoryId\": 7747,\n            \"holdingDescription\": \"string\",\n            \"isin\": \"string\",\n            \"status\": \"POSTED\"\n          }\n        ]\n      },\n      {\n        \"accountAnalysis\": {\n          \"income\": {\n            \"regularIncomeTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"otherIncomeTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"servicesIncomeTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"depositTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"retirementTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"asset\": {\n            \"dailyBalanceAnalysis\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"adjustmentTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"creditTxnWithoutTransferSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"largeTransferOccurrences\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dailyBalanceSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"depositTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dailyBalances\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"largeDepositOccurrences\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"lowBalanceOccurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"negativeBalanceOccurrences\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"transferTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"creditTxnWithTransferSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"investmentHoldingSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"nsfOccurrences\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"expense\": {\n            \"cashTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"entertainmentTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"taxesTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"telecomTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"cashflow\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"insuranceTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"charityTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ccardTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rentTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"utilitiesTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"educationTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"loanTxnSummary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"accountVerification\": {\n          \"reason\": \"string\",\n          \"fullAccountNumber\": \"string\",\n          \"balance\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"verificationStatus\": \"string\",\n          \"accountType\": \"string\",\n          \"holder\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"verificationType\": \"string\",\n          \"bankTransferCode\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"details\": {\n          \"availableCash\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"includeInNetWorth\": true,\n          \"moneyMarketBalance\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"enrollmentDate\": \"string\",\n          \"estimatedDate\": \"string\",\n          \"memo\": \"string\",\n          \"guarantor\": \"string\",\n          \"interestPaidLastYear\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"lastUpdated\": \"string\",\n          \"balance\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"homeInsuranceType\": \"HOME_OWNER\",\n          \"id\": 3247,\n          \"cash\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"totalCreditLine\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"providerName\": \"string\",\n          \"valuationType\": \"MANUAL\",\n          \"marginBalance\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"apr\": 1654.594607534161,\n          \"availableCredit\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"currentBalance\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"isManual\": true,\n          \"profile\": {\n            \"identifier\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"phoneNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"email\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"escrowBalance\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"nextLevel\": \"string\",\n          \"classification\": \"SMALL_BUSINESS\",\n          \"loanPayoffAmount\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"interestRateType\": \"VARIABLE\",\n          \"loanPayByDate\": \"string\",\n          \"faceAmount\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"policyFromDate\": \"string\",\n          \"premiumPaymentTerm\": \"string\",\n          \"policyTerm\": \"string\",\n          \"repaymentPlanType\": \"GRADUATED\",\n          \"aggregatedAccountType\": \"string\",\n          \"availableBalance\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"reconciliable\": false,\n          \"accountStatus\": \"DELETED\",\n          \"lifeInsuranceType\": \"VARIABLE_LIFE_INSURANCE\",\n          \"fullAccountNumber\": \"string\",\n          \"premium\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"aggregationSource\": \"SYSTEM\",\n          \"overDraftLimit\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"nickname\": \"string\",\n          \"term\": \"string\",\n          \"interestRate\": 4786.30747187192,\n          \"deathBenefit\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"address\": {\n            \"zip\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"address3\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"address2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"city\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sourceType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"address1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"street\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"fullAddress\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"state\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"cashValue\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"holder\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"401kLoan\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"homeValue\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"accountNumber\": \"string\",\n          \"createdDate\": \"string\",\n          \"interestPaidYTD\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"providerAccountId\": 7733,\n          \"collateral\": \"string\",\n          \"dataset\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"runningBalance\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"isReconciliable\": false,\n          \"sourceId\": \"string\",\n          \"dueDate\": \"string\",\n          \"frequency\": \"DAILY\",\n          \"maturityAmount\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"associatedProviderAccountId\": [\n            8794,\n            6593\n          ],\n          \"isAsset\": true,\n          \"principalBalance\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"totalCashLimit\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"maturityDate\": \"string\",\n          \"minimumAmountDue\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"annualPercentageYield\": 2830.991828439462,\n          \"accountType\": \"string\",\n          \"originationDate\": \"string\",\n          \"totalVestedBalance\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"rewardBalance\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"sourceAccountStatus\": \"IN_SCHOOL\",\n          \"linkedAccountIds\": [\n            7835,\n            6169\n          ],\n          \"derivedApr\": 7144.307695803831,\n          \"policyEffectiveDate\": \"string\",\n          \"totalUnvestedBalance\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"annuityBalance\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"accountName\": \"string\",\n          \"totalCreditLimit\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"policyStatus\": \"ACTIVE\",\n          \"shortBalance\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"lender\": \"string\",\n          \"lastEmployeeContributionAmount\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"providerId\": \"string\",\n          \"lastPaymentDate\": \"string\",\n          \"primaryRewardUnit\": \"string\",\n          \"lastPaymentAmount\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"remainingBalance\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"userClassification\": \"PERSONAL\",\n          \"bankTransferCode\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"expirationDate\": \"string\",\n          \"coverage\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"cashApr\": 2367.1358526176014,\n          \"autoRefresh\": {\n            \"additionalStatus\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"asOfDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"oauthMigrationStatus\": \"IN_PROGRESS\",\n          \"displayedName\": \"string\",\n          \"fullAccountNumberList\": {\n            \"paymentAccountNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"unmaskedAccountNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"amountDue\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"currentLevel\": \"string\",\n          \"originalLoanAmount\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"policyToDate\": \"string\",\n          \"loanPayoffDetails\": {\n            \"payByDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"payoffAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"outstandingBalance\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"paymentProfile\": {\n            \"identifier\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"paymentBankTransferCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"CONTAINER\": \"otherAssets\",\n          \"lastEmployeeContributionDate\": \"string\",\n          \"lastPayment\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"recurringPayment\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"convertedCurrency\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"holdings\": [\n          {\n            \"symbol\": \"string\",\n            \"exercisedQuantity\": 6170.392533208758,\n            \"cusipNumber\": \"string\",\n            \"assetClassification\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"vestedQuantity\": 7796.512364898077,\n            \"description\": \"string\",\n            \"unvestedValue\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"securityStyle\": \"string\",\n            \"vestedValue\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"optionType\": \"put\",\n            \"lastUpdated\": \"string\",\n            \"matchStatus\": \"string\",\n            \"holdingType\": \"commodity\",\n            \"maturityDate\": \"string\",\n            \"price\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"term\": \"string\",\n            \"contractQuantity\": 3665.351372168788,\n            \"id\": 2897,\n            \"isShort\": true,\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"expirationDate\": \"string\",\n            \"interestRate\": 735.4511751595383,\n            \"quantity\": 8429.774647516613,\n            \"isManual\": true,\n            \"accruedInterest\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"grantDate\": \"string\",\n            \"sedol\": \"string\",\n            \"vestedSharesExercisable\": 1867.852976324732,\n            \"spread\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"accountId\": 6074,\n            \"enrichedDescription\": \"string\",\n            \"couponRate\": 1602.964913480217,\n            \"createdDate\": \"string\",\n            \"accruedIncome\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"securityType\": \"string\",\n            \"providerAccountId\": 6086,\n            \"unvestedQuantity\": 9092.798348715096,\n            \"costBasis\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"vestingDate\": \"string\",\n            \"isin\": \"string\",\n            \"strikePrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"symbol\": \"string\",\n            \"exercisedQuantity\": 4272.997248001679,\n            \"cusipNumber\": \"string\",\n            \"assetClassification\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"vestedQuantity\": 6194.850923568629,\n            \"description\": \"string\",\n            \"unvestedValue\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"securityStyle\": \"string\",\n            \"vestedValue\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"optionType\": \"put\",\n            \"lastUpdated\": \"string\",\n            \"matchStatus\": \"string\",\n            \"holdingType\": \"remic\",\n            \"maturityDate\": \"string\",\n            \"price\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"term\": \"string\",\n            \"contractQuantity\": 3802.1181239394896,\n            \"id\": 2938,\n            \"isShort\": true,\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"expirationDate\": \"string\",\n            \"interestRate\": 4278.17512516841,\n            \"quantity\": 1552.7887223479431,\n            \"isManual\": false,\n            \"accruedInterest\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"grantDate\": \"string\",\n            \"sedol\": \"string\",\n            \"vestedSharesExercisable\": 7087.726619968327,\n            \"spread\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"accountId\": 6074,\n            \"enrichedDescription\": \"string\",\n            \"couponRate\": 3773.4058133128824,\n            \"createdDate\": \"string\",\n            \"accruedIncome\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"securityType\": \"string\",\n            \"providerAccountId\": 6256,\n            \"unvestedQuantity\": 6445.5729591813,\n            \"costBasis\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"vestingDate\": \"string\",\n            \"isin\": \"string\",\n            \"strikePrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"transactions\": [\n          {\n            \"date\": \"string\",\n            \"sourceId\": \"string\",\n            \"symbol\": \"string\",\n            \"cusipNumber\": \"string\",\n            \"highLevelCategoryId\": 1410,\n            \"categoryLabel\": \"string\",\n            \"detailCategoryId\": 6448,\n            \"description\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"memo\": \"string\",\n            \"settleDate\": \"string\",\n            \"type\": \"string\",\n            \"intermediary\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"baseType\": \"DEBIT\",\n            \"categorySource\": \"SYSTEM\",\n            \"principal\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"lastUpdated\": \"string\",\n            \"interest\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"price\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"commission\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": 3433,\n            \"merchantLogoURL\": \"string\",\n            \"merchantType\": \"string\",\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"checkNumber\": \"string\",\n            \"isPhysical\": true,\n            \"quantity\": 1854.7844072793819,\n            \"valoren\": \"string\",\n            \"isManual\": true,\n            \"merchant\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sedol\": \"string\",\n            \"transactionDate\": \"string\",\n            \"logoURL\": \"string\",\n            \"categoryType\": \"UNCATEGORIZE\",\n            \"accountId\": 5641,\n            \"createdDate\": \"string\",\n            \"sourceType\": \"MANUAL\",\n            \"CONTAINER\": \"otherAssets\",\n            \"postDate\": \"string\",\n            \"parentCategoryId\": 8810,\n            \"subType\": \"DEPOSIT\",\n            \"category\": \"string\",\n            \"runningBalance\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"categoryId\": 8604,\n            \"holdingDescription\": \"string\",\n            \"isin\": \"string\",\n            \"status\": \"PENDING\"\n          },\n          {\n            \"date\": \"string\",\n            \"sourceId\": \"string\",\n            \"symbol\": \"string\",\n            \"cusipNumber\": \"string\",\n            \"highLevelCategoryId\": 4876,\n            \"categoryLabel\": \"string\",\n            \"detailCategoryId\": 3390,\n            \"description\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"memo\": \"string\",\n            \"settleDate\": \"string\",\n            \"type\": \"string\",\n            \"intermediary\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"baseType\": \"DEBIT\",\n            \"categorySource\": \"SYSTEM\",\n            \"principal\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"lastUpdated\": \"string\",\n            \"interest\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"price\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"commission\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": 3672,\n            \"merchantLogoURL\": \"string\",\n            \"merchantType\": \"string\",\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"checkNumber\": \"string\",\n            \"isPhysical\": false,\n            \"quantity\": 5585.909555779623,\n            \"valoren\": \"string\",\n            \"isManual\": false,\n            \"merchant\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sedol\": \"string\",\n            \"transactionDate\": \"string\",\n            \"logoURL\": \"string\",\n            \"categoryType\": \"EXPENSE\",\n            \"accountId\": 2247,\n            \"createdDate\": \"string\",\n            \"sourceType\": \"AGGREGATED\",\n            \"CONTAINER\": \"otherLiabilities\",\n            \"postDate\": \"string\",\n            \"parentCategoryId\": 4288,\n            \"subType\": \"LOAN\",\n            \"category\": \"string\",\n            \"runningBalance\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"categoryId\": 9038,\n            \"holdingDescription\": \"string\",\n            \"isin\": \"string\",\n            \"status\": \"FAILED\"\n          }\n        ]\n      }\n    ]\n  },\n  \"reportConfig\": {\n    \"largeCreditAmt\": 4128.52400421441,\n    \"lowBalAmt3\": 3126.9620501579166,\n    \"lowBalAmt4\": 119.64211926946521,\n    \"lowBalAmt1\": 7044.265626236088,\n    \"requestingFirm\": {\n      \"requestingFirmId\": \"string\",\n      \"referenceNo\": \"string\",\n      \"name\": \"string\",\n      \"broker\": \"string\"\n    },\n    \"lowBalAmt2\": 6185.582649003869,\n    \"days\": 1126\n  },\n  \"selectedAccounts\": [\n    {\n      \"providerAccountId\": 420,\n      \"id\": 4716\n    },\n    {\n      \"providerAccountId\": 1974,\n      \"id\": 4363\n    }\n  ],\n  \"submissionDate\": \"string\",\n  \"id\": 1155,\n  \"user\": {\n    \"loginName\": \"string\",\n    \"name\": {\n      \"middle\": \"string\",\n      \"last\": \"string\",\n      \"fullName\": \"string\",\n      \"first\": \"string\"\n    },\n    \"userId\": 767,\n    \"email\": \"string\"\n  },\n  \"originalReportId\": 4109,\n  \"status\": \"FAILED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "56ce43ab-1655-4410-8455-823535134502",
+              "name": "Y800 : Invalid value for format<br>Y812 : Required field/value - configName or reportId missing in the request<br>Y802 : configName and reportId together is not allowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditAccelerator",
+                    "report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "configName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reportId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"errorMessage\": \"string\",\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f067c088-e3b0-43e5-837b-70de06a175e3",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditAccelerator",
+                    "report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "configName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reportId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b86cc7d2-e64a-4944-a290-f8a9ac922dc6",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditAccelerator",
+                    "report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "configName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reportId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a93fbaf2-d220-413d-aaee-239d3c404d16",
+              "name": "Y904 : Internal exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditAccelerator",
+                    "report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "configName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reportId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"errorMessage\": \"string\",\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a0f90ed-add1-4899-9459-0cac356078ef",
+          "name": "Envestnet Generate Credit Accelerator File",
+          "request": {
+            "name": "Envestnet Generate Credit Accelerator File",
+            "description": {
+              "content": "This service allows you to submit a request to generate credit accelerator file for already linked accounts",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "creditAccelerator",
+                "report",
+                "generate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"configName\": \"<string>\",\n  \"requestingFirm\": {}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "68fb9846-b721-4038-9181-b62a19ac6fcf",
+              "name": "Created Successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditAccelerator",
+                    "report",
+                    "generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"configName\": \"<string>\",\n  \"requestingFirm\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"configName\": \"string\",\n  \"reportId\": 8101,\n  \"submissionDate\": \"string\",\n  \"originalReportId\": 1597,\n  \"status\": \"FAILED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fcfd2e86-cb00-4210-b2d9-702962c718e7",
+              "name": "Y800 : Invalid value for configName<br>Y800 : Invalid value for requestingFirm<br>Y800 : Invalid value for accountIds<br>Y806 : Invalid input<br>Y812 : Required field/value - configName missing in the request<br>Y812 : Required field/value - accountIds missing in the request<br>Y847 : resource cannot be requested, as feature not enabled",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditAccelerator",
+                    "report",
+                    "generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"configName\": \"<string>\",\n  \"requestingFirm\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"errorMessage\": \"string\",\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3114f3a9-1af9-4585-a45c-192b3ff37d6d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditAccelerator",
+                    "report",
+                    "generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"configName\": \"<string>\",\n  \"requestingFirm\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3a92576f-87c8-4b7f-8b0d-b9896983f18b",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditAccelerator",
+                    "report",
+                    "generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"configName\": \"<string>\",\n  \"requestingFirm\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "64c4224f-630f-497f-a5cf-fe8423e72e0e",
+              "name": "Y904 : Internal exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditAccelerator",
+                    "report",
+                    "generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"configName\": \"<string>\",\n  \"requestingFirm\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"errorMessage\": \"string\",\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "81bce2b5-53f1-4369-86af-12d29d454dae",
+    "name": "Envestnet Aggregation APIs Account Token CreditAcceleratorFile API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This file describes the Yodlee Aggregation product APIs using the swagger notation that you can use to build your financial application.  You can generate the client SDK in Python, JavaScript, PHP, or any other languages according to your development needs. For more details about the APIs, refer to <a href=\"https://developer.envestnet.com/resources/yodlee/yodlee-api-overview/docs\">Yodlee API v1.1 - Overview</a>.<br><br>You will have to set the header before making the API call. The following headers apply to all the APIs:<ul><li>Authorization: This header holds the access token</li> <li> Api-Version: 1.1</li></ul><b>Note</b>: If there are any API-specific headers, they are mentioned explicitly in the respective API's description.\n\nContact Support:\n Email: developer@yodlee.com",
+      "type": "text/plain"
+    }
+  }
+}

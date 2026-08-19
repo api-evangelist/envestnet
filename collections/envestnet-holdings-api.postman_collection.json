@@ -1,0 +1,1020 @@
+{
+  "item": [
+    {
+      "id": "59ac3e2b-a6b0-4d9d-9f56-12513f8d548c",
+      "name": "Holdings",
+      "description": {
+        "content": "Holdings API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a6aa836e-4a87-487f-98b5-23ce99cd2da9",
+          "name": "Envestnet Get Security Details",
+          "request": {
+            "name": "Envestnet Get Security Details",
+            "description": {
+              "content": "The get security details service is used to get all the security information for the holdings<br>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "holdings",
+                "securities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "holdingId",
+                  "value": "<string>",
+                  "description": "Comma separated holdingId"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c552e983-3d5e-4037-bf82-d4c730885030",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "holdings",
+                    "securities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "holdingId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"holding\": [\n    {\n      \"security\": {\n        \"stockExchangeDetails\": [\n          {\n            \"symbol\": \"string\",\n            \"countryCode\": \"string\",\n            \"currencyCode\": \"string\",\n            \"exchangeCode\": \"string\"\n          },\n          {\n            \"symbol\": \"string\",\n            \"countryCode\": \"string\",\n            \"currencyCode\": \"string\",\n            \"exchangeCode\": \"string\"\n          }\n        ],\n        \"issueTypeMultiplier\": 8048.098103690288,\n        \"stateTaxable\": false,\n        \"callDate\": \"string\",\n        \"cdscFundFlag\": false,\n        \"cusip\": \"string\",\n        \"federalTaxable\": true,\n        \"sAndPRating\": \"string\",\n        \"shareClass\": \"string\",\n        \"isEnvestnetDummySecurity\": false,\n        \"description\": \"string\",\n        \"minimumPurchase\": 7403,\n        \"type\": \"string\",\n        \"firstCouponDate\": \"string\",\n        \"frequency\": 2891,\n        \"accrualMethod\": \"string\",\n        \"incomeCurrency\": \"string\",\n        \"maturityDate\": \"string\",\n        \"callPrice\": 6908.686711790908,\n        \"id\": 8567,\n        \"issueDate\": \"string\",\n        \"sector\": \"string\",\n        \"agencyFactor\": 7053.469190863473,\n        \"interestRate\": 4987.299251321283,\n        \"lastModifiedDate\": \"string\",\n        \"gicsSector\": \"string\",\n        \"closedFlag\": true,\n        \"sedol\": \"string\",\n        \"subSector\": \"string\",\n        \"lastCouponDate\": \"string\",\n        \"isSyntheticSecurity\": true,\n        \"tradeCurrencyCode\": \"string\",\n        \"isDummySecurity\": true,\n        \"moodyRating\": \"string\",\n        \"style\": \"string\",\n        \"firmEligible\": \"string\",\n        \"fundFamily\": \"string\",\n        \"isin\": \"string\"\n      },\n      \"id\": \"string\"\n    },\n    {\n      \"security\": {\n        \"stockExchangeDetails\": [\n          {\n            \"symbol\": \"string\",\n            \"countryCode\": \"string\",\n            \"currencyCode\": \"string\",\n            \"exchangeCode\": \"string\"\n          },\n          {\n            \"symbol\": \"string\",\n            \"countryCode\": \"string\",\n            \"currencyCode\": \"string\",\n            \"exchangeCode\": \"string\"\n          }\n        ],\n        \"issueTypeMultiplier\": 60.11828217428072,\n        \"stateTaxable\": false,\n        \"callDate\": \"string\",\n        \"cdscFundFlag\": false,\n        \"cusip\": \"string\",\n        \"federalTaxable\": true,\n        \"sAndPRating\": \"string\",\n        \"shareClass\": \"string\",\n        \"isEnvestnetDummySecurity\": false,\n        \"description\": \"string\",\n        \"minimumPurchase\": 163,\n        \"type\": \"string\",\n        \"firstCouponDate\": \"string\",\n        \"frequency\": 5768,\n        \"accrualMethod\": \"string\",\n        \"incomeCurrency\": \"string\",\n        \"maturityDate\": \"string\",\n        \"callPrice\": 795.6022007311758,\n        \"id\": 4184,\n        \"issueDate\": \"string\",\n        \"sector\": \"string\",\n        \"agencyFactor\": 710.0198304622818,\n        \"interestRate\": 6405.618788499438,\n        \"lastModifiedDate\": \"string\",\n        \"gicsSector\": \"string\",\n        \"closedFlag\": true,\n        \"sedol\": \"string\",\n        \"subSector\": \"string\",\n        \"lastCouponDate\": \"string\",\n        \"isSyntheticSecurity\": false,\n        \"tradeCurrencyCode\": \"string\",\n        \"isDummySecurity\": true,\n        \"moodyRating\": \"string\",\n        \"style\": \"string\",\n        \"firmEligible\": \"string\",\n        \"fundFamily\": \"string\",\n        \"isin\": \"string\"\n      },\n      \"id\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ba25b862-837f-41b0-9aeb-ef9894fe87cd",
+              "name": "Y800 : Invalid value for holdingId<br>Y824 : The maximum number of holdingIds permitted is 100",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "holdings",
+                    "securities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "holdingId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"errorMessage\": \"string\",\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "de104484-e6e2-4177-91de-1dd8b157d56c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "holdings",
+                    "securities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "holdingId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "26ecae80-6cb1-44ed-9027-211fb40e4621",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "holdings",
+                    "securities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "holdingId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a6a858fc-21c6-4f41-9e0e-3fa4939c29ce",
+          "name": "Envestnet Get Holdings",
+          "request": {
+            "name": "Envestnet Get Holdings",
+            "description": {
+              "content": "The get holdings service is used to get the list of holdings of a user.<br>Supported holding types can be employeeStockOption, moneyMarketFund, bond, etc. and is obtained using get holding type list service. <br>Asset classifications for the holdings need to be requested through the \"include\" parameter.<br>Asset classification information for holdings are not available by default, as it is a premium feature.<br>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "holdings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountId",
+                  "value": "<string>",
+                  "description": "Comma separated accountId"
+                },
+                {
+                  "disabled": false,
+                  "key": "assetClassification.classificationType",
+                  "value": "<string>",
+                  "description": "e.g. Country, Sector, etc."
+                },
+                {
+                  "disabled": false,
+                  "key": "classificationValue",
+                  "value": "<string>",
+                  "description": "e.g. US"
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "assetClassification"
+                },
+                {
+                  "disabled": false,
+                  "key": "providerAccountId",
+                  "value": "<string>",
+                  "description": "providerAccountId"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d757cb0d-e6cf-40ad-b42e-8e5e468e14de",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "holdings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assetClassification.classificationType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "classificationValue",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerAccountId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"holding\": [\n    {\n      \"symbol\": \"string\",\n      \"exercisedQuantity\": 1638.9123441363129,\n      \"cusipNumber\": \"string\",\n      \"assetClassification\": [\n        {\n          \"allocation\": 980.138828799234,\n          \"classificationType\": \"string\",\n          \"classificationValue\": \"string\"\n        },\n        {\n          \"allocation\": 4568.379338646134,\n          \"classificationType\": \"string\",\n          \"classificationValue\": \"string\"\n        }\n      ],\n      \"vestedQuantity\": 9476.934903242416,\n      \"description\": \"string\",\n      \"unvestedValue\": {\n        \"amount\": 5486.235470265532,\n        \"convertedAmount\": 2785.690568926433,\n        \"currency\": \"PAB\",\n        \"convertedCurrency\": \"QAR\"\n      },\n      \"securityStyle\": \"string\",\n      \"vestedValue\": {\n        \"amount\": 9947.881494968991,\n        \"convertedAmount\": 911.3628434537791,\n        \"currency\": \"BMD\",\n        \"convertedCurrency\": \"BRL\"\n      },\n      \"optionType\": \"unknown\",\n      \"lastUpdated\": \"string\",\n      \"matchStatus\": \"string\",\n      \"holdingType\": \"preferredStock\",\n      \"maturityDate\": \"string\",\n      \"price\": {\n        \"amount\": 3660.4645187413907,\n        \"convertedAmount\": 1829.68225759501,\n        \"currency\": \"FKP\",\n        \"convertedCurrency\": \"BND\"\n      },\n      \"term\": \"string\",\n      \"contractQuantity\": 187.8231473035641,\n      \"id\": 1564,\n      \"isShort\": false,\n      \"value\": {\n        \"amount\": 3245.83473467841,\n        \"convertedAmount\": 2263.5815669641856,\n        \"currency\": \"RUR\",\n        \"convertedCurrency\": \"INR\"\n      },\n      \"expirationDate\": \"string\",\n      \"interestRate\": 4112.721964282252,\n      \"quantity\": 2992.3191217553745,\n      \"isManual\": false,\n      \"accruedInterest\": {\n        \"amount\": 889.789304126346,\n        \"convertedAmount\": 9196.509585055717,\n        \"currency\": \"MLF\",\n        \"convertedCurrency\": \"KGS\"\n      },\n      \"grantDate\": \"string\",\n      \"sedol\": \"string\",\n      \"vestedSharesExercisable\": 5590.728078415637,\n      \"spread\": {\n        \"amount\": 6348.341135101056,\n        \"convertedAmount\": 3688.101976283067,\n        \"currency\": \"MGF\",\n        \"convertedCurrency\": \"BDT\"\n      },\n      \"accountId\": 5263,\n      \"enrichedDescription\": \"string\",\n      \"couponRate\": 1752.9171894943775,\n      \"createdDate\": \"string\",\n      \"accruedIncome\": {\n        \"amount\": 5407.598261731387,\n        \"convertedAmount\": 9505.060346601334,\n        \"currency\": \"DZD\",\n        \"convertedCurrency\": \"TVD\"\n      },\n      \"securityType\": \"string\",\n      \"providerAccountId\": 1939,\n      \"unvestedQuantity\": 8585.241709666743,\n      \"costBasis\": {\n        \"amount\": 4619.3637912280665,\n        \"convertedAmount\": 3765.256282244622,\n        \"currency\": \"XDR\",\n        \"convertedCurrency\": \"RUR\"\n      },\n      \"vestingDate\": \"string\",\n      \"isin\": \"string\",\n      \"strikePrice\": {\n        \"amount\": 1681.7392438104584,\n        \"convertedAmount\": 7318.691420618537,\n        \"currency\": \"BTN\",\n        \"convertedCurrency\": \"RON\"\n      }\n    },\n    {\n      \"symbol\": \"string\",\n      \"exercisedQuantity\": 237.60398532452155,\n      \"cusipNumber\": \"string\",\n      \"assetClassification\": [\n        {\n          \"allocation\": 2420.3597253826124,\n          \"classificationType\": \"string\",\n          \"classificationValue\": \"string\"\n        },\n        {\n          \"allocation\": 4493.023856566958,\n          \"classificationType\": \"string\",\n          \"classificationValue\": \"string\"\n        }\n      ],\n      \"vestedQuantity\": 5156.0148829074,\n      \"description\": \"string\",\n      \"unvestedValue\": {\n        \"amount\": 1868.9967549723374,\n        \"convertedAmount\": 1060.0648935849676,\n        \"currency\": \"MLF\",\n        \"convertedCurrency\": \"BND\"\n      },\n      \"securityStyle\": \"string\",\n      \"vestedValue\": {\n        \"amount\": 5110.93780076596,\n        \"convertedAmount\": 8688.75531114319,\n        \"currency\": \"XBT\",\n        \"convertedCurrency\": \"KWD\"\n      },\n      \"optionType\": \"unknown\",\n      \"lastUpdated\": \"string\",\n      \"matchStatus\": \"string\",\n      \"holdingType\": \"remic\",\n      \"maturityDate\": \"string\",\n      \"price\": {\n        \"amount\": 4935.143284925515,\n        \"convertedAmount\": 7450.656486516122,\n        \"currency\": \"BSD\",\n        \"convertedCurrency\": \"CVE\"\n      },\n      \"term\": \"string\",\n      \"contractQuantity\": 1826.8133514292983,\n      \"id\": 6560,\n      \"isShort\": true,\n      \"value\": {\n        \"amount\": 2422.8426625082234,\n        \"convertedAmount\": 9482.916188559326,\n        \"currency\": \"FJD\",\n        \"convertedCurrency\": \"KRW\"\n      },\n      \"expirationDate\": \"string\",\n      \"interestRate\": 4822.616633143534,\n      \"quantity\": 2.077381462910477,\n      \"isManual\": false,\n      \"accruedInterest\": {\n        \"amount\": 9362.513372021287,\n        \"convertedAmount\": 9186.787816320377,\n        \"currency\": \"RWF\",\n        \"convertedCurrency\": \"CRC\"\n      },\n      \"grantDate\": \"string\",\n      \"sedol\": \"string\",\n      \"vestedSharesExercisable\": 9597.608231489789,\n      \"spread\": {\n        \"amount\": 9825.481341284752,\n        \"convertedAmount\": 1781.4865319205508,\n        \"currency\": \"SCR\",\n        \"convertedCurrency\": \"BND\"\n      },\n      \"accountId\": 61,\n      \"enrichedDescription\": \"string\",\n      \"couponRate\": 7892.814266667794,\n      \"createdDate\": \"string\",\n      \"accruedIncome\": {\n        \"amount\": 5205.42981643993,\n        \"convertedAmount\": 1154.1573094100522,\n        \"currency\": \"CYP\",\n        \"convertedCurrency\": \"BSD\"\n      },\n      \"securityType\": \"string\",\n      \"providerAccountId\": 4295,\n      \"unvestedQuantity\": 2842.00183550853,\n      \"costBasis\": {\n        \"amount\": 5372.999460188267,\n        \"convertedAmount\": 5962.583197897789,\n        \"currency\": \"XFU\",\n        \"convertedCurrency\": \"BTN\"\n      },\n      \"vestingDate\": \"string\",\n      \"isin\": \"string\",\n      \"strikePrice\": {\n        \"amount\": 1983.4801490184338,\n        \"convertedAmount\": 6163.761979727672,\n        \"currency\": \"YUM\",\n        \"convertedCurrency\": \"BIF\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "399caa83-a08f-4cd8-8685-ea2bf643623a",
+              "name": "Y800 : Invalid value for accountId<br>Y800 : Invalid value for providerAccountId<br>Y800 : Invalid value for include<br>Y800 : Invalid value for classificationType<br>Y800 : Invalid value for classificationValue<br>Y800 : Invalid value for include<br>Y400 : classificationType mismatch<br>Y400 : classificationValue mismatch<br>Y824 : The maximum number of accountIds permitted is 100",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "holdings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assetClassification.classificationType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "classificationValue",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerAccountId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"errorMessage\": \"string\",\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b275ddae-cb45-411f-a2b0-d8d4c16f08a5",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "holdings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assetClassification.classificationType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "classificationValue",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerAccountId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "16c40e0f-65c0-4802-8b62-348a538fbcaf",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "holdings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assetClassification.classificationType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "classificationValue",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "providerAccountId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b64f9ca4-98f6-47fa-8a39-47dd88f76b87",
+          "name": "Envestnet Add Holding",
+          "request": {
+            "name": "Envestnet Add Holding",
+            "description": {
+              "content": "The add manual holding service is used to add manual holdings. The response of add manual holding service includes the Yodlee generated holding id.<br><br>Add manual holding can only be added to a manual account of investment type container only.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "holdings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"holding\": [\n    {\n      \"accountId\": \"<long>\",\n      \"description\": \"<string>\",\n      \"value\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"symbol\": \"<string>\",\n      \"exercisedQuantity\": \"<double>\",\n      \"cusipNumber\": \"<string>\",\n      \"vestedQuantity\": \"<double>\",\n      \"unvestedValue\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"vestedValue\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"optionType\": \"<string>\",\n      \"holdingType\": \"<string>\",\n      \"maturityDate\": \"<string>\",\n      \"price\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"term\": \"<string>\",\n      \"contractQuantity\": \"<double>\",\n      \"isShort\": \"<boolean>\",\n      \"expirationDate\": \"<string>\",\n      \"interestRate\": \"<double>\",\n      \"quantity\": \"<double>\",\n      \"grantDate\": \"<string>\",\n      \"sedol\": \"<string>\",\n      \"vestedSharesExercisable\": \"<double>\",\n      \"spread\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"couponRate\": \"<double>\",\n      \"unvestedQuantity\": \"<double>\",\n      \"costBasis\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"vestingDate\": \"<string>\",\n      \"isin\": \"<string>\",\n      \"strikePrice\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      }\n    },\n    {\n      \"accountId\": \"<long>\",\n      \"description\": \"<string>\",\n      \"value\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"symbol\": \"<string>\",\n      \"exercisedQuantity\": \"<double>\",\n      \"cusipNumber\": \"<string>\",\n      \"vestedQuantity\": \"<double>\",\n      \"unvestedValue\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"vestedValue\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"optionType\": \"<string>\",\n      \"holdingType\": \"<string>\",\n      \"maturityDate\": \"<string>\",\n      \"price\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"term\": \"<string>\",\n      \"contractQuantity\": \"<double>\",\n      \"isShort\": \"<boolean>\",\n      \"expirationDate\": \"<string>\",\n      \"interestRate\": \"<double>\",\n      \"quantity\": \"<double>\",\n      \"grantDate\": \"<string>\",\n      \"sedol\": \"<string>\",\n      \"vestedSharesExercisable\": \"<double>\",\n      \"spread\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"couponRate\": \"<double>\",\n      \"unvestedQuantity\": \"<double>\",\n      \"costBasis\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"vestingDate\": \"<string>\",\n      \"isin\": \"<string>\",\n      \"strikePrice\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0d0d6f71-fec4-494d-96d0-c49abd31a5f1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "holdings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"holding\": [\n    {\n      \"accountId\": \"<long>\",\n      \"description\": \"<string>\",\n      \"value\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"symbol\": \"<string>\",\n      \"exercisedQuantity\": \"<double>\",\n      \"cusipNumber\": \"<string>\",\n      \"vestedQuantity\": \"<double>\",\n      \"unvestedValue\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"vestedValue\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"optionType\": \"<string>\",\n      \"holdingType\": \"<string>\",\n      \"maturityDate\": \"<string>\",\n      \"price\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"term\": \"<string>\",\n      \"contractQuantity\": \"<double>\",\n      \"isShort\": \"<boolean>\",\n      \"expirationDate\": \"<string>\",\n      \"interestRate\": \"<double>\",\n      \"quantity\": \"<double>\",\n      \"grantDate\": \"<string>\",\n      \"sedol\": \"<string>\",\n      \"vestedSharesExercisable\": \"<double>\",\n      \"spread\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"couponRate\": \"<double>\",\n      \"unvestedQuantity\": \"<double>\",\n      \"costBasis\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"vestingDate\": \"<string>\",\n      \"isin\": \"<string>\",\n      \"strikePrice\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      }\n    },\n    {\n      \"accountId\": \"<long>\",\n      \"description\": \"<string>\",\n      \"value\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"symbol\": \"<string>\",\n      \"exercisedQuantity\": \"<double>\",\n      \"cusipNumber\": \"<string>\",\n      \"vestedQuantity\": \"<double>\",\n      \"unvestedValue\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"vestedValue\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"optionType\": \"<string>\",\n      \"holdingType\": \"<string>\",\n      \"maturityDate\": \"<string>\",\n      \"price\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"term\": \"<string>\",\n      \"contractQuantity\": \"<double>\",\n      \"isShort\": \"<boolean>\",\n      \"expirationDate\": \"<string>\",\n      \"interestRate\": \"<double>\",\n      \"quantity\": \"<double>\",\n      \"grantDate\": \"<string>\",\n      \"sedol\": \"<string>\",\n      \"vestedSharesExercisable\": \"<double>\",\n      \"spread\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"couponRate\": \"<double>\",\n      \"unvestedQuantity\": \"<double>\",\n      \"costBasis\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"vestingDate\": \"<string>\",\n      \"isin\": \"<string>\",\n      \"strikePrice\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"holding\": [\n    {\n      \"id\": 5054\n    },\n    {\n      \"id\": 1780\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4956c11-7d60-4066-9e2e-6ad13b1a6731",
+              "name": "Created Successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "holdings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"holding\": [\n    {\n      \"accountId\": \"<long>\",\n      \"description\": \"<string>\",\n      \"value\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"symbol\": \"<string>\",\n      \"exercisedQuantity\": \"<double>\",\n      \"cusipNumber\": \"<string>\",\n      \"vestedQuantity\": \"<double>\",\n      \"unvestedValue\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"vestedValue\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"optionType\": \"<string>\",\n      \"holdingType\": \"<string>\",\n      \"maturityDate\": \"<string>\",\n      \"price\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"term\": \"<string>\",\n      \"contractQuantity\": \"<double>\",\n      \"isShort\": \"<boolean>\",\n      \"expirationDate\": \"<string>\",\n      \"interestRate\": \"<double>\",\n      \"quantity\": \"<double>\",\n      \"grantDate\": \"<string>\",\n      \"sedol\": \"<string>\",\n      \"vestedSharesExercisable\": \"<double>\",\n      \"spread\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"couponRate\": \"<double>\",\n      \"unvestedQuantity\": \"<double>\",\n      \"costBasis\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"vestingDate\": \"<string>\",\n      \"isin\": \"<string>\",\n      \"strikePrice\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      }\n    },\n    {\n      \"accountId\": \"<long>\",\n      \"description\": \"<string>\",\n      \"value\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"symbol\": \"<string>\",\n      \"exercisedQuantity\": \"<double>\",\n      \"cusipNumber\": \"<string>\",\n      \"vestedQuantity\": \"<double>\",\n      \"unvestedValue\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"vestedValue\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"optionType\": \"<string>\",\n      \"holdingType\": \"<string>\",\n      \"maturityDate\": \"<string>\",\n      \"price\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"term\": \"<string>\",\n      \"contractQuantity\": \"<double>\",\n      \"isShort\": \"<boolean>\",\n      \"expirationDate\": \"<string>\",\n      \"interestRate\": \"<double>\",\n      \"quantity\": \"<double>\",\n      \"grantDate\": \"<string>\",\n      \"sedol\": \"<string>\",\n      \"vestedSharesExercisable\": \"<double>\",\n      \"spread\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"couponRate\": \"<double>\",\n      \"unvestedQuantity\": \"<double>\",\n      \"costBasis\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"vestingDate\": \"<string>\",\n      \"isin\": \"<string>\",\n      \"strikePrice\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"holding\": [\n    {\n      \"id\": 7374\n    },\n    {\n      \"id\": 8558\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4397e54-7418-45b8-a089-12a6a213d05c",
+              "name": "Y800 : Invalid value for accountId<br>Y800 : Invalid value for symbol<br>Y800 : Invalid value for exercisedQuantity<br>Y800 : Invalid value for cusipNumber<br>Y800 : Invalid value for vestedQuantity<br>Y800 : Invalid value for unvestedValue<br>Y800 : Invalid value for vestedValue<br>Y800 : Invalid value for option<br>Y800 : Invalid value for holdingType<br>Y800 : Invalid value for maturityDate<br>Y800 : Invalid value for price<br>Y800 : Invalid value for term<br>Y800 : Invalid value for contractQuantity<br>Y800 : Invalid value for isShort<br>Y800 : Invalid value for value<br>Y800 : Invalid value for expirationDate<br>Y800 : Invalid value for interestRate<br>Y800 : Invalid value for quantity<br>Y800 : Invalid value for grantDate<br>Y800 : Invalid value for sedol<br>Y800 : Invalid value for vestedSharesExercisable<br>Y800 : Invalid value for spread<br>Y800 : Invalid value for couponRate<br>Y800 : Invalid value for unvestedQuantity<br>Y800 : Invalid value for costBasis<br>Y800 : Invalid value for vestingDate<br>Y800 : Invalid value for isin<br>Y800 : Invalid value for strikePrice<br>Y801 : Invalid length for symbol<br>Y801 : Invalid length for term<br>Y801 : Invalid length for description<br>Y801 : Required field/value - description missing in the request<br>Y812 : Required field/value - accountId missing in the request<br>",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "holdings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"holding\": [\n    {\n      \"accountId\": \"<long>\",\n      \"description\": \"<string>\",\n      \"value\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"symbol\": \"<string>\",\n      \"exercisedQuantity\": \"<double>\",\n      \"cusipNumber\": \"<string>\",\n      \"vestedQuantity\": \"<double>\",\n      \"unvestedValue\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"vestedValue\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"optionType\": \"<string>\",\n      \"holdingType\": \"<string>\",\n      \"maturityDate\": \"<string>\",\n      \"price\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"term\": \"<string>\",\n      \"contractQuantity\": \"<double>\",\n      \"isShort\": \"<boolean>\",\n      \"expirationDate\": \"<string>\",\n      \"interestRate\": \"<double>\",\n      \"quantity\": \"<double>\",\n      \"grantDate\": \"<string>\",\n      \"sedol\": \"<string>\",\n      \"vestedSharesExercisable\": \"<double>\",\n      \"spread\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"couponRate\": \"<double>\",\n      \"unvestedQuantity\": \"<double>\",\n      \"costBasis\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"vestingDate\": \"<string>\",\n      \"isin\": \"<string>\",\n      \"strikePrice\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      }\n    },\n    {\n      \"accountId\": \"<long>\",\n      \"description\": \"<string>\",\n      \"value\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"symbol\": \"<string>\",\n      \"exercisedQuantity\": \"<double>\",\n      \"cusipNumber\": \"<string>\",\n      \"vestedQuantity\": \"<double>\",\n      \"unvestedValue\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"vestedValue\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"optionType\": \"<string>\",\n      \"holdingType\": \"<string>\",\n      \"maturityDate\": \"<string>\",\n      \"price\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"term\": \"<string>\",\n      \"contractQuantity\": \"<double>\",\n      \"isShort\": \"<boolean>\",\n      \"expirationDate\": \"<string>\",\n      \"interestRate\": \"<double>\",\n      \"quantity\": \"<double>\",\n      \"grantDate\": \"<string>\",\n      \"sedol\": \"<string>\",\n      \"vestedSharesExercisable\": \"<double>\",\n      \"spread\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"couponRate\": \"<double>\",\n      \"unvestedQuantity\": \"<double>\",\n      \"costBasis\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"vestingDate\": \"<string>\",\n      \"isin\": \"<string>\",\n      \"strikePrice\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"errorMessage\": \"string\",\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "70e3b4fb-18c4-4db0-b83f-32c203cafc17",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "holdings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"holding\": [\n    {\n      \"accountId\": \"<long>\",\n      \"description\": \"<string>\",\n      \"value\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"symbol\": \"<string>\",\n      \"exercisedQuantity\": \"<double>\",\n      \"cusipNumber\": \"<string>\",\n      \"vestedQuantity\": \"<double>\",\n      \"unvestedValue\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"vestedValue\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"optionType\": \"<string>\",\n      \"holdingType\": \"<string>\",\n      \"maturityDate\": \"<string>\",\n      \"price\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"term\": \"<string>\",\n      \"contractQuantity\": \"<double>\",\n      \"isShort\": \"<boolean>\",\n      \"expirationDate\": \"<string>\",\n      \"interestRate\": \"<double>\",\n      \"quantity\": \"<double>\",\n      \"grantDate\": \"<string>\",\n      \"sedol\": \"<string>\",\n      \"vestedSharesExercisable\": \"<double>\",\n      \"spread\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"couponRate\": \"<double>\",\n      \"unvestedQuantity\": \"<double>\",\n      \"costBasis\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"vestingDate\": \"<string>\",\n      \"isin\": \"<string>\",\n      \"strikePrice\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      }\n    },\n    {\n      \"accountId\": \"<long>\",\n      \"description\": \"<string>\",\n      \"value\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"symbol\": \"<string>\",\n      \"exercisedQuantity\": \"<double>\",\n      \"cusipNumber\": \"<string>\",\n      \"vestedQuantity\": \"<double>\",\n      \"unvestedValue\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"vestedValue\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"optionType\": \"<string>\",\n      \"holdingType\": \"<string>\",\n      \"maturityDate\": \"<string>\",\n      \"price\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"term\": \"<string>\",\n      \"contractQuantity\": \"<double>\",\n      \"isShort\": \"<boolean>\",\n      \"expirationDate\": \"<string>\",\n      \"interestRate\": \"<double>\",\n      \"quantity\": \"<double>\",\n      \"grantDate\": \"<string>\",\n      \"sedol\": \"<string>\",\n      \"vestedSharesExercisable\": \"<double>\",\n      \"spread\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"couponRate\": \"<double>\",\n      \"unvestedQuantity\": \"<double>\",\n      \"costBasis\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"vestingDate\": \"<string>\",\n      \"isin\": \"<string>\",\n      \"strikePrice\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "54cbaf4e-b31f-448b-887b-07dc0d4adc9e",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "holdings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"holding\": [\n    {\n      \"accountId\": \"<long>\",\n      \"description\": \"<string>\",\n      \"value\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"symbol\": \"<string>\",\n      \"exercisedQuantity\": \"<double>\",\n      \"cusipNumber\": \"<string>\",\n      \"vestedQuantity\": \"<double>\",\n      \"unvestedValue\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"vestedValue\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"optionType\": \"<string>\",\n      \"holdingType\": \"<string>\",\n      \"maturityDate\": \"<string>\",\n      \"price\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"term\": \"<string>\",\n      \"contractQuantity\": \"<double>\",\n      \"isShort\": \"<boolean>\",\n      \"expirationDate\": \"<string>\",\n      \"interestRate\": \"<double>\",\n      \"quantity\": \"<double>\",\n      \"grantDate\": \"<string>\",\n      \"sedol\": \"<string>\",\n      \"vestedSharesExercisable\": \"<double>\",\n      \"spread\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"couponRate\": \"<double>\",\n      \"unvestedQuantity\": \"<double>\",\n      \"costBasis\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"vestingDate\": \"<string>\",\n      \"isin\": \"<string>\",\n      \"strikePrice\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      }\n    },\n    {\n      \"accountId\": \"<long>\",\n      \"description\": \"<string>\",\n      \"value\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"symbol\": \"<string>\",\n      \"exercisedQuantity\": \"<double>\",\n      \"cusipNumber\": \"<string>\",\n      \"vestedQuantity\": \"<double>\",\n      \"unvestedValue\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"vestedValue\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"optionType\": \"<string>\",\n      \"holdingType\": \"<string>\",\n      \"maturityDate\": \"<string>\",\n      \"price\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"term\": \"<string>\",\n      \"contractQuantity\": \"<double>\",\n      \"isShort\": \"<boolean>\",\n      \"expirationDate\": \"<string>\",\n      \"interestRate\": \"<double>\",\n      \"quantity\": \"<double>\",\n      \"grantDate\": \"<string>\",\n      \"sedol\": \"<string>\",\n      \"vestedSharesExercisable\": \"<double>\",\n      \"spread\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"couponRate\": \"<double>\",\n      \"unvestedQuantity\": \"<double>\",\n      \"costBasis\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      },\n      \"vestingDate\": \"<string>\",\n      \"isin\": \"<string>\",\n      \"strikePrice\": {\n        \"amount\": \"<double>\",\n        \"convertedAmount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"convertedCurrency\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9d2cec59-c3ea-432e-bec1-24eda437382e",
+          "name": "Envestnet Get Holding Type List",
+          "request": {
+            "name": "Envestnet Get Holding Type List",
+            "description": {
+              "content": "The get holding types list service is used to get the supported holding types.<br>The response includes different holding types such as future, moneyMarketFund, stock, etc. and it returns the supported holding types <br>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "holdings",
+                "holdingTypeList"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "40873a1f-cfac-405c-9808-4b7639cdebc5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "holdings",
+                    "holdingTypeList"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"holdingType\": [\n    \"unitInvestmentTrust\",\n    \"ETF\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "74bb586d-cff8-4514-b088-ecb70ad43368",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "holdings",
+                    "holdingTypeList"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b3f2f51c-2c4e-4331-a3d2-4e1da5ff38f5",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "holdings",
+                    "holdingTypeList"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "38ef4377-3fa6-4e03-9349-8343376e1b7f",
+          "name": "Envestnet Get Asset Classification List",
+          "request": {
+            "name": "Envestnet Get Asset Classification List",
+            "description": {
+              "content": "The get asset classifications list service is used to get the supported asset classifications. <br>The response includes different classification types like assetClass, country, sector, style, etc. and the values corresponding to each type.<br>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "holdings",
+                "assetClassificationList"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f4559232-cfad-460c-a79f-0704775cec92",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "holdings",
+                    "assetClassificationList"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"assetClassificationList\": [\n    {\n      \"classificationType\": \"string\",\n      \"classificationValue\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"classificationType\": \"string\",\n      \"classificationValue\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b09979fa-9ce1-4ecd-8cff-29cd92ca1447",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "holdings",
+                    "assetClassificationList"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a48dc8df-0d7c-4876-a4ed-ba6940b2c341",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "holdings",
+                    "assetClassificationList"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9cbe5037-5f93-4ce4-acf3-7f68471fc41d",
+    "name": "Envestnet Aggregation APIs Account Token Holdings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This file describes the Yodlee Aggregation product APIs using the swagger notation that you can use to build your financial application.  You can generate the client SDK in Python, JavaScript, PHP, or any other languages according to your development needs. For more details about the APIs, refer to <a href=\"https://developer.envestnet.com/resources/yodlee/yodlee-api-overview/docs\">Yodlee API v1.1 - Overview</a>.<br><br>You will have to set the header before making the API call. The following headers apply to all the APIs:<ul><li>Authorization: This header holds the access token</li> <li> Api-Version: 1.1</li></ul><b>Note</b>: If there are any API-specific headers, they are mentioned explicitly in the respective API's description.\n\nContact Support:\n Email: developer@yodlee.com",
+      "type": "text/plain"
+    }
+  }
+}

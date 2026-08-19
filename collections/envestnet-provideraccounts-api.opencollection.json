@@ -1,0 +1,154 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Envestnet Aggregation APIs Account Token ProviderAccounts API",
+    "version": "1.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ProviderAccounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Envestnet Get Provider Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/providerAccounts",
+            "params": [
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "include"
+              },
+              {
+                "name": "providerIds",
+                "value": "",
+                "type": "query",
+                "description": "Comma separated providerIds."
+              }
+            ]
+          },
+          "docs": "The get provider accounts service is used to return all the provider accounts added by the user. <br>This includes the failed and successfully added provider accounts.<br>"
+        },
+        {
+          "info": {
+            "name": "Envestnet Update Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/providerAccounts",
+            "params": [
+              {
+                "name": "providerAccountIds",
+                "value": "",
+                "type": "query",
+                "description": "comma separated providerAccountIds"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<i>This API Reference guide is intended for FastLink 4 Users.  For FastLink 3 Users, there are additional integration notes related to this endpoint <a href=\"https://developer.envestnet.com/resources/yodlee/fastlink-3/docs/api-integrations\">here</a>.</i><br><br>The update account API is used to:<br> <ul><li>Retrieve the latest information of all the eligible accounts that belong to the user.<li>Check the status of the providerAccount before invoking this API. Do not call this API to trigger any "
+        },
+        {
+          "info": {
+            "name": "Envestnet Refresh Provider Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/providerAccounts/refresh",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This api service will allow you to refresh the Non-MFA provider accounts against a configName, i.e refresh will respect the configurations of the configName while refreshing the account.<br>Note: this service will only work with FastLink 4 users.<br>"
+        },
+        {
+          "info": {
+            "name": "Envestnet Update Preferences",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/providerAccounts/:providerAccountId/preferences",
+            "params": [
+              {
+                "name": "providerAccountId",
+                "value": "",
+                "type": "path",
+                "description": "providerAccountId"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint is used to update preferences like data extracts and auto refreshes without triggering refresh for the providerAccount.<br>Setting isDataExtractsEnabled to false will not trigger data extracts notification and dataExtracts/events will not reflect any data change that is happening for the providerAccount.<br>Modified data will not be provided in the dataExtracts/userData endpoint.<br>Setting isAutoRefreshEnabled to false will not trigger auto refreshes for the provider account.<br>"
+        },
+        {
+          "info": {
+            "name": "Envestnet Get Provider Account Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/providerAccounts/:providerAccountId",
+            "params": [
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "include credentials,questions"
+              },
+              {
+                "name": "providerAccountId",
+                "value": "",
+                "type": "path",
+                "description": "providerAccountId"
+              },
+              {
+                "name": "requestId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier for the request that returns contextual data"
+              }
+            ]
+          },
+          "docs": "The get provider account details service is used to learn the status of adding accounts and updating accounts.<br>This service has to be called continuously to know the progress level of the triggered process. This service also provides the MFA information requested by the provider site.<br>When <i>include = credentials</i>, questions is passed as input, the service returns the credentials (non-password values) and questions stored in the Yodlee system for that provider account. <br><br><b>Note:"
+        },
+        {
+          "info": {
+            "name": "Envestnet Delete Provider Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/providerAccounts/:providerAccountId",
+            "params": [
+              {
+                "name": "providerAccountId",
+                "value": "",
+                "type": "path",
+                "description": "providerAccountId"
+              }
+            ]
+          },
+          "docs": "The delete provider account service is used to delete a provider account from the Yodlee system. This service also deletes the accounts that are created in the Yodlee system for that provider account. <br>This service does not return a response. The HTTP response code is 204 (Success with no content).<br>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

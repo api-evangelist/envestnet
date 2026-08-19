@@ -1,0 +1,310 @@
+{
+  "item": [
+    {
+      "id": "46f6af69-cff9-4257-b225-1a26fa68d244",
+      "name": "Statements",
+      "description": {
+        "content": "Statements API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fef8825f-f699-43bc-949c-9a11caed7840",
+          "name": "Envestnet Get Statements",
+          "request": {
+            "name": "Envestnet Get Statements",
+            "description": {
+              "content": "The statements service is used to get the list of statement related information. <br>By default, all the latest statements of active and to be closed accounts are retrieved for the user. <br>Certain sites do not have both a statement date and a due date. When a fromDate is passed as an input, all the statements that have the due date on or after the passed date are retrieved. <br>For sites that do not have the due date, statements that have the statement date on or after the passed date are retrieved. <br>The default value of \"isLatest\" is true. To retrieve historical statements isLatest needs to be set to false.<br>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "statements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountId",
+                  "value": "<string>",
+                  "description": "accountId"
+                },
+                {
+                  "disabled": false,
+                  "key": "container",
+                  "value": "<string>",
+                  "description": "creditCard/loan/insurance"
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDate",
+                  "value": "<string>",
+                  "description": "from date for statement retrieval (YYYY-MM-DD)"
+                },
+                {
+                  "disabled": false,
+                  "key": "isLatest",
+                  "value": "<string>",
+                  "description": "isLatest (true/false)"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "ACTIVE,TO_BE_CLOSED,CLOSED"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dc0d1094-9914-435d-8395-0c8ebea18345",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "statements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "container",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isLatest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"statement\": [\n    {\n      \"apr\": 5395.418684710617,\n      \"cashApr\": 2256.6703251839704,\n      \"billingPeriodStart\": \"string\",\n      \"dueDate\": \"string\",\n      \"interestAmount\": {\n        \"amount\": 6551.33354352899,\n        \"convertedAmount\": 8053.493502715339,\n        \"currency\": \"GWP\",\n        \"convertedCurrency\": \"XGF\"\n      },\n      \"statementDate\": \"string\",\n      \"cashAdvance\": {\n        \"amount\": 6421.772527908356,\n        \"convertedAmount\": 8037.869286028313,\n        \"currency\": \"SLL\",\n        \"convertedCurrency\": \"EGP\"\n      },\n      \"billingPeriodEnd\": \"string\",\n      \"principalAmount\": {\n        \"amount\": 5975.330162539617,\n        \"convertedAmount\": 5321.9791362421865,\n        \"currency\": \"ITL\",\n        \"convertedCurrency\": \"ERN\"\n      },\n      \"loanBalance\": {\n        \"amount\": 6773.561397224939,\n        \"convertedAmount\": 587.0254676623877,\n        \"currency\": \"GHC\",\n        \"convertedCurrency\": \"ZMK\"\n      },\n      \"amountDue\": {\n        \"amount\": 171.61353657130672,\n        \"convertedAmount\": 4327.008290680899,\n        \"currency\": \"GHS\",\n        \"convertedCurrency\": \"XTS\"\n      },\n      \"accountId\": 8547,\n      \"lastUpdated\": \"string\",\n      \"isLatest\": true,\n      \"minimumPayment\": {\n        \"amount\": 7808.953380285534,\n        \"convertedAmount\": 7710.459400257447,\n        \"currency\": \"XBB\",\n        \"convertedCurrency\": \"XPD\"\n      },\n      \"lastPaymentDate\": \"string\",\n      \"lastPaymentAmount\": {\n        \"amount\": 6986.935844736849,\n        \"convertedAmount\": 842.6487356818235,\n        \"currency\": \"ALK\",\n        \"convertedCurrency\": \"COP\"\n      },\n      \"id\": 1610,\n      \"newCharges\": {\n        \"amount\": 9258.56878518069,\n        \"convertedAmount\": 9961.208019345697,\n        \"currency\": \"PLN\",\n        \"convertedCurrency\": \"XPD\"\n      }\n    },\n    {\n      \"apr\": 5676.824225224794,\n      \"cashApr\": 796.2386392049947,\n      \"billingPeriodStart\": \"string\",\n      \"dueDate\": \"string\",\n      \"interestAmount\": {\n        \"amount\": 3717.877215524049,\n        \"convertedAmount\": 169.7649762955622,\n        \"currency\": \"SOS\",\n        \"convertedCurrency\": \"GWP\"\n      },\n      \"statementDate\": \"string\",\n      \"cashAdvance\": {\n        \"amount\": 3183.114396728468,\n        \"convertedAmount\": 2853.39147397173,\n        \"currency\": \"CSD\",\n        \"convertedCurrency\": \"CUP\"\n      },\n      \"billingPeriodEnd\": \"string\",\n      \"principalAmount\": {\n        \"amount\": 5069.1508901470215,\n        \"convertedAmount\": 860.7146348519723,\n        \"currency\": \"MMK\",\n        \"convertedCurrency\": \"DEM\"\n      },\n      \"loanBalance\": {\n        \"amount\": 8161.587823475138,\n        \"convertedAmount\": 129.71046462502133,\n        \"currency\": \"XRM\",\n        \"convertedCurrency\": \"XDR\"\n      },\n      \"amountDue\": {\n        \"amount\": 1422.441254932324,\n        \"convertedAmount\": 6293.006086543711,\n        \"currency\": \"SCR\",\n        \"convertedCurrency\": \"TPE\"\n      },\n      \"accountId\": 538,\n      \"lastUpdated\": \"string\",\n      \"isLatest\": true,\n      \"minimumPayment\": {\n        \"amount\": 4838.4289668646925,\n        \"convertedAmount\": 8920.168552536095,\n        \"currency\": \"MZM\",\n        \"convertedCurrency\": \"BEF\"\n      },\n      \"lastPaymentDate\": \"string\",\n      \"lastPaymentAmount\": {\n        \"amount\": 3340.8504434939255,\n        \"convertedAmount\": 6742.743604279233,\n        \"currency\": \"TJR\",\n        \"convertedCurrency\": \"ITL\"\n      },\n      \"id\": 2179,\n      \"newCharges\": {\n        \"amount\": 1619.6885654128923,\n        \"convertedAmount\": 4167.246380353723,\n        \"currency\": \"FJD\",\n        \"convertedCurrency\": \"UAH\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a2a8dfe-9096-4fc2-bab3-27eea28a5805",
+              "name": "Y800 : Invalid value for accountId<br>Y800 : Invalid value for status<br>Y805 : Multiple containers not supported<br>Y800 : Invalid value for container<br>Y800 : Invalid value for isLatest<br>Y800 : Invalid value for fromDate<br>",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "statements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "container",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isLatest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"errorMessage\": \"string\",\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "acdce99e-c0b6-47c5-9d80-2ef3702e2935",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "statements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "container",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isLatest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d280430b-105e-479a-9aae-57b7ccefed90",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "statements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "container",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isLatest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "df0fd2fe-8937-4a72-9f89-1d6ccaa96a68",
+    "name": "Envestnet Aggregation APIs Account Token Statements API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This file describes the Yodlee Aggregation product APIs using the swagger notation that you can use to build your financial application.  You can generate the client SDK in Python, JavaScript, PHP, or any other languages according to your development needs. For more details about the APIs, refer to <a href=\"https://developer.envestnet.com/resources/yodlee/yodlee-api-overview/docs\">Yodlee API v1.1 - Overview</a>.<br><br>You will have to set the header before making the API call. The following headers apply to all the APIs:<ul><li>Authorization: This header holds the access token</li> <li> Api-Version: 1.1</li></ul><b>Note</b>: If there are any API-specific headers, they are mentioned explicitly in the respective API's description.\n\nContact Support:\n Email: developer@yodlee.com",
+      "type": "text/plain"
+    }
+  }
+}

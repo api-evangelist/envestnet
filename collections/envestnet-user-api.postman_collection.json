@@ -1,0 +1,2819 @@
+{
+  "item": [
+    {
+      "id": "48f05c14-d25b-434d-990a-a1d1f4b40e39",
+      "name": "User",
+      "description": {
+        "content": "Users API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b0f5f6f8-f749-426b-ab2b-78b8621fd38e",
+          "name": "Envestnet Saml Login",
+          "request": {
+            "name": "Envestnet Saml Login",
+            "description": {
+              "content": "The SAML login service is used to authenticate system users with a SAML response.<br>A new user will be created with the input provided if that user isn't already in the system.<br>For existing users, the system will make updates based on changes or new information.<br>When authentication is successful, a user session token is returned.<br><br><b>Note:</b> <li>The content type has to be passed as application/x-www-form-urlencoded. <li>issuer, source and samlResponse should be passed as body parameters.</li>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "samlLogin"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "issuer",
+                  "value": "<string>",
+                  "description": "(Required) issuer"
+                },
+                {
+                  "disabled": false,
+                  "key": "samlResponse",
+                  "value": "<string>",
+                  "description": "(Required) samlResponse"
+                },
+                {
+                  "disabled": false,
+                  "key": "source",
+                  "value": "<string>",
+                  "description": "source"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f31e089f-9a40-4547-b179-d6d592aa4de6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "samlLogin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "issuer",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "samlResponse",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"preferences\": {\n      \"dateFormat\": \"string\",\n      \"timeZone\": \"string\",\n      \"currency\": \"TMT\",\n      \"locale\": \"en_AE\"\n    },\n    \"session\": {\n      \"userSession\": \"string\"\n    },\n    \"loginName\": \"string\",\n    \"name\": {\n      \"middle\": \"string\",\n      \"last\": \"string\",\n      \"fullName\": \"string\",\n      \"first\": \"string\"\n    },\n    \"id\": 438,\n    \"roleType\": \"INDIVIDUAL\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac437fa2-8786-4298-a300-a953c3b739d4",
+              "name": "Y013 : Invalid value for samlResponse<br>Y013 : Invalid value for issuer",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "samlLogin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "issuer",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "samlResponse",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"errorMessage\": \"string\",\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e7bcc071-fe5a-4ba5-b1e1-67aff6fa6aaf",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "samlLogin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "issuer",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "samlResponse",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "883bc78a-7463-4b22-82a1-a14fb97fcf3a",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "samlLogin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "issuer",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "samlResponse",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c74af371-34f0-4a46-98db-6b30e648ae40",
+          "name": "Envestnet Register User",
+          "request": {
+            "name": "Envestnet Register User",
+            "description": {
+              "content": "The register user service is used to register a user in Yodlee.<br>The loginName cannot include spaces and must be between 3 and 150 characters.<br>locale passed must be one of the supported locales for the customer. <br>Currency provided in the input will be respected in the derived services and the amount fields in the response will be provided in the preferred currency.<br>userParam is accepted as a body parameter. <br><br><b>Note:</b> <li>The content type has to be passed as application/json for the body parameter.</li> <li>We recommend you to not use special characters in loginName other than \"@\", \"#\", \"_\" & \"-\"</li>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "register"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": {\n    \"loginName\": \"<string>\",\n    \"preferences\": {\n      \"dateFormat\": \"<string>\",\n      \"timeZone\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"locale\": \"<string>\"\n    },\n    \"address\": {\n      \"zip\": \"<string>\",\n      \"country\": \"<string>\",\n      \"address3\": \"<string>\",\n      \"address2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"address1\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"phoneNumber\": \"<string>\",\n    \"name\": {\n      \"middle\": \"<string>\",\n      \"last\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"first\": \"<string>\"\n    },\n    \"email\": \"<string>\",\n    \"segmentName\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "741ca4a9-a96b-4c55-a6ae-aa8c3d5ec6fd",
+              "name": "Login Successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"loginName\": \"<string>\",\n    \"preferences\": {\n      \"dateFormat\": \"<string>\",\n      \"timeZone\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"locale\": \"<string>\"\n    },\n    \"address\": {\n      \"zip\": \"<string>\",\n      \"country\": \"<string>\",\n      \"address3\": \"<string>\",\n      \"address2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"address1\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"phoneNumber\": \"<string>\",\n    \"name\": {\n      \"middle\": \"<string>\",\n      \"last\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"first\": \"<string>\"\n    },\n    \"email\": \"<string>\",\n    \"segmentName\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"preferences\": {\n      \"dateFormat\": \"string\",\n      \"timeZone\": \"string\",\n      \"currency\": \"TRL\",\n      \"locale\": \"nl_AN\"\n    },\n    \"session\": {\n      \"userSession\": \"string\"\n    },\n    \"loginName\": \"string\",\n    \"name\": {\n      \"middle\": \"<string>\",\n      \"last\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"first\": \"<string>\"\n    },\n    \"id\": 4588,\n    \"roleType\": \"INDIVIDUAL\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "63fe9476-f786-4f80-8400-5e45d2fee4b4",
+              "name": "Y800 : Invalid value for loginName<br>Y800 : Invalid value for email<br>Y801 : Invalid length for loginName<br>Y800 : Invalid value for phoneNumber<br>",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"loginName\": \"<string>\",\n    \"preferences\": {\n      \"dateFormat\": \"<string>\",\n      \"timeZone\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"locale\": \"<string>\"\n    },\n    \"address\": {\n      \"zip\": \"<string>\",\n      \"country\": \"<string>\",\n      \"address3\": \"<string>\",\n      \"address2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"address1\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"phoneNumber\": \"<string>\",\n    \"name\": {\n      \"middle\": \"<string>\",\n      \"last\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"first\": \"<string>\"\n    },\n    \"email\": \"<string>\",\n    \"segmentName\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"errorMessage\": \"string\",\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c03cc1ef-272e-4c82-bb69-82bf22cdacb0",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"loginName\": \"<string>\",\n    \"preferences\": {\n      \"dateFormat\": \"<string>\",\n      \"timeZone\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"locale\": \"<string>\"\n    },\n    \"address\": {\n      \"zip\": \"<string>\",\n      \"country\": \"<string>\",\n      \"address3\": \"<string>\",\n      \"address2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"address1\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"phoneNumber\": \"<string>\",\n    \"name\": {\n      \"middle\": \"<string>\",\n      \"last\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"first\": \"<string>\"\n    },\n    \"email\": \"<string>\",\n    \"segmentName\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5c06b4d2-ba47-4947-9dae-b6d25789010b",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"loginName\": \"<string>\",\n    \"preferences\": {\n      \"dateFormat\": \"<string>\",\n      \"timeZone\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"locale\": \"<string>\"\n    },\n    \"address\": {\n      \"zip\": \"<string>\",\n      \"country\": \"<string>\",\n      \"address3\": \"<string>\",\n      \"address2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"address1\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"phoneNumber\": \"<string>\",\n    \"name\": {\n      \"middle\": \"<string>\",\n      \"last\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"first\": \"<string>\"\n    },\n    \"email\": \"<string>\",\n    \"segmentName\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "12c2638b-65d4-44c2-9132-ffbfbe035068",
+          "name": "Envestnet Get Access Tokens",
+          "request": {
+            "name": "Envestnet Get Access Tokens",
+            "description": {
+              "content": "The Get Access Tokens service is used to retrieve the access tokens for the application id(s) provided.<br>URL in the response can be used to launch the application for which token is requested.<br><br><b>Note:</b> <li>This endpoint is deprecated for customers using the API Key-based authentication and is applicable only to customers who use the SAML-based authentication.<br>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "accessTokens"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "appIds",
+                  "value": "<string>",
+                  "description": "(Required) appIds"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ff4a1ff1-d927-4856-88f2-318684eb08ed",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "accessTokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appIds",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"accessTokens\": [\n      {\n        \"appId\": \"string\",\n        \"value\": \"string\",\n        \"url\": \"string\"\n      },\n      {\n        \"appId\": \"string\",\n        \"value\": \"string\",\n        \"url\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a5060183-2618-4532-96ea-888c4d549ef4",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "accessTokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appIds",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f4d10f1f-dc50-4725-ac5b-b3be72e6c6d3",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "accessTokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appIds",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba944a55-258c-4be3-a1a2-f6576c454dd1",
+          "name": "Envestnet Get User Details",
+          "request": {
+            "name": "Envestnet Get User Details",
+            "description": {
+              "content": "The get user details service is used to get the user profile information and the application preferences set at the time of user registration.<br>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fc2f5996-4823-4c9c-8f36-dc8648872800",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=UTF-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=UTF-8"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"preferences\": {\n      \"dateFormat\": \"string\",\n      \"timeZone\": \"string\",\n      \"currency\": \"PLN\",\n      \"locale\": \"en_PH\"\n    },\n    \"address\": {\n      \"zip\": \"<string>\",\n      \"country\": \"<string>\",\n      \"address3\": \"<string>\",\n      \"address2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"address1\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"phoneNumber\": \"string\",\n    \"loginName\": \"string\",\n    \"name\": {\n      \"middle\": \"<string>\",\n      \"last\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"first\": \"<string>\"\n    },\n    \"id\": 3367,\n    \"roleType\": \"INDIVIDUAL\",\n    \"email\": \"string\",\n    \"segmentName\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "399f9907-d936-41ba-a991-da581dab37da",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8864bb19-5566-4742-ab31-875a98465566",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "106d1ca0-d00a-41ff-8265-bdcc11948081",
+          "name": "Envestnet Update User Details",
+          "request": {
+            "name": "Envestnet Update User Details",
+            "description": {
+              "content": "The update user details service is used to update user details like name, address, currency preference, etc.<br>Currency provided in the input will be respected in the <a href=\"https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference#yodlee-aggregation-derivedtransactionsummary-get\">Derived</a> services and the amount fields in the response will be provided in the preferred currency.<br>The HTTP response code is 204 (Success without content). <br><br> <b>Login Name Change Feature:</b> loginName can be passed to update the user's login name. Once the loginName is updated, to access the user's data, a token with the changed loginName must be created. This feature is supported only Client Credentials authentication methods.<br><b>Note:</b> <li>We strongly recommend to immediately delete the old access token once the user's loginName is successfully changed to avoid misuse.</li> <li>After updating the login name, the already sent data extract events with the old login name will no more be functional. Replace the loginName with new loginName or try polling method to retrieve the data.</li><br>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": {\n    \"preferences\": {\n      \"dateFormat\": \"<string>\",\n      \"timeZone\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"locale\": \"<string>\"\n    },\n    \"address\": {\n      \"zip\": \"<string>\",\n      \"country\": \"<string>\",\n      \"address3\": \"<string>\",\n      \"address2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"address1\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"phoneNumber\": \"<string>\",\n    \"loginName\": \"<string>\",\n    \"name\": {\n      \"middle\": \"<string>\",\n      \"last\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"first\": \"<string>\"\n    },\n    \"email\": \"<string>\",\n    \"segmentName\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "73a7ce76-cf1d-422b-9d39-dda627a79278",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"preferences\": {\n      \"dateFormat\": \"<string>\",\n      \"timeZone\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"locale\": \"<string>\"\n    },\n    \"address\": {\n      \"zip\": \"<string>\",\n      \"country\": \"<string>\",\n      \"address3\": \"<string>\",\n      \"address2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"address1\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"phoneNumber\": \"<string>\",\n    \"loginName\": \"<string>\",\n    \"name\": {\n      \"middle\": \"<string>\",\n      \"last\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"first\": \"<string>\"\n    },\n    \"email\": \"<string>\",\n    \"segmentName\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3a3135a9-9d52-4b61-9b1a-0411cf57b2c4",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"preferences\": {\n      \"dateFormat\": \"<string>\",\n      \"timeZone\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"locale\": \"<string>\"\n    },\n    \"address\": {\n      \"zip\": \"<string>\",\n      \"country\": \"<string>\",\n      \"address3\": \"<string>\",\n      \"address2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"address1\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"phoneNumber\": \"<string>\",\n    \"loginName\": \"<string>\",\n    \"name\": {\n      \"middle\": \"<string>\",\n      \"last\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"first\": \"<string>\"\n    },\n    \"email\": \"<string>\",\n    \"segmentName\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7333d6fe-ccff-4842-859f-8ce8da25324f",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": {\n    \"preferences\": {\n      \"dateFormat\": \"<string>\",\n      \"timeZone\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"locale\": \"<string>\"\n    },\n    \"address\": {\n      \"zip\": \"<string>\",\n      \"country\": \"<string>\",\n      \"address3\": \"<string>\",\n      \"address2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"address1\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"phoneNumber\": \"<string>\",\n    \"loginName\": \"<string>\",\n    \"name\": {\n      \"middle\": \"<string>\",\n      \"last\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"first\": \"<string>\"\n    },\n    \"email\": \"<string>\",\n    \"segmentName\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7a5f874c-c345-4d9b-a6f2-3a7dda11599f",
+          "name": "Envestnet User Logout",
+          "request": {
+            "name": "Envestnet User Logout",
+            "description": {
+              "content": "<b>Deprecated</b>: This endpoint is deprecated for API Key-based authentication. The user logout service allows the user to log out of the application.<br>The service does not return a response body. The HTTP response code is 204 (Success with no content).<br>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "logout"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d3a76907-657d-4d3a-98bb-901b2e7f56fd",
+              "name": "Logout successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "logout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d0ddb875-63d3-4f51-b146-24cb84820907",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "logout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c66c4e28-edd1-4a14-a9bc-f1c1d62d58bc",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "logout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c4af4071-e23f-4fa2-8e6f-8c9cfde33c4f",
+          "name": "Envestnet Delete User",
+          "request": {
+            "name": "Envestnet Delete User",
+            "description": {
+              "content": "The delete user service is used to delete or unregister a user from Yodlee. <br>Once deleted, the information related to the users cannot be retrieved. <br>The HTTP response code is 204 (Success without content)<br>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "unregister"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "108b15b4-1d77-4057-b9f5-a0cdb53896b2",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "unregister"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7b4e642d-3e13-4cf8-84e0-bc8bc8804610",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "unregister"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a7b0fabe-665d-43a7-84f9-0974c962d7c7",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "unregister"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a51418e4-2053-4f56-abc5-ac3c713c35d6",
+          "name": "Envestnet Provides user-level preferences for each insight.",
+          "request": {
+            "name": "Envestnet Provides user-level preferences for each insight.",
+            "description": {
+              "content": "This API returns the details of all the Insights which are subscribed by the customer. If any of the insight has been turned off by setting isSubscribed = false at the customerSubscription level, those insights will not be shown in the userSubscription API.<br /><br />Each Insight details contain attributes such as Insight Frequency, Threshold, etc. By default, all the configurations set by the customer will be inherited by the user. Using a separate PATCH API, consumers can override customer preferences and set their own preferences - wherever applicable.<br /><br />In addition to setting prepoferences at an insight entity level, the consumer will also be able to set preferences at an entity ID level. E.g. LOW_BALANCE_WARNING insight can have a BALANCE threshold of $1,000 set by the customer. However, the user can set a different threshold for each of the accounts the user has aggregated.<br /><br />The customerConfiguration object for each insight mirrors the preferences set by the customer for each insight at the customerSubscription level.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "insights",
+                "configs",
+                "userSubscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "insightName",
+                  "value": "<string>",
+                  "description": "Insight name"
+                },
+                {
+                  "disabled": false,
+                  "key": "entityId",
+                  "value": "<string>",
+                  "description": "Comma separated list of entity Ids it could be a account id or view id"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8fb22501-b6ac-49cf-8ef3-d9de7751d475",
+              "name": "A list of subscribed Insight details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "configs",
+                    "userSubscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "insightName",
+                      "value": "LOW_BALANCE_WARNING"
+                    },
+                    {
+                      "key": "entityId",
+                      "value": "1001,5e7885993cd8e328288522f7"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userSubscription\": [\n    {\n      \"insightName\": \"UPCOMING_BILLS\",\n      \"insightTitle\": \"Upcoming Bills\",\n      \"insightType\": \"OTHER\",\n      \"triggerType\": \"SCHEDULE\",\n      \"containers\": [\n        \"BANK\",\n        \"CARD\"\n      ],\n      \"description\": \"Generates an insight that lists upcoming recurring bills within a configured time period..\",\n      \"applicableEntity\": [\n        \"ACCOUNT\",\n        \"VIEW\"\n      ],\n      \"userConfiguration\": [\n        {\n          \"entityId\": \"12345\",\n          \"entityType\": \"ACCOUNT\",\n          \"isSubscribed\": true,\n          \"frequency\": \"MONTHLY\",\n          \"threshold\": [\n            {\n              \"name\": \"FUTURE\",\n              \"value\": \"10\",\n              \"type\": \"DAYS\"\n            }\n          ]\n        },\n        {\n          \"entityId\": \"absc1234\",\n          \"entityType\": \"VIEW\",\n          \"isSubscribed\": true,\n          \"frequency\": \"DAILY\",\n          \"threshold\": [\n            {\n              \"name\": \"FUTURE\",\n              \"value\": \"12\",\n              \"type\": \"DAYS\"\n            }\n          ]\n        }\n      ],\n      \"customerConfiguration\": [\n        {\n          \"entityType\": \"ACCOUNT\",\n          \"isSubscribed\": true,\n          \"frequency\": \"MONTHLY\",\n          \"threshold\": [\n            {\n              \"name\": \"FUTURE\",\n              \"value\": \"7\",\n              \"type\": \"DAYS\"\n            }\n          ]\n        },\n        {\n          \"entityType\": \"VIEW\",\n          \"isSubscribed\": true,\n          \"frequency\": \"MONTHLY\",\n          \"threshold\": [\n            {\n              \"name\": \"FUTURE\",\n              \"value\": \"7\",\n              \"type\": \"DAYS\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a400ce3-fed4-454f-b145-4312c58f097b",
+              "name": "Bad request. ErrorCode and ErrorMessages below:<br> <br>Y800 : Invalid value for entityId <br>Y824 : The maximum number of entityId permitted is 100   <br>Y800 : Invalid value for insightName",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "configs",
+                    "userSubscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "insightName",
+                      "value": "LOW_BALANCE_WARNING"
+                    },
+                    {
+                      "key": "entityId",
+                      "value": "1001,5e7885993cd8e328288522f7"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc05e453-7bfc-4036-9481-d65f57dc49ab",
+              "name": "Y020 : Invalid token in authorization header<br>Y023 : Token has expired<br> Y011 : Invalid cobrand or incorrectly configured cobrand",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "configs",
+                    "userSubscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "insightName",
+                      "value": "LOW_BALANCE_WARNING"
+                    },
+                    {
+                      "key": "entityId",
+                      "value": "1001,5e7885993cd8e328288522f7"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad161803-e011-405b-bfe1-3bec1cebe09a",
+          "name": "Envestnet Update user-level preferences for each insight.",
+          "request": {
+            "name": "Envestnet Update user-level preferences for each insight.",
+            "description": {
+              "content": "This API can be used to modify user-level preferences for each insight. <br /><br />Each Insight details contain attributes such as Insight Frequency, Threshold, etc. By default, all the configurations set by the customer will be inherited by the user. Using a separate PATCH API, users can override custom preferences and set their own preferences - wherever applicable.<br /><br />In addition to setting preferences at an insight entity level, the consumer will also be able to set preferences at an entity ID level. E.g. LOW_BALANCE_WARNING insight - the user can set a different threshold for each of the accounts the user has aggregated.<br /><br />Note -\n  <ul>\n  <li>As this API is a PATCH API, therefore caller must not pass all the available attributes in request JSON. Only pass the Attributes which need to be updated, in the API request body</li>\n  <li>A single PATCH request can update multiple insights in a single request</li>\n  </ul>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "insights",
+                "configs",
+                "userSubscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userSubscription\": [\n    {\n      \"userConfiguration\": [\n        {\n          \"entityId\": \"<string>\",\n          \"entityType\": \"<string>\",\n          \"isSubscribed\": \"<boolean>\",\n          \"frequency\": \"<string>\",\n          \"duration\": \"<string>\",\n          \"threshold\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"isBenchmarkEnabled\": \"<boolean>\"\n        },\n        {\n          \"entityId\": \"<string>\",\n          \"entityType\": \"<string>\",\n          \"isSubscribed\": \"<boolean>\",\n          \"frequency\": \"<string>\",\n          \"duration\": \"<string>\",\n          \"threshold\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"isBenchmarkEnabled\": \"<boolean>\"\n        }\n      ],\n      \"customerConfiguration\": [\n        {\n          \"entityType\": \"<string>\",\n          \"isSubscribed\": \"<boolean>\",\n          \"frequency\": \"<string>\",\n          \"duration\": \"<string>\",\n          \"threshold\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"isBenchmarkEnabled\": \"<boolean>\"\n        },\n        {\n          \"entityType\": \"<string>\",\n          \"isSubscribed\": \"<boolean>\",\n          \"frequency\": \"<string>\",\n          \"duration\": \"<string>\",\n          \"threshold\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"isBenchmarkEnabled\": \"<boolean>\"\n        }\n      ],\n      \"insightName\": \"<string>\",\n      \"insightTitle\": \"<string>\"\n    },\n    {\n      \"userConfiguration\": [\n        {\n          \"entityId\": \"<string>\",\n          \"entityType\": \"<string>\",\n          \"isSubscribed\": \"<boolean>\",\n          \"frequency\": \"<string>\",\n          \"duration\": \"<string>\",\n          \"threshold\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"isBenchmarkEnabled\": \"<boolean>\"\n        },\n        {\n          \"entityId\": \"<string>\",\n          \"entityType\": \"<string>\",\n          \"isSubscribed\": \"<boolean>\",\n          \"frequency\": \"<string>\",\n          \"duration\": \"<string>\",\n          \"threshold\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"isBenchmarkEnabled\": \"<boolean>\"\n        }\n      ],\n      \"customerConfiguration\": [\n        {\n          \"entityType\": \"<string>\",\n          \"isSubscribed\": \"<boolean>\",\n          \"frequency\": \"<string>\",\n          \"duration\": \"<string>\",\n          \"threshold\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"isBenchmarkEnabled\": \"<boolean>\"\n        },\n        {\n          \"entityType\": \"<string>\",\n          \"isSubscribed\": \"<boolean>\",\n          \"frequency\": \"<string>\",\n          \"duration\": \"<string>\",\n          \"threshold\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"isBenchmarkEnabled\": \"<boolean>\"\n        }\n      ],\n      \"insightName\": \"<string>\",\n      \"insightTitle\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3de30212-52f9-4e7e-8da7-ac8f722c0c70",
+              "name": "Insight for User Updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "configs",
+                    "userSubscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userSubscription\": [\n    {\n      \"insightName\": \"UPCOMING_BILLS\",\n      \"userConfiguration\": [\n        {\n          \"entityId\": \"10001\",\n          \"entityType\": \"ACCOUNT\",\n          \"isSubscribed\": true,\n          \"threshold\": [\n            {\n              \"name\": \"FUTURE\",\n              \"value\": \"7\",\n              \"type\": \"DAYS\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "344a38bf-fc48-4610-b816-6e427d949d08",
+              "name": "Bad request. ErrorCode and ErrorMessages below:<br> Y806 : Invalid input <br> Y800 : Invalid value for insightName <br> Y800 : Invalid value for input param in {InsightName} insight <br> Y800 : Invalid value for frequency; Supported values are {Frequencies} <br> Y800 : Invalid value for duration; Supported values are {Durations} <br> Y800 : Invalid value for threshold data in {InsightName} insight <br> Y800 : Invalid value for type BASETYPE; Only CREDIT, DEBIT are supported <br> Y800 : Invalid value for {thresholdName} in {insightName} insight Min = {min} and Max = {max} <br> Y813 : Invalid request. The entire object within threshold should be provided <br> Y800 : {InsightName} cannot be subscribed without benchmark enabled for the customer <br> Y800 : Invalid value for isSubscribed. {InsightName} cannot be subscribed without benchmark enabled for the customer <br> Y802 : Modifying isBenchmarkEnabled is not allowed <br> Y802 : For insight {InsightName}, passing isBenchmarkEnabled is not allowed <br> Y800 : Invalid value for isBenchmarkEnabled Supported values are true, false\" <br> Y800 : Invalid value for duration. Supported values of duration for MID_MONTHLY frequency are {Frequencies} <br> Y802 : Modifying insightTitle using this API is not allowed <br> Y802 : For insight {InsightName}, modifying applicableEntity is not allowed <br> Y802 : For insight {InsightName}, modifying triggerType is not allowed <br> Y802 : For insight {InsightName}, modifying containers is not allowed <br> Y802 : For insight {InsightName}, modifying description is not allowed <br> Y802 : Duplicate entityId entries within userConfiguration is not allowed <br> Y802 : Specifying frequency attribute for {InsightName} insight is not allowed <br> Y802 : Specifying duration attribute for {InsightName} insight is not allowed <br> Y802 : For insight {InsightName}, modifying frequency is not allowed <br> Y802 : For insight {InsightName}, modifying duration is not allowed <br> Y825 : Update not allowed without a valid request body <br> Y802 : For {InsightName} insight passing threshold is not allowed <br> Y812 : Required field/value - insightName missing in the request <br> Y800 : Invalid value for userConfiguration; entityId should be provided. <br> Y802 : Modifying InsightType attribute is not allowed <br> Y813: entityType should be provided <br> Y813 : Invalid request. The entire object within threshold should be provided <br> Y803: At least one additional attribute is required in addition to entityType. <br> Y800 : Invalid value for userConfiguration; userConfiguration is either missing, duplicated, or has insufficient/ incorrect attributes <br> Y802 : For insight {InsightName}, configurations at an entityId level are not allowed <br> Y800: Invalid value for entityType. Supported entityType for {InsightName} insight are - {Entities} <br> Y800 : Invalid value for entityId; This id is either invalid or not supported for this insight. <br> Y802 : Duplicate entityId entries is not allowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "configs",
+                    "userSubscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userSubscription\": [\n    {\n      \"insightName\": \"UPCOMING_BILLS\",\n      \"userConfiguration\": [\n        {\n          \"entityId\": \"10001\",\n          \"entityType\": \"ACCOUNT\",\n          \"isSubscribed\": true,\n          \"threshold\": [\n            {\n              \"name\": \"FUTURE\",\n              \"value\": \"7\",\n              \"type\": \"DAYS\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "548edd8d-420d-48fb-bc1b-df64ab68deab",
+              "name": "Y020 : Invalid token in authorization header<br>Y023 : Token has expired<br> Y011 : Invalid cobrand or incorrectly configured cobrand",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "configs",
+                    "userSubscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userSubscription\": [\n    {\n      \"insightName\": \"UPCOMING_BILLS\",\n      \"userConfiguration\": [\n        {\n          \"entityId\": \"10001\",\n          \"entityType\": \"ACCOUNT\",\n          \"isSubscribed\": true,\n          \"threshold\": [\n            {\n              \"name\": \"FUTURE\",\n              \"value\": \"7\",\n              \"type\": \"DAYS\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "194ab0e5-7867-4c62-86a0-58a590b9fd54",
+          "name": "Envestnet Delete an existing entity-level insight configuration",
+          "request": {
+            "name": "Envestnet Delete an existing entity-level insight configuration",
+            "description": {
+              "content": "The DELETE API lets users delete one or more of the existing entityId level configurations for an insight. This can be account level or view level. By deleting all entity ID level configuration, user's insight evaluation defaults to the values specified by the customer for an insight.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "insights",
+                "configs",
+                "userSubscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "insightName",
+                  "value": "<string>",
+                  "description": "(Required) Comma separated list of Insight name"
+                },
+                {
+                  "disabled": false,
+                  "key": "entityId",
+                  "value": "<string>",
+                  "description": "Comma separated list of entity ids"
+                },
+                {
+                  "disabled": false,
+                  "key": "entityType",
+                  "value": "<string>",
+                  "description": "Comma separated list of entity"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7697621d-63ee-4a5c-9d4e-58408bb81b6c",
+              "name": "User subscription deleted sucessfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "configs",
+                    "userSubscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "insightName",
+                      "value": "LARGE_PURCHAGE"
+                    },
+                    {
+                      "key": "entityId",
+                      "value": "123absce"
+                    },
+                    {
+                      "key": "entityType",
+                      "value": "account,view"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c8f22c98-efd0-4033-9902-92eaf2c557c9",
+              "name": "Bad request. ErrorCode and ErrorMessages below:<br> <br>Y800 : Invalid value for insightName <br>Y805 : Multiple entities not supported <br> Y802: Delete operation for disabled insights is not allowed <br> Y822: Deletion cannot be requested for entity IDs that are not currently part of the consumer API for the requested insight <br> Y822: Deletion cannot be requested for entityNames that are not currently part of the consumer API for the requested insight\n <br> Y802: Duplicate values is not allowed\n<br> Y802: Combining multiple values for insightName and other filters is not allowed <br> Y802: Deleting configurations for all insights using a single API call is not allowed <br> Y802: Combining \"entity\" and other filters is not allowed <br>Y802 : Delete operation on insights without any custom consumer subscription is not allowed <br>Y800: invalid value for entityId, id is either invalid or not supported for this insight.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "configs",
+                    "userSubscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "insightName",
+                      "value": "LARGE_PURCHAGE"
+                    },
+                    {
+                      "key": "entityId",
+                      "value": "123absce"
+                    },
+                    {
+                      "key": "entityType",
+                      "value": "account,view"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "be3ffd4e-faf0-455e-86ec-4d58cc9b16d1",
+              "name": "Y020 : Invalid token in authorization header<br>Y023 : Token has expired<br> Y011 : Invalid cobrand or incorrectly configured cobrand",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "configs",
+                    "userSubscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "insightName",
+                      "value": "LARGE_PURCHAGE"
+                    },
+                    {
+                      "key": "entityId",
+                      "value": "123absce"
+                    },
+                    {
+                      "key": "entityType",
+                      "value": "account,view"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b3a0f78-92ae-4cca-90a2-5e7af144a56e",
+          "name": "Envestnet Fetch all the insights generated for a user.",
+          "request": {
+            "name": "Envestnet Fetch all the insights generated for a user.",
+            "description": {
+              "content": "The API allows you to fetch all or a subset of the insights generated for a specific user. The insights are returned in the descending order of the insight generation time. By default, the API returns all the insights generated in the last 31 days.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "insights",
+                "feed"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "insightName",
+                  "value": "<string>",
+                  "description": "Insight name"
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDate",
+                  "value": "<string>",
+                  "description": "fromDate"
+                },
+                {
+                  "disabled": false,
+                  "key": "toDate",
+                  "value": "<string>",
+                  "description": "toDate"
+                },
+                {
+                  "disabled": false,
+                  "key": "entityId",
+                  "value": "<string>",
+                  "description": "Comma separated list of entity Ids, it could be a view Id or account Id"
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "<integer>",
+                  "description": "skip (Min 0)"
+                },
+                {
+                  "disabled": false,
+                  "key": "top",
+                  "value": "<integer>",
+                  "description": "top (Max 50)"
+                },
+                {
+                  "disabled": false,
+                  "key": "entityType",
+                  "value": "<string>",
+                  "description": "Comma separated list of entity"
+                },
+                {
+                  "disabled": false,
+                  "key": "triggerType",
+                  "value": "<string>",
+                  "description": "triggerType of an insight defines how an Insight was triggered in the system. <br><br>Currently following triggerType are supported - <ul> <li><b>SCHDEULE</b> - Insight evaluation and subsequent generation triggered based on a pre-defined schedule.</li> <li><b>REFRESH</b> - Insight evaluation and subsequent generation triggered when a user's account gets successfully refreshed.</li> <li><b>EVENT</b> - Insight evaluation and subsequent generation triggered based on a system-defined event happening.</li> </ul>"
+                },
+                {
+                  "disabled": false,
+                  "key": "insightType",
+                  "value": "<string>",
+                  "description": "Identifies whether the insight is generated at an entity-level - per account or per view (OTHER), or if it considers all entities for the user - e.g. all accounts (AGGREGATE).<br><br>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "983291af-3dfd-4781-8135-dc81d07151df",
+              "name": "A list of subscribed Insight details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "feed"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "insightName",
+                      "value": "LOW_BALANCE_WARNING"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "2020-04-26T12:00:00Z"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "2020-05-25T12:00:00Z"
+                    },
+                    {
+                      "key": "entityId",
+                      "value": "10001,5e7885993cd8e328288522f7"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "entityType",
+                      "value": "ACCOUNT"
+                    },
+                    {
+                      "key": "triggerType",
+                      "value": "SCHEDULE"
+                    },
+                    {
+                      "key": "insightType",
+                      "value": "AGGREGATE"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"feed\": [\n    {\n      \"id\": \"5ec7795e05584138f0d1b972\",\n      \"insightName\": \"UPCOMING_BILLS\",\n      \"insightTitle\": \"Upcoming Bills\",\n      \"insightType\": \"OTHER\",\n      \"triggerType\": \"SCHEDULE\",\n      \"createdDate\": \"2020-05-22T07:03:57Z\",\n      \"subscription\": [\n        {\n          \"entityId\": \"12345\",\n          \"entityType\": \"ACCOUNT\",\n          \"frequency\": \"MONTHLY\",\n          \"threshold\": [\n            {\n              \"name\": \"FUTURE\",\n              \"value\": \"7\",\n              \"type\": \"DAYS\"\n            }\n          ]\n        }\n      ],\n      \"basicAccount\": [\n        {\n          \"id\": \"1234567\",\n          \"providerName\": \"Dag Site\",\n          \"accountName\": \"bank Account\",\n          \"accountNumber\": \"xxxx7778\",\n          \"accountStatus\": \"ACTIVE\",\n          \"accountType\": \"OTHER\",\n          \"isAsset\": true,\n          \"container\": \"Bank\",\n          \"link\": {\n            \"entityName\": \"account\",\n            \"method\": \"GET\",\n            \"url\": \"/account?id=1234567&status=ACTIVE\"\n          },\n          \"basicTransaction\": [\n            {\n              \"id\": \"3456789\",\n              \"amount\": {\n                \"amount\": 100,\n                \"currency\": \"USD\"\n              },\n              \"date\": \"2019-08-19\",\n              \"categoryId\": 39,\n              \"category\": \"Utilities\",\n              \"link\": [\n                {\n                  \"entityName\": \"transaction\",\n                  \"method\": \"GET\",\n                  \"url\": \"/derived/transactions?transactionId=3456789&sourceType=PREDICTED\"\n                }\n              ],\n              \"categoryType\": \"EXPENSE\",\n              \"baseType\": \"DEBIT\",\n              \"description\": {\n                \"original\": \"Utilities\",\n                \"simple\": \"Payment to Utilities\",\n                \"consumer\": null\n              },\n              \"sourceType\": \"AGGREGATED\",\n              \"merchantType\": \"BILLER\",\n              \"basicMerchant\": {\n                \"name\": \"Utilities\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "393e7233-7803-4120-8cf8-8f66756d5514",
+              "name": "Bad request. ErrorCode and ErrorMessages below:<br> <br>Y800: Invalid value for insightName; Insight name requested not found <br>Y800: Invalid value for entityId <br>Y805: Multiple entities not supported<br>Y800: Invalid value for fromDate/toDate. Both fromDate and toDate needs to be of the same format - yyyy-MM-dd or yyyy-MM-ddTHH:mm:ssZ <br>Y802: Value for fromDate or toDate beyond the last 1 year is not allowed <br>Y813: Both fromDate and toDate parameter should be provided <br>Y802: Difference greater than 31 days between fromDate and toDate is not allowed <br>Y802: Combining insightName and entityId filters for AGGREGATE insights is not allowed <br>Y802: Duplicate values for entity id are not allowed <br>Y800: Invalid value for skip\n <br>Y800: Invalid value for top\n <br>Y800: Invalid value for triggerType; allowed values are REFRESH, EVENT, SCHEDULE\n <br>Y800: Invalid value for entityType; allowed values are ACCOUNT, VIEW\n <br>Y800: Invalid value for insightType; allowed values are OTHER, AGGREGATE\n <br>Y802: Duplicate values for entityType are not allowed\n <br>Y802: Duplicate values for insightType are not allowed\n <br>Y802: Duplicate values for triggerType are not allowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "feed"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "insightName",
+                      "value": "LOW_BALANCE_WARNING"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "2020-04-26T12:00:00Z"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "2020-05-25T12:00:00Z"
+                    },
+                    {
+                      "key": "entityId",
+                      "value": "10001,5e7885993cd8e328288522f7"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "entityType",
+                      "value": "ACCOUNT"
+                    },
+                    {
+                      "key": "triggerType",
+                      "value": "SCHEDULE"
+                    },
+                    {
+                      "key": "insightType",
+                      "value": "AGGREGATE"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a7017ebe-7e6f-43f9-beaf-53a3eba21447",
+              "name": "Y020 : Invalid token in authorization header<br>Y023 : Token has expired<br> Y011 : Invalid cobrand or incorrectly configured cobrand",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "feed"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "insightName",
+                      "value": "LOW_BALANCE_WARNING"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "2020-04-26T12:00:00Z"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "2020-05-25T12:00:00Z"
+                    },
+                    {
+                      "key": "entityId",
+                      "value": "10001,5e7885993cd8e328288522f7"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "entityType",
+                      "value": "ACCOUNT"
+                    },
+                    {
+                      "key": "triggerType",
+                      "value": "SCHEDULE"
+                    },
+                    {
+                      "key": "insightType",
+                      "value": "AGGREGATE"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b76d9cd9-5b7a-4200-a592-850a40c5458e",
+          "name": "Envestnet Fetch all the insights generated for a user.",
+          "request": {
+            "name": "Envestnet Fetch all the insights generated for a user.",
+            "description": {
+              "content": "The API allows you to fetch all or a subset of the insights generated for a specific user. The insights are returned in the descending order of the insight generation time. By default, the API returns all the insights generated in the last 31 days.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "insights",
+                "feedExtracts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "insightName",
+                  "value": "<string>",
+                  "description": "Insight name"
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDate",
+                  "value": "<string>",
+                  "description": "fromDate"
+                },
+                {
+                  "disabled": false,
+                  "key": "toDate",
+                  "value": "<string>",
+                  "description": "toDate"
+                },
+                {
+                  "disabled": false,
+                  "key": "entityId",
+                  "value": "<string>",
+                  "description": "Comma separated list of entity Ids, it could be a view Id or account Id"
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "<integer>",
+                  "description": "skip (Min 0)"
+                },
+                {
+                  "disabled": false,
+                  "key": "top",
+                  "value": "<integer>",
+                  "description": "top (Max 50)"
+                },
+                {
+                  "disabled": false,
+                  "key": "entityType",
+                  "value": "<string>",
+                  "description": "Comma separated list of entity"
+                },
+                {
+                  "disabled": false,
+                  "key": "triggerType",
+                  "value": "<string>",
+                  "description": "triggerType of an insight defines how an Insight was triggered in the system. <br><br>Currently following triggerType are supported - <ul> <li><b>SCHDEULE</b> - Insight evaluation and subsequent generation triggered based on a pre-defined schedule.</li> <li><b>REFRESH</b> - Insight evaluation and subsequent generation triggered when a user's account gets successfully refreshed.</li> <li><b>EVENT</b> - Insight evaluation and subsequent generation triggered based on a system-defined event happening.</li> </ul>"
+                },
+                {
+                  "disabled": false,
+                  "key": "insightType",
+                  "value": "<string>",
+                  "description": "Identifies whether the insight is generated at an entity-level - per account or per view (OTHER), or if it considers all entities for the user - e.g. all accounts (AGGREGATE).<br><br>"
+                },
+                {
+                  "disabled": false,
+                  "key": "loginName",
+                  "value": "<string>",
+                  "description": "(Required) Name of the User."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0bd8376e-5626-4bc2-8536-3aa0438a18d6",
+              "name": "A list of subscribed Insight details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "feedExtracts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "insightName",
+                      "value": "LOW_BALANCE_WARNING"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "2020-04-26T12:00:00Z"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "2020-05-25T12:00:00Z"
+                    },
+                    {
+                      "key": "entityId",
+                      "value": "10001,5e7885993cd8e328288522f7"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "entityType",
+                      "value": "ACCOUNT"
+                    },
+                    {
+                      "key": "triggerType",
+                      "value": "SCHEDULE"
+                    },
+                    {
+                      "key": "insightType",
+                      "value": "AGGREGATE"
+                    },
+                    {
+                      "key": "loginName",
+                      "value": "insightsUser"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"feed\": [\n    {\n      \"id\": \"5ec7795e05584138f0d1b972\",\n      \"insightName\": \"UPCOMING_BILLS\",\n      \"insightTitle\": \"Upcoming Bills\",\n      \"insightType\": \"OTHER\",\n      \"triggerType\": \"SCHEDULE\",\n      \"createdDate\": \"2020-05-22T07:03:57Z\",\n      \"subscription\": [\n        {\n          \"entityId\": \"12345\",\n          \"entityType\": \"ACCOUNT\",\n          \"frequency\": \"MONTHLY\",\n          \"threshold\": [\n            {\n              \"name\": \"FUTURE\",\n              \"value\": \"7\",\n              \"type\": \"DAYS\"\n            }\n          ]\n        }\n      ],\n      \"basicAccount\": [\n        {\n          \"id\": \"1234567\",\n          \"providerName\": \"Dag Site\",\n          \"accountName\": \"bank Account\",\n          \"accountNumber\": \"xxxx7778\",\n          \"accountStatus\": \"ACTIVE\",\n          \"accountType\": \"OTHER\",\n          \"isAsset\": true,\n          \"container\": \"Bank\",\n          \"link\": {\n            \"entityName\": \"account\",\n            \"method\": \"GET\",\n            \"url\": \"/account?id=1234567&status=ACTIVE\"\n          },\n          \"basicTransaction\": [\n            {\n              \"id\": \"3456789\",\n              \"amount\": {\n                \"amount\": 100,\n                \"currency\": \"USD\"\n              },\n              \"date\": \"2019-08-19\",\n              \"categoryId\": 39,\n              \"category\": \"Utilities\",\n              \"link\": [\n                {\n                  \"entityName\": \"transaction\",\n                  \"method\": \"GET\",\n                  \"url\": \"/derived/transactions?transactionId=3456789&sourceType=PREDICTED\"\n                }\n              ],\n              \"categoryType\": \"EXPENSE\",\n              \"baseType\": \"DEBIT\",\n              \"description\": {\n                \"original\": \"Utilities\",\n                \"simple\": \"Payment to Utilities\",\n                \"consumer\": null\n              },\n              \"sourceType\": \"AGGREGATED\",\n              \"merchantType\": \"BILLER\",\n              \"basicMerchant\": {\n                \"name\": \"Utilities\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3891e275-1cef-4384-aea2-46d5f7b29fe7",
+              "name": "Bad request. ErrorCode and ErrorMessages below:<br> <br>Y803: loginName required.<br>Y800: Invalid value for loginName<br>Y800: Invalid value for insightName; Insight name requested not found <br>Y800: Invalid value for entityId <br>Y805: Multiple entities not supported<br>Y800: Invalid value for fromDate/toDate. Both fromDate and toDate needs to be of the same format - yyyy-MM-dd or yyyy-MM-ddTHH:mm:ssZ <br>Y802: Value for fromDate or toDate beyond the last 1 year is not allowed <br>Y813: Both fromDate and toDate parameter should be provided <br>Y802: Difference greater than 31 days between fromDate and toDate is not allowed <br>Y802: Combining insightName and entityId filters for AGGREGATE insights is not allowed <br>Y802: Duplicate values for entity id are not allowed <br>Y800: Invalid value for skip\n <br>Y800: Invalid value for top\n <br>Y800: Invalid value for triggerType; allowed values are REFRESH, EVENT, SCHEDULE\n <br>Y800: Invalid value for entityType; allowed values are ACCOUNT, VIEW\n <br>Y800: Invalid value for insightType; allowed values are OTHER, AGGREGATE\n <br>Y802: Duplicate values for entityType are not allowed\n <br>Y802: Duplicate values for insightType are not allowed\n <br>Y802: Duplicate values for triggerType are not allowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "feedExtracts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "insightName",
+                      "value": "LOW_BALANCE_WARNING"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "2020-04-26T12:00:00Z"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "2020-05-25T12:00:00Z"
+                    },
+                    {
+                      "key": "entityId",
+                      "value": "10001,5e7885993cd8e328288522f7"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "entityType",
+                      "value": "ACCOUNT"
+                    },
+                    {
+                      "key": "triggerType",
+                      "value": "SCHEDULE"
+                    },
+                    {
+                      "key": "insightType",
+                      "value": "AGGREGATE"
+                    },
+                    {
+                      "key": "loginName",
+                      "value": "insightsUser"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6843d8fd-adae-4dac-9d43-64a87c46bd9c",
+              "name": "Y020 : Invalid token in authorization header<br>Y023 : Token has expired<br> Y011 : Invalid cobrand or incorrectly configured cobrand",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "feedExtracts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "insightName",
+                      "value": "LOW_BALANCE_WARNING"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "2020-04-26T12:00:00Z"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "2020-05-25T12:00:00Z"
+                    },
+                    {
+                      "key": "entityId",
+                      "value": "10001,5e7885993cd8e328288522f7"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "entityType",
+                      "value": "ACCOUNT"
+                    },
+                    {
+                      "key": "triggerType",
+                      "value": "SCHEDULE"
+                    },
+                    {
+                      "key": "insightType",
+                      "value": "AGGREGATE"
+                    },
+                    {
+                      "key": "loginName",
+                      "value": "insightsUser"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da666140-c0a4-4bfc-a517-8d2abde02ecd",
+          "name": "Envestnet Fetch the count of generated insight for a user.",
+          "request": {
+            "name": "Envestnet Fetch the count of generated insight for a user.",
+            "description": {
+              "content": "This API provides the count of the insights generated for the user. By default, the API provides the count of the insights generated in last 31 days.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "insights",
+                "feed",
+                "count"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "insightName",
+                  "value": "<string>",
+                  "description": "Insight name"
+                },
+                {
+                  "disabled": false,
+                  "key": "fromDate",
+                  "value": "<string>",
+                  "description": "fromDate"
+                },
+                {
+                  "disabled": false,
+                  "key": "toDate",
+                  "value": "<string>",
+                  "description": "toDate"
+                },
+                {
+                  "disabled": false,
+                  "key": "entityId",
+                  "value": "<string>",
+                  "description": "Comma separated list of entity Ids, it could be a view Id or account Id"
+                },
+                {
+                  "disabled": false,
+                  "key": "entityType",
+                  "value": "<string>",
+                  "description": "Comma separated list of entity"
+                },
+                {
+                  "disabled": false,
+                  "key": "triggerType",
+                  "value": "<string>",
+                  "description": "triggerType of an insight defines how an Insight was triggered in the system. <br><br>Currently following triggerType are supported - <ul> <li><b>SCHDEULE</b> - Insight evaluation and subsequent generation triggered based on a pre-defined schedule.</li> <li><b>REFRESH</b> - Insight evaluation and subsequent generation triggered when a user's account gets successfully refreshed.</li> <li><b>EVENT</b> - Insight evaluation and subsequent generation triggered based on a system-defined event happening.</li> </ul>"
+                },
+                {
+                  "disabled": false,
+                  "key": "insightType",
+                  "value": "<string>",
+                  "description": "Identifies whether the insight is generated at an entity-level - per account or per view (OTHER), or if it considers all entities for the user - e.g. all accounts (AGGREGATE).<br><br>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f7b96a75-89c9-49ba-9048-7bfabb5be755",
+              "name": "A list of subscribed Insight details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "feed",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "insightName",
+                      "value": "LOW_BALANCE_WARNING"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "2020-04-26T12:00:00Z"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "2020-05-25T12:00:00Z"
+                    },
+                    {
+                      "key": "entityId",
+                      "value": "10001,5e7885993cd8e328288522f7"
+                    },
+                    {
+                      "key": "entityType",
+                      "value": "ACCOUNT"
+                    },
+                    {
+                      "key": "triggerType",
+                      "value": "SCHEDULE"
+                    },
+                    {
+                      "key": "insightType",
+                      "value": "AGGREGATE"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"feed\": {\n    \"total\": 8\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e248544c-1e61-4b24-b254-68cc5f39dbf5",
+              "name": "Bad request. ErrorCode and ErrorMessages below:<br> <br>Y800: Invalid value for insightName; Insight name requested not found <br>Y800: Invalid value for entityId <br>Y805: Multiple entities not supported<br>Y800: Invalid value for fromDate/toDate. Both fromDate and toDate needs to be of the same format - yyyy-MM-dd or yyyy-MM-ddTHH:mm:ssZ <br>Y802: Value for fromDate or toDate beyond the last 1 year is not allowed <br>Y813: Both fromDate and toDate parameter should be provided <br>Y802: Difference greater than 31 days between fromDate and toDate is not allowed <br>Y802: Combining insightName and entityId filters for AGGREGATE insights is not allowed <br>Y802: Duplicate values for entity id are not allowed\n <br>Y800: Invalid value for triggerType; allowed values are REFRESH, EVENT, SCHEDULE\n <br>Y800: Invalid value for entityType; allowed values are ACCOUNT, VIEW\n <br>Y800: Invalid value for insightType; allowed values are OTHER, AGGREGATE\n <br>Y802: Duplicate values for entityType are not allowed\n <br>Y802: Duplicate values for insightType are not allowed\n <br>Y802: Duplicate values for triggerType are not allowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "feed",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "insightName",
+                      "value": "LOW_BALANCE_WARNING"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "2020-04-26T12:00:00Z"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "2020-05-25T12:00:00Z"
+                    },
+                    {
+                      "key": "entityId",
+                      "value": "10001,5e7885993cd8e328288522f7"
+                    },
+                    {
+                      "key": "entityType",
+                      "value": "ACCOUNT"
+                    },
+                    {
+                      "key": "triggerType",
+                      "value": "SCHEDULE"
+                    },
+                    {
+                      "key": "insightType",
+                      "value": "AGGREGATE"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "15425880-d82e-4599-9e09-c8910d499fa5",
+              "name": "Y020 : Invalid token in authorization header<br>Y020 : Token has expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "feed",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "insightName",
+                      "value": "LOW_BALANCE_WARNING"
+                    },
+                    {
+                      "key": "fromDate",
+                      "value": "2020-04-26T12:00:00Z"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "2020-05-25T12:00:00Z"
+                    },
+                    {
+                      "key": "entityId",
+                      "value": "10001,5e7885993cd8e328288522f7"
+                    },
+                    {
+                      "key": "entityType",
+                      "value": "ACCOUNT"
+                    },
+                    {
+                      "key": "triggerType",
+                      "value": "SCHEDULE"
+                    },
+                    {
+                      "key": "insightType",
+                      "value": "AGGREGATE"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "634aa287-6149-493f-8653-99242ba75111",
+          "name": "Envestnet Evalute the insights on demand.",
+          "request": {
+            "name": "Envestnet Evalute the insights on demand.",
+            "description": {
+              "content": "Evaluate the insight on demand based on the override duplicate check.<br> insightName, overrideDuplicateCheck, entityConfig needs to be passed as request parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "insights",
+                "trigger"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"trigger\": [\n    {\n      \"insightName\": \"<string>\",\n      \"overrideduplicateCheck\": \"<boolean>\",\n      \"entityConfig\": [\n        {\n          \"entityType\": \"<string>\",\n          \"entityIds\": \"<array>\"\n        },\n        {\n          \"entityType\": \"<string>\",\n          \"entityIds\": \"<array>\"\n        }\n      ]\n    },\n    {\n      \"insightName\": \"<string>\",\n      \"overrideduplicateCheck\": \"<boolean>\",\n      \"entityConfig\": [\n        {\n          \"entityType\": \"<string>\",\n          \"entityIds\": \"<array>\"\n        },\n        {\n          \"entityType\": \"<string>\",\n          \"entityIds\": \"<array>\"\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e90a7247-9779-46b8-bd73-efec87d3057b",
+              "name": "No content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "trigger"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"trigger\": [\n    {\n      \"insightName\": \"CHANGE_IN_NETWORTH\",\n      \"overrideduplicateCheck\": true,\n      \"entityConfig\": [\n        {\n          \"entityType\": \"ACCOUNT\"\n        }\n      ]\n    },\n    {\n      \"insightName\": \"BILL_NOT_PAID\",\n      \"overrideduplicateCheck\": false,\n      \"entityConfig\": [\n        {\n          \"entityType\": \"ACCOUNT\",\n          \"entityIds\": [\n            \"12345\",\n            \"12346\"\n          ]\n        },\n        {\n          \"entityType\": \"VIEW\",\n          \"entityIds\": [\n            \"abscdf123455fg\"\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5e70184c-9a94-4a81-a267-0a79e893ebdb",
+              "name": "Bad request. ErrorCode and ErrorMessages below:<br> <br> Y800 : insightName; Either the insightName is invalid, not enabled for the user, or user has unsubscribed to the insight. <br> Y800 : Invalid value for  overrideDuplicateCheck; Only true or false is supported. <br> Y800 : Invalid value for  trigger; mandatory attributes missing. <br> Y800 : Invalid value for entityIds <br> Y802 :\n The requested insightName/entityType combination is not allowed<br>\nY802 : The requested insightId/entityType combination is not allowed<br> Y802 : For this insight, On-Demand insight evaluation is not allowed<br> Y802 : Requesting more than 10 total evaluation requests in a single request is not allowed<br> Y802 : For AGGREGATE insights, On-Demand insight evaluation based on entityIds is not allowed<br> Y802 : Duplicate entityIds is not allowed<br>\n Y802 :\nDuplicate insightName is not allowed<br>\n Y802 :\nDuplicate entityType is not allowed<br>\n Y802 :\nRequesting entityIds and entityType insight evaluation at the same time for the same insight is not allowed<br>\n Y802 :\nPassing entityConfig as an empty object/array is not allowed<br>\n Y803 :\n insightName is required to process the request<br>\n Y803 :\noverrideDuplicateCheck required  when requesting evaluation for any insight<br>",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "trigger"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"trigger\": [\n    {\n      \"insightName\": \"CHANGE_IN_NETWORTH\",\n      \"overrideduplicateCheck\": true,\n      \"entityConfig\": [\n        {\n          \"entityType\": \"ACCOUNT\"\n        }\n      ]\n    },\n    {\n      \"insightName\": \"BILL_NOT_PAID\",\n      \"overrideduplicateCheck\": false,\n      \"entityConfig\": [\n        {\n          \"entityType\": \"ACCOUNT\",\n          \"entityIds\": [\n            \"12345\",\n            \"12346\"\n          ]\n        },\n        {\n          \"entityType\": \"VIEW\",\n          \"entityIds\": [\n            \"abscdf123455fg\"\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "037e4e9d-772c-4e56-9c27-4dba46bfd3da",
+              "name": "Y020 : Invalid token in authorization header<br>Y023 : Token has expired<br> Y011 : Invalid cobrand or incorrectly configured cobrand",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "trigger"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"trigger\": [\n    {\n      \"insightName\": \"CHANGE_IN_NETWORTH\",\n      \"overrideduplicateCheck\": true,\n      \"entityConfig\": [\n        {\n          \"entityType\": \"ACCOUNT\"\n        }\n      ]\n    },\n    {\n      \"insightName\": \"BILL_NOT_PAID\",\n      \"overrideduplicateCheck\": false,\n      \"entityConfig\": [\n        {\n          \"entityType\": \"ACCOUNT\",\n          \"entityIds\": [\n            \"12345\",\n            \"12346\"\n          ]\n        },\n        {\n          \"entityType\": \"VIEW\",\n          \"entityIds\": [\n            \"abscdf123455fg\"\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"referenceCode\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "cac9ee71-1e31-4e3d-a131-cd9e615f6ca9",
+    "name": "Envestnet Aggregation APIs Account Token User API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This file describes the Yodlee Aggregation product APIs using the swagger notation that you can use to build your financial application.  You can generate the client SDK in Python, JavaScript, PHP, or any other languages according to your development needs. For more details about the APIs, refer to <a href=\"https://developer.envestnet.com/resources/yodlee/yodlee-api-overview/docs\">Yodlee API v1.1 - Overview</a>.<br><br>You will have to set the header before making the API call. The following headers apply to all the APIs:<ul><li>Authorization: This header holds the access token</li> <li> Api-Version: 1.1</li></ul><b>Note</b>: If there are any API-specific headers, they are mentioned explicitly in the respective API's description.\n\nContact Support:\n Email: developer@yodlee.com",
+      "type": "text/plain"
+    }
+  }
+}

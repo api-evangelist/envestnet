@@ -1,0 +1,693 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Envestnet Aggregation APIs Account Token View API",
+    "version": "1.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "View",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Envestnet Fetch the details of all the views associated with a user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/views",
+            "params": [
+              {
+                "name": "include",
+                "value": "rules",
+                "type": "query",
+                "description": "Pass <i>include=rules</i> to retrieve the active rules that are associated with the view ID."
+              },
+              {
+                "name": "sourceType",
+                "value": "USER,SYSTEM",
+                "type": "query",
+                "description": "This field indicates if the view is created by the system or by the user.</br> Pass <i>sourceType=SYSTEM/USER</i> to retrieve the views with the  given source type"
+              },
+              {
+                "name": "orderBy",
+                "value": "created,lastUpdated,sourceType",
+                "type": "query",
+                "description": "Single value of orderBy need to be passed. Data returned will be ordered by the filter value."
+              },
+              {
+                "name": "sortBy",
+                "value": "asc,desc",
+                "type": "query",
+                "description": "Single value of sortBy need to be passed. Data returned will be ordered in ascending or descending order."
+              }
+            ]
+          },
+          "docs": "The GET Views API retrieves details of all the Views that the user has created. To retrieve the rules associated with the Views, pass \"include=rules\" in the request. Views currently support only aggregated transactions.<br><br> A View is a logical collection of several rules. Processing these rules returns the relevant transactions associated with the rules. This API will not return deleted Views. To fetch the Transactions for a View, call the GET /views/{viewId}/transactions API."
+        },
+        {
+          "info": {
+            "name": "Envestnet Create a view for a user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/views",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The create Views API allows users to create a view by specifying one or more rules. This API supports bank, creditCard and investment container transactions. <br><br>Important notes- <ul><li>Each View rule must contain either \"include\" or \"exclude\" attributes, but not both together. If you want both \"include\" or \"exclude\" attributes, then create 1 rule with \"include\" and 1 rule with \"exclude\" attribute.</li><li>Do not use view 'id' and view rule 'id' fields in POST /views and PUT /views/{viewId}"
+        },
+        {
+          "info": {
+            "name": "Envestnet Create a default view for a user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/views/system"
+          },
+          "docs": "Allows user to create a default view if one does not already exist or has been deleted.  All the INCOME, EXPENSE and TRANSFER rules are included for this view by default. Request body if any supplied will get ignored."
+        },
+        {
+          "info": {
+            "name": "Envestnet Fetch the details of a specific view.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/views/:viewId",
+            "params": [
+              {
+                "name": "viewId",
+                "value": "5e7885993cd8e328288522f7",
+                "type": "path",
+                "description": "The unique identifier of the view."
+              },
+              {
+                "name": "include",
+                "value": "rules",
+                "type": "query",
+                "description": "Pass <i>include=rules</i> to retrieve the rules that are associated with the view ID."
+              }
+            ]
+          },
+          "docs": "Retrieves details of a specific view identified by the viewId. <br><br> To retrieve the rule associated with the view, pass include=rules in the request. If the requested view has been deleted, you will get an empty response. <br><br> budgetData will be returned if budget is set for the VIEW at any of the levels."
+        },
+        {
+          "info": {
+            "name": "Envestnet Update details of an existing view.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/views/:viewId",
+            "params": [
+              {
+                "name": "viewId",
+                "value": "5e7885993cd8e328288522f7",
+                "type": "path",
+                "description": "The unique identifier of the view that has to be updated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The update Views API allows updating details of a specific view. Details can be updated both at the Views-level and the rule-level entity. The HTTP response code is 204 (Success without content).<br><br>\n  Important notes-\n  <ul>\n  <li>Each view object contains an array of rules. Each View rule must contain either ''include'' or ''exclude'' attributes, but not both together. If you want both ''include'' or ''exclude'' attributes, then create 1 rule with ''include'' and 1 rule with ''exclude'' at"
+        },
+        {
+          "info": {
+            "name": "Envestnet Delete a specific view.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/views/:viewId",
+            "params": [
+              {
+                "name": "viewId",
+                "value": "5f239b0bed04946a41675616",
+                "type": "path",
+                "description": "The unique identifier of the View."
+              }
+            ]
+          },
+          "docs": "The delete view API allows to delete a single view by passing the viewId. For success, The HTTP response code is 204 (Success without content)."
+        },
+        {
+          "info": {
+            "name": "Envestnet Delete the specified rules for a specific view.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/views/:viewId/rules",
+            "params": [
+              {
+                "name": "viewId",
+                "value": "5e7885993cd8e328288522f7",
+                "type": "path",
+                "description": "The unique identifier of the View."
+              },
+              {
+                "name": "ruleId",
+                "value": "70ab20c3-32e8-4a8d-bcd4-67d7d450e9f2,2C2ab18d28-2662-4355-aca3-e2f0198a597a",
+                "type": "query",
+                "description": "The unique identifier of the rule. Comma separated multiple values can be passed. Rule ID should belong to the same View ID"
+              }
+            ]
+          },
+          "docs": "The delete rules API allows you to delete one or more rules that are associated with a specific view by passing the viewId and ruleId. The HTTP response code is 204 (Success without content). <br><br>\n  Important notes-\n  <ul>\n  <li>Using this API you cannot delete all Rules of a View. Meaning if a View has 5 Rules, using this API you can delete maximum of 4 rules only. Reason- A view has no meaning without a Rule. If you want to delete all Rules, consider Deleting the views itself by calling DE"
+        },
+        {
+          "info": {
+            "name": "Envestnet Patch the specified budget data for a specific view.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/views/:viewId/budgets",
+            "params": [
+              {
+                "name": "viewId",
+                "value": "5e7885993cd8e328288522f7",
+                "type": "path",
+                "description": "The unique identifier of the View."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update any of the existing entities within budgetData or add new budget for any of the supported type to an existing VIEW. <br><br> <Strong>Note:</strong> Do not pass rules for a VIEW when updating budgetData."
+        },
+        {
+          "info": {
+            "name": "Envestnet Delete the specified budget data for a specific view.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/views/:viewId/budgets",
+            "params": [
+              {
+                "name": "viewId",
+                "value": "5e7885993cd8e328288522f7",
+                "type": "path",
+                "description": "The unique identifier of the View."
+              },
+              {
+                "name": "type",
+                "value": "VIEW,MERCHANT,CATEGORY,DETAIL_CATEGORY",
+                "type": "query",
+                "description": "type identifies the budget entity to be deleted.\n       For successful deletion the type should belong to the\n       same Budget data and View ID.\n       <br><br>\n       Multiple comma seperated values are accepted."
+              },
+              {
+                "name": "typeName",
+                "value": "Amazon,Walmart",
+                "type": "query",
+                "description": "typeName identifies the merchant name for which the budget\n        is defined. Multiple comma seperated values are allowed."
+              },
+              {
+                "name": "typeId",
+                "value": "23,24,1024,1025",
+                "type": "query",
+                "description": "The unique identifier of the Category or detailed category for which the budget is set. Multiple comma seperated values are allowed."
+              },
+              {
+                "name": "budgetInfo",
+                "value": "incomeBudget, expenseBudget",
+                "type": "query",
+                "description": "The unique identifier of the budgetInfo. Comma separated multiple values can be passed. budgetInfo should be accompanied by one of the following - type, typeId, or typeName."
+              }
+            ]
+          },
+          "docs": "The delete budget data API allows you to delete one or more budget data based on the requested params."
+        },
+        {
+          "info": {
+            "name": "Envestnet Fetch all the transactions for a specific View.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/views/:viewId/transactions",
+            "params": [
+              {
+                "name": "viewId",
+                "value": "5e7885993cd8e328288522f7",
+                "type": "path",
+                "description": "The unique identifier of the view."
+              },
+              {
+                "name": "fromDate",
+                "value": "2020-05-23T10:45:59.000Z",
+                "type": "query",
+                "description": "fromDate filter for the View Rules with format - yyyy-MM-dd'T'HH:mm:ss"
+              },
+              {
+                "name": "toDate",
+                "value": "2020-05-23T10:45:59.000Z",
+                "type": "query",
+                "description": "toDate filter for the View Rules with format - yyyy-MM-dd'T'HH:mm:ss"
+              },
+              {
+                "name": "categoryId",
+                "value": "29,31",
+                "type": "query",
+                "description": "Comma-separated array of Transaction Category Ids filter for the View Rules"
+              },
+              {
+                "name": "detailCategoryId",
+                "value": "11346,11334",
+                "type": "query",
+                "description": "Comma-separated array of Transaction Detail Category Ids filter for the View Rules"
+              },
+              {
+                "name": "accountGroupId",
+                "value": "1168,1280",
+                "type": "query",
+                "description": "Comma-separated array of Account Group Ids filter for the View Rules"
+              },
+              {
+                "name": "merchantName",
+                "value": "century,amazon",
+                "type": "query",
+                "description": "Comma-separated array of Merchant Names filter for the View Rules"
+              },
+              {
+                "name": "skip",
+                "value": "5",
+                "type": "query",
+                "description": "skip is the number of pages to be skipped. This parameter allows pagination support. 1 page will only display max 500 transactions. If response contains more than 500 transactions, then this parameter is useful"
+              },
+              {
+                "name": "top",
+                "value": "100",
+                "type": "query",
+                "description": "top returns the number of transactions requested. Max 500 transactions can be returned by default. This parameter 'top' along with 'skip' allows pagination support."
+              },
+              {
+                "name": "accountId",
+                "value": "1001,1002",
+                "type": "query",
+                "description": "Comma separated list of account Ids. It should be an integer value."
+              },
+              {
+                "name": "accountStatus",
+                "value": "ACTIVE,CLOSED,TO_BE_CLOSED",
+                "type": "query",
+                "description": "This field indicates if the account status is open closed or active.</br>"
+              },
+              {
+                "name": "include",
+                "value": "CLOSED_ACCOUNT",
+                "type": "query",
+                "description": "This field indicates if we need to include closed accout.</br>"
+              },
+              {
+                "name": "fromAmount",
+                "value": "100.00",
+                "type": "query",
+                "description": "fromAmount should be a Floating point number. It signifies a range\n of amount. Please ensure that fromAmount \n value is between 1 and 1000000 including the both limit.\n Only single value for fromAmount."
+              },
+              {
+                "name": "toAmount",
+                "value": "100.00",
+                "type": "query",
+                "description": "toAmount should be a Floating point number. It signifies a range\n of amount. Please ensure that toAmount \n value is between 1 and 1000000 including the both limit.\n Only single value for toAmount. "
+              },
+              {
+                "name": "orderBy",
+                "value": "amount",
+                "type": "query",
+                "description": "Single value of orderBy need to be passed. Data returned will be ordered by the filter value."
+              },
+              {
+                "name": "ruleType",
+                "value": "INCOME",
+                "type": "query",
+                "description": "Comma-separated array of ruleType. Only INCOME, EXPENSE and TRANSFER ruleType is possible."
+              },
+              {
+                "name": "container",
+                "value": "bank",
+                "type": "query",
+                "description": "Comma-separated array of container. Olnly bank and creditCard container is allowed."
+              }
+            ]
+          },
+          "docs": "The GET Views transactions API allows you to fetch all the transactions for a specific view by passing the viewId.<br><br> A View is a logical collection of several rules. This API fetches all the transactions that qualify the rules associated with a specific view.<br><br> This API supports pagination. Each page can contain a maximum of 500 transactions. Use 'skip' and 'top' fields to enable pagination in response.<br><br> Supported containers - bank and card"
+        },
+        {
+          "info": {
+            "name": "Envestnet Fetch all the applicable peer benchmarking data.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/views/:viewId/peerData",
+            "params": [
+              {
+                "name": "viewId",
+                "value": "5e7885993cd8e328288522f7",
+                "type": "path",
+                "description": "The unique identifier of the view."
+              },
+              {
+                "name": "timePeriod",
+                "value": "LAST_MONTH",
+                "type": "query",
+                "description": "timePeriod filter for the duration of peer benchmarking data that should be considered for the list of transaction categories and merchants present in the include rules of the given viewId, but has no relation to the start and end date of this viewId or the included rules. <br> The default value is LAST_MONTH for this parameter i.e. previous month's data is considered when this parameter is not passed"
+              }
+            ]
+          },
+          "docs": "API allows you to view peer benchmarking data for a specific view.<br><br> Peer Benchmarking summary data is returned for each category and merchant mentioned in the view INCLUDE rules for the specified View. Median Spend Amount is returned for each of City/CBSA (If Available), State (If Available) and National (Always).<br><br> The Peer Benchmarking attributes are returned only when the global key configuration key 'isPeerBenchmarkEnabled' is TRUE for the customer."
+        },
+        {
+          "info": {
+            "name": "Envestnet Fetch summary data for a specific View.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/views/:viewId/transactionSummary",
+            "params": [
+              {
+                "name": "viewId",
+                "value": "5e7885993cd8e328288522f7",
+                "type": "path",
+                "description": "The unique identifier of the view."
+              },
+              {
+                "name": "fromDate",
+                "value": "2020-05-23T10:45:59.000Z",
+                "type": "query",
+                "description": "fromDate filter for the View Rules with format - yyyy-MM-dd'T'HH:mm:ss or yyyy-MM-dd"
+              },
+              {
+                "name": "toDate",
+                "value": "2020-05-23T10:45:59.000Z",
+                "type": "query",
+                "description": "toDate filter for the View Rules with format - yyyy-MM-ddTHH:mm:ss or yyyy-MM-dd"
+              },
+              {
+                "name": "categoryId",
+                "value": "29,31",
+                "type": "query",
+                "description": "Comma-separated array of Transaction Category Ids filter for the View Rules"
+              },
+              {
+                "name": "detailCategoryId",
+                "value": "1168,1280",
+                "type": "query",
+                "description": "Comma-separated array of Transaction Detail Category Ids filter for the View Rules"
+              },
+              {
+                "name": "merchantName",
+                "value": "century,amazon",
+                "type": "query",
+                "description": "Comma-separated array of Merchant Names filter for the View Rules. No validation require for merchantName. "
+              },
+              {
+                "name": "ruleType",
+                "value": "INCOME",
+                "type": "query",
+                "description": "Comma-separated array of ruleType. Only INCOME, EXPENSE and TRANSFER ruleType is possible."
+              },
+              {
+                "name": "accountId",
+                "value": "1001,1002",
+                "type": "query",
+                "description": "Comma-separated list of account Ids. Only integer values are supported."
+              },
+              {
+                "name": "merchantType",
+                "value": "BIILER",
+                "type": "query",
+                "description": "Comma-separated array of Merchant Types. Supported value are BILLERS and SUBSCRIPTION."
+              },
+              {
+                "name": "city",
+                "value": "Hay, Tulsa",
+                "type": "query",
+                "description": "Comma-separated array of two-letter city abbreviation. Names are not validated."
+              },
+              {
+                "name": "state",
+                "value": "NY, CA",
+                "type": "query",
+                "description": "Comma-separated array of State names. Names are not validated."
+              },
+              {
+                "name": "fromAmount",
+                "value": "100.00",
+                "type": "query",
+                "description": "fromAmount identifies the starting range of amount. Please ensure that fromAmount \n value is between 1 and 1000000 including the both limit.\n Only single value for fromAmount."
+              },
+              {
+                "name": "toAmount",
+                "value": "100.00",
+                "type": "query",
+                "description": "toAmount identifies the ending range of amount. Please ensure that toAmount \n value is between 1 and 1000000 including the both limit.\n Only single value for toAmount. "
+              },
+              {
+                "name": "groupBy",
+                "value": "merchant",
+                "type": "query",
+                "description": "The data returned will be grouped by the filter value. "
+              },
+              {
+                "name": "orderBy",
+                "value": "amount",
+                "type": "query",
+                "description": "Single value of orderBy need to be passed. Data returned will be ordered by the filter value."
+              },
+              {
+                "name": "accountStatus",
+                "value": "ACTIVE,CLOSED,TO_BE_CLOSED",
+                "type": "query",
+                "description": "This field indicates if the account status is open closed or active.</br>"
+              },
+              {
+                "name": "include",
+                "value": "CLOSED_ACCOUNT",
+                "type": "query",
+                "description": "This field indicates if we need to include closed accout.</br>"
+              },
+              {
+                "name": "sortBy",
+                "value": "asc",
+                "type": "query",
+                "description": "Single value of sortBy need to be passed. Data returned will be ordered in ascending or descending order."
+              },
+              {
+                "name": "skip",
+                "value": "5",
+                "type": "query",
+                "description": "skip is the number of pages to be skipped. This parameter allows pagination support. 0 page will only display max 1000 transactions. If response contains more than 1000 transactions, then this parameter is useful"
+              },
+              {
+                "name": "top",
+                "value": "100",
+                "type": "query",
+                "description": "top returns the number of transactions requested. Max 500 transactions can be returned by default. This parameter 'top' along with 'skip' allows pagination support."
+              },
+              {
+                "name": "container",
+                "value": "bank",
+                "type": "query",
+                "description": "Comma-separated array of container. Olnly bank and creditCard container is allowed."
+              }
+            ]
+          },
+          "docs": "This API fetches summary details for a specific view by passing the viewId.<br /><br />This API summarizes the information and returns data credit total, debit total, and net total grouped by merchant, category, categoryType or detailCategoryId depending on the query parameter value provided.<br /><br />Use 'skip' and 'top' fields values to determine numbers of records under the details arrays . Supported containers - bank and creditCard ."
+        },
+        {
+          "info": {
+            "name": "Envestnet Fetch trend data for a specific View.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/views/:viewId/transactionTrends",
+            "params": [
+              {
+                "name": "viewId",
+                "value": "5e7885993cd8e328288522f7",
+                "type": "path",
+                "description": "The unique identifier of the view."
+              },
+              {
+                "name": "fromDate",
+                "value": "2020-05-23T10:45:59.000Z",
+                "type": "query",
+                "description": "The starting date filter for the view in the format - yyyy-MM-dd'T'HH:mm:ss or yyyy-MM-dd"
+              },
+              {
+                "name": "toDate",
+                "value": "2020-05-23T10:45:59.000Z",
+                "type": "query",
+                "description": "The ending date filter for the view in the format - yyyy-MM-ddTHH:mm:ss or yyyy-MM-dd"
+              },
+              {
+                "name": "categoryId",
+                "value": "29,31",
+                "type": "query",
+                "description": "Comma-separated array of category IDs."
+              },
+              {
+                "name": "detailCategoryId",
+                "value": "1168,1280",
+                "type": "query",
+                "description": "Comma-separated array of Transaction Detail Category Ids filter for the View Rules"
+              },
+              {
+                "name": "merchantName",
+                "value": "century,amazon",
+                "type": "query",
+                "description": "Comma-separated array of Merchant Names. "
+              },
+              {
+                "name": "ruleType",
+                "value": "INCOME",
+                "type": "query",
+                "description": "Comma-separated array of ruleType."
+              },
+              {
+                "name": "accountId",
+                "value": "1001,1002",
+                "type": "query",
+                "description": "Comma-separated list of valid account Ids."
+              },
+              {
+                "name": "merchantType",
+                "value": "BILLERS",
+                "type": "query",
+                "description": "Comma-separated array of Merchant Types. Supported value are BILLERS and SUBSCRIPTION."
+              },
+              {
+                "name": "city",
+                "value": "Hay, Tulsa",
+                "type": "query",
+                "description": "Comma-separated array of two-letter city abbreviation. Please note that the values are not validated."
+              },
+              {
+                "name": "state",
+                "value": "NY, CA",
+                "type": "query",
+                "description": "Comma-separated array of State names. Please note that the values are not validated."
+              },
+              {
+                "name": "fromAmount",
+                "value": "100.00",
+                "type": "query",
+                "description": "fromAmount identifies the starting range of amount. Please ensure that fromAmount \n value is between 1 and 1000000 including the both limit.\n Only single value is supported for fromAmount."
+              },
+              {
+                "name": "toAmount",
+                "value": "100.00",
+                "type": "query",
+                "description": "toAmount identifies the ending range of amount. Please ensure that toAmount \n value is between 1 and 1000000 including the both limit.\n Only single value is supported for toAmount. "
+              },
+              {
+                "name": "accountStatus",
+                "value": "ACTIVE,CLOSED,TO_BE_CLOSED",
+                "type": "query",
+                "description": "This field indicates if the account status is open closed or active.</br>"
+              },
+              {
+                "name": "include",
+                "value": "CLOSED_ACCOUNT",
+                "type": "query",
+                "description": "This field indicates if we need to include closed accout.</br>"
+              },
+              {
+                "name": "groupBy",
+                "value": "merchant",
+                "type": "query",
+                "description": "The data returned will be grouped by the filter value. "
+              },
+              {
+                "name": "orderBy",
+                "value": "amount",
+                "type": "query",
+                "description": "Single value of orderBy need to be passed. Data returned will be ordered by the filter value."
+              },
+              {
+                "name": "sortBy",
+                "value": "asc",
+                "type": "query",
+                "description": "Single value of sortBy need to be passed. Data returned will be ordered in ascending or descending order."
+              },
+              {
+                "name": "skip",
+                "value": "5",
+                "type": "query",
+                "description": "skip is the number of pages to be skipped. This parameter allows pagination support. 0 page will only display max 1000 transactions. If response contains more than 1000 transactions, then this parameter is useful"
+              },
+              {
+                "name": "top",
+                "value": "100",
+                "type": "query",
+                "description": "top returns the number of transactions requested. Max 500 transactions can be returned by default. This parameter 'top' along with 'skip' allows pagination support."
+              },
+              {
+                "name": "container",
+                "value": "bank",
+                "type": "query",
+                "description": "Comma-separated array of container. Olnly bank and creditCard container is allowed."
+              }
+            ]
+          },
+          "docs": "This API fetches trend details for a specific view by passing the viewId. <br /><br />This API summarizes the information and returns credit total,  debit total, and net total grouped by merchant, category, or  categoryType depending on the query parameter value provided. <br /><br />Use 'skip' and 'top' fields to enable pagination in  response. Supported containers - bank and creditCard ."
+        },
+        {
+          "info": {
+            "name": "Envestnet Fetch recommended Views for a user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/views/recommendations"
+          },
+          "docs": "This API fetches the recommended Views for a specific user. For each user, their transaction history for 90 days is considered based on which recommendations are generated. The recommendations contain meta-data as well as the exact View object that can be passed to the POST /views API endpoint to create a View.<br><br>\n  Note- The recommendationId field is used to make sure that the same view is not recommended again for the user. If you modify the recommendationId or let users edit a View made "
+        },
+        {
+          "info": {
+            "name": "Envestnet Fetch BudgetSummary for specific View.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/views/:viewId/budgetSummary",
+            "params": [
+              {
+                "name": "viewId",
+                "value": "5e7885993cd8e328288522f7",
+                "type": "path",
+                "description": "The unique identifier of the view."
+              },
+              {
+                "name": "type",
+                "value": "MERCHANT",
+                "type": "query",
+                "description": "type identifies the budget entity for which data needs to be fetched. The type should belong to the same budgetData and View ID. <br><br> Multiple comma seperated values are NOT accepted. <br><br> It is mandatory to pass a type."
+              }
+            ]
+          },
+          "docs": "This API fetches BudgetSummarys for a specific view by passing the viewId and type. <ul><li>recommendationId, budgetData, rule are not applicable for this api.</li></ul>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
