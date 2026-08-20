@@ -74,6 +74,8 @@ apis:
   description: Accounts API
   humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
@@ -116,6 +118,8 @@ apis:
   description: Auth API
   humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
   tags:
+  - Authentication
+  tags_raw:
   - Auth
   properties:
   - type: OpenAPI
@@ -200,6 +204,8 @@ apis:
   description: The Customer API from Envestnet — 1 operation(s) for customer.
   humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
   tags:
+  - Customers
+  tags_raw:
   - Customer
   properties:
   - type: OpenAPI
@@ -400,6 +406,8 @@ apis:
   description: Transactions API
   humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
   tags:
+  - Transaction
+  tags_raw:
   - Transactions
   properties:
   - type: OpenAPI
@@ -484,6 +492,8 @@ apis:
   description: The View API from Envestnet — 11 operation(s) for view.
   humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
   tags:
+  - Views
+  tags_raw:
   - View
   properties:
   - type: OpenAPI
