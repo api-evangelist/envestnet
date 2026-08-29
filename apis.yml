@@ -511,6 +511,9 @@ apis:
   - type: Documentation
     url: https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference
 common:
+  - type: CapabilityMap
+    url: capabilities/envestnet-capability-edges.yml
+    name: Envestnet Business Capability Map
   - type: AgenticAccess
     url: agentic-access/envestnet-agentic-access.yml
   - type: VulnerabilityDisclosure

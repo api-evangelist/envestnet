@@ -1,0 +1,37 @@
+slug: envestnet
+provider: Envestnet
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Consents
+  spec_file: envestnet-consents-api-openapi.yml
+  capability_id: BC-130.50
+  capability_id_l1: BC-130
+  capability_name: Privacy & Data Protection Management
+  confidence: 0.7
+  evidence: GET /consents/preferences  "Get Consents Preferences"; PUT /consents/{consentId}/renewal  "Renew
+    Consent"; schema CdrPolicy
+  reason: Full lifecycle of data-sharing consents (create, renew, history, preferences) with an explicit
+    CdrPolicy schema — consent and data-subject permission management, i.e. privacy and data protection
+    compliance.
+- tag: CreditAcceleratorFile
+  spec_file: envestnet-creditacceleratorfile-api-openapi.yml
+  capability_id: BC-1320.20
+  capability_id_l1: BC-1320
+  capability_name: Credit Underwriting & Decisioning Management
+  confidence: 0.7
+  evidence: POST /creditAccelerator/report/generate  "Generate Credit Accelerator File"; schemas CreditAcceleratorCashFlowAnalysis,
+    CreditAcceleratorAccountAnalysis, LoanPayoffDetails
+  reason: Generates a bank-data-derived credit report with cash-flow and account analysis and loan payoff
+    details — evidence feeding lender underwriting/decisioning. Not the full decisioning engine, hence
+    0.7.
