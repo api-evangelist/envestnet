@@ -338,27 +338,6 @@ apis:
     url: https://developer.envestnet.com/products/yodlee/insights/docs/api-reference
   - type: Documentation
     url: https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference
-- aid: envestnet:envestnet-provideraccounts-api
-  name: Envestnet ProviderAccounts API
-  description: Provider Accounts API
-  humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
-  tags:
-  - ProviderAccounts
-  properties:
-  - type: OpenAPI
-    url: openapi/envestnet-provideraccounts-api-openapi.yml
-  - type: Documentation
-    url: https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference
-  - type: Documentation
-    url: https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference
-  - type: Documentation
-    url: https://developer.envestnet.com/products/yodlee/account-verification/docs
-  - type: Documentation
-    url: https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference
-  - type: Documentation
-    url: https://developer.envestnet.com/products/yodlee/insights/docs/api-reference
-  - type: Documentation
-    url: https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference
 - aid: envestnet:envestnet-providers-api
   name: Envestnet Providers API
   description: Providers API
@@ -498,6 +477,27 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/envestnet-view-api-openapi.yml
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/account-verification/docs
+  - type: Documentation
+    url: https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/insights/docs/api-reference
+  - type: Documentation
+    url: https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference
+- aid: envestnet:envestnet-provider-accounts-api
+  name: Envestnet Provider Accounts API
+  description: Provider Accounts API
+  humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
+  tags:
+  - Provider Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/envestnet-provider-accounts-api-openapi.yml
   - type: Documentation
     url: https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference
   - type: Documentation
