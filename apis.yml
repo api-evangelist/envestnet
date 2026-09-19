@@ -494,6 +494,8 @@ apis:
   description: Provider Accounts API
   humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
   tags:
+  - ProviderAccounts
+  tags_raw:
   - Provider Accounts
   properties:
   - type: OpenAPI
