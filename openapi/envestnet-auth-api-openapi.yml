@@ -1,14 +1,14 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Envestnet Aggregation APIs Account Token Auth API
-  description: 'This file describes the Yodlee Aggregation product APIs using the swagger notation that you can use to build your financial application.  You can generate the client SDK in Python, JavaScript, PHP, or any other languages according to your development needs. For more details about the APIs, refer to <a href="https://developer.envestnet.com/resources/yodlee/yodlee-api-overview/docs">Yodlee API v1.1 - Overview</a>.<br><br>You will have to set the header before making the API call. The following headers apply to all the APIs:<ul><li>Authorization: This header holds the access token</li> <li> Api-Version: 1.1</li></ul><b>Note</b>: If there are any API-specific headers, they are mentioned explicitly in the respective API''s description.'
-  termsOfService: https://developer.yodlee.com/terms/condition
+  title: Envestnet Auth API
+  version: 1.1.0
   contact:
     email: developer@yodlee.com
   license:
     name: Yodlee Developer License
     url: https://developer.yodlee.com/terms/condition#_Services_1
-  version: 1.1.0
+  termsOfService: https://developer.yodlee.com/terms/condition
+  description: 'Operations tagged Auth across 4 of this provider''s published API definitions: envestnet-account-aggregation-openapi-original.yml, envestnet-account-token-openapi-original.yml, envestnet-credit-accelerator-openapi-original.yml, envestnet-verification-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: /
 tags:
@@ -20,7 +20,20 @@ paths:
       tags:
       - Auth
       summary: Envestnet Delete API Key
-      description: 'This endpoint allows an existing API key to be deleted.<br>You can use one of the following authorization methods to access this API:<br><ol><li>cobsession</li><li>JWT token</li></ol> <b>Notes:</b> <li>This service is not available in developer sandbox environment and will be made availablefor testing in your dedicated environment. '
+      description: 'This endpoint allows an existing API key to be deleted.
+
+        You can use one of the following authorization methods to access this API:
+
+
+        cobsession
+
+
+        JWT token
+
+
+        Notes:
+
+        This service is not available in developer sandbox environment and will be made availablefor testing in your dedicated environment.'
       operationId: deleteApiKey
       parameters:
       - name: key
@@ -49,12 +62,27 @@ paths:
           description: Not Found
           content: {}
       deprecated: false
+    servers:
+    - url: /
   /auth/apiKey:
     get:
       tags:
       - Auth
       summary: Envestnet Get API Keys
-      description: 'This endpoint provides the list of API keys that exist for a customer.<br>You can use one of the following authorization methods to access this API:<br><ol><li>cobsession</li><li>JWT token</li></ol><b>Notes:</b><li>This service is not available in developer sandbox environment and will be made available for testing in your dedicated environment. '
+      description: 'This endpoint provides the list of API keys that exist for a customer.
+
+        You can use one of the following authorization methods to access this API:
+
+
+        cobsession
+
+
+        JWT token
+
+
+        Notes:
+
+        This service is not available in developer sandbox environment and will be made available for testing in your dedicated environment.'
       operationId: getApiKeys
       responses:
         200:
@@ -74,7 +102,30 @@ paths:
       tags:
       - Auth
       summary: Envestnet Generate API Key
-      description: 'This endpoint is used to generate an API key. The RSA public key you provide should be in 2048 bit PKCS#8 encoded format. <br>A public key is a mandatory input for generating the API key.<br/>The public key should be a unique key. The apiKeyId you get in the response is what you should use to generate the JWT token.<br> You can use one of the following authorization methods to access<br/>this API:<br><ol><li>cobsession</li><li>JWT token</li></ol> Alternatively, you can use base 64 encoded cobrandLogin and cobrandPassword in the Authorization header (Format: Authorization: Basic <encoded value of cobrandLogin: cobrandPassword>)<br><br><b>Note:</b><br><li>This service is not available in developer sandbox environment and will be made available for testing in your dedicated environment. The content type has to be passed as application/json for the body parameter.</li>'
+      description: 'This endpoint is used to generate an API key. The RSA public key you provide should be in 2048 bit PKCS#8 encoded format.
+
+        A public key is a mandatory input for generating the API key.
+
+        The public key should be a unique key. The apiKeyId you get in the response is what you should use to generate the JWT token.
+
+        You can use one of the following authorization methods to access
+
+        this API:
+
+
+        cobsession
+
+
+        JWT token
+
+
+        Alternatively, you can use base 64 encoded cobrandLogin and cobrandPassword in the Authorization header (Format: Authorization: Basic )
+
+
+        Note:
+
+
+        This service is not available in developer sandbox environment and will be made available for testing in your dedicated environment. The content type has to be passed as application/json for the body parameter.'
       operationId: generateApiKey
       requestBody:
         description: apiKeyRequest
@@ -103,12 +154,52 @@ paths:
           description: Not Found
           content: {}
       deprecated: false
+    servers:
+    - url: /
   /auth/token:
     post:
       tags:
       - Auth
       summary: Envestnet Generate Access Token
-      description: <b>Generate Access Token using client credential authentication.</b><br>This service returns access tokens required to access Yodlee 1.1 APIs. These tokens are the simplest and easiest of several alternatives for authenticating with Yodlee servers.<br>The most commonly used services obtain data specific to an end user (your customer). For these services, you need a <b>user access token</b>. These are simply tokens created with the user name parameter (<b>loginName</b>) set to the id of your end user.  <i><br><br><b>Note:</b> You determine this id and you must ensure it's unique among all your customers.</i> <br><br>Each token issued has an associated user. The token passed in the http headers explicitly names the user referenced in that API call.<br><br>Some of the APIs do administrative work, and don't reference an end user. <br/>One example of administrative work is key management. Another example is registering a new user explicitly, with <b>POST /user/register</b> call or subscribe to webhook, with <b>POST /config/notifications/events/{eventName}</b>. <br/>To invoke these, you need an <b>admin access token</b>. Create this by passing in your admin user login name in place of a regular user name.<br><br>This service also allows for simplified registration of new users. Any time you pass in a user name not already in use, the system will automatically implicitly create a new user for you. <br>This user will naturally have very few associated details. You can later provide additional user information by calling the <b>PUT user/register service</b>.<br><br><b>Notes:</b><ul><li>The header <code>Authorization</code> does not apply to this service.</li><li>The content type has to be passed as application/x-www-form-urlencoded.<li>Upgrading to client credential authentication requires infrastructure reconfiguration. <li>Customers wishing to switch from another authentication scheme to client credential authentication, please contact Yodlee Client Services.</li><li>Default expiry time of user access token and admin access token is 30 minutes.</li></ul>
+      description: 'Generate Access Token using client credential authentication.
+
+        This service returns access tokens required to access Yodlee 1.1 APIs. These tokens are the simplest and easiest of several alternatives for authenticating with Yodlee servers.
+
+        The most commonly used services obtain data specific to an end user (your customer). For these services, you need a user access token. These are simply tokens created with the user name parameter (loginName) set to the id of your end user.
+
+
+        Note: You determine this id and you must ensure it''s unique among all your customers.
+
+
+        Each token issued has an associated user. The token passed in the http headers explicitly names the user referenced in that API call.
+
+
+        Some of the APIs do administrative work, and don''t reference an end user.
+
+        One example of administrative work is key management. Another example is registering a new user explicitly, with POST /user/register call or subscribe to webhook, with POST /config/notifications/events/{eventName}.
+
+        To invoke these, you need an admin access token. Create this by passing in your admin user login name in place of a regular user name.
+
+
+        This service also allows for simplified registration of new users. Any time you pass in a user name not already in use, the system will automatically implicitly create a new user for you.
+
+        This user will naturally have very few associated details. You can later provide additional user information by calling the PUT user/register service.
+
+
+        Notes:
+
+
+        The header Authorization does not apply to this service.
+
+
+        The content type has to be passed as application/x-www-form-urlencoded.
+
+        Upgrading to client credential authentication requires infrastructure reconfiguration.
+
+        Customers wishing to switch from another authentication scheme to client credential authentication, please contact Yodlee Client Services.
+
+
+        Default expiry time of user access token and admin access token is 30 minutes.'
       operationId: generateAccessToken
       requestBody:
         content:
@@ -148,7 +239,14 @@ paths:
       tags:
       - Auth
       summary: Envestnet Delete Token
-      description: This endpoint revokes the token passed in the Authorization header. This service is applicable for JWT-based (and all API key-based) authentication and also client credential (clientId and secret) based authentication. This service does not return a response body. The HTTP response code is 204 (success with no content). <br>Tokens generally have limited lifetime of up to 30 minutes. You will call this service when you finish working with one user, and you want to delete the valid token rather than simply letting it expire.<br><br><b>Note:</b> <li>Revoking an access token (either type, admin or a user token) can take up to 2 minutes, as the tokens are stored on a distributed system.<br/>
+      description: 'This endpoint revokes the token passed in the Authorization header. This service is applicable for JWT-based (and all API key-based) authentication and also client credential (clientId and secret) based authentication. This service does not return a response body. The HTTP response code is 204 (success with no content).
+
+        Tokens generally have limited lifetime of up to 30 minutes. You will call this service when you finish working with one user, and you want to delete the valid token rather than simply letting it expire.
+
+
+        Note:
+
+        Revoking an access token (either type, admin or a user token) can take up to 2 minutes, as the tokens are stored on a distributed system.'
       operationId: deleteToken
       responses:
         204:
@@ -164,14 +262,19 @@ paths:
           description: Not Found
           content: {}
       deprecated: false
+    servers:
+    - url: /
 components:
   schemas:
-    ClientCredentialTokenResponse:
-      title: ClientCredentialTokenResponse
+    ApiKeyRequest:
+      title: ApiKeyRequest
       type: object
       properties:
-        token:
-          $ref: '#/components/schemas/ClientCredentialToken'
+        publicKey:
+          maxLength: 2147483647
+          minLength: 1
+          type: string
+          description: Public key uploaded by the customer while generating ApiKey.<br><br><b>Endpoints</b>:<ul><li>GET /auth/apiKey</li><li>POST /auth/apiKey</li></ul>
     ClientCredentialToken:
       title: ClientCredentialToken
       type: object
@@ -189,15 +292,6 @@ components:
           type: string
           description: Access Token to access YSL 1.1 services.<br><br><b>Endpoints</b>:<ul><li>POST /auth/token</li></ul>
           readOnly: true
-    ApiKeyResponse:
-      title: ApiKeyResponse
-      type: object
-      properties:
-        apiKey:
-          type: array
-          description: ApiKey customer details.<br><br><b>Endpoints</b>:<ul><li>GET /auth/apiKey</li><li>POST /auth/apiKey</li></ul>
-          items:
-            $ref: '#/components/schemas/ApiKeyOutput'
     YodleeError:
       title: YodleeError
       type: object
@@ -233,12 +327,42 @@ components:
         key:
           type: string
           description: ApiKey or the issuer key used to generate the JWT token for authentication.<br><br><b>Endpoints</b>:<ul><li>GET /auth/apiKey</li><li>POST /auth/apiKey</li></ul>
-    ApiKeyRequest:
-      title: ApiKeyRequest
+    ClientCredentialTokenResponse:
+      title: ClientCredentialTokenResponse
       type: object
       properties:
-        publicKey:
-          maxLength: 2147483647
-          minLength: 1
+        token:
+          $ref: '#/components/schemas/ClientCredentialToken'
+    ApiKeyResponse:
+      title: ApiKeyResponse
+      type: object
+      properties:
+        apiKey:
+          type: array
+          description: ApiKey customer details.<br><br><b>Endpoints</b>:<ul><li>GET /auth/apiKey</li><li>POST /auth/apiKey</li></ul>
+          items:
+            $ref: '#/components/schemas/ApiKeyOutput'
+    YodleeError_2:
+      title: YodleeError
+      type: object
+      properties:
+        errorMessage:
           type: string
-          description: Public key uploaded by the customer while generating ApiKey.<br><br><b>Endpoints</b>:<ul><li>GET /auth/apiKey</li><li>POST /auth/apiKey</li></ul>
+        errorCode:
+          type: string
+        referenceCode:
+          type: string
+    auth_token_body:
+      type: object
+      properties:
+        clientId:
+          type: string
+          description: clientId issued by Yodlee is used to generate the OAuth token for authentication.
+        secret:
+          type: string
+          description: secret issued by Yodlee is used to generate the OAuth token for authentication.
+x-refined-from:
+- envestnet-account-aggregation-openapi-original.yml
+- envestnet-account-token-openapi-original.yml
+- envestnet-credit-accelerator-openapi-original.yml
+- envestnet-verification-openapi-original.yml

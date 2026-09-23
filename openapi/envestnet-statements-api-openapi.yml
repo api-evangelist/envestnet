@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Envestnet Aggregation APIs Account Token Statements API
-  description: 'This file describes the Yodlee Aggregation product APIs using the swagger notation that you can use to build your financial application.  You can generate the client SDK in Python, JavaScript, PHP, or any other languages according to your development needs. For more details about the APIs, refer to <a href="https://developer.envestnet.com/resources/yodlee/yodlee-api-overview/docs">Yodlee API v1.1 - Overview</a>.<br><br>You will have to set the header before making the API call. The following headers apply to all the APIs:<ul><li>Authorization: This header holds the access token</li> <li> Api-Version: 1.1</li></ul><b>Note</b>: If there are any API-specific headers, they are mentioned explicitly in the respective API''s description.'
+  title: Envestnet Aggregation Statements API
+  description: This file describes the Yodlee Aggregation product APIs using the swagger notation that you can use to build your financial application.
   termsOfService: https://developer.yodlee.com/terms/condition
   contact:
     email: developer@yodlee.com
@@ -20,7 +20,15 @@ paths:
       tags:
       - Statements
       summary: Envestnet Get Statements
-      description: The statements service is used to get the list of statement related information. <br>By default, all the latest statements of active and to be closed accounts are retrieved for the user. <br>Certain sites do not have both a statement date and a due date. When a fromDate is passed as an input, all the statements that have the due date on or after the passed date are retrieved. <br>For sites that do not have the due date, statements that have the statement date on or after the passed date are retrieved. <br>The default value of "isLatest" is true. To retrieve historical statements isLatest needs to be set to false.<br>
+      description: 'The statements service is used to get the list of statement related information.
+
+        By default, all the latest statements of active and to be closed accounts are retrieved for the user.
+
+        Certain sites do not have both a statement date and a due date. When a fromDate is passed as an input, all the statements that have the due date on or after the passed date are retrieved.
+
+        For sites that do not have the due date, statements that have the statement date on or after the passed date are retrieved.
+
+        The default value of "isLatest" is true. To retrieve historical statements isLatest needs to be set to false.'
       operationId: getStatements
       parameters:
       - name: accountId
@@ -143,6 +151,22 @@ components:
           readOnly: true
         newCharges:
           $ref: '#/components/schemas/Money'
+    YodleeError:
+      title: YodleeError
+      type: object
+      properties:
+        errorMessage:
+          type: string
+          description: The descriptive message that explains the error scenario.
+          readOnly: true
+        errorCode:
+          type: string
+          description: The error code follows the format YNNN. The error codes do not change. New error codes may be added as we introduce new features and enhance functionalities.
+          readOnly: true
+        referenceCode:
+          type: string
+          description: Unique Yodlee identifier used to troubleshoot issues at Yodlee's end.
+          readOnly: true
     Money:
       title: Money
       type: object
@@ -616,19 +640,3 @@ components:
           readOnly: true
           items:
             $ref: '#/components/schemas/Statement'
-    YodleeError:
-      title: YodleeError
-      type: object
-      properties:
-        errorMessage:
-          type: string
-          description: The descriptive message that explains the error scenario.
-          readOnly: true
-        errorCode:
-          type: string
-          description: The error code follows the format YNNN. The error codes do not change. New error codes may be added as we introduce new features and enhance functionalities.
-          readOnly: true
-        referenceCode:
-          type: string
-          description: Unique Yodlee identifier used to troubleshoot issues at Yodlee's end.
-          readOnly: true

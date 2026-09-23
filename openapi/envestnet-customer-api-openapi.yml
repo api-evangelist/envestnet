@@ -1,14 +1,10 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Envestnet Aggregation APIs Account Token Customer API
-  description: 'This file describes the Yodlee Aggregation product APIs using the swagger notation that you can use to build your financial application.  You can generate the client SDK in Python, JavaScript, PHP, or any other languages according to your development needs. For more details about the APIs, refer to <a href="https://developer.envestnet.com/resources/yodlee/yodlee-api-overview/docs">Yodlee API v1.1 - Overview</a>.<br><br>You will have to set the header before making the API call. The following headers apply to all the APIs:<ul><li>Authorization: This header holds the access token</li> <li> Api-Version: 1.1</li></ul><b>Note</b>: If there are any API-specific headers, they are mentioned explicitly in the respective API''s description.'
-  termsOfService: https://developer.yodlee.com/terms/condition
+  title: Envestnet Insights API Suite Customer API
+  description: Financial Insights APIs provide intelligent, personalized, and actionable insights to your end-users. This document details the APIs offered as part of the insights product.
   contact:
-    email: developer@yodlee.com
-  license:
-    name: Yodlee Developer License
-    url: https://developer.yodlee.com/terms/condition#_Services_1
-  version: 1.1.0
+    email: insights@yodlee.com
+  version: 1.1.0-oas3
 servers:
 - url: /
 tags:
@@ -18,7 +14,7 @@ paths:
     get:
       tags:
       - Customer
-      summary: Envestnet Provide details of all the insights available to the customer.
+      summary: Envestnet Provide details of all the insights available to the customer
       description: This API returns only those Insights which the customer has subscribed to, among all the insights provided by Yodlee. If the customer has chosen to use the Insights configuration tool, the same functionality can be achieved through a graphical user interface.
       operationId: getCutomerSubscription
       responses:
@@ -46,8 +42,23 @@ paths:
     patch:
       tags:
       - Customer
-      summary: Envestnet Update details of one or more customer subscribed insights.
-      description: "This API can be used to make an insight available to their users at any entity level (Account or View). By setting isSubscribed to true or false at an entity level within each insight, the customer can decide what functionality to make available to their end-users/consumers.<br /><br />Note-\n  <ul>\n  <li>This is a PATCH API. Only pass the Attributes in the API request body, which you want to update</li>\n  <li>This API supports updating multiple Insight's details in a single API call</li>\n  <li>'insightName' is a mandatory field in the Request body to identify which Insight's details are getting updated</li>\n  <li>If you pass an attribute that is not editable, you will see an error.</li>\n  </ul>"
+      summary: Envestnet Update details of one or more customer subscribed insights
+      description: 'This API can be used to make an insight available to their users at any entity level (Account or View). By setting isSubscribed to true or false at an entity level within each insight, the customer can decide what functionality to make available to their end-users/consumers.
+
+
+        Note-
+
+
+        This is a PATCH API. Only pass the Attributes in the API request body, which you want to update
+
+
+        This API supports updating multiple Insight''s details in a single API call
+
+
+        ''insightName'' is a mandatory field in the Request body to identify which Insight''s details are getting updated
+
+
+        If you pass an attribute that is not editable, you will see an error.'
       operationId: updateCustomerSubscription
       requestBody:
         content:
@@ -73,55 +84,54 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 components:
-  examples:
-    updateCustomerSubscriptionExample:
-      value:
-        customerSubscription:
-        - insightName: UPCOMING_BILLS
-          insightTitle: New Title
-          customerConfiguration:
-          - entityType: ACCOUNT
-            isSubscribed: true
-            threshold:
-            - name: FUTURE
-              value: '7'
-              type: DAYS
-          - entityType: VIEW
-            isSubscribed: true
-            threshold:
-            - name: FUTURE
-              value: '7'
-              type: DAYS
-    getCustomerSubscriptionExample:
-      value:
-        customerSubscription:
-        - insightName: UPCOMING_BILLS
-          insightTitle: Upcoming Bills
-          insightType: OTHER
-          triggerType: SCHEDULE
-          containers:
-          - BANK
-          - CARD
-          description: Generates an insight that lists upcoming recurring bills within a configured time period..
-          applicableEntity:
-          - ACCOUNT
-          - VIEW
-          customerConfiguration:
-          - entityType: ACCOUNT
-            isSubscribed: false
-            frequency: MONTHLY
-            threshold:
-            - name: FUTURE
-              value: '7'
-              type: DAYS
-          - entityType: VIEW
-            isSubscribed: false
-            frequency: MONTHLY
-            threshold:
-            - name: FUTURE
-              value: '7'
-              type: DAYS
   schemas:
+    Error:
+      required:
+      - errorCode
+      - referenceCode
+      - errorMessage
+      properties:
+        errorCode:
+          type: string
+        referenceCode:
+          type: string
+        errorMessage:
+          type: string
+    Threshold:
+      properties:
+        name:
+          type: string
+          description: Identifies the threshold applicable for an insight. Threshold values impact insight generation.Consider the following example - <ul> <li>name = CHANGE</li> <li>type = PERCENT</li> <li>value = 3</li> </ul> For the above insight, you can read the configuration as "Generate the insight only if the change is >= 3%" <br><br><b>Note</b>- Threshold is fixed for each insight. Only value is editable. <br><br><b>Endpoints</b> -<ul><li>GET /insights/configs/customerSubscriptions Cobrand API</li><li>PATCH /insights/configs/customerSubscriptions Cobrand API</li><li>GET /insights/configs/userSubscriptions User API</li><li>PATCH /insights/configs/userSubscriptions User API</li></ul>
+          example: CHANGE
+          enum:
+          - CHANGE
+          - UPPER_LIMIT
+          - DAYS_BEFORE
+          - MINIMUM
+          - FUTURE
+          - DELAY
+          - TOP
+          - BASETYPE
+        type:
+          type: string
+          description: Identifies the type of threshold. Threshold values impact insight generation.Consider the following example - <ul> <li>name = CHANGE</li> <li>type = PERCENT</li> <li>value = 3</li> </ul> For the above insight, you can read the configuration as "Generate the insight only if the change is >= 3%". <br><br>However, consider changing the configuration to as follows by  changing the type - <ul> <li>name = CHANGE</li> <li>type = AMOUNT</li> <li>value = 300</li> </ul> For the above insight, you can read the configuration as "Generate the insight only if the change is >= $300". <br><br><b>Note</b>- For a single insight, you can have multiple thresholds. If multiple thresholds have values set to a non-zero number, the relationship between the thresholds will be logical AND. <br><br>Some insights will have type as AMOUNT and PERCENT. In the above scenario, if you want to generate insight only based on one value, you can set the other to 0. <br><br>E.g. if type = AMOUNT is set to 0 and type = PERCENT is set to 3, the insight will be evaluated as "Generate the insight only if the change is >= 3%" <br><br>However, if AMOUNT = $300 and PERCENT = 3, the insight will be evaluated as "Generate the insight only if the change % is >= 3% AND change amount >= $300" <br><br><b>Endpoints</b> -<ul><li>GET config/insights/subscriptions Cobrand API</li><li>PATCH /config/insights/subscriptions Cobrand API</li><li>GET /insights/subscriptions User API</li><li>PATCH /insights/subscriptions User API</li></ul>
+          example: PERCENT
+          enum:
+          - PERCENT
+          - NUMBER
+          - DAYS
+          - AMOUNT
+          - STRING
+        value:
+          type: string
+          description: The value set for the threshold. 0 is allowed only if there are multiple threshold for the same insight. <br><br><b>Endpoints</b> - <ul><li>GET /config/insights/subscriptions Cobrand API</li><li>PATCH /config/insights/subscriptions Cobrand API</li><li>GET insights/subscriptions User API</li><li>PATCH /insights/subscriptions User API</li></ul>
+          example: '10'
+    customerSubscriptions:
+      properties:
+        customerSubscription:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerSubscription'
     Subscription:
       description: Details about the configurations applied for the specific insight.
       properties:
@@ -183,35 +193,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CustomerConfiguration'
-    Threshold:
-      properties:
-        name:
-          type: string
-          description: Identifies the threshold applicable for an insight. Threshold values impact insight generation.Consider the following example - <ul> <li>name = CHANGE</li> <li>type = PERCENT</li> <li>value = 3</li> </ul> For the above insight, you can read the configuration as "Generate the insight only if the change is >= 3%" <br><br><b>Note</b>- Threshold is fixed for each insight. Only value is editable. <br><br><b>Endpoints</b> -<ul><li>GET /insights/configs/customerSubscriptions Cobrand API</li><li>PATCH /insights/configs/customerSubscriptions Cobrand API</li><li>GET /insights/configs/userSubscriptions User API</li><li>PATCH /insights/configs/userSubscriptions User API</li></ul>
-          example: CHANGE
-          enum:
-          - CHANGE
-          - UPPER_LIMIT
-          - DAYS_BEFORE
-          - MINIMUM
-          - FUTURE
-          - DELAY
-          - TOP
-          - BASETYPE
-        type:
-          type: string
-          description: Identifies the type of threshold. Threshold values impact insight generation.Consider the following example - <ul> <li>name = CHANGE</li> <li>type = PERCENT</li> <li>value = 3</li> </ul> For the above insight, you can read the configuration as "Generate the insight only if the change is >= 3%". <br><br>However, consider changing the configuration to as follows by  changing the type - <ul> <li>name = CHANGE</li> <li>type = AMOUNT</li> <li>value = 300</li> </ul> For the above insight, you can read the configuration as "Generate the insight only if the change is >= $300". <br><br><b>Note</b>- For a single insight, you can have multiple thresholds. If multiple thresholds have values set to a non-zero number, the relationship between the thresholds will be logical AND. <br><br>Some insights will have type as AMOUNT and PERCENT. In the above scenario, if you want to generate insight only based on one value, you can set the other to 0. <br><br>E.g. if type = AMOUNT is set to 0 and type = PERCENT is set to 3, the insight will be evaluated as "Generate the insight only if the change is >= 3%" <br><br>However, if AMOUNT = $300 and PERCENT = 3, the insight will be evaluated as "Generate the insight only if the change % is >= 3% AND change amount >= $300" <br><br><b>Endpoints</b> -<ul><li>GET config/insights/subscriptions Cobrand API</li><li>PATCH /config/insights/subscriptions Cobrand API</li><li>GET /insights/subscriptions User API</li><li>PATCH /insights/subscriptions User API</li></ul>
-          example: PERCENT
-          enum:
-          - PERCENT
-          - NUMBER
-          - DAYS
-          - AMOUNT
-          - STRING
-        value:
-          type: string
-          description: The value set for the threshold. 0 is allowed only if there are multiple threshold for the same insight. <br><br><b>Endpoints</b> - <ul><li>GET /config/insights/subscriptions Cobrand API</li><li>PATCH /config/insights/subscriptions Cobrand API</li><li>GET insights/subscriptions User API</li><li>PATCH /insights/subscriptions User API</li></ul>
-          example: '10'
     CustomerConfiguration:
       properties:
         entityType:
@@ -261,21 +242,51 @@ components:
           enum:
           - true
           - false
-    customerSubscriptions:
-      properties:
+  examples:
+    updateCustomerSubscriptionExample:
+      value:
         customerSubscription:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerSubscription'
-    Error:
-      required:
-      - errorCode
-      - referenceCode
-      - errorMessage
-      properties:
-        errorCode:
-          type: string
-        referenceCode:
-          type: string
-        errorMessage:
-          type: string
+        - insightName: UPCOMING_BILLS
+          insightTitle: New Title
+          customerConfiguration:
+          - entityType: ACCOUNT
+            isSubscribed: true
+            threshold:
+            - name: FUTURE
+              value: '7'
+              type: DAYS
+          - entityType: VIEW
+            isSubscribed: true
+            threshold:
+            - name: FUTURE
+              value: '7'
+              type: DAYS
+    getCustomerSubscriptionExample:
+      value:
+        customerSubscription:
+        - insightName: UPCOMING_BILLS
+          insightTitle: Upcoming Bills
+          insightType: OTHER
+          triggerType: SCHEDULE
+          containers:
+          - BANK
+          - CARD
+          description: Generates an insight that lists upcoming recurring bills within a configured time period..
+          applicableEntity:
+          - ACCOUNT
+          - VIEW
+          customerConfiguration:
+          - entityType: ACCOUNT
+            isSubscribed: false
+            frequency: MONTHLY
+            threshold:
+            - name: FUTURE
+              value: '7'
+              type: DAYS
+          - entityType: VIEW
+            isSubscribed: false
+            frequency: MONTHLY
+            threshold:
+            - name: FUTURE
+              value: '7'
+              type: DAYS

@@ -1,14 +1,10 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Envestnet Aggregation APIs Account Token View API
-  description: 'This file describes the Yodlee Aggregation product APIs using the swagger notation that you can use to build your financial application.  You can generate the client SDK in Python, JavaScript, PHP, or any other languages according to your development needs. For more details about the APIs, refer to <a href="https://developer.envestnet.com/resources/yodlee/yodlee-api-overview/docs">Yodlee API v1.1 - Overview</a>.<br><br>You will have to set the header before making the API call. The following headers apply to all the APIs:<ul><li>Authorization: This header holds the access token</li> <li> Api-Version: 1.1</li></ul><b>Note</b>: If there are any API-specific headers, they are mentioned explicitly in the respective API''s description.'
-  termsOfService: https://developer.yodlee.com/terms/condition
+  title: Envestnet API Suite View API
+  description: Views APIs enable your end users to create personalized views of their finances for any expenses, hobbies, or projects relevant to them. A view is a collection of transactions based on rules - any combination of accounts, categories, merchants, locations, transaction types, and more, that are of interest to your users. Build preconfigured views and let your users further define them with a flexible user experience. This document details the APIs offered as part of the views product.
   contact:
-    email: developer@yodlee.com
-  license:
-    name: Yodlee Developer License
-    url: https://developer.yodlee.com/terms/condition#_Services_1
-  version: 1.1.0
+    email: insights@yodlee.com
+  version: 1.1.0-oas3
 servers:
 - url: /
 tags:
@@ -18,8 +14,49 @@ paths:
     post:
       tags:
       - View
-      summary: Envestnet Create a view for a user.
-      description: "The create Views API allows users to create a view by specifying one or more rules. This API supports bank, creditCard and investment container transactions. <br><br>Important notes- <ul><li>Each View rule must contain either \"include\" or \"exclude\" attributes, but not both together. If you want both \"include\" or \"exclude\" attributes, then create 1 rule with \"include\" and 1 rule with \"exclude\" attribute.</li><li>Do not use view 'id' and view rule 'id' fields in POST /views and PUT /views/{viewId} APIs. 'id' fields are read-only field belonging to the View entity which will be only available when you call the GET /views and GET /views/{viewId} API</li></ul> <strong>Budget for Views</strong> <br><br> The budgetData entity is optional. <br><br> You can track budget for a VIEW at various levels identified by the attribute \"type\" - VIEW, CATEGORY, MERCHANT, and DETAIL_CATEGORY. <br><br> You can pass one or more types. If you pass VIEW and CATEGORY, it will track budget seperately for each of the entities mentioned seperately. It's recommended to have only one type per VIEW. <br><br> Each type also supports incomeBudget and expenseBudget. You can set budget at one or both levels. <ul><li>If setting budget for MERCHANT, typeName which corresponds to merchant name is mandatory.</li> <li>If setting budget for CATEGORY, typeId which corresponds to categoryId is mandatory.</li> <li>If setting budget for DETAIL_CATEGORY, typeId which corresponds to detail category ID is mandatory.</li> <li>If setting budget for VIEW, either incomeBudget or expenseBudget is mandatory.</li> </ul> Either incomeBudget or expenseBudget is mandatory along with type\n and their respective mandatory attributes.\n "
+      summary: Envestnet Create a view for a user
+      description: 'The create Views API allows users to create a view by specifying one or more rules. This API supports bank, creditCard and investment container transactions.
+
+
+        Important notes-
+
+
+        Each View rule must contain either "include" or "exclude" attributes, but not both together. If you want both "include" or "exclude" attributes, then create 1 rule with "include" and 1 rule with "exclude" attribute.
+
+
+        Do not use view ''id'' and view rule ''id'' fields in POST /views and PUT /views/{viewId} APIs. ''id'' fields are read-only field belonging to the View entity which will be only available when you call the GET /views and GET /views/{viewId} API
+
+
+        Budget for Views
+
+
+        The budgetData entity is optional.
+
+
+        You can track budget for a VIEW at various levels identified by the attribute "type" - VIEW, CATEGORY, MERCHANT, and DETAIL_CATEGORY.
+
+
+        You can pass one or more types. If you pass VIEW and CATEGORY, it will track budget seperately for each of the entities mentioned seperately. It''s recommended to have only one type per VIEW.
+
+
+        Each type also supports incomeBudget and expenseBudget. You can set budget at one or both levels.
+
+
+        If setting budget for MERCHANT, typeName which corresponds to merchant name is mandatory.
+
+
+        If setting budget for CATEGORY, typeId which corresponds to categoryId is mandatory.
+
+
+        If setting budget for DETAIL_CATEGORY, typeId which corresponds to detail category ID is mandatory.
+
+
+        If setting budget for VIEW, either incomeBudget or expenseBudget is mandatory.
+
+
+        Either incomeBudget or expenseBudget is mandatory along with type
+
+        and their respective mandatory attributes.'
       operationId: createUserView
       requestBody:
         content:
@@ -51,8 +88,11 @@ paths:
     get:
       tags:
       - View
-      summary: Envestnet Fetch the details of all the views associated with a user.
-      description: The GET Views API retrieves details of all the Views that the user has created. To retrieve the rules associated with the Views, pass "include=rules" in the request. Views currently support only aggregated transactions.<br><br> A View is a logical collection of several rules. Processing these rules returns the relevant transactions associated with the rules. This API will not return deleted Views. To fetch the Transactions for a View, call the GET /views/{viewId}/transactions API.
+      summary: Envestnet Fetch the details of all the views associated with a user
+      description: 'The GET Views API retrieves details of all the Views that the user has created. To retrieve the rules associated with the Views, pass "include=rules" in the request. Views currently support only aggregated transactions.
+
+
+        A View is a logical collection of several rules. Processing these rules returns the relevant transactions associated with the rules. This API will not return deleted Views. To fetch the Transactions for a View, call the GET /views/{viewId}/transactions API.'
       operationId: getUserViews
       parameters:
       - name: include
@@ -136,8 +176,8 @@ paths:
     post:
       tags:
       - View
-      summary: Envestnet Create a default view for a user.
-      description: Allows user to create a default view if one does not already exist or has been deleted.  All the INCOME, EXPENSE and TRANSFER rules are included for this view by default. Request body if any supplied will get ignored.
+      summary: Envestnet Create a default view for a user
+      description: Allows user to create a default view if one does not already exist or has been deleted. All the INCOME, EXPENSE and TRANSFER rules are included for this view by default. Request body if any supplied will get ignored.
       operationId: createSystemView
       responses:
         '201':
@@ -162,8 +202,14 @@ paths:
     get:
       tags:
       - View
-      summary: Envestnet Fetch the details of a specific view.
-      description: Retrieves details of a specific view identified by the viewId. <br><br> To retrieve the rule associated with the view, pass include=rules in the request. If the requested view has been deleted, you will get an empty response. <br><br> budgetData will be returned if budget is set for the VIEW at any of the levels.
+      summary: Envestnet Fetch the details of a specific view
+      description: 'Retrieves details of a specific view identified by the viewId.
+
+
+        To retrieve the rule associated with the view, pass include=rules in the request. If the requested view has been deleted, you will get an empty response.
+
+
+        budgetData will be returned if budget is set for the VIEW at any of the levels.'
       operationId: getUserView
       parameters:
       - name: viewId
@@ -209,8 +255,35 @@ paths:
     put:
       tags:
       - View
-      summary: Envestnet Update details of an existing view.
-      description: "The update Views API allows updating details of a specific view. Details can be updated both at the Views-level and the rule-level entity. The HTTP response code is 204 (Success without content).<br><br>\n  Important notes-\n  <ul>\n  <li>Each view object contains an array of rules. Each View rule must contain either ''include'' or ''exclude'' attributes, but not both together. If you want both ''include'' or ''exclude'' attributes, then create 1 rule with ''include'' and 1 rule with ''exclude'' attribute.&nbsp;</li>\n  <ul>\n  <li>if you provide an existing View Rule ''Id'' which you have fetched from the GET /views/{viewId} API, then that View Rule content will replace the existing View Rule's content in the database</li>\n  <li>However, if you don't pass the rule ''Id'' attribute in the Request Body's rule object, then that particular rule will be considered as a new rule. It will be inserted fresh into the database. PUT&nbsp;<u>Views/{viewId}</u>&nbsp;acts like an UPSERT operation. Each view object in the API request JSON contains ''rule'' as an array of View Rules. Inside View ''rule'' array in the Request body</li>\n  </ul>\n  <li>Whatever rules are passed in the Request Body, will ultimately replace all the Views rules in the database against the provided View Id. This means if you skip providing an existing view rule with the correct ID, that rule will get deleted</li>\n  <li>Do not use view 'id' and rule 'id' fields in POST /views and PUT /views/{viewId} APIs. 'id' fields are read-only field belonging to the View entity which will be only available when you call the GET /views and GET /views/{viewId} API</li>\n  <li>budgetData cannot be updated using the PUT method. Please use the PATCH API for updating budgetData.</li>\n  <li>The update Views API allows updating details of a specific view. In case of updating <b>SYSTEM VIEW</b>, only name & description should be allowed to be updated where description is optional field.</li>\n  <li>In case of updating <b>SYSTEM VIEW</b>, if we pass any other parameter for update it should throw error - Updating attributes other than name and description for a system created view is not allowed.</li>\n  </ul>"
+      summary: Envestnet Update details of an existing view
+      description: 'The update Views API allows updating details of a specific view. Details can be updated both at the Views-level and the rule-level entity. The HTTP response code is 204 (Success without content).
+
+
+        Important notes-
+
+
+        Each view object contains an array of rules. Each View rule must contain either ''''include'''' or ''''exclude'''' attributes, but not both together. If you want both ''''include'''' or ''''exclude'''' attributes, then create 1 rule with ''''include'''' and 1 rule with ''''exclude'''' attribute.
+
+
+        if you provide an existing View Rule ''''Id'''' which you have fetched from the GET /views/{viewId} API, then that View Rule content will replace the existing View Rule''s content in the database
+
+
+        However, if you don''t pass the rule ''''Id'''' attribute in the Request Body''s rule object, then that particular rule will be considered as a new rule. It will be inserted fresh into the database. PUT Views/{viewId} acts like an UPSERT operation. Each view object in the API request JSON contains ''''rule'''' as an array of View Rules. Inside View ''''rule'''' array in the Request body
+
+
+        Whatever rules are passed in the Request Body, will ultimately replace all the Views rules in the database against the provided View Id. This means if you skip providing an existing view rule with the correct ID, that rule will get deleted
+
+
+        Do not use view ''id'' and rule ''id'' fields in POST /views and PUT /views/{viewId} APIs. ''id'' fields are read-only field belonging to the View entity which will be only available when you call the GET /views and GET /views/{viewId} API
+
+
+        budgetData cannot be updated using the PUT method. Please use the PATCH API for updating budgetData.
+
+
+        The update Views API allows updating details of a specific view. In case of updating SYSTEM VIEW, only name & description should be allowed to be updated where description is optional field.
+
+
+        In case of updating SYSTEM VIEW, if we pass any other parameter for update it should throw error - Updating attributes other than name and description for a system created view is not allowed.'
       operationId: updateUserView
       parameters:
       - name: viewId
@@ -248,7 +321,7 @@ paths:
     delete:
       tags:
       - View
-      summary: Envestnet Delete a specific view.
+      summary: Envestnet Delete a specific view
       description: The delete view API allows to delete a single view by passing the viewId. For success, The HTTP response code is 204 (Success without content).
       operationId: deleteUserView
       parameters:
@@ -280,8 +353,17 @@ paths:
     delete:
       tags:
       - View
-      summary: Envestnet Delete the specified rules for a specific view.
-      description: "The delete rules API allows you to delete one or more rules that are associated with a specific view by passing the viewId and ruleId. The HTTP response code is 204 (Success without content). <br><br>\n  Important notes-\n  <ul>\n  <li>Using this API you cannot delete all Rules of a View. Meaning if a View has 5 Rules, using this API you can delete maximum of 4 rules only. Reason- A view has no meaning without a Rule. If you want to delete all Rules, consider Deleting the views itself by calling DELETE /views/{viewId} API</li>\n  <li>Deleting rules for a default system created view is not allowed</li>\n  </ul>"
+      summary: Envestnet Delete the specified rules for a specific view
+      description: 'The delete rules API allows you to delete one or more rules that are associated with a specific view by passing the viewId and ruleId. The HTTP response code is 204 (Success without content).
+
+
+        Important notes-
+
+
+        Using this API you cannot delete all Rules of a View. Meaning if a View has 5 Rules, using this API you can delete maximum of 4 rules only. Reason- A view has no meaning without a Rule. If you want to delete all Rules, consider Deleting the views itself by calling DELETE /views/{viewId} API
+
+
+        Deleting rules for a default system created view is not allowed'
       operationId: deleteUserViewRule
       parameters:
       - name: viewId
@@ -321,8 +403,11 @@ paths:
     patch:
       tags:
       - View
-      summary: Envestnet Patch the specified budget data for a specific view.
-      description: Update any of the existing entities within budgetData or add new budget for any of the supported type to an existing VIEW. <br><br> <Strong>Note:</strong> Do not pass rules for a VIEW when updating budgetData.
+      summary: Envestnet Patch the specified budget data for a specific view
+      description: 'Update any of the existing entities within budgetData or add new budget for any of the supported type to an existing VIEW.
+
+
+        Note: Do not pass rules for a VIEW when updating budgetData.'
       operationId: patchUserViewbudget
       parameters:
       - name: viewId
@@ -360,7 +445,7 @@ paths:
     delete:
       tags:
       - View
-      summary: Envestnet Delete the specified budget data for a specific view.
+      summary: Envestnet Delete the specified budget data for a specific view
       description: The delete budget data API allows you to delete one or more budget data based on the requested params.
       operationId: deleteUserViewbudget
       parameters:
@@ -428,8 +513,17 @@ paths:
     get:
       tags:
       - View
-      summary: Envestnet Fetch all the transactions for a specific View.
-      description: The GET Views transactions API allows you to fetch all the transactions for a specific view by passing the viewId.<br><br> A View is a logical collection of several rules. This API fetches all the transactions that qualify the rules associated with a specific view.<br><br> This API supports pagination. Each page can contain a maximum of 500 transactions. Use 'skip' and 'top' fields to enable pagination in response.<br><br> Supported containers - bank and card
+      summary: Envestnet Fetch all the transactions for a specific View
+      description: 'The GET Views transactions API allows you to fetch all the transactions for a specific view by passing the viewId.
+
+
+        A View is a logical collection of several rules. This API fetches all the transactions that qualify the rules associated with a specific view.
+
+
+        This API supports pagination. Each page can contain a maximum of 500 transactions. Use ''skip'' and ''top'' fields to enable pagination in response.
+
+
+        Supported containers - bank and card'
       operationId: getUserViewTransactions
       parameters:
       - name: viewId
@@ -632,8 +726,14 @@ paths:
     get:
       tags:
       - View
-      summary: Envestnet Fetch all the applicable peer benchmarking data.
-      description: API allows you to view peer benchmarking data for a specific view.<br><br> Peer Benchmarking summary data is returned for each category and merchant mentioned in the view INCLUDE rules for the specified View. Median Spend Amount is returned for each of City/CBSA (If Available), State (If Available) and National (Always).<br><br> The Peer Benchmarking attributes are returned only when the global key configuration key 'isPeerBenchmarkEnabled' is TRUE for the customer.
+      summary: Envestnet Fetch all the applicable peer benchmarking data
+      description: 'API allows you to view peer benchmarking data for a specific view.
+
+
+        Peer Benchmarking summary data is returned for each category and merchant mentioned in the view INCLUDE rules for the specified View. Median Spend Amount is returned for each of City/CBSA (If Available), State (If Available) and National (Always).
+
+
+        The Peer Benchmarking attributes are returned only when the global key configuration key ''isPeerBenchmarkEnabled'' is TRUE for the customer.'
       operationId: getUserViewPeerData
       parameters:
       - name: viewId
@@ -688,8 +788,14 @@ paths:
     get:
       tags:
       - View
-      summary: Envestnet Fetch summary data for a specific View.
-      description: This API fetches summary details for a specific view by passing the viewId.<br /><br />This API summarizes the information and returns data credit total, debit total, and net total grouped by merchant, category, categoryType or detailCategoryId depending on the query parameter value provided.<br /><br />Use 'skip' and 'top' fields values to determine numbers of records under the details arrays . Supported containers - bank and creditCard .
+      summary: Envestnet Fetch summary data for a specific View
+      description: 'This API fetches summary details for a specific view by passing the viewId.
+
+
+        This API summarizes the information and returns data credit total, debit total, and net total grouped by merchant, category, categoryType or detailCategoryId depending on the query parameter value provided.
+
+
+        Use ''skip'' and ''top'' fields values to determine numbers of records under the details arrays . Supported containers - bank and creditCard .'
       operationId: getUserViewTransactionSummary
       parameters:
       - name: viewId
@@ -945,8 +1051,14 @@ paths:
     get:
       tags:
       - View
-      summary: Envestnet Fetch trend data for a specific View.
-      description: This API fetches trend details for a specific view by passing the viewId. <br /><br />This API summarizes the information and returns credit total,  debit total, and net total grouped by merchant, category, or  categoryType depending on the query parameter value provided. <br /><br />Use 'skip' and 'top' fields to enable pagination in  response. Supported containers - bank and creditCard .
+      summary: Envestnet Fetch trend data for a specific View
+      description: 'This API fetches trend details for a specific view by passing the viewId.
+
+
+        This API summarizes the information and returns credit total, debit total, and net total grouped by merchant, category, or categoryType depending on the query parameter value provided.
+
+
+        Use ''skip'' and ''top'' fields to enable pagination in response. Supported containers - bank and creditCard .'
       operationId: getUserViewTransactionTrends
       parameters:
       - name: viewId
@@ -1201,8 +1313,11 @@ paths:
     get:
       tags:
       - View
-      summary: Envestnet Fetch recommended Views for a user.
-      description: "This API fetches the recommended Views for a specific user. For each user, their transaction history for 90 days is considered based on which recommendations are generated. The recommendations contain meta-data as well as the exact View object that can be passed to the POST /views API endpoint to create a View.<br><br>\n  Note- The recommendationId field is used to make sure that the same view is not recommended again for the user. If you modify the recommendationId or let users edit a View made through recommendation, the recommendation service might not behave as expected."
+      summary: Envestnet Fetch recommended Views for a user
+      description: 'This API fetches the recommended Views for a specific user. For each user, their transaction history for 90 days is considered based on which recommendations are generated. The recommendations contain meta-data as well as the exact View object that can be passed to the POST /views API endpoint to create a View.
+
+
+        Note- The recommendationId field is used to make sure that the same view is not recommended again for the user. If you modify the recommendationId or let users edit a View made through recommendation, the recommendation service might not behave as expected.'
       operationId: getUserViewRecommendations
       responses:
         '200':
@@ -1230,8 +1345,11 @@ paths:
     get:
       tags:
       - View
-      summary: Envestnet Fetch BudgetSummary for specific View.
-      description: This API fetches BudgetSummarys for a specific view by passing the viewId and type. <ul><li>recommendationId, budgetData, rule are not applicable for this api.</li></ul>
+      summary: Envestnet Fetch BudgetSummary for specific View
+      description: 'This API fetches BudgetSummarys for a specific view by passing the viewId and type.
+
+
+        recommendationId, budgetData, rule are not applicable for this api.'
       operationId: getUserBudgetSummary
       parameters:
       - name: viewId
@@ -1277,25 +1395,17 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Recommendation:
+    DateRange:
+      description: The date range identified by fromDate and toDate.
       properties:
-        id:
-          type: number
-          description: The unique identifier for a user recommendation created by the system. <br><br><b>Endpoints</b> -<ul><li>GET /views/recommendations</li></ul>
-          example: 11
-        metadata:
-          $ref: '#/components/schemas/RecommendationMetadata'
-        view:
-          type: array
-          items:
-            $ref: '#/components/schemas/View'
-    ViewCreationResponse:
-      properties:
-        id:
+        fromDate:
           type: string
-          description: Identifier for the Unique BSON string for the newly created View object generated in the system.<br><br><b>Endpoints</b> -<ul><li>POST /views</li></ul>
-          readOnly: true
-          example: 5e7885993cd8e328288522f7
+          description: For a View, fromDate is used to fetch transactions that are aggregated on or after the specified date. This is a mandatory attribute for all rules, except rules that contain transactionId. <br><br>Expected format - yyyy-MM-dd. Note- The date is in UTC timezone instead of Local timezone.<br><br>Endpoints:<ul><li>GET /views</li><li>GET /views/recommendation</li><li>POST /views</li><li>PUT /views</li></ul>
+          example: '2020-05-23'
+        toDate:
+          type: string
+          description: For a View, toDate is used to fetch transactions that are aggregated on or before the specified date, but after the fromDate. This is a  mandatory attribute for all rules, except rules that contain transactionId. <br><br>Expected format - yyyy-MM-dd.Note- The date is in UTC timezone instead of Local timezone.<br><br>Endpoints:<ul><li>GET /views</li><li>GET /views/recommendation</li><li>POST /views</li><li>PUT /views</li></ul>
+          example: '2020-05-23'
     RecommendationDateRange:
       properties:
         fromDate:
@@ -1306,45 +1416,107 @@ components:
           type: string
           description: to date for Recommendation. <br><br>Expected format - yyyy-MM-dd'T'HH:mm:ss.Note- The date is in UTC timezone instead of Local timezone.<br><br>Endpoints:<ul><li>GET /views</li><li>GET /views/recommendation</li><li>POST /views</li><li>PUT /views</li></ul>
           example: '2020-05-23T10:40:59.000Z'
-    ViewRule:
+    PeerMerchantSummary:
+      properties:
+        name:
+          type: string
+          description: Merchant Name for which the response is returned<br><br><b>Endpoints</b> -<ul><li>GET /Views/{ViewId}/peerData</li></ul>
+          example: Netflix
+        benchmark:
+          type: array
+          items:
+            $ref: '#/components/schemas/GeographyWithDataArray'
+    Merchant:
+      description: Details about the associated merchant.
       properties:
         id:
           type: string
-          description: Unique system generated identifier for each rule. This ID can be used when calling the PUT method to update a view rule. If the ID is passed, and the rule is found, the existing rule gets updated. Else, a new rule is created with a system created ID.
-          example: 755dfc54-b50b-4471-88cd-57d040766cb6
-        name:
-          maximum: 100
-          minimum: 1
+          description: Identifier of the merchant.<br><br><b>Applicable containers</b> - bank,creditCard,investment,insurance,loan<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/transactions</li></ul>
+          readOnly: true
+          example: centurylink-CY
+        source:
           type: string
-          description: View rule name is an optional string type field representing the name of the View Rule. When displaying the rules to a user, the names will be easier for the user to understand as opposed to IDs.
-          example: All Transactions Above $100
-        fromDate:
-          type: string
-          description: 'Essentially every View rule must have a lifespan range specified by fromDate and toDate fields.  Expected format - yyyy-MM-dd''T''HH:mm:ss. Note: Please provide the date in UTC timezone instead of Local timezone<ul><li>If a View rule has Include attribute, then the rule must have a fromDate and toDate.</li><li>If a View rule has ''exclude'' attribute, then view rule must not have fromDate and toDate.</li><li>If a View rule include/exclude contains ''TransactionId'' attribute, then view rule must not have fromDate and toDate.</li></ul> <br><Endpoints:<ul><li>GET /views</li><li>GET /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>'
-          example: '2020-05-23T10:40:59.000Z'
-        toDate:
-          type: string
-          description: 'Essentially every View rule must have a lifespan range specified by fromDate and toDate fields.  Expected format - yyyy-MM-dd''T''HH:mm:ss.Note: Please provide the date in UTC timezone instead of Local timezone<ul><li>If a View rule has Include attribute, then the rule must have a fromDate and toDate.</li><li>If a View rule has ''exclude'' attribute, then view rule must not have fromDate and toDate.</li><li>If a View rule include/exclude contains ''TransactionId'' attribute, then view rule must not have fromDate and toDate.</li></ul> <br>Endpoints:<ul><li>GET /views</li><li>GET /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>'
-          example: '2020-05-23T10:40:59.000Z'
-        type:
-          type: string
-          description: 'View.rule.type describes the ViewRule''s type - INCOME or EXPENSE or TRANSFER.  This is synonymous with the type field of the transaction category resource. Each Transaction has a categoryId and each categoryId has a categoryType associated to it. The supported values for Transaction category and categoryType are provided by the GET transactions/categories API.<br><br>Note: There is a validation check in POST /views and PUT /views API where if you are passing categoryId in the view.rule.include or view.rule.exclude Request body. The validation expects that the categoryId''s categoryType should match with view.rule.type<br><br>Endpoints:<ul><li>GET /views</li><li>GET /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>'
+          description: The source through which merchant information is retrieved.<br><br><b>Applicable containers</b> - bank,creditCard,investment,insurance,loan<br><br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/transactions</li></ul>
+          readOnly: true
+          example: FACTUAL
           enum:
-          - INCOME
-          - EXPENSE
-          - TRANSFER
-        baseType:
-          type: array
-          description: "baseType for a Transaction identifies whether it was deposited to your account (CREDIT) or taken out (DEBIT). Specifying baseType for a rule will filter out transactions based on either CREDIT or DEBIT or both.<br>\n  <br>Note: baseType is not mandatory to be passed. It's useful for specific situations like tracking refunds. Combine \"type\" = EXPENSE and \"baseType\" = CREDIT to fetch only refunds.<br><br>Endpoints:<ul><li>GET /views</li><li>GET\n    /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>\nexample: CREDIT"
-          items:
-            type: string
-            enum:
-            - CREDIT
-            - DEBIT
-        include:
-          $ref: '#/components/schemas/ViewRuleInclude'
-        exclude:
-          $ref: '#/components/schemas/ViewRuleExclude'
+          - YODLEE
+          - FACTUAL
+        name:
+          type: string
+          description: The name of the merchant.<br><br><b>Applicable containers</b> - bank,creditCard,investment,insurance,loan<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/transactions</li></ul>
+          readOnly: true
+          example: CenturyLink
+        address:
+          $ref: '#/components/schemas/MerchantAddress'
+    Money:
+      properties:
+        amount:
+          type: number
+          description: '"amount" field is a child of Generic Yodlee model "Money". Amount should be a Floating point number.'
+          format: double
+          example: 100.01
+        currency:
+          type: string
+          description: '"currency" field is a child of Generic Yodlee model "Money". Currency is a String with a predefined value(s) such as USD.'
+          example: USD
+          enum:
+          - USD
+        convertedAmount:
+          type: number
+          description: '"convertedAmount" field is a child of Generic Yodlee model "Money".  This field should be a Floating point number. It contains value of "amount" i.e. Money child field multiplied by the conversion rate derived from the currency mentioned in field "covertedCurrency"'
+          format: double
+          example: 7500.01
+        convertedCurrency:
+          type: string
+          description: '"convertedCurrency" field is a child of Generic Yodlee model "Money". This field contains preferred currency of user for that entity and is a String with a predefined value(s) such as INR.'
+          example: INR
+          enum:
+          - INR
+    BudgetDetail:
+      properties:
+        creditTotal:
+          description: credit total for the budget.
+          allOf:
+          - $ref: '#/components/schemas/Money'
+        debitTotal:
+          description: debit total for the budget.
+          allOf:
+          - $ref: '#/components/schemas/Money'
+        incomeBudget:
+          description: Set a budget for the overall income budget.
+          allOf:
+          - $ref: '#/components/schemas/Money'
+        remaingIncomeBudget:
+          description: Set a budget for the remaining expense budget.
+          allOf:
+          - $ref: '#/components/schemas/Money'
+        expenseBudget:
+          description: Set a budget for the overall expense budget.
+          allOf:
+          - $ref: '#/components/schemas/Money'
+        remaingExpenseBudget:
+          description: Set a budget for the remaining expense budget.
+          allOf:
+          - $ref: '#/components/schemas/Money'
+        typeName:
+          type: string
+          description: TypeName identifies the merchant name.
+        typeId:
+          type: number
+          description: TypeId identifies the category or detailcategory id.'
+        remainingIncomeBudgetPercent:
+          type: number
+          description: '''percentage of remaining Income budget'''
+        remaininExpenseBudgetPercent:
+          type: number
+          description: '''percentage of remaining Expense budget'''
+    RecommendationResponse:
+      properties:
+        recommendation:
+          type: string
+          allOf:
+          - $ref: '#/components/schemas/Recommendation'
     ViewRuleExclude:
       properties:
         merchantName:
@@ -1429,66 +1601,24 @@ components:
           - WI
           items:
             type: string
-    TransactionSummaryResponse:
+    Error:
+      required:
+      - errorCode
+      - referenceCode
+      - errorMessage
       properties:
-        summary:
-          $ref: '#/components/schemas/TransactionSummary'
-    peerDetailCategorySummary:
-      properties:
-        id:
+        errorCode:
           type: string
-          description: Category Id of the category belonging to peer for which the response is returned<br><br><b>Endpoints</b> -<ul><li>GET /Views/{ViewId}/peerData</li></ul>
-          example: '35'
-        name:
+        referenceCode:
           type: string
-          description: Category Name for which the response is returned<br><br><b>Endpoints</b> -<ul><li>GET /Views/{ViewId}/peerData</li></ul>
-          example: Utilities
-        benchmark:
-          type: array
-          items:
-            $ref: '#/components/schemas/GeographyWithDataArray'
+        errorMessage:
+          type: string
     PeerDataResponse:
       properties:
         peerData:
           type: string
           allOf:
           - $ref: '#/components/schemas/PeerData'
-    GeoData:
-      properties:
-        level:
-          type: string
-          description: Geography level i.e. one of City/State/National of the peer for which the response is returned<br><br><b>Endpoints</b> -<ul><li>GET /Views/{ViewId}/peerData</li></ul>
-          example: NATIONAL
-        value:
-          type: string
-          description: Value corresponding to the Geography level i.e. one of City/State/National of the peer for which the response is returned<br><br><b>Endpoints</b> -<ul><li>GET /Views/{ViewId}/peerData</li></ul>
-          example: US
-    GeographyWithDataArray:
-      properties:
-        benchmarkLevel:
-          type: string
-          description: describes benchmark level.
-          example: peer
-        geo:
-          $ref: '#/components/schemas/GeoData'
-        metric:
-          $ref: '#/components/schemas/PeerDataAtGeo'
-    BudgetInfo:
-      properties:
-        incomeBudget:
-          description: Set a budget for the overall income budget.
-          allOf:
-          - $ref: '#/components/schemas/Money'
-        expenseBudget:
-          description: Set a budget for the overall expense budget.
-          allOf:
-          - $ref: '#/components/schemas/Money'
-        typeName:
-          type: string
-          description: TypeName identifies the merchant name.
-        typeId:
-          type: number
-          description: TypeId identifies the category or detailcategory id.
     ViewRuleInclude:
       properties:
         merchantName:
@@ -1576,112 +1706,6 @@ components:
             type: string
         amountRange:
           $ref: '#/components/schemas/AmountRange'
-    DateRange:
-      description: The date range identified by fromDate and toDate.
-      properties:
-        fromDate:
-          type: string
-          description: For a View, fromDate is used to fetch transactions that are aggregated on or after the specified date. This is a mandatory attribute for all rules, except rules that contain transactionId. <br><br>Expected format - yyyy-MM-dd. Note- The date is in UTC timezone instead of Local timezone.<br><br>Endpoints:<ul><li>GET /views</li><li>GET /views/recommendation</li><li>POST /views</li><li>PUT /views</li></ul>
-          example: '2020-05-23'
-        toDate:
-          type: string
-          description: For a View, toDate is used to fetch transactions that are aggregated on or before the specified date, but after the fromDate. This is a  mandatory attribute for all rules, except rules that contain transactionId. <br><br>Expected format - yyyy-MM-dd.Note- The date is in UTC timezone instead of Local timezone.<br><br>Endpoints:<ul><li>GET /views</li><li>GET /views/recommendation</li><li>POST /views</li><li>PUT /views</li></ul>
-          example: '2020-05-23'
-    Description:
-      properties:
-        original:
-          type: string
-          description: Original transaction description as it appears at the FI site.<br><br><b>Applicable containers</b> - bank, creditCard, insurance, loan, investment<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/transactions</li></ul>
-          readOnly: true
-          example: BILL PAY COMCAST CABLE CO ON-LINE xxxxxxxxxxx00000 ON 00-00
-        simple:
-          type: string
-          description: 'The transaction description that appears at the FI site may not be self-explanatory, i.e., the source, purpose of the transaction may not be evident. Yodlee attempts to simplify and make the transaction meaningful to the consumer, and this simplified transaction description is provided in the simple description field.Note: The simple description field is available only in the United States, Canada, United Kingdom, and India.<br><br><b>Applicable containers</b>: bank, creditCard, insurance, loan, investment<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/transactions</li></ul>'
-          readOnly: true
-          example: BILL PAY COMCAST CABLE CO ON-LINE xxxxxxxxxxx00000 ON 00-00
-        consumer:
-          type: string
-          description: The description of the transaction as defined by the consumer. The consumer can define or provide more details of the transaction in this field.<br><br><b>Applicable containers</b> - bank, creditCard, insurance, loan,investment<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/transactions</li></ul>
-          example: Payment to Comcast
-    PeerDataAtGeo:
-      properties:
-        numberOfPeers:
-          type: integer
-          description: Median number of the peers in the same income range for which the response is returned<br><br><b>Endpoints</b> -<ul><li>GET /Views/{ViewId}/peerData</li></ul>
-          format: int64
-          example: 1654
-        spendAmount:
-          description: The median amount spent by the peers in that segment for the specified category or merchant <br>
-          allOf:
-          - $ref: '#/components/schemas/Money'
-    TransactionTrendDetails:
-      type: object
-      title: TransactionSummaryDetails
-      properties:
-        date:
-          description: date
-          readOnly: true
-          type: string
-          example: '2020-04-01'
-        creditTotal:
-          $ref: '#/components/schemas/Money'
-        debitTotal:
-          $ref: '#/components/schemas/Money'
-        netTotal:
-          $ref: '#/components/schemas/Money'
-        transactionCount:
-          format: int64
-          readOnly: true
-          type: integer
-        transactionLink:
-          allOf:
-          - $ref: '#/components/schemas/TransactionTrendSummaryLink'
-    TransactionTrend:
-      type: object
-      title: TransactionTrend
-      properties:
-        type:
-          readOnly: true
-          type: string
-          description: type identifies the entity based on which the details are grouped by
-          enum:
-          - category
-          - merchant
-          - categoryType
-          - detailedCategory
-          - state
-          - city
-        creditTotal:
-          $ref: '#/components/schemas/Money'
-        debitTotal:
-          $ref: '#/components/schemas/Money'
-        netTotal:
-          $ref: '#/components/schemas/Money'
-        transactionCount:
-          format: int64
-          readOnly: true
-          type: integer
-        summary:
-          readOnly: true
-          type: array
-          items:
-            $ref: '#/components/schemas/SummaryDetails'
-    BudgetSummary:
-      properties:
-        type:
-          type: string
-          description: Set budget at an entity level. This entity can be a merchant, a master-level category, or a detail-level-category.
-          enum:
-          - VIEW,MERCHANT,CATEGORY,DETAIL_CATEGORY
-        dateRange:
-          allOf:
-          - $ref: '#/components/schemas/DateRange'
-          readOnly: true
-        budgetDetail:
-          type: array
-          description: An BudgetDetail object containing budget details.
-          items:
-            $ref: '#/components/schemas/BudgetDetail'
     Views:
       properties:
         View:
@@ -1700,262 +1724,6 @@ components:
           type: string
           description: URL to access the endpoint.
           example: /views/609d08858e420a3635dec2f6/transactions?fromDate=2021-04-12&toDate=2021-05-13&categoryId=7
-    BudgetInfos:
-      properties:
-        type:
-          type: string
-          description: Set budget at an entity level. This entity can be a merchant, a master-level category, or a detail-level-category.
-          enum:
-          - VIEW,MERCHANT,CATEGORY,DETAIL_CATEGORY
-        budgetInfo:
-          type: array
-          description: An budgetInfo object containing budget details.
-          items:
-            $ref: '#/components/schemas/BudgetInfo'
-    TransactionSummary:
-      type: object
-      title: TransactionSummary
-      properties:
-        type:
-          readOnly: true
-          type: string
-          description: type identifies the entity based on which the details are grouped by
-          enum:
-          - category
-          - merchant
-          - categoryType
-          - detailedCategory
-          - state
-          - city
-        average:
-          $ref: '#/components/schemas/Money'
-        creditTotal:
-          $ref: '#/components/schemas/Money'
-        debitTotal:
-          $ref: '#/components/schemas/Money'
-        netTotal:
-          $ref: '#/components/schemas/Money'
-        details:
-          readOnly: true
-          type: array
-          items:
-            $ref: '#/components/schemas/TransactionSummaryDetails'
-        transactionCount:
-          format: int64
-          readOnly: true
-          type: integer
-    Money:
-      properties:
-        amount:
-          type: number
-          description: '"amount" field is a child of Generic Yodlee model "Money". Amount should be a Floating point number.'
-          format: double
-          example: 100.01
-        currency:
-          type: string
-          description: '"currency" field is a child of Generic Yodlee model "Money". Currency is a String with a predefined value(s) such as USD.'
-          example: USD
-          enum:
-          - USD
-        convertedAmount:
-          type: number
-          description: '"convertedAmount" field is a child of Generic Yodlee model "Money".  This field should be a Floating point number. It contains value of "amount" i.e. Money child field multiplied by the conversion rate derived from the currency mentioned in field "covertedCurrency"'
-          format: double
-          example: 7500.01
-        convertedCurrency:
-          type: string
-          description: '"convertedCurrency" field is a child of Generic Yodlee model "Money". This field contains preferred currency of user for that entity and is a String with a predefined value(s) such as INR.'
-          example: INR
-          enum:
-          - INR
-    Geography:
-      properties:
-        state:
-          type: string
-          description: State name of the peer for which the response is returned<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/peerData</li></ul>
-          example: AK
-        city:
-          type: string
-          description: city name of the peer for which the response is returned. returned<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/peerData</li></ul>
-          example: Eielson Afb
-    RecommendationResponse:
-      properties:
-        recommendation:
-          type: string
-          allOf:
-          - $ref: '#/components/schemas/Recommendation'
-    RecommendationMetadata:
-      properties:
-        duration:
-          $ref: '#/components/schemas/RecommendationDateRange'
-        totalTransaction:
-          type: number
-          description: total number of transactions evaluated to generate a particular recommendation for user.
-          example: 211
-        totalAmount:
-          $ref: '#/components/schemas/Money'
-    Transactions:
-      properties:
-        transaction:
-          type: array
-          items:
-            $ref: '#/components/schemas/Transaction'
-    TransactionTrendResponse:
-      properties:
-        transactionTrends:
-          allOf:
-          - $ref: '#/components/schemas/TransactionTrend'
-    PeerData:
-      properties:
-        timePeriod:
-          type: string
-          description: Duration considered for generating the peer bechmarks across applicable categories and merchants for the view.<br> <br> The default value is LAST_MONTH for this parameter i.e. previous month's data is considered when this parameter is not passed.<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/peerData</li></ul>
-          example: LAST_MONTH
-        monthYear:
-          type: string
-          description: month and year information on when the benchmark values are computed returned<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/peerData</li></ul>
-          example: APRIL-2020
-        fromDate:
-          type: string
-          description: Start date in UTC format - yyyy-MM-dd'T'HH:mm:ss derived from the timePeriod query parameter for which the response is returned<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/peerData</li></ul>
-          example: 2020-04-0107:53:20
-        toDate:
-          type: string
-          description: To date in UTC format - yyyy-MM-dd'T'HH:mm:ss derived from the timePeriod query parameter for which the response is returned<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/peerData</li></ul>
-          example: 2020-04-3007:53:20
-        segement:
-          $ref: '#/components/schemas/SegementationParameter'
-        peerCategorySummary:
-          type: array
-          items:
-            $ref: '#/components/schemas/peerDetailCategorySummary'
-        peerDetailCategorySummary:
-          type: array
-          items:
-            $ref: '#/components/schemas/peerDetailCategorySummary'
-        peerMerchantSummary:
-          type: array
-          items:
-            $ref: '#/components/schemas/PeerMerchantSummary'
-    SegementationParameter:
-      properties:
-        incomeRange:
-          type: string
-          description: Income range of the user in format - min_income - max_income for which the response is returned<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/peerData</li></ul>
-          example: $150K+
-        geo:
-          $ref: '#/components/schemas/Geography'
-    TransactionLink:
-      description: Reference path link to fetch more information about the specific transaction.
-      properties:
-        method:
-          type: string
-          description: The method to use while calling the URL
-          example: GET
-        url:
-          type: string
-          description: URL to access the endpoint.
-          example: /transaction?merchantName=Amazon&skip=5&orderBy=amount&fromDate=2021-01-01&toDate=2021-01-31
-    ViewResponse:
-      properties:
-        view:
-          type: array
-          items:
-            $ref: '#/components/schemas/ViewCreationResponse'
-    BudgetDetail:
-      properties:
-        creditTotal:
-          description: credit total for the budget.
-          allOf:
-          - $ref: '#/components/schemas/Money'
-        debitTotal:
-          description: debit total for the budget.
-          allOf:
-          - $ref: '#/components/schemas/Money'
-        incomeBudget:
-          description: Set a budget for the overall income budget.
-          allOf:
-          - $ref: '#/components/schemas/Money'
-        remaingIncomeBudget:
-          description: Set a budget for the remaining expense budget.
-          allOf:
-          - $ref: '#/components/schemas/Money'
-        expenseBudget:
-          description: Set a budget for the overall expense budget.
-          allOf:
-          - $ref: '#/components/schemas/Money'
-        remaingExpenseBudget:
-          description: Set a budget for the remaining expense budget.
-          allOf:
-          - $ref: '#/components/schemas/Money'
-        typeName:
-          type: string
-          description: TypeName identifies the merchant name.
-        typeId:
-          type: number
-          description: TypeId identifies the category or detailcategory id.'
-        remainingIncomeBudgetPercent:
-          type: number
-          description: '''percentage of remaining Income budget'''
-        remaininExpenseBudgetPercent:
-          type: number
-          description: '''percentage of remaining Expense budget'''
-    SummaryDetails:
-      type: object
-      title: SummaryDetails
-      properties:
-        name:
-          readOnly: true
-          type: string
-          description: Identifies the name of the type selected. If type is merchant, then the name indicates merchant name. If type is category, name indicates category name.
-          example: Entertainment
-        id:
-          format: int64
-          description: unique identifier for the type. If type is category, id indicates category id.
-          readOnly: true
-          type: integer
-          example: 7
-        creditTotal:
-          $ref: '#/components/schemas/Money'
-        debitTotal:
-          $ref: '#/components/schemas/Money'
-        netTotal:
-          $ref: '#/components/schemas/Money'
-        transactionCount:
-          format: int64
-          readOnly: true
-          type: integer
-        transactionLink:
-          allOf:
-          - $ref: '#/components/schemas/TransactionTrendSummaryLink'
-        details:
-          readOnly: true
-          type: array
-          items:
-            $ref: '#/components/schemas/TransactionTrendDetails'
-    Merchant:
-      description: Details about the associated merchant.
-      properties:
-        id:
-          type: string
-          description: Identifier of the merchant.<br><br><b>Applicable containers</b> - bank,creditCard,investment,insurance,loan<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/transactions</li></ul>
-          readOnly: true
-          example: centurylink-CY
-        source:
-          type: string
-          description: The source through which merchant information is retrieved.<br><br><b>Applicable containers</b> - bank,creditCard,investment,insurance,loan<br><br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/transactions</li></ul>
-          readOnly: true
-          example: FACTUAL
-          enum:
-          - YODLEE
-          - FACTUAL
-        name:
-          type: string
-          description: The name of the merchant.<br><br><b>Applicable containers</b> - bank,creditCard,investment,insurance,loan<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/transactions</li></ul>
-          readOnly: true
-          example: CenturyLink
-        address:
-          $ref: '#/components/schemas/MerchantAddress'
     Transaction:
       required:
       - id
@@ -2217,16 +1985,6 @@ components:
           $ref: '#/components/schemas/Description'
         merchant:
           $ref: '#/components/schemas/Merchant'
-    PeerMerchantSummary:
-      properties:
-        name:
-          type: string
-          description: Merchant Name for which the response is returned<br><br><b>Endpoints</b> -<ul><li>GET /Views/{ViewId}/peerData</li></ul>
-          example: Netflix
-        benchmark:
-          type: array
-          items:
-            $ref: '#/components/schemas/GeographyWithDataArray'
     MerchantAddress:
       description: Address details of the merchant as identified by the system.
       properties:
@@ -2245,60 +2003,249 @@ components:
           description: Country code as applicable to represent the Merchant address for a given User Transaction. <br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/transactions</li></ul>
           readOnly: true
           example: US
-    AmountRange:
+    RecommendationMetadata:
       properties:
-        fromAmount:
-          minimum: 0
+        duration:
+          $ref: '#/components/schemas/RecommendationDateRange'
+        totalTransaction:
           type: number
-          description: 'For a View, fromAmount is used to fetch aggregated transactions where the posted transaction amount is equal to or greater than the fromAmount. <br><br>Example: if fromAmount=100.00 in the View Rule and User calls GET /views/{viewId}/transactions API then only those User transactions will be returned in response, whose Transaction Amount >= $100 <br><br>Note- Currently AmountRange fields are only supported for ''include'' View Rules and not supported for ''exclude'' View Rules<br><br> <b>Endpoints</b> -<ul><li>GET /views</li><li>GET /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>'
-          format: double
-          example: 100
-        toAmount:
-          maximum: 1000000
-          type: number
-          description: For a View, toAmount is used to fetch aggregated transactions where the posted transaction amount is equal to or less than the fromAmount. <br><br>Example 1 - if toAmount=100.00 in the View Rule and User calls GET /views/{viewId}/transactions API then only those User transactions will be returned in response, whose Transaction Amount <= $100 <br><br>Example 2 - if toAmount=100.00 and fromAmount=10.00 in the  View Rule and User calls GET /views/{viewId}/transactions API then  only those User transactions will be returned in response, where 10 <= Transaction Amount <= 100 <br><br>Note- Currently AmountRange fields are only supported for 'include' View Rules and not supported for 'exclude' View Rules<br><br> <b>Endpoints</b> -<ul><li>GET /views</li><li>GET /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>
-          format: double
-          example: 1000
-        currency:
+          description: total number of transactions evaluated to generate a particular recommendation for user.
+          example: 211
+        totalAmount:
+          $ref: '#/components/schemas/Money'
+    BudgetInfos:
+      properties:
+        type:
           type: string
-          description: Currency is a String with a predefined value(s) such as USD. Currently, only USD is supported by Yodlee insights. <br><br><b>Endpoints</b> -<ul><li>GET /views</li><li>GET /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>
+          description: Set budget at an entity level. This entity can be a merchant, a master-level category, or a detail-level-category.
           enum:
-          - USD
-    TransactionSummaryDetails:
+          - VIEW,MERCHANT,CATEGORY,DETAIL_CATEGORY
+        budgetInfo:
+          type: array
+          description: An budgetInfo object containing budget details.
+          items:
+            $ref: '#/components/schemas/BudgetInfo'
+    TransactionTrendDetails:
       type: object
       title: TransactionSummaryDetails
       properties:
+        date:
+          description: date
+          readOnly: true
+          type: string
+          example: '2020-04-01'
         creditTotal:
           $ref: '#/components/schemas/Money'
         debitTotal:
           $ref: '#/components/schemas/Money'
         netTotal:
           $ref: '#/components/schemas/Money'
-        average:
-          $ref: '#/components/schemas/Money'
-        percentage:
-          format: int64
-          readOnly: true
-          type: integer
-          description: percentage calculated as (groupCreditTotal - groupDebitToal) / (creditTotal - debitTotal) * 100
-        name:
-          readOnly: true
-          type: string
-          description: Identifies the name of the type selected. If type is merchant, then the name indicates merchant name. If type is category, name indicates category name.
-        id:
-          format: int64
-          description: unique identifier for the type. If type is category, id indicates category id.
-          readOnly: true
-          type: integer
         transactionCount:
           format: int64
           readOnly: true
           type: integer
         transactionLink:
+          allOf:
+          - $ref: '#/components/schemas/TransactionTrendSummaryLink'
+    GeoData:
+      properties:
+        level:
+          type: string
+          description: Geography level i.e. one of City/State/National of the peer for which the response is returned<br><br><b>Endpoints</b> -<ul><li>GET /Views/{ViewId}/peerData</li></ul>
+          example: NATIONAL
+        value:
+          type: string
+          description: Value corresponding to the Geography level i.e. one of City/State/National of the peer for which the response is returned<br><br><b>Endpoints</b> -<ul><li>GET /Views/{ViewId}/peerData</li></ul>
+          example: US
+    BudgetInfo:
+      properties:
+        incomeBudget:
+          description: Set a budget for the overall income budget.
+          allOf:
+          - $ref: '#/components/schemas/Money'
+        expenseBudget:
+          description: Set a budget for the overall expense budget.
+          allOf:
+          - $ref: '#/components/schemas/Money'
+        typeName:
+          type: string
+          description: TypeName identifies the merchant name.
+        typeId:
+          type: number
+          description: TypeId identifies the category or detailcategory id.
+    SummaryDetails:
+      type: object
+      title: SummaryDetails
+      properties:
+        name:
           readOnly: true
           type: string
+          description: Identifies the name of the type selected. If type is merchant, then the name indicates merchant name. If type is category, name indicates category name.
+          example: Entertainment
+        id:
+          format: int64
+          description: unique identifier for the type. If type is category, id indicates category id.
+          readOnly: true
+          type: integer
+          example: 7
+        creditTotal:
+          $ref: '#/components/schemas/Money'
+        debitTotal:
+          $ref: '#/components/schemas/Money'
+        netTotal:
+          $ref: '#/components/schemas/Money'
+        transactionCount:
+          format: int64
+          readOnly: true
+          type: integer
+        transactionLink:
           allOf:
-          - $ref: '#/components/schemas/TransactionLink'
+          - $ref: '#/components/schemas/TransactionTrendSummaryLink'
+        details:
+          readOnly: true
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionTrendDetails'
+    PeerDataAtGeo:
+      properties:
+        numberOfPeers:
+          type: integer
+          description: Median number of the peers in the same income range for which the response is returned<br><br><b>Endpoints</b> -<ul><li>GET /Views/{ViewId}/peerData</li></ul>
+          format: int64
+          example: 1654
+        spendAmount:
+          description: The median amount spent by the peers in that segment for the specified category or merchant <br>
+          allOf:
+          - $ref: '#/components/schemas/Money'
+    SegementationParameter:
+      properties:
+        incomeRange:
+          type: string
+          description: Income range of the user in format - min_income - max_income for which the response is returned<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/peerData</li></ul>
+          example: $150K+
+        geo:
+          $ref: '#/components/schemas/Geography'
+    ViewRule:
+      properties:
+        id:
+          type: string
+          description: Unique system generated identifier for each rule. This ID can be used when calling the PUT method to update a view rule. If the ID is passed, and the rule is found, the existing rule gets updated. Else, a new rule is created with a system created ID.
+          example: 755dfc54-b50b-4471-88cd-57d040766cb6
+        name:
+          maximum: 100
+          minimum: 1
+          type: string
+          description: View rule name is an optional string type field representing the name of the View Rule. When displaying the rules to a user, the names will be easier for the user to understand as opposed to IDs.
+          example: All Transactions Above $100
+        fromDate:
+          type: string
+          description: 'Essentially every View rule must have a lifespan range specified by fromDate and toDate fields.  Expected format - yyyy-MM-dd''T''HH:mm:ss. Note: Please provide the date in UTC timezone instead of Local timezone<ul><li>If a View rule has Include attribute, then the rule must have a fromDate and toDate.</li><li>If a View rule has ''exclude'' attribute, then view rule must not have fromDate and toDate.</li><li>If a View rule include/exclude contains ''TransactionId'' attribute, then view rule must not have fromDate and toDate.</li></ul> <br><Endpoints:<ul><li>GET /views</li><li>GET /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>'
+          example: '2020-05-23T10:40:59.000Z'
+        toDate:
+          type: string
+          description: 'Essentially every View rule must have a lifespan range specified by fromDate and toDate fields.  Expected format - yyyy-MM-dd''T''HH:mm:ss.Note: Please provide the date in UTC timezone instead of Local timezone<ul><li>If a View rule has Include attribute, then the rule must have a fromDate and toDate.</li><li>If a View rule has ''exclude'' attribute, then view rule must not have fromDate and toDate.</li><li>If a View rule include/exclude contains ''TransactionId'' attribute, then view rule must not have fromDate and toDate.</li></ul> <br>Endpoints:<ul><li>GET /views</li><li>GET /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>'
+          example: '2020-05-23T10:40:59.000Z'
+        type:
+          type: string
+          description: 'View.rule.type describes the ViewRule''s type - INCOME or EXPENSE or TRANSFER.  This is synonymous with the type field of the transaction category resource. Each Transaction has a categoryId and each categoryId has a categoryType associated to it. The supported values for Transaction category and categoryType are provided by the GET transactions/categories API.<br><br>Note: There is a validation check in POST /views and PUT /views API where if you are passing categoryId in the view.rule.include or view.rule.exclude Request body. The validation expects that the categoryId''s categoryType should match with view.rule.type<br><br>Endpoints:<ul><li>GET /views</li><li>GET /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>'
+          enum:
+          - INCOME
+          - EXPENSE
+          - TRANSFER
+        baseType:
+          type: array
+          description: "baseType for a Transaction identifies whether it was deposited to your account (CREDIT) or taken out (DEBIT). Specifying baseType for a rule will filter out transactions based on either CREDIT or DEBIT or both.<br>\n  <br>Note: baseType is not mandatory to be passed. It's useful for specific situations like tracking refunds. Combine \"type\" = EXPENSE and \"baseType\" = CREDIT to fetch only refunds.<br><br>Endpoints:<ul><li>GET /views</li><li>GET\n    /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>\nexample: CREDIT"
+          items:
+            type: string
+            enum:
+            - CREDIT
+            - DEBIT
+        include:
+          $ref: '#/components/schemas/ViewRuleInclude'
+        exclude:
+          $ref: '#/components/schemas/ViewRuleExclude'
+    ViewResponse:
+      properties:
+        view:
+          type: array
+          items:
+            $ref: '#/components/schemas/ViewCreationResponse'
+    GeographyWithDataArray:
+      properties:
+        benchmarkLevel:
+          type: string
+          description: describes benchmark level.
+          example: peer
+        geo:
+          $ref: '#/components/schemas/GeoData'
+        metric:
+          $ref: '#/components/schemas/PeerDataAtGeo'
+    Transactions:
+      properties:
+        transaction:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transaction'
+    BudgetSummary:
+      properties:
+        type:
+          type: string
+          description: Set budget at an entity level. This entity can be a merchant, a master-level category, or a detail-level-category.
+          enum:
+          - VIEW,MERCHANT,CATEGORY,DETAIL_CATEGORY
+        dateRange:
+          allOf:
+          - $ref: '#/components/schemas/DateRange'
+          readOnly: true
+        budgetDetail:
+          type: array
+          description: An BudgetDetail object containing budget details.
+          items:
+            $ref: '#/components/schemas/BudgetDetail'
+    Recommendation:
+      properties:
+        id:
+          type: number
+          description: The unique identifier for a user recommendation created by the system. <br><br><b>Endpoints</b> -<ul><li>GET /views/recommendations</li></ul>
+          example: 11
+        metadata:
+          $ref: '#/components/schemas/RecommendationMetadata'
+        view:
+          type: array
+          items:
+            $ref: '#/components/schemas/View'
+    TransactionSummary:
+      type: object
+      title: TransactionSummary
+      properties:
+        type:
+          readOnly: true
+          type: string
+          description: type identifies the entity based on which the details are grouped by
+          enum:
+          - category
+          - merchant
+          - categoryType
+          - detailedCategory
+          - state
+          - city
+        average:
+          $ref: '#/components/schemas/Money'
+        creditTotal:
+          $ref: '#/components/schemas/Money'
+        debitTotal:
+          $ref: '#/components/schemas/Money'
+        netTotal:
+          $ref: '#/components/schemas/Money'
+        details:
+          readOnly: true
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionSummaryDetails'
+        transactionCount:
+          format: int64
+          readOnly: true
+          type: integer
     View:
       properties:
         name:
@@ -2366,59 +2313,190 @@ components:
           description: Array of budget Summary.
           items:
             $ref: '#/components/schemas/BudgetSummary'
-    Error:
-      required:
-      - errorCode
-      - referenceCode
-      - errorMessage
+    AmountRange:
       properties:
-        errorCode:
+        fromAmount:
+          minimum: 0
+          type: number
+          description: 'For a View, fromAmount is used to fetch aggregated transactions where the posted transaction amount is equal to or greater than the fromAmount. <br><br>Example: if fromAmount=100.00 in the View Rule and User calls GET /views/{viewId}/transactions API then only those User transactions will be returned in response, whose Transaction Amount >= $100 <br><br>Note- Currently AmountRange fields are only supported for ''include'' View Rules and not supported for ''exclude'' View Rules<br><br> <b>Endpoints</b> -<ul><li>GET /views</li><li>GET /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>'
+          format: double
+          example: 100
+        toAmount:
+          maximum: 1000000
+          type: number
+          description: For a View, toAmount is used to fetch aggregated transactions where the posted transaction amount is equal to or less than the fromAmount. <br><br>Example 1 - if toAmount=100.00 in the View Rule and User calls GET /views/{viewId}/transactions API then only those User transactions will be returned in response, whose Transaction Amount <= $100 <br><br>Example 2 - if toAmount=100.00 and fromAmount=10.00 in the  View Rule and User calls GET /views/{viewId}/transactions API then  only those User transactions will be returned in response, where 10 <= Transaction Amount <= 100 <br><br>Note- Currently AmountRange fields are only supported for 'include' View Rules and not supported for 'exclude' View Rules<br><br> <b>Endpoints</b> -<ul><li>GET /views</li><li>GET /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>
+          format: double
+          example: 1000
+        currency:
           type: string
-        referenceCode:
+          description: Currency is a String with a predefined value(s) such as USD. Currently, only USD is supported by Yodlee insights. <br><br><b>Endpoints</b> -<ul><li>GET /views</li><li>GET /views/{viewId}</li><li>POST /views</li><li>PUT /views</li></ul>
+          enum:
+          - USD
+    TransactionSummaryDetails:
+      type: object
+      title: TransactionSummaryDetails
+      properties:
+        creditTotal:
+          $ref: '#/components/schemas/Money'
+        debitTotal:
+          $ref: '#/components/schemas/Money'
+        netTotal:
+          $ref: '#/components/schemas/Money'
+        average:
+          $ref: '#/components/schemas/Money'
+        percentage:
+          format: int64
+          readOnly: true
+          type: integer
+          description: percentage calculated as (groupCreditTotal - groupDebitToal) / (creditTotal - debitTotal) * 100
+        name:
+          readOnly: true
           type: string
-        errorMessage:
+          description: Identifies the name of the type selected. If type is merchant, then the name indicates merchant name. If type is category, name indicates category name.
+        id:
+          format: int64
+          description: unique identifier for the type. If type is category, id indicates category id.
+          readOnly: true
+          type: integer
+        transactionCount:
+          format: int64
+          readOnly: true
+          type: integer
+        transactionLink:
+          readOnly: true
           type: string
+          allOf:
+          - $ref: '#/components/schemas/TransactionLink'
+    Geography:
+      properties:
+        state:
+          type: string
+          description: State name of the peer for which the response is returned<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/peerData</li></ul>
+          example: AK
+        city:
+          type: string
+          description: city name of the peer for which the response is returned. returned<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/peerData</li></ul>
+          example: Eielson Afb
+    TransactionLink:
+      description: Reference path link to fetch more information about the specific transaction.
+      properties:
+        method:
+          type: string
+          description: The method to use while calling the URL
+          example: GET
+        url:
+          type: string
+          description: URL to access the endpoint.
+          example: /transaction?merchantName=Amazon&skip=5&orderBy=amount&fromDate=2021-01-01&toDate=2021-01-31
+    Description:
+      properties:
+        original:
+          type: string
+          description: Original transaction description as it appears at the FI site.<br><br><b>Applicable containers</b> - bank, creditCard, insurance, loan, investment<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/transactions</li></ul>
+          readOnly: true
+          example: BILL PAY COMCAST CABLE CO ON-LINE xxxxxxxxxxx00000 ON 00-00
+        simple:
+          type: string
+          description: 'The transaction description that appears at the FI site may not be self-explanatory, i.e., the source, purpose of the transaction may not be evident. Yodlee attempts to simplify and make the transaction meaningful to the consumer, and this simplified transaction description is provided in the simple description field.Note: The simple description field is available only in the United States, Canada, United Kingdom, and India.<br><br><b>Applicable containers</b>: bank, creditCard, insurance, loan, investment<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/transactions</li></ul>'
+          readOnly: true
+          example: BILL PAY COMCAST CABLE CO ON-LINE xxxxxxxxxxx00000 ON 00-00
+        consumer:
+          type: string
+          description: The description of the transaction as defined by the consumer. The consumer can define or provide more details of the transaction in this field.<br><br><b>Applicable containers</b> - bank, creditCard, insurance, loan,investment<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/transactions</li></ul>
+          example: Payment to Comcast
+    ViewCreationResponse:
+      properties:
+        id:
+          type: string
+          description: Identifier for the Unique BSON string for the newly created View object generated in the system.<br><br><b>Endpoints</b> -<ul><li>POST /views</li></ul>
+          readOnly: true
+          example: 5e7885993cd8e328288522f7
+    TransactionTrend:
+      type: object
+      title: TransactionTrend
+      properties:
+        type:
+          readOnly: true
+          type: string
+          description: type identifies the entity based on which the details are grouped by
+          enum:
+          - category
+          - merchant
+          - categoryType
+          - detailedCategory
+          - state
+          - city
+        creditTotal:
+          $ref: '#/components/schemas/Money'
+        debitTotal:
+          $ref: '#/components/schemas/Money'
+        netTotal:
+          $ref: '#/components/schemas/Money'
+        transactionCount:
+          format: int64
+          readOnly: true
+          type: integer
+        summary:
+          readOnly: true
+          type: array
+          items:
+            $ref: '#/components/schemas/SummaryDetails'
+    TransactionTrendResponse:
+      properties:
+        transactionTrends:
+          allOf:
+          - $ref: '#/components/schemas/TransactionTrend'
+    TransactionSummaryResponse:
+      properties:
+        summary:
+          $ref: '#/components/schemas/TransactionSummary'
+    PeerData:
+      properties:
+        timePeriod:
+          type: string
+          description: Duration considered for generating the peer bechmarks across applicable categories and merchants for the view.<br> <br> The default value is LAST_MONTH for this parameter i.e. previous month's data is considered when this parameter is not passed.<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/peerData</li></ul>
+          example: LAST_MONTH
+        monthYear:
+          type: string
+          description: month and year information on when the benchmark values are computed returned<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/peerData</li></ul>
+          example: APRIL-2020
+        fromDate:
+          type: string
+          description: Start date in UTC format - yyyy-MM-dd'T'HH:mm:ss derived from the timePeriod query parameter for which the response is returned<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/peerData</li></ul>
+          example: 2020-04-0107:53:20
+        toDate:
+          type: string
+          description: To date in UTC format - yyyy-MM-dd'T'HH:mm:ss derived from the timePeriod query parameter for which the response is returned<br><br><b>Endpoints</b> -<ul><li>GET /views/{viewId}/peerData</li></ul>
+          example: 2020-04-3007:53:20
+        segement:
+          $ref: '#/components/schemas/SegementationParameter'
+        peerCategorySummary:
+          type: array
+          items:
+            $ref: '#/components/schemas/peerDetailCategorySummary'
+        peerDetailCategorySummary:
+          type: array
+          items:
+            $ref: '#/components/schemas/peerDetailCategorySummary'
+        peerMerchantSummary:
+          type: array
+          items:
+            $ref: '#/components/schemas/PeerMerchantSummary'
+    peerDetailCategorySummary:
+      properties:
+        id:
+          type: string
+          description: Category Id of the category belonging to peer for which the response is returned<br><br><b>Endpoints</b> -<ul><li>GET /Views/{ViewId}/peerData</li></ul>
+          example: '35'
+        name:
+          type: string
+          description: Category Name for which the response is returned<br><br><b>Endpoints</b> -<ul><li>GET /Views/{ViewId}/peerData</li></ul>
+          example: Utilities
+        benchmark:
+          type: array
+          items:
+            $ref: '#/components/schemas/GeographyWithDataArray'
   examples:
-    getBudgetSummaryExample:
-      value:
-        view:
-        - id: 5f2392b6ed04946a41675611
-          name: My Income Tracker
-          description: Tracking my salary.
-          created: '2021-02-23T06:16:21Z'
-          lastUpdated: '2021-02-23T06:16:21Z'
-          budgetSummary:
-          - type: VIEW
-            dateRange:
-              fromDate: '2021-06-01'
-              toDate: '2021-06-15'
-            budgetDetail:
-            - expenseBudget:
-                amount: 1000
-                currency: USD
-              creditTotal:
-                amount: 100
-                currency: USD
-              debitTotal:
-                amount: 200
-                currency: USD
-              remainingExpenseBudget:
-                amount: 200
-                currency: USD
-              remainingExpenseBudgetPercent: 100
-            - incomeBudget:
-                amount: 1000
-                currency: USD
-              creditTotal:
-                amount: 100
-                currency: USD
-              debitTotal:
-                amount: 200
-                currency: USD
-              remainingIncomeBudget:
-                amount: 200
-                currency: USD
-              remainingIncomeBudgetPercent: 100
     getViewWithoutBudgetExample:
       value:
         view:
@@ -2440,230 +2518,6 @@ components:
             include:
               accountId:
               - 10129470
-    getViewExample:
-      value:
-        view:
-        - id: 5f2392b6ed04946a41675611
-          name: My Income Tracker
-          description: Tracking my salary.
-          preferredCurrency: USD
-          recommendationId: 30
-          created: '2021-02-23T06:16:21Z'
-          lastUpdated: '2021-02-23T06:16:21Z'
-          rule:
-          - id: 70ab20c3-32e8-4a8d-bcd4-67d7d450e9f2
-            name: MyRule
-            fromDate: '2020-06-06T02:15:11'
-            toDate: '2020-08-06T02:15:11'
-            type: INCOME
-            baseType:
-            - DEBIT, CREDIT
-            include:
-              accountId:
-              - 10129470
-              detailCategryId:
-              - 1262
-          budgetData:
-          - type: VIEW
-            budgetInfo:
-            - expenseBudget:
-                amount: 1000
-                currency: USD
-              incomeBudget:
-                amount: 1000
-                currency: USD
-    createViewExample:
-      value:
-        view:
-        - name: My View
-          description: My entertainment spending
-          recommendationId: 30
-          preferredCurrency: USD
-          rule:
-          - name: include rule
-            fromDate: '2020-06-06T02:15:11'
-            toDate: '2020-08-06T02:15:11'
-            type: EXPENSE
-            baseType:
-            - DEBIT, CREDIT
-            include:
-              categoryId:
-              - 7
-              accountId:
-              - 10129470
-              - 10129469
-              detailCategoryId:
-              - 1262
-          - name: exclude rule
-            type: EXPENSE
-            exclude:
-              transactionId:
-              - 11239653
-          budgetData:
-          - type: VIEW
-            budgetInfo:
-            - expenseBudget:
-                amount: 1000
-                currency: USD
-              incomeBudget:
-                amount: 1000
-                currency: USD
-    getRecommendationExample:
-      value:
-        recommendation:
-        - id: 11
-          metadata:
-            duration:
-              fromDate: '2020-05-23T10:40:59.000Z'
-              toDate: '2020-05-23T10:40:59.000Z'
-            totalTransaction: 211
-            totalAmount:
-              amount: 100.01
-              currency: USD
-          view:
-          - name: My View for Vacation
-            description: View with rules to fetch Amazon merchant transactions for 3 months.
-            recommendationId: 11
-            rule:
-            - id: 755dfc54-b50b-4471-88cd-57d040766cb6
-              name: All Transactions Above $100
-              type: INCOME
-              baseType:
-              - CREDIT
-              include:
-                merchantName:
-                - Century Link
-                - Amazon
-                categoryId:
-                - 29
-                - 30
-                accountId:
-                - 10001012
-                - 10001013
-                transactionId:
-                - 1000354
-                - 1000379
-                merchantType: BILLERS
-                city:
-                - Milwaukee
-                - Boston
-                state:
-                - AZ
-                - WI
-                amountRange:
-                  fromAmount: 100
-                  toAmount: 1000
-                  currency: USD
-              exclude:
-                merchantName:
-                - Flipkart
-                categoryId:
-                - 49
-                accountId:
-                - 10001019
-                transactionId:
-                - 1000359
-                merchantType: BILLERS
-                city:
-                - NewYork
-                state:
-                - NY
-    patchBudgetData:
-      value:
-        view:
-        - budgetData:
-          - type: VIEW
-            budgetInfo:
-            - expenseBudget:
-                amount: 1000
-                currency: USD
-              incomeBudget:
-                amount: 1000
-                currency: USD
-          - type: MERCHANT
-            budgetInfo:
-            - typeName: Amazon
-              expenseBudget:
-                amount: 1000
-                currency: USD
-              incomeBudget:
-                amount: 1000
-                currency: USD
-          - type: CATEGORY
-            budgetInfo:
-            - typeId: 29
-              incomeBudget:
-                amount: 1000
-                currency: USD
-          - type: DETAIL_CATEGORY
-            budgetInfo:
-            - typeId: 101
-              expenseBudget:
-                amount: 1000
-                currency: USD
-    updateViewExample:
-      value:
-        view:
-        - name: My Updated View
-          description: Tracking my online spending.
-          rule:
-          - id: 55c4e850-745f-40ba-b30d-4c9651a19c3d
-            name: rule for merchant name
-            fromDate: '2019-06-06T02:15:11'
-            toDate: '2020-02-06T02:15:11'
-            type: EXPENSE
-            baseType:
-            - DEBIT, CREDIT
-            include:
-              merchantName:
-              - Amazon
-              - Walmart
-              accountId:
-              - 10129470
-              - 10001013
-              detailCategoryId:
-              - 1262
-          - id: c45929f7-b34f-450f-8ba4-02800e9dc51d
-            type: EXPENSE
-            exclude:
-              transactionId:
-              - 11239653
-    TransactionSummaryExample:
-      value:
-        summary:
-          type: category
-          netTotal:
-            amount: 100.75
-            currency: USD
-          creditTotal:
-            amount: 600.93
-            currency: USD
-          debitTotal:
-            amount: 500.18
-            currency: USD
-          average:
-            amount: 50.38
-            currency: USD
-          transactionCount: 3
-          details:
-          - name: General Merchandise
-            id: 44
-            netTotal:
-              amount: 100.75
-              currency: USD
-            creditTotal:
-              amount: 600.93
-              currency: USD
-            debitTotal:
-              amount: 500.18
-              currency: USD
-            average:
-              amount: 50.38
-              currency: USD
-            transactionCount: 3
-            link:
-            - methodType: GET
-              href: /views/60d995f8fc778d5873a05837/transactions?fromDate=2021-05-28&toDate=2021-06-28&categoryId=44
     TransactionTrendExample:
       value:
         transactionTrends:
@@ -2737,3 +2591,267 @@ components:
               link:
               - methodType: GET
                 href: /views/609d08858e420a3635dec2f6/transactions?fromDate=2020-02-01&toDate=2020-02-29&categoryId=7
+    updateViewExample:
+      value:
+        view:
+        - name: My Updated View
+          description: Tracking my online spending.
+          rule:
+          - id: 55c4e850-745f-40ba-b30d-4c9651a19c3d
+            name: rule for merchant name
+            fromDate: '2019-06-06T02:15:11'
+            toDate: '2020-02-06T02:15:11'
+            type: EXPENSE
+            baseType:
+            - DEBIT, CREDIT
+            include:
+              merchantName:
+              - Amazon
+              - Walmart
+              accountId:
+              - 10129470
+              - 10001013
+              detailCategoryId:
+              - 1262
+          - id: c45929f7-b34f-450f-8ba4-02800e9dc51d
+            type: EXPENSE
+            exclude:
+              transactionId:
+              - 11239653
+    TransactionSummaryExample:
+      value:
+        summary:
+          type: category
+          netTotal:
+            amount: 100.75
+            currency: USD
+          creditTotal:
+            amount: 600.93
+            currency: USD
+          debitTotal:
+            amount: 500.18
+            currency: USD
+          average:
+            amount: 50.38
+            currency: USD
+          transactionCount: 3
+          details:
+          - name: General Merchandise
+            id: 44
+            netTotal:
+              amount: 100.75
+              currency: USD
+            creditTotal:
+              amount: 600.93
+              currency: USD
+            debitTotal:
+              amount: 500.18
+              currency: USD
+            average:
+              amount: 50.38
+              currency: USD
+            transactionCount: 3
+            link:
+            - methodType: GET
+              href: /views/60d995f8fc778d5873a05837/transactions?fromDate=2021-05-28&toDate=2021-06-28&categoryId=44
+    getBudgetSummaryExample:
+      value:
+        view:
+        - id: 5f2392b6ed04946a41675611
+          name: My Income Tracker
+          description: Tracking my salary.
+          created: '2021-02-23T06:16:21Z'
+          lastUpdated: '2021-02-23T06:16:21Z'
+          budgetSummary:
+          - type: VIEW
+            dateRange:
+              fromDate: '2021-06-01'
+              toDate: '2021-06-15'
+            budgetDetail:
+            - expenseBudget:
+                amount: 1000
+                currency: USD
+              creditTotal:
+                amount: 100
+                currency: USD
+              debitTotal:
+                amount: 200
+                currency: USD
+              remainingExpenseBudget:
+                amount: 200
+                currency: USD
+              remainingExpenseBudgetPercent: 100
+            - incomeBudget:
+                amount: 1000
+                currency: USD
+              creditTotal:
+                amount: 100
+                currency: USD
+              debitTotal:
+                amount: 200
+                currency: USD
+              remainingIncomeBudget:
+                amount: 200
+                currency: USD
+              remainingIncomeBudgetPercent: 100
+    patchBudgetData:
+      value:
+        view:
+        - budgetData:
+          - type: VIEW
+            budgetInfo:
+            - expenseBudget:
+                amount: 1000
+                currency: USD
+              incomeBudget:
+                amount: 1000
+                currency: USD
+          - type: MERCHANT
+            budgetInfo:
+            - typeName: Amazon
+              expenseBudget:
+                amount: 1000
+                currency: USD
+              incomeBudget:
+                amount: 1000
+                currency: USD
+          - type: CATEGORY
+            budgetInfo:
+            - typeId: 29
+              incomeBudget:
+                amount: 1000
+                currency: USD
+          - type: DETAIL_CATEGORY
+            budgetInfo:
+            - typeId: 101
+              expenseBudget:
+                amount: 1000
+                currency: USD
+    getRecommendationExample:
+      value:
+        recommendation:
+        - id: 11
+          metadata:
+            duration:
+              fromDate: '2020-05-23T10:40:59.000Z'
+              toDate: '2020-05-23T10:40:59.000Z'
+            totalTransaction: 211
+            totalAmount:
+              amount: 100.01
+              currency: USD
+          view:
+          - name: My View for Vacation
+            description: View with rules to fetch Amazon merchant transactions for 3 months.
+            recommendationId: 11
+            rule:
+            - id: 755dfc54-b50b-4471-88cd-57d040766cb6
+              name: All Transactions Above $100
+              type: INCOME
+              baseType:
+              - CREDIT
+              include:
+                merchantName:
+                - Century Link
+                - Amazon
+                categoryId:
+                - 29
+                - 30
+                accountId:
+                - 10001012
+                - 10001013
+                transactionId:
+                - 1000354
+                - 1000379
+                merchantType: BILLERS
+                city:
+                - Milwaukee
+                - Boston
+                state:
+                - AZ
+                - WI
+                amountRange:
+                  fromAmount: 100
+                  toAmount: 1000
+                  currency: USD
+              exclude:
+                merchantName:
+                - Flipkart
+                categoryId:
+                - 49
+                accountId:
+                - 10001019
+                transactionId:
+                - 1000359
+                merchantType: BILLERS
+                city:
+                - NewYork
+                state:
+                - NY
+    createViewExample:
+      value:
+        view:
+        - name: My View
+          description: My entertainment spending
+          recommendationId: 30
+          preferredCurrency: USD
+          rule:
+          - name: include rule
+            fromDate: '2020-06-06T02:15:11'
+            toDate: '2020-08-06T02:15:11'
+            type: EXPENSE
+            baseType:
+            - DEBIT, CREDIT
+            include:
+              categoryId:
+              - 7
+              accountId:
+              - 10129470
+              - 10129469
+              detailCategoryId:
+              - 1262
+          - name: exclude rule
+            type: EXPENSE
+            exclude:
+              transactionId:
+              - 11239653
+          budgetData:
+          - type: VIEW
+            budgetInfo:
+            - expenseBudget:
+                amount: 1000
+                currency: USD
+              incomeBudget:
+                amount: 1000
+                currency: USD
+    getViewExample:
+      value:
+        view:
+        - id: 5f2392b6ed04946a41675611
+          name: My Income Tracker
+          description: Tracking my salary.
+          preferredCurrency: USD
+          recommendationId: 30
+          created: '2021-02-23T06:16:21Z'
+          lastUpdated: '2021-02-23T06:16:21Z'
+          rule:
+          - id: 70ab20c3-32e8-4a8d-bcd4-67d7d450e9f2
+            name: MyRule
+            fromDate: '2020-06-06T02:15:11'
+            toDate: '2020-08-06T02:15:11'
+            type: INCOME
+            baseType:
+            - DEBIT, CREDIT
+            include:
+              accountId:
+              - 10129470
+              detailCategryId:
+              - 1262
+          budgetData:
+          - type: VIEW
+            budgetInfo:
+            - expenseBudget:
+                amount: 1000
+                currency: USD
+              incomeBudget:
+                amount: 1000
+                currency: USD

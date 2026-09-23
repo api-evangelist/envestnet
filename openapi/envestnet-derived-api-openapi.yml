@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Envestnet Aggregation APIs Account Token Derived API
-  description: 'This file describes the Yodlee Aggregation product APIs using the swagger notation that you can use to build your financial application.  You can generate the client SDK in Python, JavaScript, PHP, or any other languages according to your development needs. For more details about the APIs, refer to <a href="https://developer.envestnet.com/resources/yodlee/yodlee-api-overview/docs">Yodlee API v1.1 - Overview</a>.<br><br>You will have to set the header before making the API call. The following headers apply to all the APIs:<ul><li>Authorization: This header holds the access token</li> <li> Api-Version: 1.1</li></ul><b>Note</b>: If there are any API-specific headers, they are mentioned explicitly in the respective API''s description.'
+  title: Envestnet Aggregation Derived API
+  description: This file describes the Yodlee Aggregation product APIs using the swagger notation that you can use to build your financial application.
   termsOfService: https://developer.yodlee.com/terms/condition
   contact:
     email: developer@yodlee.com
@@ -20,7 +20,28 @@ paths:
       tags:
       - Derived
       summary: Envestnet Get Transaction Summary
-      description: The transaction summary service provides the summary values of transactions for the given date range by category type, high-level categories, or system-defined categories.<br><br>Yodlee has the transaction data stored for a day, month, year and week per category as per the availability of user's data. If the include parameter value is passed as details, then summary details will be returned depending on the interval passed-monthly is the default.<br><br><b>Notes:</b><ol> <li> Details can be requested for only one system-defined category<li>Passing categoryType is mandatory except when the groupBy value is CATEGORY_TYPE<li>Dates will not be respected for monthly, yearly, and weekly details<li>When monthly details are requested, only the fromDate and toDate month will be respected<li>When yearly details are requested, only the fromDate and toDate year will be respected<li>For weekly data points, details will be provided for every Sunday date available within the fromDate and toDate<li>This service supports the localization feature and accepts locale as a header parameter</li></ol>
+      description: 'The transaction summary service provides the summary values of transactions for the given date range by category type, high-level categories, or system-defined categories.
+
+
+        Yodlee has the transaction data stored for a day, month, year and week per category as per the availability of user''s data. If the include parameter value is passed as details, then summary details will be returned depending on the interval passed-monthly is the default.
+
+
+        Notes:
+
+
+        Details can be requested for only one system-defined category
+
+        Passing categoryType is mandatory except when the groupBy value is CATEGORY_TYPE
+
+        Dates will not be respected for monthly, yearly, and weekly details
+
+        When monthly details are requested, only the fromDate and toDate month will be respected
+
+        When yearly details are requested, only the fromDate and toDate year will be respected
+
+        For weekly data points, details will be provided for every Sunday date available within the fromDate and toDate
+
+        This service supports the localization feature and accepts locale as a header parameter'
       operationId: getTransactionSummary
       parameters:
       - name: accountId
@@ -103,7 +124,9 @@ paths:
       tags:
       - Derived
       summary: Envestnet Get Networth Summary
-      description: The get networth service is used to get the networth for the user.<br>If the include parameter value is passed as details then networth with historical balances is returned. <br>
+      description: 'The get networth service is used to get the networth for the user.
+
+        If the include parameter value is passed as details then networth with historical balances is returned.'
       operationId: getNetworth
       parameters:
       - name: accountIds
@@ -181,7 +204,11 @@ paths:
       tags:
       - Derived
       summary: Envestnet Get Holding Summary
-      description: The get holding summary service is used to get the summary of asset classifications for the user.<br>By default, accounts with status as ACTIVE and TO BE CLOSED will be considered.<br>If the include parameter value is passed as details then a summary with holdings and account information is returned.<br>
+      description: 'The get holding summary service is used to get the summary of asset classifications for the user.
+
+        By default, accounts with status as ACTIVE and TO BE CLOSED will be considered.
+
+        If the include parameter value is passed as details then a summary with holdings and account information is returned.'
       operationId: getHoldingSummary
       parameters:
       - name: accountIds
@@ -224,31 +251,43 @@ paths:
       deprecated: false
 components:
   schemas:
-    DerivedCategorySummary:
-      title: DerivedCategorySummary
+    DerivedHoldingSummaryResponse:
+      title: DerivedHoldingSummaryResponse
       type: object
       properties:
-        creditTotal:
-          $ref: '#/components/schemas/Money'
-        details:
+        holdingSummary:
           type: array
-          description: 'Credit and debit summary per date.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br>'
           readOnly: true
           items:
-            $ref: '#/components/schemas/DerivedCategorySummaryDetails'
-        links:
-          $ref: '#/components/schemas/DerivedTransactionsLinks'
-        categoryName:
+            $ref: '#/components/schemas/DerivedHoldingsSummary'
+        link:
+          $ref: '#/components/schemas/DerivedHoldingsLinks'
+    DerivedHoldingsSummary:
+      title: DerivedHoldingsSummary
+      type: object
+      properties:
+        holding:
+          type: array
+          description: 'Securities that belong to the asset classification type and contributed to the summary value.<br><b>Required Feature Enablement</b>: Asset classification feature.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/DerivedHolding'
+        classificationType:
           type: string
-          description: 'The name of the category.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br>'
+          description: 'The classification type of the security. The supported asset classification type and the values are provided in the /holdings/assetClassificationList.<br><b>Required Feature Enablement</b>: Asset classification feature.<br><br><b>Applicable containers</b>: investment, insurance<br>'
           readOnly: true
-        categoryId:
-          type: integer
-          description: 'Id of the category. This information is provided by transactions/categories service.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br>'
-          format: int64
+        classificationValue:
+          type: string
+          description: 'The classification value that corresponds to the classification type of the holding. The supported asset classification type and the values are provided in the /holdings/assetClassificationList.<br><b>Required Feature Enablement</b>: Asset classification feature.<br><br><b>Applicable containers</b>: investment, insurance<br>'
           readOnly: true
-        debitTotal:
+        value:
           $ref: '#/components/schemas/Money'
+        account:
+          type: array
+          description: 'Accounts that contribute to the classification. <br><b>Required Feature Enablement</b>: Asset classification feature.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/DerivedHoldingsAccount'
     DerivedCategorySummaryDetails:
       title: DerivedCategorySummaryDetails
       type: object
@@ -261,45 +300,71 @@ components:
           $ref: '#/components/schemas/Money'
         debitTotal:
           $ref: '#/components/schemas/Money'
-    DerivedHoldingSummaryResponse:
-      title: DerivedHoldingSummaryResponse
+    DerivedNetworthHistoricalBalance:
+      title: DerivedNetworthHistoricalBalance
       type: object
       properties:
-        holdingSummary:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/DerivedHoldingsSummary'
-        link:
-          $ref: '#/components/schemas/DerivedHoldingsLinks'
-    DerivedTransactionsLinks:
-      title: DerivedTransactionsLinks
-      type: object
-      properties:
-        transactions:
+        date:
           type: string
-          description: 'Link of the transaction API service that corresponds to the value derivation.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br>'
+          description: 'Date for which the account balance was provided.  This balance could be a carryforward, calculated or a scraped balance. AdditIonal Details: scraped: Balance shown in the provider site. This balance gets stored in Yodlee system during system/user account updates. carryForward : Balance carried forward from the scraped balance to the days for which the balance was not available in the system. Balance may not be available for all the days in the system due to MFA information required, error in the site, credential changes, etc. calculated: Balances that gets calculated for the days that are prior to the account added date.<br><br><b>Account Type</b>: Aggregated and Manual<br><b>Applicable containers</b>: bank, creditCard, investment, insurance, realEstate, loan<br><b>Endpoints</b>:<ul><li>GET accounts/historicalBalances</li><li>GET derived/networth</li></ul>'
           readOnly: true
-    DerivedHoldingsAccount:
-      title: DerivedHoldingsAccount
-      type: object
-      properties:
-        id:
+        accountId:
           type: integer
-          description: 'The primary key of the account resource and the unique identifier for the account.<br>Required Feature Enablement: Asset classification feature.<br><br><b>Applicable containers</b>: investment, insurance<br>'
           format: int64
           readOnly: true
-        value:
+        isAsset:
+          type: boolean
+          description: 'Indicates whether the balance is an asset or liability.<br><br><b>Account Type</b>: Aggregated and Manual<br><b>Applicable containers</b>: bank, creditCard, investment, insurance, realEstate, loan<br><b>Endpoints</b>:<ul><li>GET accounts/historicalBalances</li></ul>'
+          readOnly: true
+        balance:
           $ref: '#/components/schemas/Money'
-    DerivedNetworthResponse:
-      title: DerivedNetworthResponse
+        asOfDate:
+          type: string
+          description: 'Date as of when the balance is last  updated due to the auto account updates or user triggered updates. This balance will be carry forward for the days where there is no balance available in the system. <br><br><b>Account Type</b>: Aggregated and Manual<br><b>Applicable containers</b>: bank, creditCard, investment, insurance, realEstate, loan<br><b>Endpoints</b>:<ul><li>GET accounts/historicalBalances</li></ul>'
+          readOnly: true
+        dataSourceType:
+          type: string
+          description: 'The source of balance information.<br><br><b>Account Type</b>: Aggregated and Manual<br><b>Applicable containers</b>: bank, creditCard, investment, insurance, realEstate, loan<br><b>Endpoints</b>:<ul><li>GET accounts/historicalBalances</li></ul><b>Applicable Values</b><br>'
+          readOnly: true
+          enum:
+          - S
+          - C
+          - CF
+    DerivedHoldingsLinks:
+      title: DerivedHoldingsLinks
       type: object
       properties:
-        networth:
+        holdings:
+          type: string
+          readOnly: true
+    DerivedTransactionSummaryResponse:
+      title: DerivedTransactionSummaryResponse
+      type: object
+      properties:
+        links:
+          $ref: '#/components/schemas/DerivedTransactionsLinks'
+        transactionSummary:
           type: array
           readOnly: true
           items:
-            $ref: '#/components/schemas/DerivedNetworth'
+            $ref: '#/components/schemas/DerivedTransactionsSummary'
+    AssetClassification:
+      title: AssetClassification
+      type: object
+      properties:
+        allocation:
+          type: number
+          description: 'The allocation percentage of the holding.<br><br><b>Required Feature Enablement</b>: Asset classification feature<br><br><b>Applicable containers</b>: investment<br>'
+          format: double
+          readOnly: true
+        classificationType:
+          type: string
+          description: 'The type of classification to which the investment belongs (assetClass, country, sector, and style).<br><b>Required Feature Enablement</b>: Asset classification feature<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        classificationValue:
+          type: string
+          description: 'The value for each classificationType.<br><b>Required Feature Enablement</b>: Asset classification feature<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
     DerivedHolding:
       title: DerivedHolding
       type: object
@@ -480,108 +545,6 @@ components:
           readOnly: true
         strikePrice:
           $ref: '#/components/schemas/Money'
-    DerivedTransactionsSummary:
-      title: DerivedTransactionsSummary
-      type: object
-      properties:
-        categoryType:
-          type: string
-          description: 'Type of categories provided by transactions/categories service.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br><b>Applicable Values</b><br>'
-          readOnly: true
-          enum:
-          - TRANSFER
-          - DEFERRED_COMPENSATION
-          - UNCATEGORIZE
-          - INCOME
-          - EXPENSE
-          - LOAN
-          - DUMMY
-        categorySummary:
-          type: array
-          description: 'Summary of transaction amouts at category level.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br>'
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/DerivedCategorySummary'
-        creditTotal:
-          $ref: '#/components/schemas/Money'
-        links:
-          $ref: '#/components/schemas/DerivedTransactionsLinks'
-        debitTotal:
-          $ref: '#/components/schemas/Money'
-    AssetClassification:
-      title: AssetClassification
-      type: object
-      properties:
-        allocation:
-          type: number
-          description: 'The allocation percentage of the holding.<br><br><b>Required Feature Enablement</b>: Asset classification feature<br><br><b>Applicable containers</b>: investment<br>'
-          format: double
-          readOnly: true
-        classificationType:
-          type: string
-          description: 'The type of classification to which the investment belongs (assetClass, country, sector, and style).<br><b>Required Feature Enablement</b>: Asset classification feature<br><br><b>Applicable containers</b>: investment<br>'
-          readOnly: true
-        classificationValue:
-          type: string
-          description: 'The value for each classificationType.<br><b>Required Feature Enablement</b>: Asset classification feature<br><br><b>Applicable containers</b>: investment<br>'
-          readOnly: true
-    DerivedNetworthHistoricalBalance:
-      title: DerivedNetworthHistoricalBalance
-      type: object
-      properties:
-        date:
-          type: string
-          description: 'Date for which the account balance was provided.  This balance could be a carryforward, calculated or a scraped balance. AdditIonal Details: scraped: Balance shown in the provider site. This balance gets stored in Yodlee system during system/user account updates. carryForward : Balance carried forward from the scraped balance to the days for which the balance was not available in the system. Balance may not be available for all the days in the system due to MFA information required, error in the site, credential changes, etc. calculated: Balances that gets calculated for the days that are prior to the account added date.<br><br><b>Account Type</b>: Aggregated and Manual<br><b>Applicable containers</b>: bank, creditCard, investment, insurance, realEstate, loan<br><b>Endpoints</b>:<ul><li>GET accounts/historicalBalances</li><li>GET derived/networth</li></ul>'
-          readOnly: true
-        accountId:
-          type: integer
-          format: int64
-          readOnly: true
-        isAsset:
-          type: boolean
-          description: 'Indicates whether the balance is an asset or liability.<br><br><b>Account Type</b>: Aggregated and Manual<br><b>Applicable containers</b>: bank, creditCard, investment, insurance, realEstate, loan<br><b>Endpoints</b>:<ul><li>GET accounts/historicalBalances</li></ul>'
-          readOnly: true
-        balance:
-          $ref: '#/components/schemas/Money'
-        asOfDate:
-          type: string
-          description: 'Date as of when the balance is last  updated due to the auto account updates or user triggered updates. This balance will be carry forward for the days where there is no balance available in the system. <br><br><b>Account Type</b>: Aggregated and Manual<br><b>Applicable containers</b>: bank, creditCard, investment, insurance, realEstate, loan<br><b>Endpoints</b>:<ul><li>GET accounts/historicalBalances</li></ul>'
-          readOnly: true
-        dataSourceType:
-          type: string
-          description: 'The source of balance information.<br><br><b>Account Type</b>: Aggregated and Manual<br><b>Applicable containers</b>: bank, creditCard, investment, insurance, realEstate, loan<br><b>Endpoints</b>:<ul><li>GET accounts/historicalBalances</li></ul><b>Applicable Values</b><br>'
-          readOnly: true
-          enum:
-          - S
-          - C
-          - CF
-    DerivedTransactionSummaryResponse:
-      title: DerivedTransactionSummaryResponse
-      type: object
-      properties:
-        links:
-          $ref: '#/components/schemas/DerivedTransactionsLinks'
-        transactionSummary:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/DerivedTransactionsSummary'
-    YodleeError:
-      title: YodleeError
-      type: object
-      properties:
-        errorMessage:
-          type: string
-          description: The descriptive message that explains the error scenario.
-          readOnly: true
-        errorCode:
-          type: string
-          description: The error code follows the format YNNN. The error codes do not change. New error codes may be added as we introduce new features and enhance functionalities.
-          readOnly: true
-        referenceCode:
-          type: string
-          description: Unique Yodlee identifier used to troubleshoot issues at Yodlee's end.
-          readOnly: true
     DerivedNetworth:
       title: DerivedNetworth
       type: object
@@ -602,6 +565,22 @@ components:
           $ref: '#/components/schemas/Money'
         asset:
           $ref: '#/components/schemas/Money'
+    YodleeError:
+      title: YodleeError
+      type: object
+      properties:
+        errorMessage:
+          type: string
+          description: The descriptive message that explains the error scenario.
+          readOnly: true
+        errorCode:
+          type: string
+          description: The error code follows the format YNNN. The error codes do not change. New error codes may be added as we introduce new features and enhance functionalities.
+          readOnly: true
+        referenceCode:
+          type: string
+          description: Unique Yodlee identifier used to troubleshoot issues at Yodlee's end.
+          readOnly: true
     Money:
       title: Money
       type: object
@@ -1066,36 +1045,84 @@ components:
           - VEF
           - SSP
           - ALK
-    DerivedHoldingsSummary:
-      title: DerivedHoldingsSummary
+    DerivedTransactionsLinks:
+      title: DerivedTransactionsLinks
       type: object
       properties:
-        holding:
+        transactions:
+          type: string
+          description: 'Link of the transaction API service that corresponds to the value derivation.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br>'
+          readOnly: true
+    DerivedCategorySummary:
+      title: DerivedCategorySummary
+      type: object
+      properties:
+        creditTotal:
+          $ref: '#/components/schemas/Money'
+        details:
           type: array
-          description: 'Securities that belong to the asset classification type and contributed to the summary value.<br><b>Required Feature Enablement</b>: Asset classification feature.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          description: 'Credit and debit summary per date.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br>'
           readOnly: true
           items:
-            $ref: '#/components/schemas/DerivedHolding'
-        classificationType:
+            $ref: '#/components/schemas/DerivedCategorySummaryDetails'
+        links:
+          $ref: '#/components/schemas/DerivedTransactionsLinks'
+        categoryName:
           type: string
-          description: 'The classification type of the security. The supported asset classification type and the values are provided in the /holdings/assetClassificationList.<br><b>Required Feature Enablement</b>: Asset classification feature.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          description: 'The name of the category.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br>'
           readOnly: true
-        classificationValue:
-          type: string
-          description: 'The classification value that corresponds to the classification type of the holding. The supported asset classification type and the values are provided in the /holdings/assetClassificationList.<br><b>Required Feature Enablement</b>: Asset classification feature.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+        categoryId:
+          type: integer
+          description: 'Id of the category. This information is provided by transactions/categories service.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br>'
+          format: int64
+          readOnly: true
+        debitTotal:
+          $ref: '#/components/schemas/Money'
+    DerivedNetworthResponse:
+      title: DerivedNetworthResponse
+      type: object
+      properties:
+        networth:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/DerivedNetworth'
+    DerivedHoldingsAccount:
+      title: DerivedHoldingsAccount
+      type: object
+      properties:
+        id:
+          type: integer
+          description: 'The primary key of the account resource and the unique identifier for the account.<br>Required Feature Enablement: Asset classification feature.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          format: int64
           readOnly: true
         value:
           $ref: '#/components/schemas/Money'
-        account:
-          type: array
-          description: 'Accounts that contribute to the classification. <br><b>Required Feature Enablement</b>: Asset classification feature.<br><br><b>Applicable containers</b>: investment, insurance<br>'
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/DerivedHoldingsAccount'
-    DerivedHoldingsLinks:
-      title: DerivedHoldingsLinks
+    DerivedTransactionsSummary:
+      title: DerivedTransactionsSummary
       type: object
       properties:
-        holdings:
+        categoryType:
           type: string
+          description: 'Type of categories provided by transactions/categories service.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br><b>Applicable Values</b><br>'
           readOnly: true
+          enum:
+          - TRANSFER
+          - DEFERRED_COMPENSATION
+          - UNCATEGORIZE
+          - INCOME
+          - EXPENSE
+          - LOAN
+          - DUMMY
+        categorySummary:
+          type: array
+          description: 'Summary of transaction amouts at category level.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br>'
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/DerivedCategorySummary'
+        creditTotal:
+          $ref: '#/components/schemas/Money'
+        links:
+          $ref: '#/components/schemas/DerivedTransactionsLinks'
+        debitTotal:
+          $ref: '#/components/schemas/Money'

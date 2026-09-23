@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Envestnet Aggregation APIs Account Token Documents API
-  description: 'This file describes the Yodlee Aggregation product APIs using the swagger notation that you can use to build your financial application.  You can generate the client SDK in Python, JavaScript, PHP, or any other languages according to your development needs. For more details about the APIs, refer to <a href="https://developer.envestnet.com/resources/yodlee/yodlee-api-overview/docs">Yodlee API v1.1 - Overview</a>.<br><br>You will have to set the header before making the API call. The following headers apply to all the APIs:<ul><li>Authorization: This header holds the access token</li> <li> Api-Version: 1.1</li></ul><b>Note</b>: If there are any API-specific headers, they are mentioned explicitly in the respective API''s description.'
+  title: Envestnet Aggregation Documents API
+  description: This file describes the Yodlee Aggregation product APIs using the swagger notation that you can use to build your financial application.
   termsOfService: https://developer.yodlee.com/terms/condition
   contact:
     email: developer@yodlee.com
@@ -20,7 +20,11 @@ paths:
       tags:
       - Documents
       summary: Envestnet Get Documents
-      description: The get documents service allows customers to search or retrieve metadata related to documents. <br>The API returns the document as per the input parameters passed. If no date range is provided then all downloaded documents will be retrieved. Details of deleted documents or documents associated to closed providerAccount will not be returned. <br>This API is a premium service which requires subscription in advance to use.  Please contact Yodlee Client Services for more information. <br>
+      description: 'The get documents service allows customers to search or retrieve metadata related to documents.
+
+        The API returns the document as per the input parameters passed. If no date range is provided then all downloaded documents will be retrieved. Details of deleted documents or documents associated to closed providerAccount will not be returned.
+
+        This API is a premium service which requires subscription in advance to use. Please contact Yodlee Client Services for more information.'
       operationId: getDocuments
       parameters:
       - name: Keyword
@@ -78,7 +82,9 @@ paths:
       tags:
       - Documents
       summary: Envestnet Download a Document
-      description: The get document details service allows consumers to download a document. The document is provided in base64.<br>This API is a premium service which requires subscription in advance to use.  Please contact Yodlee Client Services for more information. <br>
+      description: 'The get document details service allows consumers to download a document. The document is provided in base64.
+
+        This API is a premium service which requires subscription in advance to use. Please contact Yodlee Client Services for more information.'
       operationId: downloadDocument
       parameters:
       - name: documentId
@@ -111,7 +117,9 @@ paths:
       tags:
       - Documents
       summary: Envestnet Delete Document
-      description: The delete document service allows the consumer to delete a document. The deleted document will not be returned in the get documents API. The HTTP response code is 204 (success without content).<br>Documents can be deleted only if the document related dataset attributes are subscribed.<br>
+      description: 'The delete document service allows the consumer to delete a document. The deleted document will not be returned in the get documents API. The HTTP response code is 204 (success without content).
+
+        Documents can be deleted only if the document related dataset attributes are subscribed.'
       operationId: deleteDocument
       parameters:
       - name: documentId
@@ -139,6 +147,18 @@ paths:
       deprecated: false
 components:
   schemas:
+    DocumentDownload:
+      title: DocumentDownload
+      type: object
+      properties:
+        docContent:
+          type: string
+          description: 'Contents of the document in Base64 format.<br><br><b>Applicable containers</b>: bank, investment, creditCard, loan, insurance<br>'
+          readOnly: true
+        id:
+          type: string
+          description: 'The document''s primary key and unique identifier.<br><br><b>Applicable containers</b>: bank, investment, creditCard, loan, insurance<br>'
+          readOnly: true
     DocumentDownloadResponse:
       title: DocumentDownloadResponse
       type: object
@@ -148,6 +168,31 @@ components:
           readOnly: true
           items:
             $ref: '#/components/schemas/DocumentDownload'
+    YodleeError:
+      title: YodleeError
+      type: object
+      properties:
+        errorMessage:
+          type: string
+          description: The descriptive message that explains the error scenario.
+          readOnly: true
+        errorCode:
+          type: string
+          description: The error code follows the format YNNN. The error codes do not change. New error codes may be added as we introduce new features and enhance functionalities.
+          readOnly: true
+        referenceCode:
+          type: string
+          description: Unique Yodlee identifier used to troubleshoot issues at Yodlee's end.
+          readOnly: true
+    DocumentResponse:
+      title: DocumentResponse
+      type: object
+      properties:
+        document:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Document'
     Document:
       title: Document
       type: object
@@ -189,40 +234,3 @@ components:
           type: string
           description: 'Indicates the status of the document download.<br><br><b>Applicable containers</b>: bank, investment, creditCard, loan, insurance<br>'
           readOnly: true
-    DocumentDownload:
-      title: DocumentDownload
-      type: object
-      properties:
-        docContent:
-          type: string
-          description: 'Contents of the document in Base64 format.<br><br><b>Applicable containers</b>: bank, investment, creditCard, loan, insurance<br>'
-          readOnly: true
-        id:
-          type: string
-          description: 'The document''s primary key and unique identifier.<br><br><b>Applicable containers</b>: bank, investment, creditCard, loan, insurance<br>'
-          readOnly: true
-    YodleeError:
-      title: YodleeError
-      type: object
-      properties:
-        errorMessage:
-          type: string
-          description: The descriptive message that explains the error scenario.
-          readOnly: true
-        errorCode:
-          type: string
-          description: The error code follows the format YNNN. The error codes do not change. New error codes may be added as we introduce new features and enhance functionalities.
-          readOnly: true
-        referenceCode:
-          type: string
-          description: Unique Yodlee identifier used to troubleshoot issues at Yodlee's end.
-          readOnly: true
-    DocumentResponse:
-      title: DocumentResponse
-      type: object
-      properties:
-        document:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/Document'

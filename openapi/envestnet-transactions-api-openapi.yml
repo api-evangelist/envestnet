@@ -1,14 +1,14 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Envestnet Aggregation APIs Account Token Transactions API
-  description: 'This file describes the Yodlee Aggregation product APIs using the swagger notation that you can use to build your financial application.  You can generate the client SDK in Python, JavaScript, PHP, or any other languages according to your development needs. For more details about the APIs, refer to <a href="https://developer.envestnet.com/resources/yodlee/yodlee-api-overview/docs">Yodlee API v1.1 - Overview</a>.<br><br>You will have to set the header before making the API call. The following headers apply to all the APIs:<ul><li>Authorization: This header holds the access token</li> <li> Api-Version: 1.1</li></ul><b>Note</b>: If there are any API-specific headers, they are mentioned explicitly in the respective API''s description.'
-  termsOfService: https://developer.yodlee.com/terms/condition
+  title: Envestnet Transactions API
+  version: 1.1.0
   contact:
     email: developer@yodlee.com
   license:
     name: Yodlee Developer License
     url: https://developer.yodlee.com/terms/condition#_Services_1
-  version: 1.1.0
+  termsOfService: https://developer.yodlee.com/terms/condition
+  description: 'Operations tagged Transactions across 2 of this provider''s published API definitions: envestnet-account-aggregation-openapi-original.yml, envestnet-verification-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: /
 tags:
@@ -20,7 +20,37 @@ paths:
       tags:
       - Transactions
       summary: Envestnet Get Transactions
-      description: 'The Transaction service is used to get a list of transactions for a user.<br>By default, this service returns the last 30 days of transactions from today''s date.<br>API will only return up to 2 years of transaction history. If the difference between fromDate and toDate is more than 2 years, API will return only last 2 years from the toDate.<br>The keyword parameter performs a contains search on the original, consumer, and simple description attributes, replace the special characters #, &, and + with percent-encoding values %23, %26, and %2B respectively. Eg: for -Debit# , pass the input as -Debit%23.<br>Values for categoryId parameter can be fetched from get transaction category list service.<br> The categoryId is used to filter transactions based on system-defined category as well as user-defined category.<br>User-defined categoryIds should be provided in the filter with the prefix ''''U''''. E.g. U10002<br>The skip and top parameters are used for pagination. In the skip and top parameters pass the number of records to be skipped and retrieved, respectively. The response header provides the links to retrieve the next and previous set of transactions.<br>Double quotes in the merchant name will be prefixed by backslashes (&#92;) in the response, e.g. Toys "R" Us. <br>sourceId is a unique ID that the provider site has assigned to the transaction. The source ID is only available for the pre-populated accounts. Pre-populated accounts are the accounts that the FI customers shares with Yodlee, so that the user does not have to add or aggregate those accounts.<br><br><b>Note</b><ul><li><a href="https://developer.envestnet.com/resources/yodlee/transaction-data-enrichment/docs/overview">Transaction Data Enrichment</a> is made available for bank and card accounts. The address field in the response is available only when the Transaction Data Enrichment key is turned ON.</li><li>The pagination feature is available by default. If no values are passed in the skip and top parameters, the API will only return the first 500 transactions.</li><li>This service supports the localization feature and accepts locale as a header parameter.</li></ul>'
+      description: 'The Transaction service is used to get a list of transactions for a user.
+
+        By default, this service returns the last 30 days of transactions from today''s date.
+
+        API will only return up to 2 years of transaction history. If the difference between fromDate and toDate is more than 2 years, API will return only last 2 years from the toDate.
+
+        The keyword parameter performs a contains search on the original, consumer, and simple description attributes, replace the special characters #, &, and + with percent-encoding values %23, %26, and %2B respectively. Eg: for -Debit# , pass the input as -Debit%23.
+
+        Values for categoryId parameter can be fetched from get transaction category list service.
+
+        The categoryId is used to filter transactions based on system-defined category as well as user-defined category.
+
+        User-defined categoryIds should be provided in the filter with the prefix ''''U''''. E.g. U10002
+
+        The skip and top parameters are used for pagination. In the skip and top parameters pass the number of records to be skipped and retrieved, respectively. The response header provides the links to retrieve the next and previous set of transactions.
+
+        Double quotes in the merchant name will be prefixed by backslashes (\) in the response, e.g. Toys "R" Us.
+
+        sourceId is a unique ID that the provider site has assigned to the transaction. The source ID is only available for the pre-populated accounts. Pre-populated accounts are the accounts that the FI customers shares with Yodlee, so that the user does not have to add or aggregate those accounts.
+
+
+        Note
+
+
+        Transaction Data Enrichment is made available for bank and card accounts. The address field in the response is available only when the Transaction Data Enrichment key is turned ON.
+
+
+        The pagination feature is available by default. If no values are passed in the skip and top parameters, the API will only return the first 500 transactions.
+
+
+        This service supports the localization feature and accepts locale as a header parameter.'
       operationId: getTransactions
       parameters:
       - name: accountId
@@ -129,12 +159,18 @@ paths:
           description: Not Found
           content: {}
       deprecated: false
+    servers:
+    - url: /
   /transactions/count:
     get:
       tags:
       - Transactions
       summary: Envestnet Get Transactions Count
-      description: The count service provides the total number of transactions for a specific user depending on the input parameters passed.<br>If you are implementing pagination for transactions, call this endpoint before calling GET /transactions to know the number of transactions that are returned for the input parameters passed.<br>The functionality of the input parameters remains the same as that of the GET /transactions endpoint.<br>
+      description: 'The count service provides the total number of transactions for a specific user depending on the input parameters passed.
+
+        If you are implementing pagination for transactions, call this endpoint before calling GET /transactions to know the number of transactions that are returned for the input parameters passed.
+
+        The functionality of the input parameters remains the same as that of the GET /transactions endpoint.'
       operationId: getTransactionsCount
       parameters:
       - name: accountId
@@ -223,12 +259,14 @@ paths:
           description: Not Found
           content: {}
       deprecated: false
+    servers:
+    - url: /
   /transactions/categories/txnRules:
     get:
       tags:
       - Transactions
       summary: Envestnet Get Transaction Categorization Rules
-      description: The get transaction categorization rule service is used to get all the categorization rules.<br>
+      description: The get transaction categorization rule service is used to get all the categorization rules.
       operationId: getTransactionCategorizationRules
       responses:
         200:
@@ -244,12 +282,16 @@ paths:
           description: Not Found
           content: {}
       deprecated: false
+    servers:
+    - url: /
   /transactions/categories/{categoryId}:
     delete:
       tags:
       - Transactions
       summary: Envestnet Delete Category
-      description: The delete transaction categories service is used to delete the given user-defined category.<br>The HTTP response code is 204 (Success without content).<br>
+      description: 'The delete transaction categories service is used to delete the given user-defined category.
+
+        The HTTP response code is 204 (Success without content).'
       operationId: deleteTransactionCategory
       parameters:
       - name: categoryId
@@ -276,12 +318,18 @@ paths:
           description: Not Found
           content: {}
       deprecated: false
+    servers:
+    - url: /
   /transactions/categories/rules/{ruleId}:
     put:
       tags:
       - Transactions
       summary: Envestnet Update Transaction Categorization Rule
-      description: The update transaction categorization rule service is used to update a categorization rule for both system-defined category as well as user-defined category.<br>ruleParam JSON input should be as explained in the create transaction categorization rule service.<br>The HTTP response code is 204 (Success without content).<br>
+      description: 'The update transaction categorization rule service is used to update a categorization rule for both system-defined category as well as user-defined category.
+
+        ruleParam JSON input should be as explained in the create transaction categorization rule service.
+
+        The HTTP response code is 204 (Success without content).'
       operationId: updateTransactionCategorizationRule
       parameters:
       - name: ruleId
@@ -319,7 +367,9 @@ paths:
       tags:
       - Transactions
       summary: Envestnet Run Transaction Categorization Rule
-      description: The run transaction categorization rule service is used to run a rule on transactions, to categorize the transactions.<br>The HTTP response code is 204 (Success with no content).<br>
+      description: 'The run transaction categorization rule service is used to run a rule on transactions, to categorize the transactions.
+
+        The HTTP response code is 204 (Success with no content).'
       operationId: runTransactionCategorizationRule
       parameters:
       - name: action
@@ -358,7 +408,11 @@ paths:
       tags:
       - Transactions
       summary: Envestnet Delete Transaction Categorization Rule
-      description: The delete transaction categorization rule service is used to delete the given user-defined transaction categorization rule for both system-defined category as well as user-defined category.<br>This will delete all the corresponding rule clauses associated with the rule.<br>The HTTP response code is 204 (Success without content).<br>
+      description: 'The delete transaction categorization rule service is used to delete the given user-defined transaction categorization rule for both system-defined category as well as user-defined category.
+
+        This will delete all the corresponding rule clauses associated with the rule.
+
+        The HTTP response code is 204 (Success without content).'
       operationId: deleteTransactionCategorizationRule
       parameters:
       - name: ruleId
@@ -385,12 +439,33 @@ paths:
           description: Not Found
           content: {}
       deprecated: false
+    servers:
+    - url: /
   /transactions/categories:
     get:
       tags:
       - Transactions
       summary: Envestnet Get Transaction Category List
-      description: The categories service returns the list of available transaction categories.<br>High level category is returned in the response only if it is opted by the customer.<br>When invoked by passing the cobrand session or admin access token, this service returns the supported transaction categories at the cobrand level. <br>When invoked by passing the cobrand session and the user session or user access token, this service returns the transaction categories <br>along with user-defined categories.<br>Double quotes in the user-defined category name will be prefixed by backslashes (&#92;) in the response, <br>e.g. Toys "R" Us.<br/>Source and id are the primary attributes of the category entity.<br><br><b>Note:</b><li>This service supports the localization feature and accepts locale as a header parameter.</li>
+      description: 'The categories service returns the list of available transaction categories.
+
+        High level category is returned in the response only if it is opted by the customer.
+
+        When invoked by passing the cobrand session or admin access token, this service returns the supported transaction categories at the cobrand level.
+
+        When invoked by passing the cobrand session and the user session or user access token, this service returns the transaction categories
+
+        along with user-defined categories.
+
+        Double quotes in the user-defined category name will be prefixed by backslashes (\) in the response,
+
+        e.g. Toys "R" Us.
+
+        Source and id are the primary attributes of the category entity.
+
+
+        Note:
+
+        This service supports the localization feature and accepts locale as a header parameter.'
       operationId: getTransactionCategories
       responses:
         200:
@@ -410,7 +485,15 @@ paths:
       tags:
       - Transactions
       summary: Envestnet Update Category
-      description: The update transaction categories service is used to update the transaction category name<br>for a high level category, a system-defined category and a user-defined category.<br>The renamed category can be set back to the original name by passing an empty string for categoryName.<br>The categoryName can accept minimum of 1, maximum of 50 alphanumeric or special characters.<br>The HTTP response code is 204 (Success without content).<br>
+      description: 'The update transaction categories service is used to update the transaction category name
+
+        for a high level category, a system-defined category and a user-defined category.
+
+        The renamed category can be set back to the original name by passing an empty string for categoryName.
+
+        The categoryName can accept minimum of 1, maximum of 50 alphanumeric or special characters.
+
+        The HTTP response code is 204 (Success without content).'
       operationId: updateTransactionCategory
       requestBody:
         description: updateCategoryRequest
@@ -440,7 +523,13 @@ paths:
       tags:
       - Transactions
       summary: Envestnet Create Category
-      description: The create transaction categories service is used to create user-defined categories for a system-defined category.<br>The parentCategoryId is the system-defined category id.This can be retrieved using get transaction categories service.<br>The categoryName can accept minimum of 1, maximum of 50 alphanumeric or special characters.<br>The HTTP response code is 201 (Created successfully).<br>
+      description: 'The create transaction categories service is used to create user-defined categories for a system-defined category.
+
+        The parentCategoryId is the system-defined category id.This can be retrieved using get transaction categories service.
+
+        The categoryName can accept minimum of 1, maximum of 50 alphanumeric or special characters.
+
+        The HTTP response code is 201 (Created successfully).'
       operationId: createTransactionCategory
       requestBody:
         description: User Transaction Category in JSON format
@@ -466,12 +555,14 @@ paths:
           description: Not Found
           content: {}
       deprecated: false
+    servers:
+    - url: /
   /transactions/categories/rules:
     get:
       tags:
       - Transactions
       summary: Envestnet Get Transaction Categorization Rules
-      description: The get transaction categorization rule service is used to get all the categorization rules.<br>
+      description: The get transaction categorization rule service is used to get all the categorization rules.
       operationId: getTransactionCategorizationRulesDeprecated
       responses:
         200:
@@ -493,7 +584,38 @@ paths:
       tags:
       - Transactions
       summary: Envestnet Create or Run Transaction Categorization Rule
-      description: 'The Create or Run Transaction Categorization Rule endpoint is used to: <br>Create transaction categorization rules for both system and user-defined categories.<br>Run all the transaction categorization rules to categorize transactions by calling the endpoint with action=run as the query parameter. <br><br>The input body parameters to create transaction categorization rules follow:<br>     categoryId - This field is mandatory and numeric<br>     priority - This field is optional and numeric. Priority decides the order in which the rule gets applied on transactions.<br>     ruleClause - This field is mandatory and should contain at least one rule<br>     field - The value can be description or amount<br><br>       If the field value is description then,<br>         1. operation - value can be stringEquals or stringContains<br>         2. value - value should be min of 3 and max of 50 characters<br><br>       If the field value is amount then, <br>         1. operation - value can be numberEquals, numberLessThan, numberLessThanEquals, numberGreaterThan or numberGreaterThanEquals<br>         2. value - min value 0 and a max value of 99999999999.99 is allowed<br>The HTTP response code is 201 (Created Successfully).'
+      description: 'The Create or Run Transaction Categorization Rule endpoint is used to:
+
+        Create transaction categorization rules for both system and user-defined categories.
+
+        Run all the transaction categorization rules to categorize transactions by calling the endpoint with action=run as the query parameter.
+
+
+        The input body parameters to create transaction categorization rules follow:
+
+        categoryId - This field is mandatory and numeric
+
+        priority - This field is optional and numeric. Priority decides the order in which the rule gets applied on transactions.
+
+        ruleClause - This field is mandatory and should contain at least one rule
+
+        field - The value can be description or amount
+
+
+        If the field value is description then,
+
+        1. operation - value can be stringEquals or stringContains
+
+        2. value - value should be min of 3 and max of 50 characters
+
+
+        If the field value is amount then,
+
+        1. operation - value can be numberEquals, numberLessThan, numberLessThanEquals, numberGreaterThan or numberGreaterThanEquals
+
+        2. value - min value 0 and a max value of 99999999999.99 is allowed
+
+        The HTTP response code is 201 (Created Successfully).'
       operationId: createOrRunTransactionCategorizationRules
       parameters:
       - name: action
@@ -528,12 +650,16 @@ paths:
           description: Not Found
           content: {}
       deprecated: false
+    servers:
+    - url: /
   /transactions/{transactionId}:
     put:
       tags:
       - Transactions
       summary: Envestnet Update Transaction
-      description: The update transaction service is used to update the category,consumer description, memo, isPhysical, merchantType, detailCategory for a transaction.<br>The HTTP response code is 204 (Success without content).<br>
+      description: 'The update transaction service is used to update the category,consumer description, memo, isPhysical, merchantType, detailCategory for a transaction.
+
+        The HTTP response code is 204 (Success without content).'
       operationId: updateTransaction
       parameters:
       - name: transactionId
@@ -567,8 +693,36 @@ paths:
           description: Not Found
           content: {}
       deprecated: false
+    servers:
+    - url: /
 components:
   schemas:
+    TransactionCategoryRequest:
+      title: TransactionCategoryRequest
+      required:
+      - parentCategoryId
+      type: object
+      properties:
+        parentCategoryId:
+          minimum: 1
+          type: integer
+          format: int32
+        source:
+          type: string
+          readOnly: true
+        categoryName:
+          maxLength: 50
+          minLength: 1
+          type: string
+    TransactionCategorizationRuleResponse:
+      title: TransactionCategorizationRuleResponse
+      type: object
+      properties:
+        txnRules:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/TransactionCategorizationRule'
     RuleClause:
       title: RuleClause
       type: object
@@ -606,92 +760,44 @@ components:
           description: 'Unique identifier generated for the rule clause.<br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br>'
           format: int64
           readOnly: true
-    TransactionCountResponse:
-      title: TransactionCountResponse
+    Merchant:
+      title: Merchant
       type: object
       properties:
-        transaction:
-          $ref: '#/components/schemas/TransactionCount'
-    TransactionCategorizationRule:
-      title: TransactionCategorizationRule
-      type: object
-      properties:
-        ruleClauses:
-          type: array
-          description: 'Details of rules. <br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br>'
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/RuleClause'
-        userDefinedRuleId:
-          type: integer
-          description: 'Unique identifier generated for every rule the user creates.<br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br>'
-          format: int64
-          readOnly: true
-        categoryLevelId:
-          type: integer
-          description: 'The level of the category for which the rule is created.<br><br><b>Applicable containers</b>: creditCard, insurance, loan<br>'
-          format: int32
-          readOnly: true
-        transactionCategorisationId:
-          type: integer
-          description: 'Category id that is assigned to the transaction when the transaction matches the rule clause. This is the id field of the transaction category resource.<br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br>'
-          format: int64
-          readOnly: true
-        memId:
-          type: integer
-          description: 'Unique identifier of the user.<br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br>'
-          format: int64
-          readOnly: true
-        rulePriority:
-          type: integer
-          description: 'The order in which the rules get executed on transactions.<br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br>'
-          format: int32
-          readOnly: true
-    TransactionCategorizationRuleResponse:
-      title: TransactionCategorizationRuleResponse
-      type: object
-      properties:
-        txnRules:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/TransactionCategorizationRule'
-    UpdateCategoryRequest:
-      title: UpdateCategoryRequest
-      required:
-      - id
-      - source
-      type: object
-      properties:
-        highLevelCategoryName:
+        website:
           type: string
+          description: 'The website of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>'
+          readOnly: true
+        address:
+          $ref: '#/components/schemas/AccountAddress'
+        contact:
+          $ref: '#/components/schemas/Contact'
+        categoryLabel:
+          type: array
+          description: 'The business categories of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard<br><b>Applicable Values</b><br>'
+          readOnly: true
+          items:
+            type: string
+        coordinates:
+          $ref: '#/components/schemas/Coordinates'
+        name:
+          type: string
+          description: 'The name of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          readOnly: true
         id:
-          minimum: 1
-          exclusiveMinimum: false
-          type: integer
-          format: int64
+          type: string
+          description: 'Identifier of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          readOnly: true
         source:
           type: string
+          description: 'The source through which merchant information is retrieved.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br><b>Applicable Values</b><br>'
+          readOnly: true
           enum:
-          - SYSTEM
-          - USER
-        categoryName:
+          - YODLEE
+          - FACTUAL
+        logoURL:
           type: string
-    YodleeError:
-      title: YodleeError
-      type: object
-      properties:
-        errorMessage:
-          type: string
-          description: The descriptive message that explains the error scenario.
-          readOnly: true
-        errorCode:
-          type: string
-          description: The error code follows the format YNNN. The error codes do not change. New error codes may be added as we introduce new features and enhance functionalities.
-          readOnly: true
-        referenceCode:
-          type: string
-          description: Unique Yodlee identifier used to troubleshoot issues at Yodlee's end.
+          description: 'The logoURL of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>'
           readOnly: true
     FieldOperation:
       title: FieldOperation
@@ -718,131 +824,6 @@ components:
           type: object
           properties: {}
           description: 'The value would be the amount value in case of amount based rule clause or the string value in case of description based rule clause.<br><br><b>Applicable containers</b>: bank, creditCard, investment, insurance, loan<br><b>Applicable Values</b>:<ul><li>field is <b>description</b> -> value should be <b>min of 3 and max of 50 characters</b></li><li>field is <b>amount</b> -> value should be <b> min value of 0 and a max value of 99999999999.99</b></li></ul>'
-    Description:
-      title: Description
-      type: object
-      properties:
-        security:
-          type: string
-          description: 'The description will provide the actual name of the security.<br><br><b>Applicable containers</b>: investment<br>'
-          readOnly: true
-        original:
-          type: string
-          description: 'Original transaction description as it appears at the FI site.<br><br><b>Applicable containers</b>: creditCard, insurance, loan<br>'
-          readOnly: true
-        simple:
-          type: string
-          description: 'The transaction description that appears at the FI site may not be self-explanatory, i.e., the source, purpose of the transaction may not be evident. Yodlee attempts to simplify and make the transaction meaningful to the consumer, and this simplified transaction description is provided in the simple description field.Note: The simple description field is available only in the United States, Canada, United Kingdom, and India.<br><br><b>Applicable containers</b>: creditCard, insurance, loan<br>'
-          readOnly: true
-        consumer:
-          type: string
-          description: The description of the transaction as defined by the consumer. The consumer can define or provide more details of the transaction in this field.<br><br>
-    Coordinates:
-      title: Coordinates
-      type: object
-      properties:
-        latitude:
-          type: number
-          description: 'Latitude of the merchant<br><br><b>Applicable containers</b>: bank,creditCard,loan<br>'
-          format: double
-        longitude:
-          type: number
-          description: 'Longitude of the merchant<br><br><b>Applicable containers</b>: bank,creditCard,loan<br>'
-          format: double
-    TransactionCategorizationRuleInfo:
-      title: TransactionCategorizationRuleInfo
-      required:
-      - categoryId
-      - ruleClause
-      type: object
-      properties:
-        ruleClause:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldOperation'
-        source:
-          type: string
-          enum:
-          - SYSTEM
-          - USER
-        priority:
-          type: integer
-          format: int32
-        categoryId:
-          type: integer
-          format: int32
-    DetailCategory:
-      title: DetailCategory
-      type: object
-      properties:
-        name:
-          type: string
-          description: 'The name of the detail category<br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br>'
-          readOnly: true
-        id:
-          type: integer
-          description: 'The unique identifier of the detail category.<br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br>'
-          format: int64
-          readOnly: true
-    TransactionResponse:
-      title: TransactionResponse
-      type: object
-      properties:
-        transaction:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/Transaction'
-    TransactionCount:
-      title: TransactionCount
-      type: object
-      properties:
-        TOTAL:
-          $ref: '#/components/schemas/TransactionTotal'
-    UpdateTransaction:
-      title: UpdateTransaction
-      required:
-      - categoryId
-      - categorySource
-      - container
-      type: object
-      properties:
-        categorySource:
-          type: string
-          enum:
-          - SYSTEM
-          - USER
-        container:
-          type: string
-          enum:
-          - bank
-          - creditCard
-          - investment
-          - insurance
-          - loan
-          - reward
-          - bill
-          - realEstate
-          - otherAssets
-          - otherLiabilities
-        isPhysical:
-          type: boolean
-        detailCategoryId:
-          type: integer
-          format: int64
-        description:
-          $ref: '#/components/schemas/Description'
-        memo:
-          type: string
-        merchantType:
-          type: string
-          enum:
-          - BILLERS
-          - SUBSCRIPTION
-          - OTHERS
-        categoryId:
-          type: integer
-          format: int64
     Money:
       title: Money
       type: object
@@ -1307,13 +1288,12 @@ components:
           - VEF
           - SSP
           - ALK
-    TransactionTotal:
-      title: TransactionTotal
+    TransactionCountResponse:
+      title: TransactionCountResponse
       type: object
       properties:
-        count:
-          type: integer
-          format: int64
+        transaction:
+          $ref: '#/components/schemas/TransactionCount'
     TransactionCategory:
       title: TransactionCategory
       type: object
@@ -1374,14 +1354,27 @@ components:
           type: string
           description: 'A attribute which will always hold the first value(initial name) of Yodlee defined category attribute.<br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br>'
           readOnly: true
-    TransactionCategorizationRuleRequest:
-      title: TransactionCategorizationRuleRequest
-      required:
-      - rule
+    Coordinates:
+      title: Coordinates
       type: object
       properties:
-        rule:
-          $ref: '#/components/schemas/TransactionCategorizationRuleInfo'
+        latitude:
+          type: number
+          description: 'Latitude of the merchant<br><br><b>Applicable containers</b>: bank,creditCard,loan<br>'
+          format: double
+        longitude:
+          type: number
+          description: 'Longitude of the merchant<br><br><b>Applicable containers</b>: bank,creditCard,loan<br>'
+          format: double
+    TransactionResponse:
+      title: TransactionResponse
+      type: object
+      properties:
+        transaction:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Transaction'
     AccountAddress:
       title: AccountAddress
       type: object
@@ -1426,53 +1419,19 @@ components:
           - PAYMENT
           - PAYOFF
           - UNKNOWN
-    Merchant:
-      title: Merchant
+    DetailCategory:
+      title: DetailCategory
       type: object
       properties:
-        website:
-          type: string
-          description: 'The website of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>'
-          readOnly: true
-        address:
-          $ref: '#/components/schemas/AccountAddress'
-        contact:
-          $ref: '#/components/schemas/Contact'
-        categoryLabel:
-          type: array
-          description: 'The business categories of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard<br><b>Applicable Values</b><br>'
-          readOnly: true
-          items:
-            type: string
-        coordinates:
-          $ref: '#/components/schemas/Coordinates'
         name:
           type: string
-          description: 'The name of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          description: 'The name of the detail category<br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br>'
           readOnly: true
         id:
-          type: string
-          description: 'Identifier of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          type: integer
+          description: 'The unique identifier of the detail category.<br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br>'
+          format: int64
           readOnly: true
-        source:
-          type: string
-          description: 'The source through which merchant information is retrieved.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br><b>Applicable Values</b><br>'
-          readOnly: true
-          enum:
-          - YODLEE
-          - FACTUAL
-        logoURL:
-          type: string
-          description: 'The logoURL of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>'
-          readOnly: true
-    TransactionRequest:
-      title: TransactionRequest
-      required:
-      - transaction
-      type: object
-      properties:
-        transaction:
-          $ref: '#/components/schemas/UpdateTransaction'
     Transaction:
       title: Transaction
       type: object
@@ -1711,6 +1670,48 @@ components:
           - SCHEDULED
           - FAILED
           - CLEARED
+    TransactionCategorizationRuleInfo:
+      title: TransactionCategorizationRuleInfo
+      required:
+      - categoryId
+      - ruleClause
+      type: object
+      properties:
+        ruleClause:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldOperation'
+        source:
+          type: string
+          enum:
+          - SYSTEM
+          - USER
+        priority:
+          type: integer
+          format: int32
+        categoryId:
+          type: integer
+          format: int32
+    UpdateCategoryRequest:
+      title: UpdateCategoryRequest
+      required:
+      - id
+      - source
+      type: object
+      properties:
+        highLevelCategoryName:
+          type: string
+        id:
+          minimum: 1
+          type: integer
+          format: int64
+        source:
+          type: string
+          enum:
+          - SYSTEM
+          - USER
+        categoryName:
+          type: string
     Contact:
       title: Contact
       type: object
@@ -1721,6 +1722,149 @@ components:
         email:
           type: string
           description: 'Email Id of the merchant<br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>'
+    TransactionRequest:
+      title: TransactionRequest
+      required:
+      - transaction
+      type: object
+      properties:
+        transaction:
+          $ref: '#/components/schemas/UpdateTransaction'
+    YodleeError:
+      title: YodleeError
+      type: object
+      properties:
+        errorMessage:
+          type: string
+          description: The descriptive message that explains the error scenario.
+          readOnly: true
+        errorCode:
+          type: string
+          description: The error code follows the format YNNN. The error codes do not change. New error codes may be added as we introduce new features and enhance functionalities.
+          readOnly: true
+        referenceCode:
+          type: string
+          description: Unique Yodlee identifier used to troubleshoot issues at Yodlee's end.
+          readOnly: true
+    TransactionCategorizationRule:
+      title: TransactionCategorizationRule
+      type: object
+      properties:
+        ruleClauses:
+          type: array
+          description: 'Details of rules. <br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br>'
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/RuleClause'
+        userDefinedRuleId:
+          type: integer
+          description: 'Unique identifier generated for every rule the user creates.<br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br>'
+          format: int64
+          readOnly: true
+        categoryLevelId:
+          type: integer
+          description: 'The level of the category for which the rule is created.<br><br><b>Applicable containers</b>: creditCard, insurance, loan<br>'
+          format: int32
+          readOnly: true
+        transactionCategorisationId:
+          type: integer
+          description: 'Category id that is assigned to the transaction when the transaction matches the rule clause. This is the id field of the transaction category resource.<br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br>'
+          format: int64
+          readOnly: true
+        memId:
+          type: integer
+          description: 'Unique identifier of the user.<br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br>'
+          format: int64
+          readOnly: true
+        rulePriority:
+          type: integer
+          description: 'The order in which the rules get executed on transactions.<br><br><b>Applicable containers</b>: creditCard, investment, insurance, loan<br>'
+          format: int32
+          readOnly: true
+    UpdateTransaction:
+      title: UpdateTransaction
+      required:
+      - categoryId
+      - categorySource
+      - container
+      type: object
+      properties:
+        categorySource:
+          type: string
+          enum:
+          - SYSTEM
+          - USER
+        container:
+          type: string
+          enum:
+          - bank
+          - creditCard
+          - investment
+          - insurance
+          - loan
+          - reward
+          - bill
+          - realEstate
+          - otherAssets
+          - otherLiabilities
+        isPhysical:
+          type: boolean
+        detailCategoryId:
+          type: integer
+          format: int64
+        description:
+          $ref: '#/components/schemas/Description'
+        memo:
+          type: string
+        merchantType:
+          type: string
+          enum:
+          - BILLERS
+          - SUBSCRIPTION
+          - OTHERS
+        categoryId:
+          type: integer
+          format: int64
+    TransactionCategorizationRuleRequest:
+      title: TransactionCategorizationRuleRequest
+      required:
+      - rule
+      type: object
+      properties:
+        rule:
+          $ref: '#/components/schemas/TransactionCategorizationRuleInfo'
+    Description:
+      title: Description
+      type: object
+      properties:
+        security:
+          type: string
+          description: 'The description will provide the actual name of the security.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        original:
+          type: string
+          description: 'Original transaction description as it appears at the FI site.<br><br><b>Applicable containers</b>: creditCard, insurance, loan<br>'
+          readOnly: true
+        simple:
+          type: string
+          description: 'The transaction description that appears at the FI site may not be self-explanatory, i.e., the source, purpose of the transaction may not be evident. Yodlee attempts to simplify and make the transaction meaningful to the consumer, and this simplified transaction description is provided in the simple description field.Note: The simple description field is available only in the United States, Canada, United Kingdom, and India.<br><br><b>Applicable containers</b>: creditCard, insurance, loan<br>'
+          readOnly: true
+        consumer:
+          type: string
+          description: The description of the transaction as defined by the consumer. The consumer can define or provide more details of the transaction in this field.<br><br>
+    TransactionTotal:
+      title: TransactionTotal
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int64
+    TransactionCount:
+      title: TransactionCount
+      type: object
+      properties:
+        TOTAL:
+          $ref: '#/components/schemas/TransactionTotal'
     TransactionCategoryResponse:
       title: TransactionCategoryResponse
       type: object
@@ -1730,21 +1874,6 @@ components:
           readOnly: true
           items:
             $ref: '#/components/schemas/TransactionCategory'
-    TransactionCategoryRequest:
-      title: TransactionCategoryRequest
-      required:
-      - parentCategoryId
-      type: object
-      properties:
-        parentCategoryId:
-          minimum: 1
-          exclusiveMinimum: false
-          type: integer
-          format: int32
-        source:
-          type: string
-          readOnly: true
-        categoryName:
-          maxLength: 50
-          minLength: 1
-          type: string
+x-refined-from:
+- envestnet-account-aggregation-openapi-original.yml
+- envestnet-verification-openapi-original.yml
