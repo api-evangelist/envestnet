@@ -84,16 +84,6 @@ paths:
     - url: /
 components:
   schemas:
-    PaymentProcessorTokenResponse:
-      title: PaymentProcessorTokenResponse
-      type: object
-      properties:
-        token:
-          type: array
-          description: token
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/AccountToken'
     YodleeError:
       title: YodleeError
       type: object
@@ -104,6 +94,19 @@ components:
           type: string
         referenceCode:
           type: string
+    AccountToken:
+      title: AccountToken
+      type: object
+      properties:
+        processorToken:
+          type: string
+          description: The unique token that the payment partner can use to make API request to the Envestnet | Yodlee system.
+          readOnly: true
+        accountId:
+          type: integer
+          description: The unique identifier for the user's account.
+          format: int64
+          readOnly: true
     PaymentProcessorTokenRequest:
       title: PaymentProcessorTokenRequest
       required:
@@ -120,19 +123,16 @@ components:
         processor:
           type: string
           description: The payment processor with whom the customer is integrating.
-    AccountToken:
-      title: AccountToken
+    PaymentProcessorTokenResponse:
+      title: PaymentProcessorTokenResponse
       type: object
       properties:
-        processorToken:
-          type: string
-          description: The unique token that the payment partner can use to make API request to the Envestnet | Yodlee system.
+        token:
+          type: array
+          description: token
           readOnly: true
-        accountId:
-          type: integer
-          description: The unique identifier for the user's account.
-          format: int64
-          readOnly: true
+          items:
+            $ref: '#/components/schemas/AccountToken'
     YodleeError_2:
       title: YodleeError
       type: object

@@ -136,97 +136,420 @@ paths:
       deprecated: false
 components:
   schemas:
-    Coverage:
-      title: Coverage
+    DataExtractsTransaction:
+      title: DataExtractsTransaction
       type: object
       properties:
-        amount:
-          type: array
-          description: 'The coverage amount-related details.<br><br><b>Aggregated / Manual</b>: Aggregated<br><b>Applicable containers</b>: insurance,investment<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul>'
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/CoverageAmount'
-        planType:
+        date:
           type: string
-          description: 'The plan type for an insurance provided to an individual or an entity.<br><br><b>Aggregated / Manual</b>: Aggregated<br><b>Applicable containers</b>: insurance<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul><b>Applicable Values:</b><br>'
+          description: 'The value provided will be either postDate or transactionDate. postDate takes higher priority than transactionDate, except for the investment container as only transactionDate is available. The availability of postDate or transactionDate depends on the provider site.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
           readOnly: true
-          enum:
-          - PPO
-          - HMO
-          - UNKNOWN
-        endDate:
+        sourceId:
           type: string
-          description: 'The date on which the coverage for the account ends or expires.<br><br><b>Aggregated / Manual</b>: Aggregated<br><b>Applicable containers</b>: insurance,investment<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul>'
+          description: A unique ID that the provider site has assigned to the transaction. The source ID is only available for the pre-populated accounts.<br>Pre-populated accounts are the accounts that the FI customers shares with Yodlee, so that the user does not have to add or aggregate those accounts.
+          readOnly: true
+        symbol:
+          type: string
+          description: 'The symbol of the security being traded.<br><b>Note</b>: The settle date field applies only to trade-related transactions. <br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        cusipNumber:
+          type: string
+          description: 'The CUSIP (Committee on Uniform Securities Identification Procedures) identifies the financial instruments in the United States and Canada.<br><b><br><b>Note</b></b>: The CUSIP number field applies only to trade related transactions.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        highLevelCategoryId:
+          type: integer
+          description: 'The high level category assigned to the transaction. The supported values are provided by the GET transactions/categories. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          format: int64
+          readOnly: true
+        detailCategoryId:
+          type: integer
+          description: 'The id of the detail category that is assigned to the transaction. The supported values are provided by GET transactions/categories.<br><br><b>Applicable containers</b>: bank,creditCard<br>'
+          format: int64
+          readOnly: true
+        description:
+          $ref: '#/components/schemas/Description'
+        memo:
+          type: string
+          description: 'Additional notes provided by the user for a particular  transaction through application or API services. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          readOnly: true
+        settleDate:
+          type: string
+          description: 'It is the date on which the transaction is finalized, that is, the date the ownership of the security is transferred to the buyer. The settlement date is usually few days after the transaction date.<br><br><b>Applicable containers</b>: investment<br>'
           readOnly: true
         type:
           type: string
-          description: 'The type of coverage provided to an individual or an entity.<br><br><b>Aggregated / Manual</b>: Aggregated<br><b>Applicable containers</b>: insurance,investment<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul><b>Applicable Values:</b><br>'
+          description: 'The nature of the transaction, i.e., deposit, refund, payment, etc.<br><b>Note</b>: The transaction type field is available only for the United States, Canada, United Kingdom, New Zealand and India based provider sites. <br><br><b>Applicable containers</b>: bank,creditCard,investment<br>'
           readOnly: true
-          enum:
-          - VISION
-          - DENTAL
-          - MEDICAL
-          - HEALTH
-          - DEATH_COVER
-          - TOTAL_PERMANENT_DISABILITY
-          - ACCIDENTAL_DEATH_COVER
-          - INCOME_PROTECTION
-          - DEATH_TOTAL_PERMANENT_DISABILITY
-          - OTHER
-        startDate:
-          type: string
-          description: 'The date on which the coverage for the account starts.<br><br><b>Aggregated / Manual</b>: Aggregated<br><b>Applicable containers</b>: insurance,investment<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul>'
-          readOnly: true
-    Merchant:
-      title: Merchant
-      type: object
-      properties:
-        website:
-          type: string
-          description: 'The website of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>'
-          readOnly: true
-        address:
-          $ref: '#/components/schemas/AccountAddress'
-        contact:
-          $ref: '#/components/schemas/Contact'
-        categoryLabel:
+        intermediary:
           type: array
-          description: 'The business categories of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard<br><b>Applicable Values</b><br>'
+          description: 'The intermediary of the transaction.<br><br><b>Applicable containers</b>:  bank,creditCard,investment,loan<br>'
           readOnly: true
           items:
             type: string
-        coordinates:
-          $ref: '#/components/schemas/Coordinates'
-        name:
+        baseType:
           type: string
-          description: 'The name of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
-          readOnly: true
-        id:
-          type: string
-          description: 'Identifier of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
-          readOnly: true
-        source:
-          type: string
-          description: 'The source through which merchant information is retrieved.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br><b>Applicable Values</b><br>'
+          description: 'Indicates if the transaction appears as a debit or a credit transaction in the account. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br><b>Applicable Values</b><br>'
           readOnly: true
           enum:
-          - YODLEE
-          - FACTUAL
-        logoURL:
+          - CREDIT
+          - DEBIT
+        categorySource:
           type: string
-          description: 'The logoURL of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>'
+          description: 'Indicates the source of the category, i.e., categories derived by the system or assigned/provided by the consumer. This is the source field of the transaction category resource. The supported values are provided by the GET transactions/categories.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br><b>Applicable Values</b><br>'
           readOnly: true
-    DataExtractsEventUserData:
-      title: DataExtractsEventUserData
+          enum:
+          - SYSTEM
+          - USER
+        principal:
+          $ref: '#/components/schemas/Money'
+        lastUpdated:
+          type: string
+          readOnly: true
+        isDeleted:
+          type: boolean
+          description: 'Indicates if the transaction is marked as deleted.<b>Applicable containers</b>: All Containers<br><b>Aggregated / Manual</b>: Both <br><b>Endpoints</b>:<br><ul><li>GET dataExtracts/userData</li></ul>'
+          readOnly: true
+        interest:
+          $ref: '#/components/schemas/Money'
+        price:
+          $ref: '#/components/schemas/Money'
+        commission:
+          $ref: '#/components/schemas/Money'
+        id:
+          type: integer
+          description: 'An unique identifier for the transaction. The combination of the id and account container are unique in the system. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          format: int64
+          readOnly: true
+        merchantType:
+          type: string
+          description: 'Indicates the merchantType of the transaction.e.g:-BILLERS,SUBSCRIPTION,OTHERS <br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>'
+          readOnly: true
+        amount:
+          $ref: '#/components/schemas/Money'
+        checkNumber:
+          type: string
+          description: 'The checkNumber of the transaction.<br><br><b>Applicable containers</b>: bank<br>'
+          readOnly: true
+        isPhysical:
+          type: boolean
+          description: 'Indicates if the transaction is happened online or in-store. <br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>'
+          readOnly: true
+        quantity:
+          type: number
+          description: 'The quantity associated with the transaction.<br><b>Note</b>: The quantity field applies only to trade-related transactions.<br><br><b>Applicable containers</b>: investment<br>'
+          format: double
+          readOnly: true
+        valoren:
+          type: string
+          description: 'It is an identification number that is assigned to financial instruments such as stocks and bonds trading in Switzerland.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        isManual:
+          type: boolean
+          description: 'Indicates if the transaction is aggregated from the FI site or the consumer has manually created the transaction using the application or an API. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          readOnly: true
+        merchant:
+          $ref: '#/components/schemas/Merchant'
+        sedol:
+          type: string
+          description: 'SEDOL stands for Stock Exchange Daily Official List, a list of security identifiers used in the United Kingdom and Ireland for clearing purposes.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        transactionDate:
+          type: string
+          description: 'The date the transaction happens in the account. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          readOnly: true
+        categoryType:
+          type: string
+          description: 'The categoryType of the category assigned to the transaction. This is the type field of the transaction category resource. The supported values are provided by the GET transactions/categories.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          readOnly: true
+          enum:
+          - TRANSFER
+          - DEFERRED_COMPENSATION
+          - UNCATEGORIZE
+          - INCOME
+          - EXPENSE
+        accountId:
+          type: integer
+          description: 'The account from which the transaction was made. This is basically the primary key of the account resource. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          format: int64
+          readOnly: true
+        createdDate:
+          type: string
+          readOnly: true
+        sourceType:
+          type: string
+          description: 'The source through which the transaction is added to the Yodlee system.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loann<br><b>Applicable Values:</b><br>'
+          readOnly: true
+          enum:
+          - AGGREGATED
+          - MANUAL
+        CONTAINER:
+          type: string
+          description: 'The account''s container.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br><b>Applicable Values</b><br>'
+          readOnly: true
+          enum:
+          - bank
+          - creditCard
+          - investment
+          - insurance
+          - loan
+          - reward
+          - bill
+          - realEstate
+          - otherAssets
+          - otherLiabilities
+        postDate:
+          type: string
+          description: 'The date on which the transaction is posted to the account.<br><br><b>Applicable containers</b>: bank,creditCard,insurance,loan<br>'
+          readOnly: true
+        parentCategoryId:
+          type: integer
+          description: 'The parentCategoryId of the category assigned to the transaction.<br><b>Note</b>: This field will be provided in the response if the transaction is assigned to a user-created category. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          format: int64
+          readOnly: true
+        subType:
+          type: string
+          description: 'The transaction subtype field provides a detailed transaction type. For example, purchase is a transaction type and the transaction subtype field indicates if the purchase was made using a debit or credit card.<br><b>Note</b>: The transaction subtype field is available only in the United States, Canada, United Kingdom, New Zealand and India.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          readOnly: true
+          enum:
+          - OVERDRAFT_CHARGE
+          - ONLINE_PURCHASE
+          - TAX_PAYMENT
+          - PAYMENT_BY_CHECK
+          - ATM_CASH_WITHDRAWAL
+          - SERVICE_CHARGE
+          - RETURNED_CHECK_CHARGE
+          - STOP_PAYMENT_CHARGE
+          - CONVENIENCE_FEE
+          - AUTO_LOAN
+          - HOME_LOAN_MORTGAGE
+          - RECURRING_SUBSCRIPTION_PAYMENT
+          - INTEREST
+          - PAYMENT
+          - PURCHASE
+          - REFUND
+          - TRANSFER
+          - FINANCE_CHARGE
+          - OTHER_CHARGES_FEES
+          - ANNUAL_FEE
+          - DEPOSIT
+          - DIRECT_DEPOSIT_SALARY
+          - INVESTMENT_INCOME_CASH
+          - SSA
+          - REWARDS
+          - TAX_REFUND
+          - CREDIT_CARD_PAYMENT
+          - INSURANCE_PAYMENT
+          - UTILITIES_PAYMENT
+          - CHILD_SUPPORT
+          - LOAN
+          - PERSONAL_LOAN
+          - STUDENT_LOAN
+          - REIMBURSEMENT
+          - BALANCE_TRANSFER
+          - OVERDRAFT_PROTECTION
+          - CREDIT
+          - NSF_FEES
+        category:
+          type: string
+          description: 'The name of the category assigned to the transaction. This is the category field of the transaction category resource. The supported values are provided by the GET transactions/categories.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          readOnly: true
+        runningBalance:
+          $ref: '#/components/schemas/Money'
+        categoryId:
+          type: integer
+          description: 'The id of the category assigned to the transaction. This is the id field of the transaction category resource. The supported values are provided by the GET transactions/categories.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          format: int64
+          readOnly: true
+        holdingDescription:
+          type: string
+          description: 'For transactions involving securities, this captures the securities description.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        isin:
+          type: string
+          description: 'International Securities Identification Number (ISIN) standard is used worldwide to identify specific securities.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        status:
+          type: string
+          description: 'The status of the transaction: pending or posted.<br><b>Note</b>: Most FI sites only display posted transactions. If the FI site displays transaction status, same will be aggregated.  <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br><b>Applicable Values</b><br>'
+          readOnly: true
+          enum:
+          - POSTED
+          - PENDING
+          - SCHEDULED
+          - FAILED
+          - CLEARED
+    DataExtractsUserDataResponse:
+      title: DataExtractsUserDataResponse
       type: object
       properties:
-        links:
+        userData:
           type: array
           readOnly: true
           items:
-            $ref: '#/components/schemas/DataExtractsEventLinks'
+            $ref: '#/components/schemas/DataExtractsUserData'
+    DataExtractsUserData:
+      title: DataExtractsUserData
+      type: object
+      properties:
+        holding:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/DataExtractsHolding'
+        totalTransactionsCount:
+          type: integer
+          format: int64
+          readOnly: true
         user:
           $ref: '#/components/schemas/DataExtractsUser'
+        account:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/DataExtractsAccount'
+        transaction:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/DataExtractsTransaction'
+        providerAccount:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/DataExtractsProviderAccount'
+    DataExtractsProviderAccount:
+      title: DataExtractsProviderAccount
+      type: object
+      properties:
+        destinationProviderAccountId:
+          type: integer
+          description: The providerAccountId that is retained as part of the many-to-one OAuth migration process.<br><b>Endpoints</b>:<ul><li>GET dataExtracts/userData</li></ul>
+          format: int64
+          readOnly: true
+        oauthMigrationStatus:
+          type: string
+          description: Indicates the migration status of the provider account from screen-scraping provider to the Open Banking provider. <br><br><b>Endpoints</b>:<ul><li>GET providerAccounts</li><li>GET providerAccounts/{providerAccountId}</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET dataExtracts/userData</li></ul>
+          readOnly: true
+          enum:
+          - IN_PROGRESS
+          - TO_BE_MIGRATED
+          - COMPLETED
+          - MIGRATED
+        isManual:
+          type: boolean
+          description: Indicates whether account is a manual or aggregated provider account.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li><li>GET dataExtracts/userData</li></ul>
+          readOnly: true
+        lastUpdated:
+          type: string
+          description: 'Indicate when the providerAccount is last updated successfully.<br><br><b>Account Type</b>: Aggregated<br><b>Endpoints</b>:<ul><li>GET dataExtracts/userData</li></ul>'
+          readOnly: true
+        createdDate:
+          type: string
+          description: The date on when the provider account is created in the system.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li></ul>
+          readOnly: true
+        aggregationSource:
+          type: string
+          description: The source through which the providerAccount is added in the system.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li><li>GET dataExtracts/userData</li></ul><b>Applicable Values</b><br>
+          readOnly: true
+          enum:
+          - SYSTEM
+          - USER
+        isDeleted:
+          type: boolean
+          description: 'Indicates if the provider account is deleted from the system.<b>Applicable containers</b>: All Containers<br><b>Aggregated / Manual</b>: Both <br><b>Endpoints</b>:<br><ul><li>GET dataExtracts/userData</li></ul>'
+          readOnly: true
+        providerId:
+          type: integer
+          description: Unique identifier for the provider resource. This denotes the provider for which the provider account id is generated by the user.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li><li>GET dataExtracts/userData</li></ul>
+          format: int64
+          readOnly: true
+        requestId:
+          type: string
+          description: Unique id generated to indicate the request.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li></ul>
+          readOnly: true
+        sourceProviderAccountIds:
+          type: array
+          description: The providerAccountIds that are deleted and merged into the destinationProviderAccountId as part of the many-to-one OAuth migration process.<br><b>Endpoints</b>:<ul><li>GET dataExtracts/userData</li></ul>
+          readOnly: true
+          items:
+            type: integer
+            format: int64
+        id:
+          type: integer
+          description: Unique identifier for the provider account resource. This is created during account addition.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li><li>GET dataExtracts/userData</li></ul>
+          format: int64
+          readOnly: true
+        authType:
+          type: string
+          description: The authentication type enabled at the provider site. <br><br><b>Endpoints</b>:<ul><li>GET providers/{providerId}</li><li>GET providers</li></ul><b>Applicable Values</b><br>
+          readOnly: true
+          enum:
+          - OAUTH
+          - CREDENTIALS
+          - MFA_CREDENTIALS
+        dataset:
+          type: array
+          description: Logical grouping of dataset attributes into datasets such as Basic Aggregation Data, Account Profile and Documents.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li><li>GET dataExtracts/userData</li></ul>
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/AccountDataset'
+        status:
+          type: string
+          description: The status of last update attempted for the account. <br><br><b>Endpoints</b>:<ul><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li><li>GET dataExtracts/userData</li></ul><b>Applicable Values</b><br>
+          readOnly: true
+          enum:
+          - LOGIN_IN_PROGRESS
+          - USER_INPUT_REQUIRED
+          - IN_PROGRESS
+          - PARTIAL_SUCCESS
+          - SUCCESS
+          - FAILED
+          - MIGRATION_IN_PROGRESS
+          - DATA_RETRIEVAL_FAILED
+    Contact:
+      title: Contact
+      type: object
+      properties:
+        phone:
+          type: string
+          description: 'Phone number of the merchant<br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>'
+        email:
+          type: string
+          description: 'Email Id of the merchant<br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>'
+    LoanPayoffDetails:
+      title: LoanPayoffDetails
+      type: object
+      properties:
+        payByDate:
+          type: string
+          description: 'The date by which the payoff amount should be paid.<br><br><b>Account Type</b>: Aggregated<br><b>Applicable containers</b>: loan<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul>'
+          readOnly: true
+        payoffAmount:
+          $ref: '#/components/schemas/Money'
+        outstandingBalance:
+          $ref: '#/components/schemas/Money'
+    DataExtractsEventLinks:
+      title: DataExtractsEventLinks
+      type: object
+      properties:
+        methodType:
+          type: string
+          readOnly: true
+        rel:
+          type: string
+          readOnly: true
+        href:
+          type: string
+          readOnly: true
+    DataExtractsEvent:
+      title: DataExtractsEvent
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/DataExtractsEventData'
+        info:
+          type: string
+          readOnly: true
     Money:
       title: Money
       type: object
@@ -691,66 +1014,223 @@ components:
           - VEF
           - SSP
           - ALK
-    RewardBalance:
-      title: RewardBalance
+    AccountDataset:
+      title: AccountDataset
       type: object
       properties:
-        expiryDate:
+        lastUpdated:
           type: string
-          description: 'The date on which the balance expires.<br><br><b>Account Type</b>: Aggregated<br><b>Applicable containers</b>: reward<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>GET dataExtracts/userData</li></ul>'
+          description: 'Indicate when the dataset is last updated successfully for the given provider account.<br><br><b>Account Type</b>: Aggregated<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li></ul>'
           readOnly: true
-        balanceToReward:
+        updateEligibility:
           type: string
-          description: 'The balance required to qualify for a reward such as retaining membership, business reward, etc.<br><br><b>Account Type</b>: Aggregated<br><b>Applicable containers</b>: reward<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>GET dataExtracts/userData</li></ul>'
-          readOnly: true
-        balanceType:
-          type: string
-          description: 'The type of reward balance.<br><br><b>Account Type</b>: Aggregated<br><b>Applicable containers</b>: reward<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>GET dataExtracts/userData</li></ul><b>Applicable Values</b><br>'
+          description: 'Indicate whether the dataset is eligible for update or not.<br><br><b>Account Type</b>: Aggregated<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li></ul><b>Applicable Values</b><br>'
           readOnly: true
           enum:
-          - EXPIRING_BALANCE
-          - BALANCE_TO_LEVEL
-          - BALANCE_TO_REWARD
-          - BALANCE
-          - TOTAL_BALANCE
-        balance:
-          type: number
-          description: 'The actual reward balance.<br><br><b>Account Type</b>: Aggregated<br><b>Applicable containers</b>: reward<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>GET dataExtracts/userData</li></ul>'
-          format: double
-          readOnly: true
-        description:
+          - ALLOW_UPDATE
+          - ALLOW_UPDATE_WITH_CREDENTIALS
+          - DISALLOW_UPDATE
+        additionalStatus:
           type: string
-          description: 'The description for the reward balance as available at provider source.<br><br><b>Account Type</b>: Aggregated<br><b>Applicable containers</b>: reward<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>GET dataExtracts/userData</li></ul>'
+          description: 'The status of last update attempted for the dataset. <br><br><b>Account Type</b>: Aggregated<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li></ul><b>Applicable Values</b><br>'
           readOnly: true
-        balanceToLevel:
+          enum:
+          - LOGIN_IN_PROGRESS
+          - DATA_RETRIEVAL_IN_PROGRESS
+          - ACCT_SUMMARY_RECEIVED
+          - AVAILABLE_DATA_RETRIEVED
+          - PARTIAL_DATA_RETRIEVED
+          - DATA_RETRIEVAL_FAILED
+          - DATA_NOT_AVAILABLE
+          - ACCOUNT_LOCKED
+          - ADDL_AUTHENTICATION_REQUIRED
+          - BETA_SITE_DEV_IN_PROGRESS
+          - CREDENTIALS_UPDATE_NEEDED
+          - INCORRECT_CREDENTIALS
+          - PROPERTY_VALUE_NOT_AVAILABLE
+          - INVALID_ADDL_INFO_PROVIDED
+          - REQUEST_TIME_OUT
+          - SITE_BLOCKING_ERROR
+          - UNEXPECTED_SITE_ERROR
+          - SITE_NOT_SUPPORTED
+          - SITE_UNAVAILABLE
+          - TECH_ERROR
+          - USER_ACTION_NEEDED_AT_SITE
+          - SITE_SESSION_INVALIDATED
+          - NEW_AUTHENTICATION_REQUIRED
+          - DATASET_NOT_SUPPORTED
+          - ENROLLMENT_REQUIRED_FOR_DATASET
+          - CONSENT_REQUIRED
+          - CONSENT_EXPIRED
+          - CONSENT_REVOKED
+          - INCORRECT_OAUTH_TOKEN
+          - MIGRATION_IN_PROGRESS
+        nextUpdateScheduled:
           type: string
-          description: 'The balance required to reach a reward level.<br><br><b>Account Type</b>: Aggregated<br><b>Applicable containers</b>: reward<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>GET dataExtracts/userData</li></ul>'
+          description: 'Indicates when the next attempt to update the dataset is scheduled.<br><br><b>Account Type</b>: Aggregated<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li></ul>'
           readOnly: true
-        units:
+        name:
           type: string
-          description: 'Unit of reward balance - miles, points, segments, dollars, credits.<br><br><b>Account Type</b>: Aggregated<br><b>Applicable containers</b>: reward<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>GET dataExtracts/userData</li></ul>'
+          description: 'The name of the dataset requested from the provider site<br><br><b>Account Type</b>: Manual<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li><li>GET providers</li></ul><b>Applicable Values</b><br>'
+          enum:
+          - BASIC_AGG_DATA
+          - ADVANCE_AGG_DATA
+          - ACCT_PROFILE
+          - DOCUMENT
+        lastUpdateAttempt:
+          type: string
+          description: 'Indicate when the last attempt was performed to update the dataset for the given provider account<br><br><b>Account Type</b>: Aggregated<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li></ul>'
           readOnly: true
-    DataExtractsUserDataResponse:
-      title: DataExtractsUserDataResponse
+    DataExtractsUser:
+      title: DataExtractsUser
       type: object
       properties:
-        userData:
+        loginName:
+          type: string
+          readOnly: true
+    BankTransferCode:
+      title: BankTransferCode
+      type: object
+      properties:
+        id:
+          type: string
+          description: 'The FI''s branch identification number.Additional Details: The routing number of the bank account in the United States. For non-United States accounts, it is the IFSC code (India), BSB number (Australia), and sort code (United Kingdom). <br><b>Account Type</b>: Aggregated<br><b>Applicable containers</b>: bank, investment<br><b>Endpoints</b>:<br><ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>POST verification</li></ul>'
+        type:
+          type: string
+          description: 'The bank transfer code type varies depending on the region of the account origination. <br><b>Account Type</b>: Aggregated<br><b>Applicable containers</b>: bank, investment<br><b>Endpoints</b>:<br><ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>POST verification</li></ul><b>Applicable Values</b><br>'
+          enum:
+          - BSB
+          - IFSC
+          - ROUTING_NUMBER
+          - SORT_CODE
+    DataExtractsEventResponse:
+      title: DataExtractsEventResponse
+      type: object
+      properties:
+        event:
+          $ref: '#/components/schemas/DataExtractsEvent'
+    Coordinates:
+      title: Coordinates
+      type: object
+      properties:
+        latitude:
+          type: number
+          description: 'Latitude of the merchant<br><br><b>Applicable containers</b>: bank,creditCard,loan<br>'
+          format: double
+        longitude:
+          type: number
+          description: 'Longitude of the merchant<br><br><b>Applicable containers</b>: bank,creditCard,loan<br>'
+          format: double
+    DataExtractsEventUserData:
+      title: DataExtractsEventUserData
+      type: object
+      properties:
+        links:
           type: array
           readOnly: true
           items:
-            $ref: '#/components/schemas/DataExtractsUserData'
-    LoanPayoffDetails:
-      title: LoanPayoffDetails
+            $ref: '#/components/schemas/DataExtractsEventLinks'
+        user:
+          $ref: '#/components/schemas/DataExtractsUser'
+    AccountAddress:
+      title: AccountAddress
       type: object
       properties:
-        payByDate:
+        zip:
           type: string
-          description: 'The date by which the payoff amount should be paid.<br><br><b>Account Type</b>: Aggregated<br><b>Applicable containers</b>: loan<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul>'
+          description: Zip.
+        country:
+          type: string
+          description: Country.
+        address3:
+          type: string
+          description: Address Line 3.
+        address2:
+          type: string
+          description: Address Line 2.
+        city:
+          type: string
+          description: City.
+        sourceType:
+          type: string
+        address1:
+          type: string
+          description: Address Line 1.
+        street:
+          type: string
+        state:
+          type: string
+          description: State.
+        type:
+          type: string
+          enum:
+          - HOME
+          - BUSINESS
+          - POBOX
+          - RETAIL
+          - OFFICE
+          - SMALL_BUSINESS
+          - COMMUNICATION
+          - PERMANENT
+          - STATEMENT_ADDRESS
+          - PAYMENT
+          - PAYOFF
+          - UNKNOWN
+    Merchant:
+      title: Merchant
+      type: object
+      properties:
+        website:
+          type: string
+          description: 'The website of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>'
           readOnly: true
-        payoffAmount:
-          $ref: '#/components/schemas/Money'
-        outstandingBalance:
-          $ref: '#/components/schemas/Money'
+        address:
+          $ref: '#/components/schemas/AccountAddress'
+        contact:
+          $ref: '#/components/schemas/Contact'
+        categoryLabel:
+          type: array
+          description: 'The business categories of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard<br><b>Applicable Values</b><br>'
+          readOnly: true
+          items:
+            type: string
+        coordinates:
+          $ref: '#/components/schemas/Coordinates'
+        name:
+          type: string
+          description: 'The name of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          readOnly: true
+        id:
+          type: string
+          description: 'Identifier of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          readOnly: true
+        source:
+          type: string
+          description: 'The source through which merchant information is retrieved.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br><b>Applicable Values</b><br>'
+          readOnly: true
+          enum:
+          - YODLEE
+          - FACTUAL
+        logoURL:
+          type: string
+          description: 'The logoURL of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>'
+          readOnly: true
+    YodleeError:
+      title: YodleeError
+      type: object
+      properties:
+        errorMessage:
+          type: string
+          description: The descriptive message that explains the error scenario.
+          readOnly: true
+        errorCode:
+          type: string
+          description: The error code follows the format YNNN. The error codes do not change. New error codes may be added as we introduce new features and enhance functionalities.
+          readOnly: true
+        referenceCode:
+          type: string
+          description: Unique Yodlee identifier used to troubleshoot issues at Yodlee's end.
+          readOnly: true
     DataExtractsEventData:
       title: DataExtractsEventData
       type: object
@@ -770,31 +1250,40 @@ components:
         toDate:
           type: string
           readOnly: true
-    DataExtractsEventLinks:
-      title: DataExtractsEventLinks
+    CoverageAmount:
+      title: CoverageAmount
       type: object
       properties:
-        methodType:
+        cover:
+          $ref: '#/components/schemas/Money'
+        unitType:
           type: string
+          description: 'The type of coverage unit indicates if the coverage is for an individual or a family.<br><br><b>Aggregated / Manual</b>: Aggregated<br><b>Applicable containers</b>: insurance,investment<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul><b>Applicable Values:</b><br>'
           readOnly: true
-        rel:
+          enum:
+          - PER_FAMILY
+          - PER_MEMBER
+        type:
           type: string
+          description: 'The type of coverage provided to an individual or an entity.<br><br><b>Aggregated / Manual</b>: Aggregated<br><b>Applicable containers</b>: insurance,investment<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul><b>Applicable Values:</b><br>'
           readOnly: true
-        href:
+          enum:
+          - DEDUCTIBLE
+          - OUT_OF_POCKET
+          - ANNUAL_BENEFIT
+          - MAX_BENEFIT
+          - COVERAGE_AMOUNT
+          - MONTHLY_BENEFIT
+          - OTHER
+        limitType:
           type: string
+          description: 'The type of coverage limit indicates if the coverage is in-network or out-of-network.<br><br><b>Aggregated / Manual</b>: Aggregated<br><b>Applicable containers</b>: insurance,investment<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul><b>Applicable Values:</b><br>'
           readOnly: true
-    Coordinates:
-      title: Coordinates
-      type: object
-      properties:
-        latitude:
-          type: number
-          description: 'Latitude of the merchant<br><br><b>Applicable containers</b>: bank,creditCard,loan<br>'
-          format: double
-        longitude:
-          type: number
-          description: 'Longitude of the merchant<br><br><b>Applicable containers</b>: bank,creditCard,loan<br>'
-          format: double
+          enum:
+          - IN_NETWORK
+          - OUT_NETWORK
+        met:
+          $ref: '#/components/schemas/Money'
     DataExtractsHolding:
       title: DataExtractsHolding
       type: object
@@ -973,594 +1462,45 @@ components:
           readOnly: true
         strikePrice:
           $ref: '#/components/schemas/Money'
-    AccountAddress:
-      title: AccountAddress
+    RewardBalance:
+      title: RewardBalance
       type: object
       properties:
-        zip:
+        expiryDate:
           type: string
-          description: Zip.
-        country:
+          description: 'The date on which the balance expires.<br><br><b>Account Type</b>: Aggregated<br><b>Applicable containers</b>: reward<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>GET dataExtracts/userData</li></ul>'
+          readOnly: true
+        balanceToReward:
           type: string
-          description: Country.
-        address3:
+          description: 'The balance required to qualify for a reward such as retaining membership, business reward, etc.<br><br><b>Account Type</b>: Aggregated<br><b>Applicable containers</b>: reward<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>GET dataExtracts/userData</li></ul>'
+          readOnly: true
+        balanceType:
           type: string
-          description: Address Line 3.
-        address2:
-          type: string
-          description: Address Line 2.
-        city:
-          type: string
-          description: City.
-        sourceType:
-          type: string
-        address1:
-          type: string
-          description: Address Line 1.
-        street:
-          type: string
-        state:
-          type: string
-          description: State.
-        type:
-          type: string
-          enum:
-          - HOME
-          - BUSINESS
-          - POBOX
-          - RETAIL
-          - OFFICE
-          - SMALL_BUSINESS
-          - COMMUNICATION
-          - PERMANENT
-          - STATEMENT_ADDRESS
-          - PAYMENT
-          - PAYOFF
-          - UNKNOWN
-    BankTransferCode:
-      title: BankTransferCode
-      type: object
-      properties:
-        id:
-          type: string
-          description: 'The FI''s branch identification number.Additional Details: The routing number of the bank account in the United States. For non-United States accounts, it is the IFSC code (India), BSB number (Australia), and sort code (United Kingdom). <br><b>Account Type</b>: Aggregated<br><b>Applicable containers</b>: bank, investment<br><b>Endpoints</b>:<br><ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>POST verification</li></ul>'
-        type:
-          type: string
-          description: 'The bank transfer code type varies depending on the region of the account origination. <br><b>Account Type</b>: Aggregated<br><b>Applicable containers</b>: bank, investment<br><b>Endpoints</b>:<br><ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>POST verification</li></ul><b>Applicable Values</b><br>'
-          enum:
-          - BSB
-          - IFSC
-          - ROUTING_NUMBER
-          - SORT_CODE
-    CoverageAmount:
-      title: CoverageAmount
-      type: object
-      properties:
-        cover:
-          $ref: '#/components/schemas/Money'
-        unitType:
-          type: string
-          description: 'The type of coverage unit indicates if the coverage is for an individual or a family.<br><br><b>Aggregated / Manual</b>: Aggregated<br><b>Applicable containers</b>: insurance,investment<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul><b>Applicable Values:</b><br>'
+          description: 'The type of reward balance.<br><br><b>Account Type</b>: Aggregated<br><b>Applicable containers</b>: reward<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>GET dataExtracts/userData</li></ul><b>Applicable Values</b><br>'
           readOnly: true
           enum:
-          - PER_FAMILY
-          - PER_MEMBER
-        type:
-          type: string
-          description: 'The type of coverage provided to an individual or an entity.<br><br><b>Aggregated / Manual</b>: Aggregated<br><b>Applicable containers</b>: insurance,investment<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul><b>Applicable Values:</b><br>'
-          readOnly: true
-          enum:
-          - DEDUCTIBLE
-          - OUT_OF_POCKET
-          - ANNUAL_BENEFIT
-          - MAX_BENEFIT
-          - COVERAGE_AMOUNT
-          - MONTHLY_BENEFIT
-          - OTHER
-        limitType:
-          type: string
-          description: 'The type of coverage limit indicates if the coverage is in-network or out-of-network.<br><br><b>Aggregated / Manual</b>: Aggregated<br><b>Applicable containers</b>: insurance,investment<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul><b>Applicable Values:</b><br>'
-          readOnly: true
-          enum:
-          - IN_NETWORK
-          - OUT_NETWORK
-        met:
-          $ref: '#/components/schemas/Money'
-    DataExtractsEventResponse:
-      title: DataExtractsEventResponse
-      type: object
-      properties:
-        event:
-          $ref: '#/components/schemas/DataExtractsEvent'
-    Contact:
-      title: Contact
-      type: object
-      properties:
-        phone:
-          type: string
-          description: 'Phone number of the merchant<br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>'
-        email:
-          type: string
-          description: 'Email Id of the merchant<br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>'
-    DataExtractsTransaction:
-      title: DataExtractsTransaction
-      type: object
-      properties:
-        date:
-          type: string
-          description: 'The value provided will be either postDate or transactionDate. postDate takes higher priority than transactionDate, except for the investment container as only transactionDate is available. The availability of postDate or transactionDate depends on the provider site.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
-          readOnly: true
-        sourceId:
-          type: string
-          description: A unique ID that the provider site has assigned to the transaction. The source ID is only available for the pre-populated accounts.<br>Pre-populated accounts are the accounts that the FI customers shares with Yodlee, so that the user does not have to add or aggregate those accounts.
-          readOnly: true
-        symbol:
-          type: string
-          description: 'The symbol of the security being traded.<br><b>Note</b>: The settle date field applies only to trade-related transactions. <br><br><b>Applicable containers</b>: investment<br>'
-          readOnly: true
-        cusipNumber:
-          type: string
-          description: 'The CUSIP (Committee on Uniform Securities Identification Procedures) identifies the financial instruments in the United States and Canada.<br><b><br><b>Note</b></b>: The CUSIP number field applies only to trade related transactions.<br><br><b>Applicable containers</b>: investment<br>'
-          readOnly: true
-        highLevelCategoryId:
-          type: integer
-          description: 'The high level category assigned to the transaction. The supported values are provided by the GET transactions/categories. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
-          format: int64
-          readOnly: true
-        detailCategoryId:
-          type: integer
-          description: 'The id of the detail category that is assigned to the transaction. The supported values are provided by GET transactions/categories.<br><br><b>Applicable containers</b>: bank,creditCard<br>'
-          format: int64
-          readOnly: true
-        description:
-          $ref: '#/components/schemas/Description'
-        memo:
-          type: string
-          description: 'Additional notes provided by the user for a particular  transaction through application or API services. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
-          readOnly: true
-        settleDate:
-          type: string
-          description: 'It is the date on which the transaction is finalized, that is, the date the ownership of the security is transferred to the buyer. The settlement date is usually few days after the transaction date.<br><br><b>Applicable containers</b>: investment<br>'
-          readOnly: true
-        type:
-          type: string
-          description: 'The nature of the transaction, i.e., deposit, refund, payment, etc.<br><b>Note</b>: The transaction type field is available only for the United States, Canada, United Kingdom, New Zealand and India based provider sites. <br><br><b>Applicable containers</b>: bank,creditCard,investment<br>'
-          readOnly: true
-        intermediary:
-          type: array
-          description: 'The intermediary of the transaction.<br><br><b>Applicable containers</b>:  bank,creditCard,investment,loan<br>'
-          readOnly: true
-          items:
-            type: string
-        baseType:
-          type: string
-          description: 'Indicates if the transaction appears as a debit or a credit transaction in the account. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br><b>Applicable Values</b><br>'
-          readOnly: true
-          enum:
-          - CREDIT
-          - DEBIT
-        categorySource:
-          type: string
-          description: 'Indicates the source of the category, i.e., categories derived by the system or assigned/provided by the consumer. This is the source field of the transaction category resource. The supported values are provided by the GET transactions/categories.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br><b>Applicable Values</b><br>'
-          readOnly: true
-          enum:
-          - SYSTEM
-          - USER
-        principal:
-          $ref: '#/components/schemas/Money'
-        lastUpdated:
-          type: string
-          readOnly: true
-        isDeleted:
-          type: boolean
-          description: 'Indicates if the transaction is marked as deleted.<b>Applicable containers</b>: All Containers<br><b>Aggregated / Manual</b>: Both <br><b>Endpoints</b>:<br><ul><li>GET dataExtracts/userData</li></ul>'
-          readOnly: true
-        interest:
-          $ref: '#/components/schemas/Money'
-        price:
-          $ref: '#/components/schemas/Money'
-        commission:
-          $ref: '#/components/schemas/Money'
-        id:
-          type: integer
-          description: 'An unique identifier for the transaction. The combination of the id and account container are unique in the system. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
-          format: int64
-          readOnly: true
-        merchantType:
-          type: string
-          description: 'Indicates the merchantType of the transaction.e.g:-BILLERS,SUBSCRIPTION,OTHERS <br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>'
-          readOnly: true
-        amount:
-          $ref: '#/components/schemas/Money'
-        checkNumber:
-          type: string
-          description: 'The checkNumber of the transaction.<br><br><b>Applicable containers</b>: bank<br>'
-          readOnly: true
-        isPhysical:
-          type: boolean
-          description: 'Indicates if the transaction is happened online or in-store. <br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>'
-          readOnly: true
-        quantity:
+          - EXPIRING_BALANCE
+          - BALANCE_TO_LEVEL
+          - BALANCE_TO_REWARD
+          - BALANCE
+          - TOTAL_BALANCE
+        balance:
           type: number
-          description: 'The quantity associated with the transaction.<br><b>Note</b>: The quantity field applies only to trade-related transactions.<br><br><b>Applicable containers</b>: investment<br>'
+          description: 'The actual reward balance.<br><br><b>Account Type</b>: Aggregated<br><b>Applicable containers</b>: reward<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>GET dataExtracts/userData</li></ul>'
           format: double
           readOnly: true
-        valoren:
+        description:
           type: string
-          description: 'It is an identification number that is assigned to financial instruments such as stocks and bonds trading in Switzerland.<br><br><b>Applicable containers</b>: investment<br>'
+          description: 'The description for the reward balance as available at provider source.<br><br><b>Account Type</b>: Aggregated<br><b>Applicable containers</b>: reward<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>GET dataExtracts/userData</li></ul>'
           readOnly: true
-        isManual:
-          type: boolean
-          description: 'Indicates if the transaction is aggregated from the FI site or the consumer has manually created the transaction using the application or an API. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
-          readOnly: true
-        merchant:
-          $ref: '#/components/schemas/Merchant'
-        sedol:
+        balanceToLevel:
           type: string
-          description: 'SEDOL stands for Stock Exchange Daily Official List, a list of security identifiers used in the United Kingdom and Ireland for clearing purposes.<br><br><b>Applicable containers</b>: investment<br>'
+          description: 'The balance required to reach a reward level.<br><br><b>Account Type</b>: Aggregated<br><b>Applicable containers</b>: reward<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>GET dataExtracts/userData</li></ul>'
           readOnly: true
-        transactionDate:
+        units:
           type: string
-          description: 'The date the transaction happens in the account. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          description: 'Unit of reward balance - miles, points, segments, dollars, credits.<br><br><b>Account Type</b>: Aggregated<br><b>Applicable containers</b>: reward<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>GET dataExtracts/userData</li></ul>'
           readOnly: true
-        categoryType:
-          type: string
-          description: 'The categoryType of the category assigned to the transaction. This is the type field of the transaction category resource. The supported values are provided by the GET transactions/categories.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
-          readOnly: true
-          enum:
-          - TRANSFER
-          - DEFERRED_COMPENSATION
-          - UNCATEGORIZE
-          - INCOME
-          - EXPENSE
-        accountId:
-          type: integer
-          description: 'The account from which the transaction was made. This is basically the primary key of the account resource. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
-          format: int64
-          readOnly: true
-        createdDate:
-          type: string
-          readOnly: true
-        sourceType:
-          type: string
-          description: 'The source through which the transaction is added to the Yodlee system.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loann<br><b>Applicable Values:</b><br>'
-          readOnly: true
-          enum:
-          - AGGREGATED
-          - MANUAL
-        CONTAINER:
-          type: string
-          description: 'The account''s container.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br><b>Applicable Values</b><br>'
-          readOnly: true
-          enum:
-          - bank
-          - creditCard
-          - investment
-          - insurance
-          - loan
-          - reward
-          - bill
-          - realEstate
-          - otherAssets
-          - otherLiabilities
-        postDate:
-          type: string
-          description: 'The date on which the transaction is posted to the account.<br><br><b>Applicable containers</b>: bank,creditCard,insurance,loan<br>'
-          readOnly: true
-        parentCategoryId:
-          type: integer
-          description: 'The parentCategoryId of the category assigned to the transaction.<br><b>Note</b>: This field will be provided in the response if the transaction is assigned to a user-created category. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
-          format: int64
-          readOnly: true
-        subType:
-          type: string
-          description: 'The transaction subtype field provides a detailed transaction type. For example, purchase is a transaction type and the transaction subtype field indicates if the purchase was made using a debit or credit card.<br><b>Note</b>: The transaction subtype field is available only in the United States, Canada, United Kingdom, New Zealand and India.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
-          readOnly: true
-          enum:
-          - OVERDRAFT_CHARGE
-          - ONLINE_PURCHASE
-          - TAX_PAYMENT
-          - PAYMENT_BY_CHECK
-          - ATM_CASH_WITHDRAWAL
-          - SERVICE_CHARGE
-          - RETURNED_CHECK_CHARGE
-          - STOP_PAYMENT_CHARGE
-          - CONVENIENCE_FEE
-          - AUTO_LOAN
-          - HOME_LOAN_MORTGAGE
-          - RECURRING_SUBSCRIPTION_PAYMENT
-          - INTEREST
-          - PAYMENT
-          - PURCHASE
-          - REFUND
-          - TRANSFER
-          - FINANCE_CHARGE
-          - OTHER_CHARGES_FEES
-          - ANNUAL_FEE
-          - DEPOSIT
-          - DIRECT_DEPOSIT_SALARY
-          - INVESTMENT_INCOME_CASH
-          - SSA
-          - REWARDS
-          - TAX_REFUND
-          - CREDIT_CARD_PAYMENT
-          - INSURANCE_PAYMENT
-          - UTILITIES_PAYMENT
-          - CHILD_SUPPORT
-          - LOAN
-          - PERSONAL_LOAN
-          - STUDENT_LOAN
-          - REIMBURSEMENT
-          - BALANCE_TRANSFER
-          - OVERDRAFT_PROTECTION
-          - CREDIT
-          - NSF_FEES
-        category:
-          type: string
-          description: 'The name of the category assigned to the transaction. This is the category field of the transaction category resource. The supported values are provided by the GET transactions/categories.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
-          readOnly: true
-        runningBalance:
-          $ref: '#/components/schemas/Money'
-        categoryId:
-          type: integer
-          description: 'The id of the category assigned to the transaction. This is the id field of the transaction category resource. The supported values are provided by the GET transactions/categories.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
-          format: int64
-          readOnly: true
-        holdingDescription:
-          type: string
-          description: 'For transactions involving securities, this captures the securities description.<br><br><b>Applicable containers</b>: investment<br>'
-          readOnly: true
-        isin:
-          type: string
-          description: 'International Securities Identification Number (ISIN) standard is used worldwide to identify specific securities.<br><br><b>Applicable containers</b>: investment<br>'
-          readOnly: true
-        status:
-          type: string
-          description: 'The status of the transaction: pending or posted.<br><b>Note</b>: Most FI sites only display posted transactions. If the FI site displays transaction status, same will be aggregated.  <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br><b>Applicable Values</b><br>'
-          readOnly: true
-          enum:
-          - POSTED
-          - PENDING
-          - SCHEDULED
-          - FAILED
-          - CLEARED
-    YodleeError:
-      title: YodleeError
-      type: object
-      properties:
-        errorMessage:
-          type: string
-          description: The descriptive message that explains the error scenario.
-          readOnly: true
-        errorCode:
-          type: string
-          description: The error code follows the format YNNN. The error codes do not change. New error codes may be added as we introduce new features and enhance functionalities.
-          readOnly: true
-        referenceCode:
-          type: string
-          description: Unique Yodlee identifier used to troubleshoot issues at Yodlee's end.
-          readOnly: true
-    DataExtractsUserData:
-      title: DataExtractsUserData
-      type: object
-      properties:
-        holding:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/DataExtractsHolding'
-        totalTransactionsCount:
-          type: integer
-          format: int64
-          readOnly: true
-        user:
-          $ref: '#/components/schemas/DataExtractsUser'
-        account:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/DataExtractsAccount'
-        transaction:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/DataExtractsTransaction'
-        providerAccount:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/DataExtractsProviderAccount'
-    AccountDataset:
-      title: AccountDataset
-      type: object
-      properties:
-        lastUpdated:
-          type: string
-          description: 'Indicate when the dataset is last updated successfully for the given provider account.<br><br><b>Account Type</b>: Aggregated<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li></ul>'
-          readOnly: true
-        updateEligibility:
-          type: string
-          description: 'Indicate whether the dataset is eligible for update or not.<br><br><b>Account Type</b>: Aggregated<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li></ul><b>Applicable Values</b><br>'
-          readOnly: true
-          enum:
-          - ALLOW_UPDATE
-          - ALLOW_UPDATE_WITH_CREDENTIALS
-          - DISALLOW_UPDATE
-        additionalStatus:
-          type: string
-          description: 'The status of last update attempted for the dataset. <br><br><b>Account Type</b>: Aggregated<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li></ul><b>Applicable Values</b><br>'
-          readOnly: true
-          enum:
-          - LOGIN_IN_PROGRESS
-          - DATA_RETRIEVAL_IN_PROGRESS
-          - ACCT_SUMMARY_RECEIVED
-          - AVAILABLE_DATA_RETRIEVED
-          - PARTIAL_DATA_RETRIEVED
-          - DATA_RETRIEVAL_FAILED
-          - DATA_NOT_AVAILABLE
-          - ACCOUNT_LOCKED
-          - ADDL_AUTHENTICATION_REQUIRED
-          - BETA_SITE_DEV_IN_PROGRESS
-          - CREDENTIALS_UPDATE_NEEDED
-          - INCORRECT_CREDENTIALS
-          - PROPERTY_VALUE_NOT_AVAILABLE
-          - INVALID_ADDL_INFO_PROVIDED
-          - REQUEST_TIME_OUT
-          - SITE_BLOCKING_ERROR
-          - UNEXPECTED_SITE_ERROR
-          - SITE_NOT_SUPPORTED
-          - SITE_UNAVAILABLE
-          - TECH_ERROR
-          - USER_ACTION_NEEDED_AT_SITE
-          - SITE_SESSION_INVALIDATED
-          - NEW_AUTHENTICATION_REQUIRED
-          - DATASET_NOT_SUPPORTED
-          - ENROLLMENT_REQUIRED_FOR_DATASET
-          - CONSENT_REQUIRED
-          - CONSENT_EXPIRED
-          - CONSENT_REVOKED
-          - INCORRECT_OAUTH_TOKEN
-          - MIGRATION_IN_PROGRESS
-        nextUpdateScheduled:
-          type: string
-          description: 'Indicates when the next attempt to update the dataset is scheduled.<br><br><b>Account Type</b>: Aggregated<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li></ul>'
-          readOnly: true
-        name:
-          type: string
-          description: 'The name of the dataset requested from the provider site<br><br><b>Account Type</b>: Manual<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li><li>GET providers</li></ul><b>Applicable Values</b><br>'
-          enum:
-          - BASIC_AGG_DATA
-          - ADVANCE_AGG_DATA
-          - ACCT_PROFILE
-          - DOCUMENT
-        lastUpdateAttempt:
-          type: string
-          description: 'Indicate when the last attempt was performed to update the dataset for the given provider account<br><br><b>Account Type</b>: Aggregated<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li></ul>'
-          readOnly: true
-    DataExtractsEvent:
-      title: DataExtractsEvent
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/DataExtractsEventData'
-        info:
-          type: string
-          readOnly: true
-    Description:
-      title: Description
-      type: object
-      properties:
-        security:
-          type: string
-          description: 'The description will provide the actual name of the security.<br><br><b>Applicable containers</b>: investment<br>'
-          readOnly: true
-        original:
-          type: string
-          description: 'Original transaction description as it appears at the FI site.<br><br><b>Applicable containers</b>: creditCard, insurance, loan<br>'
-          readOnly: true
-        simple:
-          type: string
-          description: 'The transaction description that appears at the FI site may not be self-explanatory, i.e., the source, purpose of the transaction may not be evident. Yodlee attempts to simplify and make the transaction meaningful to the consumer, and this simplified transaction description is provided in the simple description field.Note: The simple description field is available only in the United States, Canada, United Kingdom, and India.<br><br><b>Applicable containers</b>: creditCard, insurance, loan<br>'
-          readOnly: true
-        consumer:
-          type: string
-          description: The description of the transaction as defined by the consumer. The consumer can define or provide more details of the transaction in this field.<br><br>
-    DataExtractsUser:
-      title: DataExtractsUser
-      type: object
-      properties:
-        loginName:
-          type: string
-          readOnly: true
-    DataExtractsProviderAccount:
-      title: DataExtractsProviderAccount
-      type: object
-      properties:
-        destinationProviderAccountId:
-          type: integer
-          description: The providerAccountId that is retained as part of the many-to-one OAuth migration process.<br><b>Endpoints</b>:<ul><li>GET dataExtracts/userData</li></ul>
-          format: int64
-          readOnly: true
-        oauthMigrationStatus:
-          type: string
-          description: Indicates the migration status of the provider account from screen-scraping provider to the Open Banking provider. <br><br><b>Endpoints</b>:<ul><li>GET providerAccounts</li><li>GET providerAccounts/{providerAccountId}</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET dataExtracts/userData</li></ul>
-          readOnly: true
-          enum:
-          - IN_PROGRESS
-          - TO_BE_MIGRATED
-          - COMPLETED
-          - MIGRATED
-        isManual:
-          type: boolean
-          description: Indicates whether account is a manual or aggregated provider account.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li><li>GET dataExtracts/userData</li></ul>
-          readOnly: true
-        lastUpdated:
-          type: string
-          description: 'Indicate when the providerAccount is last updated successfully.<br><br><b>Account Type</b>: Aggregated<br><b>Endpoints</b>:<ul><li>GET dataExtracts/userData</li></ul>'
-          readOnly: true
-        createdDate:
-          type: string
-          description: The date on when the provider account is created in the system.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li></ul>
-          readOnly: true
-        aggregationSource:
-          type: string
-          description: The source through which the providerAccount is added in the system.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li><li>GET dataExtracts/userData</li></ul><b>Applicable Values</b><br>
-          readOnly: true
-          enum:
-          - SYSTEM
-          - USER
-        isDeleted:
-          type: boolean
-          description: 'Indicates if the provider account is deleted from the system.<b>Applicable containers</b>: All Containers<br><b>Aggregated / Manual</b>: Both <br><b>Endpoints</b>:<br><ul><li>GET dataExtracts/userData</li></ul>'
-          readOnly: true
-        providerId:
-          type: integer
-          description: Unique identifier for the provider resource. This denotes the provider for which the provider account id is generated by the user.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li><li>GET dataExtracts/userData</li></ul>
-          format: int64
-          readOnly: true
-        requestId:
-          type: string
-          description: Unique id generated to indicate the request.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li></ul>
-          readOnly: true
-        sourceProviderAccountIds:
-          type: array
-          description: The providerAccountIds that are deleted and merged into the destinationProviderAccountId as part of the many-to-one OAuth migration process.<br><b>Endpoints</b>:<ul><li>GET dataExtracts/userData</li></ul>
-          readOnly: true
-          items:
-            type: integer
-            format: int64
-        id:
-          type: integer
-          description: Unique identifier for the provider account resource. This is created during account addition.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li><li>GET dataExtracts/userData</li></ul>
-          format: int64
-          readOnly: true
-        authType:
-          type: string
-          description: The authentication type enabled at the provider site. <br><br><b>Endpoints</b>:<ul><li>GET providers/{providerId}</li><li>GET providers</li></ul><b>Applicable Values</b><br>
-          readOnly: true
-          enum:
-          - OAUTH
-          - CREDENTIALS
-          - MFA_CREDENTIALS
-        dataset:
-          type: array
-          description: Logical grouping of dataset attributes into datasets such as Basic Aggregation Data, Account Profile and Documents.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li><li>GET dataExtracts/userData</li></ul>
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/AccountDataset'
-        status:
-          type: string
-          description: The status of last update attempted for the account. <br><br><b>Endpoints</b>:<ul><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li><li>GET dataExtracts/userData</li></ul><b>Applicable Values</b><br>
-          readOnly: true
-          enum:
-          - LOGIN_IN_PROGRESS
-          - USER_INPUT_REQUIRED
-          - IN_PROGRESS
-          - PARTIAL_SUCCESS
-          - SUCCESS
-          - FAILED
-          - MIGRATION_IN_PROGRESS
-          - DATA_RETRIEVAL_FAILED
     DataExtractsAccount:
       title: DataExtractsAccount
       type: object
@@ -2024,3 +1964,63 @@ components:
           $ref: '#/components/schemas/Money'
         recurringPayment:
           $ref: '#/components/schemas/Money'
+    Coverage:
+      title: Coverage
+      type: object
+      properties:
+        amount:
+          type: array
+          description: 'The coverage amount-related details.<br><br><b>Aggregated / Manual</b>: Aggregated<br><b>Applicable containers</b>: insurance,investment<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul>'
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/CoverageAmount'
+        planType:
+          type: string
+          description: 'The plan type for an insurance provided to an individual or an entity.<br><br><b>Aggregated / Manual</b>: Aggregated<br><b>Applicable containers</b>: insurance<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul><b>Applicable Values:</b><br>'
+          readOnly: true
+          enum:
+          - PPO
+          - HMO
+          - UNKNOWN
+        endDate:
+          type: string
+          description: 'The date on which the coverage for the account ends or expires.<br><br><b>Aggregated / Manual</b>: Aggregated<br><b>Applicable containers</b>: insurance,investment<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul>'
+          readOnly: true
+        type:
+          type: string
+          description: 'The type of coverage provided to an individual or an entity.<br><br><b>Aggregated / Manual</b>: Aggregated<br><b>Applicable containers</b>: insurance,investment<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul><b>Applicable Values:</b><br>'
+          readOnly: true
+          enum:
+          - VISION
+          - DENTAL
+          - MEDICAL
+          - HEALTH
+          - DEATH_COVER
+          - TOTAL_PERMANENT_DISABILITY
+          - ACCIDENTAL_DEATH_COVER
+          - INCOME_PROTECTION
+          - DEATH_TOTAL_PERMANENT_DISABILITY
+          - OTHER
+        startDate:
+          type: string
+          description: 'The date on which the coverage for the account starts.<br><br><b>Aggregated / Manual</b>: Aggregated<br><b>Applicable containers</b>: insurance,investment<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul>'
+          readOnly: true
+    Description:
+      title: Description
+      type: object
+      properties:
+        security:
+          type: string
+          description: 'The description will provide the actual name of the security.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        original:
+          type: string
+          description: 'Original transaction description as it appears at the FI site.<br><br><b>Applicable containers</b>: creditCard, insurance, loan<br>'
+          readOnly: true
+        simple:
+          type: string
+          description: 'The transaction description that appears at the FI site may not be self-explanatory, i.e., the source, purpose of the transaction may not be evident. Yodlee attempts to simplify and make the transaction meaningful to the consumer, and this simplified transaction description is provided in the simple description field.Note: The simple description field is available only in the United States, Canada, United Kingdom, and India.<br><br><b>Applicable containers</b>: creditCard, insurance, loan<br>'
+          readOnly: true
+        consumer:
+          type: string
+          description: The description of the transaction as defined by the consumer. The consumer can define or provide more details of the transaction in this field.<br><br>

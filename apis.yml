@@ -30,6 +30,11 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/envestnet.png
 tags:
+  - Finance
+  - Wealth Management
+  - Open Banking
+  - Account Aggregation
+tags_raw:
   - Financial
   - Wealth Management
   - Open Banking
@@ -494,8 +499,6 @@ apis:
   description: Provider Accounts API
   humanURL: https://developer.envestnet.com/products/yodlee/account-aggregation
   tags:
-  - ProviderAccounts
-  tags_raw:
   - Provider Accounts
   properties:
   - type: OpenAPI

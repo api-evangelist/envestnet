@@ -83,6 +83,15 @@ paths:
       deprecated: false
 components:
   schemas:
+    StatementResponse:
+      title: StatementResponse
+      type: object
+      properties:
+        statement:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Statement'
     Statement:
       title: Statement
       type: object
@@ -631,12 +640,3 @@ components:
           - VEF
           - SSP
           - ALK
-    StatementResponse:
-      title: StatementResponse
-      type: object
-      properties:
-        statement:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/Statement'

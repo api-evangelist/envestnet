@@ -85,18 +85,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Error:
-      required:
-      - errorCode
-      - referenceCode
-      - errorMessage
-      properties:
-        errorCode:
-          type: string
-        referenceCode:
-          type: string
-        errorMessage:
-          type: string
     Threshold:
       properties:
         name:
@@ -185,14 +173,6 @@ components:
           enum:
           - ACCOUNT
           - VIEW
-    CustomerSubscription:
-      allOf:
-      - $ref: '#/components/schemas/Subscription'
-      properties:
-        customerConfiguration:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerConfiguration'
     CustomerConfiguration:
       properties:
         entityType:
@@ -242,6 +222,26 @@ components:
           enum:
           - true
           - false
+    CustomerSubscription:
+      allOf:
+      - $ref: '#/components/schemas/Subscription'
+      properties:
+        customerConfiguration:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerConfiguration'
+    Error:
+      required:
+      - errorCode
+      - referenceCode
+      - errorMessage
+      properties:
+        errorCode:
+          type: string
+        referenceCode:
+          type: string
+        errorMessage:
+          type: string
   examples:
     updateCustomerSubscriptionExample:
       value:
