@@ -147,6 +147,40 @@ paths:
       deprecated: false
 components:
   schemas:
+    YodleeError:
+      title: YodleeError
+      type: object
+      properties:
+        errorMessage:
+          type: string
+          description: The descriptive message that explains the error scenario.
+          readOnly: true
+        errorCode:
+          type: string
+          description: The error code follows the format YNNN. The error codes do not change. New error codes may be added as we introduce new features and enhance functionalities.
+          readOnly: true
+        referenceCode:
+          type: string
+          description: Unique Yodlee identifier used to troubleshoot issues at Yodlee's end.
+          readOnly: true
+    DocumentResponse:
+      title: DocumentResponse
+      type: object
+      properties:
+        document:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Document'
+    DocumentDownloadResponse:
+      title: DocumentDownloadResponse
+      type: object
+      properties:
+        document:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/DocumentDownload'
     Document:
       title: Document
       type: object
@@ -188,24 +222,6 @@ components:
           type: string
           description: 'Indicates the status of the document download.<br><br><b>Applicable containers</b>: bank, investment, creditCard, loan, insurance<br>'
           readOnly: true
-    DocumentResponse:
-      title: DocumentResponse
-      type: object
-      properties:
-        document:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/Document'
-    DocumentDownloadResponse:
-      title: DocumentDownloadResponse
-      type: object
-      properties:
-        document:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/DocumentDownload'
     DocumentDownload:
       title: DocumentDownload
       type: object
@@ -217,20 +233,4 @@ components:
         id:
           type: string
           description: 'The document''s primary key and unique identifier.<br><br><b>Applicable containers</b>: bank, investment, creditCard, loan, insurance<br>'
-          readOnly: true
-    YodleeError:
-      title: YodleeError
-      type: object
-      properties:
-        errorMessage:
-          type: string
-          description: The descriptive message that explains the error scenario.
-          readOnly: true
-        errorCode:
-          type: string
-          description: The error code follows the format YNNN. The error codes do not change. New error codes may be added as we introduce new features and enhance functionalities.
-          readOnly: true
-        referenceCode:
-          type: string
-          description: Unique Yodlee identifier used to troubleshoot issues at Yodlee's end.
           readOnly: true

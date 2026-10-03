@@ -109,32 +109,25 @@ components:
           type: string
           description: '<b>Applicable containers</b>: reward, bank, creditCard, investment, loan, insurance, realEstate, otherLiabilities<br>'
           readOnly: true
-    VerifyAccountRequest:
-      title: VerifyAccountRequest
-      required:
-      - transactionCriteria
+    Description:
+      title: Description
       type: object
       properties:
-        container:
+        security:
           type: string
-          enum:
-          - bank
-          - creditCard
-          - investment
-          - insurance
-          - loan
-          - reward
-          - bill
-          - realEstate
-          - otherAssets
-          - otherLiabilities
-        accountId:
-          type: integer
-          format: int64
-        transactionCriteria:
-          type: array
-          items:
-            $ref: '#/components/schemas/VerifyTransactionCriteria'
+          description: 'The description will provide the actual name of the security.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        original:
+          type: string
+          description: 'Original transaction description as it appears at the FI site.<br><br><b>Applicable containers</b>: creditCard, insurance, loan<br>'
+          readOnly: true
+        simple:
+          type: string
+          description: 'The transaction description that appears at the FI site may not be self-explanatory, i.e., the source, purpose of the transaction may not be evident. Yodlee attempts to simplify and make the transaction meaningful to the consumer, and this simplified transaction description is provided in the simple description field.Note: The simple description field is available only in the United States, Canada, United Kingdom, and India.<br><br><b>Applicable containers</b>: creditCard, insurance, loan<br>'
+          readOnly: true
+        consumer:
+          type: string
+          description: The description of the transaction as defined by the consumer. The consumer can define or provide more details of the transaction in this field.<br><br>
     AccountAddress:
       title: AccountAddress
       type: object
@@ -179,283 +172,115 @@ components:
           - PAYMENT
           - PAYOFF
           - UNKNOWN
-    Merchant:
-      title: Merchant
-      type: object
-      properties:
-        website:
-          type: string
-          description: 'The website of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>'
-          readOnly: true
-        address:
-          $ref: '#/components/schemas/AccountAddress'
-        contact:
-          $ref: '#/components/schemas/Contact'
-        categoryLabel:
-          type: array
-          description: 'The business categories of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard<br><b>Applicable Values</b><br>'
-          readOnly: true
-          items:
-            type: string
-        coordinates:
-          $ref: '#/components/schemas/Coordinates'
-        name:
-          type: string
-          description: 'The name of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
-          readOnly: true
-        id:
-          type: string
-          description: 'Identifier of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
-          readOnly: true
-        source:
-          type: string
-          description: 'The source through which merchant information is retrieved.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br><b>Applicable Values</b><br>'
-          readOnly: true
-          enum:
-          - YODLEE
-          - FACTUAL
-        logoURL:
-          type: string
-          description: 'The logoURL of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>'
-          readOnly: true
-    Transaction:
-      title: Transaction
+    VerifyTransactionCriteria:
+      title: VerifyTransactionCriteria
+      required:
+      - amount
+      - date
       type: object
       properties:
         date:
           type: string
-          description: 'The value provided will be either postDate or transactionDate. postDate takes higher priority than transactionDate, except for the investment container as only transactionDate is available. The availability of postDate or transactionDate depends on the provider site.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
-          readOnly: true
-        sourceId:
-          type: string
-          description: A unique ID that the provider site has assigned to the transaction. The source ID is only available for the pre-populated accounts.<br>Pre-populated accounts are the accounts that the FI customers shares with Yodlee, so that the user does not have to add or aggregate those accounts.
-          readOnly: true
-        symbol:
-          type: string
-          description: 'The symbol of the security being traded.<br><b>Note</b>: The settle date field applies only to trade-related transactions. <br><br><b>Applicable containers</b>: investment<br>'
-          readOnly: true
-        cusipNumber:
-          type: string
-          description: 'The CUSIP (Committee on Uniform Securities Identification Procedures) identifies the financial instruments in the United States and Canada.<br><b><br><b>Note</b></b>: The CUSIP number field applies only to trade related transactions.<br><br><b>Applicable containers</b>: investment<br>'
-          readOnly: true
-        highLevelCategoryId:
-          type: integer
-          description: 'The high level category assigned to the transaction. The supported values are provided by the GET transactions/categories. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
-          format: int64
-          readOnly: true
-        detailCategoryId:
-          type: integer
-          description: 'The id of the detail category that is assigned to the transaction. The supported values are provided by GET transactions/categories.<br><br><b>Applicable containers</b>: bank,creditCard<br>'
-          format: int64
-          readOnly: true
-        description:
-          $ref: '#/components/schemas/Description'
-        memo:
-          type: string
-          description: 'Additional notes provided by the user for a particular  transaction through application or API services. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
-          readOnly: true
-        settleDate:
-          type: string
-          description: 'It is the date on which the transaction is finalized, that is, the date the ownership of the security is transferred to the buyer. The settlement date is usually few days after the transaction date.<br><br><b>Applicable containers</b>: investment<br>'
-          readOnly: true
-        type:
-          type: string
-          description: 'The nature of the transaction, i.e., deposit, refund, payment, etc.<br><b>Note</b>: The transaction type field is available only for the United States, Canada, United Kingdom, New Zealand and India based provider sites. <br><br><b>Applicable containers</b>: bank,creditCard,investment<br>'
-          readOnly: true
-        intermediary:
+        amount:
+          type: number
+          format: double
+        verifiedTransaction:
           type: array
-          description: 'The intermediary of the transaction.<br><br><b>Applicable containers</b>:  bank,creditCard,investment,loan<br>'
           readOnly: true
           items:
-            type: string
+            $ref: '#/components/schemas/Transaction'
+        matched:
+          type: string
+          description: Indicates if the criteria is matched or not. <br><b>Applicable Values</b><br>
+          readOnly: true
+          enum:
+          - COMPLETE
+          - NONE
+        keyword:
+          type: string
+        dateVariance:
+          type: string
         baseType:
           type: string
           description: 'Indicates if the transaction appears as a debit or a credit transaction in the account. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br><b>Applicable Values</b><br>'
-          readOnly: true
           enum:
           - CREDIT
           - DEBIT
-        categorySource:
+    AccountHolder:
+      title: AccountHolder
+      type: object
+      properties:
+        identifier:
+          type: array
+          description: 'Identifiers of the account holder.<br><br><b>Aggregated / Manual</b>: Aggregated <br><b>Applicable containers</b>: bank<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul>'
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Identifier'
+        gender:
           type: string
-          description: 'Indicates the source of the category, i.e., categories derived by the system or assigned/provided by the consumer. This is the source field of the transaction category resource. The supported values are provided by the GET transactions/categories.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br><b>Applicable Values</b><br>'
+          description: 'Identifiers of the account holder.<br><br><b>Aggregated / Manual</b>: Aggregated <br><b>Applicable containers</b>: bank<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul>'
+          readOnly: true
+        ownership:
+          type: string
+          description: 'Indicates the ownership of the account.<br><br><b>Aggregated / Manual</b>: Aggregated <br><b>Applicable containers</b>: bank<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul><b>Applicable Values</b><br>'
           readOnly: true
           enum:
-          - SYSTEM
-          - USER
-        principal:
-          $ref: '#/components/schemas/Money'
-        lastUpdated:
+          - PRIMARY
+          - SECONDARY
+          - CUSTODIAN
+          - OTHERS
+          - POWER_OF_ATTORNEY
+          - TRUSTEE
+          - JOINT_OWNER
+          - BENEFICIARY
+          - AAS
+          - BUSINESS
+          - DBA
+          - TRUST
+        name:
+          $ref: '#/components/schemas/Name'
+    Name:
+      title: Name
+      type: object
+      properties:
+        middle:
           type: string
-          readOnly: true
-        interest:
-          $ref: '#/components/schemas/Money'
-        price:
-          $ref: '#/components/schemas/Money'
-        commission:
-          $ref: '#/components/schemas/Money'
-        id:
-          type: integer
-          description: 'An unique identifier for the transaction. The combination of the id and account container are unique in the system. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
-          format: int64
-          readOnly: true
-        merchantType:
+          description: Middle name.
+        last:
           type: string
-          description: 'Indicates the merchantType of the transaction.e.g:-BILLERS,SUBSCRIPTION,OTHERS <br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>'
-          readOnly: true
-        amount:
-          $ref: '#/components/schemas/Money'
-        checkNumber:
+          description: Last name.
+        fullName:
           type: string
-          description: 'The checkNumber of the transaction.<br><br><b>Applicable containers</b>: bank<br>'
-          readOnly: true
-        isPhysical:
-          type: boolean
-          description: 'Indicates if the transaction is happened online or in-store. <br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>'
-          readOnly: true
-        quantity:
-          type: number
-          description: 'The quantity associated with the transaction.<br><b>Note</b>: The quantity field applies only to trade-related transactions.<br><br><b>Applicable containers</b>: investment<br>'
-          format: double
-          readOnly: true
-        valoren:
+          description: Full name.
+        first:
           type: string
-          description: 'It is an identification number that is assigned to financial instruments such as stocks and bonds trading in Switzerland.<br><br><b>Applicable containers</b>: investment<br>'
-          readOnly: true
-        isManual:
-          type: boolean
-          description: 'Indicates if the transaction is aggregated from the FI site or the consumer has manually created the transaction using the application or an API. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
-          readOnly: true
-        merchant:
-          $ref: '#/components/schemas/Merchant'
-        sedol:
+          description: First name.
+    YodleeError:
+      title: YodleeError
+      type: object
+      properties:
+        errorMessage:
           type: string
-          description: 'SEDOL stands for Stock Exchange Daily Official List, a list of security identifiers used in the United Kingdom and Ireland for clearing purposes.<br><br><b>Applicable containers</b>: investment<br>'
+          description: The descriptive message that explains the error scenario.
           readOnly: true
-        transactionDate:
+        errorCode:
           type: string
-          description: 'The date the transaction happens in the account. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          description: The error code follows the format YNNN. The error codes do not change. New error codes may be added as we introduce new features and enhance functionalities.
           readOnly: true
-        categoryType:
+        referenceCode:
           type: string
-          description: 'The categoryType of the category assigned to the transaction. This is the type field of the transaction category resource. The supported values are provided by the GET transactions/categories.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          description: Unique Yodlee identifier used to troubleshoot issues at Yodlee's end.
           readOnly: true
-          enum:
-          - TRANSFER
-          - DEFERRED_COMPENSATION
-          - UNCATEGORIZE
-          - INCOME
-          - EXPENSE
-        accountId:
-          type: integer
-          description: 'The account from which the transaction was made. This is basically the primary key of the account resource. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
-          format: int64
-          readOnly: true
-        createdDate:
+    Contact:
+      title: Contact
+      type: object
+      properties:
+        phone:
           type: string
-          readOnly: true
-        sourceType:
+          description: 'Phone number of the merchant<br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>'
+        email:
           type: string
-          description: 'The source through which the transaction is added to the Yodlee system.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loann<br><b>Applicable Values:</b><br>'
-          readOnly: true
-          enum:
-          - AGGREGATED
-          - MANUAL
-        CONTAINER:
-          type: string
-          description: 'The account''s container.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br><b>Applicable Values</b><br>'
-          readOnly: true
-          enum:
-          - bank
-          - creditCard
-          - investment
-          - insurance
-          - loan
-          - reward
-          - bill
-          - realEstate
-          - otherAssets
-          - otherLiabilities
-        postDate:
-          type: string
-          description: 'The date on which the transaction is posted to the account.<br><br><b>Applicable containers</b>: bank,creditCard,insurance,loan<br>'
-          readOnly: true
-        parentCategoryId:
-          type: integer
-          description: 'The parentCategoryId of the category assigned to the transaction.<br><b>Note</b>: This field will be provided in the response if the transaction is assigned to a user-created category. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
-          format: int64
-          readOnly: true
-        subType:
-          type: string
-          description: 'The transaction subtype field provides a detailed transaction type. For example, purchase is a transaction type and the transaction subtype field indicates if the purchase was made using a debit or credit card.<br><b>Note</b>: The transaction subtype field is available only in the United States, Canada, United Kingdom, New Zealand and India.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
-          readOnly: true
-          enum:
-          - OVERDRAFT_CHARGE
-          - ONLINE_PURCHASE
-          - TAX_PAYMENT
-          - PAYMENT_BY_CHECK
-          - ATM_CASH_WITHDRAWAL
-          - SERVICE_CHARGE
-          - RETURNED_CHECK_CHARGE
-          - STOP_PAYMENT_CHARGE
-          - CONVENIENCE_FEE
-          - AUTO_LOAN
-          - HOME_LOAN_MORTGAGE
-          - RECURRING_SUBSCRIPTION_PAYMENT
-          - INTEREST
-          - PAYMENT
-          - PURCHASE
-          - REFUND
-          - TRANSFER
-          - FINANCE_CHARGE
-          - OTHER_CHARGES_FEES
-          - ANNUAL_FEE
-          - DEPOSIT
-          - DIRECT_DEPOSIT_SALARY
-          - INVESTMENT_INCOME_CASH
-          - SSA
-          - REWARDS
-          - TAX_REFUND
-          - CREDIT_CARD_PAYMENT
-          - INSURANCE_PAYMENT
-          - UTILITIES_PAYMENT
-          - CHILD_SUPPORT
-          - LOAN
-          - PERSONAL_LOAN
-          - STUDENT_LOAN
-          - REIMBURSEMENT
-          - BALANCE_TRANSFER
-          - OVERDRAFT_PROTECTION
-          - CREDIT
-          - NSF_FEES
-        category:
-          type: string
-          description: 'The name of the category assigned to the transaction. This is the category field of the transaction category resource. The supported values are provided by the GET transactions/categories.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
-          readOnly: true
-        runningBalance:
-          $ref: '#/components/schemas/Money'
-        categoryId:
-          type: integer
-          description: 'The id of the category assigned to the transaction. This is the id field of the transaction category resource. The supported values are provided by the GET transactions/categories.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
-          format: int64
-          readOnly: true
-        holdingDescription:
-          type: string
-          description: 'For transactions involving securities, this captures the securities description.<br><br><b>Applicable containers</b>: investment<br>'
-          readOnly: true
-        isin:
-          type: string
-          description: 'International Securities Identification Number (ISIN) standard is used worldwide to identify specific securities.<br><br><b>Applicable containers</b>: investment<br>'
-          readOnly: true
-        status:
-          type: string
-          description: 'The status of the transaction: pending or posted.<br><b>Note</b>: Most FI sites only display posted transactions. If the FI site displays transaction status, same will be aggregated.  <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br><b>Applicable Values</b><br>'
-          readOnly: true
-          enum:
-          - POSTED
-          - PENDING
-          - SCHEDULED
-          - FAILED
-          - CLEARED
+          description: 'Email Id of the merchant<br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>'
     Money:
       title: Money
       type: object
@@ -920,106 +745,6 @@ components:
           - VEF
           - SSP
           - ALK
-    VerifyAccountResponse:
-      title: VerifyAccountResponse
-      type: object
-      properties:
-        verifyAccount:
-          $ref: '#/components/schemas/VerifyAccount'
-    Name:
-      title: Name
-      type: object
-      properties:
-        middle:
-          type: string
-          description: Middle name.
-        last:
-          type: string
-          description: Last name.
-        fullName:
-          type: string
-          description: Full name.
-        first:
-          type: string
-          description: First name.
-    Contact:
-      title: Contact
-      type: object
-      properties:
-        phone:
-          type: string
-          description: 'Phone number of the merchant<br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>'
-        email:
-          type: string
-          description: 'Email Id of the merchant<br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>'
-    AccountHolder:
-      title: AccountHolder
-      type: object
-      properties:
-        identifier:
-          type: array
-          description: 'Identifiers of the account holder.<br><br><b>Aggregated / Manual</b>: Aggregated <br><b>Applicable containers</b>: bank<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul>'
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/Identifier'
-        gender:
-          type: string
-          description: 'Identifiers of the account holder.<br><br><b>Aggregated / Manual</b>: Aggregated <br><b>Applicable containers</b>: bank<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul>'
-          readOnly: true
-        ownership:
-          type: string
-          description: 'Indicates the ownership of the account.<br><br><b>Aggregated / Manual</b>: Aggregated <br><b>Applicable containers</b>: bank<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li></ul><b>Applicable Values</b><br>'
-          readOnly: true
-          enum:
-          - PRIMARY
-          - SECONDARY
-          - CUSTODIAN
-          - OTHERS
-          - POWER_OF_ATTORNEY
-          - TRUSTEE
-          - JOINT_OWNER
-          - BENEFICIARY
-          - AAS
-          - BUSINESS
-          - DBA
-          - TRUST
-        name:
-          $ref: '#/components/schemas/Name'
-    YodleeError:
-      title: YodleeError
-      type: object
-      properties:
-        errorMessage:
-          type: string
-          description: The descriptive message that explains the error scenario.
-          readOnly: true
-        errorCode:
-          type: string
-          description: The error code follows the format YNNN. The error codes do not change. New error codes may be added as we introduce new features and enhance functionalities.
-          readOnly: true
-        referenceCode:
-          type: string
-          description: Unique Yodlee identifier used to troubleshoot issues at Yodlee's end.
-          readOnly: true
-    Description:
-      title: Description
-      type: object
-      properties:
-        security:
-          type: string
-          description: 'The description will provide the actual name of the security.<br><br><b>Applicable containers</b>: investment<br>'
-          readOnly: true
-        original:
-          type: string
-          description: 'Original transaction description as it appears at the FI site.<br><br><b>Applicable containers</b>: creditCard, insurance, loan<br>'
-          readOnly: true
-        simple:
-          type: string
-          description: 'The transaction description that appears at the FI site may not be self-explanatory, i.e., the source, purpose of the transaction may not be evident. Yodlee attempts to simplify and make the transaction meaningful to the consumer, and this simplified transaction description is provided in the simple description field.Note: The simple description field is available only in the United States, Canada, United Kingdom, and India.<br><br><b>Applicable containers</b>: creditCard, insurance, loan<br>'
-          readOnly: true
-        consumer:
-          type: string
-          description: The description of the transaction as defined by the consumer. The consumer can define or provide more details of the transaction in this field.<br><br>
     BankTransferCode:
       title: BankTransferCode
       type: object
@@ -1035,18 +760,6 @@ components:
           - IFSC
           - ROUTING_NUMBER
           - SORT_CODE
-    Coordinates:
-      title: Coordinates
-      type: object
-      properties:
-        latitude:
-          type: number
-          description: 'Latitude of the merchant<br><br><b>Applicable containers</b>: bank,creditCard,loan<br>'
-          format: double
-        longitude:
-          type: number
-          description: 'Longitude of the merchant<br><br><b>Applicable containers</b>: bank,creditCard,loan<br>'
-          format: double
     Identifier:
       title: Identifier
       type: object
@@ -1067,6 +780,89 @@ components:
           type: string
           description: Value of the identifier
           readOnly: true
+    Coordinates:
+      title: Coordinates
+      type: object
+      properties:
+        latitude:
+          type: number
+          description: 'Latitude of the merchant<br><br><b>Applicable containers</b>: bank,creditCard,loan<br>'
+          format: double
+        longitude:
+          type: number
+          description: 'Longitude of the merchant<br><br><b>Applicable containers</b>: bank,creditCard,loan<br>'
+          format: double
+    VerifyAccountResponse:
+      title: VerifyAccountResponse
+      type: object
+      properties:
+        verifyAccount:
+          $ref: '#/components/schemas/VerifyAccount'
+    VerifyAccountRequest:
+      title: VerifyAccountRequest
+      required:
+      - transactionCriteria
+      type: object
+      properties:
+        container:
+          type: string
+          enum:
+          - bank
+          - creditCard
+          - investment
+          - insurance
+          - loan
+          - reward
+          - bill
+          - realEstate
+          - otherAssets
+          - otherLiabilities
+        accountId:
+          type: integer
+          format: int64
+        transactionCriteria:
+          type: array
+          items:
+            $ref: '#/components/schemas/VerifyTransactionCriteria'
+    Merchant:
+      title: Merchant
+      type: object
+      properties:
+        website:
+          type: string
+          description: 'The website of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>'
+          readOnly: true
+        address:
+          $ref: '#/components/schemas/AccountAddress'
+        contact:
+          $ref: '#/components/schemas/Contact'
+        categoryLabel:
+          type: array
+          description: 'The business categories of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard<br><b>Applicable Values</b><br>'
+          readOnly: true
+          items:
+            type: string
+        coordinates:
+          $ref: '#/components/schemas/Coordinates'
+        name:
+          type: string
+          description: 'The name of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          readOnly: true
+        id:
+          type: string
+          description: 'Identifier of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          readOnly: true
+        source:
+          type: string
+          description: 'The source through which merchant information is retrieved.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br><b>Applicable Values</b><br>'
+          readOnly: true
+          enum:
+          - YODLEE
+          - FACTUAL
+        logoURL:
+          type: string
+          description: 'The logoURL of the merchant.<br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>'
+          readOnly: true
     VerifyAccount:
       title: VerifyAccount
       type: object
@@ -1079,37 +875,241 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/VerifiedAccount'
-    VerifyTransactionCriteria:
-      title: VerifyTransactionCriteria
-      required:
-      - amount
-      - date
+    Transaction:
+      title: Transaction
       type: object
       properties:
         date:
           type: string
-        amount:
-          type: number
-          format: double
-        verifiedTransaction:
+          description: 'The value provided will be either postDate or transactionDate. postDate takes higher priority than transactionDate, except for the investment container as only transactionDate is available. The availability of postDate or transactionDate depends on the provider site.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          readOnly: true
+        sourceId:
+          type: string
+          description: A unique ID that the provider site has assigned to the transaction. The source ID is only available for the pre-populated accounts.<br>Pre-populated accounts are the accounts that the FI customers shares with Yodlee, so that the user does not have to add or aggregate those accounts.
+          readOnly: true
+        symbol:
+          type: string
+          description: 'The symbol of the security being traded.<br><b>Note</b>: The settle date field applies only to trade-related transactions. <br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        cusipNumber:
+          type: string
+          description: 'The CUSIP (Committee on Uniform Securities Identification Procedures) identifies the financial instruments in the United States and Canada.<br><b><br><b>Note</b></b>: The CUSIP number field applies only to trade related transactions.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        highLevelCategoryId:
+          type: integer
+          description: 'The high level category assigned to the transaction. The supported values are provided by the GET transactions/categories. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          format: int64
+          readOnly: true
+        detailCategoryId:
+          type: integer
+          description: 'The id of the detail category that is assigned to the transaction. The supported values are provided by GET transactions/categories.<br><br><b>Applicable containers</b>: bank,creditCard<br>'
+          format: int64
+          readOnly: true
+        description:
+          $ref: '#/components/schemas/Description'
+        memo:
+          type: string
+          description: 'Additional notes provided by the user for a particular  transaction through application or API services. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          readOnly: true
+        settleDate:
+          type: string
+          description: 'It is the date on which the transaction is finalized, that is, the date the ownership of the security is transferred to the buyer. The settlement date is usually few days after the transaction date.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        type:
+          type: string
+          description: 'The nature of the transaction, i.e., deposit, refund, payment, etc.<br><b>Note</b>: The transaction type field is available only for the United States, Canada, United Kingdom, New Zealand and India based provider sites. <br><br><b>Applicable containers</b>: bank,creditCard,investment<br>'
+          readOnly: true
+        intermediary:
           type: array
+          description: 'The intermediary of the transaction.<br><br><b>Applicable containers</b>:  bank,creditCard,investment,loan<br>'
           readOnly: true
           items:
-            $ref: '#/components/schemas/Transaction'
-        matched:
-          type: string
-          description: Indicates if the criteria is matched or not. <br><b>Applicable Values</b><br>
-          readOnly: true
-          enum:
-          - COMPLETE
-          - NONE
-        keyword:
-          type: string
-        dateVariance:
-          type: string
+            type: string
         baseType:
           type: string
           description: 'Indicates if the transaction appears as a debit or a credit transaction in the account. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br><b>Applicable Values</b><br>'
+          readOnly: true
           enum:
           - CREDIT
           - DEBIT
+        categorySource:
+          type: string
+          description: 'Indicates the source of the category, i.e., categories derived by the system or assigned/provided by the consumer. This is the source field of the transaction category resource. The supported values are provided by the GET transactions/categories.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br><b>Applicable Values</b><br>'
+          readOnly: true
+          enum:
+          - SYSTEM
+          - USER
+        principal:
+          $ref: '#/components/schemas/Money'
+        lastUpdated:
+          type: string
+          readOnly: true
+        interest:
+          $ref: '#/components/schemas/Money'
+        price:
+          $ref: '#/components/schemas/Money'
+        commission:
+          $ref: '#/components/schemas/Money'
+        id:
+          type: integer
+          description: 'An unique identifier for the transaction. The combination of the id and account container are unique in the system. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          format: int64
+          readOnly: true
+        merchantType:
+          type: string
+          description: 'Indicates the merchantType of the transaction.e.g:-BILLERS,SUBSCRIPTION,OTHERS <br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>'
+          readOnly: true
+        amount:
+          $ref: '#/components/schemas/Money'
+        checkNumber:
+          type: string
+          description: 'The checkNumber of the transaction.<br><br><b>Applicable containers</b>: bank<br>'
+          readOnly: true
+        isPhysical:
+          type: boolean
+          description: 'Indicates if the transaction is happened online or in-store. <br><br><b>Applicable containers</b>: bank,creditCard,investment,loan<br>'
+          readOnly: true
+        quantity:
+          type: number
+          description: 'The quantity associated with the transaction.<br><b>Note</b>: The quantity field applies only to trade-related transactions.<br><br><b>Applicable containers</b>: investment<br>'
+          format: double
+          readOnly: true
+        valoren:
+          type: string
+          description: 'It is an identification number that is assigned to financial instruments such as stocks and bonds trading in Switzerland.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        isManual:
+          type: boolean
+          description: 'Indicates if the transaction is aggregated from the FI site or the consumer has manually created the transaction using the application or an API. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          readOnly: true
+        merchant:
+          $ref: '#/components/schemas/Merchant'
+        sedol:
+          type: string
+          description: 'SEDOL stands for Stock Exchange Daily Official List, a list of security identifiers used in the United Kingdom and Ireland for clearing purposes.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        transactionDate:
+          type: string
+          description: 'The date the transaction happens in the account. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          readOnly: true
+        categoryType:
+          type: string
+          description: 'The categoryType of the category assigned to the transaction. This is the type field of the transaction category resource. The supported values are provided by the GET transactions/categories.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          readOnly: true
+          enum:
+          - TRANSFER
+          - DEFERRED_COMPENSATION
+          - UNCATEGORIZE
+          - INCOME
+          - EXPENSE
+        accountId:
+          type: integer
+          description: 'The account from which the transaction was made. This is basically the primary key of the account resource. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          format: int64
+          readOnly: true
+        createdDate:
+          type: string
+          readOnly: true
+        sourceType:
+          type: string
+          description: 'The source through which the transaction is added to the Yodlee system.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loann<br><b>Applicable Values:</b><br>'
+          readOnly: true
+          enum:
+          - AGGREGATED
+          - MANUAL
+        CONTAINER:
+          type: string
+          description: 'The account''s container.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br><b>Applicable Values</b><br>'
+          readOnly: true
+          enum:
+          - bank
+          - creditCard
+          - investment
+          - insurance
+          - loan
+          - reward
+          - bill
+          - realEstate
+          - otherAssets
+          - otherLiabilities
+        postDate:
+          type: string
+          description: 'The date on which the transaction is posted to the account.<br><br><b>Applicable containers</b>: bank,creditCard,insurance,loan<br>'
+          readOnly: true
+        parentCategoryId:
+          type: integer
+          description: 'The parentCategoryId of the category assigned to the transaction.<br><b>Note</b>: This field will be provided in the response if the transaction is assigned to a user-created category. <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          format: int64
+          readOnly: true
+        subType:
+          type: string
+          description: 'The transaction subtype field provides a detailed transaction type. For example, purchase is a transaction type and the transaction subtype field indicates if the purchase was made using a debit or credit card.<br><b>Note</b>: The transaction subtype field is available only in the United States, Canada, United Kingdom, New Zealand and India.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          readOnly: true
+          enum:
+          - OVERDRAFT_CHARGE
+          - ONLINE_PURCHASE
+          - TAX_PAYMENT
+          - PAYMENT_BY_CHECK
+          - ATM_CASH_WITHDRAWAL
+          - SERVICE_CHARGE
+          - RETURNED_CHECK_CHARGE
+          - STOP_PAYMENT_CHARGE
+          - CONVENIENCE_FEE
+          - AUTO_LOAN
+          - HOME_LOAN_MORTGAGE
+          - RECURRING_SUBSCRIPTION_PAYMENT
+          - INTEREST
+          - PAYMENT
+          - PURCHASE
+          - REFUND
+          - TRANSFER
+          - FINANCE_CHARGE
+          - OTHER_CHARGES_FEES
+          - ANNUAL_FEE
+          - DEPOSIT
+          - DIRECT_DEPOSIT_SALARY
+          - INVESTMENT_INCOME_CASH
+          - SSA
+          - REWARDS
+          - TAX_REFUND
+          - CREDIT_CARD_PAYMENT
+          - INSURANCE_PAYMENT
+          - UTILITIES_PAYMENT
+          - CHILD_SUPPORT
+          - LOAN
+          - PERSONAL_LOAN
+          - STUDENT_LOAN
+          - REIMBURSEMENT
+          - BALANCE_TRANSFER
+          - OVERDRAFT_PROTECTION
+          - CREDIT
+          - NSF_FEES
+        category:
+          type: string
+          description: 'The name of the category assigned to the transaction. This is the category field of the transaction category resource. The supported values are provided by the GET transactions/categories.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          readOnly: true
+        runningBalance:
+          $ref: '#/components/schemas/Money'
+        categoryId:
+          type: integer
+          description: 'The id of the category assigned to the transaction. This is the id field of the transaction category resource. The supported values are provided by the GET transactions/categories.<br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br>'
+          format: int64
+          readOnly: true
+        holdingDescription:
+          type: string
+          description: 'For transactions involving securities, this captures the securities description.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        isin:
+          type: string
+          description: 'International Securities Identification Number (ISIN) standard is used worldwide to identify specific securities.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        status:
+          type: string
+          description: 'The status of the transaction: pending or posted.<br><b>Note</b>: Most FI sites only display posted transactions. If the FI site displays transaction status, same will be aggregated.  <br><br><b>Applicable containers</b>: bank,creditCard,investment,insurance,loan<br><b>Applicable Values</b><br>'
+          readOnly: true
+          enum:
+          - POSTED
+          - PENDING
+          - SCHEDULED
+          - FAILED
+          - CLEARED

@@ -263,81 +263,232 @@ components:
           $ref: '#/components/schemas/Money'
         debitTotal:
           $ref: '#/components/schemas/Money'
-    DerivedTransactionsSummary:
-      title: DerivedTransactionsSummary
+    YodleeError:
+      title: YodleeError
       type: object
       properties:
-        categoryType:
+        errorMessage:
           type: string
-          description: 'Type of categories provided by transactions/categories service.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br><b>Applicable Values</b><br>'
+          description: The descriptive message that explains the error scenario.
           readOnly: true
-          enum:
-          - TRANSFER
-          - DEFERRED_COMPENSATION
-          - UNCATEGORIZE
-          - INCOME
-          - EXPENSE
-          - LOAN
-          - DUMMY
-        categorySummary:
-          type: array
-          description: 'Summary of transaction amouts at category level.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br>'
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/DerivedCategorySummary'
-        creditTotal:
-          $ref: '#/components/schemas/Money'
-        links:
-          $ref: '#/components/schemas/DerivedTransactionsLinks'
-        debitTotal:
-          $ref: '#/components/schemas/Money'
-    DerivedTransactionsLinks:
-      title: DerivedTransactionsLinks
-      type: object
-      properties:
-        transactions:
+        errorCode:
           type: string
-          description: 'Link of the transaction API service that corresponds to the value derivation.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br>'
+          description: The error code follows the format YNNN. The error codes do not change. New error codes may be added as we introduce new features and enhance functionalities.
           readOnly: true
-    DerivedTransactionSummaryResponse:
-      title: DerivedTransactionSummaryResponse
+        referenceCode:
+          type: string
+          description: Unique Yodlee identifier used to troubleshoot issues at Yodlee's end.
+          readOnly: true
+    DerivedHolding:
+      title: DerivedHolding
       type: object
       properties:
-        links:
-          $ref: '#/components/schemas/DerivedTransactionsLinks'
-        transactionSummary:
-          type: array
+        symbol:
+          type: string
+          description: 'The symbol of the security.<br><br><b>Applicable containers</b>: investment<br>'
           readOnly: true
-          items:
-            $ref: '#/components/schemas/DerivedTransactionsSummary'
-    AssetClassification:
-      title: AssetClassification
-      type: object
-      properties:
-        allocation:
+        exercisedQuantity:
           type: number
-          description: 'The allocation percentage of the holding.<br><br><b>Required Feature Enablement</b>: Asset classification feature<br><br><b>Applicable containers</b>: investment<br>'
+          description: 'The quantity of the employee stock options that are already exercised or bought by the employee.<br><b>Note</b>: Once the employee stock options is exercised, they are either converted to cash value or equity positions depending on the FI. The exercised quantity field is only applicable to employee stock options.<br><br><b>Applicable containers</b>: investment<br>'
           format: double
           readOnly: true
-        classificationType:
+        cusipNumber:
           type: string
-          description: 'The type of classification to which the investment belongs (assetClass, country, sector, and style).<br><b>Required Feature Enablement</b>: Asset classification feature<br><br><b>Applicable containers</b>: investment<br>'
+          description: 'The CUSIP (Committee on Uniform Securities Identification Procedures) identifies most the financial instruments in the United States and Canada.<br><br><b>Applicable containers</b>: investment<br>'
           readOnly: true
-        classificationValue:
+        assetClassification:
+          $ref: '#/components/schemas/AssetClassification'
+        vestedQuantity:
+          type: number
+          description: 'The quantity of units or shares that are already vested on a vest date.<br><b>Note</b>: The vested quantity field is only applicable to employee stock options, restricted stock units/awards, performance units, etc.<br><br><b>Applicable containers</b>: investment<br>'
+          format: double
+          readOnly: true
+        description:
           type: string
-          description: 'The value for each classificationType.<br><b>Required Feature Enablement</b>: Asset classification feature<br><br><b>Applicable containers</b>: investment<br>'
+          description: 'The description (name) for the holding (E.g., Cisco Systems)<br>For insurance container, the field is only applicable for insurance annuity and variable life insurance types. <br><br><b>Applicable containers</b>: investment, insurance<br>'
           readOnly: true
-    DerivedHoldingSummaryResponse:
-      title: DerivedHoldingSummaryResponse
+        unvestedValue:
+          $ref: '#/components/schemas/Money'
+        securityStyle:
+          type: string
+          description: 'Indicates the security style of holding identified through the security service.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        vestedValue:
+          $ref: '#/components/schemas/Money'
+        optionType:
+          type: string
+          description: 'The type of the option position (i.e., put or call).<br><b>Note</b>: The option type field is only applicable to options.<br><br><b>Applicable containers</b>: investment<br><b>Applicable Values</b><br>'
+          readOnly: true
+          enum:
+          - put
+          - call
+          - unknown
+          - other
+        lastUpdated:
+          type: string
+          description: 'The date when the information was last updated in the system.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        matchStatus:
+          type: string
+          description: 'Indicates the security match status id of the investment option identified during security normalization.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        holdingType:
+          type: string
+          description: 'Type of holding<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+          enum:
+          - stock
+          - mutualFund
+          - bond
+          - CD
+          - option
+          - moneyMarketFund
+          - other
+          - remic
+          - future
+          - commodity
+          - currency
+          - unitInvestmentTrust
+          - employeeStockOption
+          - insuranceAnnuity
+          - unknown
+          - preferredStock
+          - ETF
+          - warrants
+          - digitalAsset
+        maturityDate:
+          type: string
+          description: 'The stated maturity date of a bond or CD.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        price:
+          $ref: '#/components/schemas/Money'
+        term:
+          type: string
+          description: 'The fixed duration for which the bond or CD is issued.<br><b>Note</b>: The term field is only applicable to CD.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        contractQuantity:
+          type: number
+          description: 'The quantity of tradeable units in a contract.<br><b>Note</b>: The contract quantity field is only applicable to commodity and currency.<br><br><b>Applicable containers</b>: investment<br>'
+          format: double
+          readOnly: true
+        id:
+          type: integer
+          description: 'Unique identifier for the security added in the system. This is the primary key of the holding resource.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          format: int64
+          readOnly: true
+        isShort:
+          type: boolean
+          description: 'Indicates that the holding is a short trading.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        value:
+          $ref: '#/components/schemas/Money'
+        expirationDate:
+          type: string
+          description: 'The date on which an option, right or warrant expires.<br><b>Note</b>: The expiration date field is only applicable to options and employee stock options.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        interestRate:
+          type: number
+          description: 'The interest rate on a CD.<br><b>Note</b>: The interest rate field is only applicable to CD.<br><br><b>Applicable containers</b>: investment<br>'
+          format: double
+          readOnly: true
+        quantity:
+          type: number
+          description: 'The quantity held for the holding.<br><b>Note</b>: Only for bonds the quantity field indicates the normalized quantity and not the quantity aggregated from the site. The quantity field is only applicable to restricted stock units/awards, performance units, currency, and commodity.<br>For insurance container, the field is only applicable for insurance annuity and variable life insurance types.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          format: double
+          readOnly: true
+        accruedInterest:
+          $ref: '#/components/schemas/Money'
+        grantDate:
+          type: string
+          description: 'The date on which equity awards like ESOP, RSU, etc., are issued or granted.<br><b>Note</b>: The grant date field is only applicable to employee stock options, restricted stock units/awards, performance units, etc.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        sedol:
+          type: string
+          description: 'The SEDOL (Stock Exchange Daily Official List) is a set of security identifiers used in the United Kingdom and Ireland for clearing purposes.<br><b>Note</b>: The SEDOL field is only applicable to the trade related transactions<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        vestedSharesExercisable:
+          type: number
+          description: 'The number of vested shares that can be exercised by the employee. It is usually equal to the vested quantity.<br><b>Note</b>: The vested shares exercisable field is only applicable to employee stock options, restricted stock units/awards, performance units, etc.<br><br><b>Applicable containers</b>: investment<br>'
+          format: double
+          readOnly: true
+        spread:
+          $ref: '#/components/schemas/Money'
+        accountId:
+          type: integer
+          description: 'Unique identifier of the account to which the security is linked.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          format: int64
+          readOnly: true
+        enrichedDescription:
+          type: string
+          description: 'The enrichedDescription is the security description of the normalized holding<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        couponRate:
+          type: number
+          description: 'The stated interest rate for a bond.<br><br><b>Applicable containers</b>: investment<br>'
+          format: double
+          readOnly: true
+        createdDate:
+          type: string
+          description: 'The date on which the holding is created in the Yodlee system.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        accruedIncome:
+          $ref: '#/components/schemas/Money'
+        securityType:
+          type: string
+          description: 'Indicates the security type of holding identified through the security service.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          readOnly: true
+        providerAccountId:
+          type: integer
+          description: 'Unique identifier for the user''s association with the provider.<br><br><b>Applicable containers</b>: investment, insurance<br>'
+          format: int64
+          readOnly: true
+        unvestedQuantity:
+          type: number
+          description: 'Indicates the number of unvested quantity or units.<br><b>Note</b>: The unvested quantity field is only applicable to employee stock options, restricted stock units/awards, performance units, etc.<br><br><b>Applicable containers</b>: investment<br>'
+          format: double
+          readOnly: true
+        costBasis:
+          $ref: '#/components/schemas/Money'
+        vestingDate:
+          type: string
+          description: 'The date on which a RSU, RSA, or an employee stock options become vested.<br><b>Note</b>: The vesting date field is only applicable to employee stock options, restricted stock units/awards, performance units, etc.<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        isin:
+          type: string
+          description: 'The ISIN (International Securities Identification Number) is used worldwide to identify specific securities. It is equivalent to CUSIP for international markets.<br><br><b>Note</b>: The ISIN field is only applicable to the trade related transactions<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        strikePrice:
+          $ref: '#/components/schemas/Money'
+    DerivedNetworthHistoricalBalance:
+      title: DerivedNetworthHistoricalBalance
       type: object
       properties:
-        holdingSummary:
-          type: array
+        date:
+          type: string
+          description: 'Date for which the account balance was provided.  This balance could be a carryforward, calculated or a scraped balance. AdditIonal Details: scraped: Balance shown in the provider site. This balance gets stored in Yodlee system during system/user account updates. carryForward : Balance carried forward from the scraped balance to the days for which the balance was not available in the system. Balance may not be available for all the days in the system due to MFA information required, error in the site, credential changes, etc. calculated: Balances that gets calculated for the days that are prior to the account added date.<br><br><b>Account Type</b>: Aggregated and Manual<br><b>Applicable containers</b>: bank, creditCard, investment, insurance, realEstate, loan<br><b>Endpoints</b>:<ul><li>GET accounts/historicalBalances</li><li>GET derived/networth</li></ul>'
           readOnly: true
-          items:
-            $ref: '#/components/schemas/DerivedHoldingsSummary'
-        link:
-          $ref: '#/components/schemas/DerivedHoldingsLinks'
+        accountId:
+          type: integer
+          format: int64
+          readOnly: true
+        isAsset:
+          type: boolean
+          description: 'Indicates whether the balance is an asset or liability.<br><br><b>Account Type</b>: Aggregated and Manual<br><b>Applicable containers</b>: bank, creditCard, investment, insurance, realEstate, loan<br><b>Endpoints</b>:<ul><li>GET accounts/historicalBalances</li></ul>'
+          readOnly: true
+        balance:
+          $ref: '#/components/schemas/Money'
+        asOfDate:
+          type: string
+          description: 'Date as of when the balance is last  updated due to the auto account updates or user triggered updates. This balance will be carry forward for the days where there is no balance available in the system. <br><br><b>Account Type</b>: Aggregated and Manual<br><b>Applicable containers</b>: bank, creditCard, investment, insurance, realEstate, loan<br><b>Endpoints</b>:<ul><li>GET accounts/historicalBalances</li></ul>'
+          readOnly: true
+        dataSourceType:
+          type: string
+          description: 'The source of balance information.<br><br><b>Account Type</b>: Aggregated and Manual<br><b>Applicable containers</b>: bank, creditCard, investment, insurance, realEstate, loan<br><b>Endpoints</b>:<ul><li>GET accounts/historicalBalances</li></ul><b>Applicable Values</b><br>'
+          readOnly: true
+          enum:
+          - S
+          - C
+          - CF
     Money:
       title: Money
       type: object
@@ -802,264 +953,26 @@ components:
           - VEF
           - SSP
           - ALK
-    DerivedNetworthHistoricalBalance:
-      title: DerivedNetworthHistoricalBalance
+    DerivedNetworth:
+      title: DerivedNetworth
       type: object
       properties:
         date:
           type: string
-          description: 'Date for which the account balance was provided.  This balance could be a carryforward, calculated or a scraped balance. AdditIonal Details: scraped: Balance shown in the provider site. This balance gets stored in Yodlee system during system/user account updates. carryForward : Balance carried forward from the scraped balance to the days for which the balance was not available in the system. Balance may not be available for all the days in the system due to MFA information required, error in the site, credential changes, etc. calculated: Balances that gets calculated for the days that are prior to the account added date.<br><br><b>Account Type</b>: Aggregated and Manual<br><b>Applicable containers</b>: bank, creditCard, investment, insurance, realEstate, loan<br><b>Endpoints</b>:<ul><li>GET accounts/historicalBalances</li><li>GET derived/networth</li></ul>'
+          description: 'The date as of when the networth information is provided.<br><br><b>Applicable containers</b>: bank, creditcard, investment, insurance, realEstate, loan<br>'
           readOnly: true
-        accountId:
-          type: integer
-          format: int64
-          readOnly: true
-        isAsset:
-          type: boolean
-          description: 'Indicates whether the balance is an asset or liability.<br><br><b>Account Type</b>: Aggregated and Manual<br><b>Applicable containers</b>: bank, creditCard, investment, insurance, realEstate, loan<br><b>Endpoints</b>:<ul><li>GET accounts/historicalBalances</li></ul>'
-          readOnly: true
-        balance:
+        liability:
           $ref: '#/components/schemas/Money'
-        asOfDate:
-          type: string
-          description: 'Date as of when the balance is last  updated due to the auto account updates or user triggered updates. This balance will be carry forward for the days where there is no balance available in the system. <br><br><b>Account Type</b>: Aggregated and Manual<br><b>Applicable containers</b>: bank, creditCard, investment, insurance, realEstate, loan<br><b>Endpoints</b>:<ul><li>GET accounts/historicalBalances</li></ul>'
-          readOnly: true
-        dataSourceType:
-          type: string
-          description: 'The source of balance information.<br><br><b>Account Type</b>: Aggregated and Manual<br><b>Applicable containers</b>: bank, creditCard, investment, insurance, realEstate, loan<br><b>Endpoints</b>:<ul><li>GET accounts/historicalBalances</li></ul><b>Applicable Values</b><br>'
-          readOnly: true
-          enum:
-          - S
-          - C
-          - CF
-    DerivedHolding:
-      title: DerivedHolding
-      type: object
-      properties:
-        symbol:
-          type: string
-          description: 'The symbol of the security.<br><br><b>Applicable containers</b>: investment<br>'
-          readOnly: true
-        exercisedQuantity:
-          type: number
-          description: 'The quantity of the employee stock options that are already exercised or bought by the employee.<br><b>Note</b>: Once the employee stock options is exercised, they are either converted to cash value or equity positions depending on the FI. The exercised quantity field is only applicable to employee stock options.<br><br><b>Applicable containers</b>: investment<br>'
-          format: double
-          readOnly: true
-        cusipNumber:
-          type: string
-          description: 'The CUSIP (Committee on Uniform Securities Identification Procedures) identifies most the financial instruments in the United States and Canada.<br><br><b>Applicable containers</b>: investment<br>'
-          readOnly: true
-        assetClassification:
-          $ref: '#/components/schemas/AssetClassification'
-        vestedQuantity:
-          type: number
-          description: 'The quantity of units or shares that are already vested on a vest date.<br><b>Note</b>: The vested quantity field is only applicable to employee stock options, restricted stock units/awards, performance units, etc.<br><br><b>Applicable containers</b>: investment<br>'
-          format: double
-          readOnly: true
-        description:
-          type: string
-          description: 'The description (name) for the holding (E.g., Cisco Systems)<br>For insurance container, the field is only applicable for insurance annuity and variable life insurance types. <br><br><b>Applicable containers</b>: investment, insurance<br>'
-          readOnly: true
-        unvestedValue:
-          $ref: '#/components/schemas/Money'
-        securityStyle:
-          type: string
-          description: 'Indicates the security style of holding identified through the security service.<br><br><b>Applicable containers</b>: investment, insurance<br>'
-          readOnly: true
-        vestedValue:
-          $ref: '#/components/schemas/Money'
-        optionType:
-          type: string
-          description: 'The type of the option position (i.e., put or call).<br><b>Note</b>: The option type field is only applicable to options.<br><br><b>Applicable containers</b>: investment<br><b>Applicable Values</b><br>'
-          readOnly: true
-          enum:
-          - put
-          - call
-          - unknown
-          - other
-        lastUpdated:
-          type: string
-          description: 'The date when the information was last updated in the system.<br><br><b>Applicable containers</b>: investment, insurance<br>'
-          readOnly: true
-        matchStatus:
-          type: string
-          description: 'Indicates the security match status id of the investment option identified during security normalization.<br><br><b>Applicable containers</b>: investment<br>'
-          readOnly: true
-        holdingType:
-          type: string
-          description: 'Type of holding<br><br><b>Applicable containers</b>: investment, insurance<br>'
-          readOnly: true
-          enum:
-          - stock
-          - mutualFund
-          - bond
-          - CD
-          - option
-          - moneyMarketFund
-          - other
-          - remic
-          - future
-          - commodity
-          - currency
-          - unitInvestmentTrust
-          - employeeStockOption
-          - insuranceAnnuity
-          - unknown
-          - preferredStock
-          - ETF
-          - warrants
-          - digitalAsset
-        maturityDate:
-          type: string
-          description: 'The stated maturity date of a bond or CD.<br><br><b>Applicable containers</b>: investment<br>'
-          readOnly: true
-        price:
-          $ref: '#/components/schemas/Money'
-        term:
-          type: string
-          description: 'The fixed duration for which the bond or CD is issued.<br><b>Note</b>: The term field is only applicable to CD.<br><br><b>Applicable containers</b>: investment<br>'
-          readOnly: true
-        contractQuantity:
-          type: number
-          description: 'The quantity of tradeable units in a contract.<br><b>Note</b>: The contract quantity field is only applicable to commodity and currency.<br><br><b>Applicable containers</b>: investment<br>'
-          format: double
-          readOnly: true
-        id:
-          type: integer
-          description: 'Unique identifier for the security added in the system. This is the primary key of the holding resource.<br><br><b>Applicable containers</b>: investment, insurance<br>'
-          format: int64
-          readOnly: true
-        isShort:
-          type: boolean
-          description: 'Indicates that the holding is a short trading.<br><br><b>Applicable containers</b>: investment<br>'
-          readOnly: true
-        value:
-          $ref: '#/components/schemas/Money'
-        expirationDate:
-          type: string
-          description: 'The date on which an option, right or warrant expires.<br><b>Note</b>: The expiration date field is only applicable to options and employee stock options.<br><br><b>Applicable containers</b>: investment<br>'
-          readOnly: true
-        interestRate:
-          type: number
-          description: 'The interest rate on a CD.<br><b>Note</b>: The interest rate field is only applicable to CD.<br><br><b>Applicable containers</b>: investment<br>'
-          format: double
-          readOnly: true
-        quantity:
-          type: number
-          description: 'The quantity held for the holding.<br><b>Note</b>: Only for bonds the quantity field indicates the normalized quantity and not the quantity aggregated from the site. The quantity field is only applicable to restricted stock units/awards, performance units, currency, and commodity.<br>For insurance container, the field is only applicable for insurance annuity and variable life insurance types.<br><br><b>Applicable containers</b>: investment, insurance<br>'
-          format: double
-          readOnly: true
-        accruedInterest:
-          $ref: '#/components/schemas/Money'
-        grantDate:
-          type: string
-          description: 'The date on which equity awards like ESOP, RSU, etc., are issued or granted.<br><b>Note</b>: The grant date field is only applicable to employee stock options, restricted stock units/awards, performance units, etc.<br><br><b>Applicable containers</b>: investment<br>'
-          readOnly: true
-        sedol:
-          type: string
-          description: 'The SEDOL (Stock Exchange Daily Official List) is a set of security identifiers used in the United Kingdom and Ireland for clearing purposes.<br><b>Note</b>: The SEDOL field is only applicable to the trade related transactions<br><br><b>Applicable containers</b>: investment<br>'
-          readOnly: true
-        vestedSharesExercisable:
-          type: number
-          description: 'The number of vested shares that can be exercised by the employee. It is usually equal to the vested quantity.<br><b>Note</b>: The vested shares exercisable field is only applicable to employee stock options, restricted stock units/awards, performance units, etc.<br><br><b>Applicable containers</b>: investment<br>'
-          format: double
-          readOnly: true
-        spread:
-          $ref: '#/components/schemas/Money'
-        accountId:
-          type: integer
-          description: 'Unique identifier of the account to which the security is linked.<br><br><b>Applicable containers</b>: investment, insurance<br>'
-          format: int64
-          readOnly: true
-        enrichedDescription:
-          type: string
-          description: 'The enrichedDescription is the security description of the normalized holding<br><br><b>Applicable containers</b>: investment, insurance<br>'
-          readOnly: true
-        couponRate:
-          type: number
-          description: 'The stated interest rate for a bond.<br><br><b>Applicable containers</b>: investment<br>'
-          format: double
-          readOnly: true
-        createdDate:
-          type: string
-          description: 'The date on which the holding is created in the Yodlee system.<br><br><b>Applicable containers</b>: investment, insurance<br>'
-          readOnly: true
-        accruedIncome:
-          $ref: '#/components/schemas/Money'
-        securityType:
-          type: string
-          description: 'Indicates the security type of holding identified through the security service.<br><br><b>Applicable containers</b>: investment, insurance<br>'
-          readOnly: true
-        providerAccountId:
-          type: integer
-          description: 'Unique identifier for the user''s association with the provider.<br><br><b>Applicable containers</b>: investment, insurance<br>'
-          format: int64
-          readOnly: true
-        unvestedQuantity:
-          type: number
-          description: 'Indicates the number of unvested quantity or units.<br><b>Note</b>: The unvested quantity field is only applicable to employee stock options, restricted stock units/awards, performance units, etc.<br><br><b>Applicable containers</b>: investment<br>'
-          format: double
-          readOnly: true
-        costBasis:
-          $ref: '#/components/schemas/Money'
-        vestingDate:
-          type: string
-          description: 'The date on which a RSU, RSA, or an employee stock options become vested.<br><b>Note</b>: The vesting date field is only applicable to employee stock options, restricted stock units/awards, performance units, etc.<br><br><b>Applicable containers</b>: investment<br>'
-          readOnly: true
-        isin:
-          type: string
-          description: 'The ISIN (International Securities Identification Number) is used worldwide to identify specific securities. It is equivalent to CUSIP for international markets.<br><br><b>Note</b>: The ISIN field is only applicable to the trade related transactions<br><br><b>Applicable containers</b>: investment<br>'
-          readOnly: true
-        strikePrice:
-          $ref: '#/components/schemas/Money'
-    YodleeError:
-      title: YodleeError
-      type: object
-      properties:
-        errorMessage:
-          type: string
-          description: The descriptive message that explains the error scenario.
-          readOnly: true
-        errorCode:
-          type: string
-          description: The error code follows the format YNNN. The error codes do not change. New error codes may be added as we introduce new features and enhance functionalities.
-          readOnly: true
-        referenceCode:
-          type: string
-          description: Unique Yodlee identifier used to troubleshoot issues at Yodlee's end.
-          readOnly: true
-    DerivedCategorySummary:
-      title: DerivedCategorySummary
-      type: object
-      properties:
-        creditTotal:
-          $ref: '#/components/schemas/Money'
-        details:
+        historicalBalances:
           type: array
-          description: 'Credit and debit summary per date.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br>'
+          description: 'Balances of the accounts over the period of time.<br><br><b>Applicable containers</b>: bank, creditcard, investment, insurance, realEstate, loan<br>'
           readOnly: true
           items:
-            $ref: '#/components/schemas/DerivedCategorySummaryDetails'
-        links:
-          $ref: '#/components/schemas/DerivedTransactionsLinks'
-        categoryName:
-          type: string
-          description: 'The name of the category.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br>'
-          readOnly: true
-        categoryId:
-          type: integer
-          description: 'Id of the category. This information is provided by transactions/categories service.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br>'
-          format: int64
-          readOnly: true
-        debitTotal:
+            $ref: '#/components/schemas/DerivedNetworthHistoricalBalance'
+        networth:
           $ref: '#/components/schemas/Money'
-    DerivedHoldingsLinks:
-      title: DerivedHoldingsLinks
-      type: object
-      properties:
-        holdings:
-          type: string
-          readOnly: true
+        asset:
+          $ref: '#/components/schemas/Money'
     DerivedHoldingsSummary:
       title: DerivedHoldingsSummary
       type: object
@@ -1086,6 +999,30 @@ components:
           readOnly: true
           items:
             $ref: '#/components/schemas/DerivedHoldingsAccount'
+    DerivedHoldingsLinks:
+      title: DerivedHoldingsLinks
+      type: object
+      properties:
+        holdings:
+          type: string
+          readOnly: true
+    AssetClassification:
+      title: AssetClassification
+      type: object
+      properties:
+        allocation:
+          type: number
+          description: 'The allocation percentage of the holding.<br><br><b>Required Feature Enablement</b>: Asset classification feature<br><br><b>Applicable containers</b>: investment<br>'
+          format: double
+          readOnly: true
+        classificationType:
+          type: string
+          description: 'The type of classification to which the investment belongs (assetClass, country, sector, and style).<br><b>Required Feature Enablement</b>: Asset classification feature<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
+        classificationValue:
+          type: string
+          description: 'The value for each classificationType.<br><b>Required Feature Enablement</b>: Asset classification feature<br><br><b>Applicable containers</b>: investment<br>'
+          readOnly: true
     DerivedHoldingsAccount:
       title: DerivedHoldingsAccount
       type: object
@@ -1097,25 +1034,30 @@ components:
           readOnly: true
         value:
           $ref: '#/components/schemas/Money'
-    DerivedNetworth:
-      title: DerivedNetworth
+    DerivedCategorySummary:
+      title: DerivedCategorySummary
       type: object
       properties:
-        date:
-          type: string
-          description: 'The date as of when the networth information is provided.<br><br><b>Applicable containers</b>: bank, creditcard, investment, insurance, realEstate, loan<br>'
-          readOnly: true
-        liability:
+        creditTotal:
           $ref: '#/components/schemas/Money'
-        historicalBalances:
+        details:
           type: array
-          description: 'Balances of the accounts over the period of time.<br><br><b>Applicable containers</b>: bank, creditcard, investment, insurance, realEstate, loan<br>'
+          description: 'Credit and debit summary per date.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br>'
           readOnly: true
           items:
-            $ref: '#/components/schemas/DerivedNetworthHistoricalBalance'
-        networth:
-          $ref: '#/components/schemas/Money'
-        asset:
+            $ref: '#/components/schemas/DerivedCategorySummaryDetails'
+        links:
+          $ref: '#/components/schemas/DerivedTransactionsLinks'
+        categoryName:
+          type: string
+          description: 'The name of the category.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br>'
+          readOnly: true
+        categoryId:
+          type: integer
+          description: 'Id of the category. This information is provided by transactions/categories service.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br>'
+          format: int64
+          readOnly: true
+        debitTotal:
           $ref: '#/components/schemas/Money'
     DerivedNetworthResponse:
       title: DerivedNetworthResponse
@@ -1126,3 +1068,61 @@ components:
           readOnly: true
           items:
             $ref: '#/components/schemas/DerivedNetworth'
+    DerivedHoldingSummaryResponse:
+      title: DerivedHoldingSummaryResponse
+      type: object
+      properties:
+        holdingSummary:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/DerivedHoldingsSummary'
+        link:
+          $ref: '#/components/schemas/DerivedHoldingsLinks'
+    DerivedTransactionsSummary:
+      title: DerivedTransactionsSummary
+      type: object
+      properties:
+        categoryType:
+          type: string
+          description: 'Type of categories provided by transactions/categories service.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br><b>Applicable Values</b><br>'
+          readOnly: true
+          enum:
+          - TRANSFER
+          - DEFERRED_COMPENSATION
+          - UNCATEGORIZE
+          - INCOME
+          - EXPENSE
+          - LOAN
+          - DUMMY
+        categorySummary:
+          type: array
+          description: 'Summary of transaction amouts at category level.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br>'
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/DerivedCategorySummary'
+        creditTotal:
+          $ref: '#/components/schemas/Money'
+        links:
+          $ref: '#/components/schemas/DerivedTransactionsLinks'
+        debitTotal:
+          $ref: '#/components/schemas/Money'
+    DerivedTransactionsLinks:
+      title: DerivedTransactionsLinks
+      type: object
+      properties:
+        transactions:
+          type: string
+          description: 'Link of the transaction API service that corresponds to the value derivation.<br><br><b>Applicable containers</b>: creditCard, bank, investment<br>'
+          readOnly: true
+    DerivedTransactionSummaryResponse:
+      title: DerivedTransactionSummaryResponse
+      type: object
+      properties:
+        links:
+          $ref: '#/components/schemas/DerivedTransactionsLinks'
+        transactionSummary:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/DerivedTransactionsSummary'

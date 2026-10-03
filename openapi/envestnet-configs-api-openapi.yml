@@ -198,23 +198,6 @@ paths:
     - url: /
 components:
   schemas:
-    ConfigsNotificationResponse:
-      title: ConfigsNotificationResponse
-      type: object
-      properties:
-        event:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/ConfigsNotificationEvent'
-    UpdateConfigsNotificationEventRequest:
-      title: UpdateConfigsNotificationEventRequest
-      required:
-      - event
-      type: object
-      properties:
-        event:
-          $ref: '#/components/schemas/UpdateConfigsNotificationEvent'
     YodleeError:
       title: YodleeError
       type: object
@@ -249,6 +232,32 @@ components:
           minLength: 1
           type: string
           description: URL to which the notification should be posted.<br><br><b>Endpoints</b>:<ul><li>GET configs/notifications/events</li></ul>
+    UpdateConfigsNotificationEventRequest:
+      title: UpdateConfigsNotificationEventRequest
+      required:
+      - event
+      type: object
+      properties:
+        event:
+          $ref: '#/components/schemas/UpdateConfigsNotificationEvent'
+    UpdateConfigsNotificationEvent:
+      title: UpdateConfigsNotificationEvent
+      type: object
+      properties:
+        callbackUrl:
+          maxLength: 2147483647
+          minLength: 1
+          type: string
+          description: URL to which the notification should be posted.<br><br><b>Endpoints</b>:<ul><li>GET configs/notifications/events</li></ul>
+    ConfigsNotificationResponse:
+      title: ConfigsNotificationResponse
+      type: object
+      properties:
+        event:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/ConfigsNotificationEvent'
     CreateConfigsNotificationEvent:
       title: CreateConfigsNotificationEvent
       type: object
@@ -266,15 +275,6 @@ components:
       properties:
         event:
           $ref: '#/components/schemas/CreateConfigsNotificationEvent'
-    UpdateConfigsNotificationEvent:
-      title: UpdateConfigsNotificationEvent
-      type: object
-      properties:
-        callbackUrl:
-          maxLength: 2147483647
-          minLength: 1
-          type: string
-          description: URL to which the notification should be posted.<br><br><b>Endpoints</b>:<ul><li>GET configs/notifications/events</li></ul>
 x-refined-from:
 - envestnet-account-aggregation-openapi-original.yml
 - envestnet-credit-accelerator-openapi-original.yml

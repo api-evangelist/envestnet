@@ -266,21 +266,6 @@ paths:
     - url: /
 components:
   schemas:
-    ApiKeyResponse:
-      title: ApiKeyResponse
-      type: object
-      properties:
-        apiKey:
-          type: array
-          description: ApiKey customer details.<br><br><b>Endpoints</b>:<ul><li>GET /auth/apiKey</li><li>POST /auth/apiKey</li></ul>
-          items:
-            $ref: '#/components/schemas/ApiKeyOutput'
-    ClientCredentialTokenResponse:
-      title: ClientCredentialTokenResponse
-      type: object
-      properties:
-        token:
-          $ref: '#/components/schemas/ClientCredentialToken'
     ApiKeyOutput:
       title: ApiKeyOutput
       type: object
@@ -316,6 +301,15 @@ components:
           type: string
           description: Unique Yodlee identifier used to troubleshoot issues at Yodlee's end.
           readOnly: true
+    ApiKeyResponse:
+      title: ApiKeyResponse
+      type: object
+      properties:
+        apiKey:
+          type: array
+          description: ApiKey customer details.<br><br><b>Endpoints</b>:<ul><li>GET /auth/apiKey</li><li>POST /auth/apiKey</li></ul>
+          items:
+            $ref: '#/components/schemas/ApiKeyOutput'
     ApiKeyRequest:
       title: ApiKeyRequest
       type: object
@@ -325,6 +319,12 @@ components:
           minLength: 1
           type: string
           description: Public key uploaded by the customer while generating ApiKey.<br><br><b>Endpoints</b>:<ul><li>GET /auth/apiKey</li><li>POST /auth/apiKey</li></ul>
+    ClientCredentialTokenResponse:
+      title: ClientCredentialTokenResponse
+      type: object
+      properties:
+        token:
+          $ref: '#/components/schemas/ClientCredentialToken'
     ClientCredentialToken:
       title: ClientCredentialToken
       type: object
@@ -342,6 +342,15 @@ components:
           type: string
           description: Access Token to access YSL 1.1 services.<br><br><b>Endpoints</b>:<ul><li>POST /auth/token</li></ul>
           readOnly: true
+    auth_token_body:
+      type: object
+      properties:
+        clientId:
+          type: string
+          description: clientId issued by Yodlee is used to generate the OAuth token for authentication.
+        secret:
+          type: string
+          description: secret issued by Yodlee is used to generate the OAuth token for authentication.
     YodleeError_2:
       title: YodleeError
       type: object
@@ -352,15 +361,6 @@ components:
           type: string
         referenceCode:
           type: string
-    auth_token_body:
-      type: object
-      properties:
-        clientId:
-          type: string
-          description: clientId issued by Yodlee is used to generate the OAuth token for authentication.
-        secret:
-          type: string
-          description: secret issued by Yodlee is used to generate the OAuth token for authentication.
 x-refined-from:
 - envestnet-account-aggregation-openapi-original.yml
 - envestnet-account-token-openapi-original.yml

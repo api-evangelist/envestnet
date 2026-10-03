@@ -259,141 +259,42 @@ paths:
     - url: /
 components:
   schemas:
-    Field:
-      title: Field
+    YodleeError:
+      title: YodleeError
       type: object
       properties:
-        image:
+        errorMessage:
           type: string
-          description: Image displayed at the endsite.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li></ul>
-        prefix:
+          description: The descriptive message that explains the error scenario.
+          readOnly: true
+        errorCode:
           type: string
-          description: The prefix string that has to be displayed before the field value.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
+          description: The error code follows the format YNNN. The error codes do not change. New error codes may be added as we introduce new features and enhance functionalities.
           readOnly: true
-        minLength:
-          type: integer
-          description: The minimum length of the login form field.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
-          format: int64
-          readOnly: true
-        valueEditable:
+        referenceCode:
           type: string
-          description: Indicates whether the field is editable or not.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
+          description: Unique Yodlee identifier used to troubleshoot issues at Yodlee's end.
           readOnly: true
-        isOptional:
-          type: boolean
-          description: Indicates if a field is an optional field or a mandatory field.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
-          readOnly: true
-        suffix:
-          type: string
-          description: The suffix string that has to be displayed next to the field value.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
-          readOnly: true
-        type:
-          type: string
-          description: This indicates the display type of the field. For example, text box, image, etc. <br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul><b>Applicable Values</b><br>
-          readOnly: true
-          enum:
-          - text
-          - password
-          - options
-          - checkbox
-          - radio
-          - image
-          - option
-        isValueProvided:
-          type: boolean
-          description: Indicates that the answer to the security question already exists in the Yodlee system.Persuading the user to provide the answer to the security question again during the edit-credential flow can be avoided.<br><br><br><b>Endpoints</b>:<ul><li>GET providerAccounts?include=questions</li><li>GET providerAccounts/{providerAccountId}? include=questions</li></ul>
-          readOnly: true
-        name:
-          type: string
-          description: Name of the field.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
-          readOnly: true
-        id:
-          maxLength: 2147483647
-          minLength: 1
-          type: string
-          description: Identifier for the field.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
-        value:
-          type: string
-          description: Value expected from the user for the field. This will be blank and is expected to be filled and sent back when submitting the login or MFA information.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
-        maxLength:
-          type: integer
-          description: The maximum length of the login form field.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
-          format: int64
-          readOnly: true
-        option:
-          type: array
-          description: Provides the different values that are available for the user to choose. This field is applicable for drop-down or radio field types.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/Option'
-    TransactionDays:
-      title: TransactionDays
+    ProvidersCount:
+      title: ProvidersCount
       type: object
       properties:
-        fullAccountNumberFields:
-          type: array
-          items:
-            type: string
-            enum:
-            - paymentAccountNumber
-            - unmaskedAccountNumber
-        numberOfTransactionDays:
-          type: integer
-          format: int32
-    ProviderDetailResponse:
-      title: ProviderDetailResponse
+        TOTAL:
+          $ref: '#/components/schemas/TotalCount'
+    ContainerAttributes:
+      title: ContainerAttributes
       type: object
       properties:
-        provider:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/ProviderDetail'
-    LoginForm:
-      title: LoginForm
-      type: object
-      properties:
-        mfaInfoTitle:
-          type: string
-          description: The title for the MFA information demanded from the user.This is the title displayed in the provider site.This field is applicable for MFA form types only. <br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li></ul>
-          readOnly: true
-        help:
-          type: string
-          description: The help that can be displayed to the customer in the login form.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
-          readOnly: true
-        forgetPasswordURL:
-          type: string
-          description: The forget password URL of the provider site.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
-        formType:
-          type: string
-          description: The type of the forms for which the user information is required.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul><b>Applicable Values</b><br>
-          enum:
-          - login
-          - questionAndAnswer
-          - token
-          - image
-        mfaInfoText:
-          type: string
-          description: The text displayed in the provider site while requesting the user's MFA information. This field is applicable for MFA form types only. <br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li></ul>
-          readOnly: true
-        loginHelp:
-          type: string
-          description: The help that can be displayed to the customer in the login form.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
-          readOnly: true
-        mfaTimeout:
-          type: integer
-          description: The amount of time before which the user is expected to provide MFA information. This field is applicable for MFA form types only. This would be an useful information that could be displayed to the users. <br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
-          format: int64
-          readOnly: true
-        id:
-          type: integer
-          description: The identifier of the login form.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
-          format: int64
-        row:
-          type: array
-          description: This indicates one row in the form. The row will have one label. But it may have single or multiple fields.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
-          items:
-            $ref: '#/components/schemas/Row'
+        BANK:
+          $ref: '#/components/schemas/TransactionDays'
+        LOAN:
+          $ref: '#/components/schemas/TransactionDays'
+        CREDITCARD:
+          $ref: '#/components/schemas/TransactionDays'
+        INVESTMENT:
+          $ref: '#/components/schemas/TransactionDays'
+        INSURANCE:
+          $ref: '#/components/schemas/TransactionDays'
     TotalCount:
       title: TotalCount
       type: object
@@ -540,161 +441,73 @@ components:
           - Supported
           - Beta
           - Unsupported
-    Option:
-      title: Option
+    Field:
+      title: Field
       type: object
       properties:
-        displayText:
+        image:
           type: string
-          description: The text that is displayed to the user for that option in the provider site.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
-        optionValue:
+          description: Image displayed at the endsite.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li></ul>
+        prefix:
           type: string
-          description: The value that is associated with the option.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
-        isSelected:
+          description: The prefix string that has to be displayed before the field value.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
+          readOnly: true
+        minLength:
+          type: integer
+          description: The minimum length of the login form field.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
+          format: int64
+          readOnly: true
+        valueEditable:
+          type: string
+          description: Indicates whether the field is editable or not.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
+          readOnly: true
+        isOptional:
           type: boolean
-          description: The option that is selected by default in the provider site.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
-    ProvidersDataset:
-      title: ProvidersDataset
-      type: object
-      properties:
-        name:
+          description: Indicates if a field is an optional field or a mandatory field.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
+          readOnly: true
+        suffix:
           type: string
-          description: 'The name of the dataset requested from the provider site<br><br><b>Account Type</b>: Manual<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li><li>GET providers</li></ul><b>Applicable Values</b><br>'
+          description: The suffix string that has to be displayed next to the field value.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
+          readOnly: true
+        type:
+          type: string
+          description: This indicates the display type of the field. For example, text box, image, etc. <br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul><b>Applicable Values</b><br>
+          readOnly: true
           enum:
-          - BASIC_AGG_DATA
-          - ADVANCE_AGG_DATA
-          - ACCT_PROFILE
-          - DOCUMENT
-        attribute:
-          type: array
-          description: The name of the dataset attribute suported by the provider.<br><br><b>Endpoints</b>:<ul><li>GET providers/{providerId}</li><li>GET providers</li></ul>
-          items:
-            $ref: '#/components/schemas/Attribute'
-    Attribute:
-      title: Attribute
-      type: object
-      properties:
-        container:
-          type: array
-          description: Containers for which the attributes are supported.<br><br><b>Endpoints</b>:<ul><li>GET providers</li><li>GET providers/{providerId}</li></ul>
-          items:
-            type: string
-            enum:
-            - bank
-            - creditCard
-            - investment
-            - insurance
-            - loan
-            - reward
-            - bill
-            - realEstate
-            - otherAssets
-            - otherLiabilities
-        fromDate:
-          type: string
-          description: Applicable only to EBILLS and STATEMENTS attributes of DOCUMENT dataset.<br><br><b>Endpoints</b>:<ul><li>POST providerAccounts</li><li>PUT providerAccounts</li></ul>
-          readOnly: true
-        toFinYear:
-          type: string
-          description: Applicable only to TAX attribute of DOCUMENT dataset.<br><br><b>Endpoints</b>:<ul><li>POST providerAccounts</li><li>PUT providerAccounts</li></ul>
-          readOnly: true
-        fromFinYear:
-          type: string
-          description: Applicable only to TAX attribute of DOCUMENT dataset.<br><br><b>Endpoints</b>:<ul><li>POST providerAccounts</li><li>PUT providerAccounts</li></ul>
-          readOnly: true
-        containerAttributes:
-          $ref: '#/components/schemas/ContainerAttributes'
-        toDate:
-          type: string
-          description: Applicable only to EBILLS and STATEMENTS attributes of DOCUMENT dataset.<br><br><b>Endpoints</b>:<ul><li>POST providerAccounts</li><li>PUT providerAccounts</li></ul>
+          - text
+          - password
+          - options
+          - checkbox
+          - radio
+          - image
+          - option
+        isValueProvided:
+          type: boolean
+          description: Indicates that the answer to the security question already exists in the Yodlee system.Persuading the user to provide the answer to the security question again during the edit-credential flow can be avoided.<br><br><br><b>Endpoints</b>:<ul><li>GET providerAccounts?include=questions</li><li>GET providerAccounts/{providerAccountId}? include=questions</li></ul>
           readOnly: true
         name:
           type: string
-          description: Attributes that are supported for a dataset.<br><br><b>Endpoints</b>:<ul><li>GET providers</li><li>GET providers/{providerId}</li></ul>
-          enum:
-          - BASIC_ACCOUNT_INFO
-          - TRANSACTIONS
-          - STATEMENTS
-          - HOLDINGS
-          - ACCOUNT_DETAILS
-          - TAX
-          - EBILLS
-          - FULL_ACCT_NUMBER
-          - BANK_TRANSFER_CODE
-          - HOLDER_NAME
-          - HOLDER_DETAILS
-          - PAYMENT_PROFILE
-          - PAYMENT_DETAILS
-          - INTEREST_DETAILS
-          - COVERAGE
-    ProvidersCountResponse:
-      title: ProvidersCountResponse
-      type: object
-      properties:
-        provider:
-          $ref: '#/components/schemas/ProvidersCount'
-    ContainerAttributes:
-      title: ContainerAttributes
-      type: object
-      properties:
-        BANK:
-          $ref: '#/components/schemas/TransactionDays'
-        LOAN:
-          $ref: '#/components/schemas/TransactionDays'
-        CREDITCARD:
-          $ref: '#/components/schemas/TransactionDays'
-        INVESTMENT:
-          $ref: '#/components/schemas/TransactionDays'
-        INSURANCE:
-          $ref: '#/components/schemas/TransactionDays'
-    YodleeError:
-      title: YodleeError
-      type: object
-      properties:
-        errorMessage:
-          type: string
-          description: The descriptive message that explains the error scenario.
+          description: Name of the field.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
           readOnly: true
-        errorCode:
+        id:
+          maxLength: 2147483647
+          minLength: 1
           type: string
-          description: The error code follows the format YNNN. The error codes do not change. New error codes may be added as we introduce new features and enhance functionalities.
-          readOnly: true
-        referenceCode:
+          description: Identifier for the field.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
+        value:
           type: string
-          description: Unique Yodlee identifier used to troubleshoot issues at Yodlee's end.
+          description: Value expected from the user for the field. This will be blank and is expected to be filled and sent back when submitting the login or MFA information.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
+        maxLength:
+          type: integer
+          description: The maximum length of the login form field.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
+          format: int64
           readOnly: true
-    Capability:
-      title: Capability
-      type: object
-      properties:
-        container:
+        option:
           type: array
+          description: Provides the different values that are available for the user to choose. This field is applicable for drop-down or radio field types.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
           readOnly: true
           items:
-            type: string
-            enum:
-            - bank
-            - creditCard
-            - investment
-            - insurance
-            - loan
-            - reward
-            - bill
-            - realEstate
-            - otherAssets
-            - otherLiabilities
-        name:
-          type: string
-          readOnly: true
-    ProviderResponse:
-      title: ProviderResponse
-      type: object
-      properties:
-        provider:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/Providers'
+            $ref: '#/components/schemas/Option'
     Providers:
       title: Providers
       type: object
@@ -835,6 +648,51 @@ components:
           - Supported
           - Beta
           - Unsupported
+    LoginForm:
+      title: LoginForm
+      type: object
+      properties:
+        mfaInfoTitle:
+          type: string
+          description: The title for the MFA information demanded from the user.This is the title displayed in the provider site.This field is applicable for MFA form types only. <br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li></ul>
+          readOnly: true
+        help:
+          type: string
+          description: The help that can be displayed to the customer in the login form.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
+          readOnly: true
+        forgetPasswordURL:
+          type: string
+          description: The forget password URL of the provider site.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
+        formType:
+          type: string
+          description: The type of the forms for which the user information is required.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul><b>Applicable Values</b><br>
+          enum:
+          - login
+          - questionAndAnswer
+          - token
+          - image
+        mfaInfoText:
+          type: string
+          description: The text displayed in the provider site while requesting the user's MFA information. This field is applicable for MFA form types only. <br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li></ul>
+          readOnly: true
+        loginHelp:
+          type: string
+          description: The help that can be displayed to the customer in the login form.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
+          readOnly: true
+        mfaTimeout:
+          type: integer
+          description: The amount of time before which the user is expected to provide MFA information. This field is applicable for MFA form types only. This would be an useful information that could be displayed to the users. <br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
+          format: int64
+          readOnly: true
+        id:
+          type: integer
+          description: The identifier of the login form.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
+          format: int64
+        row:
+          type: array
+          description: This indicates one row in the form. The row will have one label. But it may have single or multiple fields.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
+          items:
+            $ref: '#/components/schemas/Row'
     Row:
       title: Row
       type: object
@@ -856,12 +714,154 @@ components:
         label:
           type: string
           description: The label text displayed for a row in the form.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
-    ProvidersCount:
-      title: ProvidersCount
+    ProviderResponse:
+      title: ProviderResponse
       type: object
       properties:
-        TOTAL:
-          $ref: '#/components/schemas/TotalCount'
+        provider:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Providers'
+    TransactionDays:
+      title: TransactionDays
+      type: object
+      properties:
+        fullAccountNumberFields:
+          type: array
+          items:
+            type: string
+            enum:
+            - paymentAccountNumber
+            - unmaskedAccountNumber
+        numberOfTransactionDays:
+          type: integer
+          format: int32
+    Attribute:
+      title: Attribute
+      type: object
+      properties:
+        container:
+          type: array
+          description: Containers for which the attributes are supported.<br><br><b>Endpoints</b>:<ul><li>GET providers</li><li>GET providers/{providerId}</li></ul>
+          items:
+            type: string
+            enum:
+            - bank
+            - creditCard
+            - investment
+            - insurance
+            - loan
+            - reward
+            - bill
+            - realEstate
+            - otherAssets
+            - otherLiabilities
+        fromDate:
+          type: string
+          description: Applicable only to EBILLS and STATEMENTS attributes of DOCUMENT dataset.<br><br><b>Endpoints</b>:<ul><li>POST providerAccounts</li><li>PUT providerAccounts</li></ul>
+          readOnly: true
+        toFinYear:
+          type: string
+          description: Applicable only to TAX attribute of DOCUMENT dataset.<br><br><b>Endpoints</b>:<ul><li>POST providerAccounts</li><li>PUT providerAccounts</li></ul>
+          readOnly: true
+        fromFinYear:
+          type: string
+          description: Applicable only to TAX attribute of DOCUMENT dataset.<br><br><b>Endpoints</b>:<ul><li>POST providerAccounts</li><li>PUT providerAccounts</li></ul>
+          readOnly: true
+        containerAttributes:
+          $ref: '#/components/schemas/ContainerAttributes'
+        toDate:
+          type: string
+          description: Applicable only to EBILLS and STATEMENTS attributes of DOCUMENT dataset.<br><br><b>Endpoints</b>:<ul><li>POST providerAccounts</li><li>PUT providerAccounts</li></ul>
+          readOnly: true
+        name:
+          type: string
+          description: Attributes that are supported for a dataset.<br><br><b>Endpoints</b>:<ul><li>GET providers</li><li>GET providers/{providerId}</li></ul>
+          enum:
+          - BASIC_ACCOUNT_INFO
+          - TRANSACTIONS
+          - STATEMENTS
+          - HOLDINGS
+          - ACCOUNT_DETAILS
+          - TAX
+          - EBILLS
+          - FULL_ACCT_NUMBER
+          - BANK_TRANSFER_CODE
+          - HOLDER_NAME
+          - HOLDER_DETAILS
+          - PAYMENT_PROFILE
+          - PAYMENT_DETAILS
+          - INTEREST_DETAILS
+          - COVERAGE
+    Capability:
+      title: Capability
+      type: object
+      properties:
+        container:
+          type: array
+          readOnly: true
+          items:
+            type: string
+            enum:
+            - bank
+            - creditCard
+            - investment
+            - insurance
+            - loan
+            - reward
+            - bill
+            - realEstate
+            - otherAssets
+            - otherLiabilities
+        name:
+          type: string
+          readOnly: true
+    ProviderDetailResponse:
+      title: ProviderDetailResponse
+      type: object
+      properties:
+        provider:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/ProviderDetail'
+    ProvidersDataset:
+      title: ProvidersDataset
+      type: object
+      properties:
+        name:
+          type: string
+          description: 'The name of the dataset requested from the provider site<br><br><b>Account Type</b>: Manual<br><b>Endpoints</b>:<ul><li>GET accounts</li><li>GET accounts/{accountId}</li><li>GET providerAccounts</li><li>POST providerAccounts</li><li>PUT providerAccounts/{providerAccountId}</li><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li><li>GET providers</li></ul><b>Applicable Values</b><br>'
+          enum:
+          - BASIC_AGG_DATA
+          - ADVANCE_AGG_DATA
+          - ACCT_PROFILE
+          - DOCUMENT
+        attribute:
+          type: array
+          description: The name of the dataset attribute suported by the provider.<br><br><b>Endpoints</b>:<ul><li>GET providers/{providerId}</li><li>GET providers</li></ul>
+          items:
+            $ref: '#/components/schemas/Attribute'
+    ProvidersCountResponse:
+      title: ProvidersCountResponse
+      type: object
+      properties:
+        provider:
+          $ref: '#/components/schemas/ProvidersCount'
+    Option:
+      title: Option
+      type: object
+      properties:
+        displayText:
+          type: string
+          description: The text that is displayed to the user for that option in the provider site.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
+        optionValue:
+          type: string
+          description: The value that is associated with the option.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
+        isSelected:
+          type: boolean
+          description: The option that is selected by default in the provider site.<br><br><b>Endpoints</b>:<ul><li>GET providerAccounts/{providerAccountId}</li><li>GET providers/{providerId}</li></ul>
 x-refined-from:
 - envestnet-account-aggregation-openapi-original.yml
 - envestnet-verification-openapi-original.yml
