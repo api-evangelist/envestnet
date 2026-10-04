@@ -198,22 +198,6 @@ paths:
     - url: /
 components:
   schemas:
-    YodleeError:
-      title: YodleeError
-      type: object
-      properties:
-        errorMessage:
-          type: string
-          description: The descriptive message that explains the error scenario.
-          readOnly: true
-        errorCode:
-          type: string
-          description: The error code follows the format YNNN. The error codes do not change. New error codes may be added as we introduce new features and enhance functionalities.
-          readOnly: true
-        referenceCode:
-          type: string
-          description: Unique Yodlee identifier used to troubleshoot issues at Yodlee's end.
-          readOnly: true
     ConfigsNotificationEvent:
       title: ConfigsNotificationEvent
       type: object
@@ -232,23 +216,6 @@ components:
           minLength: 1
           type: string
           description: URL to which the notification should be posted.<br><br><b>Endpoints</b>:<ul><li>GET configs/notifications/events</li></ul>
-    UpdateConfigsNotificationEventRequest:
-      title: UpdateConfigsNotificationEventRequest
-      required:
-      - event
-      type: object
-      properties:
-        event:
-          $ref: '#/components/schemas/UpdateConfigsNotificationEvent'
-    UpdateConfigsNotificationEvent:
-      title: UpdateConfigsNotificationEvent
-      type: object
-      properties:
-        callbackUrl:
-          maxLength: 2147483647
-          minLength: 1
-          type: string
-          description: URL to which the notification should be posted.<br><br><b>Endpoints</b>:<ul><li>GET configs/notifications/events</li></ul>
     ConfigsNotificationResponse:
       title: ConfigsNotificationResponse
       type: object
@@ -258,6 +225,47 @@ components:
           readOnly: true
           items:
             $ref: '#/components/schemas/ConfigsNotificationEvent'
+    CreateConfigsNotificationEventRequest:
+      title: CreateConfigsNotificationEventRequest
+      required:
+      - event
+      type: object
+      properties:
+        event:
+          $ref: '#/components/schemas/CreateConfigsNotificationEvent'
+    UpdateConfigsNotificationEventRequest:
+      title: UpdateConfigsNotificationEventRequest
+      required:
+      - event
+      type: object
+      properties:
+        event:
+          $ref: '#/components/schemas/UpdateConfigsNotificationEvent'
+    YodleeError:
+      title: YodleeError
+      type: object
+      properties:
+        errorMessage:
+          type: string
+          description: The descriptive message that explains the error scenario.
+          readOnly: true
+        errorCode:
+          type: string
+          description: The error code follows the format YNNN. The error codes do not change. New error codes may be added as we introduce new features and enhance functionalities.
+          readOnly: true
+        referenceCode:
+          type: string
+          description: Unique Yodlee identifier used to troubleshoot issues at Yodlee's end.
+          readOnly: true
+    UpdateConfigsNotificationEvent:
+      title: UpdateConfigsNotificationEvent
+      type: object
+      properties:
+        callbackUrl:
+          maxLength: 2147483647
+          minLength: 1
+          type: string
+          description: URL to which the notification should be posted.<br><br><b>Endpoints</b>:<ul><li>GET configs/notifications/events</li></ul>
     CreateConfigsNotificationEvent:
       title: CreateConfigsNotificationEvent
       type: object
@@ -267,14 +275,6 @@ components:
           minLength: 1
           type: string
           description: URL to which the notification should be posted.<br><br><b>Endpoints</b>:<ul><li>GET configs/notifications/events</li></ul>
-    CreateConfigsNotificationEventRequest:
-      title: CreateConfigsNotificationEventRequest
-      required:
-      - event
-      type: object
-      properties:
-        event:
-          $ref: '#/components/schemas/CreateConfigsNotificationEvent'
 x-refined-from:
 - envestnet-account-aggregation-openapi-original.yml
 - envestnet-credit-accelerator-openapi-original.yml
