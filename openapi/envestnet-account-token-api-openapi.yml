@@ -84,16 +84,6 @@ paths:
     - url: /
 components:
   schemas:
-    PaymentProcessorTokenResponse:
-      title: PaymentProcessorTokenResponse
-      type: object
-      properties:
-        token:
-          type: array
-          description: token
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/AccountToken'
     YodleeError:
       title: YodleeError
       type: object
@@ -117,6 +107,16 @@ components:
           description: The unique identifier for the user's account.
           format: int64
           readOnly: true
+    PaymentProcessorTokenResponse:
+      title: PaymentProcessorTokenResponse
+      type: object
+      properties:
+        token:
+          type: array
+          description: token
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/AccountToken'
     PaymentProcessorTokenRequest:
       title: PaymentProcessorTokenRequest
       required:

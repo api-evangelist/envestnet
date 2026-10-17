@@ -198,41 +198,6 @@ paths:
     - url: /
 components:
   schemas:
-    ConfigsNotificationEvent:
-      title: ConfigsNotificationEvent
-      type: object
-      properties:
-        name:
-          type: string
-          description: Name of the event for which the customers must subscribe to receive notifications.<br><b>Valid Value:</b> Notification Events Name<br><br><b>Endpoints</b>:<ul><li>GET configs/notifications/events</li></ul><b>Applicable Values</b><br>
-          enum:
-          - REFRESH
-          - DATA_UPDATES
-          - AUTO_REFRESH_UPDATES
-          - LATEST_BALANCE_UPDATES
-          - CREDIT_ACCELERATOR_REPORT_UPDATES
-        callbackUrl:
-          maxLength: 2147483647
-          minLength: 1
-          type: string
-          description: URL to which the notification should be posted.<br><br><b>Endpoints</b>:<ul><li>GET configs/notifications/events</li></ul>
-    ConfigsNotificationResponse:
-      title: ConfigsNotificationResponse
-      type: object
-      properties:
-        event:
-          type: array
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/ConfigsNotificationEvent'
-    CreateConfigsNotificationEventRequest:
-      title: CreateConfigsNotificationEventRequest
-      required:
-      - event
-      type: object
-      properties:
-        event:
-          $ref: '#/components/schemas/CreateConfigsNotificationEvent'
     UpdateConfigsNotificationEventRequest:
       title: UpdateConfigsNotificationEventRequest
       required:
@@ -241,6 +206,14 @@ components:
       properties:
         event:
           $ref: '#/components/schemas/UpdateConfigsNotificationEvent'
+    CreateConfigsNotificationEventRequest:
+      title: CreateConfigsNotificationEventRequest
+      required:
+      - event
+      type: object
+      properties:
+        event:
+          $ref: '#/components/schemas/CreateConfigsNotificationEvent'
     YodleeError:
       title: YodleeError
       type: object
@@ -266,6 +239,24 @@ components:
           minLength: 1
           type: string
           description: URL to which the notification should be posted.<br><br><b>Endpoints</b>:<ul><li>GET configs/notifications/events</li></ul>
+    ConfigsNotificationEvent:
+      title: ConfigsNotificationEvent
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the event for which the customers must subscribe to receive notifications.<br><b>Valid Value:</b> Notification Events Name<br><br><b>Endpoints</b>:<ul><li>GET configs/notifications/events</li></ul><b>Applicable Values</b><br>
+          enum:
+          - REFRESH
+          - DATA_UPDATES
+          - AUTO_REFRESH_UPDATES
+          - LATEST_BALANCE_UPDATES
+          - CREDIT_ACCELERATOR_REPORT_UPDATES
+        callbackUrl:
+          maxLength: 2147483647
+          minLength: 1
+          type: string
+          description: URL to which the notification should be posted.<br><br><b>Endpoints</b>:<ul><li>GET configs/notifications/events</li></ul>
     CreateConfigsNotificationEvent:
       title: CreateConfigsNotificationEvent
       type: object
@@ -275,6 +266,15 @@ components:
           minLength: 1
           type: string
           description: URL to which the notification should be posted.<br><br><b>Endpoints</b>:<ul><li>GET configs/notifications/events</li></ul>
+    ConfigsNotificationResponse:
+      title: ConfigsNotificationResponse
+      type: object
+      properties:
+        event:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/ConfigsNotificationEvent'
 x-refined-from:
 - envestnet-account-aggregation-openapi-original.yml
 - envestnet-credit-accelerator-openapi-original.yml
