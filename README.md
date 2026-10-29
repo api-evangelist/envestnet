@@ -1,4 +1,4 @@
-# Envestnet (envestnet)
+# Envestnet
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,162 +64,207 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Envestnet is an ever-evolving network of data-driven services, products,
-tools, and technologies designed to enable the Intelligent Financial Life.
-Our robust financial wellness ecosystem offers solutions for every role in
-the financial advice industry, including the Yodlee account aggregation,
-verification, credit, insights, and personalized view APIs.
+Envestnet is an ever-evolving network of data-driven services, products, tools, and technologies designed to enable the Intelligent Financial Life. Our robust financial wellness ecosystem offers solutions for every role in the financial advice industry, including the Yodlee account aggregation, verification, credit, insights, and personalized view APIs.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/envestnet/refs/heads/main/apis.yml)
+**Areas:** Finance · Wealth Management · Open Banking · Account Aggregation
 
-## Scope
+## Envestnet on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for Envestnet is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/envestnet/](https://apis.io/providers/envestnet/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (21)
 
-- Financial
-- Wealth Management
-- Open Banking
-- Account Aggregation
+- [Envestnet Account Token API](https://apis.io/apis/envestnet/envestnet-account-token-api/) — Account verification customers looking to integrate with one of our payment partners can use the Account Token endpoints. These APIs allow creating a secure…
+- [Envestnet Accounts API](https://apis.io/apis/envestnet/envestnet-accounts-api/) — Accounts API
+- [Envestnet Associated Details API](https://apis.io/apis/envestnet/envestnet-associated-details-api/) — The Associated Details API from Envestnet — 2 operation(s) for associated details.
+- [Envestnet Auth API](https://apis.io/apis/envestnet/envestnet-auth-api/) — Auth API
+- [Envestnet Configs API](https://apis.io/apis/envestnet/envestnet-configs-api/) — Configs API
+- [Envestnet Consents API](https://apis.io/apis/envestnet/envestnet-consents-api/) — Consents API
+- [Envestnet CreditAcceleratorFile API](https://apis.io/apis/envestnet/envestnet-creditacceleratorfile-api/) — CreditAcceleratorFile API
+- [Envestnet Customer API](https://apis.io/apis/envestnet/envestnet-customer-api/) — The Customer API from Envestnet — 1 operation(s) for customer.
+- [Envestnet DataExtracts API](https://apis.io/apis/envestnet/envestnet-dataextracts-api/) — DataExtracts API
+- [Envestnet Derived API](https://apis.io/apis/envestnet/envestnet-derived-api/) — Derived API
+- [Envestnet Documents API](https://apis.io/apis/envestnet/envestnet-documents-api/) — Documents API
+- [Envestnet Holdings API](https://apis.io/apis/envestnet/envestnet-holdings-api/) — Holdings API
+- [Envestnet Payment Processor API](https://apis.io/apis/envestnet/envestnet-payment-processor-api/) — Envestnet | Yodlee's payment processor partners can use the Payment Processor endpoints to access verified account details using the…
+- [Envestnet Providers API](https://apis.io/apis/envestnet/envestnet-providers-api/) — Providers API
+- [Envestnet Statements API](https://apis.io/apis/envestnet/envestnet-statements-api/) — Statements API
+- [Envestnet Transactions API](https://apis.io/apis/envestnet/envestnet-transactions-api/) — Transactions API
+- [Envestnet User API](https://apis.io/apis/envestnet/envestnet-user-api/) — Users API
+- [Envestnet Verification API](https://apis.io/apis/envestnet/envestnet-verification-api/) — Verification API
+- [Envestnet Verify Account API](https://apis.io/apis/envestnet/envestnet-verify-account-api/) — Verify Account API
+- [Envestnet View API](https://apis.io/apis/envestnet/envestnet-view-api/) — The View API from Envestnet — 11 operation(s) for view.
+- [Envestnet Provider Accounts API](https://apis.io/apis/envestnet/envestnet-provider-accounts-api/) — Provider Accounts API
 
-## Timestamps
+### Published properties
 
-- **Created:** 2023-11-20
-- **Modified:** 2026-04-28
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Envestnet Account Aggregation API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Aggregation APIs give you the power to access accounts at most institutions
-in the industry, combined with the industry's best data enrichment augmented
-by powerful AI-driven data analysis, all from a single open-banking-ready
-platform.
+- [Envestnet Agentic Access](https://apis.io/agentic-access/envestnet/envestnet-agentic-access/)
 
-**Human URL:** [https://developer.envestnet.com/products/yodlee/account-aggregation](https://developer.envestnet.com/products/yodlee/account-aggregation)
+#### JSON Schema (396)
 
-#### Tags
+The data models the API reads and writes.
 
-- Account Aggregation
-- Open Banking
+- [AbstractAddress](https://apis.io/schemas/envestnet/envestnet-abstractaddress/)
+- [AccessTokens](https://apis.io/schemas/envestnet/envestnet-accesstokens/)
+- [Account](https://apis.io/schemas/envestnet/envestnet-account/)
+- [AccountAddress](https://apis.io/schemas/envestnet/envestnet-accountaddress/)
+- [AccountBalanceResponse](https://apis.io/schemas/envestnet/envestnet-accountbalanceresponse/)
+- [AccountDataset](https://apis.io/schemas/envestnet/envestnet-accountdataset/)
+- [AccountDerived](https://apis.io/schemas/envestnet/envestnet-accountderived/)
+- [AccountDetail](https://apis.io/schemas/envestnet/envestnet-accountdetail/)
+- [AccountHistoricalBalancesResponse](https://apis.io/schemas/envestnet/envestnet-accounthistoricalbalancesresponse/)
+- [AccountHistory](https://apis.io/schemas/envestnet/envestnet-accounthistory/)
+- [AccountHolder](https://apis.io/schemas/envestnet/envestnet-accountholder/)
+- [AccountHolderData](https://apis.io/schemas/envestnet/envestnet-accountholderdata/)
+- [AccountInfo](https://apis.io/schemas/envestnet/envestnet-accountinfo/)
+- [AccountLatestBalance](https://apis.io/schemas/envestnet/envestnet-accountlatestbalance/)
+- [AccountProfile](https://apis.io/schemas/envestnet/envestnet-accountprofile/)
+- [AccountProfileDetail](https://apis.io/schemas/envestnet/envestnet-accountprofiledetail/)
+- [AccountResponse](https://apis.io/schemas/envestnet/envestnet-accountresponse/)
+- [AccountToken](https://apis.io/schemas/envestnet/envestnet-accounttoken/)
+- [Address](https://apis.io/schemas/envestnet/envestnet-address/)
+- [AmountRange](https://apis.io/schemas/envestnet/envestnet-amountrange/)
+- [ApiKeyOutput](https://apis.io/schemas/envestnet/envestnet-apikeyoutput/)
+- [ApiKeyRequest](https://apis.io/schemas/envestnet/envestnet-apikeyrequest/)
+- [ApiKeyResponse](https://apis.io/schemas/envestnet/envestnet-apikeyresponse/)
+- [AssetClassification](https://apis.io/schemas/envestnet/envestnet-assetclassification/)
+- [AssetClassificationList](https://apis.io/schemas/envestnet/envestnet-assetclassificationlist/)
+- …and 371 more published on APIs.io
 
-#### Properties
+#### JSON Structure (1)
 
-- [Documentation](https://developer.envestnet.com/products/yodlee/account-aggregation/docs/api-reference)
-- [OpenAPI](openapi/envestnet-account-aggregation-openapi-original.yml)
+Data models expressed in JSON Structure.
 
-### Envestnet Account Token APIs
+- [Envestnet Structure](https://apis.io/json-structure/envestnet/envestnet-structure/)
 
-Financial institutions or FinTech customers using the account verification
-product to provide digital payment services can eliminate the risk of storing
-users' sensitive financial account information by using Account Token
-endpoints.
+#### Vocabulary (1)
 
-**Human URL:** [https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference](https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference)
+The provider's domain terms, defined.
 
-#### Tags
+- [Envestnet Domain Vocabulary](https://apis.io/vocabularies/envestnet/envestnet-vocabulary/)
 
-- Account Token
-- Payments
+#### Collections (21)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://developer.envestnet.com/products/yodlee/account-token/docs/api-reference)
-- [OpenAPI](openapi/envestnet-account-token-openapi-original.yml)
+- [Envestnet Aggregation APIs Account Token API](https://apis.io/collections/envestnet/open-envestnet-account-token-api/)
+- [Envestnet Aggregation APIs Account Token Accounts API](https://apis.io/collections/envestnet/open-envestnet-accounts-api/)
+- [Envestnet Aggregation APIs Account Token Associated Details API](https://apis.io/collections/envestnet/open-envestnet-associated-details-api/)
+- [Envestnet Aggregation APIs Account Token Auth API](https://apis.io/collections/envestnet/open-envestnet-auth-api/)
+- [Envestnet Aggregation APIs Account Token Configs API](https://apis.io/collections/envestnet/open-envestnet-configs-api/)
+- [Envestnet Aggregation APIs Account Token Consents API](https://apis.io/collections/envestnet/open-envestnet-consents-api/)
+- [Envestnet Aggregation APIs Account Token CreditAcceleratorFile API](https://apis.io/collections/envestnet/open-envestnet-creditacceleratorfile-api/)
+- [Envestnet Aggregation APIs Account Token Customer API](https://apis.io/collections/envestnet/open-envestnet-customer-api/)
+- [Envestnet Aggregation APIs Account Token DataExtracts API](https://apis.io/collections/envestnet/open-envestnet-dataextracts-api/)
+- [Envestnet Aggregation APIs Account Token Derived API](https://apis.io/collections/envestnet/open-envestnet-derived-api/)
+- [Envestnet Aggregation APIs Account Token Documents API](https://apis.io/collections/envestnet/open-envestnet-documents-api/)
+- [Envestnet Aggregation APIs Account Token Holdings API](https://apis.io/collections/envestnet/open-envestnet-holdings-api/)
+- [Envestnet Aggregation APIs Account Token Payment Processor API](https://apis.io/collections/envestnet/open-envestnet-payment-processor-api/)
+- [Envestnet Aggregation APIs Account Token ProviderAccounts API](https://apis.io/collections/envestnet/open-envestnet-provideraccounts-api/)
+- [Envestnet Aggregation APIs Account Token Providers API](https://apis.io/collections/envestnet/open-envestnet-providers-api/)
+- [Envestnet Aggregation APIs Account Token Statements API](https://apis.io/collections/envestnet/open-envestnet-statements-api/)
+- [Envestnet Aggregation APIs Account Token Transactions API](https://apis.io/collections/envestnet/open-envestnet-transactions-api/)
+- [Envestnet Aggregation APIs Account Token User API](https://apis.io/collections/envestnet/open-envestnet-user-api/)
+- [Envestnet Aggregation APIs Account Token Verification API](https://apis.io/collections/envestnet/open-envestnet-verification-api/)
+- [Envestnet Aggregation APIs Account Token Verify Account API](https://apis.io/collections/envestnet/open-envestnet-verify-account-api/)
+- [Envestnet Aggregation APIs Account Token View API](https://apis.io/collections/envestnet/open-envestnet-view-api/)
 
-### Envestnet Account Verification APIs
+#### Governance rules (1)
 
-Verifying an account using Yodlee enables payments, helps avoid overdrafts,
-reduces fraud, and more. Verification means your user has authenticated
-against the account and yields detailed information such as routing number
-lookup and balance verification.
+Spectral rulesets for the provider's contracts.
 
-**Human URL:** [https://developer.envestnet.com/products/yodlee/account-verification/docs](https://developer.envestnet.com/products/yodlee/account-verification/docs)
+- [Envestnet — jsonschema rules](https://apis.io/rules/envestnet/envestnet-jsonschema-spectral-rules/)
 
-#### Tags
+#### Security (2)
 
-- Verification
-- Payments
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Properties
+- [Envestnet Domain Security](https://apis.io/security/envestnet/envestnet-domain-security/)
+- [Envestnet Vulnerability Disclosure](https://apis.io/security/envestnet/envestnet-vulnerability-disclosure/)
 
-- [Documentation](https://developer.envestnet.com/products/yodlee/account-verification/docs)
-- [OpenAPI](openapi/envestnet-verification-openapi-original.yml)
+#### Plans and pricing (1)
 
-### Envestnet Credit Accelerator API
+Published plans, tiers and prices.
 
-The Envestnet D&A Credit LLC Credit Accelerator solution allows consumers to
-link their accounts across financial institutions and generate a Credit
-Accelerator File for use in loan underwriting or another credit review and
-approval process.
+- [Envestnet Plans Pricing](https://apis.io/plans/envestnet/envestnet-plans-pricing/)
 
-**Human URL:** [https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference](https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference)
+#### Rate limits (1)
 
-#### Tags
+Published request limits.
 
-- Credit
-- Underwriting
+- [Envestnet Rate Limits](https://apis.io/rate-limits/envestnet/envestnet-rate-limits/)
 
-#### Properties
+#### FinOps (1)
 
-- [Documentation](https://developer.envestnet.com/resources/yodlee/credit-accelerator/docs/api-reference)
-- [OpenAPI](openapi/envestnet-credit-accelerator-openapi-original.yml)
+What the API costs to run, by operation.
 
-### Envestnet Insights API
+- [Envestnet Finops](https://apis.io/finops/envestnet/envestnet-finops/)
 
-Financial Insights APIs provide intelligent, personalized, and actionable
-insights to your end-users.
+## Where to find this API
 
-**Human URL:** [https://developer.envestnet.com/products/yodlee/insights/docs/api-reference](https://developer.envestnet.com/products/yodlee/insights/docs/api-reference)
-
-#### Tags
-
-- Insights
-- Personalization
-
-#### Properties
-
-- [Documentation](https://developer.envestnet.com/products/yodlee/insights/docs/api-reference)
-- [OpenAPI](openapi/envestnet-insights-openapi-original.yml)
-
-### Envestnet Personalized View API
-
-Views APIs enable end users to create personalized views of their finances
-for any expenses, hobbies, or projects relevant to them. A view is a
-collection of transactions based on rules across any combination of
-accounts, categories, merchants, locations, transaction types, and more.
-
-**Human URL:** [https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference](https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference)
-
-#### Tags
-
-- Personalized Views
-- Transactions
-
-#### Properties
-
-- [Documentation](https://developer.envestnet.com/products/yodlee/personalized-views/docs/api-reference)
-- [OpenAPI](openapi/envestnet-personalized-views-openapi-original.yml)
-
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.envestnet.com/)
-- [Developer Portal](https://developer.envestnet.com/)
-- [Use Cases](https://developer.envestnet.com/use-cases)
-- [Releases](https://developer.envestnet.com/resources?type=release)
 - [Blog](https://developer.envestnet.com/resources?type=blog)
-- [Events](https://developer.envestnet.com/resources?type=events)
-- [Contact](https://developer.envestnet.com/contact-us)
-- [Press](https://www.envestnet.com/press)
-- [Privacy Policy](https://www.envestnet.com/privacy)
-- [Terms of Service](https://www.envestnet.com/legal)
-- [LinkedIn](https://www.linkedin.com/company/envestnet/)
+- [Terms of service](https://www.envestnet.com/legal)
+- [Privacy policy](https://www.envestnet.com/privacy)
+- [GitHub](https://github.com/yodlee)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
+**Kin Score 28.9** — thin · rubric 0.24.0 · scored 2026-10-17
 
-**Email:** kin@apievangelist.com
+| Facet | Score |
+|---|---|
+| Discoverability | 54.5 |
+| Contract quality | 47.3 |
+| Contract governance | 9.8 |
+| Operational transparency | 23.7 |
+| Developer ergonomics | 11.9 |
+| Access clarity | 26.3 |
+
+**Agent readiness 23.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 15.7** — Banking & Open Finance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/envestnet/](https://apis.io/providers/envestnet/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Envestnet: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/envestnet/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
